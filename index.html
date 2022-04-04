@@ -22,9 +22,9 @@
 		
 		<div class="col-xs-12 col-sm-10 col-centered ">
 			<div style="display:'none'; text-align:center; ">
-				<b style="font-size:20px; color:green;">DA</b>
-				<b style="font-size:20px; color:#FFD700;">TA</b>
-				<b style="font-size:20px; color:#3333AA;">SHOW</b>
+				<b style="font-size:25px; color:green;">DA</b>
+				<b style="font-size:25px; color:#FFD700;">TA</b>
+				<b style="font-size:25px; color:#3333AA;">SHOW</b>
 				<select id="selMycodeTextGroup" name="selMycodeTextGroup" style="height:34px;">
 					<!-- option value="-1"> </option -->
 					<option value="0" selected>somente letras</option>
@@ -35,11 +35,15 @@
 					<input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:200px; height:34px;"><button id="btnSearch" style="height:34px; width:40px;" class="btn btn-default"> <i class="fa fa-search"></i></button>
 				</label>
 				<button id="btnAddStudent" class="btn btn-success"> <i class="fa fa-plus"></i> </button>
-				<button id="btnShowStudent" class="btn btn-datashow"> <i class="fa fa-film"></i> </button>
-				<button id="btnGear" class="btn btn-info" style="display:'none';"> <i class="fa fa-gear"></i></button>
+				<button id="btnShowStudent" class="btn btn-info"> <i class="fa fa-film"></i> </button>
+				<button id="btnGear" class="btn btn-default" style="display:'none';"> <i class="fa fa-gear"></i></button>
 			</div>
 		</div>
 		
+		<div id="divconfig" style="display:none;">
+			<br/><a href="config.html" target="_datashow"><button id="btnIndexConfigurar" class="btn btn-success" style="padding:9px 15px 9px 15px;"> 1. Configurar <i class="fa fa-forward"></i> </button></a>
+			<button id="btnConfigSearch" class="btn btn-success" style="padding:9px 15px 9px 15px; display:none;"> 2. Configuração terminou? </button>
+		</div>
 		
 		
 		<table id="tblGrid" style="width:98%" class="table table-hover ">
@@ -115,6 +119,7 @@
 			<button id="btnDeleteLirics" class="btn btn-info" style="display:'none';"> <i class="fa fa-minus"></i> Clear Lirycs</button>
 			<button id="btnDeleteBible" class="btn btn-info" style="display:'none';"> <i class="fa fa-minus"></i> Clear Bible</button>
 			<button id="btnDeleteArt" class="btn btn-info" style="display:'none';"> <i class="fa fa-minus"></i> Clear Arts</button>
+			<br/><br/><a href="config.html" target="_datashow"><button id="btnIndexConfigurar" class="btn btn-info" style="padding:9px 15px 9px 15px;"> Configurar <i class="fa fa-forward"></i> </button></a>
 
 			<br/><br/>
 			<button id="btnTest" class="btn btn-default" > <i class="fa fa-envelope"></i> </button>
@@ -186,17 +191,6 @@
 			<button id="btnTest" class="btn btn-default" > <i class="fa fa-eject"></i> </button>
 			<button id="btnTest" class="btn btn-default" > <i class="fa fa-chevron-left"></i> </button>
 			<button id="btnTest" class="btn btn-default" > <i class="fa fa-chevron-right"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
 			<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
 		</div>
 	</div>
