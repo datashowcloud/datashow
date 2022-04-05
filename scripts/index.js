@@ -358,7 +358,8 @@ async function getFromTable(id, code, order) {
 		$('#mycodeTextGroup').val(student.mycodeTextGroup);
 		$('#myrepeated').val(student.myrepeated);
 		if (student.myowner.toLowerCase() == '') {
-			$('#myowner').val('iirf'); //hope
+//			$('#myowner').val('iirf');
+			$('#myowner').val('hopé');
 		} else {
 			$('#myowner').val(student.myowner);
 		}
@@ -1028,7 +1029,8 @@ function getStudentFromForm() {
         mysearch: removeSpecials($('#mytext').val()),
         mycodeTextGroup: $('#selMycodeTextGroup').val(),
         myrepeated: $('#myrepeated').val(),
-		myowner: 'iirf'
+//		myowner: 'iirf'
+		myowner: 'hope'
     };
     return student;
 }
@@ -1043,7 +1045,8 @@ function setStudentFromImport(mycode, myorder, mytext, mycodeTextGroup, myrepeat
 	}
 	document.getElementById('selMycodeTextGroup').selectedIndex = mycodeTextGroup;
 	document.getElementById('myrepeated').selectedIndex = myrepeated;
-	document.getElementById('myowner').value = 'IIRF'; //HOPE
+//	document.getElementById('myowner').value = 'iirf';
+	document.getElementById('myowner').value = 'hope';
     $('#formAddUpdate').show();
 }
 
