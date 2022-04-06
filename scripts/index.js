@@ -461,14 +461,14 @@ async function freezeDataShow(aovivo) {
 		if (aovivo == 'false') { //unfreeze DataShow
 			localStorage.setItem('valueAoVivo', 'true');
 			if (document.getElementById('btnFreezeTop') != null) {
-				document.getElementById('btnFreezeTop').innerHTML = '<i class="fa fa-lock"></i> Congelar';
+				document.getElementById('btnFreezeTop').innerHTML = '<i class="fa fa-lock"></i> Congela';
 //				document.getElementById('btnFreezeTop').classList.remove('btn-info');
 //				document.getElementById('btnFreezeTop').classList.add('btn-default');
 			}
 		} else { //freeze DataShow
 			localStorage.setItem('valueAoVivo', 'false');
 			if (document.getElementById('btnFreezeTop') != null) {
-				document.getElementById('btnFreezeTop').innerHTML = '<i class="fa fa-times"></i> Descongelar';
+				document.getElementById('btnFreezeTop').innerHTML = '<i class="fa fa-times"></i> Descongela';
 //				document.getElementById('btnFreezeTop').classList.remove('btn-default');
 //				document.getElementById('btnFreezeTop').classList.add('btn-info');
 			}
@@ -741,7 +741,7 @@ async function refreshTableData() {
 		students.forEach(function (student) {
             if (student.myorder == '000') {
 				htmlString += "<tr><td></td><td></td>"
-				htmlString += "<td>"
+				htmlString += "<td nowrap>"
 
 				if (localStorage.getItem('valueLogoBig') == 'true') {
 					htmlString += "<a href='#' class='logo'><button id=\"btnLogoTop\" class=\"btn btn-success\"><i class=\"fa fa-minus\"></i> Logo</button></a>"
@@ -752,9 +752,9 @@ async function refreshTableData() {
 				}
 
 				if (localStorage.getItem('valueAoVivo') == 'true') {
-					htmlString += "&nbsp;<a href='#' class='freeze'><button id=\"btnFreezeTop\" class=\"btn btn-info\"><i class=\"fa fa-lock\"></i> Congelar</button></a>"
+					htmlString += "&nbsp;<a href='#' class='freeze'><button id=\"btnFreezeTop\" class=\"btn btn-info\"><i class=\"fa fa-lock\"></i> Congela</button></a>"
 				} else {
-					htmlString += "&nbsp;<a href='#' class='freeze'><button id=\"btnFreezeTop\" class=\"btn btn-info\"><i class=\"fa fa-times\"></i> Descongelar</button></a>"
+					htmlString += "&nbsp;<a href='#' class='freeze'><button id=\"btnFreezeTop\" class=\"btn btn-info\"><i class=\"fa fa-times\"></i> Descongela</button></a>"
 				}
 
 				if (localStorage.getItem('valueComplete') == 'true') {
