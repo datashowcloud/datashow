@@ -808,15 +808,15 @@ async function refreshTableData() {
 			
 			htmlString += "<tr ItemId=" + student.id + ">"
                 + "<td style=\"color:white; font-size:1px;\">" + student.mycode + "</td>"
-                + "<td style=\"color:black; font-size:8px;\">" + student.myorder + "</td>"
+                + "<td style=\"color:white; font-size:1px;\">" + student.myorder + "</td>"
 				+ "<" + varTdTh + " id=datashow" + student.id+"1" + " tabIndex=" + student.id+"1" + " onClick=\"datashow('" + student.id+"1" + "', 1, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 1, event, " + "" + (student.id+"1") + ");\" data-show='" + student.id+"1" + "'>" + mytextBold + "</" + varTdTh + ">"
 				//+ "<td>" + student.mysearch + "</td>"
 				+ "<td id=datashow" + (student.id+"2") + " tabIndex=" + (student.id+"2") + " onClick=\"datashow('" + (student.id+"2") + "', 1, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 1, event, " + "" + (student.id+"2") + ");\" data-show='" + (student.id+"2") + "'>" 
 				+ varOff + " </td>"
 //				+ "<td id=datashow" + (student.id+"3") + " tabIndex=" + (student.id+"3") + " onClick=\"datashow('" + (student.id+"3") + "', 1, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 1, event, " + "" + (student.id+"3") + ");\" data-show='" + (student.id+"3") + "'> </td>"
 				+ varFav
-				+ varEdit
-                + varDel;
+				+ varEdit;
+//                + varDel;
 		})
 		if (htmlString.length > 0) {
 			htmlString += "</tr>"
