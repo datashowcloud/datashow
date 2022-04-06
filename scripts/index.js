@@ -462,15 +462,15 @@ async function freezeDataShow(aovivo) {
 			localStorage.setItem('valueAoVivo', 'true');
 			if (document.getElementById('btnFreezeTop') != null) {
 				document.getElementById('btnFreezeTop').innerHTML = '<i class="fa fa-lock"></i> Congelar';
-				document.getElementById('btnFreezeTop').classList.remove('btn-info');
-				document.getElementById('btnFreezeTop').classList.add('btn-default');
+//				document.getElementById('btnFreezeTop').classList.remove('btn-info');
+//				document.getElementById('btnFreezeTop').classList.add('btn-default');
 			}
 		} else { //freeze DataShow
 			localStorage.setItem('valueAoVivo', 'false');
 			if (document.getElementById('btnFreezeTop') != null) {
 				document.getElementById('btnFreezeTop').innerHTML = '<i class="fa fa-times"></i> Descongelar';
-				document.getElementById('btnFreezeTop').classList.remove('btn-default');
-				document.getElementById('btnFreezeTop').classList.add('btn-info');
+//				document.getElementById('btnFreezeTop').classList.remove('btn-default');
+//				document.getElementById('btnFreezeTop').classList.add('btn-info');
 			}
 		}
     } catch (ex) {
@@ -483,13 +483,13 @@ async function searchComplete() {
     try {
 		if (localStorage.getItem('valueComplete') == 'true') {
 			localStorage.setItem('valueComplete', 'false');
-			document.getElementById('btnCompleteTop').innerHTML = '<i class=\"fa fa-minus\"></i> Repetida';
+			document.getElementById('btnCompleteTop').innerHTML = '<i class=\"fa fa-minus\"></i>';
 			refreshTableData();
 //			document.getElementById('btnCompleteTop').classList.remove('btn-warning');
 //			document.getElementById('btnCompleteTop').classList.add('btn-default');
 		} else {
 			localStorage.setItem('valueComplete', 'true');
-			document.getElementById('btnCompleteTop').innerHTML = '<i class=\"fa fa-list\"></i> Completa';
+			document.getElementById('btnCompleteTop').innerHTML = '<i class=\"fa fa-list\"></i>';
 			refreshTableData();
 //			document.getElementById('btnCompleteTop').classList.remove('btn-default');
 //			document.getElementById('btnCompleteTop').classList.add('btn-warning');
@@ -758,9 +758,9 @@ async function refreshTableData() {
 				}
 
 				if (localStorage.getItem('valueComplete') == 'true') {
-					htmlString += "&nbsp;<a href='#' class='complete'><button id=\"btnCompleteTop\" class=\"btn btn-default\"><i class=\"fa fa-minus\"></i> Repetida</button></a>"
+					htmlString += "&nbsp;<a href='#' class='complete'><button id=\"btnCompleteTop\" class=\"btn btn-default\"><i class=\"fa fa-minus\"></i></button></a>"
 				} else {
-					htmlString += "&nbsp;<a href='#' class='complete'><button id=\"btnCompleteTop\" class=\"btn btn-warning\"><i class=\"fa fa-list\"></i> Completa</button></a>"
+					htmlString += "&nbsp;<a href='#' class='complete'><button id=\"btnCompleteTop\" class=\"btn btn-warning\"><i class=\"fa fa-list\"></i></button></a>"
 				}
 
 				if (localStorage.getItem('valueVideoPlay') == 'true') {
