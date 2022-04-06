@@ -798,7 +798,7 @@ async function refreshTableData() {
 				posIni = posIni + parseInt(diff);
 
 				mytextBold = mytext.substring(0, posIni)
-				+ '<b style="background-color:#FFD700; color:green;">'
+				+ '<b style="background-color:#EEEEEE; color:green;">'
 				+ mytext.substring(posIni, posIni+txtsearch.length)
 				+ '</b>'
 				+ mytext.substring(posIni+txtsearch.length);

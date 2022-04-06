@@ -22,28 +22,21 @@
         
 		
 		<div class="col-xs-12 col-sm-10 col-centered ">
-			<div style="display:'none'; text-align:center; ">
-				
-				<table border=0 align=center><tr><td>
+			<table border=0 align=center><tr><td>
 
-						<label style="font-size:30px; color:green;">DA</label>
-						<label style="font-size:30px; color:#FFD700;">TA</label>
-						<label style="font-size:30px; color:#3333AA;">SHOW</label>
-						
-						<label>
-						<label id="bSearch"> <input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:150px; height:34px;"><button id="btnSearch" style="height:34px; width:40px;" class="btn btn-default"> <i class="fa fa-search"></i></button> </label>
-						<button id="btnGear" class="btn btn-info" style="display:'none';"> <i class="fa fa-align-justify"></i></button>
-						<!-- br/><br/ -->
-						<select id="selMycodeTextGroup" name="selMycodeTextGroup" style="height:34px; display:'none';">
-							<option value="0" selected>letras</option>
-							<option value="1">bíblia</option>
-							<option value="2">imagem</option>
-						</select>
-						</label>
+					<label style="font-size:30px; color:green;">DA</label>
+					<label style="font-size:30px; color:#FFD700;">TA</label>
+					<label style="font-size:30px; color:#3333AA;">SHOW</label>
+					<br/>
+					<l id="bSearch"> <input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:150px; height:34px;"><button id="btnSearch" style="height:34px; width:40px;" class="btn btn-default"> <i class="fa fa-search"></i></button> </l>
+					<button id="btnGear" class="btn btn-info" style="display:'none';"> <i class="fa fa-align-justify"></i></button>
+					<select id="selMycodeTextGroup" name="selMycodeTextGroup" style="height:34px; display:'none';">
+						<option value="0" selected>letras</option>
+						<option value="1">bíblia</option>
+						<option value="2">imagem</option>
+					</select>
 
-				</td></tr></table>
-			
-			</div>
+			</td></tr></table>
 		</div>
 		
 		<div id="divconfig" style="display:none;">
@@ -214,150 +207,153 @@
 			<br/><button id="btnDeleteBible" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-minus"></i> Clear Bible</button>
 			<br/><button id="btnDeleteArt" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-minus"></i> Clear Arts</button>
 		</div>
-		</div>
 	</div>
 
 
 
 		<form id="formBible" class="form-horizontal" role="form" style="margin-top:50px; display: none;">
 			<div class="form-group" align=center>
-				<table border=0 align=left>
-					<tr>
-						<td valign=top style="padding:5px 5px 5px 5px; border:0px; text-align:left;">
-							&nbsp;
-						</td>
-					</tr>
-				</table>
 
-				<table border=0 align=left>
+				<table border=1>
 					<tr>
-						<td valign=top style="padding:5px 5px 5px 5px; border:0px; text-align:left;">
-							<label class="btn btn-success">1. Livros<br/>Pentateuco</label>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('genesis ')"><b>GÊN</b>esis</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('exodo ')"><b>ÊXO</b>do</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('levitico ')"><b>LEV</b>ítico</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('numeros ')"><b>NÚM</b>eros</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('deuteronomio ')"><b>DEU</b>teronômio</a>
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<!--td><label class="btn btn-info">Pentateuco</label></td-->
+						<td style="text-align:left;">
+							<label class="btn btn-info">Pentateuco:</label>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('genesis ')"><b>GÊN</b>esis</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('exodo ')"><b>ÊXO</b>do</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('levitico ')"><b>LEV</b>ítico</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('numeros ')"><b>NÚM</b>eros</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('deuteronomio ')"><b>DEU</b>teronômio</button>
 						</td>
 					</tr>
-				</table>
+					<tr>
+						<td></td>
+						<!--td>Históricos</td-->
+						<td style="text-align:left;">
+							<label class="btn btn-info">Históricos:</label>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('josue ')"><b>JOS</b>ué</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('juizes ')"><b>JUÍ</b>zes</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('rute ')"><b>RUT</b>e</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('1.samuel ')"><b>1.SAM</b>uel</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('2.samuel ')"><b>2.SAM</b>uel</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('1.reis ')"><b>1.REI</b>s</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('2.reis ')"><b>2.REI</b>s</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('1.cronicas ')"><b>1.CRÔ</b>nicas</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('2.cronicas ')"><b>2.CRÔ</b>nicas</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('esdras ')"><b>ESD</b>ras</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('neemias ')"><b>NEE</b>mias</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('ester ')"><b>EST</b>er</button>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<!--td>Poéticos</td-->
+						<td style="text-align:left;">
+							<label class="btn btn-info">Poéticos:</label>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('jo ')"><b>JÓ</b></button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('salmos ')"><b>SAL</b>mos</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('proverbios ')"><b>PRO</b>vérbios</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('eclesiastes ')"><b>ECL</b>esiastes</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('canticos ')"><b>CÂN</b>ticos</button>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<!--td>Profetas Maiores</td-->
+						<td style="text-align:left;">
+							<label class="btn btn-info">Profetas Maiores:</label>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('isaias ')"><b>ISA</b>ías</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('jeremias ')"><b>JER</b>emias</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('lamentacoes ')"><b>LAM</b>entações</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('ezequiel ')"><b>EZE</b>quiel</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('daniel ')"><b>DAN</b>iel</button>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<!--td>Profetas Menores</td-->
+						<td style="text-align:left;">
+							<label class="btn btn-info">Profetas Menores:</label>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('oseias ')"><b>OSÉ</b>ias</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('joel ')"><b>JOE</b>l</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('amos ')"><b>AMÓ</b>s</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('obadias ')"><b>OBA</b>dias</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('jonas ')"><b>JON</b>as</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('miqueias ')"><b>MIQ</b>uéias</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('naum ')"><b>NAU</b>m</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('habacuque ')"><b>HAB</b>acuque</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('sofonias ')"><b>SOF</b>onias</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('ageu ')"><b>AGE</b>u</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('zacarias ')"><b>ZAC</b>arias</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('malaquias ')"><b>MAL</b>aquias</button>
+						</td>
+					</tr>
 
-				<table border=0 align=left>
 					<tr>
-						<td valign=top style="padding:5px 5px 5px 5px; border:0px; text-align:left;">
-							<label class="btn btn-success">2. Livros<br/>Históricos</label>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('josue ')"><b>JOS</b>ué</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('juizes ')"><b>JUÍ</b>zes</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('rute ')"><b>RUT</b>e</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('1.samuel ')"><b>1 SAM</b>uel</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('2.samuel ')"><b>2 SAM</b>uel</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('1.reis ')"><b>1 REI</b>s</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('2.reis ')"><b>2 REI</b>s</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('1.cronicas ')"><b>1 CRÔ</b>nicas</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('2.cronicas ')"><b>2 CRÔ</b>nicas</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('esdras ')"><b>ESD</b>ras</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('neemias ')"><b>NEE</b>mias</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('ester ')"><b>EST</b>er</a>
-						</td>
+						<td colspan=4>&nbsp;</td>
 					</tr>
-				</table>
 
-				<table border=0 align=left>
 					<tr>
-						<td valign=top style="padding:5px 5px 5px 5px; border:0px; text-align:left;">
-							<label class="btn btn-success">3. Livros<br/>Poéticos</label>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('jo ')"><b>JÓ</b></a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('salmos ')"><b>SAL</b>mos</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('proverbios ')"><b>PRO</b>vérbios</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('eclesiastes ')"><b>ECL</b>esiastes</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('canticos ')"><b>CÂN</b>ticos</a>
+						<td></td>
+						<!--td>Evangelhos</td-->
+						<td style="text-align:left;">
+							<label class="btn btn-success">Evangelhos:</label>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('mateus ')"><b>MAT</b>eus</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('marcos ')"><b>MAR</b>cos</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('lucas ')"><b>LUC</b>as</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('joao ')"><b>JOÃ</b>o</button>							
 						</td>
 					</tr>
-				</table>
-				
-				<table border=0 align=left>
 					<tr>
-						<td valign=top style="padding:5px 5px 5px 5px; border:0px; text-align:left;">
-							<label class="btn btn-success">4. Livros<br/>Proféticos</label>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('isaias ')"><b>ISA</b>ías</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('jeremias ')"><b>JER</b>emias</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('lamentacoes ')"><b>LAM</b>entações</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('ezequiel ')"><b>EZE</b>quiel</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('daniel ')"><b>DAN</b>iel</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('oseias ')"><b>OSÉ</b>ias</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('joel ')"><b>JOE</b>l</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('amos ')"><b>AMÓ</b>s</a>
-							
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('obadias ')"><b>OBA</b>dias</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('jonas ')"><b>JON</b>as</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('miqueias ')"><b>MIQ</b>uéias</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('naum ')"><b>NAU</b>m</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('habacuque ')"><b>HAB</b>acuque</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('sofonias ')"><b>SOF</b>onias</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('ageu ')"><b>AGE</b>u</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('zacarias ')"><b>ZAC</b>arias</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('malaquias ')"><b>MAL</b>aquias</a>
+						<td></td>
+						<!--td>Profético</td-->
+						<td style="text-align:left;">
+							<label class="btn btn-success">Profético:</label>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('atos ')"><b>ATO</b>s dos Apóstolos</button>
 						</td>
 					</tr>
-				</table>
-				
-				<table border=0 align=left>
 					<tr>
-						<td valign=top style="padding:5px 5px 5px 5px; border:0px; text-align:left;">
-							<label class="btn btn-info">5. Os<br/>Evangelhos</label>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('mateus ')"><b>MAT</b>eus</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('marcos ')"><b>MAR</b>cos</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('lucas ')"><b>LUC</b>as</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('joao ')"><b>JOÃ</b>o</a>							
-
-							<br/><label class="btn btn-info">6. Livro<br/>Profético</label>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('atos ')"><b>ATO</b>s dos<br/>Apóstolos</a>
+						<td></td>
+						<!--td>Epístolas de Paulo</td-->
+						<td style="text-align:left;">
+							<label class="btn btn-success">Epístolas de Paulo:</label>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('romanos ')"><b>ROM</b>anos</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('1.corintios ')"><b>1 COR</b>íntios</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('2.corintios ')"><b>2 COR</b>íntios</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('galatas ')"><b>GÁL</b>atas</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('efesios ')"><b>EFÉ</b>sios</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('filipenses ')"><b>FIL</b>ipenses</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('colossenses ')"><b>COL</b>ossenses</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('1.tessalonicenses ')"><b>1 TES</b>salonicenses</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('2.tessalonicenses ')"><b>2 TES</b>salonicenses</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('1.timoteo ')"><b>1 TIM</b>óteo</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('2.timoteo ')"><b>2 TIM</b>óteo</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('tito ')"><b>TIT</b>o</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('filemon ')"><b>FIL</b>emon</button>
 						</td>
 					</tr>
-				</table>
-				
-				<table border=0 align=left>
 					<tr>
-						<td valign=top style="padding:5px 5px 5px 5px; border:0px; text-align:left;">
-							<label class="btn btn-info">7. Epístolas<br/>de Paulo</label>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('romanos ')"><b>ROM</b>anos</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('1.corintios ')"><b>1 COR</b>íntios</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('2.corintios ')"><b>2 COR</b>íntios</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('galatas ')"><b>GÁL</b>atas</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('efesios ')"><b>EFÉ</b>sios</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('filipenses ')"><b>FIL</b>ipenses</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('colossenses ')"><b>COL</b>ossenses</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('1.tessalonicenses ')"><b>1 TES</b>salonicenses</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('2.tessalonicenses ')"><b>2 TES</b>salonicenses</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('1.timoteo ')"><b>1 TIM</b>óteo</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('2.timoteo ')"><b>2 TIM</b>óteo</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('tito ')"><b>TIT</b>o</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('filemon ')"><b>FIL</b>emon</a>
+						<td></td>
+						<!--td>Epístolas Gerais</td-->
+						<td style="text-align:left;">
+							<label class="btn btn-success">Epístolas Gerais:</label>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('hebreus ')"><b>HEB</b>reus</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('tiago ')"><b>TIA</b>go</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('1.pedro ')"><b>1 PED</b>ro</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('2.pedro ')"><b>2 PED</b>ro</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('1.joao ')"><b>1 JOÃ</b>o</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('2.joao ')"><b>2 JOÃ</b>o</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('3.joao ')"><b>3 JOÃ</b>o</button>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('judas ')"><b>JUD</b>as</button>
 						</td>
 					</tr>
-				</table>
-				
-				<table border=0 align=left>
 					<tr>
-						<td valign=top style="padding:5px 5px 5px 5px; border:0px; text-align:left;">
-							<label class="btn btn-info">8. Epístolas<br/>Gerais</label>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('hebreus ')"><b>HEB</b>reus</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('tiago ')"><b>TIA</b>go</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('1.pedro ')"><b>1 PED</b>ro</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('2.pedro ')"><b>2 PED</b>ro</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('1.joao ')"><b>1 JOÃ</b>o</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('2.joao ')"><b>2 JOÃ</b>o</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('3.joao ')"><b>3 JOÃ</b>o</a>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('judas ')"><b>JUD</b>as</a>
-						</td>
-					</tr>
-				</table>
-
-				<table border=0 align=left>
-					<tr>
-						<td valign=top style="padding:5px 5px 5px 5px; border:0px; text-align:left;">
-							<label class="btn btn-info">9. Livro<br/>Profético</label>
-							<br/><a href="#" id="btnSubmitBible" onclick="chooseBook('apocalipse ')"><b>APO</b>calipse</a>
+						<td></td>
+						<!--td>Profético</td-->
+						<td style="text-align:left;">
+							<label class="btn btn-success">Profético:</label>
+							<button style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('apocalipse ')"><b>APO</b>calipse</button>
 						</td>
 					</tr>
 				</table>
