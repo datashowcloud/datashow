@@ -441,15 +441,15 @@ function showLogo() {
 	}
 	
 	if (localStorage.getItem('valueLogoBig') == 'true') {
-		document.getElementById('btnLogoTop').innerHTML = 'Logo Pequeno';
+		document.getElementById('btnLogoTop').innerHTML = '<i class="fa fa-minus"></i> Logo';
 		document.getElementById('btnLogoTop').classList.remove('btn-default');
 		document.getElementById('btnLogoTop').classList.add('btn-success');
 	} else if (localStorage.getItem('valueLogoBig') == 'false') {
-		document.getElementById('btnLogoTop').innerHTML = '<i class="fa fa-times"></i> Logo Invisível';
+		document.getElementById('btnLogoTop').innerHTML = '<i class="fa fa-times"></i> Logo';
 		document.getElementById('btnLogoTop').classList.remove('btn-success');
 		document.getElementById('btnLogoTop').classList.add('btn-default');
 	} else if (localStorage.getItem('valueLogoBig') == '') {
-		document.getElementById('btnLogoTop').innerHTML = '<i class=\"fa fa-plus\"></i> Logo Grande';
+		document.getElementById('btnLogoTop').innerHTML = '<i class=\"fa fa-plus\"></i> Logo';
 		document.getElementById('btnLogoTop').classList.remove('btn-success');
 		document.getElementById('btnLogoTop').classList.add('btn-default');
 	}
@@ -483,13 +483,13 @@ async function searchComplete() {
     try {
 		if (localStorage.getItem('valueComplete') == 'true') {
 			localStorage.setItem('valueComplete', 'false');
-			document.getElementById('btnCompleteTop').innerHTML = 'Letra Sem Repetição';
+			document.getElementById('btnCompleteTop').innerHTML = '<i class=\"fa fa-minus\"></i> Repetida';
 			refreshTableData();
 //			document.getElementById('btnCompleteTop').classList.remove('btn-warning');
 //			document.getElementById('btnCompleteTop').classList.add('btn-default');
 		} else {
 			localStorage.setItem('valueComplete', 'true');
-			document.getElementById('btnCompleteTop').innerHTML = '<i class=\"fa fa-list\"></i> Letra Completa';
+			document.getElementById('btnCompleteTop').innerHTML = '<i class=\"fa fa-list\"></i> Completa';
 			refreshTableData();
 //			document.getElementById('btnCompleteTop').classList.remove('btn-default');
 //			document.getElementById('btnCompleteTop').classList.add('btn-warning');
@@ -505,14 +505,14 @@ async function videoPlayPause() {
 		if (localStorage.getItem('valueVideoPlay') == 'true') {
 			localStorage.setItem('valueVideoPlay', 'false');
 			document.cookie="valueVideoPlay=false; expires=Thu, 24 Jun 2050 12:00:00 GMT";
-			document.getElementById('btnVideoPlayTop').innerHTML = '<i class="fa fa-play"></i> Vídeo';
+			document.getElementById('btnVideoPlayTop').innerHTML = '<i class="fa fa-play"></i>';
 			document.getElementById('btnVideoPlayTop').classList.remove('btn-default');
 			document.getElementById('btnVideoPlayTop').classList.add('btn-info');
 //			localStorage.setItem('valueFullScreen', 'true');
 		} else {
 			localStorage.setItem('valueVideoPlay', 'true');
 			document.cookie="valueVideoPlay=true; expires=Thu, 24 Jun 2050 12:00:00 GMT";
-			document.getElementById('btnVideoPlayTop').innerHTML = '<i class=\"fa fa-pause\"></i> Vídeo';
+			document.getElementById('btnVideoPlayTop').innerHTML = '<i class=\"fa fa-pause\"></i>';
 			document.getElementById('btnVideoPlayTop').classList.remove('btn-info');
 			document.getElementById('btnVideoPlayTop').classList.add('btn-default');
 		}
@@ -744,11 +744,11 @@ async function refreshTableData() {
 				htmlString += "<td>"
 
 				if (localStorage.getItem('valueLogoBig') == 'true') {
-					htmlString += "<a href='#' class='logo'><button id=\"btnLogoTop\" class=\"btn btn-success\">Logo Pequeno</button></a>"
+					htmlString += "<a href='#' class='logo'><button id=\"btnLogoTop\" class=\"btn btn-success\"><i class=\"fa fa-minus\"></i> Logo</button></a>"
 				} else if (localStorage.getItem('valueLogoBig') == 'false') {
-					htmlString += "<a href='#' class='logo'><button id=\"btnLogoTop\" class=\"btn btn-success\"><i class=\"fa fa-times\"></i> Logo Invisível</button></a>"
+					htmlString += "<a href='#' class='logo'><button id=\"btnLogoTop\" class=\"btn btn-success\"><i class=\"fa fa-times\"></i> Logo</button></a>"
 				} else if (localStorage.getItem('valueLogoBig') == '') {
-					htmlString += "<a href='#' class='logo'><button id=\"btnLogoTop\" class=\"btn btn-success\"><i class=\"fa fa-plus\"></i> Logo Grande</button></a>"
+					htmlString += "<a href='#' class='logo'><button id=\"btnLogoTop\" class=\"btn btn-success\"><i class=\"fa fa-plus\"></i> Logo</button></a>"
 				}
 
 				if (localStorage.getItem('valueAoVivo') == 'true') {
@@ -758,15 +758,15 @@ async function refreshTableData() {
 				}
 
 				if (localStorage.getItem('valueComplete') == 'true') {
-					htmlString += "&nbsp;<a href='#' class='complete'><button id=\"btnCompleteTop\" class=\"btn btn-default\">Letra Sem Repetição</button></a>"
+					htmlString += "&nbsp;<a href='#' class='complete'><button id=\"btnCompleteTop\" class=\"btn btn-default\"><i class=\"fa fa-minus\"></i> Repetida</button></a>"
 				} else {
-					htmlString += "&nbsp;<a href='#' class='complete'><button id=\"btnCompleteTop\" class=\"btn btn-warning\"><i class=\"fa fa-list\"></i> Letra Completa</button></a>"
+					htmlString += "&nbsp;<a href='#' class='complete'><button id=\"btnCompleteTop\" class=\"btn btn-warning\"><i class=\"fa fa-list\"></i> Completa</button></a>"
 				}
 
 				if (localStorage.getItem('valueVideoPlay') == 'true') {
-					htmlString += "&nbsp;<a href='#' class='videoplaypause'><button id=\"btnVideoPlayTop\" class=\"btn btn-default\"><i class=\"fa fa-pause\"></i> Vídeo</button></a>"
+					htmlString += "&nbsp;<a href='#' class='videoplaypause'><button id=\"btnVideoPlayTop\" class=\"btn btn-default\"><i class=\"fa fa-pause\"></i></button></a>"
 				} else {
-					htmlString += "&nbsp;<a href='#' class='videoplaypause'><button id=\"btnVideoPlayTop\" class=\"btn btn-primary\"><i class=\"fa fa-play\"></i> Vídeo</button></a>"
+					htmlString += "&nbsp;<a href='#' class='videoplaypause'><button id=\"btnVideoPlayTop\" class=\"btn btn-primary\"><i class=\"fa fa-play\"></i></button></a>"
 				}
 
 				htmlString += "</td>"
