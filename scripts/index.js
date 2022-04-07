@@ -779,7 +779,7 @@ async function refreshTableData() {
 				varDel = "<td><a href='#' class='delete' style=\"color:#777777;\"> <i class=\"fa fa-times\" style=\"color:red;\"></i> </a></td>";
 			} else {
 				varTdTh = 'td';
-				varOff = "<a href='#' class='favorite' style=\"color:#000000;\">Off</a>";
+				varOff = "<a href=\"#\" class=\"favorite\" style=\"color:#000000;\">Off</a>";
 				varFav = "<td><a href='#' class='favorite' style=\"color:blue;\"> </a></td>";
 				varEdit = "<td><a href='#' class='edit' style=\"color:blue;\">Edit</a></td>";
                 varDel = "<td><a href='#' class='delete' style=\"color:#777777;\">Del</a></td>";
@@ -1277,8 +1277,8 @@ function removeEspecialsCommands(valueText) {
 	 || valueText.substring(0, 4).toLowerCase() == 'edit') { //comando # no campo Search não precisa ser exibido
 		valueText = '';
 	} else {
-		valueText = valueText.replaceAll('<b style="background-color:#FFD700; color:green;">', '');
-		valueText = valueText.replaceAll('<a href="#" class="favorite" style=\"color:#000000;\">Off</a>', '');
+		valueText = valueText.replaceAll('<b style="background-color:#EEEEEE; color:green;">', '');
+		valueText = valueText.replaceAll('<a href=\"#\" class=\"favorite\" style=\"color:#000000;\">Off</a>', '');
 		valueText = valueText.replaceAll('<i class=\"fa fa-stop\" style=\"color:#000000;\"></i>', '');
 		valueText = valueText.replaceAll('</b>', '');
 		valueText = valueText.replaceAll('&amp;', '&');

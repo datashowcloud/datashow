@@ -29,12 +29,12 @@
 					<label style="font-size:30px; color:#3333AA;">SHOW</label>
 					<br/>
 					<l id="bSearch"> <input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:150px; height:34px;"><button id="btnSearch" style="height:34px; width:40px;" class="btn btn-default"> <i class="fa fa-search"></i></button> </l>
-					<button id="btnGear" class="btn btn-info" style="display:'none';"> <i class="fa fa-align-justify"></i></button>
 					<select id="selMycodeTextGroup" name="selMycodeTextGroup" style="height:34px; display:'none';">
 						<option value="0" selected>letras</option>
 						<option value="1">bíblia</option>
 						<option value="2">imagem</option>
 					</select>
+					<button id="btnGear" class="btn btn-info" style="display:'none';"> <i class="fa fa-align-justify"></i></button>
 
 			</td></tr></table>
 		</div>
@@ -110,13 +110,13 @@
 			<br/>
 			<button id="btnCancelGear" class="btn btn-info" style="padding:9px 15px 9px 15px; width:150px;"> <i class="fa fa-times"></i> Fechar</button>			
 			<br/><br/>
-			<button id="btnAddStudent" class="btn btn-success" style="width:150px;"> <i class="fa fa-plus"></i> Adicionar Letra </button>
+			<button id="btnAddStudent" class="btn btn-success" style="width:150px;"> <i class="fa fa-plus"></i> Adiciona Letra </button>
 			<br/><br/>
-			<button id="btnShowStudent" class="btn btn-default" style="width:150px;"> <i class="fa fa-film"></i> Mostrar Telas </button>
+			<button id="btnShowStudent" class="btn btn-default" style="width:150px;"> <i class="fa fa-film"></i> Mostra Telas </button>
 			<br/><br/>
-			<button id="btnLogo" class="btn btn-default" style="width:150px;">Logo</button>
+			<button id="btnLogo" class="btn btn-default" style="width:150px;">Tamanho Logotipo</button>
 			<br/><br/>
-			<button id="btnFreeze" class="btn btn-default" style="width:150px;">Congela</button>
+			<button id="btnFreeze" class="btn btn-default" style="width:150px;"> <i class="fa fa-lock"></i> Congela Tela 2</button>
 			<br/><br/>
 			<a href="config.html" target="_datashow"><button id="btnIndexConfigurar" class="btn btn-success" style="padding:9px 15px 9px 15px; width:150px;"> Configurar <i class="fa fa-forward"></i> </button></a>
 
@@ -221,7 +221,7 @@
 						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 						<!--td><label class="btn btn-info">Pentateuco</label></td-->
 						<td style="text-align:left;">
-							<label class="btn btn-info">Pentateuco:</label>
+							&nbsp;&nbsp;&nbsp;<label class="btn btn-info">Pentateuco:</label>
 							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('genesis ')"><b>GÊN</b>esis</a>
 							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('exodo ')"><b>ÊXO</b>do</a>
 							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('levitico ')"><b>LEV</b>ítico</a>
@@ -233,7 +233,7 @@
 						<td></td>
 						<!--td>Históricos</td-->
 						<td style="text-align:left;">
-							<label class="btn btn-info">Históricos:</label>
+							&nbsp;&nbsp;&nbsp;<label class="btn btn-info">Históricos:</label>
 							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('josue ')"><b>JOS</b>ué</a>
 							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('juizes ')"><b>JUÍ</b>zes</a>
 							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('rute ')"><b>RUT</b>e</a>
