@@ -24,7 +24,7 @@ async function initDb() {
     if (isDbCreated) {
         console.log('db created');
 		document.getElementById('txtSearch').value = 'configuracao concluida com sucesso';
-		$('#tblGrid tbody').html('1. Como confirmar o final da configuração? <br/><br/>2. Pesquise a palavra <b>"configuração concluída com sucesso"</b> (somente aqui nesta página). <br/><br/>3. Quando o texto aparecer, a configuração terminou com sucesso. <br/><br/>4. Clique no botão Configurar. <br/>v07.04.22');
+		$('#tblGrid tbody').html('1. Como confirmar o final da configuração? <br/><br/>2. Pesquise a palavra <b>"configuração concluída com sucesso"</b> (somente aqui nesta página). <br/><br/>3. Quando o texto aparecer, a configuração terminou com sucesso. <br/><br/>4. Clique no botão Configurar. <br/>v07.04.22.21.07');
 		document.getElementById('divconfig').style.display = 'block';
     }
     else {
