@@ -15,7 +15,13 @@ window.onload = function () {
 	localStorage.setItem('valueComplete', 'true');
 	localStorage.setItem('valueVideoPlay', 'true');
 	localStorage.setItem('valueLogoBig', 'true');
-	localStorage.getItem('valueText', '');
+	localStorage.setItem('valueText', '');
+	localStorage.setItem('valueLogoHeightBig', '60%'); //tamanho: 60%=IIRF, 40%=HOPE
+	localStorage.setItem('valueLogoHeightMini', '25%'); //tamanho: 25%=IIRF, 15%=HOPE 
+	localStorage.setItem('valueLogoLeftBigTela1', '30%'); //esquerda: 30%=IIRF, 15%HOPE
+	localStorage.setItem('valueLogoLeftBigTela2', '30%'); //esquerda: 30%=IIRF, 30%HOPE
+	localStorage.setItem('valueLogoLeftMini', '0px');
+	localStorage.setItem('valueMyowner', 'iirf'); //iirf, hope
 	setCookie('valueText', '', '1');
 };
 
@@ -1029,8 +1035,8 @@ function getStudentFromForm() {
         mysearch: removeSpecials($('#mytext').val()),
         mycodeTextGroup: $('#selMycodeTextGroup').val(),
         myrepeated: $('#myrepeated').val(),
-//		myowner: 'iirf'
-		myowner: 'hope'
+		myowner: 'iirf'
+//		myowner: 'hope'
     };
     return student;
 }
@@ -1045,8 +1051,8 @@ function setStudentFromImport(mycode, myorder, mytext, mycodeTextGroup, myrepeat
 	}
 	document.getElementById('selMycodeTextGroup').selectedIndex = mycodeTextGroup;
 	document.getElementById('myrepeated').selectedIndex = myrepeated;
-//	document.getElementById('myowner').value = 'iirf';
-	document.getElementById('myowner').value = 'hope';
+	document.getElementById('myowner').value = 'iirf';
+//	document.getElementById('myowner').value = 'hope';
     $('#formAddUpdate').show();
 }
 

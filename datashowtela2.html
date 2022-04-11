@@ -101,7 +101,7 @@ window.onload = function(){
 	}
 	document.getElementById("textareaAutor").innerHTML = localStorage.getItem('valueAutor');
 	document.getElementById("logotipo").src = localStorage.getItem('valueLogo');
-	logoBig(localStorage.getItem('valueLogoBig'));
+	logoBig(localStorage.getItem('valueLogoBig'), localStorage.getItem('valueLogoHeightBig'), localStorage.getItem('valueLogoHeightMini'), localStorage.getItem('valueLogoLeftBigTela2'), localStorage.getItem('valueLogoLeftMini'));
 	//plano de fundo
 //	document.getElementById("videofundo").src = localStorage.getItem('valueVideoFundo');
 	
@@ -129,15 +129,15 @@ window.onload = function(){
 //	fullScreen();
 }
 
-function logoBig(valueLogoBig) {
+function logoBig(valueLogoBig, valueLogoHeightBig, valueLogoHeightMini, valueLogoLeftBig, valueLogoLeftMini) {
 	if (valueLogoBig == 'true') {
-		logotipo.style.height = '60%'; //tamanho do logo
-		logotipo.style.left = '30%';
+		logotipo.style.height = valueLogoHeightBig; //tamanho do logo
+		logotipo.style.left = valueLogoLeftBig;
 		logotipo.style.bottom = '222px';
 		document.getElementById("textarea0").textContent = '';
 	} else if (valueLogoBig == 'false') {
-		logotipo.style.height = '25%'; //tamanho do logo
-		logotipo.style.left = '0px';
+		logotipo.style.height = valueLogoHeightMini; //tamanho do logo
+		logotipo.style.left = valueLogoLeftMini;
 		logotipo.style.bottom = '0px'; //'100px';
 	} else {
 		logotipo.style.height = '1%'; //tamanho do logo
@@ -214,7 +214,7 @@ function callback() {
 		//logotipo
 		document.getElementById("logotipo").src = localStorage.getItem('valueLogo');
 		//logotipo grande
-		logoBig(localStorage.getItem('valueLogoBig'));
+		logoBig(localStorage.getItem('valueLogoBig'), localStorage.getItem('valueLogoHeightBig'), localStorage.getItem('valueLogoHeightMini'), localStorage.getItem('valueLogoLeftBigTela2'), localStorage.getItem('valueLogoLeftMini'));
 	}
 	setTimeout (function () {
 		//console.log ('Ei, espere meio segundo!');
