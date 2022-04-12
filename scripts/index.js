@@ -16,13 +16,20 @@ window.onload = function () {
 	localStorage.setItem('valueVideoPlay', 'true');
 	localStorage.setItem('valueLogoBig', 'true');
 	localStorage.setItem('valueText', '');
-	localStorage.setItem('valueLogoHeightBig', '60%'); //tamanho: 60%=IIRF, 40%=HOPE
-	localStorage.setItem('valueLogoHeightMini', '25%'); //tamanho: 25%=IIRF, 15%=HOPE 
-	localStorage.setItem('valueLogoLeftBigTela1', '30%'); //esquerda: 30%=IIRF, 15%HOPE
-	localStorage.setItem('valueLogoLeftBigTela2', '30%'); //esquerda: 30%=IIRF, 30%HOPE
-	localStorage.setItem('valueLogoLeftMini', '0px');
-	localStorage.setItem('valueMyowner', 'iirf'); //iirf, hope
 	setCookie('valueText', '', '1');
+/*	localStorage.setItem('valueMyowner', 'hope');
+	localStorage.setItem('valueLogoHeightBig', '40%');
+	localStorage.setItem('valueLogoHeightMini', '15%');
+	localStorage.setItem('valueLogoLeftBigTela1', '15%');
+	localStorage.setItem('valueLogoLeftBigTela2', '30%');
+	localStorage.setItem('valueLogoLeftMini', '0px');
+*/
+	localStorage.setItem('valueMyowner', 'iirf');
+	localStorage.setItem('valueLogoHeightBig', '60%');
+	localStorage.setItem('valueLogoHeightMini', '25%');
+	localStorage.setItem('valueLogoLeftBigTela1', '30%');
+	localStorage.setItem('valueLogoLeftBigTela2', '30%');
+	localStorage.setItem('valueLogoLeftMini', '0px');
 };
 
 async function initDb() {
@@ -319,7 +326,11 @@ function registerEvents() {
 		videoPlayPause();
     });
 	$('#btnGear').click(function () {
-		showFormGear();
+		if (document.getElementById('divGear').style.display == 'none') {
+			showFormGear();
+		} else {
+			showGridAndHideForms();
+		}
     })
 }
 
@@ -552,13 +563,13 @@ async function confirmImport(contents) {
 				}
 				if (valor.substring(posicao, posicao+3) == '<p>' || valor.substring(posicao, posicao+4) == '<br>' || valor.substring(posicao, posicao+4) == '<hr>') {
 					posicao = posicao+4; //pula <p>\n
-					mycode = removeSpecials(valor.substring(posicao, nextpos));
+					mycode = removeSpecials(valor.substring(posicao, nextpos).trim());
 					myorder = 0;
 					contador = parseInt(contador) + 1;
 					console.log('Importar: \n' + mycode);
 					document.getElementById('txtSearch').value = parseInt(contador) + ' importados';
 				} else if (posicao == 0) { //primeiro registro sem separador <p>... executa somente 1 vez.
-					mycode = removeSpecials(valor.substring(posicao, nextpos));
+					mycode = removeSpecials(valor.substring(posicao, nextpos).trim());
 				}
 /*
 				myrepeated = valor.substring(posicao, nextpos).indexOf('<repeat>', 0); //próximo separador do texto correspondente a duas quebras de linhas juntas
@@ -570,8 +581,8 @@ async function confirmImport(contents) {
 					myrepeated = '1';
 				}
 */
-				var mytext = valor.substring(posicao, nextpos);
-				var mycodeTextGroup = document.getElementById('selMycodeTextGroup').value;
+				var mytext = valor.substring(posicao, nextpos).trim();
+				var mycodeTextGroup = document.getElementById('selMycodeTextGroup').value.trim();
 				//alert('mycode='+mycode + ' myorder='+myorder + ' mycodeTextGroup='+mycodeTextGroup + ' myrepeated='+myrepeated + ' mytext='+mytext);
 				setStudentFromImport(mycode, myorder, mytext, mycodeTextGroup, myrepeated);
 				addStudentImport(contador, mycodeTextGroup);
@@ -1072,19 +1083,19 @@ function showGridAndHideForms() {
 	$('#formBible').hide();
 }
 
-function showFormImport() {
-    $('#tblGrid').hide();
-    $('#formAddUpdate').hide();
-	$('#divGear').hide();
-	$('#divcontent').show();
-	$('#formBible').hide();
-}
-
 function showFormGear() {
     $('#tblGrid').hide();
     $('#formAddUpdate').hide();
 	$('#divGear').show();
 	$('#divcontent').hide();
+	$('#formBible').hide();
+}
+
+function showFormImport() {
+    $('#tblGrid').hide();
+    $('#formAddUpdate').hide();
+	$('#divGear').hide();
+	$('#divcontent').show();
 	$('#formBible').hide();
 }
 

@@ -28,13 +28,13 @@
 					<label style="font-size:30px; color:#FFD700;">TA</label>
 					<label style="font-size:30px; color:#3333AA;">SHOW</label>
 					<br/>
-					<l id="bSearch"> <input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:150px; height:34px;"><button id="btnSearch" style="height:34px; width:40px;" class="btn btn-default"> <i class="fa fa-search"></i></button> </l>
+					<l id="bSearch"> <input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:150px; height:34px;"><button id="btnSearch" style="height:34px; width:40px;" class="btn btn-info"> <i class="fa fa-search"></i></button> </l>
 					<select id="selMycodeTextGroup" name="selMycodeTextGroup" style="height:34px; display:'none';">
 						<option value="0" selected>letras</option>
 						<option value="1">bíblia</option>
 						<option value="2">imagem</option>
 					</select>
-					<button id="btnGear" class="btn btn-info" style="display:'none';"> <i class="fa fa-align-justify"></i></button>
+					<button id="btnGear" class="btn btn-default" style="display:'none';"> <i class="fa fa-align-justify"></i></button>
 
 			</td></tr></table>
 		</div>
@@ -87,8 +87,7 @@
 					</select>
 				<br/>
 				<label for="myowner" style="display:'none';">Owner:</label>
-					<!-- input type="text" size="1" id="myowner" value="IIRF" style="display:'none';" / -->
-					<input type="text" size="1" id="myowner" value="HOPE" style="display:'none';" />
+					<input type="text" size="1" id="myowner" value="IIRF" style="display:'none';" /> <!-- HOPE -->
 			</div>
 			<div class="form-group">
 				<div class="col-sm-7" style="width:90%;"> <textarea id="mytext" rows="9" style="width:90%;" placeholder="Preencha <p> e o título e o autor em uma linha embaixo da outra. Preencha a letra completa com um espaço separador."></textarea>
@@ -108,17 +107,17 @@
 		
 		<div class="form-group" id="divGear" style="display:none;">
 			<br/>
-			<button id="btnCancelGear" class="btn btn-info" style="padding:9px 15px 9px 15px; width:150px;"> <i class="fa fa-times"></i> Fechar</button>			
-			<br/><br/>
 			<button id="btnAddStudent" class="btn btn-success" style="width:150px;"> <i class="fa fa-plus"></i> Adiciona Letra </button>
+			<a href="config.html" target="_datashow"><button id="btnIndexConfigurar" class="btn btn-success" style="width:150px;"> Configurar <i class="fa fa-forward"></i> </button></a>
 			<br/><br/>
-			<button id="btnShowStudent" class="btn btn-default" style="width:150px;"> <i class="fa fa-film"></i> Mostra Telas </button>
+			<button id="btnShowStudent" class="btn btn-default" style="width:150px;"> <i class="fa fa-repeat"></i> Sincroniza Telas </button>
 			<br/><br/>
 			<button id="btnLogo" class="btn btn-default" style="width:150px;">Tamanho Logotipo</button>
 			<br/><br/>
 			<button id="btnFreeze" class="btn btn-default" style="width:150px;"> <i class="fa fa-lock"></i> Congela Tela 2</button>
 			<br/><br/>
-			<a href="config.html" target="_datashow"><button id="btnIndexConfigurar" class="btn btn-success" style="padding:9px 15px 9px 15px; width:150px;"> Configurar <i class="fa fa-forward"></i> </button></a>
+			<button id="btnCancelGear" class="btn btn-info" style="padding:9px 15px 9px 15px; width:150px;"> <i class="fa fa-times"></i> Fechar</button>			
+			<br/><br/>
 
 			<br/><br/>
 			<button id="btnSelectCountAll" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-asterisk"></i> Count All</button>
@@ -126,88 +125,88 @@
 			<br/><button id="btnDeleteLirics" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-minus"></i> Clear Lirycs</button>
 			<br/><button id="btnDeleteBible" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-minus"></i> Clear Bible</button>
 			<br/><button id="btnDeleteArt" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-minus"></i> Clear Arts</button>
-		</div>
 
-		<div style="display:none;">
-			<br/><br/>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-envelope"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-star"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-user"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-film"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-check"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-th"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-remove"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-signal"></i> </button>
-			<br/>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-cog"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-trash"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-home"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-file"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-road"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-download"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-inbox"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-play"></i> </button>
-			<br/>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-repeat"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-refresh"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-list"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-lock"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-flag"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-headphones"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-off"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-down"></i> </button>
-			<br/>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-up"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-qrcode"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-barcode"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-tag"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-tags"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-book"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-bookmark"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-print"></i> </button>
-			<br/>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-camera"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-font"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-bold"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-italic"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-text-height"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-text-width"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-left"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-center"></i> </button>
-			<br/>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-right"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-justify"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-list"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-dedent"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-outdent"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-indent"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-video-camera"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-photo"></i> </button>
-			<br/>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-pencil"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-map-marker"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-adjust"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-tint"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-edit"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-share-square-o"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-check-square-o"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-arrows"></i> </button>
-			<br/>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-step-backward"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-fast-backward"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-backward"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-play"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-pause"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-pencil-square-o"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-forward"></i> </button>
-			<br/>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-fast-forward"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-step-forward"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-eject"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-chevron-left"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-chevron-right"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
+			<div style="display:'none';">
+				<br/><br/>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-envelope"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-star"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-user"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-film"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-check"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-th"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-remove"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-signal"></i> </button>
+				<br/>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-cog"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-trash"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-home"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-file"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-road"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-download"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-inbox"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-play"></i> </button>
+				<br/>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-repeat"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-refresh"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-list"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-lock"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-flag"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-headphones"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-off"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-down"></i> </button>
+				<br/>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-up"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-qrcode"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-barcode"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-tag"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-tags"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-book"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-bookmark"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-print"></i> </button>
+				<br/>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-camera"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-font"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-bold"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-italic"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-text-height"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-text-width"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-left"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-center"></i> </button>
+				<br/>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-right"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-justify"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-list"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-dedent"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-outdent"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-indent"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-video-camera"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-photo"></i> </button>
+				<br/>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-pencil"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-map-marker"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-adjust"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-tint"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-edit"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-share-square-o"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-check-square-o"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-arrows"></i> </button>
+				<br/>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-step-backward"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-fast-backward"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-backward"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-play"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-pause"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-pencil-square-o"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-forward"></i> </button>
+				<br/>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-fast-forward"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-step-forward"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-eject"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-chevron-left"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-chevron-right"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
+			</div>
 		</div>
 	</div>
 
@@ -218,144 +217,105 @@
 
 				<table border=1>
 					<tr>
-						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 						<!--td><label class="btn btn-info">Pentateuco</label></td-->
 						<td style="text-align:left;">
-							&nbsp;&nbsp;&nbsp;<label class="btn btn-info">Pentateuco:</label>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('genesis ')"><b>GÊN</b>esis</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('exodo ')"><b>ÊXO</b>do</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('levitico ')"><b>LEV</b>ítico</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('numeros ')"><b>NÚM</b>eros</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('deuteronomio ')"><b>DEU</b>teronômio</a>
-						</td>
-					</tr>
-					<tr>
-						<td></td>
-						<!--td>Históricos</td-->
-						<td style="text-align:left;">
-							&nbsp;&nbsp;&nbsp;<label class="btn btn-info">Históricos:</label>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('josue ')"><b>JOS</b>ué</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('juizes ')"><b>JUÍ</b>zes</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('rute ')"><b>RUT</b>e</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('1.samuel ')"><b>1.SAM</b>uel</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('2.samuel ')"><b>2.SAM</b>uel</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('1.reis ')"><b>1.REI</b>s</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('2.reis ')"><b>2.REI</b>s</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('1.cronicas ')"><b>1.CRÔ</b>nicas</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('2.cronicas ')"><b>2.CRÔ</b>nicas</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('esdras ')"><b>ESD</b>ras</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('neemias ')"><b>NEE</b>mias</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('ester ')"><b>EST</b>er</a>
-						</td>
-					</tr>
-					<tr>
-						<td></td>
-						<!--td>Poéticos</td-->
-						<td style="text-align:left;">
-							<label class="btn btn-info">Poéticos:</label>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('jo ')"><b>JÓ</b></a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('salmos ')"><b>SAL</b>mos</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('proverbios ')"><b>PRO</b>vérbios</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('eclesiastes ')"><b>ECL</b>esiastes</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('canticos ')"><b>CÂN</b>ticos</a>
-						</td>
-					</tr>
-					<tr>
-						<td></td>
-						<!--td>Profetas Maiores</td-->
-						<td style="text-align:left;">
-							<label class="btn btn-info">Profetas Maiores:</label>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('isaias ')"><b>ISA</b>ías</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('jeremias ')"><b>JER</b>emias</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('lamentacoes ')"><b>LAM</b>entações</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('ezequiel ')"><b>EZE</b>quiel</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('daniel ')"><b>DAN</b>iel</a>
-						</td>
-					</tr>
-					<tr>
-						<td></td>
-						<!--td>Profetas Menores</td-->
-						<td style="text-align:left;">
-							<label class="btn btn-info">Profetas Menores:</label>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('oseias ')"><b>OSÉ</b>ias</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('joel ')"><b>JOE</b>l</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('amos ')"><b>AMÓ</b>s</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('obadias ')"><b>OBA</b>dias</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('jonas ')"><b>JON</b>as</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('miqueias ')"><b>MIQ</b>uéias</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('naum ')"><b>NAU</b>m</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('habacuque ')"><b>HAB</b>acuque</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('sofonias ')"><b>SOF</b>onias</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('ageu ')"><b>AGE</b>u</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('zacarias ')"><b>ZAC</b>arias</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('malaquias ')"><b>MAL</b>aquias</a>
-						</td>
-					</tr>
+						
+							<label class="btn btn-info" style="width:150px;">Antigo Testamento</label>
+							
+							<i class="fa fa-forward" style="color:blue;"></i> <label style="color:blue;">1. Pentateuco</label> <i class="fa fa-forward" style="color:blue;"></i>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('genesis ')">GÊNE</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('exodo ')">ÊXOD</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('levitico ')">LEVÍ</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('numeros ')">NÚME</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('deuteronomio ')">DEUT</a>
 
-					<tr>
-						<td colspan=4>&nbsp;</td>
+							<i class="fa fa-forward" style="color:blue;"></i> <label style="color:blue;">2. Históricos</label> <i class="fa fa-forward" style="color:blue;"></i>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('josue ')">JOSU</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('juizes ')">JUÍZ</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('rute ')">RUTE</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('1.samuel ')">1.SAMU</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('2.samuel ')">2.SAMU</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('1.reis ')">1.REIS</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('2.reis ')">2.REIS</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('1.cronicas ')">1.CRÔN</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('2.cronicas ')">2.CRÔN</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('esdras ')">ESDR</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('neemias ')">NEEM</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('ester ')">ESTE</a>
+
+							<i class="fa fa-forward" style="color:blue;"></i> <label style="color:blue;">3. Poéticos</label> <i class="fa fa-forward" style="color:blue;"></i>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('jo ')">JÓ</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('salmos ')">SALM</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('proverbios ')">PROV</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('eclesiastes ')">ECLE</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('canticos ')">CÂNT</a>
+
+							<i class="fa fa-forward" style="color:blue;"></i> <label style="color:blue;">4. Profetas Maiores</label> <i class="fa fa-forward" style="color:blue;"></i>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('isaias ')">ISAÍ</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('jeremias ')">JERE</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('lamentacoes ')">LAME</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('ezequiel ')">EZEQ</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('daniel ')">DANI</a>
+
+							<i class="fa fa-forward" style="color:blue;"></i> <label style="color:blue;">5. Profetas Menores</label> <i class="fa fa-forward" style="color:blue;"></i>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('oseias ')">OSÉI</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('joel ')">JOEL</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('amos ')">AMÓS</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('obadias ')">OBAD</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('jonas ')">JONA</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('miqueias ')">MIQU</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('naum ')">NAUM</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('habacuque ')">HABA</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('sofonias ')">SOFO</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('ageu ')">AGEU</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('zacarias ')">ZACA</a>
+							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('malaquias ')">MALA</a>
+						</td>
 					</tr>
 
 					<tr>
 						<td></td>
 						<!--td>Evangelhos</td-->
 						<td style="text-align:left;">
-							<label class="btn btn-success">Evangelhos:</label>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('mateus ')"><b>MAT</b>eus</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('marcos ')"><b>MAR</b>cos</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('lucas ')"><b>LUC</b>as</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('joao ')"><b>JOÃ</b>o</a>							
-						</td>
-					</tr>
-					<tr>
-						<td></td>
-						<!--td>Profético</td-->
-						<td style="text-align:left;">
-							<label class="btn btn-success">Profético:</label>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('atos ')"><b>ATO</b>s dos Apóstolos</a>
-						</td>
-					</tr>
-					<tr>
-						<td></td>
-						<!--td>Epístolas de Paulo</td-->
-						<td style="text-align:left;">
-							<label class="btn btn-success">Epístolas de Paulo:</label>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('romanos ')"><b>ROM</b>anos</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('1.corintios ')"><b>1 COR</b>íntios</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('2.corintios ')"><b>2 COR</b>íntios</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('galatas ')"><b>GÁL</b>atas</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('efesios ')"><b>EFÉ</b>sios</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('filipenses ')"><b>FIL</b>ipenses</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('colossenses ')"><b>COL</b>ossenses</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('1.tessalonicenses ')"><b>1 TES</b>salonicenses</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('2.tessalonicenses ')"><b>2 TES</b>salonicenses</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('1.timoteo ')"><b>1 TIM</b>óteo</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('2.timoteo ')"><b>2 TIM</b>óteo</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('tito ')"><b>TIT</b>o</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('filemon ')"><b>FIL</b>emon</a>
-						</td>
-					</tr>
-					<tr>
-						<td></td>
-						<!--td>Epístolas Gerais</td-->
-						<td style="text-align:left;">
-							<label class="btn btn-success">Epístolas Gerais:</label>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('hebreus ')"><b>HEB</b>reus</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('tiago ')"><b>TIA</b>go</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('1.pedro ')"><b>1 PED</b>ro</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('2.pedro ')"><b>2 PED</b>ro</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('1.joao ')"><b>1 JOÃ</b>o</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('2.joao ')"><b>2 JOÃ</b>o</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('3.joao ')"><b>3 JOÃ</b>o</a>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('judas ')"><b>JUD</b>as</a>
-						</td>
-					</tr>
-					<tr>
-						<td></td>
-						<!--td>Profético</td-->
-						<td style="text-align:left;">
-							<label class="btn btn-success">Profético:</label>
-							<a style="color:#333;background-color:#fff;border-color:#fff;border:1px solid #DDDDDD;" onclick="chooseBook('apocalipse ')"><b>APO</b>calipse</a>
+							<label class="btn btn-success" style="width:150px;">Novo Testamento</label>
+							
+							<i class="fa fa-forward" style="color:green;"></i> <label style="color:green;">1. Evangelhos</label> <i class="fa fa-forward" style="color:green;"></i>
+							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('mateus ')">MATE</a>
+							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('marcos ')">MARC</a>
+							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('lucas ')">LUCA</a>
+							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('joao ')">JOÃO</a>							
+
+							<i class="fa fa-forward" style="color:green;"></i> <label style="color:green;">2. Profético</label> <i class="fa fa-forward" style="color:green;"></i>
+							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('atos ')">ATOS</a>
+
+							<i class="fa fa-forward" style="color:green;"></i> <label style="color:green;">3. Epístolas de Paulo</label> <i class="fa fa-forward" style="color:green;"></i>
+							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('romanos ')">ROMA</a>
+							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('1.corintios ')">1.CORÍ</a>
+							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('2.corintios ')">2.CORÍ</a>
+							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('galatas ')">GÁLA</a>
+							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('efesios ')">EFÉS</a>
+							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('filipenses ')">FILI</a>
+							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('colossenses ')">COLO</a>
+							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('1.tessalonicenses ')">1.TESS</a>
+							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('2.tessalonicenses ')">2.TESS</a>
+							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('1.timoteo ')">1.TIMÓ</a>
+							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('2.timoteo ')">2.TIMÓ</a>
+							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('tito ')">TITO</a>
+							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('filemon ')">FILE</a>
+
+							<i class="fa fa-forward" style="color:green;"></i> <label style="color:green;">4. Epístolas Gerais</label> <i class="fa fa-forward" style="color:green;"></i>
+							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('hebreus ')">HEBR</a>
+							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('tiago ')">TIAG</a>
+							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('1.pedro ')">1.PEDR</a>
+							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('2.pedro ')">2.PEDR</a>
+							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('1.joao ')">1.JOÃO</a>
+							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('2.joao ')">2.JOÃO</a>
+							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('3.joao ')">3.JOÃO</a>
+							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('judas ')">JUDA</a>
+
+							<i class="fa fa-forward" style="color:green;"></i> <label style="color:green;">5. Profético</label> <i class="fa fa-forward" style="color:green;"></i>
+							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('apocalipse ')">APOC</a>
 						</td>
 					</tr>
 				</table>
