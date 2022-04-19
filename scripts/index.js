@@ -2,7 +2,6 @@
 
 var jsstoreCon = new JsStore.Connection();
 
-//var confirmImportSuccessfull = 'Aguarde uns 20 minutos para concluir. \n\nTempo médio na primeira configuração: \nbíblia = 32225 registros = +-19 minutos \nletras = 10791 registros = +-8 minutos \nartes = 14 registros = +-1 minuto';
 var confirmImportSuccessfull = 'Não feche esta página (X). \nNão atualize esta página (F5). \n\nVolte na página anterior (aba ao lado) e pesquise pela palavra "configuração concluída com sucesso." \n\nQuando a palavra aparecer, a configuração terminou com sucesso.';
 window.onload = function () {
 	refreshTableData();
@@ -286,6 +285,13 @@ function registerEvents() {
     })
     $('#btnShowStudent').click(function () {
         showForm1Form2();
+		showGridAndHideForms();
+    })
+    $('#btnShowHelpTour').click(function () {
+		var DataShow_Help = window.open("help/helptour.pdf", "datashowhelp", "top=100, width=1100, height=10000, left=0, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
+    })
+    $('#btnShowHelpConfig').click(function () {
+		var DataShow_Help = window.open("help/helpconfig.pdf", "datashowhelp", "top=100, width=1100, height=10000, left=0, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
     })
     $('#tblGrid tbody').on('click', '.edit', function () {
 		var row = $(this).parents().eq(1);
@@ -310,7 +316,7 @@ function registerEvents() {
         if (studentId) {
 			updateStudent(group);
         } else {
-            addStudent(group);
+            addStudentImport(group);
         }
     });
     $('#tblGrid tbody').on('click', '.freeze', function () {
@@ -582,10 +588,10 @@ async function confirmImport(contents) {
 				}
 */
 				var mytext = valor.substring(posicao, nextpos).trim();
-				var mycodeTextGroup = document.getElementById('selMycodeTextGroup').value.trim();
-				//alert('mycode='+mycode + ' myorder='+myorder + ' mycodeTextGroup='+mycodeTextGroup + ' myrepeated='+myrepeated + ' mytext='+mytext);
-				setStudentFromImport(mycode, myorder, mytext, mycodeTextGroup, myrepeated);
-				addStudentImport(contador, mycodeTextGroup);
+				var group = document.getElementById('selMycodeTextGroup').value.trim();
+				//alert('mycode='+mycode + ' myorder='+myorder + ' group='+group + ' myrepeated='+myrepeated + ' mytext='+mytext);
+				setStudentFromImport(mycode, myorder, mytext, group, myrepeated);
+				addStudentImport(group);
 
 				setTimeout(() => { refreshTableData() }, 500); // Executa novamente a cada 500 milisegundos
 				
@@ -786,34 +792,32 @@ async function refreshTableData() {
 					htmlString += "&nbsp;<a href='#' class='videoplaypause'><button id=\"btnVideoPlayTop\" class=\"btn btn-primary\"><i class=\"fa fa-play\"></i></button></a>"
 				}
 
-				htmlString += "</td>"
-				htmlString += "<td></td><td></td><td></td><td></td>"
+				htmlString += "</td><td></td>"
 				htmlString += "</tr>"
 				varTdTh = 'th';
-				varOff = "<i class=\"fa fa-stop\" style=\"color:#000000;\"></i>";
+				varOff = "<i class=\"fa fa-stop\" style=\"color:#000000;\"></i>&nbsp;";
 				varFav = "<td> <!--i class=\"fa fa-heart\" style=\"color:#3333AA;\"></i --> </td>";
-				varEdit = "<td> <i class=\"fa fa-edit\" style=\"color:blue;\"></i> </td>";
-				varDel = "<td><a href='#' class='delete' style=\"color:#777777;\"> <i class=\"fa fa-times\" style=\"color:red;\"></i> </a></td>";
+//				varEdit = "&nbsp;<i class=\"fa fa-edit\" style=\"color:blue;\"></i>";
+				varDel = "<td><a href=\"#\" class=\"delete\" style=\"color:#777777;\"> <i class=\"fa fa-times\" style=\"color:red;\"></i> </a></td>";
 			} else {
 				varTdTh = 'td';
 				varOff = "<a href=\"#\" class=\"favorite\" style=\"color:#000000;\">Off</a>";
-				varFav = "<td><a href='#' class='favorite' style=\"color:blue;\"> </a></td>";
-				varEdit = "<td><a href='#' class='edit' style=\"color:blue;\">Edit</a></td>";
-                varDel = "<td><a href='#' class='delete' style=\"color:#777777;\">Del</a></td>";
+				varFav = "<td><a href='#' class=\"favorite\" style=\"color:blue;\"> </a></td>";
+//				varEdit = "<a href=\"#\" class=\"edit\" style=\"color:blue;\">Edit</a>";
+                varDel = "<td><a href=\"#\" class=\"delete\" style=\"color:#777777;\">Del</a></td>";
 			}
+			varEdit = "<a href=\"#\" class=\"edit\" style=\"color:blue; font-size:25px;\">...</a>";
 			
 			var mytext = student.mytext;
 			var txtsearch = removeSpecials(document.getElementById('txtSearch').value);
+			
+			//destaca palavra pesquisada com negrito
 			var auxiliar = removeSpecials(mytext);
 			var posIni = auxiliar.toLowerCase().indexOf(txtsearch.toLowerCase(), 0);
 			var mytextBold = '';
-			
 			if (posIni >= 0) {
-
 				var diff = parseInt(mytext.substring(0, posIni+txtsearch.length).length) - parseInt(removeSpecials(mytext.substring(0, posIni+txtsearch.length)).length);
-				
 				posIni = posIni + parseInt(diff);
-
 				mytextBold = mytext.substring(0, posIni)
 				+ '<b style="background-color:#EEEEEE; color:green;">'
 				+ mytext.substring(posIni, posIni+txtsearch.length)
@@ -827,13 +831,12 @@ async function refreshTableData() {
                 + "<td style=\"color:white; font-size:1px;\">" + student.mycode + "</td>"
                 + "<td style=\"color:white; font-size:1px;\">" + student.myorder + "</td>"
 				+ "<" + varTdTh + " id=datashow" + student.id+"1" + " tabIndex=" + student.id+"1" + " onClick=\"datashow('" + student.id+"1" + "', 1, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 1, event, " + "" + (student.id+"1") + ");\" data-show='" + student.id+"1" + "'>" + mytextBold + "</" + varTdTh + ">"
-				//+ "<td>" + student.mysearch + "</td>"
+//				+ "<td>" + student.mysearch + "</td>"
 				+ "<td id=datashow" + (student.id+"2") + " tabIndex=" + (student.id+"2") + " onClick=\"datashow('" + (student.id+"2") + "', 1, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 1, event, " + "" + (student.id+"2") + ");\" data-show='" + (student.id+"2") + "'>" 
-				+ varOff + " </td>"
+//				+ varOff + " "
+				+ varEdit
+				+ " </td>";
 //				+ "<td id=datashow" + (student.id+"3") + " tabIndex=" + (student.id+"3") + " onClick=\"datashow('" + (student.id+"3") + "', 1, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 1, event, " + "" + (student.id+"3") + ");\" data-show='" + (student.id+"3") + "'> </td>"
-				+ varFav
-				+ varEdit;
-//                + varDel;
 		})
 		if (htmlString.length > 0) {
 			htmlString += "</tr>"
@@ -872,7 +875,7 @@ async function selectCountAll() {
     }
 }
 
-async function addStudentImport(contador, group) {
+async function addStudentImport(group) {
     var student = getStudentFromForm();
     try {
         if (group == '0') { //liryc
@@ -907,10 +910,10 @@ async function addStudentImport(contador, group) {
     }
 }
 
+/*
 async function addStudent(group) {
     var student = getStudentFromForm();
     try {
-//        if (group == '0' || group == '3') { //liryc
         if (group == '0') { //liryc
 			var noOfDataInserted = await jsstoreCon.insert({
 				into: 'Student',
@@ -942,6 +945,7 @@ async function addStudent(group) {
         alert(ex.message);
     }
 }
+*/
 
 async function updateStudent(group) {
     var student = getStudentFromForm();
@@ -1294,14 +1298,21 @@ function removeEspecialsCommands(valueText) {
 	 || valueText.substring(0, 4).toLowerCase() == 'edit') { //comando # no campo Search não precisa ser exibido
 		valueText = '';
 	} else {
+//alert(valueText);
+//<a href="#" class="favorite" style="color:#000000;">Off</a> <a href="#" class="edit" style="color:blue;">Edit</a>
+
+		valueText = valueText.replaceAll('<i class=\"fa fa-stop\" style=\"color:#000000;\"></i>', '');
+		valueText = valueText.replaceAll('<i class=\"fa fa-edit\" style=\"color:blue;\"></i>', '');
 		valueText = valueText.replaceAll('<b style="background-color:#EEEEEE; color:green;">', '');
 		valueText = valueText.replaceAll('<a href=\"#\" class=\"favorite\" style=\"color:#000000;\">Off</a>', '');
-		valueText = valueText.replaceAll('<i class=\"fa fa-stop\" style=\"color:#000000;\"></i>', '');
+		valueText = valueText.replaceAll('<a href=\"#\" class=\"edit\" style=\"color:blue; font-size:25px;\">...</a>', '');
+
 		valueText = valueText.replaceAll('</b>', '');
+		valueText = valueText.replaceAll('&nbsp;', '');
 		valueText = valueText.replaceAll('&amp;', '&');
 		
 		valueText = valueText.replaceAll('<b>', '');
-		valueText = valueText.replaceAll('<', ''); //garante que não há comandos no texto
+		valueText = valueText.replaceAll('<', ''); //garante que não sobrou comandos no texto
 	}
 	return valueText;
 }

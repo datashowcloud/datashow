@@ -60,9 +60,9 @@
 			<br/>
 			<textarea id="contents" style="width:80%;" rows=15 placeholder="Use <p> para separar várias letras de música diferentes. Logo abaixo do <p> deve conter a identificação da letra, exemplo: autor e título."></textarea>
 			<br/>
-			<button id="btnImportBible" class="btn btn-default" style="padding:9px 15px 9px 15px;"> <i class="fa fa-plus"></i> Abrir Bíblia</button>
-			<button id="btnImport" class="btn btn-default" style="padding:9px 15px 9px 15px;"> <i class="fa fa-plus"></i> Abrir Letras</button>
-			<button id="btnImportArt" class="btn btn-default" style="padding:9px 15px 9px 15px;"> <i class="fa fa-plus"></i> Imagem e Vídeo</button>
+			<!-- button id="btnImportBible" class="btn btn-default" style="padding:9px 15px 9px 15px;"> <i class="fa fa-plus"></i> Abrir Bíblia</button -->
+			<!-- button id="btnImport" class="btn btn-default" style="padding:9px 15px 9px 15px;"> <i class="fa fa-plus"></i> Abrir Letras</button -->
+			<!-- button id="btnImportArt" class="btn btn-default" style="padding:9px 15px 9px 15px;"> <i class="fa fa-plus"></i> Imagem e Vídeo</button -->
 			<button id="btnConfirmImport" class="btn btn-success" style="padding:9px 15px 9px 15px;"> <i class="fa fa-check"></i> Salvar</button>
 			<button id="btnCancelImport" class="btn btn-info" style="padding:9px 15px 9px 15px;"> <i class="fa fa-times"></i> Fechar</button>
 		</div>
@@ -108,25 +108,31 @@
 		<div class="form-group" id="divGear" style="display:none;">
 			<br/>
 			<button id="btnAddStudent" class="btn btn-success" style="width:150px;"> <i class="fa fa-plus"></i> Adiciona Letra </button>
+			<br/><br/>
+			<button id="btnShowStudent" class="btn btn-danger" style="width:150px;"> <i class="fa fa-repeat"></i> Sincroniza Telas </button>
+			<br/><br/>
+			<button id="btnShowHelpTour" class="btn btn-warning" style="width:150px;"> <i class="fa fa-book"></i> Help Tutorial</button>
+			<button id="btnShowHelpConfig" class="btn btn-warning" style="width:150px;"> <i class="fa fa-book"></i> Help Configuração</button>
+
+			<br/><br/>
+			<button id="btnLogo" class="btn btn-default" style="width:150px;">Logotipo</button>
+			<br/><br/>
+			<button id="btnFreeze" class="btn btn-info" style="width:150px;"> <i class="fa fa-lock"></i> Congela Tela 2</button>
+			<br/><br/>
 			<a href="config.html" target="_datashow"><button id="btnIndexConfigurar" class="btn btn-success" style="width:150px;"> Configurar <i class="fa fa-forward"></i> </button></a>
-			<br/><br/>
-			<button id="btnShowStudent" class="btn btn-default" style="width:150px;"> <i class="fa fa-repeat"></i> Sincroniza Telas </button>
-			<br/><br/>
-			<button id="btnLogo" class="btn btn-default" style="width:150px;">Tamanho Logotipo</button>
-			<br/><br/>
-			<button id="btnFreeze" class="btn btn-default" style="width:150px;"> <i class="fa fa-lock"></i> Congela Tela 2</button>
-			<br/><br/>
-			<button id="btnCancelGear" class="btn btn-info" style="padding:9px 15px 9px 15px; width:150px;"> <i class="fa fa-times"></i> Fechar</button>			
+			<!-- button id="btnCancelGear" class="btn btn-info" style="padding:9px 15px 9px 15px; width:150px;"> <i class="fa fa-times"></i> Fechar</button -->
 			<br/><br/>
 
-			<br/><br/>
-			<button id="btnSelectCountAll" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-asterisk"></i> Count All</button>
 			<br/><button id="btnDropDb" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-remove"></i> Drop DB</button>
-			<br/><button id="btnDeleteLirics" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-minus"></i> Clear Lirycs</button>
-			<br/><button id="btnDeleteBible" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-minus"></i> Clear Bible</button>
-			<br/><button id="btnDeleteArt" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-minus"></i> Clear Arts</button>
+			<br/><br/><i>Contato: enio.francisco@gmail.com &#174;; +55(11)95239-2000; Brasil</i>
+			<div style="display:none;">
+				<br/><button id="btnSelectCountAll" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-asterisk"></i> Count All</button>
+				<br/><button id="btnDeleteLirics" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-minus"></i> Clear Lirycs</button>
+				<br/><button id="btnDeleteBible" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-minus"></i> Clear Bible</button>
+				<br/><button id="btnDeleteArt" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-minus"></i> Clear Arts</button>
+			</div>
 
-			<div style="display:'none';">
+			<div style="display:none;">
 				<br/><br/>
 				<button id="btnTest" class="btn btn-default" > <i class="fa fa-envelope"></i> </button>
 				<button id="btnTest" class="btn btn-default" > <i class="fa fa-star"></i> </button>
