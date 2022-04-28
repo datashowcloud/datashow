@@ -36,7 +36,7 @@ async function initDb() {
     if (isDbCreated) {
         console.log('db created');
 		document.getElementById('txtSearch').value = 'configuracao concluida com sucesso';
-		$('#tblGrid tbody').html('1. Como confirmar o final da configuração? <br/><br/>2. Pesquise a palavra <b>"configuração concluída com sucesso"</b> (somente aqui nesta página). <br/><br/>3. Quando o texto aparecer, a configuração terminou com sucesso. <br/><br/>4. Clique no botão Configurar. <br/>v07.04.22.21.07');
+		$('#tblGrid tbody').html('1. Clique no botão Configurar. <br/>v07.04.22.21.07');
 		document.getElementById('divconfig').style.display = 'block';
     }
     else {
@@ -203,6 +203,11 @@ function registerEvents() {
 		document.getElementById('btnIndexConfigurar').style.display='none';
     })
 
+    $('#btnIndexConfigurar').click(function () {
+		var DataShow_ConfigResult = window.open("configresult.html", "_self");
+		var DataShow_Config = window.open("config.html", "datashowconfig", "top=444, width=400, height=150, left=400, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
+    })
+
     $('#selMycodeTextGroup').change(function () {
 		freezeDataShow(true);
 		var selectedIndex = document.getElementById('selMycodeTextGroup').selectedIndex;
@@ -248,7 +253,7 @@ function registerEvents() {
 		var result = confirm('Não feche esta página (X). \nNão atualize esta página (F5).');
 		if (result) {
 			confirmImport('contents');
-			alert(confirmImportSuccessfull);
+//			alert(confirmImportSuccessfull);
 		}
     })
     $('#btnConfigForward').click(function () {
@@ -260,7 +265,7 @@ function registerEvents() {
 			confirmImport('contents3'); //artes
 			document.getElementById('selMycodeTextGroup').selectedIndex = 0;
 			confirmImport('contents1'); //a última frase é testada na pesquisa de letras
-			alert(confirmImportSuccessfull);
+//			alert(confirmImportSuccessfull);
 		} else {
 			alert('Configuração cancelada.');
 		}
@@ -293,6 +298,15 @@ function registerEvents() {
     $('#btnShowHelpConfig').click(function () {
 		var DataShow_Help = window.open("help/helpconfig.pdf", "datashowhelp", "top=100, width=1100, height=10000, left=0, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
     })
+    $('#btnSubmit').click(function () {
+        var group = document.getElementById('selMycodeTextGroup').value;
+		var studentId = $('form').attr('data-student-id');
+        if (studentId) {
+			updateStudent(group);
+        } else {
+            addStudentImport(group);
+        }
+    });
     $('#tblGrid tbody').on('click', '.edit', function () {
 		var row = $(this).parents().eq(1);
         var child = row.children();
@@ -310,20 +324,12 @@ function registerEvents() {
             deleteStudent(Number(studentId), group);
         }
     });
-    $('#btnSubmit').click(function () {
-        var group = document.getElementById('selMycodeTextGroup').value;
-		var studentId = $('form').attr('data-student-id');
-        if (studentId) {
-			updateStudent(group);
-        } else {
-            addStudentImport(group);
-        }
-    });
     $('#tblGrid tbody').on('click', '.freeze', function () {
 		freezeDataShow(localStorage.getItem('valueAoVivo'));
     });
     $('#tblGrid tbody').on('click', '.logo', function () {
 		showLogo();
+		freezeDataShow(true);
     });
     $('#tblGrid tbody').on('click', '.complete', function () {
 		searchComplete();
@@ -452,6 +458,65 @@ async function dropdb() {
 			console.log(error);
 		});;
 	}
+}
+
+//This function refreshes the table
+async function refreshTableResult() {
+    try {
+		var bibles = await jsstoreCon.count({
+			from: 'Bible'
+		});
+		if (bibles == '0') {
+			var labelBibles = "<label class=\"btn btn-default\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Bíblia: " + bibles + " de 32221 </label>";
+		} else {
+			var labelBibles = "<label class=\"btn btn-success\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Bíblia: " + bibles + " de 32221 </label>";
+		}
+
+		var students = await jsstoreCon.count({
+			from: 'Student'
+		});
+		if (students == '0') {
+			var labelStudents = "<label class=\"btn btn-default\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Letras: " + students + " de 10809 </label>";
+		} else {
+			var labelStudents = "<label class=\"btn btn-success\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Letras: " + students + " de 10809 </label>";
+		}
+
+		var arts = await jsstoreCon.count({
+			from: 'Art'
+		});
+		if (arts == '0') {
+			var labelArts = "<label class=\"btn btn-default\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Artes: " + arts + " de 17 </label>";
+		} else {
+			var labelArts = "<label class=\"btn btn-success\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Artes: " + arts + " de 17 </label>";
+		}
+		
+		if (arts != '0') {
+			var buttonFechar = "<button id=\"btnConfigClose\" class=\"btn btn-danger\" onclick=\"window.history.back();\" style=\"padding:9px 15px 9px 15px;\"> Parabéns! Terminou. Clique Aqui. </button>";
+		} else {
+			var buttonFechar = "<label class=\"btn btn-default\" onclick=\"alert('Aguarde o término da configuração!');\" style=\"padding:9px 15px 9px 15px; display:'none'\"> aguarde... configurando... </label>";
+		}
+		
+		var titulo = '<b style="color:green;">Janela do Resultado da Configuração</b>';
+		
+		$('#tblGrid tbody').html(titulo + '<br/><br/>' + labelBibles + '<br/><br/>' + labelStudents + '<br/><br/>' + labelArts + '<br/><br/>' + buttonFechar);
+	} catch (ex) {
+        alert(ex.message)
+    }
+}
+
+function onLoadConfig() {
+//	var result = confirm('Confirma configuração automática? \n\nNão faça nada. Aguarde alguns segundos...');
+//	if (result) {
+		document.getElementById('selMycodeTextGroup').selectedIndex = 1;
+		confirmImport('contents2'); //bíblia
+		document.getElementById('selMycodeTextGroup').selectedIndex = 0;
+		confirmImport('contents1'); // //a última frase é testada na pesquisa de letras
+		document.getElementById('selMycodeTextGroup').selectedIndex = 2;
+		confirmImport('contents3'); //artes, é o último import
+//		alert(confirmImportSuccessfull);
+//	} else {
+//		window.close();
+//	}
 }
 
 function showLogo() {
@@ -761,52 +826,30 @@ async function refreshTableData() {
 		var varFav = '';
 		var varEdit = '';
 		var varDel = '';
+		var htmlStringButtons = getButtonsBar();
+
 		students.forEach(function (student) {
             if (student.myorder == '000') {
 				htmlString += "<tr><td></td><td></td>"
 				htmlString += "<td nowrap>"
 
-				if (localStorage.getItem('valueLogoBig') == 'true') {
-					htmlString += "<a href='#' class='logo'><button id=\"btnLogoTop\" class=\"btn btn-success\"><i class=\"fa fa-minus\"></i> Logo</button></a>"
-				} else if (localStorage.getItem('valueLogoBig') == 'false') {
-					htmlString += "<a href='#' class='logo'><button id=\"btnLogoTop\" class=\"btn btn-success\"><i class=\"fa fa-times\"></i> Logo</button></a>"
-				} else if (localStorage.getItem('valueLogoBig') == '') {
-					htmlString += "<a href='#' class='logo'><button id=\"btnLogoTop\" class=\"btn btn-success\"><i class=\"fa fa-plus\"></i> Logo</button></a>"
-				}
-
-				if (localStorage.getItem('valueAoVivo') == 'true') {
-					htmlString += "&nbsp;<a href='#' class='freeze'><button id=\"btnFreezeTop\" class=\"btn btn-info\"><i class=\"fa fa-lock\"></i> Congela</button></a>"
-				} else {
-					htmlString += "&nbsp;<a href='#' class='freeze'><button id=\"btnFreezeTop\" class=\"btn btn-info\"><i class=\"fa fa-times\"></i> Descongela</button></a>"
-				}
-
-				if (localStorage.getItem('valueComplete') == 'true') {
-					htmlString += "&nbsp;<a href='#' class='complete'><button id=\"btnCompleteTop\" class=\"btn btn-default\"><i class=\"fa fa-minus\"></i></button></a>"
-				} else {
-					htmlString += "&nbsp;<a href='#' class='complete'><button id=\"btnCompleteTop\" class=\"btn btn-warning\"><i class=\"fa fa-list\"></i></button></a>"
-				}
-
-				if (localStorage.getItem('valueVideoPlay') == 'true') {
-					htmlString += "&nbsp;<a href='#' class='videoplaypause'><button id=\"btnVideoPlayTop\" class=\"btn btn-default\"><i class=\"fa fa-pause\"></i></button></a>"
-				} else {
-					htmlString += "&nbsp;<a href='#' class='videoplaypause'><button id=\"btnVideoPlayTop\" class=\"btn btn-primary\"><i class=\"fa fa-play\"></i></button></a>"
-				}
+				htmlString += htmlStringButtons
 
 				htmlString += "</td><td></td>"
 				htmlString += "</tr>"
 				varTdTh = 'th';
 				varOff = "<i class=\"fa fa-stop\" style=\"color:#000000;\"></i>&nbsp;";
 				varFav = "<td> <!--i class=\"fa fa-heart\" style=\"color:#3333AA;\"></i --> </td>";
-//				varEdit = "&nbsp;<i class=\"fa fa-edit\" style=\"color:blue;\"></i>";
+				varEdit = "<td><i class=\"fa fa-edit\" style=\"color:blue;\"></i></td>";
 				varDel = "<td><a href=\"#\" class=\"delete\" style=\"color:#777777;\"> <i class=\"fa fa-times\" style=\"color:red;\"></i> </a></td>";
 			} else {
 				varTdTh = 'td';
-				varOff = "<a href=\"#\" class=\"favorite\" style=\"color:#000000;\">Off</a>";
+				varOff = "<a href=\"#\" class=\"favorite\" style=\"color:#000000;\"> </a>";
 				varFav = "<td><a href='#' class=\"favorite\" style=\"color:blue;\"> </a></td>";
-//				varEdit = "<a href=\"#\" class=\"edit\" style=\"color:blue;\">Edit</a>";
+				varEdit = "<td><a href=\"#\" class=\"edit\" style=\"color:blue;\">...</a></td>";
                 varDel = "<td><a href=\"#\" class=\"delete\" style=\"color:#777777;\">Del</a></td>";
 			}
-			varEdit = "<a href=\"#\" class=\"edit\" style=\"color:blue; font-size:25px;\">...</a>";
+//			varEdit = "<a href=\"#\" class=\"edit\" style=\"color:blue; font-size:25px;\">...</a>";
 			
 			var mytext = student.mytext;
 			var txtsearch = removeSpecials(document.getElementById('txtSearch').value);
@@ -833,15 +876,17 @@ async function refreshTableData() {
 				+ "<" + varTdTh + " id=datashow" + student.id+"1" + " tabIndex=" + student.id+"1" + " onClick=\"datashow('" + student.id+"1" + "', 1, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 1, event, " + "" + (student.id+"1") + ");\" data-show='" + student.id+"1" + "'>" + mytextBold + "</" + varTdTh + ">"
 //				+ "<td>" + student.mysearch + "</td>"
 				+ "<td id=datashow" + (student.id+"2") + " tabIndex=" + (student.id+"2") + " onClick=\"datashow('" + (student.id+"2") + "', 1, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 1, event, " + "" + (student.id+"2") + ");\" data-show='" + (student.id+"2") + "'>" 
-//				+ varOff + " "
-				+ varEdit
-				+ " </td>";
+				+ varOff + "</td>"
+				+ varEdit;
 //				+ "<td id=datashow" + (student.id+"3") + " tabIndex=" + (student.id+"3") + " onClick=\"datashow('" + (student.id+"3") + "', 1, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 1, event, " + "" + (student.id+"3") + ");\" data-show='" + (student.id+"3") + "'> </td>"
 		})
 		if (htmlString.length > 0) {
 			htmlString += "</tr>"
 		} else {
+			htmlString += htmlStringButtons
+
 			htmlString += "<br><br><br><br>Não Encontrado <br><br>Pesquise Novamente"
+
 		}
         $('#tblGrid tbody').html(htmlString);
     } catch (ex) {
@@ -909,43 +954,6 @@ async function addStudentImport(group) {
         alert(ex.message + ' error ' + student.text);
     }
 }
-
-/*
-async function addStudent(group) {
-    var student = getStudentFromForm();
-    try {
-        if (group == '0') { //liryc
-			var noOfDataInserted = await jsstoreCon.insert({
-				into: 'Student',
-				values: [student]
-			});
-		} else if (group == '1') { //bible
-			var noOfDataInserted = await jsstoreCon.insert({
-				into: 'Bible',
-				values: [student]
-			});
-		} else if (group == '2') { //art
-			var noOfDataInserted = await jsstoreCon.insert({
-				into: 'Art',
-				values: [student]
-			});
-		}
-        if (noOfDataInserted === 1) {
-            refreshTableData();
-			if (document.getElementById('txtSearch').value.length <= 1) { // pesquisa somente com mais de 1 caracter preenchido no campo search
-				if (document.getElementById('selMycodeTextGroup').selectedIndex == '1') {
-					showBible();
-				}
-			} else {
-				showGridAndHideForms();
-			}
-//          showGridAndHideForms();
-        }
-    } catch (ex) {
-        alert(ex.message);
-    }
-}
-*/
 
 async function updateStudent(group) {
     var student = getStudentFromForm();
@@ -1036,6 +1044,33 @@ async function deleteStudent(id, group) {
     } catch (ex) {
         alert(ex.message);
     }
+}
+
+function getButtonsBar() {
+	var htmlStringButtons = '';
+	if (localStorage.getItem('valueLogoBig') == 'true') {
+		htmlStringButtons += "<a href='#' class='logo'><button id=\"btnLogoTop\" class=\"btn btn-success\"><i class=\"fa fa-minus\"></i> Logo</button></a>"
+	} else if (localStorage.getItem('valueLogoBig') == 'false') {
+		htmlStringButtons += "<a href='#' class='logo'><button id=\"btnLogoTop\" class=\"btn btn-success\"><i class=\"fa fa-times\"></i> Logo</button></a>"
+	} else if (localStorage.getItem('valueLogoBig') == '') {
+		htmlStringButtons += "<a href='#' class='logo'><button id=\"btnLogoTop\" class=\"btn btn-success\"><i class=\"fa fa-plus\"></i> Logo</button></a>"
+	}
+	if (localStorage.getItem('valueAoVivo') == 'true') {
+		htmlStringButtons += "&nbsp;<a href='#' class='freeze'><button id=\"btnFreezeTop\" class=\"btn btn-info\"><i class=\"fa fa-lock\"></i> Congela</button></a>"
+	} else {
+		htmlStringButtons += "&nbsp;<a href='#' class='freeze'><button id=\"btnFreezeTop\" class=\"btn btn-info\"><i class=\"fa fa-times\"></i> Descongela</button></a>"
+	}
+	if (localStorage.getItem('valueComplete') == 'true') {
+		htmlStringButtons += "&nbsp;<a href='#' class='complete'><button id=\"btnCompleteTop\" class=\"btn btn-default\"><i class=\"fa fa-minus\"></i></button></a>"
+	} else {
+		htmlStringButtons += "&nbsp;<a href='#' class='complete'><button id=\"btnCompleteTop\" class=\"btn btn-warning\"><i class=\"fa fa-list\"></i></button></a>"
+	}
+	if (localStorage.getItem('valueVideoPlay') == 'true') {
+		htmlStringButtons += "&nbsp;<a href='#' class='videoplaypause'><button id=\"btnVideoPlayTop\" class=\"btn btn-default\"><i class=\"fa fa-pause\"></i></button></a>"
+	} else {
+		htmlStringButtons += "&nbsp;<a href='#' class='videoplaypause'><button id=\"btnVideoPlayTop\" class=\"btn btn-primary\"><i class=\"fa fa-play\"></i></button></a>"
+	}
+	return htmlStringButtons;
 }
 
 function getStudentFromForm() {
@@ -1306,6 +1341,7 @@ function removeEspecialsCommands(valueText) {
 		valueText = valueText.replaceAll('<b style="background-color:#EEEEEE; color:green;">', '');
 		valueText = valueText.replaceAll('<a href=\"#\" class=\"favorite\" style=\"color:#000000;\">Off</a>', '');
 		valueText = valueText.replaceAll('<a href=\"#\" class=\"edit\" style=\"color:blue; font-size:25px;\">...</a>', '');
+		valueText = valueText.replaceAll('<a href=\"#\" class=\"favorite\" style=\"color:#000000;\"> </a>', '');
 
 		valueText = valueText.replaceAll('</b>', '');
 		valueText = valueText.replaceAll('&nbsp;', '');
