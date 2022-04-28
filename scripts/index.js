@@ -36,7 +36,7 @@ async function initDb() {
     if (isDbCreated) {
         console.log('db created');
 		document.getElementById('txtSearch').value = 'configuracao concluida com sucesso';
-		$('#tblGrid tbody').html('1. Clique no botão Configurar. <br/>v07.04.22.21.07');
+		$('#tblGrid tbody').html('Clique no botão Configurar');
 		document.getElementById('divconfig').style.display = 'block';
     }
     else {
