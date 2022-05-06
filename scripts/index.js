@@ -205,8 +205,8 @@ function registerEvents() {
 
     $('#btnIndexConfigurar').click(function () {
 		var DataShow_ConfigResult = window.open("configresult.html", "_self");
-		var DataShow_Config = window.open("config.html", "datashowconfig", "top=444, width=400, height=150, left=400, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
-    })
+		var DataShow_Config = window.open("config.html", "datashowconfig", "top=450, width=450, height=200, left=400, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
+	})
 
     $('#selMycodeTextGroup').change(function () {
 		freezeDataShow(true);
