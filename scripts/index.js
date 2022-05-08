@@ -3,6 +3,7 @@
 var jsstoreCon = new JsStore.Connection();
 
 var confirmImportSuccessfull = 'Não feche esta página (X). \nNão atualize esta página (F5). \n\nVolte na página anterior (aba ao lado) e pesquise pela palavra "configuração concluída com sucesso." \n\nQuando a palavra aparecer, a configuração terminou com sucesso.';
+
 window.onload = function () {
 	refreshTableData();
     registerEvents();
@@ -54,6 +55,8 @@ function getDbSchema() {
 			myorder: { notNull: true, dataType: 'string' }, //versículo ou ordem da estrofe
 			mytext: { notNull: true, dataType: 'string' }, //um texto da letra
 			mysearch: { notNull: false, dataType: 'string' }, //texto sem os caracteres especiais para fazer o search com maior precisão
+            myrepeated: { notNull: false, dataType: 'string' }, //indica texto repetido na letra, onde 0=não=exibição obrigatória, >0=sim=exibição opcional, default = 1
+            myowner: { notNull: false, dataType: 'string' }, //dono do texto ou responsável por inserir na tabela
 			myversion: { notNull: false, dataType: 'string' }, //0=padrão erudita, 1=moderna
 			mycodeTextGroup: { notNull: false, dataType: 'string' }, //0=bible, 1=lirics, 2=art
 			myfix: { notNull: false, dataType: 'string' }, //fixa para sempre ser exibido no final do resultado da pesquisa ou apresentação
@@ -64,8 +67,6 @@ function getDbSchema() {
             mymodified: { notNull: false, dataType: 'string' }, //aaaammdd hhmmss, momento que o texto foi alterado
             mycreated: { notNull: false, dataType: 'string' }, //aaaammdd hhmmss, momento que o texto foi criado
             mytimer: { notNull: false, dataType: 'string' }, //cronômetro numérico em segundos para mudar o texto automaticamente, exemplo: 4s
-            myrepeated: { notNull: false, dataType: 'string' }, //indica texto repetido na letra, onde 0=não=exibição obrigatória, >0=sim=exibição opcional, default = 1
-            myowner: { notNull: false, dataType: 'string' }, //dono do texto ou responsável por inserir na tabela
 			mycomment: { notNull: false, dataType: 'string' }, //comentário sobre a letra
             fontfamily: { notNull: false, dataType: 'string' },
             fontsize: { notNull: false, dataType: 'string' },
@@ -87,6 +88,8 @@ function getDbSchema() {
 			myorder: { notNull: true, dataType: 'string' },
 			mytext: { notNull: true, dataType: 'string' },
 			mysearch: { notNull: false, dataType: 'string' },
+            myrepeated: { notNull: false, dataType: 'string' },
+            myowner: { notNull: false, dataType: 'string' },
 			myversion: { notNull: false, dataType: 'string' },
 			mycodeTextGroup: { notNull: false, dataType: 'string' },
 			myfix: { notNull: false, dataType: 'string' },
@@ -97,8 +100,6 @@ function getDbSchema() {
             mymodified: { notNull: false, dataType: 'string' },
             mycreated: { notNull: false, dataType: 'string' },
             mytimer: { notNull: false, dataType: 'string' },
-            myrepeated: { notNull: false, dataType: 'string' },
-            myowner: { notNull: false, dataType: 'string' },
 			mycomment: { notNull: false, dataType: 'string' },
             fontfamily: { notNull: false, dataType: 'string' },
             fontsize: { notNull: false, dataType: 'string' },
@@ -120,6 +121,8 @@ function getDbSchema() {
 			myorder: { notNull: true, dataType: 'string' },
 			mytext: { notNull: true, dataType: 'string' },
 			mysearch: { notNull: false, dataType: 'string' },
+            myrepeated: { notNull: false, dataType: 'string' },
+            myowner: { notNull: false, dataType: 'string' },
 			myversion: { notNull: false, dataType: 'string' },
 			mycodeTextGroup: { notNull: false, dataType: 'string' },
 			myfix: { notNull: false, dataType: 'string' },
@@ -130,8 +133,6 @@ function getDbSchema() {
             mymodified: { notNull: false, dataType: 'string' },
             mycreated: { notNull: false, dataType: 'string' },
             mytimer: { notNull: false, dataType: 'string' },
-            myrepeated: { notNull: false, dataType: 'string' },
-            myowner: { notNull: false, dataType: 'string' },
 			mycomment: { notNull: false, dataType: 'string' },
             fontfamily: { notNull: false, dataType: 'string' },
             fontsize: { notNull: false, dataType: 'string' },
@@ -142,16 +143,39 @@ function getDbSchema() {
             camporeserva2: { notNull: false, dataType: 'string' },
             camporeserva3: { notNull: false, dataType: 'string' }
 //			mycodeMyorder:{keyPath:['mycode','myorder']}
- }
+		}
     }
 
 	var tableTypeData = {
         name: 'TypeData',
         columns: {
 			id: { primaryKey: true, autoIncrement: true },
-			code: { notNull: true, dataType: 'string' },
-			description: { notNull: true, dataType: 'string' },
-			status: { notNull: true, dataType: 'string' }
+			mycode: { notNull: true, dataType: 'string' },
+			myorder: { notNull: true, dataType: 'string' },
+			mytext: { notNull: true, dataType: 'string' },
+			mysearch: { notNull: false, dataType: 'string' },
+            myrepeated: { notNull: false, dataType: 'string' },
+            myowner: { notNull: false, dataType: 'string' },
+			myversion: { notNull: false, dataType: 'string' },
+			mycodeTextGroup: { notNull: false, dataType: 'string' },
+			myfix: { notNull: false, dataType: 'string' },
+			myfavorite: { notNull: false, dataType: 'string' },
+            mytype: { notNull: false, dataType: 'string' },
+			mystatus: { notNull: false, dataType: 'string' },
+			myfavorite: { notNull: false, dataType: 'string' },
+            mymodified: { notNull: false, dataType: 'string' },
+            mycreated: { notNull: false, dataType: 'string' },
+            mytimer: { notNull: false, dataType: 'string' },
+			mycomment: { notNull: false, dataType: 'string' },
+            fontfamily: { notNull: false, dataType: 'string' },
+            fontsize: { notNull: false, dataType: 'string' },
+            color: { notNull: false, dataType: 'string' },
+            textalign: { notNull: false, dataType: 'string' },
+            backgroundcolor: { notNull: false, dataType: 'string' },
+            camporeserva1: { notNull: false, dataType: 'string' },
+            camporeserva2: { notNull: false, dataType: 'string' },
+            camporeserva3: { notNull: false, dataType: 'string' }
+//			mycodeMyorder:{keyPath:['mycode','myorder']}
         }
     }
 
@@ -204,8 +228,10 @@ function registerEvents() {
     })
 
     $('#btnIndexConfigurar').click(function () {
-		var DataShow_ConfigResult = window.open("configresult.html", "_self");
-		var DataShow_Config = window.open("config.html", "datashowconfig", "top=450, width=450, height=200, left=400, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
+		window.close();
+		var DataShow_Config = window.open("config.html", "datashowconfig", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
+		var DataShow_ConfigResult = window.open("configresult.html", "datashowconfigresult");
+		datashowconfigresult.focus();
 	})
 
     $('#selMycodeTextGroup').change(function () {
@@ -252,7 +278,8 @@ function registerEvents() {
     $('#btnConfirmImport').click(function () {
 		var result = confirm('Não feche esta página (X). \nNão atualize esta página (F5).');
 		if (result) {
-			confirmImport('contents');
+			var group = document.getElementById('selMycodeTextGroup').value.trim();
+			confirmImport('contents', group);
 //			alert(confirmImportSuccessfull);
 		}
     })
@@ -260,11 +287,11 @@ function registerEvents() {
 		var result = confirm('Confirma configuração automática? \n\nNão faça nada. Aguarde alguns segundos...');
 		if (result) {
 			document.getElementById('selMycodeTextGroup').selectedIndex = 1;
-			confirmImport('contents2'); //bíblia
+			confirmImport('contents2', '1'); //bíblia
 			document.getElementById('selMycodeTextGroup').selectedIndex = 2;
-			confirmImport('contents3'); //artes
+			confirmImport('contents3', '2'); //artes
 			document.getElementById('selMycodeTextGroup').selectedIndex = 0;
-			confirmImport('contents1'); //a última frase é testada na pesquisa de letras
+			confirmImport('contents1', '0'); //a última frase é testada na pesquisa de letras
 //			alert(confirmImportSuccessfull);
 		} else {
 			alert('Configuração cancelada.');
@@ -460,63 +487,72 @@ async function dropdb() {
 	}
 }
 
+function onLoadConfig() {
+	//artes
+//	document.getElementById('selMycodeTextGroup').selectedIndex = 2;
+	confirmImport('contents3', '2');
+	//letras
+//	document.getElementById('selMycodeTextGroup').selectedIndex = 0;
+	confirmImport('contents1', '0');
+	//bíblia
+//	document.getElementById('selMycodeTextGroup').selectedIndex = 1;
+	confirmImport('contents2', '1');
+	//Indicador de Fim
+	confirmImport('contents4', '3');
+}
+
 //This function refreshes the table
 async function refreshTableResult() {
     try {
-		var bibles = await jsstoreCon.count({
-			from: 'Bible'
-		});
-		if (bibles == '0') {
-			var labelBibles = "<label class=\"btn btn-default\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Bíblia: " + bibles + " de 32221 </label>";
-		} else {
-			var labelBibles = "<label class=\"btn btn-success\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Bíblia: " + bibles + " de 32221 </label>";
-		}
-
+		//Letras
 		var students = await jsstoreCon.count({
 			from: 'Student'
 		});
 		if (students == '0') {
-			var labelStudents = "<label class=\"btn btn-default\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Letras: " + students + " de 10809 </label>";
+			var labelStudents = "<label class=\"btn btn-default\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Textos: " + students + "... </label>";
 		} else {
-			var labelStudents = "<label class=\"btn btn-success\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Letras: " + students + " de 10809 </label>";
+			var labelStudents = "<label class=\"btn btn-success\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Textos: " + students + " de 10819 </label>";
 		}
-
+		//Bíblia
+		var bibles = await jsstoreCon.count({
+			from: 'Bible'
+		});
+		if (bibles == '0') {
+			var labelBibles = "<label class=\"btn btn-default\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Livros: " + bibles + "... </label>";
+		} else {
+			var labelBibles = "<label class=\"btn btn-success\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Livros: " + bibles + " de 32221 </label>";
+		}
+		//Arte
 		var arts = await jsstoreCon.count({
 			from: 'Art'
 		});
 		if (arts == '0') {
-			var labelArts = "<label class=\"btn btn-default\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Artes: " + arts + " de 17 </label>";
+			var labelArts = "<label class=\"btn btn-default\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Artes: " + arts + "... </label>";
 		} else {
 			var labelArts = "<label class=\"btn btn-success\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Artes: " + arts + " de 17 </label>";
 		}
-		
-		if (arts != '0') {
-			var buttonFechar = "<button id=\"btnConfigClose\" class=\"btn btn-danger\" onclick=\"window.history.back();\" style=\"padding:9px 15px 9px 15px;\"> Parabéns! Terminou. Clique Aqui. </button>";
+		//TypeData
+		var typedata = await jsstoreCon.count({
+			from: 'TypeData'
+		});
+		if (typedata == '0') {
+			var labelTypeData = "<label class=\"btn btn-default\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Licença: " + typedata + " de 1... </label>";
 		} else {
-			var buttonFechar = "<label class=\"btn btn-default\" onclick=\"alert('Aguarde o término da configuração!');\" style=\"padding:9px 15px 9px 15px; display:'none'\"> aguarde... configurando... </label>";
+			var labelTypeData = "<label class=\"btn btn-success\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Fim </label>";
+			showIndex();
 		}
 		
-		var titulo = '<b style="color:green;">Janela do Resultado da Configuração</b>';
-		
-		$('#tblGrid tbody').html(titulo + '<br/><br/>' + labelBibles + '<br/><br/>' + labelStudents + '<br/><br/>' + labelArts + '<br/><br/>' + buttonFechar);
+		//Resultado
+		var buttonFechar = "<button id=\"btnConfigResultClose\" class=\"btn btn-info\" onclick=\"showIndex();\" style=\"padding:9px 15px 9px 15px;\"> Aguarde <i class=\"fa fa-forward\"></i> </button>";
+		buttonFechar = "";
+		$('#tblGrid tbody').html(labelArts + '<br/><br/>' + labelStudents + '<br/><br/>' + labelBibles + '<br/><br/>' + labelTypeData + '<br/><br/>' + buttonFechar);
 	} catch (ex) {
         alert(ex.message)
     }
 }
 
-function onLoadConfig() {
-//	var result = confirm('Confirma configuração automática? \n\nNão faça nada. Aguarde alguns segundos...');
-//	if (result) {
-		document.getElementById('selMycodeTextGroup').selectedIndex = 1;
-		confirmImport('contents2'); //bíblia
-		document.getElementById('selMycodeTextGroup').selectedIndex = 0;
-		confirmImport('contents1'); // //a última frase é testada na pesquisa de letras
-		document.getElementById('selMycodeTextGroup').selectedIndex = 2;
-		confirmImport('contents3'); //artes, é o último import
-//		alert(confirmImportSuccessfull);
-//	} else {
-//		window.close();
-//	}
+function showIndex() {
+	var DataShow_Index = window.open("index.html", "_self", "location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
 }
 
 function showLogo() {
@@ -621,7 +657,7 @@ async function searchSimples() {
 
 
 //This function confirm import
-async function confirmImport(contents) {
+async function confirmImport(contents, group) {
 //	var result = confirm('Não feche esta página. \nNão atualize esta página.');
 //	if (result) {
 		try {
@@ -653,7 +689,7 @@ async function confirmImport(contents) {
 				}
 */
 				var mytext = valor.substring(posicao, nextpos).trim();
-				var group = document.getElementById('selMycodeTextGroup').value.trim();
+//				var group = document.getElementById('selMycodeTextGroup').value.trim();
 				//alert('mycode='+mycode + ' myorder='+myorder + ' group='+group + ' myrepeated='+myrepeated + ' mytext='+mytext);
 				setStudentFromImport(mycode, myorder, mytext, group, myrepeated);
 				addStudentImport(group);
@@ -936,6 +972,11 @@ async function addStudentImport(group) {
 		} else if (group == '2') { //art
 			var noOfDataInserted = await jsstoreCon.insert({
 				into: 'Art',
+				values: [student]
+			});
+		} else if (group == '3') { //TypeData
+			var noOfDataInserted = await jsstoreCon.insert({
+				into: 'TypeData',
 				values: [student]
 			});
 		}
@@ -1411,7 +1452,7 @@ function chooseBook(content) {
 function chooseChapter(content) {
 	if (document.getElementById('txtSearch').value.length = 2) {
 		var sizeSearch = document.getElementById('txtSearch').value.length;
-		document.getElementById('txtSearch').value = document.getElementById('txtSearch').value.substring(0, sizeSearch) + content;
+		document.getElementById('txtSearch').value = document.getElementById('txtSearch').value.substring(0, sizeSearch) + content + ';';
 		refreshTableData();
 		if (document.getElementById('txtSearch').value.length <= 1) { // pesquisa somente com mais de 1 caracter preenchido no campo search
 			if (document.getElementById('selMycodeTextGroup').selectedIndex == '1') {

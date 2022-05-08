@@ -26,6 +26,9 @@
 				<b style="font-size:30px; color:#FFD700;">TA</b>
 				<b style="font-size:30px; color:#3333AA;">SHOW &#174;</b>
 				
+				<br/><br/><b style="color:green;">Resultado da Configuração</b>
+				<br/><b style="color:green;">Aguarde...</b>
+				
 				<br/><select id="selMycodeTextGroup" name="selMycodeTextGroup" style="display:none; height:34px;">
 					<!-- option value="-1"> </option -->
 					<option value="0" selected>somente letras</option>
@@ -79,7 +82,7 @@ function callback() {
 	setTimeout (function () {
 		refreshTableResult();
 		callback();
-	}, 500);
+	}, 100);
 }
 callback();
 
