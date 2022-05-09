@@ -337,7 +337,6 @@ function registerEvents() {
     $('#btnSalvarConfiguracao').click(function () {
 		localStorage.setItem('valueLogo', document.getElementById('config_mylogo').value);
 		localStorage.setItem('valueVideoFundo', document.getElementById('config_myfundo').value);
-		alert('salvou com sucesso');
     })
 	
     $('#tblGrid tbody').on('click', '.edit', function () {
@@ -481,7 +480,7 @@ async function deleteArt() {
 
 //This function drop database
 async function dropdb() {
-	var result = confirm('drop database?');
+	var result = confirm('Reiniciar?');
 	if (result) {
 		jsstoreCon.dropDb().then(function() {
 			console.log('Db deleted successfully');
