@@ -37,7 +37,7 @@ async function initDb() {
     if (isDbCreated) {
         console.log('db created');
 		document.getElementById('txtSearch').value = 'configuracao concluida com sucesso';
-		$('#tblGrid tbody').html('Clique no botão Configurar');
+		$('#tblGrid tbody').html('clique no botão iniciar configuração');
 		document.getElementById('divconfig').style.display = 'block';
     }
     else {
@@ -334,6 +334,12 @@ function registerEvents() {
             addStudentImport(group);
         }
     });
+    $('#btnSalvarConfiguracao').click(function () {
+		localStorage.setItem('valueLogo', document.getElementById('config_mylogo').value);
+		localStorage.setItem('valueVideoFundo', document.getElementById('config_myfundo').value);
+		alert('salvou com sucesso');
+    })
+	
     $('#tblGrid tbody').on('click', '.edit', function () {
 		var row = $(this).parents().eq(1);
         var child = row.children();
@@ -511,7 +517,7 @@ async function refreshTableResult() {
 		if (students == '0') {
 			var labelStudents = "<label class=\"btn btn-default\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Textos: " + students + "... </label>";
 		} else {
-			var labelStudents = "<label class=\"btn btn-success\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Textos: " + students + " de 10819 </label>";
+			var labelStudents = "<label class=\"btn btn-info\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Textos: " + students + " de ~10830 </label>";
 		}
 		//Bíblia
 		var bibles = await jsstoreCon.count({
@@ -520,7 +526,7 @@ async function refreshTableResult() {
 		if (bibles == '0') {
 			var labelBibles = "<label class=\"btn btn-default\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Livros: " + bibles + "... </label>";
 		} else {
-			var labelBibles = "<label class=\"btn btn-success\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Livros: " + bibles + " de 32221 </label>";
+			var labelBibles = "<label class=\"btn btn-info\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Livros: " + bibles + " de ~32221 </label>";
 		}
 		//Arte
 		var arts = await jsstoreCon.count({
@@ -529,7 +535,7 @@ async function refreshTableResult() {
 		if (arts == '0') {
 			var labelArts = "<label class=\"btn btn-default\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Artes: " + arts + "... </label>";
 		} else {
-			var labelArts = "<label class=\"btn btn-success\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Artes: " + arts + " de 17 </label>";
+			var labelArts = "<label class=\"btn btn-info\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Artes: " + arts + " de ~15 </label>";
 		}
 		//TypeData
 		var typedata = await jsstoreCon.count({
@@ -538,7 +544,7 @@ async function refreshTableResult() {
 		if (typedata == '0') {
 			var labelTypeData = "<label class=\"btn btn-default\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Licença: " + typedata + " de 1... </label>";
 		} else {
-			var labelTypeData = "<label class=\"btn btn-success\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Fim </label>";
+			var labelTypeData = "<label class=\"btn btn-info\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Fim </label>";
 			showIndex();
 		}
 		
@@ -882,7 +888,7 @@ async function refreshTableData() {
 				varTdTh = 'td';
 				varOff = "<a href=\"#\" class=\"favorite\" style=\"color:#000000;\"> </a>";
 				varFav = "<td><a href='#' class=\"favorite\" style=\"color:blue;\"> </a></td>";
-				varEdit = "<td><a href=\"#\" class=\"edit\" style=\"color:blue;\">...</a></td>";
+				varEdit = "<td><a href=\"#\" class=\"edit\" style=\"color:blue; font-size:25px;\">...</a></td>";
                 varDel = "<td><a href=\"#\" class=\"delete\" style=\"color:#777777;\">Del</a></td>";
 			}
 //			varEdit = "<a href=\"#\" class=\"edit\" style=\"color:blue; font-size:25px;\">...</a>";
@@ -999,7 +1005,6 @@ async function addStudentImport(group) {
 async function updateStudent(group) {
     var student = getStudentFromForm();
 	try {
-//        if (group == '0' || group == '3') { //smente letras, Letra Sem Repetição
         if (group == '0') { //somente letras
 			var noOfDataUpdated = await jsstoreCon.update({
 				in: 'Student',
@@ -1345,6 +1350,7 @@ function moveCursor(mycode, col, evento, index) {
 		document.getElementById('txtSearch').value = removeSpecials(index.trim());
 		refreshTableData();
     } else if (evento.keyCode == 27 || event.which == 27) { //ESC
+		freezeDataShow('true');
 		$('#txtSearch').focus();
 		$('#txtSearch').select();
     }

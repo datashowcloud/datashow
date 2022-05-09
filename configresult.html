@@ -26,8 +26,7 @@
 				<b style="font-size:30px; color:#FFD700;">TA</b>
 				<b style="font-size:30px; color:#3333AA;">SHOW &#174;</b>
 				
-				<br/><br/><b style="color:green;">Resultado da Configuração</b>
-				<br/><b style="color:green;">Aguarde...</b>
+				<br/><br/><b style="color:#3333AA;">Aguarde... o resultado da configuração...</b>
 				
 				<br/><select id="selMycodeTextGroup" name="selMycodeTextGroup" style="display:none; height:34px;">
 					<!-- option value="-1"> </option -->
@@ -45,6 +44,19 @@
 			<tbody>
 			</tbody>
 		</table>
+
+		<div class="form-group" id="divGear" style="display:'none';">
+			<br/><label style="color:#3333AA;">Nome (4 letras):</label>
+			<input type="text" size="16" id="config_myowner" maxlength="4" style="width:50px;" value="IIRF" placeholder="Digite aqui..." /> <!-- HOPE -->
+			<br/>
+			<label style="color:#3333AA;">Logo:</label>
+			<textarea type="text" size="16" id="config_mylogo" style="width:250px;" placeholder="Digite aqui..." />https://datashowcloud.github.io/datashow/logo/logo.png</textarea>
+			<br/>
+			<label style="color:#3333AA;">Fundo:</label>
+			<textarea type="text" size="16" id="config_myfundo" style="width:250px;" placeholder="Digite aqui..." />https://datashowcloud.github.io/datashow/gallery/fundo.jpeg</textarea>
+			<br/>
+			<button id="btnSalvarConfiguracao"> <i class="fa fa-check"></i> Salvar Configuração</button>
+		</div>
 
 		<form id="formAddUpdate" class="form-horizontal" role="form" style="margin-top:50px; display: none;">
 			<div class="form-group">
@@ -82,7 +94,7 @@ function callback() {
 	setTimeout (function () {
 		refreshTableResult();
 		callback();
-	}, 100);
+	}, 1000);
 }
 callback();
 

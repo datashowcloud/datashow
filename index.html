@@ -40,8 +40,19 @@
 		</div>
 		
 		<div id="divconfig" style="display:none;">
-			<br/><button id="btnIndexConfigurar" class="btn btn-success" style="padding:9px 15px 9px 15px;"> 1. Configurar <i class="fa fa-forward"></i> </button>
-			<!-- br/><br/><a href="#" onclick="window.open('configresult.html');"><button id="btnConfigResult" class="btn btn-success" style="padding:9px 15px 9px 15px; display:'none';"> 2. Mostrar Configuração <i class="fa fa-forward"></i> </button></a -->
+			<label class="btn btn-info">
+			Em conformidade com a Lei 13.709/18
+			<br/>- Lei Geral de Proteção de Dados Pessoais,
+			<br/>concordo, autorizo, reconheço e aceito
+			<br/>de forma expressa e escrita a coleta de dados
+			<br/>com a finalidade exclusiva de atualizar e manter os arquivos
+			<br/>na ferramenta DataShow &#174; em um prazo inderteminado.
+			<br/>Além de declarar todas informações preenchidas verdadeiras.
+			<br/>É proibido copiar a ferramenta DataShow &#174;
+			<br/>sem licença e autorização do dono.
+			</label>			
+			<br/><br/>
+			<button id="btnIndexConfigurar" class="btn btn-info" style="padding:9px 15px 9px 15px;"> Iniciar Configuração <i class="fa fa-forward"></i> </button>
 		</div>
 		
 		
@@ -106,25 +117,32 @@
 		
 		
 		<div class="form-group" id="divGear" style="display:none;">
-			<br/>
-			<button id="btnAddStudent" class="btn btn-success" style="width:150px;"> <i class="fa fa-plus"></i> Adiciona Letra </button>
-			<br/><br/>
+			<hr><label align=left>1. Atalhos</label>
+			<br/><button id="btnAddStudent" class="btn btn-success" style="width:150px;"> <i class="fa fa-plus"></i> Adiciona Letra </button>
 			<button id="btnShowStudent" class="btn btn-danger" style="width:150px;"> <i class="fa fa-repeat"></i> Sincroniza Telas </button>
 			<br/><br/>
 			<button id="btnShowHelpTour" class="btn btn-warning" style="width:150px;"> <i class="fa fa-book"></i> Help Tutorial</button>
 			<button id="btnShowHelpConfig" class="btn btn-warning" style="width:150px;"> <i class="fa fa-book"></i> Help Configuração</button>
-
 			<br/><br/>
-			<button id="btnLogo" class="btn btn-default" style="width:150px;">Logotipo</button>
-			<br/><br/>
+			<button id="btnLogo" class="btn btn-default" style="width:150px;"><i class="fa fa-minus"></i> Logotipo</button>
 			<button id="btnFreeze" class="btn btn-info" style="width:150px;"> <i class="fa fa-lock"></i> Congela Tela 2</button>
-			<br/><br/>
-			<!-- br/><button id="btnIndexConfigurar2" class="btn btn-success" style="padding:9px 15px 9px 15px;"> 1. Configurar <i class="fa fa-forward"></i> </button -->
-			<!-- button id="btnCancelGear" class="btn btn-info" style="padding:9px 15px 9px 15px; width:150px;"> <i class="fa fa-times"></i> Fechar</button -->
-			<br/><br/>
-
-			<br/><button id="btnDropDb" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-remove"></i> Drop DB</button>
-			<br/><br/><i>Contato: enio.francisco@gmail.com &#174; +55(11)95239-2000; Brasil; v08.05.22</i>
+			
+			<hr><label align=left>2. Configuração padrão</label>
+			<br/><label style="color:#3333AA;">Nome (4 letras):</label>
+			<input type="text" size="16" id="config_myowner" maxlength="4" style="width:50px;" value="IIRF" placeholder="Digite aqui..." /> <!-- HOPE -->
+			<br/>
+			<label style="color:#3333AA;">Logo:</label>
+			<textarea type="text" size="16" id="config_mylogo" style="width:250px;" placeholder="Digite aqui..." />https://datashowcloud.github.io/datashow/logo/logo.png</textarea>
+			<br/>
+			<label style="color:#3333AA;">Fundo:</label>
+			<textarea type="text" size="16" id="config_myfundo" style="width:250px;" placeholder="Digite aqui..." />https://datashowcloud.github.io/datashow/gallery/fundo.jpeg</textarea>
+			<br/>
+			<button id="btnSalvarConfiguracao"> <i class="fa fa-check"></i> Salvar Configuração</button>
+			
+			<hr><label align=left>3. Ferramentas</label>
+			<br><button id="btnDropDb" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-remove"></i> Drop DB</button>
+			
+			<hr/><i>enio.francisco@gmail.com &#174; +55(11)95239-2000; v09.05.22.13.00</i>
 			<div style="display:none;">
 				<br/><button id="btnSelectCountAll" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-asterisk"></i> Count All</button>
 				<br/><button id="btnDeleteLirics" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-minus"></i> Clear Lirycs</button>
