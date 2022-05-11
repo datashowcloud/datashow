@@ -47,16 +47,10 @@
 		</table>
 
 		<div class="form-group" id="divGear" style="display:'none';">
-			<br/><label style="color:#3333AA;">Nome (até 6 letras):</label>
-			<input type="text" size="16" id="config_myowner" maxlength="6" style="width:50px;" value="IIRF" placeholder="Digite aqui..." /> <!-- HOPE -->
-			<br/>
-			<label style="color:#3333AA;">Logo: &nbsp;</label>
-			<textarea type="text" size="16" id="config_mylogo" style="width:250px;" placeholder="Digite aqui..." />https://datashowcloud.github.io/datashow/logo/logo.png</textarea>
-			<br/>
-			<label style="color:#3333AA;">Fundo:</label>
-			<textarea type="text" size="16" id="config_myfundo" style="width:250px;" placeholder="Digite aqui..." />https://datashowcloud.github.io/datashow/gallery/fundo.jpeg</textarea>
-			<br/>
-			<button id="btnSalvarConfiguracao"> <i class="fa fa-check"></i> Salvar Configuração</button>
+			<hr>Nome Curto (padrão): <br/><input type="text" size="16" id="config_myowner" maxlength="4" style="width:50px;" value="IIRF" placeholder="Digite aqui..." /> <!-- HOPE -->
+			<br/>Logotipo (padrão): <br/><textarea type="text" size="16" id="config_mylogo" style="width:250px;" placeholder="Informe o logotipo aqui..." />logo/logo.png</textarea>
+			<br/>Fundo (padrão): <br/><textarea type="text" size="16" id="config_myfundo" style="width:250px;" placeholder="Informe a imagem de fundo aqui..." />gallery/fundo.jpeg</textarea>
+			<!-- button id="btnSalvarConfiguracao"> <i class="fa fa-check"></i> Salvar Configuração</button -->
 		</div>
 
 		<form id="formAddUpdate" class="form-horizontal" role="form" style="margin-top:50px; display: none;">
@@ -95,7 +89,7 @@ function callback() {
 	setTimeout (function () {
 		refreshTableResult();
 		callback();
-	}, 1000);
+	}, 500);
 }
 callback();
 

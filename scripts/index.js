@@ -36,7 +36,7 @@ async function initDb() {
     var isDbCreated = await jsstoreCon.initDb(getDbSchema());
     if (isDbCreated) {
         console.log('db created');
-		document.getElementById('txtSearch').value = 'configuracao concluida com sucesso';
+		document.getElementById('txtSearch').value = 'sucesso';
 		$('#tblGrid tbody').html('clique no botão iniciar configuração');
 		document.getElementById('divconfig').style.display = 'block';
     }
@@ -203,7 +203,6 @@ function registerEvents() {
 			} else {
 				showGridAndHideForms();
 			}
-//			freezeDataShow(true);
 			$('#txtSearch').focus();
 			$('#txtSearch').select();
 		} else if (event.keyCode == 27 || event.which == 27) { //ESC
@@ -361,7 +360,7 @@ function registerEvents() {
     });
     $('#tblGrid tbody').on('click', '.logo', function () {
 		showLogo();
-		freezeDataShow(true);
+//		freezeDataShow('false');
     });
     $('#tblGrid tbody').on('click', '.complete', function () {
 		searchComplete();
@@ -482,81 +481,91 @@ async function deleteArt() {
 async function dropdb() {
 	var result = confirm('Reiniciar?');
 	if (result) {
+		localStorage.setItem('valueLogo', 'logo/logo.png');
+		localStorage.setItem('valueVideoFundo', 'gallery/fundo.jpeg');
 		jsstoreCon.dropDb().then(function() {
 			console.log('Db deleted successfully');
 			refreshTableData();
-			alert('successfull');
+//			alert('successfull');
 		}).catch(function(error) {
 			console.log(error);
 		});;
+		showIniciarConfiguracao();
 	}
 }
 
 function onLoadConfig() {
-	//artes
-//	document.getElementById('selMycodeTextGroup').selectedIndex = 2;
-	confirmImport('contents3', '2');
-	//letras
-//	document.getElementById('selMycodeTextGroup').selectedIndex = 0;
-	confirmImport('contents1', '0');
-	//bíblia
-//	document.getElementById('selMycodeTextGroup').selectedIndex = 1;
-	confirmImport('contents2', '1');
-	//Indicador de Fim
-	confirmImport('contents4', '3');
+	confirmImport('contents3', '2'); //artes
+	confirmImport('contents1', '0'); //letras
+	confirmImport('contents2', '1'); //bíblia
+	confirmImport('contents4', '3'); //licença
 }
 
 //This function refreshes the table
 async function refreshTableResult() {
     try {
+		//Arte
+		var arts = await jsstoreCon.count({
+			from: 'Art'
+		});
+		if (arts == '0') {
+			var labelArts = "<label class=\"btn btn-info\" style=\"width:200px; \"> Artes: " + arts + "</label>";
+		} else if (arts > '0' && arts < '15') {
+			var labelArts = "<label class=\"btn btn-info\" style=\"width:200px; \"> Artes: " + arts + " de ~15 </label>";
+		} else {
+			var labelArts = "<label class=\"btn btn-default\" style=\"width:200px; \"> Artes: " + arts + " <i class=\"fa fa-check\"></i></label>";
+		}
 		//Letras
 		var students = await jsstoreCon.count({
 			from: 'Student'
 		});
 		if (students == '0') {
-			var labelStudents = "<label class=\"btn btn-default\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Textos: " + students + "... </label>";
+			var labelStudents = "<label class=\"btn btn-info\" style=\"width:200px; \"> Textos: " + students + "</label>";
+		} else if (students > '0' && students < '10830') {
+			var labelStudents = "<label class=\"btn btn-info\" style=\"width:200px; \"> Textos: " + students + " de ~10830 </label>";
 		} else {
-			var labelStudents = "<label class=\"btn btn-info\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Textos: " + students + " de ~10830 </label>";
+			var labelStudents = "<label class=\"btn btn-default\" style=\"width:200px; \"> Textos: " + students + " <i class=\"fa fa-check\"></i></label>";
 		}
 		//Bíblia
 		var bibles = await jsstoreCon.count({
 			from: 'Bible'
 		});
 		if (bibles == '0') {
-			var labelBibles = "<label class=\"btn btn-default\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Livros: " + bibles + "... </label>";
+			var labelBibles = "<label class=\"btn btn-info\" style=\"width:200px; \"> Livros: " + bibles + "</label>";
+		} else if (bibles > '0' && bibles < '32221') {
+			var labelBibles = "<label class=\"btn btn-info\" style=\"width:200px; \"> Livros: " + bibles + " de ~32221 </label>";
 		} else {
-			var labelBibles = "<label class=\"btn btn-info\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Livros: " + bibles + " de ~32221 </label>";
-		}
-		//Arte
-		var arts = await jsstoreCon.count({
-			from: 'Art'
-		});
-		if (arts == '0') {
-			var labelArts = "<label class=\"btn btn-default\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Artes: " + arts + "... </label>";
-		} else {
-			var labelArts = "<label class=\"btn btn-info\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Artes: " + arts + " de ~15 </label>";
+			var labelBibles = "<label class=\"btn btn-default\" style=\"width:200px; \"> Livros: " + bibles + " <i class=\"fa fa-check\"></i></label>";
 		}
 		//TypeData
 		var typedata = await jsstoreCon.count({
 			from: 'TypeData'
 		});
 		if (typedata == '0') {
-			var labelTypeData = "<label class=\"btn btn-default\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Licença: " + typedata + " de 1... </label>";
+			var labelTypeData = "<label class=\"btn btn-info\" style=\"width:200px; \"> Licença: " + typedata + "</label>";
+		} else if (typedata > '0' && typedata < '2') {
+			var labelTypeData = "<label class=\"btn btn-info\" style=\"width:200px; \"> Licença: " + typedata + " de ~2 </label>";
 		} else {
-			var labelTypeData = "<label class=\"btn btn-info\" style=\"padding:9px 15px 9px 15px; display:'none'\"> Fim </label>";
-			showIndex();
+			var labelTypeData = "<label class=\"btn btn-default\" style=\"width:200px; \"> Licença: " + typedata + " <i class=\"fa fa-check\"></i></label>";
+		}
+		
+		var buttonFechar = "";
+		if (typedata == '0') {
+			buttonFechar = "<button id=\"btnConfigResultClose\" class=\"btn btn-info\" style=\"width:200px; padding:9px 15px 9px 15px;\"> Aguarde...</button>";
+		} else {
+			buttonFechar = "<button id=\"btnConfigResultClose\" class=\"btn btn-info\" style=\"width:200px;\" onclick=\"showIndex();\" style=\"padding:9px 15px 9px 15px;\"> Continuar <i class=\"fa fa-forward\"></i> </button>";
 		}
 		
 		//Resultado
-		var buttonFechar = "<button id=\"btnConfigResultClose\" class=\"btn btn-info\" onclick=\"showIndex();\" style=\"padding:9px 15px 9px 15px;\"> Aguarde <i class=\"fa fa-forward\"></i> </button>";
-		buttonFechar = "";
-		$('#tblGrid tbody').html(labelArts + '<br/><br/>' + labelStudents + '<br/><br/>' + labelBibles + '<br/><br/>' + labelTypeData + '<br/><br/>' + buttonFechar);
+		$('#tblGrid tbody').html(labelArts + '<br/>' + labelStudents + '<br/>' + labelBibles + '<br/>' + labelTypeData + '<br/>' + buttonFechar);
 	} catch (ex) {
         alert(ex.message)
     }
 }
 
 function showIndex() {
+	localStorage.setItem('valueLogo', document.getElementById('config_mylogo').value);
+	localStorage.setItem('valueVideoFundo', document.getElementById('config_myfundo').value);
 	var DataShow_Index = window.open("index.html", "_self", "location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
 }
 
@@ -591,15 +600,15 @@ async function freezeDataShow(aovivo) {
 			localStorage.setItem('valueAoVivo', 'true');
 			if (document.getElementById('btnFreezeTop') != null) {
 				document.getElementById('btnFreezeTop').innerHTML = '<i class="fa fa-lock"></i> Congela';
-//				document.getElementById('btnFreezeTop').classList.remove('btn-info');
-//				document.getElementById('btnFreezeTop').classList.add('btn-default');
+				document.getElementById('btnFreezeTop').classList.remove('btn-info');
+				document.getElementById('btnFreezeTop').classList.add('btn-default');
 			}
 		} else { //freeze DataShow
 			localStorage.setItem('valueAoVivo', 'false');
 			if (document.getElementById('btnFreezeTop') != null) {
 				document.getElementById('btnFreezeTop').innerHTML = '<i class="fa fa-times"></i> Descongela';
-//				document.getElementById('btnFreezeTop').classList.remove('btn-default');
-//				document.getElementById('btnFreezeTop').classList.add('btn-info');
+				document.getElementById('btnFreezeTop').classList.remove('btn-default');
+				document.getElementById('btnFreezeTop').classList.add('btn-info');
 			}
 		}
     } catch (ex) {
@@ -881,13 +890,13 @@ async function refreshTableData() {
 				varTdTh = 'th';
 				varOff = "<i class=\"fa fa-stop\" style=\"color:#000000;\"></i>&nbsp;";
 				varFav = "<td> <!--i class=\"fa fa-heart\" style=\"color:#3333AA;\"></i --> </td>";
-				varEdit = "<td><i class=\"fa fa-edit\" style=\"color:blue;\"></i></td>";
+				varEdit = "<td><i class=\"fa fa-edit\"></i></td>";
 				varDel = "<td><a href=\"#\" class=\"delete\" style=\"color:#777777;\"> <i class=\"fa fa-times\" style=\"color:red;\"></i> </a></td>";
 			} else {
 				varTdTh = 'td';
 				varOff = "<a href=\"#\" class=\"favorite\" style=\"color:#000000;\"> </a>";
 				varFav = "<td><a href='#' class=\"favorite\" style=\"color:blue;\"> </a></td>";
-				varEdit = "<td><a href=\"#\" class=\"edit\" style=\"color:blue; font-size:25px;\">...</a></td>";
+				varEdit = "<td><a href=\"#\" class=\"edit\"> <i class=\"fa fa-edit\"></i> </a></td>";
                 varDel = "<td><a href=\"#\" class=\"delete\" style=\"color:#777777;\">Del</a></td>";
 			}
 //			varEdit = "<a href=\"#\" class=\"edit\" style=\"color:blue; font-size:25px;\">...</a>";
@@ -903,7 +912,7 @@ async function refreshTableData() {
 				var diff = parseInt(mytext.substring(0, posIni+txtsearch.length).length) - parseInt(removeSpecials(mytext.substring(0, posIni+txtsearch.length)).length);
 				posIni = posIni + parseInt(diff);
 				mytextBold = mytext.substring(0, posIni)
-				+ '<b style="background-color:#EEEEEE; color:green;">'
+				+ '<b style="background-color:#EEEEEE; color:black;">' //#5bc0de
 				+ mytext.substring(posIni, posIni+txtsearch.length)
 				+ '</b>'
 				+ mytext.substring(posIni+txtsearch.length);
@@ -1101,7 +1110,7 @@ function getButtonsBar() {
 		htmlStringButtons += "<a href='#' class='logo'><button id=\"btnLogoTop\" class=\"btn btn-success\"><i class=\"fa fa-plus\"></i> Logo</button></a>"
 	}
 	if (localStorage.getItem('valueAoVivo') == 'true') {
-		htmlStringButtons += "&nbsp;<a href='#' class='freeze'><button id=\"btnFreezeTop\" class=\"btn btn-info\"><i class=\"fa fa-lock\"></i> Congela</button></a>"
+		htmlStringButtons += "&nbsp;<a href='#' class='freeze'><button id=\"btnFreezeTop\" class=\"btn btn-default\"><i class=\"fa fa-lock\"></i> Congela</button></a>"
 	} else {
 		htmlStringButtons += "&nbsp;<a href='#' class='freeze'><button id=\"btnFreezeTop\" class=\"btn btn-info\"><i class=\"fa fa-times\"></i> Descongela</button></a>"
 	}
@@ -1157,6 +1166,7 @@ function showFormAddUpdate() {
 	$('#divGear').hide();
 	$('#divcontent').hide();
 	$('#formBible').hide();
+	$('#divconfig').hide();
 }
 
 function showGridAndHideForms() {
@@ -1165,6 +1175,7 @@ function showGridAndHideForms() {
 	$('#divGear').hide();
 	$('#divcontent').hide();
 	$('#formBible').hide();
+	$('#divconfig').hide();
 }
 
 function showFormGear() {
@@ -1173,6 +1184,7 @@ function showFormGear() {
 	$('#divGear').show();
 	$('#divcontent').hide();
 	$('#formBible').hide();
+	$('#divconfig').hide();
 }
 
 function showFormImport() {
@@ -1181,6 +1193,7 @@ function showFormImport() {
 	$('#divGear').hide();
 	$('#divcontent').show();
 	$('#formBible').hide();
+	$('#divconfig').hide();
 }
 
 function showBible() {
@@ -1189,8 +1202,17 @@ function showBible() {
 	$('#divGear').hide();
 	$('#divcontent').hide();
 	$('#formBible').show();
+	$('#divconfig').hide();
 }
 
+function showIniciarConfiguracao() {
+    $('#tblGrid').hide();
+    $('#formAddUpdate').hide();
+	$('#divGear').hide();
+	$('#divcontent').hide();
+	$('#formBible').hide();
+	$('#divconfig').show();
+}
 function showForm1Form2() {
 	openLogo('logo/logo.png');
 	openImagemFundo(localStorage.getItem('valueVideoFundo'));
@@ -1346,12 +1368,19 @@ function dispFile(contents) {
 function moveCursor(mycode, col, evento, index) {
 	if (evento.keyCode == 13 || event.which == 13) {
 		freezeDataShow('false');
+		if (localStorage.getItem('valueAoVivo') == 'true') {
+			setColor(index, localStorage.getItem('valueAoVivo'));
+		}
 		document.getElementById('txtSearch').value = removeSpecials(index.trim());
 		refreshTableData();
     } else if (evento.keyCode == 27 || event.which == 27) { //ESC
-		freezeDataShow('true');
-		$('#txtSearch').focus();
-		$('#txtSearch').select();
+		if (localStorage.getItem('valueAoVivo') == 'false') {
+			$('#txtSearch').focus();
+			$('#txtSearch').select();
+		} else {
+			freezeDataShow('true');
+			setColor(index, localStorage.getItem('valueAoVivo'));
+		}
     }
 
 	var nextTabIndex = 0;
@@ -1379,12 +1408,11 @@ function removeEspecialsCommands(valueText) {
 	 || valueText.substring(0, 4).toLowerCase() == 'edit') { //comando # no campo Search não precisa ser exibido
 		valueText = '';
 	} else {
-//alert(valueText);
-//<a href="#" class="favorite" style="color:#000000;">Off</a> <a href="#" class="edit" style="color:blue;">Edit</a>
-
 		valueText = valueText.replaceAll('<i class=\"fa fa-stop\" style=\"color:#000000;\"></i>', '');
 		valueText = valueText.replaceAll('<i class=\"fa fa-edit\" style=\"color:blue;\"></i>', '');
 		valueText = valueText.replaceAll('<b style="background-color:#EEEEEE; color:green;">', '');
+		valueText = valueText.replaceAll('<b style="background-color:#EEEEEE; color:black;">', '');
+		valueText = valueText.replaceAll('<b style="background-color:#fff; color:#5bc0de;">', '');
 		valueText = valueText.replaceAll('<a href=\"#\" class=\"favorite\" style=\"color:#000000;\">Off</a>', '');
 		valueText = valueText.replaceAll('<a href=\"#\" class=\"edit\" style=\"color:blue; font-size:25px;\">...</a>', '');
 		valueText = valueText.replaceAll('<a href=\"#\" class=\"favorite\" style=\"color:#000000;\"> </a>', '');
@@ -1443,11 +1471,21 @@ function datashow(index, col, code) {
 	startElement.style.backgroundColor = '';
 	startElement.style.color = '';
 	// pinta cor da próxima célula atual
-	var nextcell = document.getElementById('datashow' + nextTabIndex);
-	nextcell.focus();
-	nextcell.style.backgroundColor = '#5cb85c';
-	nextcell.style.color = 'white';
+	setColor(nextTabIndex, localStorage.getItem('valueAoVivo'));
 //	console.log('startElement=' + startElement + ', nextCol=' + nextCol + ', nextTabIndex=' + nextTabIndex + ', indexAutor=' + indexAutor);
+}
+
+//pinta cor da próxima célula atual
+function setColor(index, valueAoVivo) {
+	var nextcell = document.getElementById('datashow' + index);
+	nextcell.focus();
+	if (valueAoVivo == 'true') {
+		nextcell.style.backgroundColor = '#5cb85c'; //'#5cb85c'; '#5bc0de';
+		nextcell.style.color = 'white';
+	} else {
+		nextcell.style.backgroundColor = '#5bc0de'; //'#5cb85c'; '#5bc0de';
+		nextcell.style.color = 'white';
+	}
 }
 
 function chooseBook(content) {

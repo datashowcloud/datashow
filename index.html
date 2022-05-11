@@ -117,8 +117,8 @@
 		
 		
 		<div class="form-group" id="divGear" style="display:none;">
-			<hr><label align=left>1. Atalhos</label>
-			<br/><button id="btnAddStudent" class="btn btn-success" style="width:150px;"> <i class="fa fa-plus"></i> Adiciona Letra </button>
+			<hr>
+			<button id="btnAddStudent" class="btn btn-success" style="width:150px;"> <i class="fa fa-plus"></i> Adiciona Letra </button>
 			<button id="btnShowStudent" class="btn btn-danger" style="width:150px;"> <i class="fa fa-repeat"></i> Sincroniza Telas </button>
 			<br/><br/>
 			<button id="btnShowHelpTour" class="btn btn-warning" style="width:150px;"> <i class="fa fa-book"></i> Help Tutorial</button>
@@ -127,22 +127,14 @@
 			<button id="btnLogo" class="btn btn-default" style="width:150px;"><i class="fa fa-minus"></i> Logotipo</button>
 			<button id="btnFreeze" class="btn btn-info" style="width:150px;"> <i class="fa fa-lock"></i> Congela Tela 2</button>
 			
-			<hr><label align=left>2. Configuração padrão</label>
-			<br/><label style="color:#3333AA;">Nome (4 letras):</label>
-			<input type="text" size="16" id="config_myowner" maxlength="4" style="width:50px;" value="IIRF" placeholder="Digite aqui..." /> <!-- HOPE -->
-			<br/>
-			<label style="color:#3333AA;">Logo:</label>
-			<textarea type="text" size="16" id="config_mylogo" style="width:250px;" placeholder="Digite aqui..." />https://datashowcloud.github.io/datashow/logo/logo.png</textarea>
-			<br/>
-			<label style="color:#3333AA;">Fundo:</label>
-			<textarea type="text" size="16" id="config_myfundo" style="width:250px;" placeholder="Digite aqui..." />https://datashowcloud.github.io/datashow/gallery/fundo.jpeg</textarea>
-			<br/>
-			<button id="btnSalvarConfiguracao"> <i class="fa fa-check"></i> Atualizar Tela 1</button>
+			<hr>Nome Curto (padrão): <br/><input type="text" size="16" id="config_myowner" maxlength="4" style="width:50px;" value="IIRF" placeholder="Digite aqui..." /> <!-- HOPE -->
+			<br/>Logotipo (padrão): <br/><textarea type="text" size="16" id="config_mylogo" style="width:250px;" placeholder="Informe o logotipo aqui..." />logo/logo.png</textarea>
+			<br/>Fundo (padrão): <br/><textarea type="text" size="16" id="config_myfundo" style="width:250px;" placeholder="Informe a imagem de fundo aqui..." />gallery/fundo.jpeg</textarea>
+			<br/><button id="btnSalvarConfiguracao"> <i class="fa fa-check"></i> Atualizar Tela 1</button>
+
+			<hr><button id="btnDropDb" class="btn btn-info"> <i class="fa fa-remove"></i> Restaurar Padrão de Fábrica</button>
 			
-			<hr>
-			<br><button id="btnDropDb" class="btn btn-default"> <i class="fa fa-remove"></i> Reiniciar Padrão de Fábrica</button>
-			
-			<hr/><i>enio.francisco@gmail.com &#174; +55(11)95239-2000; v09.05.22.19.44</i>
+			<hr/><i>enio.francisco@gmail.com &#174; +55(11)95239-2000; v11.05.22.16.00</i>
 			<div style="display:none;">
 				<br/><button id="btnSelectCountAll" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-asterisk"></i> Count All</button>
 				<br/><button id="btnDeleteLirics" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-minus"></i> Clear Lirycs</button>
