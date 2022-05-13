@@ -129,6 +129,50 @@
 	</tr>
 	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator();"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
 
+	<tr><td> <hr> </td></tr>
+	<tr>
+		<td style="text-align:center;">
+			<b> 05. Which service allows for the collection and tracking of performance metrics for AWS services? </b>
+		</td>
+	</tr>
+	<tr>
+		<td> <input type=checkbox value="05a"> a) Amazon <a href="https://blog.estabil.is/aws-na-pratica-pontos-de-presenca/" target="_blank">CloudFront</a> </td>
+	</tr>
+	<tr>
+		<td> <input type=checkbox value="05b"> b) Amazon CloudSearch </td>
+	</tr>
+	<tr>
+		<td> <input type=checkbox value="05c"> c) Amazon <a href="https://aws.amazon.com/cloudwatch/" target="_blank">CloudWatch</a> </td>
+	</tr>
+	<tr>
+		<td> <input type=checkbox value="05d"> d) Amazon Machnhine Learning </td>
+	</tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator();"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr>
+		<td style="text-align:center;">
+			<b> 06. A company needs to know which user was responsible for terminating several critical Amazon Elastic Compute Cloud EC2 Instances. Where can the customer find this information? </b>
+		</td>
+	</tr>
+	<tr>
+		<td> <input type=checkbox value="06a"> a) AWS <a href="https://aws.amazon.com/pt/about-aws/whats-new/2020/05/aws-trusted-advisor-adds-5-cost-optimization-checks/" target="_blank">Trusted Advisor</a> </td>
+	</tr>
+	<tr>
+		<td> <input type=checkbox value="06b"> b) Amazon EC2 instance usage report </td>
+	</tr>
+	<tr>
+		<td> <input type=checkbox value="06c"> c) Amazon <a href="https://aws.amazon.com/cloudwatch/" target="_blank">CloudWatch</a> </td>
+	</tr>
+	<tr>
+		<td> <input type=checkbox value="06d"> d) Amazon <a href="https://aws.amazon.com/pt/cloudtrail/faqs/" target="_blank">Cloud Trail logs</a> </td>
+	</tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator();"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+
+
+
+
 
 
 	<tr><td> <hr> </td></tr>
@@ -204,7 +248,7 @@
 	
 	<tr><td> <hr> </td></tr>
 
-	<tr><td> <i>enio.francisco@gmail.com &#174; +55(11)95239-2000; v13.05.22.19.30</i> </td></tr>
+	<tr><td> <i>enio.francisco@gmail.com &#174; +55(11)95239-2000; v13.05.22.20.00</i> </td></tr>
 
 	<tr><td> <hr> </td></tr>
 </table>
@@ -223,28 +267,48 @@ function verResultadoSimulator(logo) {
 	}
 	array = '[' + array + ']';
 
-	var totalperguntas = 4;
 	var percentual = '0';
 	var corretas = '0';
 	var resp01a = '01a'; var resp01b = '01b'; var resp01c = '01c'; var resp01d = '01d'; var resp01e = '01e';
 	var resp02a = '02a'; var resp02b = '02b'; var resp02c = '02c'; var resp02d = '02d'; var resp02e = '02e';
 	var resp03a = '03a'; var resp03b = '03b'; var resp03c = '03c'; var resp03d = '03d'; var resp03e = '03e';
 	var resp04a = '04a'; var resp04b = '04b'; var resp04c = '04c'; var resp04d = '04d'; var resp04e = '04e';
+	var resp05a = '05a'; var resp05b = '05b'; var resp05c = '05c'; var resp05d = '05d'; var resp05e = '05e';
+	var resp06a = '06a'; var resp06b = '06b'; var resp06c = '06c'; var resp06d = '06d'; var resp06e = '06e';
 	
+	var totalperguntas = 1;
 	if (array.indexOf(resp01b, 0) > '0' && array.indexOf(resp01c, 0) > '0'
 	 && array.indexOf(resp01a, 0) < '0' && array.indexOf(resp01d, 0) < '0' && array.indexOf(resp01e, 0) < '0') {
 		corretas = parseInt(corretas) + 1;
 	}
+	
+	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp02b, 0) > '0'
 	 && array.indexOf(resp02a, 0) < '0' && array.indexOf(resp02c, 0) < '0' && array.indexOf(resp02d, 0) < '0' && array.indexOf(resp02e, 0) < '0') {
 		corretas = parseInt(corretas) + 1;
 	}
+	
+	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp03b, 0) > '0'
 	 && array.indexOf(resp03a, 0) < '0' && array.indexOf(resp03c, 0) < '0' && array.indexOf(resp03d, 0) < '0' && array.indexOf(resp03e, 0) < '0') {
 		corretas = parseInt(corretas) + 1;
 	}
+	
+	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp04c, 0) > '0'
 	 && array.indexOf(resp04a, 0) < '0' && array.indexOf(resp04b, 0) < '0' && array.indexOf(resp04d, 0) < '0' && array.indexOf(resp04e, 0) < '0') {
+		corretas = parseInt(corretas) + 1;
+	}
+	
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp05c, 0) > '0'
+	 && array.indexOf(resp05a, 0) < '0' && array.indexOf(resp05b, 0) < '0' && array.indexOf(resp05d, 0) < '0' && array.indexOf(resp05e, 0) < '0') {
+		corretas = parseInt(corretas) + 1;
+	}
+	
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp06d, 0) > '0'
+	 && array.indexOf(resp06a, 0) < '0' && array.indexOf(resp06b, 0) < '0' && array.indexOf(resp06c, 0) < '0' && array.indexOf(resp06e, 0) < '0') {
 		corretas = parseInt(corretas) + 1;
 	}
 	
@@ -264,9 +328,9 @@ function verResultadoSimulator(logo) {
 	}
 	if (responder.length > '0') {
 		if (responder.length < '3') {
-			alert('Responda a pergunta: ' + responder);
+//			alert('Responda a pergunta: ' + responder);
 		} else {
-			alert('Responda as perguntas: ' + responder);
+//			alert('Responda as perguntas: ' + responder);
 		}
 	}
 }
