@@ -21,29 +21,25 @@
 	<tr><td> <hr> </td></tr>
 
 	<tr>
-		<th style="text-align:center;">
-			Preparo para Certificação AWS Certified Cloud Practitioner
-		</th>
+		<th style="text-align:center;"> Preparo para Certificação AWS Certified Cloud Practitioner </th>
 	</tr>
 	<tr>
-		<td style="text-align:center;">
-			Cada simulado abaixo é um conjunto completo de perguntas 100% aderentes ao exame de Cetificação AWS Certified Cloud Practitioner.
-		</td>
+		<td style="text-align:center;"> Cada simulado abaixo é um conjunto completo de perguntas 100% aderentes ao exame de Cetificação AWS Certified Cloud Practitioner. </td>
 	</tr>
 	<tr>
-		<td style="text-align:center;">
-			É necessário obter nota mínima de 70% de acerto para ser aprovado.
-		</td>
+		<td style="text-align:center;"> É necessário obter nota mínima de 70% de acerto para ser aprovado. </td>
 	</tr>
 	<tr>
-		<td style="text-align:center;">
-			Atualmente o exame é realizado em Inglês.
-		</td>
+		<td style="text-align:center;"> Atualmente o exame é realizado em Inglês. </td>
 	</tr>
 	<tr>
-		<td style="text-align:center;">
-			Cada pergunta pode ter uma ou mais respostas.
-		</td>
+		<td style="text-align:center;"> Cada pergunta pode ter uma ou mais respostas. </td>
+	</tr>
+	<tr>
+		<td style="text-align:center;"> Os links explicam a resposta para a pergunta. </td>
+	</tr>
+	<tr>
+		<td style="text-align:center;"> No final do simulado tem o gabarito com todas respostas. </td>
 	</tr>
 
 	<tr><td> <hr> </td></tr>
@@ -251,20 +247,11 @@
 
 	<tr><td> <hr> </td></tr>
 
-	<tr> <td> <b> RESPOSTA 01: </b> b) e c) </td> </tr>
-	<tr> <td> <b> RESPOSTA 02: </b> b) </td> </tr>
-	<tr> <td> <b> RESPOSTA 03: </b> b) </td> </tr>
-	<tr> <td> <b> RESPOSTA 04: </b> c) </td> </tr>
-	<tr> <td> <b> RESPOSTA 05: </b> c) </td> </tr>
-	<tr> <td> <b> RESPOSTA 06: </b> d) </td> </tr>
-	<tr> <td> <b> RESPOSTA 07: </b> a) </td> </tr>
-	<tr> <td> <b> RESPOSTA 08: </b> a) </td> </tr>
-	<tr> <td> <b> RESPOSTA 09: </b> c) </td> </tr>
-	<tr> <td> <b> RESPOSTA 10: </b> d) </td> </tr>
+	<tr><td><button class="btn btn-success" onclick="verGabaritoSimulator();"> <i class="fa fa-check-square-o"></i> Ver Gabarito</button></td></tr>
 
 	<tr><td> <hr> </td></tr>
 
-	<tr><td> <i>enio.francisco@gmail.com &#174; +55(11)95239-2000; v14.05.22.00.00</i> </td></tr>
+	<tr><td> <i>enio.francisco@gmail.com &#174; +55(11)95239-2000; v14.05.22.22.30</i> </td></tr>
 
 	<tr><td> <hr> </td></tr>
 </table>
@@ -275,7 +262,23 @@
 </html>
 
 <script type="text/javascript">
-function verResultadoSimulator(logo) {
+function verGabaritoSimulator() {
+	var gabarito = '';
+	gabarito = ' RESPOSTAS CORRETAS:';
+	gabarito += '\n 01: b) e c)';
+	gabarito += '\n 02: b)';
+	gabarito += '\n 03: b)';
+	gabarito += '\n 04: c)';
+	gabarito += '\n 05: c)';
+	gabarito += '\n 06: d)';
+	gabarito += '\n 07: a)';
+	gabarito += '\n 08: a)';
+	gabarito += '\n 09: c)';
+	gabarito += '\n 10: d)';
+	alert(gabarito);
+}
+
+function verResultadoSimulator() {
 	var array = [];
 	var checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
 	for (var i = 0; i < checkboxes.length; i++) {
