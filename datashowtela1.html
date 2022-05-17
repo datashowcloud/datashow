@@ -108,18 +108,20 @@ window.onload = function(){
 
 	document.getElementById("textareaAutor").innerHTML = localStorage.getItem('valueAutor');
 	document.getElementById("logotipo").src = localStorage.getItem('valueLogo');
-	logoBig(localStorage.getItem('valueLogoBig'), localStorage.getItem('valueLogoHeightBig'), localStorage.getItem('valueLogoHeightMini'), localStorage.getItem('valueLogoLeftBigTela1'), localStorage.getItem('valueLogoLeftMini'));
+	logoBig(localStorage.getItem('valueLogoBig'), localStorage.getItem('valueLogoHeightBig'), localStorage.getItem('valueLogoHeightMini'), localStorage.getItem('valueLogoLeftBigTela1'), localStorage.getItem('valueLogoLeftMini'), localStorage.getItem('valueLogoTopBig'), localStorage.getItem('valueLogoTopMini'));
 	//plano de fundo
 	document.getElementById("videofundo").src = localStorage.getItem('valueVideoFundo');
 }
 
-function logoBig(valueLogoBig, valueLogoHeightBig, valueLogoHeightMini, valueLogoLeftBig, valueLogoLeftMini) {
+function logoBig(valueLogoBig, valueLogoHeightBig, valueLogoHeightMini, valueLogoLeftBig, valueLogoLeftMini, valueLogoTopBig, valueLogoTopMini) {
 	if (valueLogoBig == 'true') {
+		logotipo.style.top = valueLogoTopBig; //topo do logo
 		logotipo.style.height = valueLogoHeightBig; //tamanho do logo
 		logotipo.style.left = valueLogoLeftBig;
 		logotipo.style.bottom = '100px';
-		document.getElementById("textarea0").textContent = '';
+//		document.getElementById("textarea0").textContent = '';
 	} else if (valueLogoBig == 'false') {
+		logotipo.style.top = valueLogoTopMini; //topo do logo
 		logotipo.style.height = valueLogoHeightMini; //tamanho do logo
 		logotipo.style.left = valueLogoLeftMini;
 		logotipo.style.bottom = '0px'; //'100px';
@@ -181,7 +183,7 @@ function callback() {
 	//logotipo
 	document.getElementById("logotipo").src = localStorage.getItem('valueLogo');
 	//logotipo grande
-	logoBig(localStorage.getItem('valueLogoBig'), localStorage.getItem('valueLogoHeightBig'), localStorage.getItem('valueLogoHeightMini'), localStorage.getItem('valueLogoLeftBigTela1'), localStorage.getItem('valueLogoLeftMini'));
+	logoBig(localStorage.getItem('valueLogoBig'), localStorage.getItem('valueLogoHeightBig'), localStorage.getItem('valueLogoHeightMini'), localStorage.getItem('valueLogoLeftBigTela1'), localStorage.getItem('valueLogoLeftMini'), localStorage.getItem('valueLogoTopBig'), localStorage.getItem('valueLogoTopMini'));
 
 	setTimeout (function () {
 		//console.log ('Ei, espere meio segundo!');

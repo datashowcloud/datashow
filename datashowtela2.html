@@ -88,6 +88,7 @@
 	localStorage.setItem('valueAutor', 'nome author \n nome música');
 	localStorage.setItem('valueAoVivo', 'false');
 	localStorage.setItem('valueVideoPlay', 'false');
+	localStorage.setItem('valueLogoTopBig', '30%');
    JUST TESTS DEV */
 </script>
 
@@ -101,7 +102,7 @@ window.onload = function(){
 	}
 	document.getElementById("textareaAutor").innerHTML = localStorage.getItem('valueAutor');
 	document.getElementById("logotipo").src = localStorage.getItem('valueLogo');
-	logoBig(localStorage.getItem('valueLogoBig'), localStorage.getItem('valueLogoHeightBig'), localStorage.getItem('valueLogoHeightMini'), localStorage.getItem('valueLogoLeftBigTela2'), localStorage.getItem('valueLogoLeftMini'));
+	logoBig(localStorage.getItem('valueLogoBig'), localStorage.getItem('valueLogoHeightBig'), localStorage.getItem('valueLogoHeightMini'), localStorage.getItem('valueLogoLeftBigTela2'), localStorage.getItem('valueLogoLeftMini'), localStorage.getItem('valueLogoTopBig'), localStorage.getItem('valueLogoTopMini'));
 	//plano de fundo
 //	document.getElementById("videofundo").src = localStorage.getItem('valueVideoFundo');
 	
@@ -129,13 +130,15 @@ window.onload = function(){
 //	fullScreen();
 }
 
-function logoBig(valueLogoBig, valueLogoHeightBig, valueLogoHeightMini, valueLogoLeftBig, valueLogoLeftMini) {
+function logoBig(valueLogoBig, valueLogoHeightBig, valueLogoHeightMini, valueLogoLeftBig, valueLogoLeftMini, valueLogoTopBig, valueLogoTopMini) {
 	if (valueLogoBig == 'true') {
+		logotipo.style.top = valueLogoTopBig; //topo do logo
 		logotipo.style.height = valueLogoHeightBig; //tamanho do logo
 		logotipo.style.left = valueLogoLeftBig;
 		logotipo.style.bottom = '222px';
-		document.getElementById("textarea0").textContent = '';
+//		document.getElementById("textarea0").textContent = '';
 	} else if (valueLogoBig == 'false') {
+		logotipo.style.top = valueLogoTopMini; //topo do logo
 		logotipo.style.height = valueLogoHeightMini; //tamanho do logo
 		logotipo.style.left = valueLogoLeftMini;
 		logotipo.style.bottom = '0px'; //'100px';
@@ -214,7 +217,7 @@ function callback() {
 		//logotipo
 		document.getElementById("logotipo").src = localStorage.getItem('valueLogo');
 		//logotipo grande
-		logoBig(localStorage.getItem('valueLogoBig'), localStorage.getItem('valueLogoHeightBig'), localStorage.getItem('valueLogoHeightMini'), localStorage.getItem('valueLogoLeftBigTela2'), localStorage.getItem('valueLogoLeftMini'));
+		logoBig(localStorage.getItem('valueLogoBig'), localStorage.getItem('valueLogoHeightBig'), localStorage.getItem('valueLogoHeightMini'), localStorage.getItem('valueLogoLeftBigTela2'), localStorage.getItem('valueLogoLeftMini'), localStorage.getItem('valueLogoTopBig'), localStorage.getItem('valueLogoTopMini'));
 	}
 	setTimeout (function () {
 		//console.log ('Ei, espere meio segundo!');

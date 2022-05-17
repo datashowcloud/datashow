@@ -13,17 +13,24 @@
     <script src="scripts/jsstore.js"></script>
     <script src="scripts/jsstore.worker.js"></script>
     <script src="scripts/index.js"></script>
-	<style></style>
+	<style>
+#myBody {
+  border: 0px dashed blue;
+  padding: 25px;
+  background-attachment: fixed;
+  background-position: top; 
+  background-repeat: no-repeat;
+} 
+	</style>
 </head>
 
-<body>
+<body id="myBody" background="gallery/paper.jpeg">
 
     <div class="row row-centered " style="margin-top:10px; ">
         
 		
 		<div class="col-xs-12 col-sm-10 col-centered ">
 			<table border=0 align=center><tr><td>
-
 					<label style="font-size:30px; color:green;">DA</label>
 					<label style="font-size:30px; color:#FFD700;">TA</label>
 					<label style="font-size:30px; color:#3333AA;">SHOW &#174;</label>
@@ -66,17 +73,7 @@
 			</tbody>
 		</table>
 
-
-
 		<div id="divcontent" style="display:none;">
-			<br/>
-			<textarea id="contents" style="width:80%;" rows=15 placeholder="Use <p> para separar várias letras de música diferentes. Logo abaixo do <p> deve conter a identificação da letra, exemplo: autor e título."></textarea>
-			<br/>
-			<!-- button id="btnImportBible" class="btn btn-default" style="padding:9px 15px 9px 15px;"> <i class="fa fa-plus"></i> Abrir Bíblia</button -->
-			<!-- button id="btnImport" class="btn btn-default" style="padding:9px 15px 9px 15px;"> <i class="fa fa-plus"></i> Abrir Letras</button -->
-			<!-- button id="btnImportArt" class="btn btn-default" style="padding:9px 15px 9px 15px;"> <i class="fa fa-plus"></i> Imagem e Vídeo</button -->
-			<button id="btnConfirmImport" class="btn btn-success" style="padding:9px 15px 9px 15px;"> <i class="fa fa-check"></i> Salvar</button>
-			<button id="btnCancelImport" class="btn btn-info" style="padding:9px 15px 9px 15px;"> <i class="fa fa-times"></i> Fechar</button>
 		</div>
 
 		
@@ -119,23 +116,30 @@
 		
 		<div class="form-group" id="divGear" style="display:none;">
 			<hr>
-			<button id="btnAddStudent" class="btn btn-success" style="width:150px;"> <i class="fa fa-plus"></i> Adiciona Letra </button>
 			<button id="btnShowStudent" class="btn btn-danger" style="width:150px;"> <i class="fa fa-repeat"></i> Sincroniza Telas </button>
+			<button id="btnShowHelp" class="btn btn-warning" style="width:150px;"> <i class="fa fa-book"></i> Tutorial</button>
 			<br/><br/>
-			<button id="btnShowHelpTour" class="btn btn-warning" style="width:150px;"> <i class="fa fa-book"></i> Help Tutorial</button>
-			<button id="btnShowHelpConfig" class="btn btn-warning" style="width:150px;"> <i class="fa fa-book"></i> Help Configuração</button>
-			<br/><br/>
-			<button id="btnLogo" class="btn btn-default" style="width:150px;"><i class="fa fa-minus"></i> Logotipo</button>
 			<button id="btnFreeze" class="btn btn-info" style="width:150px;"> <i class="fa fa-lock"></i> Congela Tela 2</button>
+			<button id="btnLogo" class="btn btn-success" style="width:150px;"> <i class="fa fa-minus"></i> Logotipo</button>
+			<br/><br/>
+			<!-- button id="btnAddStudent" class="btn btn-datashow" style="width:150px;"> <i class="fa fa-plus"></i> Adiciona Letra </button -->
 			
-			<hr>Nome Curto (padrão): <br/><input type="text" size="16" id="config_myowner" maxlength="4" style="width:50px;" value="IIRF" placeholder="Digite aqui..." /> <!-- HOPE -->
-			<br/>Logotipo (padrão): <br/><textarea type="text" size="16" id="config_mylogo" style="width:250px;" placeholder="Informe o logotipo aqui..." />logo/logo.png</textarea>
-			<br/>Fundo (padrão): <br/><textarea type="text" size="16" id="config_myfundo" style="width:250px;" placeholder="Informe a imagem de fundo aqui..." />gallery/fundo.jpeg</textarea>
-			<br/><button id="btnSalvarConfiguracao"> <i class="fa fa-check"></i> Atualizar Tela 1</button>
+			<form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post">
+				<hr/>
+				<textarea name="contents" id="contents" style="width:90%;" rows=10 placeholder="Use <p> para separar várias letras de música diferentes. Logo abaixo do <p> deve conter a identificação da letra, exemplo: autor e título."></textarea>
+				<br/><button id="btnConfirmImport" class="btn btn-info" style="padding:9px 15px 9px 15px;"> <i class="fa fa-plus"></i> Adicionar</button>
+				<br/>
+				<hr>Nome Curto: <br/><input type="text" name="config_myowner" size="16" id="config_myowner" maxlength="4" style="width:50px;" value="IIRF"/> <!-- HOPE -->
+				<br>Plano de Fundo: <br/><textarea type="text" name="config_myfundo" id="config_myfundo" size="16" style="width:250px;" />gallery/fundo.jpeg</textarea>
+				<br>Logotipo: <br/><textarea type="text" name="config_mylogo" id="config_mylogo" size="16" style="width:250px;" />logo/logo.png</textarea>
+			</form>
 
-			<hr><button id="btnDropDb" class="btn btn-info"> <i class="fa fa-remove"></i> Restaurar Padrão de Fábrica</button>
+			<hr><button id="btnDropDb" class="btn btn-info" style="padding:9px 15px 9px 15px;"> <i class="fa fa-remove"></i> Restaurar Padrão de Fábrica</button>
+			<button id="btnCancelImport" class="btn btn-info" style="padding:9px 15px 9px 15px;"> <i class="fa fa-times"></i> Fechar</button>			
 			
-			<hr/><i>enio.francisco@gmail.com &#174; +55(11)95239-2000; v13.05.22.19.00</i>
+			<hr/><i>enio.francisco@gmail.com &#174; +55(11)95239-2000; v17.05.22.15.00</i>
+			<hr/>
+			
 			<div style="display:none;">
 				<br/><button id="btnSelectCountAll" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-asterisk"></i> Count All</button>
 				<br/><button id="btnDeleteLirics" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-minus"></i> Clear Lirycs</button>
@@ -502,6 +506,7 @@
 
 
     <link href="style/main.css " rel="stylesheet " type="text/css " />
+
 </body>
 
 </html>

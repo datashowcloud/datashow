@@ -23,6 +23,8 @@ window.onload = function () {
 	localStorage.setItem('valueLogoLeftBigTela1', '15%');
 	localStorage.setItem('valueLogoLeftBigTela2', '30%');
 	localStorage.setItem('valueLogoLeftMini', '0px');
+	localStorage.setItem('valueLogoTopBig', '30%');
+	localStorage.setItem('valueLogoTopMini', '75%');
 */
 	localStorage.setItem('valueMyowner', 'iirf');
 	localStorage.setItem('valueLogoHeightBig', '60%');
@@ -30,6 +32,8 @@ window.onload = function () {
 	localStorage.setItem('valueLogoLeftBigTela1', '30%');
 	localStorage.setItem('valueLogoLeftBigTela2', '30%');
 	localStorage.setItem('valueLogoLeftMini', '0px');
+	localStorage.setItem('valueLogoTopBig', '40%');
+	localStorage.setItem('valueLogoTopMini', '75%');
 };
 
 async function initDb() {
@@ -208,6 +212,7 @@ function registerEvents() {
 		} else if (event.keyCode == 27 || event.which == 27) { //ESC
 			$('#txtSearch').focus();
 			$('#txtSearch').select();
+			freezeDataShow('true');
 		}
     })
 
@@ -230,6 +235,11 @@ function registerEvents() {
 		window.close();
 		var DataShow_Config = window.open("config.html", "datashowconfig", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
 		var DataShow_ConfigResult = window.open("configresult.html", "datashowconfigresult");
+		datashowconfigresult.focus();
+	})
+    $('#btnCertifications').click(function () {
+		window.close();
+		var DataShow_Tests = window.open("certifications.html", "datashowcertifications");
 		datashowconfigresult.focus();
 	})
 
@@ -275,13 +285,21 @@ function registerEvents() {
 		openFile(dispFile);
     })
     $('#btnConfirmImport').click(function () {
-		var result = confirm('Não feche esta página (X). \nNão atualize esta página (F5).');
+		var result = confirm('Confirma?');
 		if (result) {
-			var group = document.getElementById('selMycodeTextGroup').value.trim();
-			confirmImport('contents', group);
-//			alert(confirmImportSuccessfull);
+			try {
+				var group = document.getElementById('selMycodeTextGroup').value.trim();
+				confirmImport('contents', group);
+				localStorage.setItem('valueLogo', document.getElementById('config_mylogo').value);
+				localStorage.setItem('valueVideoFundo', document.getElementById('config_myfundo').value);
+				alert('Clique no link "Go back" na próxima página.');
+				document.getElementById("formAdd").submit();
+			} catch (ex) {
+				alert(ex.message);
+			}
 		}
     })
+	
     $('#btnConfigForward').click(function () {
 		var result = confirm('Confirma configuração automática? \n\nNão faça nada. Aguarde alguns segundos...');
 		if (result) {
@@ -318,8 +336,8 @@ function registerEvents() {
         showForm1Form2();
 		showGridAndHideForms();
     })
-    $('#btnShowHelpTour').click(function () {
-		var DataShow_Help = window.open("help/helptour.pdf", "datashowhelp", "top=100, width=1100, height=10000, left=0, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
+    $('#btnShowHelp').click(function () {
+		var DataShow_Help = window.open("help/help.pdf", "datashowhelp", "top=100, width=1100, height=10000, left=0, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
     })
     $('#btnShowHelpConfig').click(function () {
 		var DataShow_Help = window.open("help/helpconfig.pdf", "datashowhelp", "top=100, width=1100, height=10000, left=0, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
@@ -333,11 +351,6 @@ function registerEvents() {
             addStudentImport(group);
         }
     });
-    $('#btnSalvarConfiguracao').click(function () {
-		localStorage.setItem('valueLogo', document.getElementById('config_mylogo').value);
-		localStorage.setItem('valueVideoFundo', document.getElementById('config_myfundo').value);
-    })
-	
     $('#tblGrid tbody').on('click', '.edit', function () {
 		var row = $(this).parents().eq(1);
         var child = row.children();
@@ -368,6 +381,23 @@ function registerEvents() {
     $('#tblGrid tbody').on('click', '.videoplaypause', function () {
 		videoPlayPause();
     });
+	
+    $('#tblGrid tbody').on('click', '.simulator', function () {
+		var row = $(this).parents().eq(1);
+        var child = row.children();
+		var id = row.attr('itemid');
+		var mysim = child.eq(2).text();
+		alert(mysim);
+    });
+	$('#btnSimulator').click(function () {
+		var array = [];
+		var checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+		for (var i = 0; i < checkboxes.length; i++) {
+		  array.push(checkboxes[i].value);
+		}
+		alert(array);
+    });
+	
 	$('#btnGear').click(function () {
 		if (document.getElementById('divGear').style.display == 'none') {
 			showFormGear();
@@ -486,7 +516,7 @@ async function dropdb() {
 		jsstoreCon.dropDb().then(function() {
 			console.log('Db deleted successfully');
 			refreshTableData();
-//			alert('successfull');
+			alert('successfull');
 		}).catch(function(error) {
 			console.log(error);
 		});;
@@ -522,7 +552,7 @@ async function refreshTableResult() {
 		if (students == '0') {
 			var labelStudents = "<label class=\"btn btn-info\" style=\"width:200px; \"> Textos: " + students + "</label>";
 		} else if (students > '0' && students < '10830') {
-			var labelStudents = "<label class=\"btn btn-info\" style=\"width:200px; \"> Textos: " + students + " de ~10830 </label>";
+			var labelStudents = "<label class=\"btn btn-info\" style=\"width:200px; \"> Textos: " + students + " de ~10892 </label>";
 		} else {
 			var labelStudents = "<label class=\"btn btn-default\" style=\"width:200px; \"> Textos: " + students + " <i class=\"fa fa-check\"></i></label>";
 		}
@@ -542,11 +572,11 @@ async function refreshTableResult() {
 			from: 'TypeData'
 		});
 		if (typedata == '0') {
-			var labelTypeData = "<label class=\"btn btn-info\" style=\"width:200px; \"> Licença: " + typedata + "</label>";
+			var labelTypeData = "<label class=\"btn btn-info\" style=\"width:200px; \"> Licenças: " + typedata + "</label>";
 		} else if (typedata > '0' && typedata < '2') {
-			var labelTypeData = "<label class=\"btn btn-info\" style=\"width:200px; \"> Licença: " + typedata + " de ~2 </label>";
+			var labelTypeData = "<label class=\"btn btn-info\" style=\"width:200px; \"> Licenças: " + typedata + " de ~2 </label>";
 		} else {
-			var labelTypeData = "<label class=\"btn btn-default\" style=\"width:200px; \"> Licença: " + typedata + " <i class=\"fa fa-check\"></i></label>";
+			var labelTypeData = "<label class=\"btn btn-default\" style=\"width:200px; \"> Licenças: " + typedata + " <i class=\"fa fa-check\"></i></label>";
 		}
 		
 		var buttonFechar = "";
@@ -703,6 +733,7 @@ async function confirmImport(contents, group) {
 				}
 */
 				var mytext = valor.substring(posicao, nextpos).trim();
+				mytext = mytext.replaceAll('<br>', ''); //altera o <br> para ENTER (quebra de linha no mersmo texto)
 //				var group = document.getElementById('selMycodeTextGroup').value.trim();
 				//alert('mycode='+mycode + ' myorder='+myorder + ' group='+group + ' myrepeated='+myrepeated + ' mytext='+mytext);
 				setStudentFromImport(mycode, myorder, mytext, group, myrepeated);
@@ -888,18 +919,18 @@ async function refreshTableData() {
 				htmlString += "</td><td></td>"
 				htmlString += "</tr>"
 				varTdTh = 'th';
-				varOff = "<i class=\"fa fa-stop\" style=\"color:#000000;\"></i>&nbsp;";
+//				varOff = "<i class=\"fa fa-stop\" style=\"color:#000000;\"></i>&nbsp;";
+				varOff = "<img src=\"logo/logo.png\" style=\"width:30px;\"></img>";
 				varFav = "<td> <!--i class=\"fa fa-heart\" style=\"color:#3333AA;\"></i --> </td>";
 				varEdit = "<td><i class=\"fa fa-edit\"></i></td>";
 				varDel = "<td><a href=\"#\" class=\"delete\" style=\"color:#777777;\"> <i class=\"fa fa-times\" style=\"color:red;\"></i> </a></td>";
 			} else {
 				varTdTh = 'td';
-				varOff = "<a href=\"#\" class=\"favorite\" style=\"color:#000000;\"> </a>";
+				varOff = "<a href=\"#\" class=\"favorite\" style=\"color:#000000;\"><img src=\"logo/logo.png\" style=\"width:30px;\"></img>";
 				varFav = "<td><a href='#' class=\"favorite\" style=\"color:blue;\"> </a></td>";
 				varEdit = "<td><a href=\"#\" class=\"edit\"> <i class=\"fa fa-edit\"></i> </a></td>";
                 varDel = "<td><a href=\"#\" class=\"delete\" style=\"color:#777777;\">Del</a></td>";
 			}
-//			varEdit = "<a href=\"#\" class=\"edit\" style=\"color:blue; font-size:25px;\">...</a>";
 			
 			var mytext = student.mytext;
 			var txtsearch = removeSpecials(document.getElementById('txtSearch').value);
@@ -912,7 +943,7 @@ async function refreshTableData() {
 				var diff = parseInt(mytext.substring(0, posIni+txtsearch.length).length) - parseInt(removeSpecials(mytext.substring(0, posIni+txtsearch.length)).length);
 				posIni = posIni + parseInt(diff);
 				mytextBold = mytext.substring(0, posIni)
-				+ '<b style="background-color:#EEEEEE; color:black;">' //#5bc0de
+				+ '<b style="background-color:#EEEEEE; color:black;">'
 				+ mytext.substring(posIni, posIni+txtsearch.length)
 				+ '</b>'
 				+ mytext.substring(posIni+txtsearch.length);
@@ -923,12 +954,11 @@ async function refreshTableData() {
 			htmlString += "<tr ItemId=" + student.id + ">"
                 + "<td style=\"color:white; font-size:1px;\">" + student.mycode + "</td>"
                 + "<td style=\"color:white; font-size:1px;\">" + student.myorder + "</td>"
-				+ "<" + varTdTh + " id=datashow" + student.id+"1" + " tabIndex=" + student.id+"1" + " onClick=\"datashow('" + student.id+"1" + "', 1, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 1, event, " + "" + (student.id+"1") + ");\" data-show='" + student.id+"1" + "'>" + mytextBold + "</" + varTdTh + ">"
+				+ "<" + varTdTh + " id=datashow" + student.id+"1" + " tabIndex=" + student.id+"1" + " onClick=\"datashow('" + student.id+"1" + "', 2, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 2, event, " + "" + (student.id+"1") + ");\" data-show='" + student.id+"1" + "'>" + mytextBold + "</" + varTdTh + ">"
 //				+ "<td>" + student.mysearch + "</td>"
-				+ "<td id=datashow" + (student.id+"2") + " tabIndex=" + (student.id+"2") + " onClick=\"datashow('" + (student.id+"2") + "', 1, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 1, event, " + "" + (student.id+"2") + ");\" data-show='" + (student.id+"2") + "'>" 
+				+ "<td id=datashow" + (student.id+"2") + " tabIndex=" + (student.id+"2") + " onClick=\"datashow('" + (student.id+"2") + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"2") + ");\" data-show='" + (student.id+"2") + "'>" 
 				+ varOff + "</td>"
 				+ varEdit;
-//				+ "<td id=datashow" + (student.id+"3") + " tabIndex=" + (student.id+"3") + " onClick=\"datashow('" + (student.id+"3") + "', 1, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 1, event, " + "" + (student.id+"3") + ");\" data-show='" + (student.id+"3") + "'> </td>"
 		})
 		if (htmlString.length > 0) {
 			htmlString += "</tr>"
@@ -1328,6 +1358,36 @@ function removeSpecials(search) {
 	return search;
 }
 
+function removeEspecialsCommands(valueText) {
+	if (valueText.substring(0, 1) == '#' 
+	 || valueText.substring(0, 3).toLowerCase() == 'off'
+	 || valueText.substring(0, 3).toLowerCase() == 'del'
+	 || valueText.substring(0, 4).toLowerCase() == 'edit') { //comando # no campo Search não precisa ser exibido
+		valueText = '';
+	} else {
+		var posIni = '0';
+		var posFim = '0';
+		var valor = '';
+		for (var index=0; index<=valueText.length; index++) {
+			posIni = valueText.indexOf('<', posIni);
+			posFim = valueText.indexOf('>', posIni);
+			posFim = posFim+1;
+			if (posIni<0 || posFim<0) {
+				index = valueText.length+1;
+			} else {
+				var find = valueText.substring(posIni, posFim);
+				valueText = valueText.replaceAll(find, '');
+			}
+			posIni = -1;
+			posFim = -1;
+		}
+		valueText = valueText.replaceAll('<', ''); //garante que não sobrou comandos no texto
+		valueText = valueText.replaceAll('&nbsp;', '');
+		valueText = valueText.replaceAll('&amp;', '&');
+	}
+	return valueText;
+}
+
 function clickElem(elem) {
 	var eventMouse = document.createEvent("MouseEvents")
 	eventMouse.initMouseEvent("click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
@@ -1366,7 +1426,10 @@ function dispFile(contents) {
 }
 
 function moveCursor(mycode, col, evento, index) {
-	if (evento.keyCode == 13 || event.which == 13) {
+	if (evento.keyCode == 13 || event.which == 13) { //ENTER
+		if (col == 3) {
+			showLogo();
+		}
 		freezeDataShow('false');
 		if (localStorage.getItem('valueAoVivo') == 'true') {
 			setColor(index, localStorage.getItem('valueAoVivo'));
@@ -1401,32 +1464,6 @@ function moveCursor(mycode, col, evento, index) {
 	}
 }
 
-function removeEspecialsCommands(valueText) {
-	if (valueText.substring(0, 1) == '#' 
-	 || valueText.substring(0, 3).toLowerCase() == 'off'
-	 || valueText.substring(0, 3).toLowerCase() == 'del'
-	 || valueText.substring(0, 4).toLowerCase() == 'edit') { //comando # no campo Search não precisa ser exibido
-		valueText = '';
-	} else {
-		valueText = valueText.replaceAll('<i class=\"fa fa-stop\" style=\"color:#000000;\"></i>', '');
-		valueText = valueText.replaceAll('<i class=\"fa fa-edit\" style=\"color:blue;\"></i>', '');
-		valueText = valueText.replaceAll('<b style="background-color:#EEEEEE; color:green;">', '');
-		valueText = valueText.replaceAll('<b style="background-color:#EEEEEE; color:black;">', '');
-		valueText = valueText.replaceAll('<b style="background-color:#fff; color:#5bc0de;">', '');
-		valueText = valueText.replaceAll('<a href=\"#\" class=\"favorite\" style=\"color:#000000;\">Off</a>', '');
-		valueText = valueText.replaceAll('<a href=\"#\" class=\"edit\" style=\"color:blue; font-size:25px;\">...</a>', '');
-		valueText = valueText.replaceAll('<a href=\"#\" class=\"favorite\" style=\"color:#000000;\"> </a>', '');
-
-		valueText = valueText.replaceAll('</b>', '');
-		valueText = valueText.replaceAll('&nbsp;', '');
-		valueText = valueText.replaceAll('&amp;', '&');
-		
-		valueText = valueText.replaceAll('<b>', '');
-		valueText = valueText.replaceAll('<', ''); //garante que não sobrou comandos no texto
-	}
-	return valueText;
-}
-
 //https://www.ti-enxame.com/pt/jquery/use-setas-para-navegar-em-uma-tabela-html/1046534083/
 function datashow(index, col, code) {
 	if (document.getElementById('datashow' + index) == null) { //não permite mover o foco para fora da tabela
@@ -1443,8 +1480,8 @@ function datashow(index, col, code) {
 		document.getElementById('txtSearch').value = removeSpecials(code.trim());
 		refreshTableData();
 	} else {
-		localStorage.setItem('valueLogoBig', 'true');
-		showLogo();
+//		localStorage.setItem('valueLogoBig', 'true');
+//		showLogo();
 	}
 
 	localStorage.setItem('valueAutor', ' ');
@@ -1514,6 +1551,10 @@ function chooseChapter(content) {
 function setPlanoFundo() {
 	localStorage.setItem('valueVideoFundo', localStorage.getItem('valueText'));
 	setCookie('valueVideoFundo', localStorage.getItem('valueText'), '1');
+}
+
+function aoClicar(endereco) {
+	var DataShow_Link = window.open(endereco, "datashowlink");
 }
 
 function desceJanela() {
