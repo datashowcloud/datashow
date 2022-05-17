@@ -24,23 +24,24 @@
 
 <body id="myBody" background="gallery/paper.jpeg">
 
+<form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post">
+	<input type="text" hidden="" name="resultado" value="" />
+	<input type="text" hidden="" name="config_myowner" value="IIRF" />
+</form>
+
 <table border=0 width=98% align=center>
 
 	<tr> <td style="text-align:center;"> </td> </tr>
-	<tr> <th style="text-align:center;"> <button class="btn btn-success">Preparo para Certificação AWS Certified Cloud Practitioner</button> </th> </tr>
-	<tr> <td style="text-align:center;"> Cada simulado abaixo é um conjunto completo de perguntas 100% aderentes ao exame de Cetificação AWS Certified Cloud Practitioner. </td> </tr>
-	<tr> <td style="text-align:center;"> É necessário obter nota mínima de 70% de acerto para ser aprovado. </td> </tr>
-	<tr> <td style="text-align:center;"> Cada pergunta pode ter uma ou mais respostas. </td> </tr>
-	<tr> <td style="text-align:center;"> Os links explicam a resposta para a pergunta. </td> </tr>
-	<tr> <td style="text-align:center;"> No final do simulado tem o gabarito com todas respostas. </td> </tr>
-	<tr> <td style="text-align:center;"> </td> </tr>
-	<tr> <td style="text-align:center;"> </td> </tr>
+	<tr> <th style="text-align:center;"> <label class="btn btn-success">Estudo para Certificação AWS Certified Cloud Practitioner</label> </th> </tr>
+	<tr> <td style="text-align:center;"> Obtenha nota mínima de 70% de acerto para ser aprovado. </td> </tr>
+	<tr> <td style="text-align:center;"> Cada pergunta pode ter mais de uma resposta. </td> </tr>
+	<tr> <td style="text-align:center;"> Observe os links (<u>link</u>) explicando cada resposta. </td> </tr>
 
 	<tr><td> <hr> </td></tr>
 	<tr> <td style="text-align:center;"> <b> 01. Which AWS services can be used to store files? </b> </td> </tr>
 	<tr> <td> <input type=checkbox value="01a"> a) Amazon CloudWatch </td> </tr>
-	<tr> <td> <input type=checkbox value="01b"> b) Amazon Simple Storage Service - <a href="https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/Welcome.html" target="_blank">S3</a> </td> </tr>
-	<tr> <td> <input type=checkbox value="01c"> c) Amazon Elastic Block Store - <a href="https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/AmazonEBS.html" target="_blank">EBS</a> </td> </tr>
+	<tr> <td> <input type=checkbox value="01b"> b) Amazon Simple Storage Service - S3 (<a href="https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/Welcome.html" target="_blank">link</a>) </td> </tr>
+	<tr> <td> <input type=checkbox value="01c"> c) Amazon Elastic Block Store - EBS (<a href="https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/AmazonEBS.html" target="_blank">link</a>) </td> </tr>
 	<tr> <td> <input type=checkbox value="01d"> d) AWS Config </td> </tr>
 	<tr> <td> <input type=checkbox value="01e"> e) Amazon Athena </td> </tr>
 	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator();"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
@@ -48,10 +49,9 @@
 	<tr><td> <hr> </td></tr>
 	<tr> <td style="text-align:center;"> <b> 02. Which of the following services uses AWS Edge Locations? </b> </td> </tr>
 	<tr> <td> <input type=checkbox value="02a"> a) Amazon Virtual Private Cloud - VPC </td> </tr>
-	<tr> <td> <input type=checkbox value="02b"> b) Amazon <a href="https://blog.estabil.is/aws-na-pratica-pontos-de-presenca/" target="_blank">CloudFront</a> </td> </tr>
+	<tr> <td> <input type=checkbox value="02b"> b) Amazon CloudFront (<a href="https://blog.estabil.is/aws-na-pratica-pontos-de-presenca/" target="_blank">link</a>) </td> </tr>
 	<tr> <td> <input type=checkbox value="02c"> c) Amazon Elastic Compute Cloud - EC2 </td> </tr>
 	<tr> <td> <input type=checkbox value="02d"> d) AWS Storage Gateway </td> </tr>
-	<tr> <td>&nbsp;</td> </tr>
 	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator();"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
 
 	<tr><td> <hr> </td></tr>
@@ -60,43 +60,38 @@
 	<tr> <td> <input type=checkbox value="03b"> b) Paying only for what you used </td> </tr>
 	<tr> <td> <input type=checkbox value="03c"> c) The ability to choose hardware vendors </td> </tr>
 	<tr> <td> <input type=checkbox value="03d"> d) Root / Administrator Access </td> </tr>
-	<tr> <td>&nbsp;</td> </tr>
 	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator();"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
 
 	<tr><td> <hr> </td></tr>
 	<tr> <td style="text-align:center;"> <b> 04. Which AWS service provides infrastructure security optimization recommendation? </b> </td> </tr>
 	<tr> <td> <input type=checkbox value="04a"> a) AWS Application Programming Interface </td> </tr>
 	<tr> <td> <input type=checkbox value="04b"> b) Reserved Instances </td> </tr>
-	<tr> <td> <input type=checkbox value="04c"> c) AWS <a href="https://aws.amazon.com/pt/about-aws/whats-new/2020/05/aws-trusted-advisor-adds-5-cost-optimization-checks/" target="_blank">Trusted Advisor</a> </td> </tr>
+	<tr> <td> <input type=checkbox value="04c"> c) AWS Trusted Advisor (<a href="https://aws.amazon.com/pt/about-aws/whats-new/2020/05/aws-trusted-advisor-adds-5-cost-optimization-checks/" target="_blank">link</a>) </td> </tr>
 	<tr> <td> <input type=checkbox value="04d"> d) Amazon Elastic Compute Cloud - Spot Fleet </td> </tr>
-	<tr> <td>&nbsp;</td> </tr>
 	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator();"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
 
 	<tr><td> <hr> </td></tr>
 	<tr> <td style="text-align:center;"> <b> 05. Which service allows for the collection and tracking of performance metrics for AWS services? </b> </td> </tr>
-	<tr> <td> <input type=checkbox value="05a"> a) Amazon <a href="https://blog.estabil.is/aws-na-pratica-pontos-de-presenca/" target="_blank">CloudFront</a> </td> </tr>
+	<tr> <td> <input type=checkbox value="05a"> a) Amazon CloudFront (<a href="https://blog.estabil.is/aws-na-pratica-pontos-de-presenca/" target="_blank">link</a>) </td> </tr>
 	<tr> <td> <input type=checkbox value="05b"> b) Amazon CloudSearch </td> </tr>
-	<tr> <td> <input type=checkbox value="05c"> c) Amazon <a href="https://aws.amazon.com/cloudwatch/" target="_blank">CloudWatch</a> </td> </tr>
+	<tr> <td> <input type=checkbox value="05c"> c) Amazon CloudWatch (<a href="https://aws.amazon.com/cloudwatch/" target="_blank">link</a>) </td> </tr>
 	<tr> <td> <input type=checkbox value="05d"> d) Amazon Machnhine Learning </td> </tr>
-	<tr> <td>&nbsp;</td> </tr>
 	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator();"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
 
 	<tr><td> <hr> </td></tr>
 	<tr> <td style="text-align:center;"> <b> 06. A company needs to know which user was responsible for terminating several critical Amazon Elastic Compute Cloud EC2 Instances. Where can the customer find this information? </b> </td> </tr>
-	<tr> <td> <input type=checkbox value="06a"> a) AWS <a href="https://aws.amazon.com/pt/about-aws/whats-new/2020/05/aws-trusted-advisor-adds-5-cost-optimization-checks/" target="_blank">Trusted Advisor</a> </td> </tr>
+	<tr> <td> <input type=checkbox value="06a"> a) AWS Trusted Advisor (<a href="https://aws.amazon.com/pt/about-aws/whats-new/2020/05/aws-trusted-advisor-adds-5-cost-optimization-checks/" target="_blank">link</a>) </td> </tr>
 	<tr> <td> <input type=checkbox value="06b"> b) Amazon EC2 instance usage report </td> </tr>
-	<tr> <td> <input type=checkbox value="06c"> c) Amazon <a href="https://aws.amazon.com/cloudwatch/" target="_blank">CloudWatch</a> </td> </tr>
-	<tr> <td> <input type=checkbox value="06d"> d) Amazon <a href="https://aws.amazon.com/pt/cloudtrail/faqs/" target="_blank">Cloud Trail logs</a> </td> </tr>
-	<tr> <td>&nbsp;</td> </tr>
+	<tr> <td> <input type=checkbox value="06c"> c) Amazon CloudWatch (<a href="https://aws.amazon.com/cloudwatch/" target="_blank">link</a>) </td> </tr>
+	<tr> <td> <input type=checkbox value="06d"> d) Amazon Cloud Trail logs (<a href="https://aws.amazon.com/pt/cloudtrail/faqs/" target="_blank">link</a>) </td> </tr>
 	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator();"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
 
 	<tr><td> <hr> </td></tr>
 	<tr> <td style="text-align:center;"> <b> 07. Which services should an administrator use to register a new domain name with AWS?</b> </td> </tr>
-	<tr> <td> <input type=checkbox value="07a"> a) Amazon <a href="https://docs.aws.amazon.com/pt_br/Route53/latest/DeveloperGuide/Welcome.html" target="_blank">Route 53</a> </td> </tr>
-	<tr> <td> <input type=checkbox value="07b"> b) Amazon <a href="https://blog.estabil.is/aws-na-pratica-pontos-de-presenca/" target="_blank">CloudFront</a> </td> </tr>
-	<tr> <td> <input type=checkbox value="07c"> c) <a href="https://docs.aws.amazon.com/pt_br/elasticloadbalancing/latest/userguide/what-is-load-balancing.html" target="_blank">Elastic Load Balancing</a> </td> </tr>
+	<tr> <td> <input type=checkbox value="07a"> a) Amazon Route 53 (<a href="https://docs.aws.amazon.com/pt_br/Route53/latest/DeveloperGuide/Welcome.html" target="_blank">link</a>) </td> </tr>
+	<tr> <td> <input type=checkbox value="07b"> b) Amazon CloudFront (<a href="https://blog.estabil.is/aws-na-pratica-pontos-de-presenca/" target="_blank">link</a>) </td> </tr>
+	<tr> <td> <input type=checkbox value="07c"> c) Elastic Load Balancing (<a href="https://docs.aws.amazon.com/pt_br/elasticloadbalancing/latest/userguide/what-is-load-balancing.html" target="_blank">link</a>) </td> </tr>
 	<tr> <td> <input type=checkbox value="07d"> d) Amazon Private Cloud - VPC </td> </tr>
-	<tr> <td>&nbsp;</td> </tr>
 	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator();"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
 
 	<tr><td> <hr> </td></tr>
@@ -105,7 +100,6 @@
 	<tr> <td> <input type=checkbox value="08b"> b) AWS resources will always be cost-optimized </td> </tr>
 	<tr> <td> <input type=checkbox value="08c"> c) All application testing can be managed by AWS </td> </tr>
 	<tr> <td> <input type=checkbox value="08d"> d) Customer-owner, on-premise infraestructure becomes programmable </td> </tr>
-	<tr> <td>&nbsp;</td> </tr>
 	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator();"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
 
 	<tr><td> <hr> </td></tr>
@@ -114,7 +108,6 @@
 	<tr> <td> <input type=checkbox value="09b"> b) Creating and deploying the most cost-effective solution </td> </tr>
 	<tr> <td> <input type=checkbox value="09c"> c) Deploying an application in multiple Availability Zone </td> </tr>
 	<tr> <td> <input type=checkbox value="09d"> d) Using Amazon CloudWatch alerts to monitor performance </td> </tr>
-	<tr> <td>&nbsp;</td> </tr>
 	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator();"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
 
 	<tr><td> <hr> </td></tr>
@@ -123,7 +116,6 @@
 	<tr> <td> <input type=checkbox value="10b"> b) AWS Cloud Trail </td> </tr>
 	<tr> <td> <input type=checkbox value="10c"> c) AWS Key Management Service </td> </tr>
 	<tr> <td> <input type=checkbox value="10d"> d) AWS Identity and Access Management </td> </tr>
-	<tr> <td>&nbsp;</td> </tr>
 	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator();"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
 
 	<tr><td> <hr> </td></tr>
@@ -132,7 +124,6 @@
 	<tr> <td> <input type=checkbox value="11b"> b) Amazon DynamoDB </td> </tr>
 	<tr> <td> <input type=checkbox value="11c"> c) Amazon Elastic Cache</td> </tr>
 	<tr> <td> <input type=checkbox value="11d"> d) Amazon Aurora </td> </tr>
-	<tr> <td>&nbsp;</td> </tr>
 	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator();"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
 
 	<tr><td> <hr> </td></tr>
@@ -141,25 +132,22 @@
 	<tr> <td> <input type=checkbox value="12b"> b) Securing Edge Locations</td> </tr>
 	<tr> <td> <input type=checkbox value="12c"> c) Monitoring physical device security</td> </tr>
 	<tr> <td> <input type=checkbox value="12d"> d) Implementing service organization control (SOC) standards</td> </tr>
-	<tr> <td>&nbsp;</td> </tr>
 	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator();"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
 
 	<tr><td> <hr> </td></tr>
 	<tr> <td style="text-align:center;"> <b> 13. Where can a customer go to get more detail about Amazon EC2 billing activity that took place 3 months ago?</b> </td> </tr>
 	<tr> <td> <input type=checkbox value="13a"> a) Amazon EC2 Dashboard</td> </tr>
-	<tr> <td> <input type=checkbox value="13b"> b) AWS <a href="https://aws.amazon.com/pt/aws-cost-management/aws-cost-and-usage-reporting/" target="_blank">Cost and Usage Reports</a></td> </tr>
-	<tr> <td> <input type=checkbox value="13c"> c) AWS <a href="https://aws.amazon.com/pt/about-aws/whats-new/2020/05/aws-trusted-advisor-adds-5-cost-optimization-checks/" target="_blank">Trusted Advisor</a></td> </tr>
-	<tr> <td> <input type=checkbox value="13d"> d) AWS <a href="https://aws.amazon.com/pt/cloudtrail/faqs/" target="_blank">Cloud Trail logs</a> stored in Amazon S3</td> </tr>
-	<tr> <td>&nbsp;</td> </tr>
+	<tr> <td> <input type=checkbox value="13b"> b) AWS Cost and Usage Reports (<a href="https://aws.amazon.com/pt/aws-cost-management/aws-cost-and-usage-reporting/" target="_blank">link</a>)</td> </tr>
+	<tr> <td> <input type=checkbox value="13c"> c) AWS Trusted Advisor (<a href="https://aws.amazon.com/pt/about-aws/whats-new/2020/05/aws-trusted-advisor-adds-5-cost-optimization-checks/" target="_blank">link</a>)</td> </tr>
+	<tr> <td> <input type=checkbox value="13d"> d) AWS Cloud Trail logs stored in Amazon S3 (<a href="https://aws.amazon.com/pt/cloudtrail/faqs/" target="_blank">link</a>)</td> </tr>
 	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator();"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
 
 	<tr><td> <hr> </td></tr>
 	<tr> <td style="text-align:center;"> <b> 14. Who has control of the data security in an AWS account?</b> </td> </tr>
 	<tr> <td> <input type=checkbox value="14a"> a) AWS Support Teeam</td> </tr>
-	<tr> <td> <input type=checkbox value="14b"> b) AWS <a href="https://docs.aws.amazon.com/general/latest/gr/root-vs-iam.html" target="_blank">Account Owner</a></td> </tr>
+	<tr> <td> <input type=checkbox value="14b"> b) AWS Account Owner (<a href="https://docs.aws.amazon.com/general/latest/gr/root-vs-iam.html" target="_blank">link</a>)</td> </tr>
 	<tr> <td> <input type=checkbox value="14c"> c) AWS Security Team</td> </tr>
 	<tr> <td> <input type=checkbox value="14d"> d) AWS Technical Account Manager - TAM</td> </tr>
-	<tr> <td>&nbsp;</td> </tr>
 	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator();"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
 
 	<tr><td> <hr> </td></tr>
@@ -168,7 +156,47 @@
 	<tr> <td> <input type=checkbox value="15b"> b) Reduce inter-dependencies so failures do not impact other components</td> </tr>
 	<tr> <td> <input type=checkbox value="15c"> c) Enable data synchronization across the web application layer</td> </tr>
 	<tr> <td> <input type=checkbox value="15d"> d) Have the ability to execute automated bootstrapping actions</td> </tr>
-	<tr> <td>&nbsp;</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator();"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 16. Which of the following is a benefit of running an application across two Availability Zones?</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="16a"> a) Performance is improved over running in a single AZ</td> </tr>
+	<tr> <td> <input type=checkbox value="16b"> b) It is more secure than running in a single AZ</td> </tr>
+	<tr> <td> <input type=checkbox value="16c"> c) It significantly reduces total cost of ownership versus running in a single AZ</td> </tr>
+	<tr> <td> <input type=checkbox value="16d"> d) It increases the availability of an application compared to running in a single AZ</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator();"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 17. Which of the following security requirements are managed by AWS customer? Select 2</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="17a"> a) Password policies</td> </tr>
+	<tr> <td> <input type=checkbox value="17b"> b) User permissions</td> </tr>
+	<tr> <td> <input type=checkbox value="17c"> c) Physical Security</td> </tr>
+	<tr> <td> <input type=checkbox value="17d"> d) Disk disposal</td> </tr>
+	<tr> <td> <input type=checkbox value="17e"> e) Hardware Patching</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator();"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 18. According the AWS the benefit of Elasticity is</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="18a"> a) Minimize storage requirements by reducing logging and auditing activities</td> </tr>
+	<tr> <td> <input type=checkbox value="18b"> b) Creat system that scale to the required capacity based on changes in demand</td> </tr>
+	<tr> <td> <input type=checkbox value="18c"> c) Enable AWS to automatically select the most cost-effective services</td> </tr>
+	<tr> <td> <input type=checkbox value="18d"> d) Accelerate the design process because recovery from failure is automated, reducing the need for testing</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator();"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 19. Amazon EC2 Spot instances would be most appropriate for which of the following scenarios</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="19a"> a) Workloads that are only run in the month</td> </tr>
+	<tr> <td> <input type=checkbox value="19b"> b) Workloads where the availability of the Amazon EC2 instances can be flexible</td> </tr>
+	<tr> <td> <input type=checkbox value="19c"> c) Workloads that need to run for long periods of time without interruption</td> </tr>
+	<tr> <td> <input type=checkbox value="19d"> d) Workloads that are critical and need Amazon EC2 instances with termination protection</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator();"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 20. What AWS feature enables a user to manage services through a web-based user interface?</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="20a"> a) AWS Management Console</td> </tr>
+	<tr> <td> <input type=checkbox value="20b"> b) AWS Application Programming Interface (API)</td> </tr>
+	<tr> <td> <input type=checkbox value="20c"> c) AWS Software Development Kit (SDK)</td> </tr>
+	<tr> <td> <input type=checkbox value="20d"> d) Amazon CloudWatch</td> </tr>
 	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator();"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
 
 
@@ -176,7 +204,7 @@
 	<tr><td> <hr> </td></tr>
 	<tr><td><button class="btn btn-success" onclick="verGabaritoSimulator();"> <i class="fa fa-check-square-o"></i> Ver Gabarito</button></td></tr>
 	<tr><td> <hr> </td></tr>
-	<tr><td> <i>enio.francisco@gmail.com &#174; +55(11)95239-2000; v17.05.22.16.00</i> </td></tr>
+	<tr><td> <i>enio.francisco@gmail.com &#174; +55(11)95239-2000; v17.05.22.17.00</i> </td></tr>
 	<tr><td> <hr> </td></tr>
 </table>
 
@@ -327,7 +355,6 @@ function verResultadoSimulator() {
 	 && array.indexOf(resp15a, 0) < '0' && array.indexOf(resp15c, 0) < '0' && array.indexOf(resp15d, 0) < '0' && array.indexOf(resp15e, 0) < '0') {
 		corretas = parseInt(corretas) + 1;
 	}
-/*
 	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp16d, 0) > '0'
 	 && array.indexOf(resp16a, 0) < '0' && array.indexOf(resp16b, 0) < '0' && array.indexOf(resp16c, 0) < '0' && array.indexOf(resp16e, 0) < '0') {
@@ -353,10 +380,13 @@ function verResultadoSimulator() {
 	 && array.indexOf(resp20b, 0) < '0' && array.indexOf(resp20c, 0) < '0' && array.indexOf(resp20d, 0) < '0' && array.indexOf(resp20e, 0) < '0') {
 		corretas = parseInt(corretas) + 1;
 	}
-*/
-	calculo = (corretas*100) / totalperguntas;
-	alert(calculo + '% de acerto.\n' + totalperguntas+' perguntas.');
 
+	calculo = (corretas*100) / totalperguntas;
+	var resultado = calculo + '% de acerto.\n' + totalperguntas+' perguntas.';
+	alert(resultado);
+	
+//	document.getElementById("formAdd").submit();
+	
 	var valor = '';
 	var responder = '';
 	var virgula = '';
