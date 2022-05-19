@@ -31,10 +31,7 @@
 
 <table id="mytable" border=0 width=95% align=center>
 
-	<tr> <td style="text-align:center;"> </td> </tr>
-	<tr> <th style="text-align:center;"> <button class="btn btn-default" onclick="inicio()">Estudo - Certificação AWS Certified Cloud Practitioner</button> </th> </tr>
-	<tr> <td style="text-align:center;"> Cada pergunta pode ter mais de uma resposta. </td> </tr>
-	<tr> <td style="text-align:center;"> Observe os links (<u>link</u>) explicando cada resposta. </td> </tr>
+	<tr> <th style="text-align:center;"> <label class="btn btn-default" onclick="inicio()">Preparo para Certificação<br/>AWS Certified Cloud Practitioner</label> </th> </tr>
 
 	<tr><td> <hr> </td></tr>
 	<tr> <td style="text-align:center;"> <b> 01. Which AWS services can be used to store files? </b> </td> </tr>
@@ -320,7 +317,7 @@
 	<tr><td> <hr> </td></tr>
 	<tr><td><button class="btn btn-success" onclick="verGabaritoSimulator();"> <i class="fa fa-check-square-o"></i> Ver Gabarito</button></td></tr>
 	<tr><td> <hr> </td></tr>
-	<tr><td> <i>enio.francisco@gmail.com &#174; +55(11)95239-2000; v19.05.22.14.00</i> </td></tr>
+	<tr><td> <i>enio.francisco@gmail.com &#174; +55(11)95239-2000; v19.05.22.15.00</i> </td></tr>
 	<tr><td> <hr> </td></tr>
 </table>
 
@@ -424,7 +421,7 @@ function verResultadoSimulator(numeroPergunta, qtdeOpcoesCorretas) {
 	var naorespondidas = 0;
 	var totalperguntas = 0;
 	var erradas = '';
-	var virgula = '';
+	var separador = '';
 	
 	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp01b, 0) > '0' && array.indexOf(resp01c, 0) > '0'
@@ -434,7 +431,7 @@ function verResultadoSimulator(numeroPergunta, qtdeOpcoesCorretas) {
 		naorespondidas = parseInt(naorespondidas) + 1;
 	} else {
 		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + virgula + totalperguntas; virgula = ', ';
+		erradas = erradas + separador + totalperguntas; separador = ', ';
 	}
 	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp02b, 0) > '0'
@@ -444,7 +441,7 @@ function verResultadoSimulator(numeroPergunta, qtdeOpcoesCorretas) {
 		naorespondidas = parseInt(naorespondidas) + 1;
 	} else {
 		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + virgula + totalperguntas; virgula = ', ';
+		erradas = erradas + separador + totalperguntas; separador = ', ';
 	}
 	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp03b, 0) > '0'
@@ -454,7 +451,7 @@ function verResultadoSimulator(numeroPergunta, qtdeOpcoesCorretas) {
 		naorespondidas = parseInt(naorespondidas) + 1;
 	} else {
 		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + virgula + totalperguntas; virgula = ', ';
+		erradas = erradas + separador + totalperguntas; separador = ', ';
 	}
 	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp04c, 0) > '0'
@@ -464,7 +461,7 @@ function verResultadoSimulator(numeroPergunta, qtdeOpcoesCorretas) {
 		naorespondidas = parseInt(naorespondidas) + 1;
 	} else {
 		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + virgula + totalperguntas; virgula = ', ';
+		erradas = erradas + separador + totalperguntas; separador = ', ';
 	}
 	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp05c, 0) > '0'
@@ -474,7 +471,7 @@ function verResultadoSimulator(numeroPergunta, qtdeOpcoesCorretas) {
 		naorespondidas = parseInt(naorespondidas) + 1;
 	} else {
 		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + virgula + totalperguntas; virgula = ', ';
+		erradas = erradas + separador + totalperguntas; separador = ', ';
 	}
 	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp06d, 0) > '0'
@@ -484,7 +481,7 @@ function verResultadoSimulator(numeroPergunta, qtdeOpcoesCorretas) {
 		naorespondidas = parseInt(naorespondidas) + 1;
 	} else {
 		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + virgula + totalperguntas; virgula = ', ';
+		erradas = erradas + separador + totalperguntas; separador = ', ';
 	}
 	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp07a, 0) > '0'
@@ -494,7 +491,7 @@ function verResultadoSimulator(numeroPergunta, qtdeOpcoesCorretas) {
 		naorespondidas = parseInt(naorespondidas) + 1;
 	} else {
 		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + virgula + totalperguntas; virgula = ', ';
+		erradas = erradas + separador + totalperguntas; separador = ', ';
 	}
 	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp08a, 0) > '0'
@@ -504,7 +501,7 @@ function verResultadoSimulator(numeroPergunta, qtdeOpcoesCorretas) {
 		naorespondidas = parseInt(naorespondidas) + 1;
 	} else {
 		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + virgula + totalperguntas; virgula = ', ';
+		erradas = erradas + separador + totalperguntas; separador = ', ';
 	}
 	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp09c, 0) > '0'
@@ -514,7 +511,7 @@ function verResultadoSimulator(numeroPergunta, qtdeOpcoesCorretas) {
 		naorespondidas = parseInt(naorespondidas) + 1;
 	} else {
 		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + virgula + totalperguntas; virgula = ', ';
+		erradas = erradas + separador + totalperguntas; separador = ', ';
 	}
 	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp10d, 0) > '0'
@@ -524,7 +521,7 @@ function verResultadoSimulator(numeroPergunta, qtdeOpcoesCorretas) {
 		naorespondidas = parseInt(naorespondidas) + 1;
 	} else {
 		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + virgula + totalperguntas; virgula = ', ';
+		erradas = erradas + separador + totalperguntas; separador = ', ';
 	}
 	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp11a, 0) > '0'
@@ -534,7 +531,7 @@ function verResultadoSimulator(numeroPergunta, qtdeOpcoesCorretas) {
 		naorespondidas = parseInt(naorespondidas) + 1;
 	} else {
 		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + virgula + totalperguntas; virgula = ', ';
+		erradas = erradas + separador + totalperguntas; separador = ', ';
 	}
 	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp12a, 0) > '0'
@@ -544,7 +541,7 @@ function verResultadoSimulator(numeroPergunta, qtdeOpcoesCorretas) {
 		naorespondidas = parseInt(naorespondidas) + 1;
 	} else {
 		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + virgula + totalperguntas; virgula = ', ';
+		erradas = erradas + separador + totalperguntas; separador = ', ';
 	}
 	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp13b, 0) > '0'
@@ -554,7 +551,7 @@ function verResultadoSimulator(numeroPergunta, qtdeOpcoesCorretas) {
 		naorespondidas = parseInt(naorespondidas) + 1;
 	} else {
 		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + virgula + totalperguntas; virgula = ', ';
+		erradas = erradas + separador + totalperguntas; separador = ', ';
 	}
 	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp14b, 0) > '0'
@@ -564,7 +561,7 @@ function verResultadoSimulator(numeroPergunta, qtdeOpcoesCorretas) {
 		naorespondidas = parseInt(naorespondidas) + 1;
 	} else {
 		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + virgula + totalperguntas; virgula = ', ';
+		erradas = erradas + separador + totalperguntas; separador = ', ';
 	}
 	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp15b, 0) > '0'
@@ -574,7 +571,7 @@ function verResultadoSimulator(numeroPergunta, qtdeOpcoesCorretas) {
 		naorespondidas = parseInt(naorespondidas) + 1;
 	} else {
 		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + virgula + totalperguntas; virgula = ', ';
+		erradas = erradas + separador + totalperguntas; separador = ', ';
 	}
 	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp16d, 0) > '0'
@@ -584,7 +581,7 @@ function verResultadoSimulator(numeroPergunta, qtdeOpcoesCorretas) {
 		naorespondidas = parseInt(naorespondidas) + 1;
 	} else {
 		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + virgula + totalperguntas; virgula = ', ';
+		erradas = erradas + separador + totalperguntas; separador = ', ';
 	}
 	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp17a, 0) > '0' && array.indexOf(resp17b, 0) > '0'
@@ -594,7 +591,7 @@ function verResultadoSimulator(numeroPergunta, qtdeOpcoesCorretas) {
 		naorespondidas = parseInt(naorespondidas) + 1;
 	} else {
 		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + virgula + totalperguntas; virgula = ', ';
+		erradas = erradas + separador + totalperguntas; separador = ', ';
 	}
 	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp18b, 0) > '0'
@@ -604,7 +601,7 @@ function verResultadoSimulator(numeroPergunta, qtdeOpcoesCorretas) {
 		naorespondidas = parseInt(naorespondidas) + 1;
 	} else {
 		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + virgula + totalperguntas; virgula = ', ';
+		erradas = erradas + separador + totalperguntas; separador = ', ';
 	}
 	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp19b, 0) > '0'
@@ -614,7 +611,7 @@ function verResultadoSimulator(numeroPergunta, qtdeOpcoesCorretas) {
 		naorespondidas = parseInt(naorespondidas) + 1;
 	} else {
 		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + virgula + totalperguntas; virgula = ', ';
+		erradas = erradas + separador + totalperguntas; separador = ', ';
 	}
 	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp20a, 0) > '0'
@@ -624,7 +621,7 @@ function verResultadoSimulator(numeroPergunta, qtdeOpcoesCorretas) {
 		naorespondidas = parseInt(naorespondidas) + 1;
 	} else {
 		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + virgula + totalperguntas; virgula = ', ';
+		erradas = erradas + separador + totalperguntas; separador = ', ';
 	}
 	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp21d, 0) > '0'
@@ -634,7 +631,7 @@ function verResultadoSimulator(numeroPergunta, qtdeOpcoesCorretas) {
 		naorespondidas = parseInt(naorespondidas) + 1;
 	} else {
 		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + virgula + totalperguntas; virgula = ', ';
+		erradas = erradas + separador + totalperguntas; separador = ', ';
 	}
 	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp22a, 0) > '0'
@@ -644,7 +641,7 @@ function verResultadoSimulator(numeroPergunta, qtdeOpcoesCorretas) {
 		naorespondidas = parseInt(naorespondidas) + 1;
 	} else {
 		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + virgula + totalperguntas; virgula = ', ';
+		erradas = erradas + separador + totalperguntas; separador = ', ';
 	}
 	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp23a, 0) > '0'
@@ -654,7 +651,7 @@ function verResultadoSimulator(numeroPergunta, qtdeOpcoesCorretas) {
 		naorespondidas = parseInt(naorespondidas) + 1;
 	} else {
 		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + virgula + totalperguntas; virgula = ', ';
+		erradas = erradas + separador + totalperguntas; separador = ', ';
 	}
 	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp24b, 0) > '0'
@@ -664,7 +661,7 @@ function verResultadoSimulator(numeroPergunta, qtdeOpcoesCorretas) {
 		naorespondidas = parseInt(naorespondidas) + 1;
 	} else {
 		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + virgula + totalperguntas; virgula = ', ';
+		erradas = erradas + separador + totalperguntas; separador = ', ';
 	}
 	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp25a, 0) > '0'
@@ -674,7 +671,7 @@ function verResultadoSimulator(numeroPergunta, qtdeOpcoesCorretas) {
 		naorespondidas = parseInt(naorespondidas) + 1;
 	} else {
 		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + virgula + totalperguntas; virgula = ', ';
+		erradas = erradas + separador + totalperguntas; separador = ', ';
 	}
 	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp26c, 0) > '0'
@@ -684,7 +681,7 @@ function verResultadoSimulator(numeroPergunta, qtdeOpcoesCorretas) {
 		naorespondidas = parseInt(naorespondidas) + 1;
 	} else {
 		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + virgula + totalperguntas; virgula = ', ';
+		erradas = erradas + separador + totalperguntas; separador = ', ';
 	}
 	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp27b, 0) > '0'
@@ -694,7 +691,7 @@ function verResultadoSimulator(numeroPergunta, qtdeOpcoesCorretas) {
 		naorespondidas = parseInt(naorespondidas) + 1;
 	} else {
 		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + virgula + totalperguntas; virgula = ', ';
+		erradas = erradas + separador + totalperguntas; separador = ', ';
 	}
 	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp28b, 0) > '0'
@@ -704,7 +701,7 @@ function verResultadoSimulator(numeroPergunta, qtdeOpcoesCorretas) {
 		naorespondidas = parseInt(naorespondidas) + 1;
 	} else {
 		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + virgula + totalperguntas; virgula = ', ';
+		erradas = erradas + separador + totalperguntas; separador = ', ';
 	}
 	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp29a, 0) > '0'
@@ -714,7 +711,7 @@ function verResultadoSimulator(numeroPergunta, qtdeOpcoesCorretas) {
 		naorespondidas = parseInt(naorespondidas) + 1;
 	} else {
 		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + virgula + totalperguntas; virgula = ', ';
+		erradas = erradas + separador + totalperguntas; separador = ', ';
 	}
 	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp30c, 0) > '0'
@@ -724,7 +721,7 @@ function verResultadoSimulator(numeroPergunta, qtdeOpcoesCorretas) {
 		naorespondidas = parseInt(naorespondidas) + 1;
 	} else {
 		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + virgula + totalperguntas; virgula = ', ';
+		erradas = erradas + separador + totalperguntas; separador = ', ';
 	}
 /*	totalperguntas = totalperguntas + 1;
 	if (array.indexOf(resp31c, 0) > '0'
@@ -738,13 +735,13 @@ function verResultadoSimulator(numeroPergunta, qtdeOpcoesCorretas) {
 */
 	var valor = '';
 	var responder = '';
-	var virgula = '';
+	var separador = '';
 	for (index=1; index<=totalperguntas; index++) {
 		valor = '' + index;
 		valor = valor.substring(0, 3)
 		if (array.indexOf(valor, 0) <= '0') {
-			responder = responder + virgula + valor;
-			virgula = ', ';
+			responder = responder + separador + valor;
+			separador = '; ';
 		}
 	}
 
