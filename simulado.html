@@ -24,57 +24,288 @@
 
 <body id="myBody" background="gallery/paper.jpeg">
 
-<form id="formAdd" ZZZaction="https://formspree.io/f/xrgjojko" method="post">
-	<input type="text" hidden="" name="resultado" value="" />
-	<input type="text" hidden="" name="config_myowner" value="IIRF" />
-</form>
+	<form id="formAdd" ZZZaction="https://formspree.io/f/xrgjojko" method="post">
+		<input type="text" hidden="" name="resultado" value="" />
+		<input type="text" hidden="" name="config_myowner" value="IIRF" />
+	</form>
 
-<table id="mytable" border=0 width=95% align=center>
+	<div id="div00" style="display:'none';">
+		<button class="btn btn-default" disabled> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" disabled> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<button class="btn btn-default" onclick="showPoints();" disabled><i class="fa fa-info"></i> Pontos</button>
+		<button onclick="showNext('00', '');" class="btn btn-info" >Começar <i class="fa fa-forward"></i></button>
+		<br/><br/>Preparo para Certificação
+		<br/><br/>AWS Certified Cloud Practitioner
+		<br/><br/>Assinale as alternativas corretas
+		<br/><br/><i>enio.francisco@gmail.com &#174; +55(11)95239-2000;
+		<br/><br/>versão 25.05.22.23.30</i>
+	</div>
 
-	<tr>
-		<th style="text-align:center;">
-			Preparo para Certificação AWS Certified Cloud Practitioner
-			<br/><br/>Assinale as alternativas corretas
-		</th>
-	</tr>
+	<div id="div01" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('01');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showResponse('01', 'a');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<button class="btn btn-default" onclick="showPoints();"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('01', 'a');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>01. Qual serviço da AWS é recomendado para estimar o custo de implementação dos serviços de Cloud para o seu negócio?</b>
+		<br/><br/><input type=checkbox value="01a"> a) AWS Princing Calculator (<a href="https://calculator.aws/#/" target="_blank">link estudar</a>)
+		<br/><br/><input type=checkbox value="01b"> b) AWS Organizations (<a href="https://aws.amazon.com/pt/organizations/?nc2=type_a" target="_blank">link estudar</a>)
+		<br/><br/><input type=checkbox value="01c"> c) AWS Billing
+		<br/><br/><input type=checkbox value="01d"> d) AWS Cost Explorer (<a href="https://aws.amazon.com/pt/aws-cost-management/aws-cost-explorer/?nc2=type_a" target="_blank">link estudar</a>)
+		<div id="correct01" style="display:none; text-align:justify; color:green;">
+			<br/><b>Correta:</b>
+			<br/>a) O <u>AWS Princing Calculator</u> pode ser utilizado para estimar os custos antes do uso, antes da implementação.
+		</div>
+		<div id="incorrect01" style="display:none; text-align:justify; color:red;">
+			<br/><b>Incorretas:</b>
+			<br/><br/>O <u>AWS Organizations</u> ajuda você a gerenciar e controlar seu ambiente de maneira centralizada à medida que os negócios e seus recursos da AWS expandem. Usando o AWS Organizations, você pode criar novas contas da AWS e alocar recursos, agrupar contas para organizar seus fluxos de trabalho, aplicar políticas a contas ou grupos para governança e simplificar o faturamento usando um único método de pagamento para todas as suas contas.
+			<br/><br/>O <u>AWS Billing e Cost Management</u> são o conjunto de serviços que você usa para pagar o faturamento, monitorar seu uso e analisar e controlar seus custos
+			<br/><br/>O <u>AWS Cost Explorer</u> tem uma interface fácil de usar que permite visualizar, entender e gerenciar os custos e o uso da AWS ao longo do tempo. Relacionado ao que já foi gasto, não para estimar.
+		</div>
+	</div>
 
-	<tr><td> <hr> </td></tr>
-	<tr> <td style="text-align:left;"> <b> 01. Qual serviço da AWS é recomendado para estimar o custo de implementação dos serviços de Cloud para o seu negócio? </b> </td> </tr>
-	<tr> <td style="text-align:left;"> <input type=checkbox value="01a"> a) AWS Princing Calculator</td> </tr>
-	<tr> <td style="text-align:left;"> <input type=checkbox value="01b"> b) AWS Organizations</td> </tr>
-	<tr> <td style="text-align:left;"> <input type=checkbox value="01c"> c) AWS Billing</td> </tr>
-	<tr> <td style="text-align:left;"> <input type=checkbox value="01d"> d) AWS Cost Explorer (<a href="https://docs.aws.amazon.com/pt_br/cost-management/latest/userguide/ce-what-is.html" target="_blank">link estudar</a>)</td> </tr>
-	<tr> <td style="text-align:left;"> <button class="btn btn-info" onclick="verExplicacaoSimulator('01', 'a');"> <i class="fa fa-check-square-o"></i> Resposta</button> </td> </tr>
-	<tr> <td id="correta01" rows="4" style="display:none; width:98%; text-align:justify; color:green;">
-		<b>Correta:</b>
-		<br/>O AWS Princing Calculator pode ser utilizado pra estimar os custos antes do uso, antes da implementação.
-		<br/>https://calculator.aws/#/
-		</td>
-	</tr>
-	<tr> <td id="incorreta01" rows="4" style="display:none; width:98%; text-align:justify; color:red;">
-		<b>Incorretas:</b>
-		<br/>O AWS Cost Explorer tem uma interface fácil de usar que permite visualizar, entender e gerenciar os custos e o uso da AWS ao longo do tempo. Relacionado ao que já foi gasto, não para estimar.
-		<br/>https://aws.amazon.com/pt/aws-cost-management/aws-cost-explorer/?nc2=type_a
-		<br/>O AWS Billing e Cost Management são o conjunto de serviços que você usa para pagar o faturamento, monitorar seu uso e analisar e controlar seus custos
-		<br/>O AWS Organizations ajuda você a gerenciar e controlar seu ambiente de maneira centralizada à medida que os negócios e seus recursos da AWS expandem. Usando o AWS Organizations, você pode criar novas contas da AWS e alocar recursos, agrupar contas para organizar seus fluxos de trabalho, aplicar políticas a contas ou grupos para governança e simplificar o faturamento usando um único método de pagamento para todas as suas contas.
-		<br/>https://aws.amazon.com/pt/organizations/?nc2=type_a
-		 </td>
-	</tr>
+	<div id="div02" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('02');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showResponse('02', 'a');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<button class="btn btn-default" onclick="showPoints();"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('02', 'a');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>02. O que é Free Tier (Nível Gratuito)?</b>
+		<br/><br/><input type=checkbox value="02a"> a) É um modelo de uso dos produtos da AWS onde você não é cobrado.
+		<br/><br/><input type=checkbox value="02b"> b) É um serviço de firewall que protege suas aplicações
+		<br/><br/><input type=checkbox value="02c"> c) É uma camada de banco de dados NoSQL
+		<br/><br/><input type=checkbox value="02d"> d) É um modelo open source para o desenvolvimento de aplicações em camadas
+		<div id="correct02" style="display:none; text-align:justify; color:green;">
+			<br/><b>Correta:</b>
+			<br/>a) <u>Modelo de uso onde você não é cobrado</u>, composto por três tipos:
+			<br/>1) 12 meses de gratuídade,
+			<br/>2) Sempre gratuito
+			<br/>3) Experimentação.
+			<br/>Talvez na prova em português apareça  'Nivel Gratuito' ao invés de ‘Free Tier’
+			<br/><br/>Há centenas de configuração de serviço para uso gratuito, vale pena dar uma navegada no site para visualizar as opções.
+			<br/><br/>https://aws.amazon.com/pt/free/?all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=*all&awsf.Free%20Tier%20Categories=*all
+			<br/><br/>Uma dica: Ser for testar o uso de qualquer serviço, configure o AWS Budget para notificar se a sua infraestrutura está consumindo mais do que você gostaria. Isso evita que haja surpresas no seu cartão de crédito caso algo fique ligado e te dá segurança para experimentar mais.
+		</div>
+		<div id="incorrect02" style="display:none; text-align:justify; color:red;">
+			<br/><b>Incorretas:</b>
+			<br/>As demais opções não estão relacionadas ao nível gratuito.
+		</div>
+	</div>
 
-	<tr><td> <hr> </td></tr>
-	<tr>
-		<td style="text-align:left;">
-			<button class="btn btn-info" onclick="verResultadoSimulator('01', 'a');"> <i class="fa fa-check-square-o"></i> Pontuação</button>
-		</td>
-	</tr>
+	<div id="div03" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('03');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showResponse('03', 'a');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<button class="btn btn-default" onclick="showPoints();"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('03', 'a');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>03. O que é o MFA - Multi-Factor-Authentication (Autenticação Multi Fator)?</b>
+		<br/><br/><input type=checkbox value="03a"> a) Um serviço que inclui uma etapa a mais no processo de autenticação de acesso a conta da AWS pela Web.
+		<br/><br/><input type=checkbox value="03b"> b) Um serviço para conectar instâncias EC2 no banco de dados DynamoDb
+		<br/><br/><input type=checkbox value="03c"> c) Um serviço que permite uso de tokens em aplicações web e mobile.
+		<br/><br/><input type=checkbox value="03d"> d) Um serviço que permite fazer acesso SSH em instâncias EC2
+		<div id="correct03" style="display:none; text-align:justify; color:green;">
+			<br/><b>Correta:</b>
+			<br/>a) Autenticação Multi Fator deve ser habilitada com algum dispositivo de terceiros para a proteção do acesso via console. Eu uso o Google Authenticator para gera o Token a cada 1 minuto.
+			<br/><br/>Além do processo de login, o MFA pode ser utilizado em outros processo, como na deleção de bucktes do S3 (mas isso já é um pouco mais avançado e só cai na prova de architect).
+			<br/><br/>https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_credentials_mfa.html
+		</div>
+		<div id="incorrect03" style="display:none; text-align:justify; color:red;">
+			<br/><b>Incorretas:</b>
+			<br/>O uso de tokens em aplicações podem ser implementado com o Cognito.
+			<br/><br/>Para conectar o EC2 ao Dynamo são utilizadas as APIs e as roles necessárias para integração.
+			<br/><br/>Para fazer o uso de conexão SSH é necessário a utilização das Key Pars, que devem estar na máquina que realizará a conexão.
+		</div>
+	</div>
+
+	<div id="div04" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('04');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showResponse('04', 'a');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<button class="btn btn-default" onclick="showPoints();"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('04', 'a');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>04. Qual é a opção de armazenamento default do serviço S3?</b>
+		<br/><br/><input type=checkbox value="04a"> a) Standard
+		<br/><br/><input type=checkbox value="04b"> b) Frequent Access
+		<br/><br/><input type=checkbox value="04c"> c) Infrequent Access
+		<br/><br/><input type=checkbox value="04d"> d) Glacier
+		<div id="correct04" style="display:none; text-align:justify; color:green;">
+			<br/><b>Correta:</b>
+			<br/>a) O Standard está definido como padrão por oferecer diversas otimizações, usar as outras opções sempre devem ser avaliadas de acordo com requisitos de qualidade da aplicação,  como tempo de resposta necessário, entre outros.
+			<br/><br/>https://aws.amazon.com/s3/storage-classes/?nc=sn&loc=3
+		</div>
+		<div id="incorrect04" style="display:none; text-align:justify; color:red;">
+			<br/><b>Incorretas:</b>
+			<br/>As demais classes precisam ser configuradas e irão apresentar um tempo de resposta de recuperação maior do que no modelo padrão.
+			<br/><br/>Uma classe não citada e que pode ajudar na movimentação entre as classes de forma automática é a Inteligente Tiering.
+		</div>
+	</div>
+
+	<div id="div05" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('05');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showResponse('05', 'a');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<button class="btn btn-default" onclick="showPoints();"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('05', 'a');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>05. O AWS Trusted Advisor é um serviço de monitoramento e recomendação que auxilia o cliente a utilizar os recursos de sua conta de maneira alinhada com as melhores práticas para trazer muitos benefícios. Quais itens abaixo representam tais benefícios?</b>
+		<br/><br/><input type=checkbox value="05a"> a) Otimização de Custos
+		<br/><br/><input type=checkbox value="05b"> b) Segurança
+		<br/><br/><input type=checkbox value="05c"> c) Performance
+		<br/><br/><input type=checkbox value="05d"> d) Proteção de Hardware
+		<div id="correct05" style="display:none; text-align:justify; color:green;">
+			<br/><b>Correta:</b>
+			<br/>a) O AWS Trusted Advisor faz recomendações que te ajudam a seguir as práticas recomendadas da AWS. O Trusted Advisor avalia a sua conta por meio de verificações. Essas verificações identificam formas de otimizar sua infraestrutura da AWS, aumentar a segurança e o desempenho, reduzir os custos gerais e monitorar as cotas do serviço.
+			<br/><br/>https://aws.amazon.com/pt/premiumsupport/technology/trusted-advisor/
+		</div>
+		<div id="incorrect05" style="display:none; text-align:justify; color:red;">
+			<br/><b>Incorretas:</b>
+			<br/>O Trusted Advisor não dá informações sobre o uso de Protecao de Hardware, umas vez que isso não é responsabilidade do cliente e sim da AWS no modelo de responsabilidade compartilhada.
+		</div>
+	</div>
+
+	<div id="div06" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('06');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showResponse('06', 'a');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<button class="btn btn-default" onclick="showPoints();"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('06', 'a');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>06. Você está migrando parte de uma aplicação que trabalha com sistema de arquivos para armazenar e manipular alguns dados. Qual das opções abaixo indica o serviço que pode ser utilizado para atender essa parte da aplicação na AWS?</b>
+		<br/><br/><input type=checkbox value="06a"> a) EC2
+		<br/><br/><input type=checkbox value="06b"> b) KMS
+		<br/><br/><input type=checkbox value="06c"> c) EFS
+		<br/><br/><input type=checkbox value="06d"> d) AWS Config
+		<div id="correct06" style="display:none; text-align:justify; color:green;">
+			<br/><b>Correta:</b>
+			<br/>a) O EFS pode ser anexado a suas instâncias EC2 permitindo o uso de sistemas de arquivo. O mesmo EFS pode ser utilizado com diversas máquinas de acordo com a necessidade. Oferece a maior e mais abrangente plataforma de computação com a possibilidade de escolha de processador, armazenamento, rede, sistema operacional e modelo de compra
+			<br/><br/>https://aws.amazon.com/efs/?nc2=h_ql_prod_st_efs
+		</div>
+		<div id="incorrect06" style="display:none; text-align:justify; color:red;">
+			<br/><b>Incorretas:</b>
+			<br/>O Amazon Elastic Compute Cloud (Amazon EC2) é um serviço Web que disponibiliza capacidade computacional segura e redimensionável na nuvem. Ele foi projetado para facilitar a computação em nuvem na escala da web para os desenvolvedores.
+			<br/><br/>O AWS Key Management Service (KMS) facilita a criação e o gerenciamento de chaves criptográficas e o controle do seu uso em uma ampla variedade de serviços da AWS e em seus aplicativos
+			<br/><br/>O AWS Config é um serviço que permite acessar, auditar e avaliar as configurações dos recursos da AWS. O Config monitora e grava continuamente registros das configurações de recursos da AWS e lhe permite automatizar a avaliação das configurações registradas com base nas configurações desejadas
+		</div>
+	</div>
 	
-	<tr><td> <hr> </td></tr>
-	
-	<tr><td> <i>enio.francisco@gmail.com &#174; +55(11)95239-2000; v24.05.22.22.15</i> </td></tr>
-	
-	<tr><td> <hr> </td></tr>
+	<div id="div07" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('07');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showResponse('07', 'a');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<button class="btn btn-default" onclick="showPoints();"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('07', 'a');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>07. Você trabalha numa agência de viagens online e precisa armazenar, analisar e correlacionar dados de logs de seus aplicativos para identificar e resolver gargalos de desempenho e problemas de disponibilidade para garantir uma experiência de reserva otimizada para os seus clientes. Qual serviço da AWS abaixo é o mais indicado?</b>
+		<br/><br/><input type=checkbox value="07a"> a) Amazon CloudSearch
+		<br/><br/><input type=checkbox value="07b"> b) Amazon EMR
+		<br/><br/><input type=checkbox value="07c"> c) Amazon Athena
+		<br/><br/><input type=checkbox value="07d"> d) Amazon ElasticSearch
+		<div id="correct07" style="display:none; text-align:justify; color:green;">
+			<br/><b>Correta:</b>
+			<br/>a) Amazon ElasticSearch
+			<br/><br/>https://aws.amazon.com/pt/elasticsearch-service/?nc=sn&loc=0
+		</div>
+		<div id="incorrect07" style="display:none; text-align:justify; color:red;">
+			<br/><b>Incorretas:</b>
+			<br/>O CloudSearch oferece um serviço de busca e localização para ser implementado no seu website.
+			<br/><br/>O Athena é um serviço servless que permite a consulta com SQL em buckets no S3.
+			<br/><br/>O EMR é a plataforma de BigData da AWS.
+		</div>
+	</div>
 
-</table>
+	<div id="div08" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('08');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showResponse('08', 'a');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<button class="btn btn-default" onclick="showPoints();"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('08', 'a');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>08. Sua aplicação precisa persistir dados não estruturados de clientes. Qual serviço abaixo é o mais indicado para essa finalidade?</b>
+		<br/><br/><input type=checkbox value="08a"> a) Amazon RedShift
+		<br/><br/><input type=checkbox value="08b"> b) Amazon Aurora
+		<br/><br/><input type=checkbox value="08c"> c) Amazon EMR
+		<br/><br/><input type=checkbox value="08d"> d) Amazon DynamoDB
+		<div id="correct08" style="display:none; text-align:justify; color:green;">
+			<br/><b>Correta:</b>
+			<br/>a) O DynamoDb é um banco quer permite a gravação de registros com o conceito de chave valor, onde o valor não precisa estar estruturado como em bancos de dados relacionais.
+		</div>
+		<div id="incorrect08" style="display:none; text-align:justify; color:red;">
+			<br/><b>Incorretas:</b>
+			<br/>O Aurora é um banco de dados relacional e que precisar ser implementado de forma estruturada
+			<br/><br/>O RedShit é um bando de dados de dados estruturado e semi-estruturado, mas o seu uso é para finalidade de BI (Business Inteligence)
+			<br/><br/>O EMR é a plataforma para BigData da AWS
+		</div>
+	</div>
+
+	<div id="div09" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('09');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showResponse('09', 'a');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<button class="btn btn-default" onclick="showPoints();"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('09', 'a');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>09. Analise os serviços abaixo:
+		<br/>O primeiro serviço permite que aplicativos enviem mensagens críticas, em termos de tempo, para vários assinantes através de um mecanismo de “push”, eliminando a necessidade de verificar periodicamente ou “pesquisar” por atualizações.
+		<br/>O segundo é um serviço de fila de mensagens, usado por aplicativos distribuídos para trocar mensagens através de um modelo de sondagem e pode ser usado para desacoplar componentes de envio e recebimento.
+		<br/>Qual é a sequência abaixo que informa corretamente os dois serviços?</b>
+		<br/><br/><input type=checkbox value="09a"> a) SES e SNS
+		<br/><br/><input type=checkbox value="09b"> b) SQS e SNS
+		<br/><br/><input type=checkbox value="09c"> c) SES e SQS
+		<br/><br/><input type=checkbox value="09d"> d) SNS e SQS
+		<div id="correct09" style="display:none; text-align:justify; color:green;">
+			<br/><b>Correta:</b>
+			<br/>a) SNS - Simple Notification Service
+			<br/><br/>O Amazon Simple Notification Service (Amazon SNS) é um serviço de mensagens totalmente gerenciado para a comunicação de aplicação para aplicação (A2A) e de aplicação para pessoa (A2P).
+			<br/>https://aws.amazon.com/pt/sns/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc
+			<br/><br/>SQS - Simple Queue Service
+			<br/>O Amazon Simple Queue Service (Amazon SQS) oferece uma fila hospedada segura, durável e disponível que permite integrar e desacoplar sistemas de software e componentes distribuídos
+			<br/>https://docs.aws.amazon.com/pt_br/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html
+		</div>
+		<div id="incorrect09" style="display:none; text-align:justify; color:red;">
+			<br/><b>Incorretas:</b>
+			<br/>As demais opções estão incorretas
+			<br/><br/>O SES - Simple Email Service é utilizado para fazer envio de emails.
+		</div>
+	</div>
+
+	<div id="div10" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('10');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showResponse('10', 'a');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<button class="btn btn-default" onclick="showPoints();"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('10', 'a');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>10. Quais dos seguintes planos de suporte oferecem acesso ao atendimento ao cliente, whitepapers, documentações e fóruns de suporte 24x7?
+		<br/>(Selecione 2)</b>
+		<br/><br/><input type=checkbox value="10a"> a) Reserved
+		<br/><br/><input type=checkbox value="10b"> b) Basic
+		<br/><br/><input type=checkbox value="10c"> c) Full
+		<br/><br/><input type=checkbox value="10d"> d) Enterprise
+		<div id="correct10" style="display:none; text-align:justify; color:green;">
+			<br/><b>Correta:</b>
+			<br/>a) Todos os planos desde o Basic oferecem esses serviços.  Basic, Developer, Business, Entrerprise on ramp e Enterprise.
+			<br/><br/>Nas opções listadas só tem Basic e Enterprise e são as únicas possíveis pois as outras não são planos de suporte existentes.
+			<br/><br/>Para os planos business e enterprise existe uma opção de suporte técnico aprimorado 24x7, que é mais exclusivo e que dá acesso aos engenheiros da AWS por telefone e e-mail, mas que só seria a resposta caso a pergunta estivesse relacionada a suporte técnico aprimorado.
+			<br/><br/>Maiores detalhes em: https://aws.amazon.com/premiumsupport/plans/
+		</div>
+		<div id="incorrect10" style="display:none; text-align:justify; color:red;">
+			<br/><b>Incorretas:</b>
+			<br/>Full e Reserved não são nomes de plano de suporte na AWS.
+		</div>
+	</div>
+<!--
+	<div id="div05" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('05');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showResponse('05', 'a');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<button class="btn btn-default" onclick="showPoints();"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('05', 'a');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>05. </b>
+		<br/><br/><input type=checkbox value="05a"> a) 
+		<br/><br/><input type=checkbox value="05b"> b) 
+		<br/><br/><input type=checkbox value="05c"> c) 
+		<br/><br/><input type=checkbox value="05d"> d) 
+		<div id="correct05" style="display:none; text-align:justify; color:green;">
+			<br/><b>Correta:</b>
+			<br/>a) O Standard está definido como padrão por oferecer diversas otimizações, usar as outras opções sempre devem ser avaliadas de acordo com requisitos de qualidade da aplicação,  como tempo de resposta necessário, entre outros.
+			<br/><br/>https://aws.amazon.com/s3/storage-classes/?nc=sn&loc=3
+		</div>
+		<div id="incorrect05" style="display:none; text-align:justify; color:red;">
+			<br/><b>Incorretas:</b>
+			<br/>As demais classes precisam ser configuradas e irão apresentar um tempo de resposta de recuperação maior do que no modelo padrão.
+			<br/><br/>Uma classe não citada e que pode ajudar na movimentação entre as classes de forma automática é a Inteligente Tiering.
+		</div>
+	</div>
+-->
+	<div id="div11" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('11');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" disabled> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<button class="btn btn-default" onclick="showPoints();"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" disabled><i class="fa fa-check"></i> Fim</button>
+	</div>
 
     <link href="style/main.css " rel="stylesheet " type="text/css " />
 </body>
@@ -82,776 +313,36 @@
 </html>
 
 <script type="text/javascript">
-function verExplicacaoSimulator(numeroPergunta, opcoesCorretas) {
-	var array = [];
-	var checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
-	for (var i = 0; i < checkboxes.length; i++) {
-	  array.push(checkboxes[i].value);
-	}
-	array = '[' + array + ']';
-	if (array.indexOf(numeroPergunta, 0) <= '0') {
-		alert('Selecione a resposta');
-		return;
-	}
+var totalperguntas = 65;
 
-	if (document.getElementById('correta'+numeroPergunta).style.display == 'none') {
-		document.getElementById('correta'+numeroPergunta).style.display='block';
-		document.getElementById('incorreta'+numeroPergunta).style.display='block';
-	} else {
-		document.getElementById('correta'+numeroPergunta).style.display='none';
-		document.getElementById('incorreta'+numeroPergunta).style.display='none';
-	}
-}
-
-function verResultadoSimulator(numeroPergunta, opcoesCorretas) {
-	var array = [];
-	var checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
-	for (var i = 0; i < checkboxes.length; i++) {
-	  array.push(checkboxes[i].value);
-	}
-	array = '[' + array + ']';
-
-	var resp01a = '01a'; var resp01b = '01b'; var resp01c = '01c'; var resp01d = '01d'; var resp01e = '01e';
-	var resp02a = '02a'; var resp02b = '02b'; var resp02c = '02c'; var resp02d = '02d'; var resp02e = '02e';
-	var resp03a = '03a'; var resp03b = '03b'; var resp03c = '03c'; var resp03d = '03d'; var resp03e = '03e';
-	var resp04a = '04a'; var resp04b = '04b'; var resp04c = '04c'; var resp04d = '04d'; var resp04e = '04e';
-	var resp05a = '05a'; var resp05b = '05b'; var resp05c = '05c'; var resp05d = '05d'; var resp05e = '05e';
-	var resp06a = '06a'; var resp06b = '06b'; var resp06c = '06c'; var resp06d = '06d'; var resp06e = '06e';
-	var resp07a = '07a'; var resp07b = '07b'; var resp07c = '07c'; var resp07d = '07d'; var resp07e = '07e';
-	var resp08a = '08a'; var resp08b = '08b'; var resp08c = '08c'; var resp08d = '08d'; var resp08e = '08e';
-	var resp09a = '09a'; var resp09b = '09b'; var resp09c = '09c'; var resp09d = '09d'; var resp09e = '09e';
-	var resp10a = '10a'; var resp10b = '10b'; var resp10c = '10c'; var resp10d = '10d'; var resp10e = '10e';
-	var resp11a = '11a'; var resp11b = '11b'; var resp11c = '11c'; var resp11d = '11d'; var resp11e = '11e';
-	var resp12a = '12a'; var resp12b = '12b'; var resp12c = '12c'; var resp12d = '12d'; var resp12e = '12e';
-	var resp13a = '13a'; var resp13b = '13b'; var resp13c = '13c'; var resp13d = '13d'; var resp13e = '13e';
-	var resp14a = '14a'; var resp14b = '14b'; var resp14c = '14c'; var resp14d = '14d'; var resp14e = '14e';
-	var resp15a = '15a'; var resp15b = '15b'; var resp15c = '15c'; var resp15d = '15d'; var resp15e = '15e';
-	var resp16a = '16a'; var resp16b = '16b'; var resp16c = '16c'; var resp16d = '16d'; var resp16e = '16e';
-	var resp17a = '17a'; var resp17b = '17b'; var resp17c = '17c'; var resp17d = '17d'; var resp17e = '17e';
-	var resp18a = '18a'; var resp18b = '18b'; var resp18c = '18c'; var resp18d = '18d'; var resp18e = '18e';
-	var resp19a = '19a'; var resp19b = '19b'; var resp19c = '19c'; var resp19d = '19d'; var resp19e = '19e';
-	var resp20a = '20a'; var resp20b = '20b'; var resp20c = '20c'; var resp20d = '20d'; var resp20e = '20e';
-	var resp21a = '21a'; var resp21b = '21b'; var resp21c = '21c'; var resp21d = '21d'; var resp21e = '21e';
-	var resp22a = '22a'; var resp22b = '22b'; var resp22c = '22c'; var resp22d = '22d'; var resp22e = '22e';
-	var resp23a = '23a'; var resp23b = '23b'; var resp23c = '23c'; var resp23d = '23d'; var resp23e = '23e';
-	var resp24a = '24a'; var resp24b = '24b'; var resp24c = '24c'; var resp24d = '24d'; var resp24e = '24e';
-	var resp25a = '25a'; var resp25b = '25b'; var resp25c = '25c'; var resp25d = '25d'; var resp25e = '25e';
-	var resp26a = '26a'; var resp26b = '26b'; var resp26c = '26c'; var resp26d = '26d'; var resp26e = '26e';
-	var resp27a = '27a'; var resp27b = '27b'; var resp27c = '27c'; var resp27d = '27d'; var resp27e = '27e';
-	var resp28a = '28a'; var resp28b = '28b'; var resp28c = '28c'; var resp28d = '28d'; var resp28e = '28e';
-	var resp29a = '29a'; var resp29b = '29b'; var resp29c = '29c'; var resp29d = '29d'; var resp29e = '29e';
-	var resp30a = '30a'; var resp30b = '30b'; var resp30c = '30c'; var resp30d = '30d'; var resp30e = '30e';
-	var resp31a = '31a'; var resp31b = '31b'; var resp31c = '31c'; var resp31d = '31d'; var resp31e = '31e';
-	var resp32a = '32a'; var resp32b = '32b'; var resp32c = '32c'; var resp32d = '32d'; var resp32e = '32e';
-	var resp33a = '33a'; var resp33b = '33b'; var resp33c = '33c'; var resp33d = '33d'; var resp33e = '33e';
-	var resp34a = '34a'; var resp34b = '34b'; var resp34c = '34c'; var resp34d = '34d'; var resp34e = '34e';
-	var resp35a = '35a'; var resp35b = '35b'; var resp35c = '35c'; var resp35d = '35d'; var resp35e = '35e';
-	var resp36a = '36a'; var resp36b = '36b'; var resp36c = '36c'; var resp36d = '36d'; var resp36e = '36e';
-	var resp37a = '37a'; var resp37b = '37b'; var resp37c = '37c'; var resp37d = '37d'; var resp37e = '37e';
-	var resp38a = '38a'; var resp38b = '38b'; var resp38c = '38c'; var resp38d = '38d'; var resp38e = '38e';
-	var resp39a = '39a'; var resp39b = '39b'; var resp39c = '39c'; var resp39d = '39d'; var resp39e = '39e';
-	var resp40a = '40a'; var resp40b = '40b'; var resp40c = '40c'; var resp40d = '40d'; var resp40e = '40e';
-	var resp41a = '41a'; var resp41b = '41b'; var resp41c = '41c'; var resp41d = '41d'; var resp41e = '41e';
-	var resp42a = '42a'; var resp42b = '42b'; var resp42c = '42c'; var resp42d = '42d'; var resp42e = '42e';
-	var resp43a = '43a'; var resp43b = '43b'; var resp43c = '43c'; var resp43d = '43d'; var resp43e = '43e';
-	var resp44a = '44a'; var resp44b = '44b'; var resp44c = '44c'; var resp44d = '44d'; var resp44e = '44e';
-	var resp45a = '45a'; var resp45b = '45b'; var resp45c = '45c'; var resp45d = '45d'; var resp45e = '45e';
-	var resp46a = '46a'; var resp46b = '46b'; var resp46c = '46c'; var resp46d = '46d'; var resp46e = '46e';
-	var resp47a = '47a'; var resp47b = '47b'; var resp47c = '47c'; var resp47d = '47d'; var resp47e = '47e';
-	var resp48a = '48a'; var resp48b = '48b'; var resp48c = '48c'; var resp48d = '48d'; var resp48e = '48e';
-	var resp49a = '49a'; var resp49b = '49b'; var resp49c = '49c'; var resp49d = '49d'; var resp49e = '49e';
-	var resp50a = '50a'; var resp50b = '50b'; var resp50c = '50c'; var resp50d = '50d'; var resp50e = '50e';
-	var resp51a = '51a'; var resp51b = '51b'; var resp51c = '51c'; var resp51d = '51d'; var resp51e = '51e';
-	var resp52a = '52a'; var resp52b = '52b'; var resp52c = '52c'; var resp52d = '52d'; var resp52e = '52e';
-	var resp53a = '53a'; var resp53b = '53b'; var resp53c = '53c'; var resp53d = '53d'; var resp53e = '53e';
-	var resp54a = '54a'; var resp54b = '54b'; var resp54c = '54c'; var resp54d = '54d'; var resp54e = '54e';
-	var resp55a = '55a'; var resp55b = '55b'; var resp55c = '55c'; var resp55d = '55d'; var resp55e = '55e';
-	var resp56a = '56a'; var resp56b = '56b'; var resp56c = '56c'; var resp56d = '56d'; var resp56e = '56e';
-	var resp57a = '57a'; var resp57b = '57b'; var resp57c = '57c'; var resp57d = '57d'; var resp57e = '57e';
-	var resp58a = '58a'; var resp58b = '58b'; var resp58c = '58c'; var resp58d = '58d'; var resp58e = '58e';
-	var resp59a = '59a'; var resp59b = '59b'; var resp59c = '59c'; var resp59d = '59d'; var resp59e = '59e';
-	var resp60a = '60a'; var resp60b = '60b'; var resp60c = '60c'; var resp60d = '60d'; var resp60e = '60e';
-	var resp61a = '61a'; var resp61b = '61b'; var resp61c = '61c'; var resp61d = '61d'; var resp61e = '61e';
-	var resp62a = '62a'; var resp62b = '62b'; var resp62c = '62c'; var resp62d = '62d'; var resp62e = '62e';
-	var resp63a = '63a'; var resp63b = '63b'; var resp63c = '63c'; var resp63d = '63d'; var resp63e = '63e';
-	var resp64a = '64a'; var resp64b = '64b'; var resp64c = '64c'; var resp64d = '64d'; var resp64e = '64e';
-	var resp65a = '65a'; var resp65b = '65b'; var resp65c = '65c'; var resp65d = '65d'; var resp65e = '65e';
-
+function showPoints() {
+	var responseCorrect = '01a,02a,03a,04a,05abc,06c,07c,08d,09d,10d,11d,12c,13b,14d,15c,16c,17a,18c,19c,20d,21c,22a,23ab,24a,25a,26b,27c,28b,29d,30d,31c,32a,33d,34d,35c,36a,37b,38d,39a,40c,41c,42a,43b,44a,45a,46c,47c,48d,49b,50b,51c,52a,53b,54b,55c,56c,57b,58b,59d,60d,61b,62a,63b,64a,65a';
+	
 	var qtdeCorretas = 0;
 	var qtdeErradas = 0;
 	var naorespondidas = 0;
-	var totalperguntas = 0;
 	var erradas = '';
 	var separador = '';
-	
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp01b, 0) > '0' && array.indexOf(resp01c, 0) > '0'
-	 && array.indexOf(resp01a, 0) < '0' && array.indexOf(resp01d, 0) < '0' && array.indexOf(resp01e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp01a, 0) < '0' && array.indexOf(resp01b, 0) < '0' && array.indexOf(resp01c, 0) < '0' && array.indexOf(resp01d, 0) < '0' && array.indexOf(resp01e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp02b, 0) > '0'
-	 && array.indexOf(resp02a, 0) < '0' && array.indexOf(resp02c, 0) < '0' && array.indexOf(resp02d, 0) < '0' && array.indexOf(resp02e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp02a, 0) < '0' && array.indexOf(resp02b, 0) < '0' && array.indexOf(resp02c, 0) < '0' && array.indexOf(resp02d, 0) < '0' && array.indexOf(resp02e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp03b, 0) > '0'
-	 && array.indexOf(resp03a, 0) < '0' && array.indexOf(resp03c, 0) < '0' && array.indexOf(resp03d, 0) < '0' && array.indexOf(resp03e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp03a, 0) < '0' && array.indexOf(resp03b, 0) < '0' && array.indexOf(resp03c, 0) < '0' && array.indexOf(resp03d, 0) < '0' && array.indexOf(resp03e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp04c, 0) > '0'
-	 && array.indexOf(resp04a, 0) < '0' && array.indexOf(resp04b, 0) < '0' && array.indexOf(resp04d, 0) < '0' && array.indexOf(resp04e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp04a, 0) < '0' && array.indexOf(resp04b, 0) < '0' && array.indexOf(resp04c, 0) < '0' && array.indexOf(resp04d, 0) < '0' && array.indexOf(resp04e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp05c, 0) > '0'
-	 && array.indexOf(resp05a, 0) < '0' && array.indexOf(resp05b, 0) < '0' && array.indexOf(resp05d, 0) < '0' && array.indexOf(resp05e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp05a, 0) < '0' && array.indexOf(resp05b, 0) < '0' && array.indexOf(resp05c, 0) < '0' && array.indexOf(resp05d, 0) < '0' && array.indexOf(resp05e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp06d, 0) > '0'
-	 && array.indexOf(resp06a, 0) < '0' && array.indexOf(resp06b, 0) < '0' && array.indexOf(resp06c, 0) < '0' && array.indexOf(resp06e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp06a, 0) < '0' && array.indexOf(resp06b, 0) < '0' && array.indexOf(resp06c, 0) < '0' && array.indexOf(resp06d, 0) < '0' && array.indexOf(resp06e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp07a, 0) > '0'
-	 && array.indexOf(resp07b, 0) < '0' && array.indexOf(resp07c, 0) < '0' && array.indexOf(resp07d, 0) < '0' && array.indexOf(resp07e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp07a, 0) < '0' && array.indexOf(resp07b, 0) < '0' && array.indexOf(resp07c, 0) < '0' && array.indexOf(resp07d, 0) < '0' && array.indexOf(resp07e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp08a, 0) > '0'
-	 && array.indexOf(resp08b, 0) < '0' && array.indexOf(resp08c, 0) < '0' && array.indexOf(resp08d, 0) < '0' && array.indexOf(resp08e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp08a, 0) < '0' && array.indexOf(resp08b, 0) < '0' && array.indexOf(resp08c, 0) < '0' && array.indexOf(resp08d, 0) < '0' && array.indexOf(resp08e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp09c, 0) > '0'
-	 && array.indexOf(resp09a, 0) < '0' && array.indexOf(resp09b, 0) < '0' && array.indexOf(resp09d, 0) < '0' && array.indexOf(resp09e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp09a, 0) < '0' && array.indexOf(resp09b, 0) < '0' && array.indexOf(resp09c, 0) < '0' && array.indexOf(resp09d, 0) < '0' && array.indexOf(resp09e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp10d, 0) > '0'
-	 && array.indexOf(resp10a, 0) < '0' && array.indexOf(resp10b, 0) < '0' && array.indexOf(resp10c, 0) < '0' && array.indexOf(resp10e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp10a, 0) < '0' && array.indexOf(resp10b, 0) < '0' && array.indexOf(resp10c, 0) < '0' && array.indexOf(resp10d, 0) < '0' && array.indexOf(resp10e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	
-	
-	
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp11a, 0) > '0'
-	 && array.indexOf(resp11b, 0) < '0' && array.indexOf(resp11c, 0) < '0' && array.indexOf(resp11d, 0) < '0' && array.indexOf(resp11e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp11a, 0) < '0' && array.indexOf(resp11b, 0) < '0' && array.indexOf(resp11c, 0) < '0' && array.indexOf(resp11d, 0) < '0' && array.indexOf(resp11e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp12a, 0) > '0'
-	 && array.indexOf(resp12b, 0) < '0' && array.indexOf(resp12c, 0) < '0' && array.indexOf(resp12d, 0) < '0' && array.indexOf(resp12e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp12a, 0) < '0' && array.indexOf(resp12b, 0) < '0' && array.indexOf(resp12c, 0) < '0' && array.indexOf(resp12d, 0) < '0' && array.indexOf(resp12e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp13b, 0) > '0'
-	 && array.indexOf(resp13a, 0) < '0' && array.indexOf(resp13c, 0) < '0' && array.indexOf(resp13d, 0) < '0' && array.indexOf(resp13e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp13a, 0) < '0' && array.indexOf(resp13b, 0) < '0' && array.indexOf(resp13c, 0) < '0' && array.indexOf(resp13d, 0) < '0' && array.indexOf(resp13e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp14b, 0) > '0'
-	 && array.indexOf(resp14a, 0) < '0' && array.indexOf(resp14c, 0) < '0' && array.indexOf(resp14d, 0) < '0' && array.indexOf(resp14e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp14a, 0) < '0' && array.indexOf(resp14b, 0) < '0' && array.indexOf(resp14c, 0) < '0' && array.indexOf(resp14d, 0) < '0' && array.indexOf(resp14e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp15b, 0) > '0'
-	 && array.indexOf(resp15a, 0) < '0' && array.indexOf(resp15c, 0) < '0' && array.indexOf(resp15d, 0) < '0' && array.indexOf(resp15e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp15a, 0) < '0' && array.indexOf(resp15b, 0) < '0' && array.indexOf(resp15c, 0) < '0' && array.indexOf(resp15d, 0) < '0' && array.indexOf(resp15e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp16d, 0) > '0'
-	 && array.indexOf(resp16a, 0) < '0' && array.indexOf(resp16b, 0) < '0' && array.indexOf(resp16c, 0) < '0' && array.indexOf(resp16e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp16a, 0) < '0' && array.indexOf(resp16b, 0) < '0' && array.indexOf(resp16c, 0) < '0' && array.indexOf(resp16d, 0) < '0' && array.indexOf(resp16e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp17a, 0) > '0' && array.indexOf(resp17b, 0) > '0'
-	 && array.indexOf(resp17c, 0) < '0' && array.indexOf(resp17d, 0) < '0' && array.indexOf(resp17e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp17a, 0) < '0' && array.indexOf(resp17b, 0) < '0' && array.indexOf(resp17c, 0) < '0' && array.indexOf(resp17d, 0) < '0' && array.indexOf(resp17e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp18b, 0) > '0'
-	 && array.indexOf(resp18a, 0) < '0' && array.indexOf(resp18c, 0) < '0' && array.indexOf(resp18d, 0) < '0' && array.indexOf(resp18e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp18a, 0) < '0' && array.indexOf(resp18b, 0) < '0' && array.indexOf(resp18c, 0) < '0' && array.indexOf(resp18d, 0) < '0' && array.indexOf(resp18e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp19b, 0) > '0'
-	 && array.indexOf(resp19a, 0) < '0' && array.indexOf(resp19c, 0) < '0' && array.indexOf(resp19d, 0) < '0' && array.indexOf(resp19e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp19a, 0) < '0' && array.indexOf(resp19b, 0) < '0' && array.indexOf(resp19c, 0) < '0' && array.indexOf(resp19d, 0) < '0' && array.indexOf(resp19e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	
-	
-	
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp20a, 0) > '0'
-	 && array.indexOf(resp20b, 0) < '0' && array.indexOf(resp20c, 0) < '0' && array.indexOf(resp20d, 0) < '0' && array.indexOf(resp20e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp20a, 0) < '0' && array.indexOf(resp20b, 0) < '0' && array.indexOf(resp20c, 0) < '0' && array.indexOf(resp20d, 0) < '0' && array.indexOf(resp20e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp21d, 0) > '0'
-	 && array.indexOf(resp21a, 0) < '0' && array.indexOf(resp21b, 0) < '0' && array.indexOf(resp21c, 0) < '0' && array.indexOf(resp21e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp21a, 0) < '0' && array.indexOf(resp21b, 0) < '0' && array.indexOf(resp21c, 0) < '0' && array.indexOf(resp21d, 0) < '0' && array.indexOf(resp21e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp22a, 0) > '0'
-	 && array.indexOf(resp22b, 0) < '0' && array.indexOf(resp22c, 0) < '0' && array.indexOf(resp22d, 0) < '0' && array.indexOf(resp22e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp22a, 0) < '0' && array.indexOf(resp22b, 0) < '0' && array.indexOf(resp22c, 0) < '0' && array.indexOf(resp22d, 0) < '0' && array.indexOf(resp22e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp23a, 0) > '0'
-	 && array.indexOf(resp23b, 0) < '0' && array.indexOf(resp23c, 0) < '0' && array.indexOf(resp23d, 0) < '0' && array.indexOf(resp23e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp23a, 0) < '0' && array.indexOf(resp23b, 0) < '0' && array.indexOf(resp23c, 0) < '0' && array.indexOf(resp23d, 0) < '0' && array.indexOf(resp23e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp24b, 0) > '0'
-	 && array.indexOf(resp24a, 0) < '0' && array.indexOf(resp24c, 0) < '0' && array.indexOf(resp24d, 0) < '0' && array.indexOf(resp24e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp24a, 0) < '0' && array.indexOf(resp24b, 0) < '0' && array.indexOf(resp24c, 0) < '0' && array.indexOf(resp24d, 0) < '0' && array.indexOf(resp24e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp25a, 0) > '0'
-	 && array.indexOf(resp25b, 0) < '0' && array.indexOf(resp25c, 0) < '0' && array.indexOf(resp25d, 0) < '0' && array.indexOf(resp25e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp25a, 0) < '0' && array.indexOf(resp25b, 0) < '0' && array.indexOf(resp25c, 0) < '0' && array.indexOf(resp25d, 0) < '0' && array.indexOf(resp25e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp26c, 0) > '0'
-	 && array.indexOf(resp26a, 0) < '0' && array.indexOf(resp26b, 0) < '0' && array.indexOf(resp26d, 0) < '0' && array.indexOf(resp26e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp26a, 0) < '0' && array.indexOf(resp26b, 0) < '0' && array.indexOf(resp26c, 0) < '0' && array.indexOf(resp26d, 0) < '0' && array.indexOf(resp26e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp27b, 0) > '0'
-	 && array.indexOf(resp27a, 0) < '0' && array.indexOf(resp27c, 0) < '0' && array.indexOf(resp27d, 0) < '0' && array.indexOf(resp27e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp27a, 0) < '0' && array.indexOf(resp27b, 0) < '0' && array.indexOf(resp27c, 0) < '0' && array.indexOf(resp27d, 0) < '0' && array.indexOf(resp27e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp28b, 0) > '0'
-	 && array.indexOf(resp28a, 0) < '0' && array.indexOf(resp28c, 0) < '0' && array.indexOf(resp28d, 0) < '0' && array.indexOf(resp28e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp28a, 0) < '0' && array.indexOf(resp28b, 0) < '0' && array.indexOf(resp28c, 0) < '0' && array.indexOf(resp28d, 0) < '0' && array.indexOf(resp28e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp29a, 0) > '0'
-	 && array.indexOf(resp29b, 0) < '0' && array.indexOf(resp29c, 0) < '0' && array.indexOf(resp29d, 0) < '0' && array.indexOf(resp29e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp29a, 0) < '0' && array.indexOf(resp29b, 0) < '0' && array.indexOf(resp29c, 0) < '0' && array.indexOf(resp29d, 0) < '0' && array.indexOf(resp29e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	
-	
-	
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp30c, 0) > '0'
-	 && array.indexOf(resp30a, 0) < '0' && array.indexOf(resp30b, 0) < '0' && array.indexOf(resp30d, 0) < '0' && array.indexOf(resp30e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp30a, 0) < '0' && array.indexOf(resp30b, 0) < '0' && array.indexOf(resp30c, 0) < '0' && array.indexOf(resp30d, 0) < '0' && array.indexOf(resp30e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp31d, 0) > '0'
-	 && array.indexOf(resp31a, 0) < '0' && array.indexOf(resp31b, 0) < '0' && array.indexOf(resp31c, 0) < '0' && array.indexOf(resp31e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp31a, 0) < '0' && array.indexOf(resp31b, 0) < '0' && array.indexOf(resp31c, 0) < '0' && array.indexOf(resp31d, 0) < '0' && array.indexOf(resp31e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp32c, 0) > '0'
-	 && array.indexOf(resp32a, 0) < '0' && array.indexOf(resp32b, 0) < '0' && array.indexOf(resp32d, 0) < '0' && array.indexOf(resp32e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp32a, 0) < '0' && array.indexOf(resp32b, 0) < '0' && array.indexOf(resp32c, 0) < '0' && array.indexOf(resp32d, 0) < '0' && array.indexOf(resp32e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp33b, 0) > '0'
-	 && array.indexOf(resp33a, 0) < '0' && array.indexOf(resp33c, 0) < '0' && array.indexOf(resp33d, 0) < '0' && array.indexOf(resp33e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp33a, 0) < '0' && array.indexOf(resp33b, 0) < '0' && array.indexOf(resp33c, 0) < '0' && array.indexOf(resp33d, 0) < '0' && array.indexOf(resp33e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp34b, 0) > '0'
-	 && array.indexOf(resp34a, 0) < '0' && array.indexOf(resp34c, 0) < '0' && array.indexOf(resp34d, 0) < '0' && array.indexOf(resp34e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp34a, 0) < '0' && array.indexOf(resp34b, 0) < '0' && array.indexOf(resp34c, 0) < '0' && array.indexOf(resp34d, 0) < '0' && array.indexOf(resp34e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp35c, 0) > '0'
-	 && array.indexOf(resp35a, 0) < '0' && array.indexOf(resp35b, 0) < '0' && array.indexOf(resp35d, 0) < '0' && array.indexOf(resp35e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp35a, 0) < '0' && array.indexOf(resp35b, 0) < '0' && array.indexOf(resp35c, 0) < '0' && array.indexOf(resp35d, 0) < '0' && array.indexOf(resp35e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp36a, 0) > '0' && array.indexOf(resp36c, 0) > '0'
-	 && array.indexOf(resp36b, 0) < '0' && array.indexOf(resp36d, 0) < '0' && array.indexOf(resp36e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp36a, 0) < '0' && array.indexOf(resp36b, 0) < '0' && array.indexOf(resp36c, 0) < '0' && array.indexOf(resp36d, 0) < '0' && array.indexOf(resp36e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp37c, 0) > '0'
-	 && array.indexOf(resp37a, 0) < '0' && array.indexOf(resp37b, 0) < '0' && array.indexOf(resp37d, 0) < '0' && array.indexOf(resp37e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp37a, 0) < '0' && array.indexOf(resp37b, 0) < '0' && array.indexOf(resp37c, 0) < '0' && array.indexOf(resp37d, 0) < '0' && array.indexOf(resp37e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp38a, 0) > '0' && array.indexOf(resp38b, 0) > '0'
-	 && array.indexOf(resp38c, 0) < '0' && array.indexOf(resp38d, 0) < '0' && array.indexOf(resp38e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp38a, 0) < '0' && array.indexOf(resp38b, 0) < '0' && array.indexOf(resp38c, 0) < '0' && array.indexOf(resp38d, 0) < '0' && array.indexOf(resp38e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp39a, 0) > '0' && array.indexOf(resp39c, 0) > '0' && array.indexOf(resp39d, 0) < '0'
-	 && array.indexOf(resp39b, 0) < '0' && array.indexOf(resp39e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp39a, 0) < '0' && array.indexOf(resp39b, 0) < '0' && array.indexOf(resp39c, 0) < '0' && array.indexOf(resp39d, 0) < '0' && array.indexOf(resp39e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	
-	
-	
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp40d, 0) > '0'
-	 && array.indexOf(resp40a, 0) < '0' && array.indexOf(resp40b, 0) < '0' && array.indexOf(resp40c, 0) < '0' && array.indexOf(resp40e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp40a, 0) < '0' && array.indexOf(resp40b, 0) < '0' && array.indexOf(resp40c, 0) < '0' && array.indexOf(resp40d, 0) < '0' && array.indexOf(resp40e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp41d, 0) > '0'
-	 && array.indexOf(resp41a, 0) < '0' && array.indexOf(resp41b, 0) < '0' && array.indexOf(resp41c, 0) < '0' && array.indexOf(resp41e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp41a, 0) < '0' && array.indexOf(resp41b, 0) < '0' && array.indexOf(resp41c, 0) < '0' && array.indexOf(resp41d, 0) < '0' && array.indexOf(resp41e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp42c, 0) > '0'
-	 && array.indexOf(resp42a, 0) < '0' && array.indexOf(resp42b, 0) < '0' && array.indexOf(resp42d, 0) < '0' && array.indexOf(resp42e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp42a, 0) < '0' && array.indexOf(resp42b, 0) < '0' && array.indexOf(resp42c, 0) < '0' && array.indexOf(resp42d, 0) < '0' && array.indexOf(resp42e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp43a, 0) > '0'
-	 && array.indexOf(resp43b, 0) < '0' && array.indexOf(resp43c, 0) < '0' && array.indexOf(resp43d, 0) < '0' && array.indexOf(resp43e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp43a, 0) < '0' && array.indexOf(resp43b, 0) < '0' && array.indexOf(resp43c, 0) < '0' && array.indexOf(resp43d, 0) < '0' && array.indexOf(resp43e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp44d, 0) > '0'
-	 && array.indexOf(resp44a, 0) < '0' && array.indexOf(resp44b, 0) < '0' && array.indexOf(resp44c, 0) < '0' && array.indexOf(resp44e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp44a, 0) < '0' && array.indexOf(resp44b, 0) < '0' && array.indexOf(resp44c, 0) < '0' && array.indexOf(resp44d, 0) < '0' && array.indexOf(resp44e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp45b, 0) > '0'
-	 && array.indexOf(resp45a, 0) < '0' && array.indexOf(resp45c, 0) < '0' && array.indexOf(resp45d, 0) < '0' && array.indexOf(resp45e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp45a, 0) < '0' && array.indexOf(resp45b, 0) < '0' && array.indexOf(resp45c, 0) < '0' && array.indexOf(resp45d, 0) < '0' && array.indexOf(resp45e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp46a, 0) > '0' && array.indexOf(resp43b, 0) > '0'
-	 && array.indexOf(resp46c, 0) < '0' && array.indexOf(resp46d, 0) < '0' && array.indexOf(resp46e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp46a, 0) < '0' && array.indexOf(resp46b, 0) < '0' && array.indexOf(resp46c, 0) < '0' && array.indexOf(resp46d, 0) < '0' && array.indexOf(resp46e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp47b, 0) > '0' && array.indexOf(resp47c, 0) > '0'
-	 && array.indexOf(resp47a, 0) < '0' && array.indexOf(resp47d, 0) < '0' && array.indexOf(resp47e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp47a, 0) < '0' && array.indexOf(resp47b, 0) < '0' && array.indexOf(resp47c, 0) < '0' && array.indexOf(resp47d, 0) < '0' && array.indexOf(resp47e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp48b, 0) > '0'
-	 && array.indexOf(resp48a, 0) < '0' && array.indexOf(resp48c, 0) < '0' && array.indexOf(resp48d, 0) < '0' && array.indexOf(resp48e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp48a, 0) < '0' && array.indexOf(resp48b, 0) < '0' && array.indexOf(resp48c, 0) < '0' && array.indexOf(resp48d, 0) < '0' && array.indexOf(resp48e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp49b, 0) > '0'
-	 && array.indexOf(resp49a, 0) < '0' && array.indexOf(resp49c, 0) < '0' && array.indexOf(resp49d, 0) < '0' && array.indexOf(resp49e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp49a, 0) < '0' && array.indexOf(resp49b, 0) < '0' && array.indexOf(resp49c, 0) < '0' && array.indexOf(resp49d, 0) < '0' && array.indexOf(resp49e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	
-	
-	
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp50c, 0) > '0'
-	 && array.indexOf(resp50a, 0) < '0' && array.indexOf(resp50b, 0) < '0' && array.indexOf(resp50d, 0) < '0' && array.indexOf(resp50e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp50a, 0) < '0' && array.indexOf(resp50b, 0) < '0' && array.indexOf(resp50c, 0) < '0' && array.indexOf(resp50d, 0) < '0' && array.indexOf(resp50e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp51c, 0) > '0'
-	 && array.indexOf(resp51a, 0) < '0' && array.indexOf(resp51b, 0) < '0' && array.indexOf(resp51d, 0) < '0' && array.indexOf(resp51e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp51a, 0) < '0' && array.indexOf(resp51b, 0) < '0' && array.indexOf(resp51c, 0) < '0' && array.indexOf(resp51d, 0) < '0' && array.indexOf(resp51e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp52a, 0) > '0'
-	 && array.indexOf(resp52b, 0) < '0' && array.indexOf(resp52c, 0) < '0' && array.indexOf(resp52d, 0) < '0' && array.indexOf(resp52e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp52a, 0) < '0' && array.indexOf(resp52b, 0) < '0' && array.indexOf(resp52c, 0) < '0' && array.indexOf(resp52d, 0) < '0' && array.indexOf(resp52e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp53a, 0) > '0' && array.indexOf(resp53b, 0) > '0'
-	 && array.indexOf(resp53c, 0) < '0' && array.indexOf(resp53d, 0) < '0' && array.indexOf(resp53e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp53a, 0) < '0' && array.indexOf(resp53b, 0) < '0' && array.indexOf(resp53c, 0) < '0' && array.indexOf(resp53d, 0) < '0' && array.indexOf(resp53e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp54a, 0) > '0'
-	 && array.indexOf(resp54b, 0) < '0' && array.indexOf(resp54c, 0) < '0' && array.indexOf(resp54d, 0) < '0' && array.indexOf(resp54e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp54a, 0) < '0' && array.indexOf(resp54b, 0) < '0' && array.indexOf(resp54c, 0) < '0' && array.indexOf(resp54d, 0) < '0' && array.indexOf(resp54e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp55a, 0) > '0'
-	 && array.indexOf(resp55b, 0) < '0' && array.indexOf(resp55c, 0) < '0' && array.indexOf(resp55d, 0) < '0' && array.indexOf(resp55e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp55a, 0) < '0' && array.indexOf(resp55b, 0) < '0' && array.indexOf(resp55c, 0) < '0' && array.indexOf(resp55d, 0) < '0' && array.indexOf(resp55e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp56a, 0) > '0'
-	 && array.indexOf(resp56b, 0) < '0' && array.indexOf(resp56c, 0) < '0' && array.indexOf(resp56d, 0) < '0' && array.indexOf(resp56e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp56a, 0) < '0' && array.indexOf(resp56b, 0) < '0' && array.indexOf(resp56c, 0) < '0' && array.indexOf(resp56d, 0) < '0' && array.indexOf(resp56e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp57b, 0) > '0'
-	 && array.indexOf(resp57a, 0) < '0' && array.indexOf(resp57c, 0) < '0' && array.indexOf(resp57d, 0) < '0' && array.indexOf(resp57e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp57a, 0) < '0' && array.indexOf(resp57b, 0) < '0' && array.indexOf(resp57c, 0) < '0' && array.indexOf(resp57d, 0) < '0' && array.indexOf(resp57e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp58a, 0) > '0'
-	 && array.indexOf(resp58b, 0) < '0' && array.indexOf(resp58c, 0) < '0' && array.indexOf(resp58d, 0) < '0' && array.indexOf(resp58e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp58a, 0) < '0' && array.indexOf(resp58b, 0) < '0' && array.indexOf(resp58c, 0) < '0' && array.indexOf(resp58d, 0) < '0' && array.indexOf(resp58e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp59b, 0) > '0'
-	 && array.indexOf(resp59a, 0) < '0' && array.indexOf(resp59c, 0) < '0' && array.indexOf(resp59d, 0) < '0' && array.indexOf(resp59e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp59a, 0) < '0' && array.indexOf(resp59b, 0) < '0' && array.indexOf(resp59c, 0) < '0' && array.indexOf(resp59d, 0) < '0' && array.indexOf(resp59e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	
-	
-	
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp60a, 0) > '0' && array.indexOf(resp60b, 0) > '0'
-	 && array.indexOf(resp60c, 0) < '0' && array.indexOf(resp60d, 0) < '0' && array.indexOf(resp60e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp60a, 0) < '0' && array.indexOf(resp60b, 0) < '0' && array.indexOf(resp60c, 0) < '0' && array.indexOf(resp60d, 0) < '0' && array.indexOf(resp60e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp61a, 0) > '0' && array.indexOf(resp61b, 0) > '0'
-	 && array.indexOf(resp61c, 0) < '0' && array.indexOf(resp61d, 0) < '0' && array.indexOf(resp61e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp61a, 0) < '0' && array.indexOf(resp61b, 0) < '0' && array.indexOf(resp61c, 0) < '0' && array.indexOf(resp61d, 0) < '0' && array.indexOf(resp61e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp62b, 0) > '0'
-	 && array.indexOf(resp62b, 0) < '0' && array.indexOf(resp62c, 0) < '0' && array.indexOf(resp62d, 0) < '0' && array.indexOf(resp62e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp62a, 0) < '0' && array.indexOf(resp62b, 0) < '0' && array.indexOf(resp62c, 0) < '0' && array.indexOf(resp62d, 0) < '0' && array.indexOf(resp62e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp63d, 0) > '0'
-	 && array.indexOf(resp63a, 0) < '0' && array.indexOf(resp63b, 0) < '0' && array.indexOf(resp63c, 0) < '0' && array.indexOf(resp63e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp63a, 0) < '0' && array.indexOf(resp63b, 0) < '0' && array.indexOf(resp63c, 0) < '0' && array.indexOf(resp63d, 0) < '0' && array.indexOf(resp63e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp64b, 0) > '0'
-	 && array.indexOf(resp64a, 0) < '0' && array.indexOf(resp64c, 0) < '0' && array.indexOf(resp64d, 0) < '0' && array.indexOf(resp64e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp64a, 0) < '0' && array.indexOf(resp64b, 0) < '0' && array.indexOf(resp64c, 0) < '0' && array.indexOf(resp64d, 0) < '0' && array.indexOf(resp64e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
-	totalperguntas = totalperguntas + 1;
-	if (array.indexOf(resp65c, 0) > '0'
-	 && array.indexOf(resp65a, 0) < '0' && array.indexOf(resp65b, 0) < '0' && array.indexOf(resp65d, 0) < '0' && array.indexOf(resp65e, 0) < '0') {
-		qtdeCorretas = parseInt(qtdeCorretas) + 1;
-	} else if (array.indexOf(resp65a, 0) < '0' && array.indexOf(resp65b, 0) < '0' && array.indexOf(resp65c, 0) < '0' && array.indexOf(resp65d, 0) < '0' && array.indexOf(resp65e, 0) < '0') {
-		naorespondidas = parseInt(naorespondidas) + 1;
-	} else {
-		qtdeErradas = parseInt(qtdeErradas) + 1;
-		erradas = erradas + separador + totalperguntas; separador = '; ';
-	}
+	var respondidas = '';
+	var checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+	//quantidade corretas e incorretas
+	for (var index=0; index<checkboxes.length; index++) {
+		valor = checkboxes[index].value;
+		if (responseCorrect.indexOf(valor, 0) >= '0') {
+			qtdeCorretas = parseInt(qtdeCorretas) + 1;
+		} else {
+			qtdeErradas = parseInt(qtdeErradas) + 1;
+			erradas = erradas + separador + parseInt(index+1); separador = '; ';
+		}
+	}
+	naorespondidas = totalperguntas - qtdeCorretas - qtdeErradas;
+
+	var array = [];
+	var checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+	for (var i = 0; i < checkboxes.length; i++) {
+	  array.push(checkboxes[i].value);
+	}
+	array = '[' + array + ']';
 
 	var valor = '';
 	var responder = '';
@@ -872,16 +363,64 @@ function verResultadoSimulator(numeroPergunta, opcoesCorretas) {
 	} else {
 		resultado = resultado + 'REPROVADO \n' + calculo + '% de acerto' + ', nota < que 70%'
 	}
-//	resultado = resultado + '\n' + calculo + '% de acerto' + ', nota mínima é 70%'
 	resultado = resultado + '\n\n' + qtdeCorretas + ' corretas';
 	resultado = resultado + '\n' + qtdeErradas + ' erradas ' + erradas;
 	resultado = resultado + '\n' + naorespondidas + ' não respondidas';
-//	resultado = resultado + '\n--------';
-//	resultado = resultado + '\n' + totalperguntas + ' total';
-	resultado = resultado + '\n\nNão respondidas: 0; '  + responder;
+	resultado = resultado + '\n\nResponda: '  + responder;
 	alert(resultado);
 
 //	document.getElementById("formAdd").submit();
-	
+}
+
+function showNext(numberQuestion, correctOptions) {
+	questionNextPrevious = parseInt(numberQuestion) + 1;
+	questionNextPrevious = '0' + questionNextPrevious;
+	questionNextPrevious = questionNextPrevious.substring((questionNextPrevious.length-2),questionNextPrevious.length);
+	for (index=0; index<=totalperguntas; index++) {
+		var formata = '0' + index;
+		formata = formata.substring((formata.length-2),formata.length);
+		if (parseInt(index) == parseInt(questionNextPrevious)) {
+			document.getElementById('div' + formata).style.display='block';
+		} else {
+			document.getElementById('div' + formata).style.display='none';
+		}
+	}
+}
+
+function showPrevious(numberQuestion) {
+	questionNextPrevious = parseInt(numberQuestion) - 1;
+	questionNextPrevious = '0' + questionNextPrevious;
+	questionNextPrevious = questionNextPrevious.substring((questionNextPrevious.length-2),questionNextPrevious.length);
+
+	document.getElementById('div' + questionNextPrevious).style.display='block';
+	document.getElementById('div' + numberQuestion).style.display='none';
+}
+
+function showResponse(numberQuestion, correctOptions) {
+	if (ckeckEmptyAnswers(numberQuestion) == '0') {
+		alert('Selecione uma resposta');
+		return;
+	}
+	if (document.getElementById('correct' + numberQuestion).style.display == 'none') {
+		document.getElementById('correct' + numberQuestion).style.display='block';
+		document.getElementById('incorrect' + numberQuestion).style.display='block';
+	} else {
+		document.getElementById('correct' + numberQuestion).style.display='none';
+		document.getElementById('incorrect' + numberQuestion).style.display='none';
+	}
+}
+
+function ckeckEmptyAnswers(numberQuestion) {
+	var array = [];
+	var checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+	for (var i = 0; i < checkboxes.length; i++) {
+	  array.push(checkboxes[i].value);
+	}
+	array = '[' + array + ']';
+	if (array.indexOf(numberQuestion, 0) <= '0') {
+		return '0';
+	} else {
+		return '1';
+	}
 }
 </script>
