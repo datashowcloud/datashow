@@ -274,23 +274,22 @@
 		<button class="btn btn-info" onclick="showPrevious('10');"> <i class="fa fa-backward"></i> Anterior</button>
 		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
 		<button class="btn btn-info" onclick="showNext('10');">Próximo <i class="fa fa-forward"></i></button>
-		<br/><br/><b>10. Quais afirmações abaixo referem-se ao Amazon </b>
-		<br/><br/><input type=checkbox value="10a"> a) 
-		<br/><br/><input type=checkbox value="10b"> b) 
-		<br/><br/><input type=checkbox value="10c"> c) 
-		<br/><br/><input type=checkbox value="10d"> d) 
+		<br/><br/><b>10. Você está auditando a infraestrutura da sua empresa na AWS para tentar identificar ações não programadas de desligamentos de recursos. Qual dos itens abaixo pode te auxiliar nesta atividade?</b>
+		<br/><br/><input type=checkbox value="10a"> a) AWS Audit
+		<br/><br/><input type=checkbox value="10b"> b) AWS CloudTrail
+		<br/><br/><input type=checkbox value="10c"> c) AWS CloudSearch
+		<br/><br/><input type=checkbox value="10d"> d) AWS Cloud ElasticSearch
 		<br/><br/><button class="btn btn-info" onclick="showResponse('10', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
 		<div id="resp10" style="display:none; text-align:justify; color:green;">
 			<font color=green>
 				<br/><b>Correta:</b>
-				<br/>a) Todos os planos desde o Basic oferecem esses serviços.  Basic, Developer, Business, Entrerprise on ramp e Enterprise.
-				<br/><br/>Nas opções listadas só tem Basic e Enterprise e são as únicas possíveis pois as outras não são planos de suporte existentes.
-				<br/><br/>Para os planos business e enterprise existe uma opção de suporte técnico aprimorado 24x7, que é mais exclusivo e que dá acesso aos engenheiros da AWS por telefone e e-mail, mas que só seria a resposta caso a pergunta estivesse relacionada a suporte técnico aprimorado.
-				<br/><br/>Maiores detalhes em: https://aws.amazon.com/premiumsupport/plans/
+				<br/>b) O CloudTrail loga a chamada de todas as chamadas de API que são usadas para o desligamento de recursos na infraestrutura da AWS
 			</font>
 			<font color=red>
 				<br/><b>Incorretas:</b>
-				<br/>Full e Reserved não são nomes de plano de suporte na AWS.
+				<br/>AWS Audit não é um serviço válido na AWS
+				<br/><br/>AWS CloudSearch é um serviço que permite a implementação de uma funcionalidade busca dentro do seu site na AWS.
+				<br/><br/>AWS ElasticSearch é um serviço para armazenar, analisar e correlacionar uma grande quantidade de dados de logs de seus aplicativos para identificar e resolver gargalos de desempenho e problemas de disponibilidade
 			</font>
 		</div>
 	</div>
