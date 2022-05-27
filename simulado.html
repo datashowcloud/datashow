@@ -420,21 +420,14 @@ function showPoints(qtdeResponses) {
 			naorespondidas = naorespondidas + 1;
 		//respondida
 		} else {
-			//to do
-			for (var index=0; index<arraySelected.length; index++) {
-				//correta
-				alert('arraySelected='+arraySelected);
-				if (arraySelected == gabarito[index]) {
-					qtdeCorretas = parseInt(qtdeCorretas) + 1;
-					break;
-				//errada
-				} else {
-					qtdeErradas = parseInt(qtdeErradas) + 1;
-					erradas = erradas + separador + parseInt(index+1); separador = '; ';
-				}
+			//correta
+			if (arraySelected.indexOf(gabarito[index], 0) >= 0) { 
+				qtdeCorretas = parseInt(qtdeCorretas) + 1;
+			} else { //errada
+				qtdeErradas = parseInt(qtdeErradas) + 1;
+				erradas = erradas + separador + parseInt(index+1); separador = '; ';
 			}
 		}
-//			if (index >=5 ) { exit; }
 	}
 
 
