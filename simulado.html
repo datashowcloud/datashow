@@ -34,7 +34,7 @@
 		<br/><br/>Preparo para Certificação
 		<br/><br/>AWS Certified Cloud Practitioner
 		<br/><br/>Assinale as alternativas corretas
-		<br/><br/><i>enio.francisco@gmail.com&#174; +55(11)95239-2000 versão26.05.22</i></i>
+		<br/><br/><i>enio.francisco@gmail.com&#174; +55(11)95239-2000 versão28.05.22.12.50</i></i>
 	</div>
 
 	<div id="div01" style="display:none;">
@@ -781,7 +781,249 @@
 		</div>
 	</div>
 
-<!--	<div id="div99" style="display:none;">
+	<div id="div31" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('31');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('31');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>31. Qual é a quantidade de dados que podemos armazenar no S3?</b>
+		<br/><br/><input type=checkbox value="31a"> a) 5 Gigabytes
+		<br/><br/><input type=checkbox value="31b"> b) 50 Gigabytes
+		<br/><br/><input type=checkbox value="31c"> c) A capacidade é virtualmente ilimitada (<a href="https://aws.amazon.com/pt/s3/" target="_blank">link estudar</a>)
+		<br/><br/><input type=checkbox value="31d"> d) 1 Terabyte
+		<br/><br/><button class="btn btn-info" onclick="showResponse('31', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp31" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>c) A medida que aumenta a necessidade de armazenamento, a AWS vai fornecendo mais recursos, desta forma a capacidade é virtualmente ilimitada.
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>As demais opções estabelecem limites para o armazenamento e neste caso a capacidade é virtualmente ilimitada.
+			</font>
+		</div>
+	</div>
+
+	<div id="div32" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('32');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('32');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>32. Utilização de recursos de rede, computadores virtuais e armazenamento de dados com alto nível de flexibilidade, gerenciamento e controle sobre os recurso de TI são características de qual tipo de uso de cloud?</b>
+		<br/><br/><input type=checkbox value="32a"> a) IAAS (<a href="https://aws.amazon.com/what-is-cloud-computing/?nc2=h_ql_le_int_cc" target="_blank">link estudar</a>)
+		<br/><br/><input type=checkbox value="32b"> b) SAAS
+		<br/><br/><input type=checkbox value="32c"> c) BAAS
+		<br/><br/><input type=checkbox value="32d"> d) PAAS
+		<br/><br/><button class="btn btn-info" onclick="showResponse('32', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp32" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>a) IAAS - Infraestrutura como serviço.
+				<br/><br/>Neste tipo de uso, o cliente precisa gerenciar todos os recursos que precisa implementar na cloud.
+				<br/><br/>Geralmente usa-se apenas instâncias EC2 e se configura-se todo o resto, instala-se software, web hostings, bancos de dados, filas, etc..
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>PAAS - Plataforma como serviço - Neste modelo, o cliente só precisa desenvolver o software sobre a plataforma.
+				<br/><br/>SAAS - Software como serviço - Neste modelo, o cliente usa o software pronto.
+				<br/><br/>BAAS - Backend como serviço - Neste modelo, o cliente usa o backend e implementa apensar o front-end.
+			</font>
+		</div>
+	</div>
+
+	<div id="div33" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('33');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('33');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>33. Qual é o serviço utilizado para permitir que aplicações acessem recursos restritos de serviços dentro da AWS?</b>
+		<br/><br/><input type=checkbox value="33a"> a) IAM policies
+		<br/><br/><input type=checkbox value="33b"> b) IAM Groups
+		<br/><br/><input type=checkbox value="33c"> c) IAM Users
+		<br/><br/><input type=checkbox value="33d"> d) IAM Roles (<a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html" target="_blank">link estudar</a>)
+		<br/><br/><button class="btn btn-info" onclick="showResponse('33', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp33" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>d) IAM Roles.
+				<br/><br/>Todos os acessos entre aplicações devem ser feitos através de uma Role configurada no serviço IAM.
+				<br/><br/>Através de uma Role você associa policies e restrições de acesso que podem ser associadas a uma ou mais aplicações.
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>Todas as funções estão relacionado ao IAM, que é utilizado para o gerenciamento de usuários e recursos de uma conta Users para usuários, Groups para grupos de usuários, Policies para restrições para autorização ou negação de funcionalidades de serviços.
+			</font>
+		</div>
+	</div>
+
+	<div id="div34" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('34');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('34');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>34. Você precisa implementar no seu site uma funcionalidade para realizar pesquisas em todas as páginas e arquivos para facilitar a navegação e experiência do seus usuário. Qual SAAS disponível na AWS fornece ferramentas robustas para cumprir essa finalidade e que pode ser facilmente utilizada na sua aplicação?</b>
+		<br/><br/><input type=checkbox value="34a"> a) Amazon ElasticSearch
+		<br/><br/><input type=checkbox value="34b"> b) Amazon CloudWatch
+		<br/><br/><input type=checkbox value="34c"> c) Amazon Athena
+		<br/><br/><input type=checkbox value="34d"> d) Amazon CloudSearch
+		<br/><br/><button class="btn btn-info" onclick="showResponse('34', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp34" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>d) Amazon CloudSearch
+				<br/>https://aws.amazon.com/pt/cloudsearch/?nc2=h_ql_prod_an_cs
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>O Athena é um serviço sevless que permite a realização de consultas utilizando SQL em Buckets do S3.
+				<br/><br/>O AmazonElasticSearch é um serviço que permite armazenar, analisar e correlacionar uma grande quantidade de dados de logs de seus aplicativos para identificar e resolver gargalos de desempenho e problemas de disponibilidade
+				<br/><br/>O CloudWatch permite oferece a geração de métricas e monitoramento para diversos serviços e aplicações da AWS.
+			</font>
+		</div>
+	</div>
+
+	<div id="div35" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('35');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('35');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>35. Você irá disponibilizar uma aplicação crítica e com dados sensíveis na Internet. Qual é o serviço que te ajuda a identificar vulnerabilidades de segurança e risco de exposição de acordo com as melhores práticas e compliance?</b>
+		<br/><br/><input type=checkbox value="35a"> a) AWS Inspector (<a href="https://aws.amazon.com/inspector/?nc2=type_a" target="_blank">link estudar</a>)
+		<br/><br/><input type=checkbox value="35b"> b) AWS GuardDuty
+		<br/><br/><input type=checkbox value="35c"> c) AWS KMS (<a href="https://aws.amazon.com/pt/kms/" target="_blank">link estudar</a>)
+		<br/><br/><input type=checkbox value="35d"> d) AWS Macie
+		<br/><br/><button class="btn btn-info" onclick="showResponse('35', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp35" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>a) O Amazon Inspector é um serviço automatizado de gerenciamento de vulnerabilidade que verifica continuamente as workloads da AWS em busca de vulnerabilidades de software e exposição não intencional à rede.
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>O Amazon GuardDuty é um serviço de detecção de ameaças que monitora continuamente atividades mal-intencionadas e comportamentos não autorizados para proteger suas contas, cargas de trabalho e dados da AWS armazenados no Amazon S3.
+				<br/><br/>O Amazon Macie é um serviço de segurança e privacidade de dados totalmente gerenciado que usa machine learning e correspondência de padrões para descobrir e proteger seus dados confidenciais na AWS. À medida que as organizações gerenciam volumes crescentes de dados, identificar e proteger seus dados confidenciais em escala pode se tornar cada vez mais complexo, caro e demorado. O Amazon Macie automatiza a descoberta de dados confidenciais em escala e reduz o custo da proteção de seus dados
+				<br/><br/>O AWS Key Management Service (KMS) facilita a criação e o gerenciamento de chaves criptográficas e o controle do seu uso em uma ampla variedade de serviços da AWS e em seus aplicativos
+			</font>
+		</div>
+	</div>
+
+	<div id="div36" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('36');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('36');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>36. Numa migração de sistemas, você percebeu que existem dados na sua aplicação que raramente são usados e que poderiam ser mantidos em arquivos somente para fins de auditoria. Qual é o serviço da AWS que pode ser utilizado para esse objetivo e com o menor custo possível?</b>
+		<br/><br/><input type=checkbox value="36a"> a) S3 Glacier (<a href="https://aws.amazon.com/pt/glacier/faqs/" target="_blank">link estudar</a>)
+		<br/><br/><input type=checkbox value="36b"> b) S3 Intelligent Tiering
+		<br/><br/><input type=checkbox value="36c"> c) S3 Infrequent Access
+		<br/><br/><input type=checkbox value="36d"> d) S3 Standard
+		<br/><br/><button class="btn btn-info" onclick="showResponse('36', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp36" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>a) O Serviço S3 Glacier permite fazer a guarda destes dados de uma forma mais econômica, porém com um tempo de recuperação mais lento.
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>O S3 Standard oferece um armazenamento de objetos com altos níveis de resiliência, disponibilidade e performance para dados acessados com frequência. O custo é maior que o Glacier.
+				<br/><br/>S3 Intelligent Tiering é a única classe de armazenamento em nuvem que oferece economia automática de custos de armazenamento quando os padrões de acesso a dados mudam, sem impacto na performance ou sobrecarga operacional. O custo é maior que o Glacier.
+				<br/><br/>O S3 Standard-IA é indicado para dados acessados com menos frequência, mas que exigem acesso rápido quando necessários. O custo é maior que o Glacier.
+			</font>
+		</div>
+	</div>
+
+	<div id="div37" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('37');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('37');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>37. Uma aplicação de terceiros irá gerar um arquivo num layout diferente do que o seu sistema espera. Qual é serviço da AWS que pode ser utilizado para transformar o arquivo e carregá-lo no seu sistema?</b>
+		<br/><br/><input type=checkbox value="37a"> a) AWS DMS
+		<br/><br/><input type=checkbox value="37b"> b) AWS Glue
+		<br/><br/><input type=checkbox value="37c"> c) AWS DTS
+		<br/><br/><input type=checkbox value="37d"> d) AWS DataSync
+		<br/><br/><button class="btn btn-info" onclick="showResponse('37', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp37" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>b) Glue
+				<br/><br/>É um serviço indicado para ETL - Extrair, transforma e carregar
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>O AWS DTS não é um serviço disponível na AWS
+				<br/><br/>O AWS DataSync é utilizado para realizar a sincronização automática entre dados da infraestrutura on premise e da AWS.
+				<br/><br/>O DMS - Database Migration Service é o serviço utilizado para realizar a migração de banco de dados na AWS.
+			</font>
+		</div>
+	</div>
+
+	<div id="div38" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('38');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('38');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>38. Qual pilar do framework de melhores práticas arquitetônicas da AWS se concentra em garantir que uma carga de trabalho execute sua função pretendida corretamente e de modo consistente, e que uma carga de trabalho seja resiliente e que se recupere rapidamente de falhas para atender a demanda do negócio e do cliente?</b>
+		<br/><br/><input type=checkbox value="38a"> a) Segurança
+		<br/><br/><input type=checkbox value="38b"> b) Excelência Operacional
+		<br/><br/><input type=checkbox value="38c"> c) Performance Eficiente
+		<br/><br/><input type=checkbox value="38d"> d) Confiabilidade (<a href="https://aws.amazon.com/pt/architecture/well-architected/?achp_wa1&wa-lens-whitepapers.sort-by=item.additionalFields.sortDate&wa-lens-whitepapers.sort-order=desc" target="_blank">link estudar</a>)
+		<br/><br/><button class="btn btn-info" onclick="showResponse('38', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp38" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>d) Pilar de Confiabilidade
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>Os 5 pilares são Excelência Operacional, Segurança, Confiabilidade, Performance Eficiente e Custo Otimizado.
+			</font>
+		</div>
+	</div>
+
+	<div id="div39" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('39');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('39');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>39. Uma das formas de garantir a elasticidade e economia no uso do EC2 é mantendo os arquivos de programas e de sistemas em recursos computacionais separados. Qual serviço abaixo pode ser utilizado para isso?</b>
+		<br/><br/><input type=checkbox value="39a"> a) EBS
+		<br/><br/><input type=checkbox value="39b"> b) Git
+		<br/><br/><input type=checkbox value="39c"> c) CodeCommit
+		<br/><br/><input type=checkbox value="39d"> d) S3
+		<br/><br/><button class="btn btn-info" onclick="showResponse('39', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp39" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>a) Numa implementação padrão do serviço EC2 é necessário definir o tipo de máquina que irá processar as instruções, e o tipo de EBS para armazenar e persistir os dados. Isso permite que o EC2 seja ligado e desligado de acordo com o uso e que os dados fiquem salvos no EBS durante esses processos.
+				<br/><br/>https://aws.amazon.com/pt/ec2/faqs/
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>O Git é um aplicativo para fazer o gerenciamento e gestão de código fonte.
+				<br/><br/>O CodeCommit é utilizado para gerenciar código fonte no modelo Git, semelhante ao GitHub, GitLab, etc.
+				<br/><br/>O S3 é utilizado para armazenar arquivos em forma de objeto (documento + metadado do documento) em estruturas de Buckets.
+			</font>
+		</div>
+	</div>
+
+	<div id="div40" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('40');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('40');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>40. Você deseja monitorar o percentual de memória que os seus servidores estão utilizando em determinando período do dia. Qual serviço da AWS abaixo pode ser utilizado para essa finalidade?</b>
+		<br/><br/><input type=checkbox value="40a"> a) AWS DataSync
+		<br/><br/><input type=checkbox value="40b"> b) AWS Cloud Explore
+		<br/><br/><input type=checkbox value="40c"> c) AWS CloudWatch
+		<br/><br/><input type=checkbox value="40d"> d) AWS CloudTrail
+		<br/><br/><button class="btn btn-info" onclick="showResponse('40', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp40" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>a) Com o AWS Cloud Watch você pode monitorar os recursos da sua infraestrutura
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>O CloudTrail pode ser utilizado para realizar logs de eventos relacionados a api de serviços.
+				<br/><br/>O CostExplorer é para acompanhar os gastos da sua infraestrutura.
+				<br/><br/>O DataSync realiza a transferência de dados de forma automatizada entre ambientes on premise e AWS.
+			</font>
+		</div>
+	</div>
+
+<!--
+	<div id="div99" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('99');"> <i class="fa fa-backward"></i> Anterior</button>
 		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
 		<button class="btn btn-info" onclick="showNext('99');">Próximo <i class="fa fa-forward"></i></button>
@@ -804,8 +1046,8 @@
 	</div>
 -->
 
-	<div id="div30" style="display:none;">
-		<button class="btn btn-info" onclick="showPrevious('30');"> <i class="fa fa-backward"></i> Anterior</button>
+	<div id="div66" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('66');"> <i class="fa fa-backward"></i> Anterior</button>
 		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
 		<button class="btn btn-info" disabled><i class="fa fa-check"></i> Fim</button>
 	</div>
