@@ -339,7 +339,206 @@
 		</div>
 	</div>
 
-<!-- <div id="div99" style="display:none;">
+	<div id="div13" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('13');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('13');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>13. Qual é a solução de banco de dados em Grafo, gerenciado pela AWS, que permite diversos tipos de relacionamentos entre os seus nós e que pode ser utilizado em muitos contextos que representam as conexões que temos em nosso cotidiano, como em rede sociais, cadeias logísticas, empresariais, entre outros?</b>
+		<br/><br/><input type=checkbox value="13a"> a) Amanzon Graph
+		<br/><br/><input type=checkbox value="13b"> b) Amazon Neptune (<a href="https://aws.amazon.com/pt/neptune/" target="_blank">link estudar</a>)
+		<br/><br/><input type=checkbox value="13c"> c) Amazon Neo4j
+		<br/><br/><input type=checkbox value="13d"> d) Amazon JanusGaph
+		<br/><br/><button class="btn btn-info" onclick="showResponse('13', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp13" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>b) O Amazon Neptune é um serviço de banco de dados de grafos rápido, confiável e totalmente gerenciado que facilita a criação e a execução de aplicativos.
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>Apesar de serem em grafo, os demais banco de dados não são serviços ofertados pela AWS e para uso dos mesmos seria necessário o uso de uma infraestrutura IAAS, onde se faz todo o gerenciamento dos servidores e realizar todas as instalações e configurações necessárias, ou seja, pode-se instanciar uma máquina EC2 e instalar qualquer banco de dados, mas que não será gerenciado pela AWS.
+			</font>
+		</div>
+	</div>
+
+	<div id="div14" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('14');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('14');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>14. Você trabalha numa agência de publicidade que deseja implantar um site com o conteúdo estático para fazer a primeira divulgação de um produto. Qual é o serviço da AWS mais indicado para esse cenário?</b>
+		<br/><br/><input type=checkbox value="14a"> a) EC2
+		<br/><br/><input type=checkbox value="14b"> b) Docker
+		<br/><br/><input type=checkbox value="14c"> c) EFS
+		<br/><br/><input type=checkbox value="14d"> d) S3
+		<br/><br/><button class="btn btn-info" onclick="showResponse('14', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp14" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>d) O S3 permite o armazenamento de objetos como arquivos htlm, js, cs eliminando a necessidade de uso do EC2 trazendo muito mais economia, disponibilidade e resiliência para as suas soluções.
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>O EFS - Elastic File System é um serviço utilizado para implementar um serviço de arquivos na sua arquitetura associado a instâncias EC2. Apesar de servir para armazenar arquivos estáticos não é o mais fácil e barato de implementar.
+				<br/><br/>O EC2 - Elastic Computing Cloud oferece diversas configurações de máquinas para computação, associado a um EBS ou EFS poderia manter páginas web, entretanto não é a forma mais barata e ágil.
+				<br/><br/>O Docker é utilizado para microserviços e sua implementação na AWS é possível através do ECS - Elastic Container Service.
+			</font>
+		</div>
+	</div>
+
+	<div id="div15" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('15');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('15');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>15. Qual serviço da AWS possui um catálogo onde os clientes podem encontrar aplicações desenvolvidas por terceiros e prontas para ser instaladas e executadas, atendendo as mais diversas necessidades de negócio?</b>
+		<br/><br/><input type=checkbox value="15a"> a) AWS AMI
+		<br/><br/><input type=checkbox value="15b"> b) AWS MFA
+		<br/><br/><input type=checkbox value="15c"> c) AWS Marketplace (<a href="https://aws.amazon.com/marketplace/?nc2=type_a" target="_blank">link estudar</a>)
+		<br/><br/><input type=checkbox value="15d"> d) AWS OpsWorks
+		<br/><br/><button class="btn btn-info" onclick="showResponse('15', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp15" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>c) AWS Marketplace
+				<br/><br/>Existem muitos tipos de aplicação e contextos de negócio para uso imediato.
+				<br/><br/>Útil também para quando você desenvolver algo e quiser vender.
+				<br/><br/>Essa pergunta é direta porém é importante pensar se poderia entrar em contextos onde sua empresa tenha necessidade de comprar alguma aplicação que já esteja pronta para atender alguma finalidade latente, onde comprar seja melhor do que desenvolver.
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>O AWS MFA - Multi Factor Authentication adiciona uma camada a mais no processo de autenticação no login pelo Console
+				<br/><br/>O AWS AMI - Amazon Machine Images (AMIs) são pré-configurações de uma lista de sistemas operacionais para a instalação instantânea em instâncias EC2
+				<br/><br/>O AWS OpsWorks é um serviço de gerenciamento de configurações que oferece instâncias gerenciadas do Chef e do Puppet. O Chef e o Puppet são plataformas de automação que permitem usar código para automatizar a configuração de servidores. O OpsWorks permite usar o Chef e o Puppet para automatizar a forma como os servidores são configurados, implantados e gerenciados em instâncias do Amazon EC2 ou ambientes de computação no local
+			</font>
+		</div>
+	</div>
+
+	<div id="div16" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('16');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('16');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>16. Quais são os cinco planos de suporte ofertados pela AWS?</b>
+		<br/><br/><input type=checkbox value="16a"> a) Bronze, Silver, Gold, Diamond, Ruby
+		<br/><br/><input type=checkbox value="16b"> b) Basic, Developer, Business, Advanced, Enterprise On-Ramp
+		<br/><br/><input type=checkbox value="16c"> c) Basic, Developer, Business, Enterprise On-Ramp, Enterprise
+		<br/><br/><input type=checkbox value="16d"> d) Standard, Developer, Business, Enterprise, Enterprise On-Ramp
+		<br/><br/><button class="btn btn-info" onclick="showResponse('16', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp16" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>c) Basic, Developer, Business, Enterprise On-Ramp e Enterprise.
+				<br/><br/>Os planos de suporte podem ser consultados em
+				<br/><br/>https://aws.amazon.com/pt/premiumsupport/plans/
+				<br/><br/>É importante conhecê-los e explorar as características que os diferenciam também.
+				<br/><br/>Nota: Publicado: Nov 24, 2021
+				<br/><br/>A Amazon Web Services (AWS) anunciou a disponibilidade geral do Enterprise On-Ramp, um novo nível de suporte entre os atuais Business e Enterprise para ajudar os clientes que estão começando sua jornada na nuvem e precisam de orientação especializada para crescer e otimizar na nuvem
+				<br/><br/>https://aws.amazon.com/pt/about-aws/whats-new/2021/11/enterprise-on-ramp-general-availability/
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>Standard, Advanced, Bronze, Silver, Gold, Diamond, Ruby não existem.
+			</font>
+		</div>
+	</div>
+
+	<div id="div17" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('17');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('17');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>17. Você precisa implementar uma estratégia de DR (Recuperação de Desastre) na sua empresa, qual é a recomendação de melhor uso do AWS RDS?</b>
+		<br/><br/><input type=checkbox value="17a"> a) Multi Regions (Distribuir em regiões diferentes)
+		<br/><br/><input type=checkbox value="17b"> b) Multi A-Z (Distribuir em zonas de disponibilidade diferentes)
+		<br/><br/><input type=checkbox value="17c"> c) Read Replicas (Fazer cópias de leitura) (<a href="https://aws.amazon.com/rds/features/read-replicas/" target="_blank">link estudar</a>)
+		<br/><br/><input type=checkbox value="17d"> d) Implementar uma cópia do banco numa instância EC2
+		<br/><br/><button class="btn btn-info" onclick="showResponse('17', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp17" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>a) Estratégia Multi Region
+				<br/><br/>No link tem uma tabela comparando as 3 estratégias de implantações, Multi-AZ, Multi-Regiões e Read Replicas.
+				<br/><br/>Multi-AZ é para aumentar a disponibilidade, Muti-Regiões para DR e Read Replicas para escalabilidade.
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>
+			</font>
+		</div>
+	</div>
+
+	<div id="div18" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('18');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('18');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>18. Qual é o usuário utilizado para acessar o AWS Console pela primeira vez e que possui acesso a todos os recursos da conta? (Não sendo recomendado o uso no dia a dia.)</b>
+		<br/><br/><input type=checkbox value="18a"> a) AWS IAM
+		<br/><br/><input type=checkbox value="18b"> b) AWS Administrator
+		<br/><br/><input type=checkbox value="18c"> c) AWS account root user
+		<br/><br/><input type=checkbox value="18d"> d) AWS full user
+		<br/><br/><button class="btn btn-info" onclick="showResponse('18', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp18" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>c) O root user é informado no primeiro acesso da sua conta e só é recomendado para as primeiras configurações dos demais acessos, uma vez que ele possui acessos ilimitados a todos os serviços da conta.
+				<br/>https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>Full User e Administrador não são conceitos utilizados nestes acessos.
+				<br/>O AWS IAM é o serviço utilizado para gerenciar os usuários, roles e serviços, não é o usuário em si.
+			</font>
+		</div>
+	</div>
+
+	<div id="div19" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('19');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('19');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>19. Qual opção abaixo descreve o serviço Elastic Load Balancer?</b>
+		<br/><br/><input type=checkbox value="19a"> a) Distribui o tráfego de entrada entre instâncias em diferentes regiões
+		<br/><br/><input type=checkbox value="19b"> b) instancia uma nova máquina quando uma das máquinas apresenta falha
+		<br/><br/><input type=checkbox value="19c"> c) Distribui o tráfego de entrada entre suas instâncias
+		<br/><br/><input type=checkbox value="19d"> d) Cria um cluster de máquinas dentro da mesma zona de disponibilidade
+		<br/><br/><button class="btn btn-info" onclick="showResponse('19', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp19" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>c) Distribui o tráfego entre instâncias na mesma região, geralmente, alocadas em mais de uma zona de disponibilidade.
+				<br/>https://aws.amazon.com/search/?searchQuery=elb
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>O ELB não é o responsável por instâncias uma nova máquina quando uma apresenta falha, ele é o serviço que deixa de direcionar o tráfego para essa máquina e balanceia a carga só entre as máquinas saudáveis e disponíveis.
+				<br/><br/>Para o balanceamento de carga entre regiões, o mais adequado é usar alguma estratégia do Route53, como geolocalização, Volume de tráfego, etc.
+				<br/><br/>O ELB é utilizado para balancear as cargas em mais de uma zona de disponibilidade e também não cria um cluster de máquinas, apenas direciona as cargas entre elas.
+			</font>
+		</div>
+	</div>
+
+	<div id="div20" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('20');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('20');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>20. Você lidera um time de desenvolvimento pequeno e que não tem tempo de se envolver com muitas questões de infraestrutura AWS, porém você gostaria de fazer o uso de container, pois acredita que esse modelo de arquitetura tem muitas vantagens. Qual serviço da Amazon permite que você crie e use container sem precisar se preocupar com questões de infraestrutura e que usa uma infraestrutura sem servidor (servless) ?</b>
+		<br/><br/><input type=checkbox value="20a"> a) EKS
+		<br/><br/><input type=checkbox value="20b"> b) ECS
+		<br/><br/><input type=checkbox value="20c"> c) ECR
+		<br/><br/><input type=checkbox value="20d"> d) Fargate
+		<br/><br/><button class="btn btn-info" onclick="showResponse('20', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp20" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>d) O Fargate adiciona a possibilidade de execução de contaiiner sem servidor ao ECS, diminuindo a mão de obra relacionada a configuração de ambiente.
+				<br/>https://aws.amazon.com/fargate/?nc2=h_ql_prod_ct_far&whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc&fargate-blogs.sort-by=item.additionalFields.createdDate&fargate-blogs.sort-order=desc
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>O Amazon Elastic Container Service (Amazon ECS) é um serviço totalmente gerenciado de orquestração de contêineres que ajuda a implantar, gerenciar e escalar facilmente aplicações conteinerizadas.
+<br/><br/>O Amazon Elastic Kubernetes Service (Amazon EKS) executa o plano de controle e orquestração de containers com Kubernetes em várias zonas de disponibilidade, detecta automaticamente e substitui nós do plano de controle com problemas de integridade e oferece atualizações e aplicação de patches sob demanda e sem tempo de inatividade.
+<br/><br/>O Amazon Elastic Container Registry (Amazon ECR) é um registro de contêiner totalmente gerenciado que facilita o armazenamento, o gerenciamento, o compartilhamento e a implantação de imagens e artefatos de contêiner em qualquer lugar
+			</font>
+		</div>
+	</div>
+
+<!--	<div id="div99" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('99');"> <i class="fa fa-backward"></i> Anterior</button>
 		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
 		<button class="btn btn-info" onclick="showNext('99');">Próximo <i class="fa fa-forward"></i></button>
