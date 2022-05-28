@@ -532,8 +532,251 @@
 			<font color=red>
 				<br/><b>Incorretas:</b>
 				<br/>O Amazon Elastic Container Service (Amazon ECS) é um serviço totalmente gerenciado de orquestração de contêineres que ajuda a implantar, gerenciar e escalar facilmente aplicações conteinerizadas.
-<br/><br/>O Amazon Elastic Kubernetes Service (Amazon EKS) executa o plano de controle e orquestração de containers com Kubernetes em várias zonas de disponibilidade, detecta automaticamente e substitui nós do plano de controle com problemas de integridade e oferece atualizações e aplicação de patches sob demanda e sem tempo de inatividade.
-<br/><br/>O Amazon Elastic Container Registry (Amazon ECR) é um registro de contêiner totalmente gerenciado que facilita o armazenamento, o gerenciamento, o compartilhamento e a implantação de imagens e artefatos de contêiner em qualquer lugar
+				<br/><br/>O Amazon Elastic Kubernetes Service (Amazon EKS) executa o plano de controle e orquestração de containers com Kubernetes em várias zonas de disponibilidade, detecta automaticamente e substitui nós do plano de controle com problemas de integridade e oferece atualizações e aplicação de patches sob demanda e sem tempo de inatividade.
+				<br/><br/>O Amazon Elastic Container Registry (Amazon ECR) é um registro de contêiner totalmente gerenciado que facilita o armazenamento, o gerenciamento, o compartilhamento e a implantação de imagens e artefatos de contêiner em qualquer lugar
+			</font>
+		</div>
+	</div>
+
+	<div id="div21" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('21');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('21');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>21. Sua empresa iniciou um processo de transformação digital de todas as suas plataformas e decidiu utilizar uma arquitetura de sistemas orientada a eventos para desacoplar os sistemas. Qual dos serviços abaixo pode ser utilizado como um barramento escalável de eventos para facilitar a criação dessa arquitetura?</b>
+		<br/><br/><input type=checkbox value="21a"> a) Amazon SQS (<a href="https://docs.aws.amazon.com/pt_br/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html" target="_blank">link estudar</a>)
+		<br/><br/><input type=checkbox value="21b"> b) Amazon EventSync
+		<br/><br/><input type=checkbox value="21c"> c) Amazon Lambda (<a href="https://aws.amazon.com/pt/lambda/features/" target="_blank">link estudar</a>)
+		<br/><br/><input type=checkbox value="21d"> d) Amazon EventBridge (<a href="https://aws.amazon.com/pt/eventbridge/?nc2=h_ql_prod_ap_eb" target="_blank">link estudar</a>)
+		<br/><br/><button class="btn btn-info" onclick="showResponse('21', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp21" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>d) Amazon EventBridge
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>O Lambda é utilzado para implementar funções sem servidores.
+<br/><br/>O SQS - Simple Queue Service é utilizado para enfileirar mensagens e desacoplar o serviços dos sistemas
+<br/><br/>O Amazon EventSync não é um serviço existente na AWS
+			</font>
+		</div>
+	</div>
+
+	<div id="div22" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('22');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('22');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>22. Qual é o banco de dados relacional que é totalmente gerenciado pela AWS e pode ser 5 x mais rápido que o MySQL?</b>
+		<br/><br/><input type=checkbox value="22a"> a) Aurora (<a href="https://aws.amazon.com/pt/rds/aurora/?nc2=type_a&aurora-whats-new.sort-by=item.additionalFields.postDateTime&aurora-whats-new.sort-order=desc" target="_blank">link estudar</a>)
+		<br/><br/><input type=checkbox value="22b"> b) DynamoDb
+		<br/><br/><input type=checkbox value="22c"> c) MariaDb
+		<br/><br/><input type=checkbox value="22d"> d) Neptune
+		<br/><br/><button class="btn btn-info" onclick="showResponse('22', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp22" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>a) O Amazon Aurora é um banco de dados compatível com MySQL e PostgreSQL criado para a nuvem e que combina a performance e a disponibilidade de bancos de dados empresariais tradicionais com a simplicidade e a economia de bancos de dados de código aberto.
+				<br/><br/>O Amazon Aurora é até cinco vezes mais rápido que bancos de dados MySQL padrão e três vezes mais rápido que bancos de dados PostgreSQL padrão. O serviço oferece a segurança, a disponibilidade e a confiabilidade de bancos de dados comerciais por um décimo do custo. O Amazon Aurora é gerenciado pelo RDS, que automatiza tarefas administrativas demoradas como provisionamento de hardware, configuração do banco de dados, aplicação de patches e backups.
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>O Neptune é um banco de dados totalmente gerenciado pela AWS, noSQL e baseado em Grafos.
+				<br/><br/>O DynamoDb é um banco de dados totalmente gerenciado pela AWS, noSQL, baeado em chave e valor.
+				<br/><br/>O MariaDb não é totalmente gerenciado pela AWS, pode ser utilizado com o RDS ou instalado diretamente numa instância EC2, é relacional, não é 5 x mais rápido que o mySQL.
+			</font>
+		</div>
+	</div>
+
+	<div id="div23" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('23');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('23');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>23. Quais itens fazem parte dos pilares do Well-Architected Framework? (Selecione 2)</b>
+		<br/><br/><input type=checkbox value="23a"> a) Segurança
+		<br/><br/><input type=checkbox value="23b"> b) Excelência Operacional
+		<br/><br/><input type=checkbox value="23c"> c) Desacoplamento
+		<br/><br/><input type=checkbox value="23d"> d) Monitoramento
+		<br/><br/><input type=checkbox value="23e"> e) Escalabilidade
+		<br/><br/><button class="btn btn-info" onclick="showResponse('23', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp23" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Corretas:</b>
+				<br/>a) b)
+				<br/>Os pilares são Excelência Operacional, Segurança, Confiabilidade, Performance, Otimização de Custos e Sustentabilidade.
+				<br/><br/>Esse tipo de questão cai e precisa ser memorizada pois podem aparecer opções que aparentemente são atributos da Cloud, mas que não fazem parte dos pilares.
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/> Desacoplamento, Escalabilidade e Monitoramento são características encontradas em arquiteturas bem construídas em Cloud e que atendem as melhores práticas, mas que não fazem parte dos pilares.
+			</font>
+		</div>
+	</div>
+
+	<div id="div24" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('24');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('24');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>24. Qual é o serviço que garante que você tenha o correto número de instâncias EC2 disponíveis para lidar com a carga da sua aplicação?</b>
+		<br/><br/><input type=checkbox value="24a"> a) EC2 Auto Scaling (<a href="https://aws.amazon.com/pt/ec2/autoscaling/" target="_blank">link estudar</a>)
+		<br/><br/><input type=checkbox value="24b"> b) Route53 (<a href="https://docs.aws.amazon.com/pt_br/Route53/latest/DeveloperGuide/Welcome.html" target="_blank">link estudar</a>)
+		<br/><br/><input type=checkbox value="24c"> c) ELB (<a href="https://aws.amazon.com/pt/elasticloadbalancing/?whats-new-cards-elb.sort-by=item.additionalFields.postDateTime&whats-new-cards-elb.sort-order=desc" target="_blank">link estudar</a>)
+		<br/><br/><input type=checkbox value="24d"> d) VPC
+		<br/><br/><button class="btn btn-info" onclick="showResponse('24', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp24" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>a) O Amazon EC2 Auto Scaling ajuda a manter a disponibilidade das aplicações e permite adicionar ou remover instâncias do EC2 automaticamente de acordo com as condições que você definir. É possível usar os recursos de gerenciamento de frota do EC2 Auto Scaling para manter a integridade e a disponibilidade da sua frota. Você também pode usar os recursos de escalabilidade dinâmica e preditiva do EC2 Auto Scaling para adicionar ou remover instâncias do EC2. A escalabilidade dinâmica responde às mudanças na demanda e a escalabilidade preditiva agenda automaticamente o número certo de instâncias do EC2 com base na demanda prevista.
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>O Amazon Route 53 é um web service DNS na nuvem altamente disponível e escalável. Ele foi projetado para oferecer aos desenvolvedores e empresas uma maneira altamente confiável e econômica de direcionar os usuários finais aos aplicativos de Internet, convertendo nomes como www.example.com para endereços IP numéricos como 192.0.2.1, usados pelos computadores para se conectarem entre si. O Amazon Route 53 também é totalmente compatível com o IPv6.
+				<br/><br/>https://aws.amazon.com/pt/route53/?nc2=type_a
+				<br/><br/>O Elastic Load Balancing distribui automaticamente o tráfego de entrada de aplicações entre diversos destinos, como instâncias do Amazon EC2, contêineres, endereços IP, funções do Lambda e dispositivos virtuais. O serviço pode lidar com a carga variável de tráfego das aplicações em uma única zona de disponibilidade ou em diversas zonas de disponibilidade
+				<br/><br/>O AWS VPC - Virtual Private Cloud permite que você crie uma rede privada isolada para alocar diversos recursos.
+			</font>
+		</div>
+	</div>
+
+	<div id="div25" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('25');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('25');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>25. Qual serviço permite a criação de uma rede virtual totalmente isolada para alocar diversos recursos computacionais na AWS?</b>
+		<br/><br/><input type=checkbox value="25a"> a) AWS Dedicted Hosts
+		<br/><br/><input type=checkbox value="25b"> b) AWS Reserved
+		<br/><br/><input type=checkbox value="25c"> c) AWS VPC (<a href="https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html" target="_blank">link estudar</a>)
+		<br/><br/><input type=checkbox value="25d"> d) AWS Gateway
+		<br/><br/><button class="btn btn-info" onclick="showResponse('25', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp25" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>c) AWS VPC - Virtual Private Cloud
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>AWS Gateway não existe. Existem outros serviços com o Gateway no nome, como API Gateway que é utilizado para gerenciar as APIs da sua conta.
+				<br/><br/>AWS Dedicated Hosts são máquinas físicas dedicadas para sua operação e que podem ter alguns benefícios da Cloud, porém não máquinas compartilhadas.
+				<br/><br/>AWS Reserved não existe. Reserved é um plano de pagamento do EC2, onde você pode reservar uma quantidade máquinas durante um período para obter economia com recursos de infraestrutura
+			</font>
+		</div>
+	</div>
+
+	<div id="div26" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('26');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('26');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>26. Recentemente você implementou uma aplicação piloto na sua empresa que foi um sucesso. Para realizar o rollout do projeto, a direção pediu que você apresente os gastos com infraestrutura AWS durante o período para avaliarem e aprovarem a expansão. Qual é o serviço da AWS que fornece essas informações?</b>
+		<br/><br/><input type=checkbox value="26a"> a) AWS Budgets
+		<br/><br/><input type=checkbox value="26b"> b) AWS Cost Explorer (<a href="https://aws.amazon.com/pt/aws-cost-management/aws-cost-explorer/" target="_blank">link estudar</a>)
+		<br/><br/><input type=checkbox value="26c"> c) AWS Inspector
+		<br/><br/><input type=checkbox value="26d"> d) AWS Trusted Advisor
+		<br/><br/><button class="btn btn-info" onclick="showResponse('26', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp26" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>b) Com o AWS Cost Explorer você pode consultar os custos da sua infraestrutura a todo momento.
+				<br/><br/>O AWS Cost Explorer tem uma interface fácil de usar que permite visualizar, entender e gerenciar os custos e o uso da AWS ao longo do tempo.
+				<br/><br/>Comece a usar rapidamente criando relatórios personalizados que analisam dados de custos e uso. Analise dados de forma resumida (por exemplo, custos e uso totais em todas as contas) ou detalhe os dados de custos e uso para identificar tendências, determinar causadores de custos e detectar anomalias.
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>O AWS Trusted Advisor faz recomendações que ajudam você a seguir as melhores práticas da AWS. O Trusted Advisor avalia a sua conta através de verificações.
+				<br/><br/>O Amazon Inspector é um serviço de avaliação de segurança automático que ajuda a melhorar a segurança e a conformidade dos aplicativos implantados na AWS. O Amazon Inspector avalia automaticamente aplicativos em busca de exposições, vulnerabilidades ou discrepâncias em relação às melhores práticas
+				<br/><br/>O AWS Budgets é o serviço utilizado para definir orçamentos desejáveis para a uso e incluir alertas para notificação de alertas sobre uso acima do esperado.
+			</font>
+		</div>
+	</div>
+
+	<div id="div27" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('27');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('27');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>27. Seu time de desenvolvimento identificou que devido ao grande volume de consultas que são realizados e a concorrência com outras funções de acesso, a performance de um banco de dados relacional está comprometida. Qual é a indicação mais econômica para resolver esse cenário?</b>
+		<br/><br/><input type=checkbox value="27a"> a) Atualizar a role de acesso ao banco
+		<br/><br/><input type=checkbox value="27b"> b) Criar novas instâncias do RDS em outra zona de disponibilidade.
+		<br/><br/><input type=checkbox value="27c"> c) Fazer o uso de Read Replicas
+		<br/><br/><input type=checkbox value="27d"> d) Substituir o  RDS pelo Dynamo
+		<br/><br/><button class="btn btn-info" onclick="showResponse('27', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp27" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>c) Com o uso de Read Replicas você pode aumentar a escalabilidade e melhorar o tráfego dos seus dados direcionando os processos somente de leitura para cópias das bases de dados
+				<br/><br/>https://aws.amazon.com/rds/features/
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>As roles de acesso a dados não tem nenhuma relação com performance, são serviços que autorizam ou negam os acessos.
+				<br/><br/>A substituição do banco de dados de um banco de dados relacionais (RDS) pelo DynamoDB não é algo comum, uma vez que são banco de dados para usos diferentes e esse tipo de estratégia exigiria grandes alterações do backend da aplicação.
+				<br/><br/>Criar novas instâncias do RDS multi-AZ é para aumentar a disponibilidade e tolerância a falhas e também não é a opção mais econômica para esse cenário.
+			</font>
+		</div>
+	</div>
+
+	<div id="div28" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('28');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('28');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>28. Qual é a forma de permitir que seus serviços sejam expostos sempre no mesmo endereço IP e de possibilitar que os hosts associados a ele sejam substituídos de forma simples na sua infraestrutura?</b>
+		<br/><br/><input type=checkbox value="28a"> a) Utilizando um IPV4
+		<br/><br/><input type=checkbox value="28b"> b) Utilizando um IP Elástico
+		<br/><br/><input type=checkbox value="28c"> c) Utilizando um IPV6
+		<br/><br/><input type=checkbox value="28d"> d) Utilizando o Route 53
+		<br/><br/><button class="btn btn-info" onclick="showResponse('28', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp28" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>b) O IP Elástico permite manter um IP ativo como porta de entrada e também que sejam feitas associações de IPs dinâmicos a cada provisionamento de uma nova máquina, uma vez que nesses cenários os IPV4 mudam.
+				<br/><br/>https://aws.amazon.com/pt/ec2/features/
+			</font>
+		</div>
+	</div>
+
+	<div id="div29" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('29');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('29');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>29. Qual dos seguintes serviços de bancos de dados é totalmente gerenciado pela AWS?</b>
+		<br/><br/><input type=checkbox value="29a"> a) MySql
+		<br/><br/><input type=checkbox value="29b"> b) SQL Server
+		<br/><br/><input type=checkbox value="29c"> c) MariaDB
+		<br/><br/><input type=checkbox value="29d"> d) DynamoDB (<a href="https://aws.amazon.com/pt/dynamodb/?nc2=type_a" target="_blank">link estudar</a>)
+		<br/><br/><button class="btn btn-info" onclick="showResponse('29', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp29" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>d) O Amazon DynamoDB é um banco de dados de chave-valor NoSQL, sem servidor e totalmente gerenciado, projetado para executar aplicações de alta performance em qualquer escala.
+				<br/><br/>Quando um serviço é totalmente gerenciado o cliente não precisa se preocupar com nada que está relacionado a sua implementação, como instalação, atualizações da infraestrutura. A AWS faz todo o gerenciamento e o cliente utiliza apenas as APIs destes serviços para a criação das tabelas, gravação e recuperação dos dados. No caso do Dynamo, o cliente faz o uso do console ou das APIs para realizar a maior parte das tarefas, sem se preocupar com a instalação do banco.
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>As demais opções são sistema gerenciadores de banco de dados que podem ser utilizados juntos com o RDS totalmente gerenciado pela AWS ou gerenciado pelo cliente, se instalados diretamente em instâncias EC2. 
+				<br/><br/>Como as demais opções não falaram do RDS, não é possível afirmar se é gerenciado pela AWS ou pelo cliente, desta forma, a opção correta é o DynamoDB.
+				<br/><br/>Quando o cliente deseja gerencia o banco, ele deve instalar o mesmo em instâncias EC2, ficando responsável por todo o processo de instalação, atualizações, etc.
+			</font>
+		</div>
+	</div>
+
+	<div id="div30" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('30');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('30');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>30. Você está desenvolvendo uma aplicação mobile e precisa implementar o armazenamento e sincronismo de dados para vários dispositivos. Qual é o serviço AWS que pode ser utilizado para esse fim?</b>
+		<br/><br/><input type=checkbox value="30a"> a) AWS Elastic Cache
+		<br/><br/><input type=checkbox value="30b"> b) AWS DynamoDB
+		<br/><br/><input type=checkbox value="30c"> c) AWS Redis
+		<br/><br/><input type=checkbox value="30d"> d) AWS Cognito (<a href="https://aws.amazon.com/pt/cognito/getting-started/" target="_blank">link estudar</a>)
+		<br/><br/><button class="btn btn-info" onclick="showResponse('30', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp30" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>d) Além de fornecer um serviço de autenticação robusto para aplicativos móveis, o Amazon Cognito permite o salvamento de dados num banco local de chave-valor para depois realizar o sincronismo.
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>O ElasticCache permite o armazenamento em memória para ser utilizados por aplicações escaláveis para guardar informações de sessão, consultas de bancos de dados, entre outros.
+				<br/><br/>O Redis é ofertado pelo ElasticCache para prover cache de para as aplicações.
+				<br/><br/>O DynamoDb é o banco de dados totalmente gerenciado pela AWS, NoSql de chave/valor
+
 			</font>
 		</div>
 	</div>
@@ -561,8 +804,8 @@
 	</div>
 -->
 
-	<div id="div21" style="display:none;">
-		<button class="btn btn-info" onclick="showPrevious('21');"> <i class="fa fa-backward"></i> Anterior</button>
+	<div id="div30" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('30');"> <i class="fa fa-backward"></i> Anterior</button>
 		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
 		<button class="btn btn-info" disabled><i class="fa fa-check"></i> Fim</button>
 	</div>
@@ -695,7 +938,11 @@ function showNext(numberQuestion) {
 		var formata = '0' + index;
 		formata = formata.substring((formata.length-2),formata.length);
 		if (parseInt(index) == parseInt(questionNextPrevious)) {
-			document.getElementById('div' + formata).style.display='block';
+			if (document.getElementById('div' + formata) == null) {
+				alert('Fim! Veja a pontuação');
+			} else {
+				document.getElementById('div' + formata).style.display='block';
+			}
 		} else {
 			document.getElementById('div' + formata).style.display='none';
 		}
