@@ -864,21 +864,15 @@ function showPoints(qtdeResponses) {
 			//correta
 			if (arraySelected.indexOf(gabarito[index], 0) >= 0) { 
 				var posini = arraySelected.indexOf(gabarito[index], 0);
-//				alert('posini='+posini);
 				var posfim = arraySelected.indexOf(',', posini);
 				if (posfim <= 0) {
 					posfim = arraySelected.indexOf(']', posini);
 				}
-//				alert('posfim='+posfim);
-//				alert('posini posfim=' + arraySelected.substring(posini, posfim) + ', gabarito=' + gabarito[index]);
-
 				if (arraySelected.substring(posini, posfim) == gabarito[index]) {
 					qtdeCorretas = parseInt(qtdeCorretas) + 1;
-//					alert('igual');
 				} else {
 					qtdeErradas = parseInt(qtdeErradas) + 1;
 					erradas = erradas + separador + parseInt(index+1); separador = '; ';
-//					alert('diferente');
 				}
 			} else { //errada
 				qtdeErradas = parseInt(qtdeErradas) + 1;
@@ -939,7 +933,9 @@ function showNext(numberQuestion) {
 		formata = formata.substring((formata.length-2),formata.length);
 		if (parseInt(index) == parseInt(questionNextPrevious)) {
 			if (document.getElementById('div' + formata) == null) {
-				alert('Fim! Veja a pontuação');
+				alert('Fim! Confira sua pontuação.');
+				document.getElementById('div' + numberQuestion).style.display='block';
+				break;
 			} else {
 				document.getElementById('div' + formata).style.display='block';
 			}
