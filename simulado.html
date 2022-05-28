@@ -34,7 +34,7 @@
 		<br/><br/>Preparo para Certificação
 		<br/><br/>AWS Certified Cloud Practitioner
 		<br/><br/>Assinale as alternativas corretas
-		<br/><br/><i>enio.francisco@gmail.com&#174; +55(11)95239-2000 versão28.05.22.12.51</i></i>
+		<br/><br/><i>enio.francisco@gmail.com&#174; +55(11)95239-2000 versão28.05.22.14.45</i></i>
 	</div>
 
 	<div id="div01" style="display:none;">
@@ -1022,6 +1022,617 @@
 		</div>
 	</div>
 
+	<div id="div41" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('41');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('41');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>41. Qual das opções abaixo é a classe de uso que pode deixar o uso do S3 mais caro?</b>
+		<br/><br/><input type=checkbox value="41a"> a) Glacier Deep Arquive
+		<br/><br/><input type=checkbox value="41b"> b) Glacier
+		<br/><br/><input type=checkbox value="41c"> c) Standard (<a href="https://aws.amazon.com/pt/s3/pricing/" target="_blank">link estudar</a>)
+		<br/><br/><input type=checkbox value="41d"> d) Standard Infrequent Access
+		<br/><br/><button class="btn btn-info" onclick="showResponse('41', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp41" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>c) O Standard oferece alta disponibilidade, durabilidade e tempo de recuperação, dessa forma tem o maior preço.   Algumas aplicações não requerem um tempo de resposta tão rápido, o que permite pensar em outras opções para diminuir o custo. Ex. arquivos históricos, arquivos pouco utilizados.
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>As demais classes vão ficando mais baratas, na medida que os objetos são menos acessados em cada uma delas.
+				<br/><br/>Standard Infrequent Access.
+				<br/><br/>Glacier.
+				<br/><br/>Glacier Deep Archive.
+			</font>
+		</div>
+	</div>
+
+	<div id="div42" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('42');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('42');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>42. Utilizando os serviços da AWS, qual é a sequência esperada numa pipeline de CI/CD?</b>
+		<br/><br/><input type=checkbox value="42a"> a) CodeCommit, CodeBuild, CodeDeploy
+		<br/><br/><input type=checkbox value="42b"> b) CodeBuild, CodeCommit, CodeDeploy
+		<br/><br/><input type=checkbox value="42c"> c) CodeCommit, CodeDeploy, CodeBuild
+		<br/><br/><input type=checkbox value="42d"> d) CodeBuild, CodeDeploy, CodeCommit
+		<br/><br/><button class="btn btn-info" onclick="showResponse('42', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp42" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>a) Essa é uma sequência lógica numa esteira de desenvolvimento:
+				<br/><br/>CodeCommit - Gerenciamento dos fontes com funções de git.
+				<br/><br/>CodeBuild - Compilação e Testes automatizados
+				<br/><br/>CodeDeploy - Implantação
+				<br/><br/>Na lista não foi citado, mas a esteira para agrupar esses serviços é o CodePipeline
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>As demais ordens invertem as sequências dos serviços do pipeline
+			</font>
+		</div>
+	</div>
+
+	<div id="div43" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('43');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('43');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>43. Sua aplicação fornece dados através de APIs REST para diversas aplicações diferentes. Pensando num cenário de futuras manutenções e evoluções dos seus serviços, qual opção abaixo pode melhor auxiliar a sua arquitetura a manter várias versões da mesma API sendo executadas simultaneamente e não exigir que todos os consumidores realizem adequações nas chamadas ao seu serviço?</b>
+		<br/><br/><input type=checkbox value="43a"> a) AWS Zuul
+		<br/><br/><input type=checkbox value="43b"> b) AWS Route53
+		<br/><br/><input type=checkbox value="43c"> c) AWS EventBridge
+		<br/><br/><input type=checkbox value="43d"> d) API Gateway (<a href="https://aws.amazon.com/pt/api-gateway/features/" target="_blank">link estudar</a>)
+		<br/><br/><button class="btn btn-info" onclick="showResponse('43', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp43" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>d) O API Gateway permite esse tipo de convivência
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>O AWS Zuul não existe
+				<br/><br/>O AWS EventBridge é um barramento de eventos sem servidor que torna mais fácil a criação de aplicações orientadas por eventos em escala usando eventos gerados com base em suas aplicações, aplicações integradas de software como serviço (SaaS) e serviços da AWS.
+				<br/><br/>O AWS Route53 é um web service Domain Name Server(DNS) na nuvem altamente disponível e escalável
+			</font>
+		</div>
+	</div>
+
+	<div id="div44" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('44');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('44');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>44. Qual é o serviço que permite estabelecer uma conexão dedicada entre a sua infraestrutura on-premise e a AWS melhorando as conexões e aumentando a taxa de transferência?</b>
+		<br/><br/><input type=checkbox value="44a"> a) AWS Direct Connect (<a href="https://aws.amazon.com/pt/directconnect/" target="_blank">link estudar</a>)
+		<br/><br/><input type=checkbox value="44b"> b) AWS DataSync
+		<br/><br/><input type=checkbox value="44c"> c) AWS Link
+		<br/><br/><input type=checkbox value="44d"> d) AWS API Gateway
+		<br/><br/><button class="btn btn-info" onclick="showResponse('44', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp44" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>a) O AWS Direct Connect faz uso da própria infraestrutura global da AWS para melhorar esse tipo de conexão. O serviço de nuvem é o caminho mais curto para seus recursos na AWS. Seu tráfego de rede permanece todo o tempo na rede global da AWS e nunca entra na Internet pública. Isso reduz as probabilidades de gargalos ou aumentos inesperados de latência
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>AWS Link não é um serviço existente na plataforma.
+				<br/><br/>O Amazon API Gateway é um serviço gerenciado que permite que desenvolvedores criem, publiquem, mantenham, monitorem e protejam APIs em qualquer escala com facilidade. APIs agem como a “porta de entrada” para aplicativos acessarem dados, lógica de negócios ou funcionalidade de seus serviços de back-end
+				<br/><br/>O AWS DataSync é um serviço de transferência de dados on-line que simplifica, automatiza e acelera a movimentação de dados entre os sistemas de armazenamento on-premises e os serviços de armazenamento da AWS, e também entre serviços de armazenamento da AWS. Você pode usar o DataSync para migrar dados ativos para a AWS, arquivar dados para liberar a capacidade de armazenamento on-premise, replicar dados para a AWS para fins de continuidade de negócios ou transferir dados para a nuvem para análises e processamento
+			</font>
+		</div>
+	</div>
+
+	<div id="div45" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('45');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('45');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>45. Qual é o serviço utilizado para provisionar Desktops utilizando Windows ou Linux?</b>
+		<br/><br/><input type=checkbox value="45a"> a) Amazon WorkSpaces (<a href="https://aws.amazon.com/workspaces/?nc2=h_ql_prod_eu_wspa&workspaces-blogs.sort-by=item.additionalFields.createdDate&workspaces-blogs.sort-order=desc" target="_blank">link estudar</a>)
+		<br/><br/><input type=checkbox value="45b"> b) Amazon Desktops
+		<br/><br/><input type=checkbox value="45c"> c) Amazon CLI
+		<br/><br/><input type=checkbox value="45d"> d) EC2
+		<br/><br/><button class="btn btn-info" onclick="showResponse('45', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp45" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>a) Com o Amazon Workspaces é possível provisionar um grande número de máquinas virtuais para uso como desktops.
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>O EC2 - Elastic Compute Cloud - fornece instâncias de servidores com diversas configurações e opções de processamento, memória e rede
+				<br/><br/>O Amazon CLI - Command Line Interface é  uma interface por linha de comando que você pode instalar pra fazer uso no seu desktop
+				<br/><br/>O Amazon Desktops não existe
+			</font>
+		</div>
+	</div>
+
+	<div id="div46" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('46');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('46');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>46. Você implementou um sistema com arquitetura de microserviços e precisa depurar cada um deles, partindo desde a requisição do usuário para entender a performance e identificando oportunidades de melhorias. Qual serviço da AWS é o mais indicado para essa finalidade (tanto em ambiente de desenvolvimento quanto em ambiente de produção)?</b>
+		<br/><br/><input type=checkbox value="46a"> a) AWS ElasticSearch
+		<br/><br/><input type=checkbox value="46b"> b) AWS CloudSearch
+		<br/><br/><input type=checkbox value="46c"> c) AWS X-Ray
+		<br/><br/><input type=checkbox value="46d"> d) AWS CloudWatch
+		<br/><br/><button class="btn btn-info" onclick="showResponse('46', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp46" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>c) O AWS X-Ray rastreia as solicitações do usuário enquanto percorrem todo o aplicativo. Ele agrega os dados gerados por serviços e recursos individuais que compõem o aplicativo, oferecendo uma visão completa do seu desempenho.https://aws.amazon.com/pt/xray/?nc2=h_ql_prod_dt_xray
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>O AWS CloudSearch é um serviço que permite a implementação de um serviço de busca dentro de uma aplicação.
+				<br/><br/>O ElasticSerch é um serviço para armazenar, analisar e correlacionar uma grande quantidade de dados de logs de seus aplicativos para identificar e resolver gargalos de desempenho e problemas de disponibilidade
+				<br/><br/>O AWS CloudWatch é utilizado para gerar métricas e monitorar diversos serviços e aplicativos na AWS.
+			</font>
+		</div>
+	</div>
+
+	<div id="div47" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('47');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('47');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>47. As mensagens trafegadas entre o seu site e os usuários não estão sendo criptografadas porque a arquitetura atual não utiliza certificados digitais que permitam essa criptografia. Qual é o serviço da AWS que pode ser utilizado para esse tipo de implementação?</b>
+		<br/><br/><input type=checkbox value="47a"> a) AWS KMS
+		<br/><br/><input type=checkbox value="47b"> b) AWS Cognito
+		<br/><br/><input type=checkbox value="47c"> c) AWS Certificate Manager (<a href="https://aws.amazon.com/certificate-manager/?nc2=type_a" target="_blank">link estudar</a>)
+		<br/><br/><input type=checkbox value="47d"> d) AWS IAM
+		<br/><br/><button class="btn btn-info" onclick="showResponse('47', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp47" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>c) AWS Certificate Manager
+				<br/><br/>Criptografia em requisições htpps são possíveis através do uso de certificados digitais.
+				<br/><br/>Esse serviço permite criar e gerencias tais certificados para garantir uma navegação mais segura dos clientes pela internet.
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>AWS Cognito é um serviço que pode ser utilizado para fazer controle de acesso em aplicações web e mobile, ofertando diversas funcionalidades para esse fim.
+				<br/><br/>AWS IAM é o serviço utilizado para gerenciar acesso de usuário e serviços.
+				<br/><br/>AWS KMS é o serviço utilizado para criar chaves de criptografia para uso em diversos serviços da AWS, geralmente para dados, arquivos no S3.
+			</font>
+		</div>
+	</div>
+
+	<div id="div48" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('48');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('48');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>48. Você precisa automatizar um processo que executa diversas tarefas de forma sequencial em seu sistema. Qual é o serviço mais indicado para essa necessidade?</b>
+		<br/><br/><input type=checkbox value="48a"> a) AWS EventBridge (<a href="https://aws.amazon.com/pt/eventbridge/" target="_blank">link estudar</a>)
+		<br/><br/><input type=checkbox value="48b"> b) AWS Kinesis
+		<br/><br/><input type=checkbox value="48c"> c) AWS Workflow
+		<br/><br/><input type=checkbox value="48d"> d) AWS Batch (<a href="https://aws.amazon.com/batch/?nc2=h_ql_prod_cp_ba" target="_blank">link estudar</a>)
+		<br/><br/><button class="btn btn-info" onclick="showResponse('48', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp48" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>d) AWS Batch
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>O AWS Workflow não é um serviço válido na AWS.
+				<br/><br/>O AWS EventiBridge é um barramento de eventos sem servidor que torna mais fácil a criação de aplicações orientadas por eventos em escala usando eventos gerados com base em suas aplicações, aplicações integradas de software como serviço (SaaS) e serviços da AWS
+				<br/><br/>O AWS Kinesis é o serviço utilizado para coletar uma grande quantidade de aplicativos tranferindo para outros serviços através de streaming.
+			</font>
+		</div>
+	</div>
+
+	<div id="div49" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('49');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('49');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>49. Sua empresa precisa lançar um novo produto e para isso deseja criar um novo domínio público para associar a um novo site. Qual é a maneira mais rápida de fazer isso?</b>
+		<br/><br/><input type=checkbox value="49a"> a) Desenvolver o novo site no AWS BeanStalk, que provisiona toda a infra para o desenvolvedor  apenas programar.
+		<br/><br/><input type=checkbox value="49b"> b) Criar um novo domínio no AWS Route53
+		<br/><br/><input type=checkbox value="49c"> c) Criar um servidor de domínio numa instância AWS EC2 e incluir o novo domínio
+		<br/><br/><input type=checkbox value="49d"> d) Criar um novo domínio no RegistroCom
+		<br/><br/><button class="btn btn-info" onclick="showResponse('49', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp49" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>b) AWS Route53
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>Com RegistroCom,  além do registro será necessário configurar o Route53
+				<br/><br/>O EC2 não deve ser utilizado como servidor DNS público
+				<br/><br/>O Elastic BeanStalk provisiona a infra para o desenvolvedor implantar a aplicação, mas isso não inclui o registro de domínios.
+			</font>
+		</div>
+	</div>
+
+	<div id="div50" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('50');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('50');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>50. Você implantou uma aplicação em produção que não está funcionando e na log existe uma mensagem de acesso negado ao DynamoDB. Qual serviço abaixo você precisa checar e configurar corretamente para validar esse acesso?</b>
+		<br/><br/><input type=checkbox value="50a"> a) AWS Config
+		<br/><br/><input type=checkbox value="50b"> b) AWS IAM roles
+		<br/><br/><input type=checkbox value="50c"> c) AWS Cognito
+		<br/><br/><input type=checkbox value="50d"> d) AWS IAM Policy
+		<br/><br/><button class="btn btn-info" onclick="showResponse('50', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp50" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>b) Através de roles podemos gerenciar os acessos das aplicações aos serviços da AWS, como o DynamoDB, RDS, entre outros.
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>AWS Config você pode usar para gerenciar e monitorar as configurações dos seus serviços
+				<br/><br/>IAM Policy são as políticas relacionadas a cada serviços e que podem ser adicionadas a pessoas ou roles, com uma série de permissões ou restrições
+				<br/><br/>AWS Cognito é o serviço utilizado para fornecer autenticação para aplicações web e mobile
+			</font>
+		</div>
+	</div>
+
+	<div id="div51" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('51');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('51');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>51. Qual é o serviço de alta performance desenvolvido para fornecer block-storage para instâncias EC2?</b>
+		<br/><br/><input type=checkbox value="51a"> a) S3
+		<br/><br/><input type=checkbox value="51b"> b) ELB
+		<br/><br/><input type=checkbox value="51c"> c) EBS (<a href="https://aws.amazon.com/ebs/?nc2=h_ql_prod_st_ebs&ebs-whats-new.sort-by=item.additionalFields.postDateTime&ebs-whats-new.sort-order=desc" target="_blank">link estudar</a>)
+		<br/><br/><input type=checkbox value="51d"> d) KMS
+		<br/><br/><button class="btn btn-info" onclick="showResponse('51', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp51" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>c) EBS - Elastic Block Store
+				<br/><br/>O EBS é um dos serviços que oferece armazenamento de dados para ser incorporado a instâncias EC2 atendendo diversas finalidades computacionais.
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>O KMS - Key Management Service - fornece chaves de criptografia pra vários serviços, incluindo o EBS
+				<br/><br/>O ELB  - Elastic Load Balancer - faz balanceamento de carga entre EC2
+				<br/><br/>O S3 - Simple Storage Service - é o serviço de storage padrão de objetos e arquivos.
+			</font>
+		</div>
+	</div>
+
+	<div id="div52" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('52');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('52');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>52. Qual é o serviço serverless que permite a execução de "queries" utilizando padrão SQL para analisar dados no Amazon S3?</b>
+		<br/><br/><input type=checkbox value="52a"> a) Athena (<a href="https://aws.amazon.com/athena/?c=a&sec=srv&whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc" target="_blank">link estudar</a>)
+		<br/><br/><input type=checkbox value="52b"> b) EMR
+		<br/><br/><input type=checkbox value="52c"> c) Amazon Elastic Search
+		<br/><br/><input type=checkbox value="52d"> d) Amazon Query Analyzer
+		<br/><br/><button class="btn btn-info" onclick="showResponse('52', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp52" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>a) Com o AWS Athena você pode criar estruturas de dados para realizar queries diretamente nos arquivos que estão no S3,  executadas sem servidor.
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>O Amazon Query Analyzer não existe
+				<br/><br/>O Amazon Elasticsearch Service é um serviço totalmente gerenciado com o qual você pode pesquisar, analisar e visualizar seus dados de log de maneira econômica, em escala de petabytes
+				<br/><br/>O EMR é a plataforma para uso de Big Data
+			</font>
+		</div>
+	</div>
+
+	<div id="div53" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('53');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('53');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>53. Sua empresa deseja otimizar o custo com a utilização do S3 e você percebeu que existem muitas logs de sistemas que estão armazenadas, mas que poderiam ser deletadas após 30 dias da criação. O que você precisa fazer para atender a necessidade de sua empresa?</b>
+		<br/><br/><input type=checkbox value="53a"> a) Criar uma cópia destes objetos em outra região
+		<br/><br/><input type=checkbox value="53b"> b) Configurar no S3 Lifecycle para que os objetos expirem em 30 dias para serem automaticamente excluídos. (<a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html" target="_blank">link estudar</a>)
+		<br/><br/><input type=checkbox value="53c"> c) Configurar o CloudWatch para monitorar o S3 e enviar um email solicitando a exclusão dos arquivos
+		<br/><br/><input type=checkbox value="53d"> d) Criar uma cópia destes objetos em outra zona de disponibilidade
+		<br/><br/><button class="btn btn-info" onclick="showResponse('53', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp53" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>b) Configurar a expiração dos objetos para serem excluídos de forma automática quando vencerem.
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>As demais opções são formas de gerenciar e monitorar os objetos, mas não trazem redução de custos
+			</font>
+		</div>
+	</div>
+
+	<div id="div54" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('54');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('54');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>54. Sua empresa tem um sistema que suporta em média 2000 usuários por dia, porém em dias com o aumento de vendas, o sistema chega a 3000 usuários apresentando lentidão e indisponibilidade. Como você automatizaria o processo para o provisionamento automático de máquinas adicionais para suportar essas cargas em dias de pico?</b>
+		<br/><br/><input type=checkbox value="54a"> a) Migrando a aplicação para uma máquina melhor
+		<br/><br/><input type=checkbox value="54b"> b) Usando o Auto Scalling (<a href="https://aws.amazon.com/pt/autoscaling/" target="_blank">link estudar</a>)
+		<br/><br/><input type=checkbox value="54c"> c) Implementando EBS Snapshots
+		<br/><br/><input type=checkbox value="54d"> d) Incluindo mais uma máquina física e alterando o ELB
+		<br/><br/><button class="btn btn-info" onclick="showResponse('54', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp54" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>b) Usando o Auto Scalling você pode configurar qual é a melhor estratégia para escalar sua aplicação, incluindo e retirando máquinas, de acordo com a demanda de recursos, aumentando a disponibilidade e reduzindo custos.
+				<br/><br/>O AWS Auto Scaling monitora os aplicativos e ajusta automaticamente a capacidade para manter um desempenho constante e previsível pelo menor custo possível. Com o AWS Auto Scaling, é fácil configurar a escalabilidade de aplicativos para vários recursos em diversos serviços.
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>Incluir máquina física é algo incomum na cloud, uma vez que as instâncias, em sua grande maioria, são virtualizadas. Existe até um modelo chamado de dedicated hosts, mas que o uso por si só, não garante a escalabilidade sem o uso do Auto Scalling
+				<br/><br/>A implementação do ELB garante o balanceamento das cargas entre as instâncias, entretanto não é ele que inclui e retirar máquinas de acordo com a demanda. É uma peça adicional para essa arquitetura para direcionar o tráfego assim que a máquina for provisionada pelo Auto Scalling Group.
+				<br/><br/>Migrar para uma máquina melhor melhoraria o desempenho da aplicação, entretanto não aconteceria de forma automática de acordo com a demanda de carga, não seria escalável e nem a opção mais econômica quando a carga diminuísse.
+				<br/><br/>O EBS Snapshot é uma fotografia do block storage que pode ser usado para diversas finalidades, porém para o processo de Auto Scalling, o ideal é usar uma imagem através do AMI.
+			</font>
+		</div>
+	</div>
+
+	<div id="div55" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('55');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('55');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>55. Baseado nos pilares de excelência operacional, segurança, confiança, performance eficiente, sustentabilidade e otimização de custos, qual é o Framework que ajuda os arquitetos cloud a construirem aplicações seguras, com alta performance, resilientes e eficientes?</b>
+		<br/><br/><input type=checkbox value="55a"> a) AWS Pillar
+		<br/><br/><input type=checkbox value="55b"> b) Framework .Net
+		<br/><br/><input type=checkbox value="55c"> c) AWS Well-Architected (<a href="https://wa.aws.amazon.com/wat.pillars.wa-pillars.pt_BR.html" target="_blank">link estudar</a>)
+		<br/><br/><input type=checkbox value="55d"> d) AWS CloudFormation
+		<br/><br/><button class="btn btn-info" onclick="showResponse('55', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp55" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>c) AWS Well-Architected é composto pelos 6 pilares citados na questão.
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>O AWS CloudFormation oferece uma forma fácil de modelar uma coleção de recursos relacionados da AWS e de terceiros, provisioná-la com rapidez e consistência e gerenciar todo o seu ciclo de vida mediante o tratamento da infraestrutura como código
+				<br/><br/>O Framework.net e o AWS Pillar não são serviços da AWS.
+			</font>
+		</div>
+	</div>
+
+	<div id="div56" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('56');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('56');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>56. Qual opção abaixo melhor descreve o modelo de Responsabilidade Compartilhada da AWS (shared responsability)?</b>
+		<br/><br/><input type=checkbox value="56a"> a) O cliente protege as aplicações, enquanto usuário protege sua senha
+		<br/><br/><input type=checkbox value="56b"> b) O desenvolvedor é responsável por implantar a aplicação, enquanto o gestor faz a aprovação
+		<br/><br/><input type=checkbox value="56c"> c) A AWS protege o data center, enquanto o cliente protege as aplicações.
+		<br/><br/><input type=checkbox value="56d"> d) A AWS protege o data center, enquanto a Microsoft protege o windows
+		<br/><br/><button class="btn btn-info" onclick="showResponse('56', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp56" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>c) A AWS protege o data center, enquanto o cliente protege as aplicações.
+				<br/><br/>O modelo de responsabilidade compartilhada explora bastante quais são as diferentes atividades de responsabilidade da AWS e do cliente dono de uma conta, para o melhor uso de Cloud.
+				<br/><br/>No geral a AWS é responsável por tudo relacionado a infraestrutura dos datacenters e redes (incluindo softwares do Hypervisor) e os clientes são responsáveis pela segurança dos seus sistemas e aplicações.
+				<br/><br/>A AWS protege o data center, faz manutenção em hardware, criptografa os dados na camada física, atualiza softwares de base, mas se o cliente não desenhar uma aplicação segura, deixar senhas expostas em git, não fizer as próprias criptografias, uso de certificados e etc, isso é responsabilidade dele e não da AWS.
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>As outras respostas não correlacionam a AWS com o cliente dono da conta, que são as entidades mencionadas no modelo de responsabilidade compartilhada.
+			</font>
+		</div>
+	</div>
+
+	<div id="div57" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('57');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('57');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>57. A sua empresa decidiu migrar algumas aplicações monolíticas legadas, sem refatoração, para o ECS. O que pode-se afirmar sobre essa estratégia?</b>
+		<br/><br/><input type=checkbox value="57a"> a) É possível, porém não trará grandes benefícios de otimização no uso dos recursos (<a href="https://aws.amazon.com/pt/getting-started/hands-on/break-monolith-app-microservices-ecs-docker-ec2/module-one/" target="_blank">link estudar</a>)
+		<br/><br/><input type=checkbox value="57b"> b) É possível e recomendado
+		<br/><br/><input type=checkbox value="57c"> c) É possível e trará mais velocidade para a migração e implementação de novas funcionalidades.
+		<br/><br/><input type=checkbox value="57d"> d) Não é possível, pois o serviço não aceita aplicações monolíticas.
+		<br/><br/><button class="btn btn-info" onclick="showResponse('57', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp57" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>a) É possível, porém não trará grandes ganhos como uma solução em microsserviços que faz um gerenciamento melhor dos recursos da máquina de acordo com a demanda da aplicação. A aplicação inteira vai ficar num único container.
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>O ECS aceita a aplicação de acordo com a capacidade da infraestrutura utilizada, mas o ideal é que a aplicação seja refatorada em microsserviços para permitir o melhor uso dos recursos, além de facilitar futuras evoluções e manutenções.
+			</font>
+		</div>
+	</div>
+
+	<div id="div58" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('58');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('58');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>58. Qual é a melhor descrição para o conceito de tolerância a falha?</b>
+		<br/><br/><input type=checkbox value="58a"> a) A habilidade de um sistema nunca falhar
+		<br/><br/><input type=checkbox value="58b"> b) A habilidade de um sistema crescer e provisionar novos recursos para continuar executando
+		<br/><br/><input type=checkbox value="58c"> c) A habilidade de um sistema exibir mensagens de falhas para os usuários.
+		<br/><br/><input type=checkbox value="58d"> d) A habilidade de um sistema permanecer em funcionamento, mesmo se um dos seus componentes falhar.
+		<br/><br/><button class="btn btn-info" onclick="showResponse('58', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp58" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>d) Uma das premissas do desenvolvimento de aplicações resilientes é saber que os componentes podem falhar e ter um plano para que eles continuem funcionando mesmo assim, permanecendo confiáveis e resilientes. Na AWS essa premissa está no pilar de confiabilidade do Well-Architect Framework, que ajuda arquitetos de nuvem a construir infraestruturas seguras, resilientes, eficientes e de alta performance para aplicações e workloads. Baseado em cinco pilares (excelência operacional, segurança, confiabilidade, eficiência de performance e otimização de custos), o AWS Well-Architected fornece uma abordagem consistente para que clientes e parceiros avaliem arquiteturas e implementem designs que podem se expandir com o tempo
+				<br/>https://aws.amazon.com/pt/architecture/well-architected/?nc2=h_ql_le_wa&wa-lens-whitepapers.sort-by=item.additionalFields.sortDate&wa-lens-whitepapers.sort-order=desc
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>Todo sistema pode falhar, podem acontecer falhas em hardwares, softwares, data centers, regiões e etc.
+				<br/><br/>A habilidade do sistema provisionar mais recursos sobdemanda é conhecida como escalabilidade.
+				<br/><br/>Exibição de mensagens de erro podem ser requisitos de negócio ou requisitos de qualidade, não tolerância a falhas.
+			</font>
+		</div>
+	</div>
+
+	<div id="div59" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('59');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('59');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>59. Sua empresa deseja padronizar e versionar as configurações para a criação de todos os bancos de dados, além disso, deseja que esses serviços sejam implementados e atualizados em toda a infraestrutura de servidores de forma automatizadas e utilizando pipelines de CI/CD. Qual é o serviço recomendado para esse requisito?</b>
+		<br/><br/><input type=checkbox value="59a"> a) AWS RDS
+		<br/><br/><input type=checkbox value="59b"> b) AWS IAC
+		<br/><br/><input type=checkbox value="59c"> c) AWS CodePipeline
+		<br/><br/><input type=checkbox value="59d"> d) AWS CloudFormation (<a href="https://aws.amazon.com/pt/cloudformation/" target="_blank">link estudar</a>)
+		<br/><br/><button class="btn btn-info" onclick="showResponse('59', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp59" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>d) AWS CloudFormation
+				<br/><br/>Arquivos Contendo o IAC, Infraestrutura como código, podem ser versionados e atualizados de forma automatizada com o uso de CloudFormation
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>AWS CodePipeline é utilizado para montar uma esteira de CI/CD para desenvolvimento de aplicações
+				<br/><br/>IAC é uma sigla utilizada para definir Infraestrutura como serviço, que é o que o CloudFormation entrega, porém um serviço com o nome AWS IAC não existe.
+				<br/><br/>AWS RDS é o serviço utilizado para Gerenciar Bancos de Dados com diversas funcionalidades, entretanto não oferece o serviço necessário no cenário citado na questão.
+			</font>
+		</div>
+	</div>
+
+	<div id="div60" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('60');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('60');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>60. Uma arquitetura de sistemas, baseada em computação sem servidor, utiliza S3, API Gateway, Lambda, SQS, SNS e precisa de um serviço que orquestre parte destas peças definindo e controlando os possíveis workflows. Qual dos serviços abaixo é utilizado para isso?</b>
+		<br/><br/><input type=checkbox value="60a"> a) AWS Workflow
+		<br/><br/><input type=checkbox value="60b"> b) AWS EventBridge
+		<br/><br/><input type=checkbox value="60c"> c) AWS Service Mesh
+		<br/><br/><input type=checkbox value="60d"> d) AWS Step Functions (<a href="https://aws.amazon.com/step-functions/?c=ser&sec=srv&step-functions.sort-by=item.additionalFields.postDateTime&step-functions.sort-order=desc" target="_blank">link estudar</a>)
+		<br/><br/><button class="btn btn-info" onclick="showResponse('60', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp60" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>d) Com o AWS Step Function é possível orquestrar e paralelizar vários serviços da AWS para executar um processo quando existirem todas as variáveis necessárias para isso. Além disso tem uma interface gráfica que permite visualizar cada passo do workflow.
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>O AWS Workflow e O AWS Service Mash não são serviços existentes na AWS. Existe o AWS App Mesh que não está na lista, que é um service mesh que oferece redes para aplicativos a fim de facilitar a comunicação dos serviços entre si e entre vários tipos de infraestrutura de computação
+				<br/><br/>O Amazon EventBridge é um barramento de eventos sem servidor que torna mais fácil a criação de aplicações orientadas por eventos em escala usando eventos gerados com base em suas aplicações, aplicações integradas de software como serviço (SaaS) e serviços da AWS.
+			</font>
+		</div>
+	</div>
+
+	<div id="div61" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('61');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('61');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>61. O que é possível fazer com o Amazon QuickSight?</b>
+		<br/><br/><input type=checkbox value="61a"> a) Executar Map reduce em dados distribuídos
+		<br/><br/><input type=checkbox value="61b"> b) Criar DashBoards de BI com uso de Aprendizado de Máquina (Machine Learning) (<a href="https://aws.amazon.com/pt/quicksight/" target="_blank">link estudar</a>)
+		<br/><br/><input type=checkbox value="61c"> c) Capturar dados de diversos dispositivos através e streaming de dados de forma rápida
+		<br/><br/><input type=checkbox value="61d"> d) Realizar consultas em objetos armazenados no S3
+		<br/><br/><button class="btn btn-info" onclick="showResponse('61', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp61" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>b) O Amazon QuickSight permite que todos em sua organização entendam seus dados por meio de perguntas em linguagem natural, do uso de painéis interativos ou procurando automaticamente padrões e discrepâncias com tecnologia de machine learning.
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>Capturar dados por streaming é o com o Kinesis
+				<br/><br/>Consultar no S3 é com o Athena
+				<br/><br/>Fazer MapReduce é com o EMR
+			</font>
+		</div>
+	</div>
+
+	<div id="div62" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('62');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('62');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>62. Quais das opções abaixo são formas de pagamento de instâncias EC2? (Selecione 3)</b>
+		<br/><br/><input type=checkbox value="62a"> a) On premise
+		<br/><br/><input type=checkbox value="62b"> b) Spot
+		<br/><br/><input type=checkbox value="62c"> c) Reserved
+		<br/><br/><input type=checkbox value="62d"> d) On-demand
+		<br/><br/><input type=checkbox value="62e"> d) Tailor Made
+		<br/><br/><button class="btn btn-info" onclick="showResponse('62', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp62" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>b) c) d) 
+				<br/>Existem cinco formas de pagar a Amazon EC2 instances: On-Demand, Savings Plans, Reserved Instances,  Spot Instances, Dedicate Host
+				<br/><br/>On-demand - paga somente pelo uso, recomendado quando ainda não se sabe a quantidade de recursos necessários para uma aplicação. Tem alta disponibilidade e o maior custo de todos as formas.
+				<br/><br/>Reserved - paga por um contrato pré-estabelecido, recomendado quando é possível estimar o uso por 1 ou 3 anos, Tem alta disponibilidade e economia de custo quando comparado ao on-demand.
+				<br/><br/>Spot - paga  pelo uso dos recursos não utilizados pelos outros modelos, recomendado para processos que não precisam ser online, podendo ser executados apenas quando há infraestrutura fica disponível, Tem baixa disponibilidades e o menor custo de todos os meios.
+				<br/><br/>https://aws.amazon.com/pt/ec2/pricing/
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>On premises é a infraestrutura particular, o data center privado da sua corporação, não está relacionado a tipo de uso.
+				<br/><br/>Tailor Made - Sob Medida - não existe na AWS este nome
+			</font>
+		</div>
+	</div>
+
+	<div id="div63" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('63');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('63');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>63. Quais afirmações abaixo referem-se ao Amazon S3 (Selecione 2)</b>
+		<br/><br/><input type=checkbox value="63a"> a) Objeto é um arquivo ou meta dado que descreve o arquivo (<a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-buckets-s3.html" target="_blank">link estudar</a>)
+		<br/><br/><input type=checkbox value="63b"> b) Bucket é um conteiner de objetos (<a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-buckets-s3.html" target="_blank">link estudar</a>)
+		<br/><br/><input type=checkbox value="63c"> c) Elastic Load Balancer são balanceadores de carga
+		<br/><br/><input type=checkbox value="63d"> d) Lambdas são funções sem servidores
+		<br/><br/><button class="btn btn-info" onclick="showResponse('63', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp63" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>a) b) Amazon S3 é o serviço de armazenamento principal da AWS, é composto por Buckets, que são criados para organizar objetos compostos por arquivos e metadados dos arquivos.
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>Lambdas são funções sem servidores que não fazem parte do S3,  está relacionada a computação e não a armazenamento.
+				<br/><br/>ELB são balanceadores de carga entre instâncias que fazem parte do EC2.
+			</font>
+		</div>
+	</div>
+
+	<div id="div64" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('64');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('64');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>64. O AWS Trusted Advisor é um serviço de monitoramento e recomendação que auxilia o cliente a utilizar os recursos de sua conta de maneira alinhada com as melhores práticas para trazer muitos benefícios. Quais itens abaixo representam tais benefícios? (Selecione 3)</b>
+		<br/><br/><input type=checkbox value="64a"> a) Otimização de Custos
+		<br/><br/><input type=checkbox value="64b"> b) Segurança
+		<br/><br/><input type=checkbox value="64c"> c) Performance
+		<br/><br/><input type=checkbox value="64d"> d) Proteção de Hardware
+		<br/><br/><button class="btn btn-info" onclick="showResponse('64', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp64" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>a) b) c)
+				<br/>O AWS Trusted Advisor faz recomendações que te ajudam a seguir as práticas recomendadas da AWS. O Trusted Advisor avalia a sua conta por meio de verificações. Essas verificações identificam formas de otimizar sua infraestrutura da AWS, aumentar a segurança e o desempenho, reduzir os custos gerais e monitorar as cotas do serviço.
+				<br/><br/>https://aws.amazon.com/pt/premiumsupport/technology/trusted-advisor/
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>O Trusted Advisor não dá informações sobre o uso de Protecao de Hardware, umas vez que isso não é responsabilidade do cliente e sim da AWS no modelo de responsabilidade compartilhada.
+			</font>
+		</div>
+	</div>
+
+	<div id="div65" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('65');"> <i class="fa fa-backward"></i> Anterior</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-info" onclick="showNext('65');">Próximo <i class="fa fa-forward"></i></button>
+		<br/><br/><b>65. Quais dos seguintes planos de suporte oferecem acesso ao atendimento ao cliente, whitepapers, documentações e fóruns de suporte 24x7?</b>
+		<br/><br/><input type=checkbox value="65a"> a) Reserved
+		<br/><br/><input type=checkbox value="65b"> b) Basic
+		<br/><br/><input type=checkbox value="65c"> c) Full
+		<br/><br/><input type=checkbox value="65d"> d) Enterprise
+		<br/><br/><button class="btn btn-info" onclick="showResponse('65', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
+		<div id="resp65" style="display:none; text-align:justify; color:red;">
+			<font color=green>
+				<br/><b>Correta:</b>
+				<br/>b) d)
+				<br/><br/>Todos os planos desde o Basic oferecem esses serviços.  Basic, Developer, Business, Entrerprise on ramp e Enterprise.
+				<br/><br/>Nas opções listadas só tem Basic e Enterprise e são as únicas possíveis pois as outras não são planos de suporte existentes.
+				<br/><br/>Para os planos business e enterprise existe uma opção de suporte técnico aprimorado 24x7, que é mais exclusivo e que dá acesso aos engenheiros da AWS por telefone e e-mail, mas que só seria a resposta caso a pergunta estivesse relacionada a suporte técnico aprimorado.
+				<br/><br/>Maiores detalhes em: https://aws.amazon.com/premiumsupport/plans/
+			</font>
+			<font color=red>
+				<br/><b>Incorretas:</b>
+				<br/>Full e Reserved não são nomes de plano de suporte na AWS.
+			</font>
+		</div>
+	</div>
+
 <!--
 	<div id="div99" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('99');"> <i class="fa fa-backward"></i> Anterior</button>
@@ -1046,8 +1657,8 @@
 	</div>
 -->
 
-	<div id="div41" style="display:none;">
-		<button class="btn btn-info" onclick="showPrevious('41');"> <i class="fa fa-backward"></i> Anterior</button>
+	<div id="div66" style="display:none;">
+		<button class="btn btn-info" onclick="showPrevious('66');"> <i class="fa fa-backward"></i> Anterior</button>
 		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
 		<button class="btn btn-info" disabled><i class="fa fa-check"></i> Fim</button>
 	</div>
