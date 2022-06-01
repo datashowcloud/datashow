@@ -22,21 +22,21 @@
 	</style>
 </head>
 
-<body id="myBody" background="gallery/paper.jpeg">
+<body id="myBody" style="background-color:#DCDCDC" ZZZbackground="gallery/paper.jpeg">
 
 	<form id="formAdd" ZZZaction="https://formspree.io/f/xrgjojko" method="post">
 		<input type="text" hidden="" name="resultado" value="" />
 		<input type="text" hidden="" name="config_myowner" value="IIRF" />
 	</form>
 
-<font size=4.5 style=text-align:justify>
+<font size=4.9 style=text-align:justify>
 
 	<div id="div00" style="display:'none';">
 		<button onclick="showNext('00');" class="btn btn-info" >Começar <i class="fa fa-forward"></i></button>
 		<br/><br/>Preparo para Certificação
 		<br/><br/>AWS Certified Cloud Practitioner
 		<br/><br/>Assinale as alternativas corretas
-		<br/><br/><i>enio.francisco@gmail.com&#174; +55(11)95239-2000 versão01.06.22.01.00</i></i>
+		<br/><br/><i>enio.francisco@gmail.com&#174; <br/>+55(11)95239-2000 <br/>versão 01.06.22.01.00</i></i>
 	</div>
 
 	<div id="div01" style="display:none;">
@@ -247,12 +247,11 @@
 		<button class="btn btn-info" onclick="showNext('09');">Próximo <i class="fa fa-forward"></i></button>
 		<br/><br/><b>09. Analise os serviços abaixo:
 		<br/>O primeiro serviço permite que aplicativos enviem mensagens críticas, em termos de tempo, para vários assinantes através de um mecanismo de “push”, eliminando a necessidade de verificar periodicamente ou “pesquisar” por atualizações.
-		<br/>O segundo é um serviço de fila de mensagens, usado por aplicativos distribuídos para trocar mensagens através de um modelo de sondagem e pode ser usado para desacoplar componentes de envio e recebimento.
-		<br/>Qual é a sequência abaixo que informa corretamente os dois serviços?</b>
+		<br/>O segundo é um serviço de fila de mensagens, usado por aplicativos distribuídos para trocar mensagens através de um modelo de sondagem e pode ser usado para desacoplar componentes de envio e recebimento. Qual é a sequência abaixo que informa corretamente os dois serviços?</b>
 		<br/><br/><input type=checkbox value="09a"> a) SES e SNS
-		<br/><br/><input type=checkbox value="09b"> b) SQS e SNS
-		<br/><br/><input type=checkbox value="09c"> c) SES e SQS
-		<br/><br/><input type=checkbox value="09d"> d) SNS e SQS
+		<br/><input type=checkbox value="09b"> b) SQS e SNS
+		<br/><input type=checkbox value="09c"> c) SES e SQS
+		<br/><input type=checkbox value="09d"> d) SNS e SQS
 		<br/><br/><button class="btn btn-info" onclick="showResponse('09', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
 		<div id="resp09" style="display:none; text-align:justify; color:green;">
 			<font color=green>
@@ -521,9 +520,9 @@
 		<button class="btn btn-info" onclick="showNext('20');">Próximo <i class="fa fa-forward"></i></button>
 		<br/><br/><b>20. Você lidera um time de desenvolvimento pequeno e que não tem tempo de se envolver com muitas questões de infraestrutura AWS, porém você gostaria de fazer o uso de container, pois acredita que esse modelo de arquitetura tem muitas vantagens. Qual serviço da Amazon permite que você crie e use container sem precisar se preocupar com questões de infraestrutura e que usa uma infraestrutura sem servidor (servless) ?</b>
 		<br/><br/><input type=checkbox value="20a"> a) EKS
-		<br/><br/><input type=checkbox value="20b"> b) ECS
-		<br/><br/><input type=checkbox value="20c"> c) ECR
-		<br/><br/><input type=checkbox value="20d"> d) Fargate
+		<br/><input type=checkbox value="20b"> b) ECS
+		<br/><input type=checkbox value="20c"> c) ECR
+		<br/><input type=checkbox value="20d"> d) Fargate
 		<br/><br/><button class="btn btn-info" onclick="showResponse('20', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
 		<div id="resp20" style="display:none; text-align:justify; color:red;">
 			<font color=green>
@@ -1081,9 +1080,9 @@
 		<button class="btn btn-info" onclick="showNext('43');">Próximo <i class="fa fa-forward"></i></button>
 		<br/><br/><b>43. Sua aplicação fornece dados através de APIs REST para diversas aplicações diferentes. Pensando num cenário de futuras manutenções e evoluções dos seus serviços, qual opção abaixo pode melhor auxiliar a sua arquitetura a manter várias versões da mesma API sendo executadas simultaneamente e não exigir que todos os consumidores realizem adequações nas chamadas ao seu serviço?</b>
 		<br/><br/><input type=checkbox value="43a"> a) AWS Zuul
-		<br/><br/><input type=checkbox value="43b"> b) AWS Route53
-		<br/><br/><input type=checkbox value="43c"> c) AWS EventBridge
-		<br/><br/><input type=checkbox value="43d"> d) API Gateway (<a href="https://aws.amazon.com/pt/api-gateway/features/" target="_blank">link estudar</a>)
+		<br/><input type=checkbox value="43b"> b) AWS Route53
+		<br/><input type=checkbox value="43c"> c) AWS EventBridge
+		<br/><input type=checkbox value="43d"> d) API Gateway (<a href="https://aws.amazon.com/pt/api-gateway/features/" target="_blank">link estudar</a>)
 		<br/><br/><button class="btn btn-info" onclick="showResponse('43', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
 		<div id="resp43" style="display:none; text-align:justify; color:red;">
 			<font color=green>
