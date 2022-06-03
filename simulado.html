@@ -22,7 +22,7 @@
 	</style>
 </head>
 
-<body id="myBody" style="background-color:#DCDCDC" ZZZbackground="gallery/paper.jpeg">
+<body id="myBody" ZZZstyle="background-color:#DCDCDC" background="gallery/paper.jpeg">
 
 	<form id="formAdd" ZZZaction="https://formspree.io/f/xrgjojko" method="post">
 		<input type="text" hidden="" name="resultado" value="" />
@@ -32,12 +32,13 @@
 <font size=4.9 style=text-align:justify>
 
 	<div id="div00" style="display:'none';">
-		<button class="btn btn-x" onclick="showPrevious('00');" disabled> <i class="fa fa-backward"></i></button>
+		<button class="btn btn-default" onclick="showPrevious('00');" disabled> <i class="fa fa-backward"></i></button>
 		<button onclick="showNext('00');" class="btn btn-info" >Começar <i class="fa fa-forward"></i></button>
+		<br/>
 		<br/>Preparo para Certificação
 		<br/><br/>AWS Certified Cloud Practitioner
 		<br/><br/>Assinale as alternativas corretas
-		<br/><br/><i>enio.francisco@gmail.com <br/>+55(11)95239-2000 <br/>versão 01.06.22.21.00</i></i>
+		<br/><br/><i>enio.francisco@gmail.com <br/>+55(11)95239-2000 <br/>versão 03.06.22.00.00</i></i>
 			<label style="display:none;">
 				<br/><br/>
 				<button id="btnTest" class="btn btn-default" > <i class="fa fa-envelope"></i> </button>
@@ -150,23 +151,27 @@
 
 	<div id="div01" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('01');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-default" onclick="showHelp('01');"> <i class="fa fa-question"></i> Ajuda</button>
 		<button class="btn btn-info" onclick="showNext('01');">Próximo <i class="fa fa-forward"></i></button>
+		<br/>
 		<br/><b>01. Qual serviço da AWS é recomendado para estimar o custo de implementação dos serviços de Cloud para o seu negócio?</b>
 		<br/>
-		<br/><input type=checkbox value="01a">a) AWS Princing Calculator (<a href="https://calculator.aws/#/" target="_blank">link estudar</a>)
+		<br/><button onclick="showHelp('div01a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="01a">a) AWS Princing Calculator (<a href="https://calculator.aws/#/" target="_blank">link estudar</a>)
 			<ul id="div01a" style="display:none; text-align:justify;">
 				Pode ser utilizado para estimar os custos antes do uso, antes da implementação.
 			</ul>
-		<br/><input type=checkbox value="01b">b) AWS Organizations (<a href="https://aws.amazon.com/pt/organizations/?nc2=type_a" target="_blank">link estudar</a>)
+		<br/><button onclick="showHelp('div01b');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="01b">b) AWS Organizations (<a href="https://aws.amazon.com/pt/organizations/?nc2=type_a" target="_blank">link estudar</a>)
 			<ul id="div01b" style="display:none; text-align:justify;">
 				Ajuda você a gerenciar e controlar seu ambiente de maneira centralizada à medida que os negócios e seus recursos da AWS expandem. Usando o AWS Organizations, você pode criar novas contas da AWS e alocar recursos, agrupar contas para organizar seus fluxos de trabalho, aplicar políticas a contas ou grupos para governança e simplificar o faturamento usando um único método de pagamento para todas as suas contas.
 			</ul>
-		<br/><input type=checkbox value="01c">c) AWS Billing (<a href="https://aws.amazon.com/pt/aws-cost-management/aws-billing/" target="_blank">link estudar</a>)
+		<br/><button onclick="showHelp('div01c');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="01c">c) AWS Billing (<a href="https://aws.amazon.com/pt/aws-cost-management/aws-billing/" target="_blank">link estudar</a>)
 			<ul id="div01c" style="display:none; text-align:justify;">
 				conjunto de serviços que você usa para pagar o faturamento, monitorar seu uso e analisar e controlar seus custos.
 			</ul>
-		<br/><input type=checkbox value="01d">d) AWS Cost Explorer (<a href="https://aws.amazon.com/pt/aws-cost-management/aws-cost-explorer/?nc2=type_a" target="_blank">link estudar</a>)
+		<br/><button onclick="showHelp('div01d');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="01d">d) AWS Cost Explorer (<a href="https://aws.amazon.com/pt/aws-cost-management/aws-cost-explorer/?nc2=type_a" target="_blank">link estudar</a>)
 			<ul id="div01d" style="display:none; text-align:justify;">
 				Tem uma interface fácil de usar que permite visualizar, entender e gerenciar os custos e o uso da AWS ao longo do tempo. Relacionado ao que já foi gasto, não para estimar.
 			</ul>
@@ -188,23 +193,27 @@
 
 	<div id="div02" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('02');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-default" onclick="showHelp('02');"> <i class="fa fa-question"></i> Ajuda</button>
 		<button class="btn btn-info" onclick="showNext('02');">Próximo <i class="fa fa-forward"></i></button>
-		<br/><br/><b>02. O que é Free Tier (Nível Gratuito)?</b>
 		<br/>
-		<br/><input type=checkbox value="02a"> a) É um modelo de uso dos produtos da AWS onde você não é cobrado. (<a href="https://aws.amazon.com/pt/free/free-tier-faqs/" target="_blank">link estudar</a>)
+		<br/><b>02. O que é Free Tier (Nível Gratuito)?</b>
+		<br/>
+		<br/><button onclick="showHelp('div02a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="02a"> a) É um modelo de uso dos produtos da AWS onde você não é cobrado. (<a href="https://aws.amazon.com/pt/free/free-tier-faqs/" target="_blank">link estudar</a>)
 			<ul id="div02a" style="display:none; text-align:justify;">
 				O nível gratuito da AWS oferece aos clientes a capacidade de explorar e testar gratuitamente serviços da AWS até os limites especificados para cada serviço. O nível gratuito é composto por três tipos diferentes de ofertas: um nível gratuito de 12 meses, uma oferta Always Free e testes de curto prazo. Os serviços com um nível gratuito de 12 meses permitem que os clientes utilizem gratuitamente o produto até os limites especificados por um ano a partir da data em que a conta foi ativada. Os serviços com uma oferta Always Free permitem que os clientes usem o produto gratuitamente até os limites especificados, desde que sejam clientes da AWS. Os serviços com um teste de curto prazo podem ser usados gratuitamente por um período especificado ou até um limite de tempo não renovável, dependendo do serviço selecionado.
 			</ul>
-		<br/><input type=checkbox value="02b"> b) É um serviço de firewall que protege suas aplicações
+		<br/><button onclick="showHelp('div02b');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="02b"> b) É um serviço de firewall que protege suas aplicações
 			<ul id="div02b" style="display:none; text-align:justify;">
 				
 			</ul>
-		<br/><input type=checkbox value="02c"> c) É uma camada de banco de dados NoSQL (<a href="https://aws.amazon.com/pt/dynamodb/" target="_blank">link estudar</a>)
+		<br/><button onclick="showHelp('div02c');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="02c"> c) É uma camada de banco de dados NoSQL (<a href="https://aws.amazon.com/pt/dynamodb/" target="_blank">link estudar</a>)
 			<ul id="div02c" style="display:none; text-align:justify;">
 				O Amazon DynamoDB é um banco de dados de chave-valor NoSQL, sem servidor e totalmente gerenciado, projetado para executar aplicações de alta performance em qualquer escala. O DynamoDB oferece segurança integrada, backups contínuos, replicação multirregional automatizada, armazenamento em cache na memória e ferramentas de exportação de dados.
 			</ul>
-		<br/><input type=checkbox value="02d"> d) É um modelo open source para o desenvolvimento de aplicações em camadas.
+		<br/><button onclick="showHelp('div02d');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="02d"> d) É um modelo open source para o desenvolvimento de aplicações em camadas.
 			<ul id="div02d" style="display:none; text-align:justify;">
 				
 			</ul>
@@ -231,22 +240,27 @@
 
 	<div id="div03" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('03');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-default" onclick="showHelp('03');"> <i class="fa fa-question"></i> Ajuda</button>
 		<button class="btn btn-info" onclick="showNext('03');">Próximo <i class="fa fa-forward"></i></button>
-		<br/><br/><b>03. O que é o MFA - Multi-Factor-Authentication (Autenticação Multi Fator)?</b>
-		<br/><br/><input type=checkbox value="03a"> a) Um serviço que inclui uma etapa a mais no processo de autenticação de acesso a conta da AWS pela Web. (<a href="https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_credentials_mfa.html" target="_blank">link estudar</a>)
+		<br/>
+		<br/><b>03. O que é o MFA - Multi-Factor-Authentication (Autenticação Multi Fator)?</b>
+		<br/>
+		<br/><button onclick="showHelp('div03a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="03a"> a) Um serviço que inclui uma etapa a mais no processo de autenticação de acesso a conta da AWS pela Web. (<a href="https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_credentials_mfa.html" target="_blank">link estudar</a>)
 			<ul id="div03a" style="display:none; text-align:justify;">
 				A MFA agrega mais segurança porque requer que os usuários para fornecer autenticação exclusivo de um mecanismo de MFA com suporte da AWS, além das suas credenciais de login regular ao acessarem sites ou serviços da AWS.
 			</ul>
-		<br/><br/><input type=checkbox value="03b"> b) Um serviço para conectar instâncias EC2 no banco de dados DynamoDb (<a href="https://aws.amazon.com/pt/dynamodb/" target="_blank">link estudar</a>)
+		<br/><button onclick="showHelp('div03b');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="03b"> b) Um serviço para conectar instâncias EC2 no banco de dados DynamoDb (<a href="https://aws.amazon.com/pt/dynamodb/" target="_blank">link estudar</a>)
 			<ul id="div03b" style="display:none; text-align:justify;">
 				O Amazon DynamoDB é um banco de dados de chave-valor NoSQL, sem servidor e totalmente gerenciado, projetado para executar aplicações de alta performance em qualquer escala. O DynamoDB oferece segurança integrada, backups contínuos, replicação multirregional automatizada, armazenamento em cache na memória e ferramentas de exportação de dados.
 			</ul>
-		<br/><br/><input type=checkbox value="03c"> c) Um serviço que permite uso de tokens em aplicações web e mobile.
+		<br/><button onclick="showHelp('div03c');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="03c"> c) Um serviço que permite uso de tokens em aplicações web e mobile.
 			<ul id="div03c" style="display:none; text-align:justify;">
 				
 			</ul>
-		<br/><br/><input type=checkbox value="03d"> d) Um serviço que permite fazer acesso SSH em instâncias EC2 (<a href="https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/ec2-key-pairs.html" target="_blank">link estudar</a>)
+		<br/><button onclick="showHelp('div03d');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="03d"> d) Um serviço que permite fazer acesso SSH em instâncias EC2 (<a href="https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/ec2-key-pairs.html" target="_blank">link estudar</a>)
 			<ul id="div03d" style="display:none; text-align:justify;">
 				Um par de chaves, que consiste em uma chave pública e uma chave privada, trata-se de um conjunto de credenciais de segurança usadas para provar sua identidade ao se conectar a uma instância do Amazon EC2. O Amazon EC2 armazena a chave pública na instância, e você armazena a chave privada.
 			</ul>
@@ -271,11 +285,17 @@
 	<div id="div04" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('04');"> <i class="fa fa-backward"></i></button>
 		<button class="btn btn-info" onclick="showNext('04');">Próximo <i class="fa fa-forward"></i></button>
-		<br/><br/><b>04. Qual é a opção de armazenamento default do serviço S3?</b
-		<br/><br/><input type=checkbox value="04a"> a) Standard (<a href="https://aws.amazon.com/pt/s3/storage-classes/" target="_blank">link estudar</a>)
-		<br/><br/><input type=checkbox value="04b"> b) Frequent Access
-		<br/><br/><input type=checkbox value="04c"> c) Infrequent Access
-		<br/><br/><input type=checkbox value="04d"> d) Glacier (<a href="https://docs.aws.amazon.com/pt_br/amazonglacier/latest/dev/introduction.html" target="_blank">link estudar</a>)
+		<br/>
+		<br/><b>04. Qual é a opção de armazenamento default do serviço S3?</b>
+		<br/>
+		<br/><button onclick="showHelp('div04a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="04a"> a) Standard (<a href="https://aws.amazon.com/pt/s3/storage-classes/" target="_blank">link estudar</a>)
+		<br/><button onclick="showHelp('div04b');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="04b"> b) Frequent Access
+		<br/><button onclick="showHelp('div04c');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="04c"> c) Infrequent Access
+		<br/><button onclick="showHelp('div04d');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="04d"> d) Glacier (<a href="https://docs.aws.amazon.com/pt_br/amazonglacier/latest/dev/introduction.html" target="_blank">link estudar</a>)
 		<br/><br/><button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
 		<button class="btn btn-info" onclick="showResponse('04', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
 		<div id="resp04" style="display:none; text-align:justify; color:green;">
@@ -295,11 +315,17 @@
 	<div id="div05" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('05');"> <i class="fa fa-backward"></i></button>
 		<button class="btn btn-info" onclick="showNext('05');">Próximo <i class="fa fa-forward"></i></button>
-		<br/><br/><b>05. Numa estratégia de utilização de nuvem híbrida, onde você deseja manter seu workload on- premises e parte dos arquivos na AWS. Qual opção abaixo oferece uma gama de serviços para realizar essa finalidade de integração e armazenamento para sua arquitetura?</b>
-		<br/><br/><input type=checkbox value="05a"> a) AWS Storage Gateway (<a href="https://aws.amazon.com/pt/storagegateway/" target="_blank">link estudar</a>)
-		<br/><br/><input type=checkbox value="05b"> b) Amazon Virtual Private Cloud (VPC) (<a href="https://aws.amazon.com/pt/vpc/" target="_blank">link estudar</a>)
-		<br/><br/><input type=checkbox value="05c"> c) AWS Organizations (<a href="https://docs.aws.amazon.com/pt_br/organizations/latest/userguide/orgs_introduction.html" target="_blank">link estudar</a>)
-		<br/><br/><input type=checkbox value="05d"> d) AWS Database Migration Service (<a href="https://aws.amazon.com/pt/dms/" target="_blank">link estudar</a>)
+		<br/>
+		<br/><b>05. Numa estratégia de utilização de nuvem híbrida, onde você deseja manter seu workload on- premises e parte dos arquivos na AWS. Qual opção abaixo oferece uma gama de serviços para realizar essa finalidade de integração e armazenamento para sua arquitetura?</b>
+		<br/>
+		<br/><button onclick="showHelp('div05a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="05a"> a) AWS Storage Gateway (<a href="https://aws.amazon.com/pt/storagegateway/" target="_blank">link estudar</a>)
+		<br/><button onclick="showHelp('div05b');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="05b"> b) Amazon Virtual Private Cloud (VPC) (<a href="https://aws.amazon.com/pt/vpc/" target="_blank">link estudar</a>)
+		<br/><button onclick="showHelp('div05c');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="05c"> c) AWS Organizations (<a href="https://docs.aws.amazon.com/pt_br/organizations/latest/userguide/orgs_introduction.html" target="_blank">link estudar</a>)
+		<br/><button onclick="showHelp('div05d');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="05d"> d) AWS Database Migration Service (<a href="https://aws.amazon.com/pt/dms/" target="_blank">link estudar</a>)
 		<br/><br/><button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
 		<button class="btn btn-info" onclick="showResponse('05', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
 		<div id="resp05" style="display:none; text-align:justify; color:green;">
@@ -1825,18 +1851,10 @@
 var totalperguntas = 65;
 
 function showHelp(numberQuestion) {
-	if (document.getElementById('div' + numberQuestion + 'a').style.display == 'none') {
-		document.getElementById('div' + numberQuestion + 'a').style.display = 'block';
-		document.getElementById('div' + numberQuestion + 'b').style.display = 'block';
-		document.getElementById('div' + numberQuestion + 'c').style.display = 'block';
-		document.getElementById('div' + numberQuestion + 'd').style.display = 'block';
-		document.getElementById('div' + numberQuestion + 'e').style.display = 'block';
+	if (document.getElementById(numberQuestion).style.display == 'none') {
+		document.getElementById(numberQuestion).style.display = 'block';
 	} else {
-		document.getElementById('div' + numberQuestion + 'a').style.display='none';
-		document.getElementById('div' + numberQuestion + 'b').style.display='none';
-		document.getElementById('div' + numberQuestion + 'c').style.display='none';
-		document.getElementById('div' + numberQuestion + 'd').style.display='none';
-		document.getElementById('div' + numberQuestion + 'e').style.display='none';
+		document.getElementById(numberQuestion).style.display='none';
 	}
 }
 
