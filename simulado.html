@@ -38,7 +38,7 @@
 		<br/>Preparo para Certificação
 		<br/><br/>AWS Certified Cloud Practitioner
 		<br/><br/>Assinale as alternativas corretas
-		<br/><br/><i>enio.francisco@gmail.com <br/>+55(11)95239-2000 <br/>versão 03.06.22.11.00</i></i>
+		<br/><br/><i>enio.francisco@gmail.com <br/>+55(11)95239-2000 <br/>versão 03.06.22.18.00</i></i>
 			<label style="display:'none';">
 				<br/><br/>
 				<button id="btnTest" class="btn btn-default" > <i class="fa fa-envelope"></i> </button>
@@ -210,7 +210,7 @@
 		<br/><button onclick="showHelp('div02c');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="02c"> c) É uma camada de banco de dados NoSQL (<a href="https://aws.amazon.com/pt/dynamodb/" target="_blank">link estudar</a>)
 			<u><ul id="div02c" style="display:none; text-align:justify;">
-				O Amazon DynamoDB é um banco de dados de chave-valor NoSQL, sem servidor e totalmente gerenciado, projetado para executar aplicações de alta performance em qualquer escala.
+				É um banco de dados de chave-valor NoSQL, sem servidor e totalmente gerenciado, projetado para executar aplicações de alta performance em qualquer escala.
 			</ul></u>
 		<br/><button onclick="showHelp('div02d');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="02d"> d) É um modelo open source para o desenvolvimento de aplicações em camadas. (<a href="https://www.redhat.com/pt-br/topics/open-source/what-is-open-source" target="_blank">link estudar</a>)
@@ -453,10 +453,26 @@
 		<button class="btn btn-info" onclick="showPrevious('08');"> <i class="fa fa-backward"></i></button>
 		<button class="btn btn-info" onclick="showNext('08');">Próximo <i class="fa fa-forward"></i></button>
 		<br/><br/><b>08. Sua aplicação precisa persistir dados não estruturados de clientes. Qual serviço abaixo é o mais indicado para essa finalidade?</b>
-		<br/><br/><input type=checkbox value="08a"> a) Amazon RedShift
-		<br/><br/><input type=checkbox value="08b"> b) Amazon Aurora
-		<br/><br/><input type=checkbox value="08c"> c) Amazon EMR
-		<br/><br/><input type=checkbox value="08d"> d) Amazon DynamoDB
+		<br/><button onclick="showHelp('div07a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="08a"> a) Amazon RedShift (<a href="https://docs.aws.amazon.com/pt_br/redshift/latest/mgmt/welcome.html" target="_blank">link estudar</a>)
+			<u><ul id="div08a" style="display:none; text-align:justify;">
+				É um serviço de data warehouse em escala de petabytes totalmente gerenciado na nuvem. Permite usar os dados para adquirir novos insights para seus negócios e clientes.
+			</ul></u>
+		<br/><button onclick="showHelp('div07a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="08b"> b) Amazon Aurora (<a href="https://aws.amazon.com/pt/rds/aurora/" target="_blank">link estudar</a>)
+			<u><ul id="div08b" style="display:none; text-align:justify;">
+				É um Relational Database Management System (RDBMS – Sistema de gerenciamento de banco de dados relacional) criado para a nuvem com total compatibilidade com MySQL e PostgreSQL.
+			</ul></u>
+		<br/><button onclick="showHelp('div07a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="08c"> c) Amazon EMR (<a href="https://aws.amazon.com/pt/emr/" target="_blank">link estudar</a>)
+			<u><ul id="div08c" style="display:none; text-align:justify;">
+				É uma plataforma de big data em nuvem usada para executar trabalhos de processamento de dados distribuídos em grande escala, consultas SQL interativas e aplicações de machine learning (ML) usando frameworks de análise de código aberto como Apache Spark, Apache Hive e Presto.
+			</ul></u>
+		<br/><button onclick="showHelp('div07a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="08d"> d) Amazon DynamoDB (<a href="https://aws.amazon.com/pt/dynamodb/" target="_blank">link estudar</a>)
+			<u><ul id="div08d" style="display:none; text-align:justify;">
+				É um banco de dados de chave-valor NoSQL, sem servidor e totalmente gerenciado, projetado para executar aplicações de alta performance em qualquer escala.
+			</ul></u>
 		<br/><br/><button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
 		<button class="btn btn-info" onclick="showResponse('08', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
 		<div id="resp08" style="display:none; text-align:justify; color:green;">
@@ -977,7 +993,7 @@
 		<div id="resp29" style="display:none; text-align:justify; color:red;">
 			<font color=green>
 				<br/><b>Correta:</b>
-				<br/>d) O Amazon DynamoDB é um banco de dados de chave-valor NoSQL, sem servidor e totalmente gerenciado, projetado para executar aplicações de alta performance em qualquer escala.
+				<br/>d) É um banco de dados de chave-valor NoSQL, sem servidor e totalmente gerenciado, projetado para executar aplicações de alta performance em qualquer escala.
 				<br/><br/>Quando um serviço é totalmente gerenciado o cliente não precisa se preocupar com nada que está relacionado a sua implementação, como instalação, atualizações da infraestrutura. A AWS faz todo o gerenciamento e o cliente utiliza apenas as APIs destes serviços para a criação das tabelas, gravação e recuperação dos dados. No caso do Dynamo, o cliente faz o uso do console ou das APIs para realizar a maior parte das tarefas, sem se preocupar com a instalação do banco.
 			</font>
 			<font color=red>
