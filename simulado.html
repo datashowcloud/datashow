@@ -38,7 +38,7 @@
 		<br/>Preparo para Certificação
 		<br/><br/>AWS Certified Cloud Practitioner
 		<br/><br/>Assinale as alternativas corretas
-		<br/><br/><i>enio.francisco@gmail.com <br/>+55(11)95239-2000 <br/>versão 03.06.22.16.00</i></i>
+		<br/><br/><i>enio.francisco@gmail.com <br/>+55(11)95239-2000 <br/>versão 03.06.22.11.00</i></i>
 			<label style="display:'none';">
 				<br/><br/>
 				<button id="btnTest" class="btn btn-default" > <i class="fa fa-envelope"></i> </button>
@@ -328,16 +328,28 @@
 		<button class="btn btn-info" onclick="showPrevious('05');"> <i class="fa fa-backward"></i></button>
 		<button class="btn btn-info" onclick="showNext('05');">Próximo <i class="fa fa-forward"></i></button>
 		<br/>
-		<br/><b>05. Numa estratégia de utilização de nuvem híbrida, onde você deseja manter seu workload on- premises e parte dos arquivos na AWS. Qual opção abaixo oferece uma gama de serviços para realizar essa finalidade de integração e armazenamento para sua arquitetura?</b>
+		<br/><b>05. Numa estratégia de utilização de nuvem híbrida, onde você deseja manter seu workload on-premises e parte dos arquivos na AWS. Qual opção abaixo oferece uma gama de serviços para realizar essa finalidade de integração e armazenamento para sua arquitetura?</b>
 		<br/>
 		<br/><button onclick="showHelp('div05a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="05a"> a) AWS Storage Gateway (<a href="https://aws.amazon.com/pt/storagegateway/" target="_blank">link estudar</a>)
+			<u><ul id="div05a" style="display:none; text-align:justify;">
+				É um conjunto de serviços de armazenamento na nuvem híbrida que oferece acesso on-premises para armazenamento virtual na nuvem praticamente ilimitado.
+			</ul></u>
 		<br/><button onclick="showHelp('div05b');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="05b"> b) Amazon Virtual Private Cloud (VPC) (<a href="https://aws.amazon.com/pt/vpc/" target="_blank">link estudar</a>)
+			<u><ul id="div05b" style="display:none; text-align:justify;">
+				Definir e lançar recursos da AWS em uma rede virtual isolada logicamente. Oferece controle total sobre seu ambiente de redes virtual, incluindo posicionamento de recursos, conectividade e segurança.
+			</ul></u>
 		<br/><button onclick="showHelp('div05c');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="05c"> c) AWS Organizations (<a href="https://docs.aws.amazon.com/pt_br/organizations/latest/userguide/orgs_introduction.html" target="_blank">link estudar</a>)
+			<u><ul id="div05c" style="display:none; text-align:justify;">
+				É um serviço de gerenciamento de contas que permite consolidar várias contas da Contas da AWS em uma única organização que você cria e gerencia centralmente.
+			</ul></u>
 		<br/><button onclick="showHelp('div05d');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="05d"> d) AWS Database Migration Service (<a href="https://aws.amazon.com/pt/dms/" target="_blank">link estudar</a>)
+			<u><ul id="div05d" style="display:none; text-align:justify;">
+				A juda você a migrar bancos de dados para a AWS de modo rápido e seguro. O banco de dados de origem permanece totalmente operacional durante a migração, minimizando o tempo de inatividade de aplicações que dependem do banco de dados.
+			</ul></u>
 		<br/><br/><button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
 		<button class="btn btn-info" onclick="showResponse('05', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
 		<div id="resp05" style="display:none; text-align:justify; color:green;">
@@ -359,10 +371,26 @@
 		<button class="btn btn-info" onclick="showPrevious('06');"> <i class="fa fa-backward"></i></button>
 		<button class="btn btn-info" onclick="showNext('06');">Próximo <i class="fa fa-forward"></i></button>
 		<br/><br/><b>06. Você está migrando parte de uma aplicação que trabalha com sistema de arquivos para armazenar e manipular alguns dados. Qual das opções abaixo indica o serviço que pode ser utilizado para atender essa parte da aplicação na AWS?</b>
-		<br/><br/><input type=checkbox value="06a"> a) EC2
-		<br/><br/><input type=checkbox value="06b"> b) KMS
-		<br/><br/><input type=checkbox value="06c"> c) EFS
-		<br/><br/><input type=checkbox value="06d"> d) AWS Config
+		<br/><button onclick="showHelp('div06a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="06a"> a) EC2 (<a href="https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html" target="_blank">link estudar</a>)
+			<u><ul id="div06a" style="display:none; text-align:justify;">
+				O Amazon Elastic Compute Cloud (Amazon EC2) oferece uma capacidade de computação escalável na Nuvem da Amazon Web Services (AWS). O uso do Amazon EC2 elimina a necessidade de investir em hardware inicialmente, portanto, você pode desenvolver e implantar aplicativos com mais rapidez.
+			</ul></u>
+		<br/><button onclick="showHelp('div06b');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="06b"> b) KMS (<a href="https://docs.aws.amazon.com/pt_br/kms/latest/developerguide/overview.html" target="_blank">link estudar</a>)
+			<u><ul id="div06b" style="display:none; text-align:justify;">
+				O AWS Key Management Service (AWS KMS) é um serviço gerenciado que facilita a criação e o controle de chaves criptográficas usadas para proteger os dados. Para proteger e validar suas AWS KMS keys, o AWS KMS usa módulos de segurança de hardware (HSMs) de acordo com o Programa de validação de módulos criptográficos FIPS 140-2.
+			</ul></u>
+		<br/><button onclick="showHelp('div06c');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="06c"> c) EFS (<a href="https://aws.amazon.com/pt/efs/faq/" target="_blank">link estudar</a>)
+			<u><ul id="div06c" style="display:none; text-align:justify;">
+				O Amazon Elastic File System (Amazon EFS) é um sistema de arquivos simples e sem servidor para definição única que facilita a configuração, a escalabilidade e a otimização de custos do armazenamento de arquivos na AWS.
+			</ul></u>
+		<br/><button onclick="showHelp('div06d');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="06d"> d) AWS Config (<a href="https://aws.amazon.com/pt/config/" target="_blank">link estudar</a>)
+			<u><ul id="div06d" style="display:none; text-align:justify;">
+				É um serviço que permite acessar, auditar e avaliar as configurações dos recursos da AWS. Você pode analisar alterações feitas nas configurações e relacionamentos entre os recursos da AWS, aprofundar-se de forma detalhada no histórico de configuração de recursos e determinar a conformidade geral em relação às configurações especificadas em suas diretrizes internas.
+			</ul></u>
 		<br/><br/><button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
 		<button class="btn btn-info" onclick="showResponse('06', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
 		<div id="resp06" style="display:none; text-align:justify; color:green;">
@@ -384,10 +412,26 @@
 		<button class="btn btn-info" onclick="showPrevious('07');"> <i class="fa fa-backward"></i></button>
 		<button class="btn btn-info" onclick="showNext('07');">Próximo <i class="fa fa-forward"></i></button>
 		<br/><br/><b>07. Você trabalha numa agência de viagens online e precisa armazenar, analisar e correlacionar dados de logs de seus aplicativos para identificar e resolver gargalos de desempenho e problemas de disponibilidade para garantir uma experiência de reserva otimizada para os seus clientes. Qual serviço da AWS abaixo é o mais indicado?</b>
-		<br/><br/><input type=checkbox value="07a"> a) Amazon CloudSearch
-		<br/><br/><input type=checkbox value="07b"> b) Amazon EMR
-		<br/><br/><input type=checkbox value="07c"> c) Amazon Athena
-		<br/><br/><input type=checkbox value="07d"> d) Amazon ElasticSearch
+		<br/><button onclick="showHelp('div07a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="07a"> a) Amazon CloudSearch (<a href="https://aws.amazon.com/pt/cloudsearch/" target="_blank">link estudar</a>)
+			<u><ul id="div07a" style="display:none; text-align:justify;">
+				É um serviço gerenciado na nuvem AWS com o qual é possível configurar, gerenciar e dimensionar uma solução de pesquisa para o seu site ou aplicativo de forma simples e econômica.
+			</ul></u>
+		<br/><button onclick="showHelp('div07b');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="07b"> b) Amazon EMR (<a href="https://aws.amazon.com/pt/emr/" target="_blank">link estudar</a>)
+			<u><ul id="div07b" style="display:none; text-align:justify;">
+				É uma plataforma de big data em nuvem usada para executar trabalhos de processamento de dados distribuídos em grande escala, consultas SQL interativas e aplicações de machine learning (ML) usando frameworks de análise de código aberto como Apache Spark, Apache Hive e Presto.
+			</ul></u>
+		<br/><button onclick="showHelp('div07c');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="07c"> c) Amazon Athena (<a href="https://aws.amazon.com/pt/athena/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc" target="_blank">link estudar</a>)
+			<u><ul id="div07c" style="display:none; text-align:justify;">
+				É um serviço de consultas interativas que facilita a análise de dados no Amazon S3 usando SQL padrão. O Athena não precisa de servidor. Portanto, não há infraestrutura para gerenciar e você paga apenas pelas consultas executadas. O Athena é fornecido já integrado ao AWS Glue Data Catalog, o que permite criar um repositório de metadados unificado em vários serviços
+			</ul></u>
+		<br/><button onclick="showHelp('div07d');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="07d"> d) Amazon ElasticSearch (<a href="https://aws.amazon.com/pt/opensearch-service/the-elk-stack/what-is-elasticsearch/" target="_blank">link estudar</a>)
+			<u><ul id="div07d" style="display:none; text-align:justify;">
+				É um mecanismo distribuído de pesquisa e análise desenvolvido com base no Apache Lucene usado para casos de uso de análises de log. Foi introduzido o projeto OpenSearch que é uma bifurcação do Elasticsearch e Kibana de código aberto.
+			</ul></u>
 		<br/><br/><button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
 		<button class="btn btn-info" onclick="showResponse('07', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
 		<div id="resp07" style="display:none; text-align:justify; color:green;">
