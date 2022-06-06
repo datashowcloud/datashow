@@ -1,3 +1,6 @@
+<script type="text/javascript">
+</script>
+
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
@@ -33,12 +36,12 @@
 
 	<div id="div00" style="display:'none';">
 		<button class="btn btn-default" onclick="showPrevious('00');" disabled> <i class="fa fa-backward"></i></button>
-		<button onclick="showNext('00');" class="btn btn-info" >Começar <i class="fa fa-forward"></i></button>
+		<button onclick="showNext('00');" class="btn btn-success" >Começar <i class="fa fa-forward"></i></button>
 		<br/>
 		<br/>Preparo para Certificação
 		<br/><br/>AWS Certified Cloud Practitioner
 		<br/><br/>Assinale as alternativas corretas
-		<br/><br/><i>enio.francisco@gmail.com <br/>+55(11)95239-2000 <br/>versão 06.06.22.03.00</i></i>
+		<br/><br/><i>enio.francisco@gmail.com <br/>+55(11)95239-2000 <br/>versão 06.06.22.13.00</i></i>
 			<label style="display:none;">
 				<br/><br/>
 				<button id="btnTest" class="btn btn-default" > <i class="fa fa-envelope"></i> </button>
@@ -149,15 +152,20 @@
 			</label>
 	</div>
 
+<!--
+				<h2 id='result'> não há suporte para este browser </h2>
+				<script src="p01.js"></script>
+-->
 	<div id="div01" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('01');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('01');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('01');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>01. Qual serviço da AWS é recomendado para estimar o custo de implementação dos serviços de Cloud para o seu negócio?</b>
 		<br/><button onclick="showHelp('div01a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="01a">a) AWS Princing Calculator (<a href="https://calculator.aws/#/" target="_blank">link estudar</a>)
 			<u><ul id="div01a" style="display:none; text-align:justify;">
 				Estime o custo para sua solução de arquitetura, antes do uso, antes da implementação. Configure uma estimativa de custo exclusivo que atenda às suas necessidades de negócios ou pessoais com produtos e serviços da AWS.
+				<br/><br/><input type=checkbox value="div01a1" checked> eu li
 			</ul></u>
 		<br/><button onclick="showHelp('div01b');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="01b">b) AWS Organizations (<a href="https://aws.amazon.com/pt/organizations/?nc2=type_a" target="_blank">link estudar</a>)
@@ -191,8 +199,8 @@
 
 	<div id="div02" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('02');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('02');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('02');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>02. O que é Free Tier (Nível Gratuito)?</b>
 		<br/><button onclick="showHelp('div02a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="02a"> a) É um modelo de uso dos produtos da AWS onde você não é cobrado. (<a href="https://aws.amazon.com/pt/free/free-tier-faqs/" target="_blank">link estudar</a>)
@@ -236,8 +244,8 @@
 
 	<div id="div03" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('03');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('03');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('03');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>03. O que é o MFA - Multi-Factor-Authentication (Autenticação Multi Fator)?</b>
 		<br/><button onclick="showHelp('div03a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="03a"> a) Um serviço que inclui uma etapa a mais no processo de autenticação de acesso a conta da AWS pela Web. (<a href="https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_credentials_mfa.html" target="_blank">link estudar</a>)
@@ -278,13 +286,13 @@
 
 	<div id="div04" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('04');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('04');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('04');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>04. Qual é a opção de armazenamento default do serviço S3?</b>
 		<br/><button onclick="showHelp('div04a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="04a"> a) Standard (<a href="https://aws.amazon.com/pt/s3/storage-classes/" target="_blank">link estudar</a>)
 			<u><ul id="div04a" style="display:none; text-align:justify;">
-				Opção padrão (default) de armazenamento de objetos com altos níveis de resiliência, disponibilidade e performance para dados acessados com frequência. Tem baixa latência e alto throughput. 1 Standard (padrão), 2 Intelligent Tierig, 3 Standard-IA, 4 One Zone-IA, 5 Glacier Instant Retrieval, 6 Glacier Flexivel, 7 Glacier Deep Archive, 8 Outposts.
+				Opção padrão (default) de armazenamento de objetos com altos níveis de resiliência, disponibilidade e performance para dados acessados com frequência. Tem baixa latência e alto throughput. <br/>1 Standard (padrão), <br/>2 Intelligent Tierig, <br/>3 Standard-IA, <br/>4 One Zone-IA, <br/>5 Glacier Instant Retrieval, <br/>6 Glacier Flexivel, <br/>7 Glacier Deep Archive, <br/>8 Outposts.
 			</ul></u>
 		<br/><button onclick="showHelp('div04b');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="04b"> b) Frequent Access (<a href="https://aws.amazon.com/pt/s3/storage-classes/" target="_blank">link estudar</a>)
@@ -318,8 +326,8 @@
 
 	<div id="div05" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('05');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('05');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('05');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>05. Numa estratégia de utilização de nuvem híbrida, onde você deseja manter seu workload on-premises e parte dos arquivos na AWS. Qual opção abaixo oferece uma gama de serviços para realizar essa finalidade de integração e armazenamento para sua arquitetura?</b>
 		<br/><button onclick="showHelp('div05a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="05a"> a) AWS Storage Gateway (<a href="https://aws.amazon.com/pt/storagegateway/" target="_blank">link estudar</a>)
@@ -359,8 +367,8 @@
 
 	<div id="div06" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('06');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('06');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('06');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>06. Você está migrando parte de uma aplicação que trabalha com sistema de arquivos para armazenar e manipular alguns dados. Qual das opções abaixo indica o serviço que pode ser utilizado para atender essa parte da aplicação na AWS?</b>
 		<br/><button onclick="showHelp('div06a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="06a"> a) EC2 (<a href="https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html" target="_blank">link estudar</a>)
@@ -400,8 +408,8 @@
 	
 	<div id="div07" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('07');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('07');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('07');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>07. Você trabalha numa agência de viagens online e precisa armazenar, analisar e correlacionar dados de logs de seus aplicativos para identificar e resolver gargalos de desempenho e problemas de disponibilidade para garantir uma experiência de reserva otimizada para os seus clientes. Qual serviço da AWS abaixo é o mais indicado?</b>
 		<br/><button onclick="showHelp('div07a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="07a"> a) Amazon CloudSearch (<a href="https://aws.amazon.com/pt/cloudsearch/" target="_blank">link estudar</a>)
@@ -441,8 +449,8 @@
 
 	<div id="div08" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('08');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('08');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('08');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>08. Sua aplicação precisa persistir dados não estruturados de clientes. Qual serviço abaixo é o mais indicado para essa finalidade?</b>
 		<br/><button onclick="showHelp('div08a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="08a"> a) Amazon RedShift (<a href="https://docs.aws.amazon.com/pt_br/redshift/latest/mgmt/welcome.html" target="_blank">link estudar</a>)
@@ -481,30 +489,34 @@
 
 	<div id="div09" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('09');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('09');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('09');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>09. Analise os serviços abaixo:
 		<br/>O primeiro serviço permite que aplicativos enviem mensagens críticas, em termos de tempo, para vários assinantes através de um mecanismo de “push”, eliminando a necessidade de verificar periodicamente ou “pesquisar” por atualizações.
 		<br/>O segundo é um serviço de fila de mensagens, usado por aplicativos distribuídos para trocar mensagens através de um modelo de sondagem e pode ser usado para desacoplar componentes de envio e recebimento. Qual é a sequência abaixo que informa corretamente os dois serviços?</b>
 		<br/><button onclick="showHelp('div09a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="09a"> a) SES e SNS
 			<u><ul id="div09a" style="display:none; text-align:justify;">
-				
+				O Amazon Simple Email Service (SES) é uma plataforma de e-mail que oferece uma forma fácil e econômica para você enviar e receber e-mail usando seus próprios endereços de e-mail e domínios.
+				<br/><br/>O Amazon Simple Notification Service (Amazon SNS) é um serviço gerenciado que fornece entrega de mensagens de editores para assinantes (também conhecido comoProdutoreseConsumidores). Os clientes podem se inscrever no tópico SNS e receber mensagens publicadas usando um tipo de endpoint compatível, como Amazon Kinesis Data Firehose, Amazon SQS,AWS Lambda, HTTP, e-mail, notificações push móveis e mensagens de texto móveis (SMS).
 			</ul></u>
 		<br/><button onclick="showHelp('div09b');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="09b"> b) SQS e SNS
 			<u><ul id="div09b" style="display:none; text-align:justify;">
-				
+				O Amazon Simple Queue Service (Amazon SQS) oferece uma fila hospedada segura, durável e disponível que permite integrar e desacoplar sistemas de software e componentes distribuídos. O Amazon SQS oferece constructos comuns, como filas de mensagens mortas e tags de alocação de custos.
+				<br/><br/>O Amazon Simple Notification Service (Amazon SNS) é um serviço gerenciado que fornece entrega de mensagens de editores para assinantes (também conhecido comoProdutoreseConsumidores). Os clientes podem se inscrever no tópico SNS e receber mensagens publicadas usando um tipo de endpoint compatível, como Amazon Kinesis Data Firehose, Amazon SQS,AWS Lambda, HTTP, e-mail, notificações push móveis e mensagens de texto móveis (SMS).
 			</ul></u>
 		<br/><button onclick="showHelp('div09c');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="09c"> c) SES e SQS
 			<u><ul id="div09c" style="display:none; text-align:justify;">
-				
+				O Amazon Simple Email Service (SES) é uma plataforma de e-mail que oferece uma forma fácil e econômica para você enviar e receber e-mail usando seus próprios endereços de e-mail e domínios.
+				<br/><br/>O Amazon Simple Queue Service (Amazon SQS) oferece uma fila hospedada segura, durável e disponível que permite integrar e desacoplar sistemas de software e componentes distribuídos. O Amazon SQS oferece constructos comuns, como filas de mensagens mortas e tags de alocação de custos.
 			</ul></u>
 		<br/><button onclick="showHelp('div09d');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="09d"> d) SNS e SQS
 			<u><ul id="div09d" style="display:none; text-align:justify;">
-				
+				O Amazon Simple Notification Service (Amazon SNS) é um serviço gerenciado que fornece entrega de mensagens de editores para assinantes (também conhecido comoProdutoreseConsumidores). Os clientes podem se inscrever no tópico SNS e receber mensagens publicadas usando um tipo de endpoint compatível, como Amazon Kinesis Data Firehose, Amazon SQS,AWS Lambda, HTTP, e-mail, notificações push móveis e mensagens de texto móveis (SMS).
+				<br/><br/>O Amazon Simple Queue Service (Amazon SQS) oferece uma fila hospedada segura, durável e disponível que permite integrar e desacoplar sistemas de software e componentes distribuídos. O Amazon SQS oferece constructos comuns, como filas de mensagens mortas e tags de alocação de custos.
 			</ul></u>
 		<br/><br/><button class="btn btn-default" onclick="showResponse('09', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
 		<div id="resp09" style="display:none; text-align:justify; color:green;">
@@ -527,28 +539,28 @@
 
 	<div id="div10" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('10');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('10');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('10');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>10. Você está auditando a infraestrutura da sua empresa na AWS para tentar identificar ações não programadas de desligamentos de recursos. Qual dos itens abaixo pode te auxiliar nesta atividade?</b>
 		<br/><button onclick="showHelp('div10a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="10a"> a) AWS Audit
 			<u><ul id="div10a" style="display:none; text-align:justify;">
-				
+				Não existe na AWS.
 			</ul></u>
 		<br/><button onclick="showHelp('div10b');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="10b"> b) AWS CloudTrail
+		<input type=checkbox value="10b"> b) AWS CloudTrail (<a href="https://docs.aws.amazon.com/pt_br/awscloudtrail/latest/userguide/cloudtrail-user-guide.html" target="_blank">link estudar</a>)
 			<u><ul id="div10b" style="display:none; text-align:justify;">
-				
+				Rastreia atividades dos usuários e uso de APIs. O AWS CloudTrail monitora e registra a atividade da conta por toda a infraestrutura da AWS, oferecendo controle sobre o armazenamento, análise e ações de remediação.
 			</ul></u>
 		<br/><button onclick="showHelp('div10c');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="10c"> c) AWS CloudSearch
+		<input type=checkbox value="10c"> c) AWS CloudSearch (<a href="https://aws.amazon.com/pt/cloudsearch/" target="_blank">link estudar</a>)
 			<u><ul id="div10c" style="display:none; text-align:justify;">
-				
+				É um serviço gerenciado na nuvem AWS com o qual é possível configurar, gerenciar e dimensionar uma solução de pesquisa para o seu site ou aplicativo de forma simples e econômica.
 			</ul></u>
 		<br/><button onclick="showHelp('div10d');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="10d"> d) AWS Cloud ElasticSearch
+		<input type=checkbox value="10d"> d) AWS Cloud ElasticSearch (<a href="https://aws.amazon.com/pt/opensearch-service/the-elk-stack/what-is-elasticsearch/" target="_blank">link estudar</a>)
 			<u><ul id="div10d" style="display:none; text-align:justify;">
-				
+				É um mecanismo distribuído de pesquisa e análise desenvolvido com base no Apache Lucene usado para casos de uso de análises de log. Foi introduzido o projeto OpenSearch que é uma bifurcação do Elasticsearch e Kibana de código aberto.
 			</ul></u>
 		<br/><br/><button class="btn btn-default" onclick="showResponse('10', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
 		<div id="resp10" style="display:none; text-align:justify; color:green;">
@@ -567,29 +579,29 @@
 
 	<div id="div11" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('11');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('11');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('11');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/>
 		<br/><b>11. Qual afirmação abaixo NÃO se refere ao AWS Lambda?</b>
 		<br/><button onclick="showHelp('div11a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="11a"> a) Pode ser acionado diretamente pelo AWS SNS
+		<input type=checkbox value="11a"> a) Pode ser acionado diretamente pelo AWS SNS (<a href="https://docs.aws.amazon.com/pt_br/lambda/latest/dg/welcome.html" target="_blank">link estudar</a>)
 			<u><ul id="div11a" style="display:none; text-align:justify;">
-				
+				O Lambda é um serviço de computação que permite que você execute o código sem provisionar ou gerenciar servidores. O Lambda executa seu código em uma infraestrutura de computação de alta disponibilidade e executa toda a administração dos recursos computacionais, inclusive a manutenção do servidor e do sistema operacional, o provisionamento e a escalabilidade automática da capacidade e o monitoramento e o registro em log do código.
 			</ul></u>
 		<br/><button onclick="showHelp('div11b');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="11b"> b) Processa dados sem servidor
+		<input type=checkbox value="11b"> b) Processa dados sem servidor (<a href="https://docs.aws.amazon.com/pt_br/lambda/latest/dg/welcome.html" target="_blank">link estudar</a>)
 			<u><ul id="div11b" style="display:none; text-align:justify;">
-				
+				O Lambda é um serviço de computação que permite que você execute o código sem provisionar ou gerenciar servidores. O Lambda executa seu código em uma infraestrutura de computação de alta disponibilidade e executa toda a administração dos recursos computacionais, inclusive a manutenção do servidor e do sistema operacional, o provisionamento e a escalabilidade automática da capacidade e o monitoramento e o registro em log do código.
 			</ul></u>
 		<br/><button onclick="showHelp('div11c');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="11c"> c) Pode ser acionado diretamente pelo AWS S3
+		<input type=checkbox value="11c"> c) Pode ser acionado diretamente pelo AWS S3 (<a href="https://docs.aws.amazon.com/pt_br/lambda/latest/dg/welcome.html" target="_blank">link estudar</a>)
 			<u><ul id="div11c" style="display:none; text-align:justify;">
-				
+				O Lambda é um serviço de computação que permite que você execute o código sem provisionar ou gerenciar servidores. O Lambda executa seu código em uma infraestrutura de computação de alta disponibilidade e executa toda a administração dos recursos computacionais, inclusive a manutenção do servidor e do sistema operacional, o provisionamento e a escalabilidade automática da capacidade e o monitoramento e o registro em log do código.
 			</ul></u>
 		<br/><button onclick="showHelp('div11d');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="11d"> d) Permite o gerenciamento total dos recursos de infraestrutura
+		<input type=checkbox value="11d"> d) Permite o gerenciamento total dos recursos de infraestrutura (<a href="https://docs.aws.amazon.com/pt_br/lambda/latest/dg/welcome.html" target="_blank">link estudar</a>)
 			<u><ul id="div11d" style="display:none; text-align:justify;">
-				
+				Não se refere ao Lambda na AWS.
 			</ul></u>
 		<br/><br/><button class="btn btn-default" onclick="showResponse('11', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
 		<div id="resp11" style="display:none; text-align:justify; color:green;">
@@ -604,28 +616,28 @@
 
 	<div id="div12" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('12');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('12');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('12');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>12. Qual é o serviço que você precisa configurar, dentro da sua rede privada na AWS, para controlar o tráfego de dados de entrada e saída em um parque de servidores de bancos de dados?</b>
 		<br/><button onclick="showHelp('div12a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="12a"> a) AWS Shield
+		<input type=checkbox value="12a"> a) AWS Shield (<a href="https://aws.amazon.com/pt/shield/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc" target="_blank">link estudar</a>)
 			<u><ul id="div12a" style="display:none; text-align:justify;">
-				
+				É um serviço gerenciado de proteção contra DDoS (Negação de serviço distribuída) que protege os aplicativos executados na AWS. O AWS Shield oferece de detecção e mitigações em linha automáticas e sempre ativas que minimizam o tempo de inatividade e a latência dos aplicativos, fornecendo proteção contra DDoS sem necessidade de envolver o AWS Support. O AWS Shield tem dois níveis, Standard e Advanced.
 			</ul></u>
 		<br/><button onclick="showHelp('div12b');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="12b"> b) AWS WAF
+		<input type=checkbox value="12b"> b) AWS WAF (<a href="https://aws.amazon.com/pt/waf/" target="_blank">link estudar</a>)
 			<u><ul id="div12b" style="display:none; text-align:justify;">
-				
+				É um firewall de aplicações Web que ajuda a proteger suas aplicações Web ou APIs contra bots e exploits comuns na Web que podem afetar a disponibilidade, comprometer a segurança ou consumir recursos em excesso. O AWS WAF oferece controle sobre como o tráfego atinge suas aplicações, permitindo que você crie regras de segurança que controlam o tráfego de bots e bloqueiam padrões de ataque comuns, como injeção de SQL ou cross-site scripting.
 			</ul></u>
 		<br/><button onclick="showHelp('div12c');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="12c"> c) AWS Security Group?
+		<input type=checkbox value="12c"> c) AWS Security Group? (<a href="https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/ec2-security-groups.html" target="_blank">link estudar</a>)
 			<u><ul id="div12c" style="display:none; text-align:justify;">
-				
+				Um grupo de segurança atua como firewall virtual para as instâncias do EC2 visando controlar o tráfego de entrada e de saída.
 			</ul></u>
 		<br/><button onclick="showHelp('div12d');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="12d"> d) AWS GuardDuty
+		<input type=checkbox value="12d"> d) AWS GuardDuty (<a href="https://aws.amazon.com/pt/guardduty/" target="_blank">link estudar</a>)
 			<u><ul id="div12d" style="display:none; text-align:justify;">
-				
+				É um serviço de detecção de ameaças que monitora continuamente suas contas e workloads da AWS para detectar atividade maliciosa e entrega resultados de segurança detalhados para visibilidade e correção.
 			</ul></u>
 		<br/><br/><button class="btn btn-default" onclick="showResponse('12', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
 		<div id="resp12" style="display:none; text-align:justify; color:red;">
@@ -645,28 +657,28 @@
 
 	<div id="div13" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('13');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('13');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('13');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>13. Qual é a solução de banco de dados em Grafo, gerenciado pela AWS, que permite diversos tipos de relacionamentos entre os seus nós e que pode ser utilizado em muitos contextos que representam as conexões que temos em nosso cotidiano, como em rede sociais, cadeias logísticas, empresariais, entre outros?</b>
 		<br/><button onclick="showHelp('div13a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="13a"> a) Amanzon Graph
+		<input type=checkbox value="13a"> a) Amazon Graph (<a href="https://www.padowan.dk/doc/portuguese/Introduction.html" target="_blank">link estudar</a>)
 			<u><ul id="div13a" style="display:none; text-align:justify;">
-				
+				Um conceito para traçar gráficos de funções matemáticas e outras curvas de natureza similar, em um sistema de coordenadas.
 			</ul></u>
 		<br/><button onclick="showHelp('div13b');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="13b"> b) Amazon Neptune (<a href="https://aws.amazon.com/pt/neptune/" target="_blank">link estudar</a>)
 			<u><ul id="div13b" style="display:none; text-align:justify;">
-				
+				É um serviço de banco de dados de grafos rápido, confiável e totalmente gerenciado que facilita a criação e a execução de aplicativos na AWS.
 			</ul></u>
 		<br/><button onclick="showHelp('div13c');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="13c"> c) Amazon Neo4j
+		<input type=checkbox value="13c"> c) Amazon Neo4j (<a href="https://neo4j.com/partners/amazon/" target="_blank">link estudar</a>)
 			<u><ul id="div13c" style="display:none; text-align:justify;">
-				
+				Trabalha com a AWS (partner). Capacita desenvolvedores e cientistas de dados a criar rapidamente aplicativos escaláveis ​​e orientados por IA ou analisar big data com algoritmos. Como um banco de dados gráfico nativo criado para armazenar dados e conectar os relacionamentos, o Neo4j permite insights rápidos e profundamente contextuais.
 			</ul></u>
 		<br/><button onclick="showHelp('div13d');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="13d"> d) Amazon JanusGaph
+		<input type=checkbox value="13d"> d) Amazon JanusGraph (<a href="https://janusgraph.org/" target="_blank">link estudar</a>)
 			<u><ul id="div13d" style="display:none; text-align:justify;">
-				
+				Trabalha com a AWS (partner). É um banco de dados (open source) gráfico escalável otimizado para armazenar e consultar gráficos contendo centenas de bilhões de vértices e arestas distribuídos em um cluster de várias máquinas.
 			</ul></u>
 		<br/><br/><button class="btn btn-default" onclick="showResponse('13', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
 		<div id="resp13" style="display:none; text-align:justify; color:red;">
@@ -683,8 +695,8 @@
 
 	<div id="div14" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('14');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('14');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('14');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>14. Você trabalha numa agência de publicidade que deseja implantar um site com o conteúdo estático para fazer a primeira divulgação de um produto. Qual é o serviço da AWS mais indicado para esse cenário?</b>
 		<br/><button onclick="showHelp('div14a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="14a"> a) EC2
@@ -723,8 +735,8 @@
 
 	<div id="div15" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('15');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('15');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('15');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>15. Qual serviço da AWS possui um catálogo onde os clientes podem encontrar aplicações desenvolvidas por terceiros e prontas para ser instaladas e executadas, atendendo as mais diversas necessidades de negócio?</b>
 		<br/><button onclick="showHelp('div15a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="15a"> a) AWS AMI
@@ -766,8 +778,8 @@
 
 	<div id="div16" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('16');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('16');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('16');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>16. Quais são os cinco planos de suporte ofertados pela AWS?</b>
 		<br/><button onclick="showHelp('div16a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="16a"> a) Bronze, Silver, Gold, Diamond, Ruby
@@ -810,8 +822,8 @@
 
 	<div id="div17" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('17');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('17');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('17');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>17. Você precisa implementar uma estratégia de DR (Recuperação de Desastre) na sua empresa, qual é a recomendação de melhor uso do AWS RDS?</b>
 		<br/><button onclick="showHelp('div17a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="17a"> a) Multi Regions (Distribuir em regiões diferentes)
@@ -850,8 +862,8 @@
 
 	<div id="div18" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('18');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('18');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('18');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>18. Qual é o usuário utilizado para acessar o AWS Console pela primeira vez e que possui acesso a todos os recursos da conta? (Não sendo recomendado o uso no dia a dia.)</b>
 		<br/><button onclick="showHelp('div18a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="18a"> a) AWS IAM
@@ -890,8 +902,8 @@
 
 	<div id="div19" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('19');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('19');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('19');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>19. Qual opção abaixo descreve o serviço Elastic Load Balancer?</b>
 		<br/><button onclick="showHelp('div19a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="19a"> a) Distribui o tráfego de entrada entre instâncias em diferentes regiões
@@ -931,8 +943,8 @@
 
 	<div id="div20" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('20');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('20');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('20');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>20. Você lidera um time de desenvolvimento pequeno e que não tem tempo de se envolver com muitas questões de infraestrutura AWS, porém você gostaria de fazer o uso de container, pois acredita que esse modelo de arquitetura tem muitas vantagens. Qual serviço da Amazon permite que você crie e use container sem precisar se preocupar com questões de infraestrutura e que usa uma infraestrutura sem servidor (servless) ?</b>
 		<br/><button onclick="showHelp('div20a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="20a"> a) EKS
@@ -972,8 +984,8 @@
 
 	<div id="div21" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('21');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('21');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('21');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>21. Sua empresa iniciou um processo de transformação digital de todas as suas plataformas e decidiu utilizar uma arquitetura de sistemas orientada a eventos para desacoplar os sistemas. Qual dos serviços abaixo pode ser utilizado como um barramento escalável de eventos para facilitar a criação dessa arquitetura?</b>
 		<br/><button onclick="showHelp('div21a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="21a"> a) Amazon SQS (<a href="https://docs.aws.amazon.com/pt_br/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html" target="_blank">link estudar</a>)
@@ -1012,8 +1024,8 @@
 
 	<div id="div22" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('22');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('22');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('22');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>22. Qual é o banco de dados relacional que é totalmente gerenciado pela AWS e pode ser 5 x mais rápido que o MySQL?</b>
 		<br/><button onclick="showHelp('div22a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="22a"> a) Aurora (<a href="https://aws.amazon.com/pt/rds/aurora/?nc2=type_a&aurora-whats-new.sort-by=item.additionalFields.postDateTime&aurora-whats-new.sort-order=desc" target="_blank">link estudar</a>)
@@ -1053,8 +1065,8 @@
 
 	<div id="div23" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('23');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('23');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('23');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>23. Quais itens fazem parte dos pilares do Well-Architected Framework? (Selecione 2)</b>
 		<br/><button onclick="showHelp('div23a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="23a"> a) Segurança
@@ -1094,8 +1106,8 @@
 
 	<div id="div24" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('24');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('24');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('24');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>24. Qual é o serviço que garante que você tenha o correto número de instâncias EC2 disponíveis para lidar com a carga da sua aplicação?</b>
 		<br/><button onclick="showHelp('div24a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="24a"> a) EC2 Auto Scaling (<a href="https://aws.amazon.com/pt/ec2/autoscaling/" target="_blank">link estudar</a>)
@@ -1135,8 +1147,8 @@
 
 	<div id="div25" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('25');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('25');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('25');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>25. Qual serviço permite a criação de uma rede virtual totalmente isolada para alocar diversos recursos computacionais na AWS?</b>
 		<br/><button onclick="showHelp('div25a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="25a"> a) AWS Dedicted Hosts
@@ -1175,8 +1187,8 @@
 
 	<div id="div26" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('26');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('26');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('26');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>26. Recentemente você implementou uma aplicação piloto na sua empresa que foi um sucesso. Para realizar o rollout do projeto, a direção pediu que você apresente os gastos com infraestrutura AWS durante o período para avaliarem e aprovarem a expansão. Qual é o serviço da AWS que fornece essas informações?</b>
 		<br/><button onclick="showHelp('div26a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="26a"> a) AWS Budgets
@@ -1217,8 +1229,8 @@
 
 	<div id="div27" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('27');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('27');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('27');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>27. Seu time de desenvolvimento identificou que devido ao grande volume de consultas que são realizados e a concorrência com outras funções de acesso, a performance de um banco de dados relacional está comprometida. Qual é a indicação mais econômica para resolver esse cenário?</b>
 		<br/><button onclick="showHelp('div27a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="27a"> a) Atualizar a role de acesso ao banco
@@ -1258,8 +1270,8 @@
 
 	<div id="div28" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('28');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('28');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('28');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>28. Qual é a forma de permitir que seus serviços sejam expostos sempre no mesmo endereço IP e de possibilitar que os hosts associados a ele sejam substituídos de forma simples na sua infraestrutura?</b>
 		<br/><button onclick="showHelp('div28a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="28a"> a) Utilizando um IPV4
@@ -1293,8 +1305,8 @@
 
 	<div id="div29" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('29');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('29');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('29');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>29. Qual dos seguintes serviços de bancos de dados é totalmente gerenciado pela AWS?</b>
 		<br/><button onclick="showHelp('div29a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="29a"> a) MySql
@@ -1334,8 +1346,8 @@
 
 	<div id="div30" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('30');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('30');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('30');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>30. Você está desenvolvendo uma aplicação mobile e precisa implementar o armazenamento e sincronismo de dados para vários dispositivos. Qual é o serviço AWS que pode ser utilizado para esse fim?</b>
 		<br/><button onclick="showHelp('div30a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="30a"> a) AWS Elastic Cache
@@ -1375,8 +1387,8 @@
 
 	<div id="div31" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('31');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('31');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('31');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>31. Qual é a quantidade de dados que podemos armazenar no S3?</b>
 		<br/><button onclick="showHelp('div31a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="31a"> a) 5 Gigabytes
@@ -1413,8 +1425,8 @@
 
 	<div id="div32" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('32');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('32');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('32');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>32. Utilização de recursos de rede, computadores virtuais e armazenamento de dados com alto nível de flexibilidade, gerenciamento e controle sobre os recurso de TI são características de qual tipo de uso de cloud?</b>
 		<br/><button onclick="showHelp('div32a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="32a"> a) IAAS (<a href="https://aws.amazon.com/what-is-cloud-computing/?nc2=h_ql_le_int_cc" target="_blank">link estudar</a>)
@@ -1455,8 +1467,8 @@
 
 	<div id="div33" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('33');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('33');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('33');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>33. Qual é o serviço utilizado para permitir que aplicações acessem recursos restritos de serviços dentro da AWS?</b>
 		<br/><button onclick="showHelp('div33a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="33a"> a) IAM policies
@@ -1495,8 +1507,8 @@
 
 	<div id="div34" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('34');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('34');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('34');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>34. Você precisa implementar no seu site uma funcionalidade para realizar pesquisas em todas as páginas e arquivos para facilitar a navegação e experiência do seus usuário. Qual SAAS disponível na AWS fornece ferramentas robustas para cumprir essa finalidade e que pode ser facilmente utilizada na sua aplicação?</b>
 		<br/><button onclick="showHelp('div34a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="34a"> a) Amazon ElasticSearch
@@ -1536,8 +1548,8 @@
 
 	<div id="div35" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('35');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('35');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('35');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>35. Você irá disponibilizar uma aplicação crítica e com dados sensíveis na Internet. Qual é o serviço que te ajuda a identificar vulnerabilidades de segurança e risco de exposição de acordo com as melhores práticas e compliance?</b>
 		<br/><button onclick="showHelp('div35a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="35a"> a) AWS Inspector (<a href="https://aws.amazon.com/inspector/?nc2=type_a" target="_blank">link estudar</a>)
@@ -1576,8 +1588,8 @@
 
 	<div id="div36" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('36');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('36');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('36');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>36. Numa migração de sistemas, você percebeu que existem dados na sua aplicação que raramente são usados e que poderiam ser mantidos em arquivos somente para fins de auditoria. Qual é o serviço da AWS que pode ser utilizado para esse objetivo e com o menor custo possível?</b>
 		<br/><button onclick="showHelp('div36a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="36a"> a) S3 Glacier (<a href="https://aws.amazon.com/pt/glacier/faqs/" target="_blank">link estudar</a>)
@@ -1616,8 +1628,8 @@
 
 	<div id="div37" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('37');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('37');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('37');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>37. Uma aplicação de terceiros irá gerar um arquivo num layout diferente do que o seu sistema espera. Qual é serviço da AWS que pode ser utilizado para transformar o arquivo e carregá-lo no seu sistema?</b>
 		<br/><button onclick="showHelp('div37a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="37a"> a) AWS DMS
@@ -1657,8 +1669,8 @@
 
 	<div id="div38" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('38');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('38');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('38');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>38. Qual pilar do framework de melhores práticas arquitetônicas da AWS se concentra em garantir que uma carga de trabalho execute sua função pretendida corretamente e de modo consistente, e que uma carga de trabalho seja resiliente e que se recupere rapidamente de falhas para atender a demanda do negócio e do cliente?</b>
 		<br/><button onclick="showHelp('div38a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="38a"> a) Segurança
@@ -1695,8 +1707,8 @@
 
 	<div id="div39" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('39');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('39');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('39');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>39. Uma das formas de garantir a elasticidade e economia no uso do EC2 é mantendo os arquivos de programas e de sistemas em recursos computacionais separados. Qual serviço abaixo pode ser utilizado para isso?</b>
 		<br/><button onclick="showHelp('div39a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="39a"> a) EBS
@@ -1736,8 +1748,8 @@
 
 	<div id="div40" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('40');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('40');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('40');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>40. Você deseja monitorar o percentual de memória que os seus servidores estão utilizando em determinando período do dia. Qual serviço da AWS abaixo pode ser utilizado para essa finalidade?</b>
 		<br/><button onclick="showHelp('div40a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="40a"> a) AWS DataSync
@@ -1776,8 +1788,8 @@
 
 	<div id="div41" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('41');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('41');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('41');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>41. Qual das opções abaixo é a classe de uso que pode deixar o uso do S3 mais caro?</b>
 		<br/><button onclick="showHelp('div41a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="41a"> a) Glacier Deep Arquive
@@ -1817,8 +1829,8 @@
 
 	<div id="div42" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('42');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('42');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('42');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>42. Utilizando os serviços da AWS, qual é a sequência esperada numa pipeline de CI/CD?</b>
 		<br/><button onclick="showHelp('div42a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="42a"> a) CodeCommit, CodeBuild, CodeDeploy
@@ -1859,8 +1871,8 @@
 
 	<div id="div43" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('43');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('43');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('43');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>43. Sua aplicação fornece dados através de APIs REST para diversas aplicações diferentes. Pensando num cenário de futuras manutenções e evoluções dos seus serviços, qual opção abaixo pode melhor auxiliar a sua arquitetura a manter várias versões da mesma API sendo executadas simultaneamente e não exigir que todos os consumidores realizem adequações nas chamadas ao seu serviço?</b>
 		<br/><button onclick="showHelp('div43a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="43a"> a) AWS Zuul
@@ -1899,8 +1911,8 @@
 
 	<div id="div44" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('44');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('44');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('44');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>44. Qual é o serviço que permite estabelecer uma conexão dedicada entre a sua infraestrutura on-premise e a AWS melhorando as conexões e aumentando a taxa de transferência?</b>
 		<br/><button onclick="showHelp('div44a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="44a"> a) AWS Direct Connect (<a href="https://aws.amazon.com/pt/directconnect/" target="_blank">link estudar</a>)
@@ -1939,8 +1951,8 @@
 
 	<div id="div45" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('45');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('45');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('45');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>45. Qual é o serviço utilizado para provisionar Desktops utilizando Windows ou Linux?</b>
 		<br/><button onclick="showHelp('div45a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="45a"> a) Amazon WorkSpaces (<a href="https://aws.amazon.com/workspaces/?nc2=h_ql_prod_eu_wspa&workspaces-blogs.sort-by=item.additionalFields.createdDate&workspaces-blogs.sort-order=desc" target="_blank">link estudar</a>)
@@ -1979,8 +1991,8 @@
 
 	<div id="div46" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('46');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('46');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('46');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>46. Você implementou um sistema com arquitetura de microserviços e precisa depurar cada um deles, partindo desde a requisição do usuário para entender a performance e identificando oportunidades de melhorias. Qual serviço da AWS é o mais indicado para essa finalidade (tanto em ambiente de desenvolvimento quanto em ambiente de produção)?</b>
 		<br/><button onclick="showHelp('div46a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="46a"> a) AWS ElasticSearch
@@ -2020,8 +2032,8 @@
 
 	<div id="div47" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('47');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('47');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('47');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>47. As mensagens trafegadas entre o seu site e os usuários não estão sendo criptografadas porque a arquitetura atual não utiliza certificados digitais que permitam essa criptografia. Qual é o serviço da AWS que pode ser utilizado para esse tipo de implementação?</b>
 		<br/><button onclick="showHelp('div47a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="47a"> a) AWS KMS
@@ -2062,8 +2074,8 @@
 
 	<div id="div48" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('48');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('48');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('48');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>48. Você precisa automatizar um processo que executa diversas tarefas de forma sequencial em seu sistema. Qual é o serviço mais indicado para essa necessidade?</b>
 		<br/><button onclick="showHelp('div48a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="48a"> a) AWS EventBridge (<a href="https://aws.amazon.com/pt/eventbridge/" target="_blank">link estudar</a>)
@@ -2102,8 +2114,8 @@
 
 	<div id="div49" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('49');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('49');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('49');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>49. Sua empresa precisa lançar um novo produto e para isso deseja criar um novo domínio público para associar a um novo site. Qual é a maneira mais rápida de fazer isso?</b>
 		<br/><button onclick="showHelp('div49a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="49a"> a) Desenvolver o novo site no AWS BeanStalk, que provisiona toda a infra para o desenvolvedor  apenas programar.
@@ -2142,8 +2154,8 @@
 
 	<div id="div50" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('50');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('50');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('50');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>50. Você implantou uma aplicação em produção que não está funcionando e na log existe uma mensagem de acesso negado ao DynamoDB. Qual serviço abaixo você precisa checar e configurar corretamente para validar esse acesso?</b>
 		<br/><button onclick="showHelp('div50a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="50a"> a) AWS Config
@@ -2182,8 +2194,8 @@
 
 	<div id="div51" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('51');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('51');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('51');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>51. Qual é o serviço de alta performance desenvolvido para fornecer block-storage para instâncias EC2?</b>
 		<br/><button onclick="showHelp('div51a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="51a"> a) S3
@@ -2223,8 +2235,8 @@
 
 	<div id="div52" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('52');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('52');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('52');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>52. Qual é o serviço serverless que permite a execução de "queries" utilizando padrão SQL para analisar dados no Amazon S3?</b>
 		<br/><button onclick="showHelp('div52a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="52a"> a) Athena (<a href="https://aws.amazon.com/athena/?c=a&sec=srv&whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc" target="_blank">link estudar</a>)
@@ -2263,8 +2275,8 @@
 
 	<div id="div53" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('53');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('53');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('53');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>53. Sua empresa deseja otimizar o custo com a utilização do S3 e você percebeu que existem muitas logs de sistemas que estão armazenadas, mas que poderiam ser deletadas após 30 dias da criação. O que você precisa fazer para atender a necessidade de sua empresa?</b>
 		<br/><button onclick="showHelp('div53a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="53a"> a) Criar uma cópia destes objetos em outra região
@@ -2301,8 +2313,8 @@
 
 	<div id="div54" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('54');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('54');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('54');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>54. Sua empresa tem um sistema que suporta em média 2000 usuários por dia, porém em dias com o aumento de vendas, o sistema chega a 3000 usuários apresentando lentidão e indisponibilidade. Como você automatizaria o processo para o provisionamento automático de máquinas adicionais para suportar essas cargas em dias de pico?</b>
 		<br/><button onclick="showHelp('div54a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="54a"> a) Migrando a aplicação para uma máquina melhor
@@ -2343,8 +2355,8 @@
 
 	<div id="div55" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('55');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('55');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('55');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>55. Baseado nos pilares de excelência operacional, segurança, confiança, performance eficiente, sustentabilidade e otimização de custos, qual é o Framework que ajuda os arquitetos cloud a construirem aplicações seguras, com alta performance, resilientes e eficientes?</b>
 		<br/><button onclick="showHelp('div55a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="55a"> a) AWS Pillar
@@ -2382,8 +2394,8 @@
 
 	<div id="div56" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('56');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('56');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('56');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>56. Qual opção abaixo melhor descreve o modelo de Responsabilidade Compartilhada da AWS (shared responsability)?</b>
 		<br/><button onclick="showHelp('div56a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="56a"> a) O cliente protege as aplicações, enquanto usuário protege sua senha
@@ -2423,8 +2435,8 @@
 
 	<div id="div57" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('57');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('57');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('57');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>57. A sua empresa decidiu migrar algumas aplicações monolíticas legadas, sem refatoração, para o ECS. O que pode-se afirmar sobre essa estratégia?</b>
 		<br/><button onclick="showHelp('div57a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="57a"> a) É possível, porém não trará grandes benefícios de otimização no uso dos recursos (<a href="https://aws.amazon.com/pt/getting-started/hands-on/break-monolith-app-microservices-ecs-docker-ec2/module-one/" target="_blank">link estudar</a>)
@@ -2461,8 +2473,8 @@
 
 	<div id="div58" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('58');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('58');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('58');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>58. Qual é a melhor descrição para o conceito de tolerância a falha?</b>
 		<br/><button onclick="showHelp('div58a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="58a"> a) A habilidade de um sistema nunca falhar
@@ -2502,8 +2514,8 @@
 
 	<div id="div59" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('59');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('59');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('59');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>59. Sua empresa deseja padronizar e versionar as configurações para a criação de todos os bancos de dados, além disso, deseja que esses serviços sejam implementados e atualizados em toda a infraestrutura de servidores de forma automatizadas e utilizando pipelines de CI/CD. Qual é o serviço recomendado para esse requisito?</b>
 		<br/><button onclick="showHelp('div59a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="59a"> a) AWS RDS
@@ -2543,8 +2555,8 @@
 
 	<div id="div60" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('60');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('60');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('60');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>60. Uma arquitetura de sistemas, baseada em computação sem servidor, utiliza S3, API Gateway, Lambda, SQS, SNS e precisa de um serviço que orquestre parte destas peças definindo e controlando os possíveis workflows. Qual dos serviços abaixo é utilizado para isso?</b>
 		<br/><button onclick="showHelp('div60a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="60a"> a) AWS Workflow
@@ -2582,8 +2594,8 @@
 
 	<div id="div61" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('61');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('61');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('61');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>61. O que é possível fazer com o Amazon QuickSight?</b>
 		<br/><button onclick="showHelp('div61a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="61a"> a) Executar Map reduce em dados distribuídos
@@ -2622,8 +2634,8 @@
 
 	<div id="div62" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('62');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('62');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('62');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>62. Quais das opções abaixo são formas de pagamento de instâncias EC2? (Selecione 3)</b>
 		<br/><button onclick="showHelp('div62a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="62a"> a) On premise
@@ -2667,8 +2679,8 @@
 
 	<div id="div63" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('63');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('63');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('63');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>63. Quais afirmações abaixo referem-se ao Amazon S3 (Selecione 2)</b>
 		<br/><button onclick="showHelp('div63a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="63a"> a) Objeto é um arquivo ou meta dado que descreve o arquivo (<a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-buckets-s3.html" target="_blank">link estudar</a>)
@@ -2706,8 +2718,8 @@
 
 	<div id="div64" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('64');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('64');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('64');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>64. O AWS Trusted Advisor é um serviço de monitoramento e recomendação que auxilia o cliente a utilizar os recursos de sua conta de maneira alinhada com as melhores práticas para trazer muitos benefícios. Quais itens abaixo representam tais benefícios? (Selecione 3)</b>
 		<br/><button onclick="showHelp('div64a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="64a"> a) Otimização de Custos
@@ -2746,8 +2758,8 @@
 
 	<div id="div65" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('65');"> <i class="fa fa-backward"></i></button>
-		<button class="btn btn-info" onclick="showNext('65');">Próximo <i class="fa fa-forward"></i></button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-success" onclick="showNext('65');">Próximo <i class="fa fa-forward"></i></button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>65. Quais dos seguintes planos de suporte oferecem acesso ao atendimento ao cliente, whitepapers, documentações e fóruns de suporte 24x7?</b>
 		<br/><button onclick="showHelp('div65a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="65a"> a) Reserved
@@ -2789,7 +2801,7 @@
 	<div id="div66" style="display:none;">
 		<button class="btn btn-info" onclick="showPrevious('66');"> <i class="fa fa-backward"></i></button>
 		<button class="btn btn-default" disabled><i class="fa fa-check"></i> Fim</button>
-		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-info"></i> Pontos</button>
+		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 	</div>
 
 </font>
@@ -2901,6 +2913,7 @@ function showPoints(qtdeResponses) {
 	}
 
 	calculo = (qtdeCorretas*100) / totalperguntas;
+	calculo = calculo.toFixed(0);
 	var resultado = '';
 	if (calculo >= 70) {
 		resultado = resultado + 'APROVADO \n' + calculo + '% de acerto é >= que 70%'
