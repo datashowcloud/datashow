@@ -39,7 +39,7 @@
 		<button onclick="showNext('00');" class="btn btn-success" >Começar <i class="fa fa-forward"></i></button>
 		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/>
-		<table border=1 align=center style="width:90%; border:1px;"><tr><td><b>Preparo para Certificação <br/>AWS Certified Cloud Practitioner</b> <br/> <i>versão 08.06.22.19.50</i></td></tr></table>
+		<table border=1 align=center style="width:90%; border:1px;"><tr><td><b>Preparo para Certificação <br/>AWS Certified Cloud Practitioner</b> <br/> <i>versão 08.06.22.23.00</i></td></tr></table>
 		<br/>
 		<table border=1 align=center style="width:90%; border:1px;"><tr><td><b>Aproveite todo conteúdo para aumentar a velocidade nos estudos</b></td></tr></table>
 		<br/>
@@ -206,7 +206,7 @@
 			<font color=red>
 				<br/><br/><b>Incorretas:</b>
 				<br/><br/>O <u>AWS Organizations</u> ajuda você a gerenciar e controlar seu ambiente de maneira centralizada à medida que os negócios e seus recursos da AWS expandem. Usando o AWS Organizations, você pode criar novas contas da AWS e alocar recursos, agrupar contas para organizar seus fluxos de trabalho, aplicar políticas a contas ou grupos para governança e simplificar o faturamento usando um único método de pagamento para todas as suas contas.
-				<br/><br/>O <u>AWS Billing e Cost Management</u> são o conjunto de serviços que você usa para pagar o faturamento, monitorar seu uso e analisar e controlar seus custos
+				<br/><br/>O <u>AWS Billing e Cost Management</u> é o conjunto de serviços que você usa para pagar o faturamento, monitorar seu uso e analisar e controlar seus custos
 				<br/><br/>O <u>AWS Cost Explorer</u> tem uma interface fácil de usar que permite visualizar, entender e gerenciar os custos e o uso da AWS ao longo do tempo. Relacionado ao que já foi gasto, não para estimar.
 			</font>
 		</div>
@@ -248,7 +248,7 @@
 				<br/>Talvez na prova em português apareça 'Nivel Gratuito' ao invés de ‘Free Tier’
 				<br/><br/>Há centenas de configuração de serviço para uso gratuito, vale pena dar uma navegada no site para visualizar as opções.
 				<br/><br/>https://aws.amazon.com/pt/free/?all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=*all&awsf.Free%20Tier%20Categories=*all
-				<br/><br/>Uma dica: Ser for testar o uso de qualquer serviço, configure o AWS Budget para notificar se a sua infraestrutura está consumindo mais do que você gostaria. Isso evita que haja surpresas no seu cartão de crédito caso algo fique ligado e te dá segurança para experimentar mais.
+				<br/><br/>Uma dica: Ser for testar o uso de qualquer serviço, configure o AWS Budget para notificar se a sua infraestrutura está consumindo mais do que a AWS permite no nível gratuito. Isso evita que haja surpresas no seu cartão de crédito caso algo fique ligado e te dá segurança para experimentar mais. Lembre-se que pode haver cobrança pelo limite excedido de acordo com as regras de cada serviço.
 			</font>
 			<font color=red>
 				<br/><b>Incorretas:</b>
@@ -263,7 +263,7 @@
 		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>03. O que é o MFA - Multi-Factor-Authentication (Autenticação Multi Fator)?</b>
 		<br/><button onclick="showHelp('div03a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="03a"> a) Um serviço que inclui uma etapa a mais no processo de autenticação de acesso a conta da AWS pela Web. (<a href="https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_credentials_mfa.html" target="_blank">link estudar</a>)
+		<input type=checkbox value="03a"> a) Um serviço que inclui uma etapa a mais no processo de autenticação de acesso à conta da AWS pela Web. (<a href="https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_credentials_mfa.html" target="_blank">link estudar</a>)
 			<u><ul id="div03a" style="display:none; text-align:justify;">
 				A MFA agrega mais segurança porque requer dos usuários fornecer autenticação exclusiva de um mecanismo de MFA com suporte da AWS, além das suas credenciais de login regular ao acessarem sites ou serviços da AWS.
 			</ul></u>
@@ -287,7 +287,7 @@
 			<font color=green>
 				<br/><b>Correta:</b>
 				<br/>a) Autenticação Multi Fator deve ser habilitada com algum dispositivo de terceiros para a proteção do acesso via console. Eu uso o Google Authenticator para gera o Token a cada 1 minuto.
-				<br/><br/>Além do processo de login, o MFA pode ser utilizado em outros processo, como na deleção de bucktes do S3 (mas isso já é um pouco mais avançado e só cai na prova de architect).
+				<br/><br/>Além do processo de login, o MFA pode ser utilizado em outros processo, como na deleção de buckets do S3 (mas isso já é um pouco mais avançado e só cai na prova de architect).
 				<br/><br/>https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_credentials_mfa.html
 			</font>
 			<font color=red>
@@ -352,7 +352,7 @@
 		<br/><button onclick="showHelp('div05b');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="05b"> b) Amazon Virtual Private Cloud (VPC) (<a href="https://aws.amazon.com/pt/vpc/" target="_blank">link estudar</a>)
 			<u><ul id="div05b" style="display:none; text-align:justify;">
-				Definir e lançar recursos da AWS em uma rede virtual isolada logicamente. Oferece controle total sobre seu ambiente de redes virtual, incluindo posicionamento de recursos, conectividade e segurança.
+				O Amazon Virtual Private Cloud (VPC) define e lança recursos da AWS em uma rede virtual isolada logicamente. Oferece controle total sobre seu ambiente de redes virtual, incluindo posicionamento de recursos, conectividade e segurança.
 			</ul></u>
 		<br/><button onclick="showHelp('div05c');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="05c"> c) AWS Organizations (<a href="https://docs.aws.amazon.com/pt_br/organizations/latest/userguide/orgs_introduction.html" target="_blank">link estudar</a>)
@@ -1109,26 +1109,60 @@
 		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>23. Quais itens fazem parte dos pilares do Well-Architected Framework? (Selecione 2)</b>
 		<br/><button onclick="showHelp('div23a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="23a"> a) Segurança
+		<input type=checkbox value="23a"> a) Segurança (<a href="https://wa.aws.amazon.com/wat.pillars.wa-pillars.pt_BR.html" target="_blank">link estudar</a>)
 			<u><ul id="div23a" style="display:none; text-align:justify;">
-				
+				Os pilares são:
+				<br/>Excelência operacional,
+				<br/>Segurança,
+				<br/>Confiabilidade,
+				<br/>Eficiência de desempenho,
+				<br/>Otimização de custos,
+				<br/>Sustentabilidade
 			</ul></u>
 		<br/><button onclick="showHelp('div23b');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="23b"> b) Excelência Operacional
+		<input type=checkbox value="23b"> b) Excelência Operacional (<a href="https://wa.aws.amazon.com/wat.pillars.wa-pillars.pt_BR.html" target="_blank">link estudar</a>)
 			<u><ul id="div23b" style="display:none; text-align:justify;">
-				
+				Os pilares são:
+				<br/>Excelência operacional,
+				<br/>Segurança,
+				<br/>Confiabilidade,
+				<br/>Eficiência de desempenho,
+				<br/>Otimização de custos,
+				<br/>Sustentabilidade
 			</ul></u>
 		<br/><button onclick="showHelp('div23c');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="23c"> c) Desacoplamento
+		<input type=checkbox value="23c"> c) Desacoplamento (<a href="https://wa.aws.amazon.com/wat.pillars.wa-pillars.pt_BR.html" target="_blank">link estudar</a>)
 			<u><ul id="div23c" style="display:none; text-align:justify;">
-				
+				Os pilares são:
+				<br/>Excelência operacional,
+				<br/>Segurança,
+				<br/>Confiabilidade,
+				<br/>Eficiência de desempenho,
+				<br/>Otimização de custos,
+				<br/>Sustentabilidade
 			</ul></u>
 		<br/><button onclick="showHelp('div23d');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="23d"> d) Monitoramento
+		<input type=checkbox value="23d"> d) Monitoramento (<a href="https://wa.aws.amazon.com/wat.pillars.wa-pillars.pt_BR.html" target="_blank">link estudar</a>)
 			<u><ul id="div23d" style="display:none; text-align:justify;">
-				
+				Os pilares são:
+				<br/>Excelência operacional,
+				<br/>Segurança,
+				<br/>Confiabilidade,
+				<br/>Eficiência de desempenho,
+				<br/>Otimização de custos,
+				<br/>Sustentabilidade
 			</ul></u>
-		<br/><br/><input type=checkbox value="23e"> e) Escalabilidade
+		<br/><button onclick="showHelp('div23e');" class="btn btn-default"> <i class="fa fa-question"></i></button>
+		<input type=checkbox value="23e"> e) Escalabilidade (<a href="https://wa.aws.amazon.com/wat.pillars.wa-pillars.pt_BR.html" target="_blank">link estudar</a>)
+			<u><ul id="div23e" style="display:none; text-align:justify;">
+				Os pilares são:
+				<br/>Excelência operacional,
+				<br/>Segurança,
+				<br/>Confiabilidade,
+				<br/>Eficiência de desempenho,
+				<br/>Otimização de custos,
+				<br/>Sustentabilidade
+			</ul></u>
 		<br/><br/><button class="btn btn-default" onclick="showResponse('23', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
 		<div id="resp23" style="display:none; text-align:justify; color:red;">
 			<font color=green>
@@ -1152,22 +1186,22 @@
 		<br/><button onclick="showHelp('div24a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="24a"> a) EC2 Auto Scaling (<a href="https://aws.amazon.com/pt/ec2/autoscaling/" target="_blank">link estudar</a>)
 			<u><ul id="div24a" style="display:none; text-align:justify;">
-				
+				O Amazon EC2 Auto Scaling ajuda a manter a disponibilidade das aplicações e permite adicionar ou remover instâncias do EC2 automaticamente de acordo com as condições que você definir.
 			</ul></u>
 		<br/><button onclick="showHelp('div24b');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="24b"> b) Route53 (<a href="https://docs.aws.amazon.com/pt_br/Route53/latest/DeveloperGuide/Welcome.html" target="_blank">link estudar</a>)
+		<input type=checkbox value="24b"> b) Route53 (<a href="https://aws.amazon.com/pt/route53/" target="_blank">link estudar</a>)
 			<u><ul id="div24b" style="display:none; text-align:justify;">
-				
+				O Amazon Route 53 é um web service Domain Name System (DNS) na nuvem altamente disponível e escalável. 
 			</ul></u>
 		<br/><button onclick="showHelp('div24c');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="24c"> c) ELB (<a href="https://aws.amazon.com/pt/elasticloadbalancing/?whats-new-cards-elb.sort-by=item.additionalFields.postDateTime&whats-new-cards-elb.sort-order=desc" target="_blank">link estudar</a>)
+		<input type=checkbox value="24c"> c) ELB (<a href="https://aws.amazon.com/pt/elasticloadbalancing/" target="_blank">link estudar</a>)
 			<u><ul id="div24c" style="display:none; text-align:justify;">
-				
+				O Elastic Load Balancing (ELB) distribui automaticamente o tráfego de aplicações de entrada entre vários destinos e dispositivos virtuais em uma ou mais Zonas de disponibilidade (AZs).
 			</ul></u>
 		<br/><button onclick="showHelp('div24d');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="24d"> d) VPC
+		<input type=checkbox value="24d"> d) VPC (<a href="https://aws.amazon.com/pt/vpc/" target="_blank">link estudar</a>)
 			<u><ul id="div24d" style="display:none; text-align:justify;">
-				
+				O Amazon Virtual Private Cloud (VPC) define e lança recursos da AWS em uma rede virtual isolada logicamente. Oferece controle total sobre seu ambiente de redes virtual, incluindo posicionamento de recursos, conectividade e segurança.
 			</ul></u>
 		<br/><br/><button class="btn btn-default" onclick="showResponse('24', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
 		<div id="resp24" style="display:none; text-align:justify; color:red;">
@@ -1191,24 +1225,24 @@
 		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>25. Qual serviço permite a criação de uma rede virtual totalmente isolada para alocar diversos recursos computacionais na AWS?</b>
 		<br/><button onclick="showHelp('div25a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="25a"> a) AWS Dedicted Hosts
+		<input type=checkbox value="25a"> a) AWS Dedicted Hosts (<a href="https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html" target="_blank">link estudar</a>)
 			<u><ul id="div25a" style="display:none; text-align:justify;">
-				
+				Um Host Dedicado do Amazon EC2 é um servidor físico com capacidade de instância do EC2 totalmente dedicado para seu uso. Os hosts dedicados permitem que você use suas licenças de software existentes por soquete, por núcleo ou por VM, incluindo o Windows Server, o Microsoft SQL Server, o SUSE e o Linux Enterprise Server.
 			</ul></u>
 		<br/><button onclick="showHelp('div25b');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="25b"> b) AWS Reserved
+		<input type=checkbox value="25b"> b) AWS Reserved (<a href="https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/ec2-reserved-instances.html" target="_blank">link estudar</a>)
 			<u><ul id="div25b" style="display:none; text-align:justify;">
-				
+				AWS Reserved não existe na AWS. Existe Reserved Instances. As instâncias reservadas não são instâncias físicas, mas um desconto na fatura aplicado na sua conta pelo uso de instâncias sob demanda.
 			</ul></u>
 		<br/><button onclick="showHelp('div25c');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="25c"> c) AWS VPC (<a href="https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html" target="_blank">link estudar</a>)
+		<input type=checkbox value="25c"> c) AWS VPC (<a href="https://aws.amazon.com/pt/vpc/" target="_blank">link estudar</a>)
 			<u><ul id="div25c" style="display:none; text-align:justify;">
-				
+				O Amazon Virtual Private Cloud (VPC) define e lança recursos da AWS em uma rede virtual isolada logicamente. Oferece controle total sobre seu ambiente de redes virtual, incluindo posicionamento de recursos, conectividade e segurança.
 			</ul></u>
 		<br/><button onclick="showHelp('div25d');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="25d"> d) AWS Gateway
+		<input type=checkbox value="25d"> d) AWS Gateway (<a href="https://aws.amazon.com/pt/api-gateway/" target="_blank">link estudar</a>)
 			<u><ul id="div25d" style="display:none; text-align:justify;">
-				
+				AWS Gateway não existe. Existe o Amazon API Gateway é um serviço gerenciado que permite que desenvolvedores criem, publiquem, mantenham, monitorem e protejam APIs em qualquer escala com facilidade.
 			</ul></u>
 		<br/><br/><button class="btn btn-default" onclick="showResponse('25', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
 		<div id="resp25" style="display:none; text-align:justify; color:red;">
