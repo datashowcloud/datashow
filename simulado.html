@@ -40,7 +40,7 @@
 		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/>
 		<table border=1 align=center style="width:90%; border:1px;"><tr><td><b>Preparo para Certificação <br/>AWS Certified Cloud Practitioner</b>
-		<br/> <i>versão 09.06.22.19.00</i></td></tr></table>
+		<br/> <i>versão 09.06.22.20.00</i></td></tr></table>
 		<br/>
 		<table border=1 align=center style="width:90%; border:1px;"><tr><td><b>Leia todo conteúdo para aumentar a velocidade nos estudos</b></td></tr></table>
 		<br/>
@@ -62,8 +62,8 @@
 			<i>
 				<b>Créditos:</b>
 				<br/>Gislaine Soares Da Silva (arte)
-				<br/>Josué Romera Pacini (revisão)
 				<br/>Bruna Moreira Do Nascimento (revisão)
+				<br/>Josué Romera Pacini (revisão)
 			</i>
 		</td></tr></table>
 
@@ -1316,26 +1316,27 @@
 		<button class="btn btn-info" onclick="showPrevious('27');"> <i class="fa fa-backward"></i></button>
 		<button class="btn btn-success" onclick="showNext('27');">Próximo <i class="fa fa-forward"></i></button>
 		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
-		<br/><br/><b>27. Seu time de desenvolvimento identificou que devido ao grande volume de consultas que são realizados e a concorrência com outras funções de acesso, a performance de um banco de dados relacional está comprometida. Qual é a indicação mais econômica para resolver esse cenário?</b>
+		<br/><br/><b>27. Seu time de desenvolvimento identificou que devido ao grande volume de consultas que são realizadas e a concorrência com outras funções de acesso, a performance de um banco de dados relacional está comprometida. Qual é a indicação mais econômica para resolver esse cenário?</b>
 		<br/><button onclick="showHelp('div27a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="27a"> a) Atualizar a role de acesso ao banco
 			<u><ul id="div27a" style="display:none; text-align:justify;">
-				
+				Criar e usar uma política do IAM para acesso do banco de dados do IAM permite que um usuário ou uma função do IAM se conecte à instância de banco de dados, você deve criar uma política do IAM. Depois disso, você anexa a política a um usuário ou função do IAM.
 			</ul></u>
 		<br/><button onclick="showHelp('div27b');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="27b"> b) Criar novas instâncias do RDS em outra zona de disponibilidade.
+		<input type=checkbox value="27b"> b) Criar novas instâncias do RDS em outra zona de disponibilidade. (<a href="https://aws.amazon.com/pt/rds/features/multi-az/" target="_blank">link estudar</a>)
 			<u><ul id="div27b" style="display:none; text-align:justify;">
-				
+				Em uma implantação multi-AZ, o Amazon RDS cria automaticamente uma instância de banco de dados (BD) primária e replica de forma síncrona os dados para uma instância em uma AZ diferente. Quando detecta uma falha, o Amazon RDS executa automaticamente o failover para uma instância secundária sem nenhuma intervenção manual.
 			</ul></u>
 		<br/><button onclick="showHelp('div27c');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="27c"> c) Fazer o uso de Read Replicas
+		<input type=checkbox value="27c"> c) Fazer o uso de Read Replicas (<a href="https://aws.amazon.com/pt/rds/features/read-replicas/" target="_blank">link estudar</a>)
 			<u><ul id="div27c" style="display:none; text-align:justify;">
-				
+				As Réplicas de leitura do Amazon RDS facilitam a escalabilidade de maneira elástica além dos limites de capacidade de uma única instância de DB para cargas de trabalho de banco de dados com uso intenso de leitura. Complementam as implantações Multi-AZ com performance. Embora ambos os recursos mantenham uma segunda cópia dos dados, há diferenças entre os dois.
 			</ul></u>
 		<br/><button onclick="showHelp('div27d');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="27d"> d) Substituir o  RDS pelo Dynamo
+		<input type=checkbox value="27d"> d) Substituir o RDS pelo Dynamo (<a href="https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/UserGuide/Welcome.html" target="_blank">link estudar</a>), (<a href="https://aws.amazon.com/pt/dynamodb/" target="_blank">link estudar</a>)
 			<u><ul id="div27d" style="display:none; text-align:justify;">
-				
+				O Amazon Relational Database Service (Amazon RDS) é um serviço da Web que facilita a configuração, a operação e escalabilidade de um banco de dados relacional na Nuvem AWS. Ele fornece capacidade econômica e redimensionável para um banco de dados relacional padrão do setor e gerencia tarefas comuns de administração de banco de dados.
+				<br/><br/>Dynamo é um banco de dados de chave-valor NoSQL, sem servidor e totalmente gerenciado, projetado para executar aplicações de alta performance em qualquer escala.
 			</ul></u>
 		<br/><br/><button class="btn btn-default" onclick="showResponse('27', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
 		<div id="resp27" style="display:none; text-align:justify; color:red;">
@@ -1347,7 +1348,7 @@
 			<font color=red>
 				<br/><b>Incorretas:</b>
 				<br/>As roles de acesso a dados não tem nenhuma relação com performance, são serviços que autorizam ou negam os acessos.
-				<br/><br/>A substituição do banco de dados de um banco de dados relacionais (RDS) pelo DynamoDB não é algo comum, uma vez que são banco de dados para usos diferentes e esse tipo de estratégia exigiria grandes alterações do backend da aplicação.
+				<br/><br/>A substituição de banco de dados relacionais (RDS) pelo DynamoDB não é algo comum, uma vez que são banco de dados para usos diferentes (Relacional versus NoSQL, respectivamente) e esse tipo de estratégia exigiria grandes alterações do backend da aplicação.
 				<br/><br/>Criar novas instâncias do RDS multi-AZ é para aumentar a disponibilidade e tolerância a falhas e também não é a opção mais econômica para esse cenário.
 			</font>
 		</div>
