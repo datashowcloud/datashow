@@ -40,7 +40,7 @@
 		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/>
 		<table border=1 align=center style="width:90%; border:1px;"><tr><td><b>Preparo para Certificação <br/>AWS Certified Cloud Practitioner</b>
-		<br/> <i>versão 09.06.22.23.00</i></td></tr></table>
+		<br/> <i>versão 10.06.22.18.00</i></td></tr></table>
 		<br/>
 		<table border=1 align=center style="width:90%; border:1px;"><tr><td><b>Leia tudo para entender e decorar mais</b></td></tr></table>
 		<br/>
@@ -61,7 +61,6 @@
 		<table border=1 align=center style="width:90%; border:1px;"><tr><td>
 			<i>
 				<b>Créditos:</b>
-				<br/>Gislaine Soares Da Silva (arte)
 				<br/>Bruna Moreira Do Nascimento (revisão)
 				<br/>Josué Romera Pacini (revisão)
 			</i>
@@ -1318,7 +1317,7 @@
 		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>27. Seu time de desenvolvimento identificou que devido ao grande volume de consultas que são realizadas e a concorrência com outras funções de acesso, a performance de um banco de dados relacional está comprometida. Qual é a indicação mais econômica para resolver esse cenário?</b>
 		<br/><button onclick="showHelp('div27a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="27a"> a) Atualizar a role de acesso ao banco
+		<input type=checkbox value="27a"> a) Atualizar a role de acesso ao banco (<a href="https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.IAMPolicy.html" target="_blank">link estudar</a>)
 			<u><ul id="div27a" style="display:none; text-align:justify;">
 				Criar e usar uma política do IAM para acesso do banco de dados do IAM permite que um usuário ou uma função do IAM se conecte à instância de banco de dados, você deve criar uma política do IAM. Depois disso, você anexa a política a um usuário ou função do IAM.
 			</ul></u>
@@ -1557,24 +1556,24 @@
 		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>33. Qual é o serviço utilizado para permitir que aplicações acessem recursos restritos de serviços dentro da AWS?</b>
 		<br/><button onclick="showHelp('div33a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="33a"> a) IAM policies
+		<input type=checkbox value="33a"> a) IAM policies (<a href="https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/access_policies_examples.html" target="_blank">link estudar</a>)
 			<u><ul id="div33a" style="display:none; text-align:justify;">
-				
+				Uma política é um objeto na AWS que, quando associado a uma identidade ou um recurso, define suas permissões. A AWS avalia essas políticas quando uma entidade de segurança do IAM (usuário ou função) faz uma solicitação. As permissões nas políticas determinam se a solicitação será permitida ou negada.
 			</ul></u>
 		<br/><button onclick="showHelp('div33b');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="33b"> b) IAM Groups
+		<input type=checkbox value="33b"> b) IAM Groups (<a href="https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_groups.html" target="_blank">link estudar</a>)
 			<u><ul id="div33b" style="display:none; text-align:justify;">
-				
+				Um grupo de usuários do IAM é um conjunto de usuários do IAM. Os grupos de usuários permitem especificar permissões para vários usuários, o que pode facilitar o gerenciamento das permissões para esses usuários. Por exemplo, você pode ter um grupo de usuários chamado Admins e oferecer a esse grupo de usuários os tipos de permissões de que os administradores normalmente precisam.
 			</ul></u>
 		<br/><button onclick="showHelp('div33c');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="33c"> c) IAM Users
+		<input type=checkbox value="33c"> c) IAM Users (<a href="https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_users.html" target="_blank">link estudar</a>)
 			<u><ul id="div33c" style="display:none; text-align:justify;">
-				
+				Um usuário do AWS Identity and Access Management (IAM) é uma entidade que você cria na AWS para representar a pessoa ou a aplicação que o utilizará para interagir com a AWS. Um usuário na AWS consiste em um nome e credenciais.
 			</ul></u>
 		<br/><button onclick="showHelp('div33d');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="33d"> d) IAM Roles (<a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html" target="_blank">link estudar</a>)
 			<u><ul id="div33d" style="display:none; text-align:justify;">
-				
+				Uma função do IAM é uma identidade do IAM que você pode criar em sua conta que tem permissões específicas. Você pode usar funções para delegar acesso a usuários, aplicativos ou serviços que normalmente não têm acesso aos seus recursos da AWS. Por exemplo, você pode permitir que um aplicativo móvel use recursos da AWS.
 			</ul></u>
 		<br/><br/><button class="btn btn-default" onclick="showResponse('33', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
 		<div id="resp33" style="display:none; text-align:justify; color:red;">
@@ -1595,26 +1594,26 @@
 		<button class="btn btn-info" onclick="showPrevious('34');"> <i class="fa fa-backward"></i></button>
 		<button class="btn btn-success" onclick="showNext('34');">Próximo <i class="fa fa-forward"></i></button>
 		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
-		<br/><br/><b>34. Você precisa implementar no seu site uma funcionalidade para realizar pesquisas em todas as páginas e arquivos para facilitar a navegação e experiência do seus usuário. Qual SAAS disponível na AWS fornece ferramentas robustas para cumprir essa finalidade e que pode ser facilmente utilizada na sua aplicação?</b>
+		<br/><br/><b>34. Você precisa implementar no seu site uma funcionalidade para realizar pesquisas em todas as páginas e arquivos para facilitar a navegação e experiência dos seus usuário. Qual SAAS disponível na AWS fornece ferramentas robustas para cumprir essa finalidade e que pode ser facilmente utilizada na sua aplicação?</b>
 		<br/><button onclick="showHelp('div34a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="34a"> a) Amazon ElasticSearch
+		<input type=checkbox value="34a"> a) Amazon ElasticSearch (<a href="https://aws.amazon.com/pt/opensearch-service/the-elk-stack/what-is-elasticsearch/" target="_blank">link estudar</a>)
 			<u><ul id="div34a" style="display:none; text-align:justify;">
-				
+				É um mecanismo distribuído de pesquisa e análise desenvolvido com base no Apache Lucene usado para casos de uso de análises de log. Foi introduzido o projeto OpenSearch que é uma bifurcação do Elasticsearch e Kibana de código aberto.
 			</ul></u>
 		<br/><button onclick="showHelp('div34b');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="34b"> b) Amazon CloudWatch
+		<input type=checkbox value="34b"> b) Amazon CloudWatch (<a href="https://aws.amazon.com/pt/cloudwatch/faqs/" target="_blank">link estudar</a>)
 			<u><ul id="div34b" style="display:none; text-align:justify;">
-				
+				É um serviço de monitoramento para recursos em nuvem AWS e os aplicativos que você executa na AWS. Você pode usar para coletar e rastrear métricas, coletar e monitorar arquivos de log, e definir alarmes.
 			</ul></u>
 		<br/><button onclick="showHelp('div34c');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="34c"> c) Amazon Athena
+		<input type=checkbox value="34c"> c) Amazon Athena (<a href="https://aws.amazon.com/pt/athena/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc" target="_blank">link estudar</a>)
 			<u><ul id="div34c" style="display:none; text-align:justify;">
-				
+				É um serviço de consultas interativas que facilita a análise de dados no Amazon S3 usando SQL padrão. O Athena não precisa de servidor. Portanto, não há infraestrutura para gerenciar e você paga apenas pelas consultas executadas.
 			</ul></u>
 		<br/><button onclick="showHelp('div34d');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="34d"> d) Amazon CloudSearch
+		<input type=checkbox value="34d"> d) Amazon CloudSearch (<a href="https://aws.amazon.com/pt/cloudsearch/" target="_blank">link estudar</a>)
 			<u><ul id="div34d" style="display:none; text-align:justify;">
-				
+				É um serviço gerenciado na nuvem AWS com o qual é possível configurar, gerenciar e dimensionar uma solução de pesquisa para o seu site ou aplicativo de forma simples e econômica.
 			</ul></u>
 		<br/><br/><button class="btn btn-default" onclick="showResponse('34', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
 		<div id="resp34" style="display:none; text-align:justify; color:red;">
@@ -1626,7 +1625,7 @@
 			<font color=red>
 				<br/><b>Incorretas:</b>
 				<br/>O Athena é um serviço sevless que permite a realização de consultas utilizando SQL em Buckets do S3.
-				<br/><br/>O AmazonElasticSearch é um serviço que permite armazenar, analisar e correlacionar uma grande quantidade de dados de logs de seus aplicativos para identificar e resolver gargalos de desempenho e problemas de disponibilidade
+				<br/><br/>O Amazon ElasticSearch é um serviço que permite armazenar, analisar e correlacionar uma grande quantidade de dados de logs de seus aplicativos para identificar e resolver gargalos de desempenho e problemas de disponibilidade
 				<br/><br/>O CloudWatch permite oferece a geração de métricas e monitoramento para diversos serviços e aplicações da AWS.
 			</font>
 		</div>
@@ -1638,24 +1637,24 @@
 		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>35. Você irá disponibilizar uma aplicação crítica e com dados sensíveis na Internet. Qual é o serviço que te ajuda a identificar vulnerabilidades de segurança e risco de exposição de acordo com as melhores práticas e compliance?</b>
 		<br/><button onclick="showHelp('div35a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="35a"> a) AWS Inspector (<a href="https://aws.amazon.com/inspector/?nc2=type_a" target="_blank">link estudar</a>)
+		<input type=checkbox value="35a"> a) AWS Inspector (<a href="https://aws.amazon.com/pt/inspector/" target="_blank">link estudar</a>)
 			<u><ul id="div35a" style="display:none; text-align:justify;">
-				
+				O Amazon Inspector é um serviço automatizado de gerenciamento de vulnerabilidade que verifica continuamente as workloads da AWS em busca de vulnerabilidades de software e exposição não intencional à rede.
 			</ul></u>
 		<br/><button onclick="showHelp('div35b');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="35b"> b) AWS GuardDuty
+		<input type=checkbox value="35b"> b) AWS GuardDuty (<a href="https://aws.amazon.com/pt/guardduty/" target="_blank">link estudar</a>)
 			<u><ul id="div35b" style="display:none; text-align:justify;">
-				
+				É um serviço de detecção de ameaças que monitora continuamente suas contas e workloads da AWS para detectar atividade maliciosa e entrega resultados de segurança detalhados para visibilidade e correção.
 			</ul></u>
 		<br/><button onclick="showHelp('div35c');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="35c"> c) AWS KMS (<a href="https://aws.amazon.com/pt/kms/" target="_blank">link estudar</a>)
+		<input type=checkbox value="35c"> c) AWS KMS (<a href="https://docs.aws.amazon.com/pt_br/kms/latest/developerguide/overview.html" target="_blank">link estudar</a>)
 			<u><ul id="div35c" style="display:none; text-align:justify;">
-				
+				O AWS Key Management Service (AWS KMS) é um serviço gerenciado que facilita a criação e o controle de chaves criptográficas usadas para proteger os dados. Para proteger e validar suas AWS KMS keys, o AWS KMS usa módulos de segurança de hardware (HSMs) de acordo com o Programa de validação de módulos criptográficos FIPS 140-2.
 			</ul></u>
 		<br/><button onclick="showHelp('div35d');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="35d"> d) AWS Macie
+		<input type=checkbox value="35d"> d) AWS Macie (<a href="https://aws.amazon.com/pt/macie/" target="_blank">link estudar</a>)
 			<u><ul id="div35d" style="display:none; text-align:justify;">
-				
+				É um serviço de segurança e privacidade de dados totalmente gerenciado que usa machine learning e correspondência de padrões para descobrir e proteger seus dados confidenciais na AWS.
 			</ul></u>
 		<br/><br/><button class="btn btn-default" onclick="showResponse('35', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
 		<div id="resp35" style="display:none; text-align:justify; color:red;">
@@ -1680,22 +1679,22 @@
 		<br/><button onclick="showHelp('div36a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="36a"> a) S3 Glacier (<a href="https://aws.amazon.com/pt/glacier/faqs/" target="_blank">link estudar</a>)
 			<u><ul id="div36a" style="display:none; text-align:justify;">
-				
+				É uma classe de armazenamento do Amazon S3 segura, durável e de custo extremamente baixo para arquivamento de dados e backup de longo prazo.
 			</ul></u>
 		<br/><button onclick="showHelp('div36b');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="36b"> b) S3 Intelligent Tiering
+		<input type=checkbox value="36b"> b) S3 Intelligent Tiering (<a href="https://aws.amazon.com/pt/s3/storage-classes/" target="_blank">link estudar</a>)
 			<u><ul id="div36b" style="display:none; text-align:justify;">
-				
+				A Camada Inteligente oferece latência de milissegundos e alta performance de taxa de transferência para dados acessados com muita frequência, com pouca frequência e raramente acessados nos níveis Frequent Access, Infrequent Access e o Archive Instant Access.
 			</ul></u>
 		<br/><button onclick="showHelp('div36c');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="36c"> c) S3 Infrequent Access
+		<input type=checkbox value="36c"> c) S3 Infrequent Access (<a href="https://aws.amazon.com/pt/s3/storage-classes/" target="_blank">link estudar</a>)
 			<u><ul id="div36c" style="display:none; text-align:justify;">
-				
+				Acesso infrequente do S3 Standard-IA é indicado para dados acessados com menos frequência, mas que exigem acesso rápido quando necessários. Oferece os altos níveis de resiliência e throughput e a baixa latência. Combina baixo custo e alta performance.
 			</ul></u>
 		<br/><button onclick="showHelp('div36d');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="36d"> d) S3 Standard
+		<input type=checkbox value="36d"> d) S3 Standard (<a href="https://aws.amazon.com/pt/s3/storage-classes/" target="_blank">link estudar</a>)
 			<u><ul id="div36d" style="display:none; text-align:justify;">
-				
+				Oferece um armazenamento de objetos com altos níveis de resiliência, disponibilidade e performance para dados acessados com frequência. Como fornece baixa latência e alto throughput, o S3 Standard é adequado para uma grande variedade de casos de uso, como aplicativos na nuvem, sites dinâmicos, distribuição de conteúdo, aplicativos móveis e de jogos e dados analíticos de big data.
 			</ul></u>
 		<br/><br/><button class="btn btn-default" onclick="showResponse('36', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
 		<div id="resp36" style="display:none; text-align:justify; color:red;">
@@ -1718,24 +1717,24 @@
 		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>37. Uma aplicação de terceiros irá gerar um arquivo num layout diferente do que o seu sistema espera. Qual é serviço da AWS que pode ser utilizado para transformar o arquivo e carregá-lo no seu sistema?</b>
 		<br/><button onclick="showHelp('div37a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="37a"> a) AWS DMS
+		<input type=checkbox value="37a"> a) AWS DMS (<a href="https://docs.aws.amazon.com/pt_br/dms/latest/userguide/Welcome.html" target="_blank">link estudar</a>)
 			<u><ul id="div37a" style="display:none; text-align:justify;">
-				
+				O AWS Database Migration Service (AWS DMS) é um serviço em nuvem que facilita a migração de bancos de dados relacionais, data warehouses, bancos de dados NoSQL e outros tipos de armazenamentos de dados.
 			</ul></u>
 		<br/><button onclick="showHelp('div37b');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="37b"> b) AWS Glue
+		<input type=checkbox value="37b"> b) AWS Glue (<a href="https://docs.aws.amazon.com/pt_br/glue/latest/dg/what-is-glue.html" target="_blank">link estudar</a>)
 			<u><ul id="div37b" style="display:none; text-align:justify;">
-				
+				O AWS Glue é um serviço de ETL (extração, transformação e carregamento) totalmente gerenciado que torna mais fácil e econômico o processo de categorizar dados, limpá-los, aprimorá-los e movê-los de modo confiável entre vários armazenamentos e streams de dados.
 			</ul></u>
 		<br/><button onclick="showHelp('div37c');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="37c"> c) AWS DTS
+		<input type=checkbox value="37c"> c) AWS DTS (<a href="https://aws.amazon.com/pt/glue/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc" target="_blank">link estudar</a>)
 			<u><ul id="div37c" style="display:none; text-align:justify;">
-				
+				Serviço não existente na AWS.
 			</ul></u>
 		<br/><button onclick="showHelp('div37d');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="37d"> d) AWS DataSync
+		<input type=checkbox value="37d"> d) AWS DataSync (<a href="https://aws.amazon.com/pt/datasync/" target="_blank">link estudar</a>)
 			<u><ul id="div37d" style="display:none; text-align:justify;">
-				
+				É um serviço online seguro que automatiza e acelera a movimentação de dados entre serviços de armazenamento on-premises e da AWS.
 			</ul></u>
 		<br/><br/><button class="btn btn-default" onclick="showResponse('37', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
 		<div id="resp37" style="display:none; text-align:justify; color:red;">
@@ -1759,24 +1758,24 @@
 		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>38. Qual pilar do framework de melhores práticas arquitetônicas da AWS se concentra em garantir que uma carga de trabalho execute sua função pretendida corretamente e de modo consistente, e que uma carga de trabalho seja resiliente e que se recupere rapidamente de falhas para atender a demanda do negócio e do cliente?</b>
 		<br/><button onclick="showHelp('div38a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="38a"> a) Segurança
+		<input type=checkbox value="38a"> a) Segurança (<a href="https://aws.amazon.com/pt/architecture/well-architected/?achp_wa1&wa-lens-whitepapers.sort-by=item.additionalFields.sortDate&wa-lens-whitepapers.sort-order=desc" target="_blank">link estudar</a>)
 			<u><ul id="div38a" style="display:none; text-align:justify;">
-				
+				Se concentra na proteção de informações e sistemas. Os principais tópicos incluem confidencialidade e integridade de dados, gerenciamento de permissões de usuário e estabelecimento de controles para detectar eventos de segurança.
 			</ul></u>
 		<br/><button onclick="showHelp('div38b');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="38b"> b) Excelência Operacional
+		<input type=checkbox value="38b"> b) Excelência Operacional (<a href="https://aws.amazon.com/pt/architecture/well-architected/?achp_wa1&wa-lens-whitepapers.sort-by=item.additionalFields.sortDate&wa-lens-whitepapers.sort-order=desc" target="_blank">link estudar</a>)
 			<u><ul id="div38b" style="display:none; text-align:justify;">
-				
+				Se concentra na execução e monitoramento sistemas e na melhoria contínua de processos e procedimentos. Os principais tópicos incluem automação de alterações, reação a eventos e definição de padrões para gerenciar as operações diárias.
 			</ul></u>
 		<br/><button onclick="showHelp('div38c');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="38c"> c) Performance Eficiente
+		<input type=checkbox value="38c"> c) Performance Eficiente (<a href="https://aws.amazon.com/pt/architecture/well-architected/?achp_wa1&wa-lens-whitepapers.sort-by=item.additionalFields.sortDate&wa-lens-whitepapers.sort-order=desc" target="_blank">link estudar</a>)
 			<u><ul id="div38c" style="display:none; text-align:justify;">
-				
+				Se concentra na alocação estruturada e simplificada de recursos de TI e computação. Os principais tópicos incluem seleção dos tipos e tamanhos certos dos recursos otimizados para os requisitos de workload, monitoramento de performance e manutenção da eficiência à medida que as necessidades comerciais evoluem.
 			</ul></u>
 		<br/><button onclick="showHelp('div38d');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<input type=checkbox value="38d"> d) Confiabilidade (<a href="https://aws.amazon.com/pt/architecture/well-architected/?achp_wa1&wa-lens-whitepapers.sort-by=item.additionalFields.sortDate&wa-lens-whitepapers.sort-order=desc" target="_blank">link estudar</a>)
 			<u><ul id="div38d" style="display:none; text-align:justify;">
-				
+				Se concentra nos workloads que executam as funções pretendidas e na recuperação rápida de falhas em atender demandas. Os principais tópicos incluem projeto de sistemas distribuídos, planejamento de recuperação e requisitos adaptação a mudanças.
 			</ul></u>
 		<br/><br/><button class="btn btn-default" onclick="showResponse('38', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
 		<div id="resp38" style="display:none; text-align:justify; color:red;">
@@ -1797,24 +1796,24 @@
 		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>39. Uma das formas de garantir a elasticidade e economia no uso do EC2 é mantendo os arquivos de programas e de sistemas em recursos computacionais separados. Qual serviço abaixo pode ser utilizado para isso?</b>
 		<br/><button onclick="showHelp('div39a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="39a"> a) EBS
+		<input type=checkbox value="39a"> a) EBS (<a href="https://aws.amazon.com/pt/ebs/" target="_blank">link estudar</a>)
 			<u><ul id="div39a" style="display:none; text-align:justify;">
-				
+				O Amazon Elastic Block Store (Amazon EBS) é um serviço de armazenamento em blocos fácil de usar, escalável e de alta performance projetado para o Amazon Elastic Compute Cloud (Amazon EC2). É possível criar um sistema de arquivos sobre esses volumes ou utilizá-los da maneira que utilizaria um dispositivo de bloco (como um disco rígido).
 			</ul></u>
 		<br/><button onclick="showHelp('div39b');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="39b"> b) Git
+		<input type=checkbox value="39b"> b) Git (<a href="https://aws.amazon.com/pt/getting-started/hands-on/migrate-git-repository/" target="_blank">link estudar</a>)
 			<u><ul id="div39b" style="display:none; text-align:justify;">
-				
+				Repositório privado do Github.
 			</ul></u>
 		<br/><button onclick="showHelp('div39c');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="39c"> c) CodeCommit
+		<input type=checkbox value="39c"> c) CodeCommit (<a href="https://docs.aws.amazon.com/pt_br/codecommit/latest/userguide/welcome.html" target="_blank">link estudar</a>)
 			<u><ul id="div39c" style="display:none; text-align:justify;">
-				
+				É um serviço de controle de código-fonte seguro, altamente escalável e gerenciado que hospeda repositórios Git privados. 
 			</ul></u>
 		<br/><button onclick="showHelp('div39d');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="39d"> d) S3
+		<input type=checkbox value="39d"> d) S3 (<a href="https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/Welcome.html" target="_blank">link estudar</a>)
 			<u><ul id="div39d" style="display:none; text-align:justify;">
-				
+				O Amazon Simple Storage Service (Amazon S3) é um serviço de armazenamento de objetos que armazena dados como objetos em buckets. Um objeto é um arquivo e quaisquer metadados que descrevam o arquivo. Um bucket é um contêiner de objetos. Você pode controlar o acesso a grupos de objetos que começam com um prefixo ou termine com uma determinada extensão, exemplos de arquivos estáticos: .html, .js, .cs.
 			</ul></u>
 		<br/><br/><button class="btn btn-default" onclick="showResponse('39', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
 		<div id="resp39" style="display:none; text-align:justify; color:red;">
@@ -1838,24 +1837,24 @@
 		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>40. Você deseja monitorar o percentual de memória que os seus servidores estão utilizando em determinando período do dia. Qual serviço da AWS abaixo pode ser utilizado para essa finalidade?</b>
 		<br/><button onclick="showHelp('div40a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="40a"> a) AWS DataSync
+		<input type=checkbox value="40a"> a) AWS DataSync (<a href="https://aws.amazon.com/pt/datasync/" target="_blank">link estudar</a>)
 			<u><ul id="div40a" style="display:none; text-align:justify;">
-				
+				É um serviço online seguro que automatiza e acelera a movimentação de dados entre serviços de armazenamento on-premises e da AWS.
 			</ul></u>
 		<br/><button onclick="showHelp('div40b');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="40b"> b) AWS Cloud Explore
+		<input type=checkbox value="40b"> b) AWS Cloud Explore (<a href="https://aws.amazon.com/pt/aws-cost-management/aws-cost-explorer/" target="_blank">link estudar</a>)
 			<u><ul id="div40b" style="display:none; text-align:justify;">
-				
+				Não existe na AWS. Existe Cost Explorer que permite visualizar, entender e gerenciar os custos e o uso da AWS ao longo do tempo relacionado ao gasto que já passou.
 			</ul></u>
 		<br/><button onclick="showHelp('div40c');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="40c"> c) AWS CloudWatch
+		<input type=checkbox value="40c"> c) AWS CloudWatch (<a href="https://aws.amazon.com/pt/cloudwatch/faqs/" target="_blank">link estudar</a>)
 			<u><ul id="div40c" style="display:none; text-align:justify;">
-				
+				É um serviço de monitoramento para recursos em nuvem AWS e os aplicativos que você executa na AWS. Você pode usar para coletar e rastrear métricas, coletar e monitorar arquivos de log, e definir alarmes.
 			</ul></u>
 		<br/><button onclick="showHelp('div40d');" class="btn btn-default"> <i class="fa fa-question"></i></button>
-		<input type=checkbox value="40d"> d) AWS CloudTrail
+		<input type=checkbox value="40d"> d) AWS CloudTrail (<a href="https://docs.aws.amazon.com/pt_br/awscloudtrail/latest/userguide/cloudtrail-user-guide.html" target="_blank">link estudar</a>)
 			<u><ul id="div40d" style="display:none; text-align:justify;">
-				
+				Rastreia atividades dos usuários e uso de APIs. O AWS CloudTrail monitora e registra a atividade da conta por toda a infraestrutura da AWS, oferecendo controle sobre o armazenamento, análise e ações de remediação.
 			</ul></u>
 		<br/><br/><button class="btn btn-default" onclick="showResponse('40', 'resp');"> <i class="fa fa-check-square-o"></i> Resposta</button>
 		<div id="resp40" style="display:none; text-align:justify; color:red;">
