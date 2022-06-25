@@ -1806,12 +1806,12 @@
 				Repositório privado do Github.
 				<br/> (<a href="https://aws.amazon.com/pt/getting-started/hands-on/migrate-git-repository/" target="_blank">link estudar mais</a>)
 			</ul>
-		<br/> <input type=checkbox value="39c" onclick="showHelp('div39c'")> c) CodeCommit
+		<br/> <input type=checkbox value="39c" onclick="showHelp('div39c')"> c) CodeCommit
 			<ul id="div39c" style="display:none; text-align:justify;">
 				É um serviço de controle de código-fonte seguro, altamente escalável e gerenciado que hospeda repositórios Git privados. 
 				<br/> (<a href="https://docs.aws.amazon.com/pt_br/codecommit/latest/userguide/welcome.html" target="_blank">link estudar mais</a>)
 			</ul>
-		<br/> <input type=checkbox value="39d" onclick="showHelp('div39d'")> d) S3
+		<br/> <input type=checkbox value="39d" onclick="showHelp('div39d')"> d) S3
 			<ul id="div39d" style="display:none; text-align:justify;">
 				O Amazon Simple Storage Service (Amazon S3) é um serviço de armazenamento de objetos que armazena dados como objetos em buckets. Um objeto é um arquivo e quaisquer metadados que descrevam o arquivo. Um bucket é um contêiner de objetos. Você pode controlar o acesso a grupos de objetos que começam com um prefixo ou termine com uma determinada extensão, exemplos de arquivos estáticos: .html, .js, .cs.
 				<br/> (<a href="https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/Welcome.html" target="_blank">link estudar mais</a>)
@@ -3104,7 +3104,7 @@ function showPoints(qtdeResponses) {
 	calculo = (qtdeCorretas*100) / totalperguntas;
 	calculo = calculo.toFixed(0);
 	var resultado = '';
-	resultado = resultado + qtdeErradas + ' erradas ' + erradas;
+	resultado = resultado + qtdeErradas + ' erradas: ' + erradas;
 	resultado = resultado + '\n\n' + qtdeCorretas + ' corretas';
 	resultado = resultado + '\n\n' + naorespondidas + ' não respondidas: '  + responder;
 //	resultado = resultado + '\n\nResponda: '  + responder;
