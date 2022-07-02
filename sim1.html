@@ -37,7 +37,7 @@
 	<div id="div00" style="display:'none';">
 		<button onclick="openFile('simulado.html');" class="btn btn-default"> <i class="fa fa-fast-backward"></i> </button>
 		<button class="btn btn-info" onclick="showPrevious('01');" disabled> <i class="fa fa-chevron-left"></i></button>
-		<button id="btn00" onclick="showNext('00');" class="btn btn-success" >Começar <i class="fa fa-chevron-right"></i></button>
+		<button id="btn00" onclick="showNext('00');" class="btn btn-success" >Próximo <i class="fa fa-chevron-right"></i></button>
 		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 	</div>
 <!--
@@ -2063,25 +2063,21 @@
 		<button class="btn btn-success" onclick="showNext('47');">Próximo <i class="fa fa-chevron-right"></i></button>
 		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>47. As mensagens trafegadas entre o seu site e os usuários não estão sendo criptografadas porque a arquitetura atual não utiliza certificados digitais que permitam essa criptografia. Qual é o serviço da AWS que pode ser utilizado para esse tipo de implementação?</b>
-		<br/><button onclick="showHelp('div47a');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<br/> <input type=checkbox value="47a" onclick="showHelp('div47a');"> a) AWS KMS
 			<ul id="div47a" style="display:none; text-align:justify;">
 				O AWS Key Management Service (AWS KMS) é um serviço gerenciado que facilita a criação e o controle de chaves criptográficas usadas para proteger os dados. Para proteger e validar suas AWS KMS keys, o AWS KMS usa módulos de segurança de hardware (HSMs) de acordo com o Programa de validação de módulos criptográficos FIPS 140-2.
 				<br/> (<a href="https://docs.aws.amazon.com/pt_br/kms/latest/developerguide/overview.html" target="_blank">link estudar mais na internet</a>)
 			</ul>
-		<br/><button onclick="showHelp('div47b');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<br/> <input type=checkbox value="47b" onclick="showHelp('div47b');"> b) AWS Cognito
 			<ul id="div47b" style="display:none; text-align:justify;">
 				Permite adicionar cadastramento, login e controle de acesso de usuários a aplicações Web e móveis com rapidez e facilidade para vários dispositivos.
 				<br/> (<a href="https://aws.amazon.com/pt/cognito/" target="_blank">link estudar mais na internet</a>)
 			</ul>
-		<br/><button onclick="showHelp('div47c');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<br/> <input type=checkbox value="47c" onclick="showHelp('div47c');"> c) AWS Certificate Manager
 			<ul id="div47c" style="display:none; text-align:justify;">
 				É um serviço que permite provisionar, gerenciar e implantar facilmente certificados Secure Sockets Layer (SSL)/Transport Layer Security (TLS) para uso com os serviços da AWS e os recursos internos conectados.
 				<br/> (<a href="https://aws.amazon.com/pt/certificate-manager/#:~:text=O%20AWS%20Certificate%20Manager%20%C3%A9,e%20os%20recursos%20internos%20conectados." target="_blank">link estudar mais na internet</a>)
 			</ul>
-		<br/><button onclick="showHelp('div47d');" class="btn btn-default"> <i class="fa fa-question"></i></button>
 		<br/> <input type=checkbox value="47d" onclick="showHelp('div47d');"> d) AWS IAM
 			<ul id="div47d" style="display:none; text-align:justify;">
 				O AWS Identity and Access Management (IAM) fornece controle de acesso refinado em toda a AWS. Com o IAM, é possível especificar quem pode acessar quais serviços e recursos e em que condições. Com as políticas do IAM, você gerencia permissões para seu quadro de funcionários e sistemas para garantir permissões com privilégios mínimos.
@@ -2487,10 +2483,10 @@
 		<button class="btn btn-success" onclick="showNext('57');">Próximo <i class="fa fa-chevron-right"></i></button>
 		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/><b>57. A sua empresa decidiu migrar algumas aplicações monolíticas legadas, sem refatoração, para o ECS. O que pode-se afirmar sobre essa estratégia?</b>
-		<br/> <input type=checkbox value="57a" onclick="showHelp('div57a');"> a) É possível, porém não trará grandes benefícios de otimização no uso dos recursos (<a href="https://aws.amazon.com/pt/getting-started/hands-on/break-monolith-app-microservices-ecs-docker-ec2/module-one/" target="_blank">link estudar mais na internet</a>) (<a href="https://aws.amazon.com/pt/about-aws/whats-new/2022/02/aws-migration-hub-refactor-spaces-available/#:~:text=O%20AWS%20Migration%20Hub%20Refactor,que%20torna%20a%20refatora%C3%A7%C3%A3o%20poss%C3%ADvel." target="_blank">link estudar mais na internet</a>)
+		<br/> <input type=checkbox value="57a" onclick="showHelp('div57a');"> a) É possível, porém não trará grandes benefícios de otimização no uso dos recursos
 			<ul id="div57a" style="display:none; text-align:justify;">
 				A refatoração é uma forma disciplinada de reestruturar o código quando pequenas mudanças são feitas nele para melhorar o design. Ao usar o Refactor Spaces, os clientes se concentram na refatoração das suas aplicações, e não na criação e no gerenciamento da infraestrutura subjacente que torna a refatoração possível.
-				<br/>
+				<br/>  (<a href="https://aws.amazon.com/pt/getting-started/hands-on/break-monolith-app-microservices-ecs-docker-ec2/module-one/" target="_blank">link estudar mais na internet</a>) (<a href="https://aws.amazon.com/pt/about-aws/whats-new/2022/02/aws-migration-hub-refactor-spaces-available/#:~:text=O%20AWS%20Migration%20Hub%20Refactor,que%20torna%20a%20refatora%C3%A7%C3%A3o%20poss%C3%ADvel." target="_blank">link estudar mais na internet</a>)
 			</ul>
 		<br/> <input type=checkbox value="57b" onclick="showHelp('div57b');"> b) É possível e recomendado
 			<ul id="div57b" style="display:none; text-align:justify;">
@@ -2944,15 +2940,15 @@
 		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 	</div>
 
-	<!-- timer sempre visível -->
+	<!-- sempre visível -->
 	<div id="divtimer" style="display:'none';">
 		<font size=2.0 style=text-align:justify>
-			<br/>Restante: <input type="text" id="temporestante" value="01:30:00" style="width:60px;" disabled=""/>
-			Duração: <input type="text" id="tempoduracao" value="00:00:00" style="width:60px;" disabled=""/>
-			Total: <input type="text" id="tempo" value="01:30:00" style="width:60px;" disabled=""/>
+			<br/><input type="text" id="nome" value="" style="width:100px;" maxlength=12 /> Meu Nome
+			<br/> <input type="text" id="temporestante" value="01:30:00" style="width:100px;" disabled=""/> Tempo
+			<br/> <input type="text" id="tempoduracao" value="00:00:00" style="width:100px;" disabled=""/> Duração
+			<input type="text" id="tempo" value="01:30:00" style="width:60px;" hidden=""/>
 		</font>
 	</div>
-
 	<!-- campo sempre visível -->
 	<div id="div99" style="display:'none';">
 		<font size=2.0 style=text-align:justify>
