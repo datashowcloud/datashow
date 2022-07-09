@@ -77,7 +77,19 @@
 
 		
 		
-		<form id="formAddUpdate" class="form-horizontal" role="form" style="margin-top:50px; display: none;">
+		<form id="formAddUpdate" class="form-horizontal" role="form" style="margin-top:50px; display:none;">
+			<div class="form-group">
+				<div class="col-sm-7" style="width:90%;"> <textarea id="mytext" rows="9" style="width:90%;" placeholder="Preencha <p> e o título e o autor em uma linha embaixo da outra. Preencha a letra completa com um espaço separador."></textarea>
+				</div>
+			</div>
+			<div class="form-group">
+				<button id="btnSubmit" type="button" class="btn btn-primary" style="padding:9px 15px 9px 15px;">
+					<i class="fa fa-check"></i> <span>Salvar</span>
+				</button>
+				<button id="btnCancel" type="button" class="btn btn-default " style="padding:9px 15px 9px 15px;margin-left:10px; ">
+					<i class="fa fa-times"></i> Fechar
+				</button>
+			</div>
 			<div class="form-group">
 				<label for="mycode" style="display:'none';">Code:</label>
 					<input type="text" size="20" id="mycode" placeholder="título e autor" readonly/>
@@ -97,24 +109,12 @@
 				<label for="myowner" style="display:'none';">Owner:</label>
 					<input type="text" size="1" id="myowner" value="IIRF" style="display:'none';" /> <!-- HOPE -->
 			</div>
-			<div class="form-group">
-				<div class="col-sm-7" style="width:90%;"> <textarea id="mytext" rows="9" style="width:90%;" placeholder="Preencha <p> e o título e o autor em uma linha embaixo da outra. Preencha a letra completa com um espaço separador."></textarea>
-				</div>
-			</div>
-			<div class="form-group">
-				<button id="btnSubmit" type="button" class="btn btn-primary" style="padding:9px 15px 9px 15px;">
-					<i class="fa fa-check"></i> <span>Salvar</span>
-				</button>
-				<button id="btnCancel" type="button" class="btn btn-default " style="padding:9px 15px 9px 15px;margin-left:10px; ">
-					<i class="fa fa-times"></i> Fechar
-				</button>
-			</div>
 		</form>
 		
 		
 		
 		<div class="form-group" id="divGear" style="display:none;">
-			<hr>
+			<hr/>
 			<button id="btnShowStudent" class="btn btn-danger" style="padding:9px 15px 9px 15px; width:150px;"> <i class="fa fa-repeat"></i> Sincroniza Telas </button>
 			<button id="btnShowHelp" class="btn btn-warning" style="padding:9px 15px 9px 15px; width:150px;"> <i class="fa fa-book"></i> Tutorial</button>
 			<br/><br/>
@@ -122,19 +122,19 @@
 			<button id="btnLogo" class="btn btn-success" style="padding:9px 15px 9px 15px; width:150px;"> <i class="fa fa-minus"></i> Logotipo</button>
 			<!-- button id="btnAddStudent" class="btn btn-datashow" style="width:150px;"> <i class="fa fa-plus"></i> Adiciona Letra </button -->
 			
-			<form id="formAdd" ZZZaction="https://formspree.io/f/xrgjojko" method="post">
-				<hr/>
-				<textarea name="contents" id="contents" style="width:90%;" rows=10 placeholder="Use <p> para separar várias letras de música diferentes. Logo abaixo do <p> deve conter a identificação da letra, exemplo: autor e título."></textarea>
-				<br/><button id="btnConfirmImport" class="btn btn-info" style="padding:9px 15px 9px 15px;"> <i class="fa fa-plus"></i> Adicionar</button>
-				<hr>Nome Curto: <br/><input type="text" name="config_myowner" size="16" id="config_myowner" maxlength="4" style="width:50px;" value="IIRF"/> <!-- HOPE -->
-				<br>Plano de Fundo: <br/><textarea type="text" name="config_myfundo" id="config_myfundo" size="16" style="width:250px;" />gallery/fundo.jpeg</textarea>
-				<br>Logotipo: <br/><textarea type="text" name="config_mylogo" id="config_mylogo" size="16" style="width:250px;" />logo/logo.png</textarea>
+			<hr/>
+			<form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post">
+				<textarea name="contents0" id="contents0" style="width:90%;" rows=10 placeholder="Use <p> para separar várias letras de música diferentes. Logo abaixo do <p> deve conter a identificação da letra, exemplo: autor e título."></textarea>
+				<br/><button id="btnConfirmImportOne" class="btn btn-info" style="padding:9px 15px 9px 15px;"> <i class="fa fa-plus"></i> Adicionar</button>
+				<hr/>Nome Curto: <br/><input type="text" name="config_myowner" size="16" id="config_myowner" maxlength="4" style="width:50px;" value="IIRF"/> <!-- HOPE -->
+				<br/>Plano de Fundo: <br/><textarea type="text" name="config_myfundo" id="config_myfundo" size="16" style="width:250px;">gallery/fundo.jpeg</textarea>
+				<br/>Logotipo: <br/><textarea type="text" name="config_mylogo" id="config_mylogo" size="16" style="width:250px;">logo/logo.png</textarea>
 			</form>
 
-			<hr><button id="btnDropDb" class="btn btn-info" style="padding:9px 15px 9px 15px;"> <i class="fa fa-remove"></i> Restaurar Padrão de Fábrica</button>
+			<hr/><button id="btnDropDb" class="btn btn-info" style="padding:9px 15px 9px 15px;"> <i class="fa fa-remove"></i> Restaurar Padrão de Fábrica</button>
 			<br/><br/><button id="btnCancelImport" class="btn btn-info" style="padding:9px 15px 9px 15px;"> <i class="fa fa-times"></i> Fechar</button>			
 			
-			<hr/><i>enio.francisco@gmail.com &#174; +55(11)95239-2000; v26.06.22.18.10</i>
+			<hr/><i>enio.francisco@gmail.com &#174; versão 08.07.22.19.00</i>
 			<hr/>
 			
 			<div style="display:none;">
