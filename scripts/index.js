@@ -32,7 +32,7 @@ window.onload = function () {
 	localStorage.setItem('valueLogoLeftBigTela1', '30%');
 	localStorage.setItem('valueLogoLeftBigTela2', '30%');
 	localStorage.setItem('valueLogoLeftMini', '0px');
-	localStorage.setItem('valueLogoTopBig', '40%');
+	localStorage.setItem('valueLogoTopBig', '20%');
 	localStorage.setItem('valueLogoTopMini', '75%');
 };
 
@@ -392,6 +392,7 @@ function registerEvents() {
 		var myorder = child.eq(1).text();
 		getFromTable(id, mycode, myorder);
 		showFormAddUpdate();
+		freezeDataShow('true');
     });
     $('#tblGrid tbody').on('click', '.delete', function () {
         var result = confirm('Are you sure, do you want to delete?');
@@ -572,51 +573,51 @@ async function refreshTableResult() {
 			from: 'Art'
 		});
 		if (arts == '0') {
-			var labelArts = "<label class=\"btn btn-info\" style=\"width:200px; \"> Artes: " + arts + "</label>";
+			var labelArts = "<label class=\"btn btn-default\" style=\"width:200px; \"> Artes: " + arts + "</label>";
 		} else if (arts > '0' && arts < '15') {
-			var labelArts = "<label class=\"btn btn-info\" style=\"width:200px; \"> Artes: " + arts + " de ~15 </label>";
+			var labelArts = "<label class=\"btn btn-default\" style=\"width:200px; \"> Artes: " + arts + " de ~15 </label>";
 		} else {
-			var labelArts = "<label class=\"btn btn-default\" style=\"width:200px; \"> Artes: " + arts + " <i class=\"fa fa-check\"></i></label>";
+			var labelArts = "<label class=\"btn btn-info\" style=\"width:200px; \"> Artes: " + arts + " <i class=\"fa fa-check\"></i></label>";
 		}
 		//Letras
 		var students = await jsstoreCon.count({
 			from: 'Student'
 		});
 		if (students == '0') {
-			var labelStudents = "<label class=\"btn btn-info\" style=\"width:200px; \"> Textos: " + students + "</label>";
+			var labelStudents = "<label class=\"btn btn-default\" style=\"width:200px; \"> Letras: " + students + "</label>";
 		} else if (students > '0' && students < '10830') {
-			var labelStudents = "<label class=\"btn btn-info\" style=\"width:200px; \"> Textos: " + students + " de ~10892 </label>";
+			var labelStudents = "<label class=\"btn btn-default\" style=\"width:200px; \"> Letras: " + students + " de ~10892 </label>";
 		} else {
-			var labelStudents = "<label class=\"btn btn-default\" style=\"width:200px; \"> Textos: " + students + " <i class=\"fa fa-check\"></i></label>";
+			var labelStudents = "<label class=\"btn btn-info\" style=\"width:200px; \"> Letras: " + students + " <i class=\"fa fa-check\"></i></label>";
 		}
 		//Bíblia
 		var bibles = await jsstoreCon.count({
 			from: 'Bible'
 		});
 		if (bibles == '0') {
-			var labelBibles = "<label class=\"btn btn-info\" style=\"width:200px; \"> Livros: " + bibles + "</label>";
+			var labelBibles = "<label class=\"btn btn-default\" style=\"width:200px; \"> Livros: " + bibles + "</label>";
 		} else if (bibles > '0' && bibles < '32221') {
-			var labelBibles = "<label class=\"btn btn-info\" style=\"width:200px; \"> Livros: " + bibles + " de ~32221 </label>";
+			var labelBibles = "<label class=\"btn btn-default\" style=\"width:200px; \"> Livros: " + bibles + " de ~32221 </label>";
 		} else {
-			var labelBibles = "<label class=\"btn btn-default\" style=\"width:200px; \"> Livros: " + bibles + " <i class=\"fa fa-check\"></i></label>";
+			var labelBibles = "<label class=\"btn btn-info\" style=\"width:200px; \"> Livros: " + bibles + " <i class=\"fa fa-check\"></i></label>";
 		}
 		//TypeData
 		var typedata = await jsstoreCon.count({
 			from: 'TypeData'
 		});
 		if (typedata == '0') {
-			var labelTypeData = "<label class=\"btn btn-info\" style=\"width:200px; \"> Licenças: " + typedata + "</label>";
+			var labelTypeData = "<label class=\"btn btn-default\" style=\"width:200px; \"> Licenças: " + typedata + "</label>";
 		} else if (typedata > '0' && typedata < '2') {
-			var labelTypeData = "<label class=\"btn btn-info\" style=\"width:200px; \"> Licenças: " + typedata + " de ~2 </label>";
+			var labelTypeData = "<label class=\"btn btn-default\" style=\"width:200px; \"> Licenças: " + typedata + " de ~2 </label>";
 		} else {
-			var labelTypeData = "<label class=\"btn btn-default\" style=\"width:200px; \"> Licenças: " + typedata + " <i class=\"fa fa-check\"></i></label>";
+			var labelTypeData = "<label class=\"btn btn-info\" style=\"width:200px; \"> Licenças: " + typedata + " <i class=\"fa fa-check\"></i></label>";
 		}
 		
 		var buttonFechar = "";
 		if (typedata == '0') {
-			buttonFechar = "<button id=\"btnConfigResultClose\" class=\"btn btn-info\" style=\"width:200px; padding:9px 15px 9px 15px;\"> Aguarde...</button>";
+			buttonFechar = "<button id=\"btnConfigResultClose\" class=\"btn btn-default\" style=\"width:200px; padding:9px 15px 9px 15px;\"> Aguarde...</button>";
 		} else {
-			buttonFechar = "<button id=\"btnConfigResultClose\" class=\"btn btn-info\" style=\"width:200px;\" onclick=\"showIndex();\" style=\"padding:9px 15px 9px 15px;\"> Continuar <i class=\"fa fa-forward\"></i> </button>";
+			buttonFechar = "<button id=\"btnConfigResultClose\" class=\"btn btn-danger\" style=\"width:200px;\" onclick=\"showIndex();\" style=\"padding:9px 15px 9px 15px;\"> Continuar <i class=\"fa fa-forward\"></i> </button>";
 		}
 		
 		//Resultado
@@ -937,6 +938,7 @@ async function refreshTableData() {
         var htmlString = "";
         var varTdTh = '';
 		var varOff = '';
+		var varLogo = '';
 		var varFav = '';
 		var varEdit = '';
 		var varDel = '';
@@ -952,16 +954,17 @@ async function refreshTableData() {
 				htmlString += "</td><td></td>"
 				htmlString += "</tr>"
 				varTdTh = 'th';
-//				varOff = "<i class=\"fa fa-stop\" style=\"color:#000000;\"></i>&nbsp;";
-				varOff = "<img src=\"logo/logo.png\" style=\"width:30px;\"></img>";
+				varOff = "<i class=\"fa fa-stop\" style=\"color:#000000;\"></i>&nbsp;";
+				varLogo = "<img src=\"logo/logo.png\" style=\"width:30px;\"></img>";
 				varFav = "<td> <!--i class=\"fa fa-heart\" style=\"color:#3333AA;\"></i --> </td>";
-				varEdit = "<td><i class=\"fa fa-edit\"></i></td>";
+				varEdit = "<i class=\"fa fa-edit\"></i>";
 				varDel = "<td><a href=\"#\" class=\"delete\" style=\"color:#777777;\"> <i class=\"fa fa-times\" style=\"color:red;\"></i> </a></td>";
 			} else {
 				varTdTh = 'td';
-				varOff = "<a href=\"#\" class=\"favorite\" style=\"color:#000000;\"><img src=\"logo/logo.png\" style=\"width:30px;\"></img>";
+				varOff = "<i class=\"fa fa-stop\" style=\"color:#000000;\"></i>&nbsp;";
+				varLogo = "<a href=\"#\" class=\"favorite\" style=\"color:#000000;\"><img src=\"logo/logo.png\" style=\"width:30px;\"></img>";
 				varFav = "<td><a href='#' class=\"favorite\" style=\"color:blue;\"> </a></td>";
-				varEdit = "<td><a href=\"#\" class=\"edit\"> <i class=\"fa fa-edit\"></i> </a></td>";
+				varEdit = "<a href=\"#\" class=\"edit\"> <i class=\"fa fa-edit\"></i> </a>";
                 varDel = "<td><a href=\"#\" class=\"delete\" style=\"color:#777777;\">Del</a></td>";
 			}
 			
@@ -986,12 +989,22 @@ async function refreshTableData() {
 			
 			htmlString += "<tr ItemId=" + student.id + ">"
                 + "<td style=\"color:white; font-size:1px;\">" + student.mycode + "</td>"
-                + "<td style=\"color:white; font-size:1px;\">" + student.myorder + "</td>"
-				+ "<" + varTdTh + " id=datashow" + student.id+"1" + " tabIndex=" + student.id+"1" + " onClick=\"datashow('" + student.id+"1" + "', 2, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 2, event, " + "" + (student.id+"1") + ");\" data-show='" + student.id+"1" + "'>" + mytextBold + "</" + varTdTh + ">"
+                
+				+ "<td style=\"color:white; font-size:1px;\">" + student.myorder + "</td>"
+				
+				+ "<" + varTdTh + " id=datashow" + student.id+"1" + " tabIndex=" + student.id+"1" + " onClick=\"datashow('" + student.id+"1" + "', 2, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 2, event, " + "" + (student.id+"1") + ");\" data-show='" + student.id+"1" + "'>"
+				+ mytextBold + "</" + varTdTh + ">"
+
 //				+ "<td>" + student.mysearch + "</td>"
-				+ "<td id=datashow" + (student.id+"2") + " tabIndex=" + (student.id+"2") + " onClick=\"datashow('" + (student.id+"2") + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"2") + ");\" data-show='" + (student.id+"2") + "'>" 
-				+ varOff + "</td>"
-				+ varEdit;
+				
+				+ "<" + varTdTh + " id=datashow" + student.id+"2" + " tabIndex=" + student.id+"2" + " onClick=\"datashow('" + student.id+"2" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"2") + ");\" data-show='" + student.id+"2" + "'>"
+				+ varOff + "</" + varTdTh + ">"
+
+				+ "<td id=datashow" + (student.id+"3") + " tabIndex=" + (student.id+"3") + " onClick=\"showLogo();\" onkeyup=\"moveCursor('" + student.mycode + "', 4, event, " + "" + (student.id+"3") + ");\" data-show='" + (student.id+"3") + "'>" 
+				+ varLogo + "</td>"
+				
+//				+ "<td id=datashow" + (student.id+"4") + " tabIndex=" + (student.id+"4") + " onClick=\"datashow('" + (student.id+"4") + "', 5, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 5, event, " + "" + (student.id+"4") + ");\" data-show='" + (student.id+"4") + "'>" 
+				+ "<td>" + varEdit + "</td>";
 		})
 		if (htmlString.length > 0) {
 			htmlString += "</tr>"
@@ -1276,11 +1289,12 @@ function showIniciarConfiguracao() {
 	$('#formBible').hide();
 	$('#divconfig').show();
 }
+
 function showForm1Form2() {
 	openLogo('logo/logo.png');
 	openImagemFundo(localStorage.getItem('valueVideoFundo'));
+	var DataShow_Tela2 = window.open("datashowtela2.html", "datashowtela2", "top=1200, width=600, height=500, left=1200, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
 	var DataShow_Tela1 = window.open("datashowtela1.html", "datashowtela1", "top=0, width=350, height=260, left=1200, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
-	var DataShow_Tela2 = window.open("datashowtela2.html", "datashowtela2", "top=0, width=600, height=500, left=0, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
 }
 
 function openLogo(logo) {
@@ -1460,15 +1474,16 @@ function dispFile(contents) {
 
 function moveCursor(mycode, col, evento, index) {
 	if (evento.keyCode == 13 || event.which == 13) { //ENTER
-		if (col == 3) {
+		if (col == 4) { //coluna logotipo
 			showLogo();
+		} else {
+			freezeDataShow('false');
+			if (localStorage.getItem('valueAoVivo') == 'true') {
+				setColor(index, localStorage.getItem('valueAoVivo'));
+			}
+			document.getElementById('txtSearch').value = removeSpecials(index.trim());
+			refreshTableData();
 		}
-		freezeDataShow('false');
-		if (localStorage.getItem('valueAoVivo') == 'true') {
-			setColor(index, localStorage.getItem('valueAoVivo'));
-		}
-		document.getElementById('txtSearch').value = removeSpecials(index.trim());
-		refreshTableData();
     } else if (evento.keyCode == 27 || event.which == 27) { //ESC
 		if (localStorage.getItem('valueAoVivo') == 'false') {
 			$('#txtSearch').focus();
@@ -1499,7 +1514,7 @@ function moveCursor(mycode, col, evento, index) {
 
 //https://www.ti-enxame.com/pt/jquery/use-setas-para-navegar-em-uma-tabela-html/1046534083/
 function datashow(index, col, code) {
-	if (document.getElementById('datashow' + index) == null) { //não permite mover o foco para fora da tabela
+	if (document.getElementById('datashow' + index) == null) { //não permite mover o foco para fora da tabela e dar erro de código
 		return;
 	}
 	document.getElementById('datashow' + index).focus;
