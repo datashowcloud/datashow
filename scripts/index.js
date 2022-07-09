@@ -942,17 +942,12 @@ async function refreshTableData() {
 		var varFav = '';
 		var varEdit = '';
 		var varDel = '';
-		var htmlStringButtons = getButtonsBar();
+//		var htmlStringButtons = getButtonsBar();
+		var htmlStringButtons = ""; //getButtonsBar();
 
 		students.forEach(function (student) {
-            if (student.myorder == '000') {
-				htmlString += "<tr><td></td><td></td>"
-				htmlString += "<td nowrap>"
-
-				htmlString += htmlStringButtons
-
-				htmlString += "</td><td></td>"
-				htmlString += "</tr>"
+			if (student.myorder == '000') {
+//				htmlString += "<tr><td colspan=99>&nbsp;</td></tr>"
 				varTdTh = 'th';
 				varOff = "<i class=\"fa fa-stop\" style=\"color:#000000;\"></i>&nbsp;";
 				varLogo = "<img src=\"logo/logo.png\" style=\"width:30px;\"></img>";
@@ -989,23 +984,18 @@ async function refreshTableData() {
 			
 			htmlString += "<tr ItemId=" + student.id + ">"
                 + "<td style=\"color:white; font-size:1px;\">" + student.mycode + "</td>"
-                
 				+ "<td style=\"color:white; font-size:1px;\">" + student.myorder + "</td>"
-				
 				+ "<" + varTdTh + " id=datashow" + student.id+"1" + " tabIndex=" + student.id+"1" + " onClick=\"datashow('" + student.id+"1" + "', 2, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 2, event, " + "" + (student.id+"1") + ");\" data-show='" + student.id+"1" + "'>"
 				+ mytextBold + "</" + varTdTh + ">"
-
 //				+ "<td>" + student.mysearch + "</td>"
-				
 				+ "<" + varTdTh + " id=datashow" + student.id+"2" + " tabIndex=" + student.id+"2" + " onClick=\"datashow('" + student.id+"2" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"2") + ");\" data-show='" + student.id+"2" + "'>"
 				+ varOff + "</" + varTdTh + ">"
-
 				+ "<td id=datashow" + (student.id+"3") + " tabIndex=" + (student.id+"3") + " onClick=\"showLogo();\" onkeyup=\"moveCursor('" + student.mycode + "', 4, event, " + "" + (student.id+"3") + ");\" data-show='" + (student.id+"3") + "'>" 
 				+ varLogo + "</td>"
-				
 //				+ "<td id=datashow" + (student.id+"4") + " tabIndex=" + (student.id+"4") + " onClick=\"datashow('" + (student.id+"4") + "', 5, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 5, event, " + "" + (student.id+"4") + ");\" data-show='" + (student.id+"4") + "'>" 
 				+ "<td>" + varEdit + "</td>";
 		})
+
 		if (htmlString.length > 0) {
 			htmlString += "</tr>"
 		} else {
