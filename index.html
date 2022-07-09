@@ -26,15 +26,11 @@
 
 <body id="myBody" background="gallery/paper.jpeg">
 
-    <div class="row row-centered " style="margin-top:10px; ">
+    <div class="row row-centered " style="margin-top:0px;">
         
 		
 		<div class="col-xs-12 col-sm-10 col-centered ">
 			<table border=0 align=center><tr><td>
-				<label style="font-size:20px; color:green;">DA</label>
-				<label style="font-size:20px; color:#FFD700;">TA</label>
-				<label style="font-size:20px; color:#3333AA;">SHOW &#174;</label>
-				<br/>
 				<l id="bSearch"> <input type="text" id="txtSearch" value="" placeholder="Digite aqui na pesquisa" style="width:150px; height:34px;"><button id="btnSearch" style="height:34px; width:40px;" class="btn btn-info"> <i class="fa fa-search"></i></button> </l>
 				<select id="selMycodeTextGroup" name="selMycodeTextGroup" style="height:34px; display:'none';">
 					<option value="0" selected>letras</option>
@@ -132,18 +128,21 @@
 				<textarea name="contents0" id="contents0" style="width:90%;" rows=10 placeholder="Use <p> para separar várias letras de música diferentes. Logo abaixo do <p> deve conter a identificação da letra, exemplo: autor e título."></textarea>
 				<br/><button id="btnConfirmImportOne" class="btn btn-info" style="padding:9px 15px 9px 15px;"> <i class="fa fa-plus"></i> Adicionar Nova Letra</button>
 -->
-				Meu Nome Curto: <br/><input type="text" name="config_myowner" size="16" id="config_myowner" maxlength="4" style="width:50px;" value="IIRF"/ alt="HOPE">
-				<br/>
-				<br/>Meu Plano de Fundo: <br/><textarea type="text" name="config_myfundo" id="config_myfundo" size="16" style="width:250px;">gallery/fundo.jpeg</textarea>
-				<br/>
-				<br/>Meu Logotipo: <br/><textarea type="text" name="config_mylogo" id="config_mylogo" size="16" style="width:250px;">logo/logo.png</textarea>
+			<label style="font-size:30px; color:green;">DA</label>
+			<label style="font-size:30px; color:#FFD700;">TA</label>
+			<label style="font-size:30px; color:#3333AA;">SHOW &#174;</label>
+			<br/><i>enio.francisco@gmail.com &#174; versão 09.07.22.16.35</i>
+			<br/>
+			<br/>Meu Nome Curto: <br/><input type="text" name="config_myowner" size="16" id="config_myowner" maxlength="4" style="width:50px;" value="IIRF"/ alt="HOPE">
+			<br/>
+			<br/>Meu Plano de Fundo: <br/><textarea type="text" name="config_myfundo" id="config_myfundo" size="16" style="width:250px;">gallery/fundo.jpeg</textarea>
+			<br/>
+			<br/>Meu Logotipo: <br/><textarea type="text" name="config_mylogo" id="config_mylogo" size="16" style="width:250px;">logo/logo.png</textarea>
 <!--			</form>
 -->
 			<br/><br/><button id="btnShowHelp" class="btn btn-info" style="padding:9px 15px 9px 15px; width:150px;"> <i class="fa fa-book"></i> Tutorial</button>
 			<br/><br/><button id="btnDropDb" class="btn btn-info" style="padding:9px 15px 9px 15px;"> <i class="fa fa-remove"></i> Restaurar Padrão de Fábrica</button>
 			<br/><br/><button id="btnCancelImport" class="btn btn-info" style="padding:9px 15px 9px 15px;"> <i class="fa fa-times"></i> Fechar</button>			
-			
-			<br/><br/><i>enio.francisco@gmail.com &#174; versão 09.07.22.16.30</i>
 			
 			<div style="display:none;">
 				<br/><button id="btnSelectCountAll" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-asterisk"></i> Count All</button>
