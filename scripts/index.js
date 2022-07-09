@@ -150,6 +150,39 @@ function getDbSchema() {
 		}
     }
 
+	var tableMessage = { //idêntico à Student
+        name: 'Message',
+        columns: {
+			id: { primaryKey: true, autoIncrement: true },
+			mycode: { notNull: true, dataType: 'string' },
+			myorder: { notNull: true, dataType: 'string' },
+			mytext: { notNull: true, dataType: 'string' },
+			mysearch: { notNull: false, dataType: 'string' },
+            myrepeated: { notNull: false, dataType: 'string' },
+            myowner: { notNull: false, dataType: 'string' },
+			myversion: { notNull: false, dataType: 'string' },
+			mycodeTextGroup: { notNull: false, dataType: 'string' },
+			myfix: { notNull: false, dataType: 'string' },
+			myfavorite: { notNull: false, dataType: 'string' },
+            mytype: { notNull: false, dataType: 'string' },
+			mystatus: { notNull: false, dataType: 'string' },
+			myfavorite: { notNull: false, dataType: 'string' },
+            mymodified: { notNull: false, dataType: 'string' },
+            mycreated: { notNull: false, dataType: 'string' },
+            mytimer: { notNull: false, dataType: 'string' },
+			mycomment: { notNull: false, dataType: 'string' },
+            fontfamily: { notNull: false, dataType: 'string' },
+            fontsize: { notNull: false, dataType: 'string' },
+            color: { notNull: false, dataType: 'string' },
+            textalign: { notNull: false, dataType: 'string' },
+            backgroundcolor: { notNull: false, dataType: 'string' },
+            camporeserva1: { notNull: false, dataType: 'string' },
+            camporeserva2: { notNull: false, dataType: 'string' },
+            camporeserva3: { notNull: false, dataType: 'string' }
+//			mycodeMyorder:{keyPath:['mycode','myorder']}
+		}
+    }
+
 	var tableTypeData = {
         name: 'TypeData',
         columns: {
@@ -185,7 +218,7 @@ function getDbSchema() {
 
     var db = {
         name: 'mydb1',
-        tables: [table, tableBible, tableArt, tableTypeData]
+        tables: [table, tableBible, tableArt, tableMessage, tableTypeData]
     }
     return db;
 }
@@ -284,12 +317,12 @@ function registerEvents() {
 		document.getElementById('selMycodeTextGroup').selectedIndex = 1;
 		openFile(dispFile);
     })
-    $('#btnConfirmImport').click(function () {
-		var result = confirm('Confirma?');
-		if (result) {
+    $('#btnConfirmImportOne').click(function () {
+//		var result = confirm('Confirma?');
+//		if (result) {
 			try {
 				var group = document.getElementById('selMycodeTextGroup').value.trim();
-				confirmImport('contents', group);
+				confirmImport('contents0', group); //letras
 				localStorage.setItem('valueLogo', document.getElementById('config_mylogo').value);
 				localStorage.setItem('valueVideoFundo', document.getElementById('config_myfundo').value);
 				alert('Clique no link "Go back" na próxima página.');
@@ -297,7 +330,7 @@ function registerEvents() {
 			} catch (ex) {
 				alert(ex.message);
 			}
-		}
+//		}
     })
 	
     $('#btnConfigForward').click(function () {
@@ -630,7 +663,7 @@ async function freezeDataShow(aovivo) {
 			localStorage.setItem('valueAoVivo', 'true');
 			if (document.getElementById('btnFreezeTop') != null) {
 				document.getElementById('btnFreezeTop').innerHTML = '<i class="fa fa-lock"></i> Congela';
-				document.getElementById('btnFreezeTop').classList.remove('btn-info');
+				document.getElementById('btnFreezeTop').classList.remove('btn-danger');
 				document.getElementById('btnFreezeTop').classList.add('btn-default');
 			}
 		} else { //freeze DataShow
@@ -638,7 +671,7 @@ async function freezeDataShow(aovivo) {
 			if (document.getElementById('btnFreezeTop') != null) {
 				document.getElementById('btnFreezeTop').innerHTML = '<i class="fa fa-times"></i> Descongela';
 				document.getElementById('btnFreezeTop').classList.remove('btn-default');
-				document.getElementById('btnFreezeTop').classList.add('btn-info');
+				document.getElementById('btnFreezeTop').classList.add('btn-danger');
 			}
 		}
     } catch (ex) {
@@ -699,7 +732,6 @@ async function searchSimples() {
     }
 }
 
-
 //This function confirm import
 async function confirmImport(contents, group) {
 //	var result = confirm('Não feche esta página. \nNão atualize esta página.');
@@ -735,10 +767,11 @@ async function confirmImport(contents, group) {
 				var mytext = valor.substring(posicao, nextpos).trim();
 				mytext = mytext.replaceAll('<br>', ''); //altera o <br> para ENTER (quebra de linha no mersmo texto)
 //				var group = document.getElementById('selMycodeTextGroup').value.trim();
-				//alert('mycode='+mycode + ' myorder='+myorder + ' group='+group + ' myrepeated='+myrepeated + ' mytext='+mytext);
+	
+//	alert('mycode='+mycode + '\n myorder='+myorder + '\n group='+group + '\n myrepeated='+myrepeated + '\n mytext='+mytext);
 				setStudentFromImport(mycode, myorder, mytext, group, myrepeated);
 				addStudentImport(group);
-
+				
 				setTimeout(() => { refreshTableData() }, 500); // Executa novamente a cada 500 milisegundos
 				
 				showGridAndHideForms();
@@ -1003,7 +1036,7 @@ async function selectCountAll() {
 async function addStudentImport(group) {
     var student = getStudentFromForm();
     try {
-        if (group == '0') { //liryc
+		if (group == '0') { //liryc
 			var noOfDataInserted = await jsstoreCon.insert({
 				into: 'Student',
 				values: [student]
@@ -1142,7 +1175,7 @@ function getButtonsBar() {
 	if (localStorage.getItem('valueAoVivo') == 'true') {
 		htmlStringButtons += "&nbsp;<a href='#' class='freeze'><button id=\"btnFreezeTop\" class=\"btn btn-default\"><i class=\"fa fa-lock\"></i> Congela</button></a>"
 	} else {
-		htmlStringButtons += "&nbsp;<a href='#' class='freeze'><button id=\"btnFreezeTop\" class=\"btn btn-info\"><i class=\"fa fa-times\"></i> Descongela</button></a>"
+		htmlStringButtons += "&nbsp;<a href='#' class='freeze'><button id=\"btnFreezeTop\" class=\"btn btn-danger\"><i class=\"fa fa-times\"></i> Descongela</button></a>"
 	}
 	if (localStorage.getItem('valueComplete') == 'true') {
 		htmlStringButtons += "&nbsp;<a href='#' class='complete'><button id=\"btnCompleteTop\" class=\"btn btn-default\"><i class=\"fa fa-minus\"></i></button></a>"
@@ -1210,7 +1243,7 @@ function showGridAndHideForms() {
 
 function showFormGear() {
     $('#tblGrid').hide();
-    $('#formAddUpdate').hide();
+//    $('#formAddUpdate').hide();
 	$('#divGear').show();
 	$('#divcontent').hide();
 	$('#formBible').hide();
@@ -1520,7 +1553,7 @@ function setColor(index, valueAoVivo) {
 		nextcell.style.backgroundColor = '#5cb85c'; //'#5cb85c'; '#5bc0de';
 		nextcell.style.color = 'white';
 	} else {
-		nextcell.style.backgroundColor = '#5bc0de'; //'#5cb85c'; '#5bc0de';
+		nextcell.style.backgroundColor = '#D22222'; //'#5bc0de; #5cb85c';
 		nextcell.style.color = 'white';
 	}
 }
@@ -1541,8 +1574,6 @@ function chooseChapter(content) {
 		} else {
 			showGridAndHideForms();
 		}
-//		showGridAndHideForms();
-//		freezeDataShow(true);
 		$('#txtSearch').focus();
 		$('#txtSearch').select();	
 	}
