@@ -1283,8 +1283,8 @@ function showIniciarConfiguracao() {
 function showForm1Form2() {
 	openLogo('logo/logo.png');
 	openImagemFundo(localStorage.getItem('valueVideoFundo'));
-	var DataShow_Tela1 = window.open("datashowtela1.html", "datashowtela1", "top=0, width=350, height=260, left=1200, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
 	var DataShow_Tela2 = window.open("datashowtela2.html", "datashowtela2", "top=1200, width=600, height=500, left=1200, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
+	var DataShow_Tela1 = window.open("datashowtela1.html", "datashowtela1", "top=0, width=350, height=260, left=1200, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
 }
 
 function openLogo(logo) {
