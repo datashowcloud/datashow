@@ -670,7 +670,7 @@ async function freezeDataShow(aovivo) {
 		} else { //freeze DataShow
 			localStorage.setItem('valueAoVivo', 'false');
 			if (document.getElementById('btnFreezeTop') != null) {
-				document.getElementById('btnFreezeTop').innerHTML = '<i class="fa fa-times"></i> Descongela';
+				document.getElementById('btnFreezeTop').innerHTML = 'Ao Vivo';
 				document.getElementById('btnFreezeTop').classList.remove('btn-default');
 				document.getElementById('btnFreezeTop').classList.add('btn-danger');
 			}
@@ -1178,7 +1178,7 @@ function getButtonsBar() {
 	if (localStorage.getItem('valueAoVivo') == 'true') {
 		htmlStringButtons += "&nbsp;<a href='#' class='freeze'><button id=\"btnFreezeTop\" class=\"btn btn-default\"><i class=\"fa fa-lock\"></i> Congela</button></a>"
 	} else {
-		htmlStringButtons += "&nbsp;<a href='#' class='freeze'><button id=\"btnFreezeTop\" class=\"btn btn-danger\"><i class=\"fa fa-times\"></i> Descongela</button></a>"
+		htmlStringButtons += "&nbsp;<a href='#' class='freeze'><button id=\"btnFreezeTop\" class=\"btn btn-danger\">Ao Vivo</button></a>"
 	}
 	if (localStorage.getItem('valueComplete') == 'true') {
 		htmlStringButtons += "&nbsp;<a href='#' class='complete'><button id=\"btnCompleteTop\" class=\"btn btn-default\"><i class=\"fa fa-minus\"></i></button></a>"
