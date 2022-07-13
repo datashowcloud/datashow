@@ -34,6 +34,8 @@
 
 <font size=4.9 style=text-align:justify>
 
+	<a id="top"></a>
+
 	<div id="div00" style="display:'none';">
 		<button onclick="openFile('simulado.html');" class="btn btn-default"> <i class="fa fa-fast-backward"></i> </button>
 		<button class="btn btn-info" onclick="showPrevious('01');" disabled> <i class="fa fa-chevron-left"></i></button>
@@ -44,7 +46,6 @@
 				<h2 id='result'> não há suporte para este browser </h2>
 				<script src="p01.js"></script>
 -->
-	<a id="top"></a>
 	
 	<div id="div01" style="display:none;">
 		<button class="btn btn-default" onclick="showPrevious('01');"> <i class="fa fa-backward"></i></button>
@@ -54,10 +55,10 @@
 		<br/><br/>
 		<a id="link01">01.</a>
 		Estima o custo para solução de arquitetura, antes do uso, antes da implementação.
-		<br/> <input type=checkbox value="01a"> a) AWS Princing Calculator (<a href="#AWS Princing Calculator">link estudar</a>)
-		<br/> <input type=checkbox value="01b"> b) AWS Organizations (<a href="#AWS Organizations">link estudar</a>)
-		<br/> <input type=checkbox value="01c"> c) AWS Billing e Cost Management (<a href="#AWS Billing e Cost Management">link estudar</a>)
-		<br/> <input type=checkbox value="01d"> d) AWS Cost Explorer (<a href="#AWS Cost Explorer">link estudar</a>)
+		<br/> <input type=checkbox value="01a"> a) AWS Princing Calculator <a href="#AWS Princing Calculator" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+		<br/> <input type=checkbox value="01b"> b) AWS Organizations <a href="#AWS Organizations" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+		<br/> <input type=checkbox value="01c"> c) AWS Billing <a href="#AWS Billing" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+		<br/> <input type=checkbox value="01d"> d) AWS Cost Explorer <a href="#AWS Cost Explorer" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
 	</div>
 
 	<div id="div02" style="display:none;">
@@ -68,10 +69,10 @@
 		<br/><br/>
 		<a id="link01">02.</a>
 		Permite criar novas contas da AWS e alocar recursos, agrupar contas para organizar seus fluxos de trabalho, aplicar políticas a contas ou grupos para governança.
-		<br/> <input type=checkbox value="02a"> a) AWS Organizations (<a href="#AWS Organizations">link estudar</a>)
-		<br/> <input type=checkbox value="02b"> b) AWS Princing Calculator (<a href="#AWS Princing Calculator">link estudar</a>)
-		<br/> <input type=checkbox value="02c"> c) AWS Billing e Cost Management (<a href="#AWS Billing e Cost Management">link estudar</a>)
-		<br/> <input type=checkbox value="03d"> d) AWS Cost Explorer (<a href="#AWS Cost Explorer">link estudar</a>)
+		<br/> <input type=checkbox value="02a"> a) AWS Organizations <a href="#AWS Organizations" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+		<br/> <input type=checkbox value="02b"> b) AWS Princing Calculator <a href="#AWS Princing Calculator" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+		<br/> <input type=checkbox value="02c"> c) AWS Billing <a href="#AWS Billing" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+		<br/> <input type=checkbox value="03d"> d) AWS Cost Explorer <a href="#AWS Cost Explorer" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
 	</div>
 
 	<div id="div03" style="display:none;">
@@ -81,11 +82,39 @@
 		<button class="btn btn-default" onclick="showPoints('3');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/>
 		<a id="link01">03.</a>
-		Conjunto de serviços para visualizar e pagar faturas, monitorar o uso, analisar e controlar os custos financeiros na nuvem.
-		<br/> <input type=checkbox value="03a"> a) AWS Billing e Cost Management (<a href="#AWS Billing e Cost Management">link estudar</a>)
-		<br/> <input type=checkbox value="03b"> b) AWS Organizations (<a href="#AWS Organizations">link estudar</a>)
-		<br/> <input type=checkbox value="03c"> c) AWS Princing Calculator (<a href="#AWS Princing Calculator">link estudar</a>)
-		<br/> <input type=checkbox value="03d"> d) AWS Cost Explorer (<a href="#AWS Cost Explorer">link estudar</a>)
+		Conjunto de serviços para visualizar e pagar faturas, monitorar, analisar e controlar os custos financeiros na nuvem.
+		<br/> <input type=checkbox value="03a"> a) AWS Billing <a href="#AWS Billing" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+		<br/> <input type=checkbox value="03b"> b) AWS Organizations <a href="#AWS Organizations" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+		<br/> <input type=checkbox value="03c"> c) AWS Princing Calculator <a href="#AWS Princing Calculator" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+		<br/> <input type=checkbox value="03d"> d) AWS Cost Explorer <a href="#AWS Cost Explorer" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+	</div>
+
+	<div id="div04" style="display:none;">
+		<button class="btn btn-default" onclick="showPrevious('04');"> <i class="fa fa-backward"></i></button>
+		<button class="btn btn-info" onclick="showPrevious('04');"> <i class="fa fa-chevron-left"></i></button>
+		<button class="btn btn-success" onclick="showNext('04');">Próximo <i class="fa fa-chevron-right"></i></button>
+		<button class="btn btn-default" onclick="showPoints('4');"><i class="fa fa-signal"></i> Pontos</button>
+		<br/><br/>
+		<a id="link01">04.</a>
+		Interface que permite visualizar, entender e gerenciar os custos e o uso da AWS relacionado ao tempo gasto que já passou.
+		<br/> <input type=checkbox value="04a"> a) AWS Billing <a href="#AWS Billing" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+		<br/> <input type=checkbox value="04b"> b) AWS Organizations <a href="#AWS Organizations" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+		<br/> <input type=checkbox value="04c"> c) AWS Cost Explorer <a href="#AWS Cost Explorer" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+		<br/> <input type=checkbox value="04d"> d) AWS Princing Calculator <a href="#AWS Princing Calculator" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+	</div>
+
+	<div id="div05" style="display:none;">
+		<button class="btn btn-default" onclick="showPrevious('05');"> <i class="fa fa-backward"></i></button>
+		<button class="btn btn-info" onclick="showPrevious('05');"> <i class="fa fa-chevron-left"></i></button>
+		<button class="btn btn-success" onclick="showNext('05');">Próximo <i class="fa fa-chevron-right"></i></button>
+		<button class="btn btn-default" onclick="showPoints('5');"><i class="fa fa-signal"></i> Pontos</button>
+		<br/><br/>
+		<a id="link01">05.</a>
+		Modelo de uso dos produtos da AWS onde você não é cobrado.
+		<br/> <input type=checkbox value="05a"> a) Serviço de Firewall <a href="#Não Está Relacionado ao Assunto" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+		<br/> <input type=checkbox value="05b"> b) Java <a href="#Não Está Relacionado ao Assunto" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+		<br/> <input type=checkbox value="05c"> c) AWS DynamoDB <a href="#AWS DynamoDB" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+		<br/> <input type=checkbox value="05d"> d) Nível Gratuito (Free Tier) <a href="#Nível Gratuito (Free Tier)" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
 	</div>
 
 	<!-- sempre visível -->
@@ -106,25 +135,49 @@
 
 	<hr/>
 
-	<p/><a href="#top" class="btn btn-default"><i class="fa fa-arrow-up"></i></a>
+	<p/><a id="Não Está Relacionado ao Assunto" href="#top" class="btn btn-default"><i class="fa fa-arrow-up"></i></a>
+	<b>Não Está Relacionado ao Assunto</b>
+	<br/>Não está relacionado ao assunto
+
+	<p/><a id="AWS Princing Calculator" href="#top" class="btn btn-default"><i class="fa fa-arrow-up"></i></a>
 	<b>AWS Princing Calculator</b>
 	<br/>Estima o custo para solução de arquitetura, antes do uso, antes da implementação.
-	<br/>(<a id="AWS Princing Calculator" href="https://calculator.aws/#/" target="_blank">link internet</a>)
+	<br/>(<a href="https://calculator.aws/#/" target="_blank">link internet</a>)
 
-	<p/><a href="#top" class="btn btn-default"><i class="fa fa-arrow-up"></i></a>
+	<p/><a id="AWS Organizations" href="#top" class="btn btn-default"><i class="fa fa-arrow-up"></i></a>
 	<b>AWS Organizations</b>
 	<br/>Permite criar novas contas da AWS e alocar recursos, agrupar contas para organizar seus fluxos de trabalho, aplicar políticas a contas ou grupos para governança.
-	<br/>(<a id="AWS Organizations" href="https://aws.amazon.com/pt/organizations/?nc2=type_a" target="_blank">link internet</a>)
+	<br/>(<a href="https://aws.amazon.com/pt/organizations/?nc2=type_a" target="_blank">link internet</a>)
 
-	<p/><a href="#top" class="btn btn-default"><i class="fa fa-arrow-up"></i></a>
-	<b>AWS Billing e Cost Management</b>
-	<br/>Conjunto de serviços para visualizar e pagar faturas, monitorar o uso, analisar e controlar os custos financeiros na nuvem.
-	<br/>(<a id="AWS Billing e Cost Management" href="https://aws.amazon.com/pt/aws-cost-management/aws-billing/" target="_blank">link internet</a>)
+	<p/><a id="AWS Billing" href="#top" class="btn btn-default"><i class="fa fa-arrow-up"></i></a>
+	<b>AWS Billing</b>
+	<br/>AWS Billing e Cost Management é um conjunto de serviços para visualizar e pagar faturas, monitorar, analisar e controlar os custos financeiros na nuvem.
+	<br/>(<a href="https://aws.amazon.com/pt/aws-cost-management/aws-billing/" target="_blank">link internet</a>)
 	
-	<p/><a href="#top" class="btn btn-default"><i class="fa fa-arrow-up"></i></a>
+	<p/><a id="AWS Cost Explorer" href="#top" class="btn btn-default"><i class="fa fa-arrow-up"></i></a>
 	<b>AWS Cost Explorer</b>
-	<br/>Permite visualizar, entender e gerenciar os custos e o uso da AWS ao longo do tempo relacionado ao gasto que já passou.
-	<br/>(<a id="AWS Cost Explorer" href="https://aws.amazon.com/pt/aws-cost-management/aws-cost-explorer/" target="_blank">link internet</a>)
+	<br/>Interface que permite visualizar, entender e gerenciar os custos e o uso da AWS relacionado ao tempo gasto que já passou.
+	<br/>(<a href="https://aws.amazon.com/pt/aws-cost-management/aws-cost-explorer/" target="_blank">link internet</a>)
+
+	<p/><a id="Nível Gratuito (Free Tier)" href="#top" class="btn btn-default"><i class="fa fa-arrow-up"></i></a>
+	<b>Nível Gratuito (Free Tier)</b>
+	<br/>Modelo de uso onde você não é cobrado e pode explorar e testar gratuitamente serviços da AWS até os limites especificados para cada serviço. Composto por três tipos:
+	<br/>1) 12 meses de gratuídade
+	<br/>2) Sempre gratuito
+	<br/>3) Experimentação
+	<br/>(<a href="https://aws.amazon.com/pt/free/free-tier-faqs/" target="_blank">link internet</a>)
+
+	<p/><a id="AWS DynamoDB" href="#top" class="btn btn-default"><i class="fa fa-arrow-up"></i></a>
+	<b>AWS DynamoDB</b>
+	<br/>Banco de dados de chave-valor NoSQL totalmente gerenciado e sem servidor, projetado para executar aplicações de alta performance em qualquer escala.
+	<br/>(<a href="https://aws.amazon.com/pt/dynamodb/" target="_blank">link internet</a>)
+
+	<p/><a id="MFA - Autenticação Multi Fator" href="#top" class="btn btn-default"><i class="fa fa-arrow-up"></i></a>
+	<b>MFA - Autenticação Multi Fator</b>
+	<br/>Serviço que inclui uma etapa a mais no processo de autenticação de acesso à conta da AWS pela Web.
+	<br/>(<a href="https://aws.amazon.com/pt/dynamodb/" target="_blank">link internet</a>)
+
+
 
 
 
@@ -169,9 +222,11 @@ function showPoints(qtdeResponses) {
 	var questBefore = '';
 	var arraySelected = [];
 	var questSelected = [];
-	var gabarito = ['01a','02a','03a','04a','05a','06c','07d','08d','09d','10b','11d','12c','13b','14d','15c','16c','17a','18c','19c','20d','21d','22a','23ab','24a','25c','26b','27c','28b','29d','30d','31c','32a','33d','34d','35a','36a','37b','38d','39a','40c','41c','42a','43d','44a','45a','46c','47c','48d','49b','50b','51c','52a','53b','54b','55c','56c','57a','58d','59d','60d','61b','62bcd','63ab','64abc','65bd'];
+	var gabarito = ['01a','02a','03a','04c','05d','06c','07d','08d','09d','10b','11d','12c','13b','14d','15c','16c','17a','18c','19c','20d','21d','22a','23ab','24a','25c','26b','27c','28b','29d','30d','31c','32a','33d','34d','35a','36a','37b','38d','39a','40c','41c','42a','43d','44a','45a','46c','47c','48d','49b','50b','51c','52a','53b','54b','55c','56c','57a','58d','59d','60d','61b','62bcd','63ab','64abc','65bd'];
 	var checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
-		
+	
+	totalperguntas = totalperguntas - 1;
+	
 	//soma quantidade corretas e incorretas
 	for (var i = 0; i < checkboxes.length; i++) {
 		if (checkboxes[i].value.substring(0,2) != questBefore && questBefore != '') {
