@@ -37,7 +37,7 @@
 	<a id="top"></a>
 
 	<div id="div00" style="display:'none';">
-		<button onclick="openFile('simulado.html');" class="btn btn-default"> <i class="fa fa-fast-backward"></i> </button>
+		<button onclick="openFile('simulado.html');" class="btn btn-default"> <i class="fa fa-remove"></i> </button>
 		<button class="btn btn-info" onclick="showPrevious('01');" disabled> <i class="fa fa-chevron-left"></i></button>
 		<button id="btn00" onclick="showNext('00');" class="btn btn-success" >Começar <i class="fa fa-chevron-right"></i></button>
 		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
@@ -53,68 +53,99 @@
 		<button class="btn btn-success" onclick="showNext('01');">Próximo <i class="fa fa-chevron-right"></i></button>
 		<button class="btn btn-default" onclick="showPoints('1');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/>
-		<a id="link01">01.</a>
+		<a id="link01">01.</a><b>
 		Estima o custo para solução de arquitetura, antes do uso, antes da implementação.
-		<br/> <input type=checkbox value="01a"> a) AWS Princing Calculator <a href="#AWS Princing Calculator" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+		</b><br/> <input type=checkbox value="01a"> a) AWS Princing Calculator <a href="#AWS Princing Calculator" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
 		<br/> <input type=checkbox value="01b"> b) AWS Organizations <a href="#AWS Organizations" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
 		<br/> <input type=checkbox value="01c"> c) AWS Billing <a href="#AWS Billing" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
 		<br/> <input type=checkbox value="01d"> d) AWS Cost Explorer <a href="#AWS Cost Explorer" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
 	</div>
 
 	<div id="div02" style="display:none;">
-		<button class="btn btn-default" onclick="showPrevious('02');"> <i class="fa fa-backward"></i></button>
+		<button class="btn btn-default" onclick="showPrevious('01');"> <i class="fa fa-backward"></i></button>
 		<button class="btn btn-info" onclick="showPrevious('02');"> <i class="fa fa-chevron-left"></i></button>
 		<button class="btn btn-success" onclick="showNext('02');">Próximo <i class="fa fa-chevron-right"></i></button>
 		<button class="btn btn-default" onclick="showPoints('2');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/>
-		<a id="link01">02.</a>
+		<a id="link01">02.</a><b>
 		Permite criar novas contas da AWS e alocar recursos, agrupar contas para organizar seus fluxos de trabalho, aplicar políticas a contas ou grupos para governança.
-		<br/> <input type=checkbox value="02a"> a) AWS Organizations <a href="#AWS Organizations" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+		</b><br/> <input type=checkbox value="02a"> a) AWS Organizations <a href="#AWS Organizations" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
 		<br/> <input type=checkbox value="02b"> b) AWS Princing Calculator <a href="#AWS Princing Calculator" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
 		<br/> <input type=checkbox value="02c"> c) AWS Billing <a href="#AWS Billing" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
 		<br/> <input type=checkbox value="03d"> d) AWS Cost Explorer <a href="#AWS Cost Explorer" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
 	</div>
 
 	<div id="div03" style="display:none;">
-		<button class="btn btn-default" onclick="showPrevious('03');"> <i class="fa fa-backward"></i></button>
+		<button class="btn btn-default" onclick="showPrevious('01');"> <i class="fa fa-backward"></i></button>
 		<button class="btn btn-info" onclick="showPrevious('03');"> <i class="fa fa-chevron-left"></i></button>
 		<button class="btn btn-success" onclick="showNext('03');">Próximo <i class="fa fa-chevron-right"></i></button>
 		<button class="btn btn-default" onclick="showPoints('3');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/>
-		<a id="link01">03.</a>
+		<a id="link01">03.</a><b>
 		Conjunto de serviços para visualizar e pagar faturas, monitorar, analisar e controlar os custos financeiros na nuvem.
-		<br/> <input type=checkbox value="03a"> a) AWS Billing <a href="#AWS Billing" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+		</b><br/> <input type=checkbox value="03a"> a) AWS Billing <a href="#AWS Billing" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
 		<br/> <input type=checkbox value="03b"> b) AWS Organizations <a href="#AWS Organizations" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
 		<br/> <input type=checkbox value="03c"> c) AWS Princing Calculator <a href="#AWS Princing Calculator" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
 		<br/> <input type=checkbox value="03d"> d) AWS Cost Explorer <a href="#AWS Cost Explorer" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
 	</div>
 
 	<div id="div04" style="display:none;">
-		<button class="btn btn-default" onclick="showPrevious('04');"> <i class="fa fa-backward"></i></button>
+		<button class="btn btn-default" onclick="showPrevious('01');"> <i class="fa fa-backward"></i></button>
 		<button class="btn btn-info" onclick="showPrevious('04');"> <i class="fa fa-chevron-left"></i></button>
 		<button class="btn btn-success" onclick="showNext('04');">Próximo <i class="fa fa-chevron-right"></i></button>
 		<button class="btn btn-default" onclick="showPoints('4');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/>
-		<a id="link01">04.</a>
+		<a id="link01">04.</a><b>
 		Interface que permite visualizar, entender e gerenciar os custos e o uso da AWS relacionado ao tempo gasto que já passou.
-		<br/> <input type=checkbox value="04a"> a) AWS Billing <a href="#AWS Billing" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+		</b><br/> <input type=checkbox value="04a"> a) AWS Billing <a href="#AWS Billing" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
 		<br/> <input type=checkbox value="04b"> b) AWS Organizations <a href="#AWS Organizations" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
 		<br/> <input type=checkbox value="04c"> c) AWS Cost Explorer <a href="#AWS Cost Explorer" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
 		<br/> <input type=checkbox value="04d"> d) AWS Princing Calculator <a href="#AWS Princing Calculator" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
 	</div>
 
 	<div id="div05" style="display:none;">
-		<button class="btn btn-default" onclick="showPrevious('05');"> <i class="fa fa-backward"></i></button>
+		<button class="btn btn-default" onclick="showPrevious('01');"> <i class="fa fa-backward"></i></button>
 		<button class="btn btn-info" onclick="showPrevious('05');"> <i class="fa fa-chevron-left"></i></button>
 		<button class="btn btn-success" onclick="showNext('05');">Próximo <i class="fa fa-chevron-right"></i></button>
 		<button class="btn btn-default" onclick="showPoints('5');"><i class="fa fa-signal"></i> Pontos</button>
 		<br/><br/>
-		<a id="link01">05.</a>
+		<a id="link01">05.</a><b>
 		Modelo de uso dos produtos da AWS onde você não é cobrado.
-		<br/> <input type=checkbox value="05a"> a) Serviço de Firewall <a href="#Não Está Relacionado ao Assunto" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+		</b><br/> <input type=checkbox value="05a"> a) Serviço de Firewall <a href="#Não Está Relacionado ao Assunto" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
 		<br/> <input type=checkbox value="05b"> b) Java <a href="#Não Está Relacionado ao Assunto" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
 		<br/> <input type=checkbox value="05c"> c) AWS DynamoDB <a href="#AWS DynamoDB" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
 		<br/> <input type=checkbox value="05d"> d) Nível Gratuito (Free Tier) <a href="#Nível Gratuito (Free Tier)" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+	</div>
+
+	<div id="div06" style="display:none;">
+		<button class="btn btn-default" onclick="showPrevious('01');"> <i class="fa fa-backward"></i></button>
+		<button class="btn btn-info" onclick="showPrevious('06');"> <i class="fa fa-chevron-left"></i></button>
+		<button class="btn btn-success" onclick="showNext('06');">Próximo <i class="fa fa-chevron-right"></i></button>
+		<button class="btn btn-default" onclick="showPoints('6');"><i class="fa fa-signal"></i> Pontos</button>
+		<br/><br/>
+		<a id="link01">06.</a><b>
+		Quais as categorias de armazenamento do serviço S3? (selecione 4)
+		</b><br/> <input type=checkbox value="06a"> a) Standard (padrão) <a href="#Categorias de Armazenamento do Serviço S3" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+		<br/> <input type=checkbox value="06b"> b) Frequent Access <a href="#?" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+		<br/> <input type=checkbox value="06c"> c) Infrequent Access <a href="#?" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+		<br/> <input type=checkbox value="06d"> d) Intelligent Tiering <a href="#Categorias de Armazenamento do Serviço S3" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+		<br/> <input type=checkbox value="06e"> e) Standard-IA <a href="#Categorias de Armazenamento do Serviço S3" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+		<br/> <input type=checkbox value="06f"> f) One Zone-IA <a href="#Categorias de Armazenamento do Serviço S3" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+	</div>
+
+	<div id="div07" style="display:none;">
+		<button class="btn btn-default" onclick="showPrevious('01');"> <i class="fa fa-backward"></i></button>
+		<button class="btn btn-info" onclick="showPrevious('07');"> <i class="fa fa-chevron-left"></i></button>
+		<button class="btn btn-success" onclick="showNext('07');">Próximo <i class="fa fa-chevron-right"></i></button>
+		<button class="btn btn-default" onclick="showPoints('7');"><i class="fa fa-signal"></i> Pontos</button>
+		<br/><br/>
+		<a id="link01">07.</a><b>
+		Quais as categorias de armazenamento do serviço S3? (selecione 4)
+		</b><br/> <input type=checkbox value="07a"> a) Glacier Instant Retrieval <a href="#Categorias de Armazenamento do Serviço S3" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+		<br/> <input type=checkbox value="07b"> b) Glacier Flexible <a href="#Categorias de Armazenamento do Serviço S3" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+		<br/> <input type=checkbox value="07c"> c) Glacier Deep Archive <a href="#Categorias de Armazenamento do Serviço S3" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+		<br/> <input type=checkbox value="07d"> d) Outposts <a href="#Categorias de Armazenamento do Serviço S3" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+		<br/> <input type=checkbox value="07e"> e) Frequent Access <a href="#?" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
 	</div>
 
 	<!-- sempre visível -->
@@ -135,9 +166,17 @@
 
 	<hr/>
 
-	<p/><a id="Não Está Relacionado ao Assunto" href="#top" class="btn btn-default"><i class="fa fa-arrow-up"></i></a>
-	<b>Não Está Relacionado ao Assunto</b>
-	<br/>Não está relacionado ao assunto
+	<p/><a id="Categorias de Armazenamento do Serviço S3" href="#top" class="btn btn-default"><i class="fa fa-arrow-up"></i></a>
+	<b>Categorias de Armazenamento do Serviço S3 do mais barato ao mais caro</b>
+	<br/>1 Standard (custo mais alto) (padrão)
+	<br/>2 Intelligent Tiering
+	<br/>3 Standard-IA
+	<br/>4 One Zone-IA
+	<br/>5 Glacier Instant Retrieval
+	<br/>6 Glacier Flexible
+	<br/>7 Glacier Deep Archive
+	<br/>8 Outposts (custo mais baixo)
+	<br/> (<a href="https://aws.amazon.com/pt/s3/storage-classes/" target="_blank">link estudar mais na internet</a>)
 
 	<p/><a id="AWS Princing Calculator" href="#top" class="btn btn-default"><i class="fa fa-arrow-up"></i></a>
 	<b>AWS Princing Calculator</b>
@@ -177,6 +216,9 @@
 	<br/>Serviço que inclui uma etapa a mais no processo de autenticação de acesso à conta da AWS pela Web.
 	<br/>(<a href="https://aws.amazon.com/pt/dynamodb/" target="_blank">link internet</a>)
 
+	<p/><a id="Não Está Relacionado ao Assunto" href="#top" class="btn btn-default"><i class="fa fa-arrow-up"></i></a>
+	<b>Não Está Relacionado ao Assunto</b>
+	<br/>Não está relacionado ao assunto
 
 
 
@@ -222,7 +264,7 @@ function showPoints(qtdeResponses) {
 	var questBefore = '';
 	var arraySelected = [];
 	var questSelected = [];
-	var gabarito = ['01a','02a','03a','04c','05d','06c','07d','08d','09d','10b','11d','12c','13b','14d','15c','16c','17a','18c','19c','20d','21d','22a','23ab','24a','25c','26b','27c','28b','29d','30d','31c','32a','33d','34d','35a','36a','37b','38d','39a','40c','41c','42a','43d','44a','45a','46c','47c','48d','49b','50b','51c','52a','53b','54b','55c','56c','57a','58d','59d','60d','61b','62bcd','63ab','64abc','65bd'];
+	var gabarito = ['01a','02a','03a','04c','05d','06adef','07abcd','08d','09d','10b','11d','12c','13b','14d','15c','16c','17a','18c','19c','20d','21d','22a','23ab','24a','25c','26b','27c','28b','29d','30d','31c','32a','33d','34d','35a','36a','37b','38d','39a','40c','41c','42a','43d','44a','45a','46c','47c','48d','49b','50b','51c','52a','53b','54b','55c','56c','57a','58d','59d','60d','61b','62bcd','63ab','64abc','65bd'];
 	var checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
 	
 	totalperguntas = totalperguntas - 1;
