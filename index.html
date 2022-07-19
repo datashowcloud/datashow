@@ -40,11 +40,13 @@
 				<button id="btnGear" class="btn btn-default" style="display:'none';"> <i class="fa fa-cog"></i></button>
 				
 				<p/><p/>
-				<button id="btnLogoTop" class="btn btn-success" onclick="showLogo();"><i class="fa fa-minus"></i> Logo</button>
+				<button id="btnLogoTop" class="btn btn-info" onclick="showLogo();"><i class="fa fa-minus"></i> Logo</button>
 				<button id="btnFreezeTop" class="btn btn-danger" onclick="freezeDataShow(localStorage.getItem('valueAoVivo'));">Ao Vivo</button>
-				<button id="btnShowStudent" class="btn btn-default"> <i class="fa fa-repeat"></i> </button>
-				<button id="btnCompleteTop" class="btn btn-default" onclick="searchComplete();"><i class="fa fa-minus"></i></button>
+				<button id="btnShowStudent" class="btn btn-default"> <i class="fa fa-repeat"></i> Telas</button>
+				<button id="btnAddNewManual" class="btn btn-default"><i class="fa fa-plus"></i> Nova</button>
+<!--				<button id="btnCompleteTop" class="btn btn-default" onclick="searchComplete();"><i class="fa fa-minus"></i></button>
 				<button id="btnVideoPlayTop" class="btn btn-default" onclick="videoPlayPause();"><i class="fa fa-pause"></i></button>
+-->
 			</td></tr></table>
 		</div>
 		
@@ -87,9 +89,10 @@
 			</div>
 			<div class="form-group">
 				<button id="btnSubmit" type="button" class="btn btn-primary" style="padding:9px 15px 9px 15px;">
-					<i class="fa fa-check"></i> <span>Salvar</span>
+					<i class="fa fa-check"></i> <span>Salvar Alteração</span>
 				</button>
-				<button id="btnCancel" type="button" class="btn btn-default " style="padding:9px 15px 9px 15px;margin-left:10px; ">
+				<br/>
+				<br/><button id="btnCancel" type="button" class="btn btn-info" style="padding:9px 15px 9px 15px;margin-left:10px; ">
 					<i class="fa fa-times"></i> Fechar
 				</button>
 			</div>
@@ -125,25 +128,26 @@
 			
 <!--			<hr/>
 			<form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post">
-				<textarea name="contents0" id="contents0" style="width:90%;" rows=10 placeholder="Use <p> para separar várias letras de música diferentes. Logo abaixo do <p> deve conter a identificação da letra, exemplo: autor e título."></textarea>
+				<textarea name="contentAddNewManual" id="contentAddNewManual" style="width:90%;" rows=10 placeholder="Use <p> para separar várias letras de música diferentes. Logo abaixo do <p> deve conter a identificação da letra, exemplo: autor e título."></textarea>
 				<br/><button id="btnConfirmImportOne" class="btn btn-info" style="padding:9px 15px 9px 15px;"> <i class="fa fa-plus"></i> Adicionar Nova Letra</button>
 -->
 			<label style="font-size:30px; color:green;">DA</label>
 			<label style="font-size:30px; color:#FFD700;">TA</label>
-			<label style="font-size:30px; color:#3333AA;">SHOW &#174;</label>
-			<br/><i>enio.francisco@gmail.com &#174; versão 12.07.22.15.00</i>
-			<br/>
-			<br/>Meu Nome Curto: <br/><input type="text" name="config_myowner" size="16" id="config_myowner" maxlength="4" style="width:50px;" value="IIRF"/ alt="HOPE">
-			<br/>
+			<label style="font-size:30px; color:#3333AA;">SHOW&#174;</label>
+			<hr/>
+			Meu Nome Curto (até 6 caractreres): <br/><input type="text" name="config_myowner" size="16" id="config_myowner" maxlength="6" style="width:50px;" value="IIRF"/ alt="HOPE">
 			<br/>Meu Plano de Fundo: <br/><textarea type="text" name="config_myfundo" id="config_myfundo" size="16" style="width:250px;">gallery/fundo.jpeg</textarea>
-			<br/>
 			<br/>Meu Logotipo: <br/><textarea type="text" name="config_mylogo" id="config_mylogo" size="16" style="width:250px;">logo/logo.png</textarea>
 <!--			</form>
 -->
-			<br/><br/><button id="btnShowHelp" class="btn btn-info" style="padding:9px 15px 9px 15px; width:150px;"> <i class="fa fa-book"></i> Tutorial</button>
-			<br/><br/><button id="btnDropDb" class="btn btn-info" style="padding:9px 15px 9px 15px;"> <i class="fa fa-remove"></i> Restaurar Padrão de Fábrica</button>
+			<br/><br/><button id="btnDropDb" class="btn btn-default" style="padding:9px 15px 9px 15px;"> <i class="fa fa-remove"></i> Restaurar Padrão de Fábrica</button>
+			<br/><br/><button id="btnShowHelp" class="btn btn-primary" style="padding:9px 15px 9px 15px; width:150px;"> <i class="fa fa-book"></i> Tutorial</button>
 			<br/><br/><button id="btnCancelImport" class="btn btn-info" style="padding:9px 15px 9px 15px;"> <i class="fa fa-times"></i> Fechar</button>			
-			
+
+			<hr/>
+			<i>enio.francisco@gmail.com
+			<br/>versão 19.07.22.10.00</i>
+
 			<div style="display:none;">
 				<br/><button id="btnSelectCountAll" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-asterisk"></i> Count All</button>
 				<br/><button id="btnDeleteLirics" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-minus"></i> Clear Lirycs</button>
@@ -234,15 +238,19 @@
 			</div>
 		</div>
 
-		<div class="form-group" id="divGearAddNewLiryc" style="display:'none';">
-			<hr/>
+		<div class="form-group" id="divGearAddNewLiryc" style="display:none;">
 			<form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post">
-				Digite ou cole a nova letra:
-				<br/>
-				
-				<textarea name="contents0" id="contents0" style="width:90%;" rows=5 placeholder="Use <p> para separar várias letras de música diferentes. Logo abaixo do <p> deve conter a identificação da letra, exemplo: autor e título."></textarea>
-				<br/><button id="btnConfirmImportOne" class="btn btn-info" style="padding:9px 15px 9px 15px;"> <i class="fa fa-plus"></i> Adicionar Nova Letra</button>
+				<label style="font-size:30px; color:green;">DA</label>
+				<label style="font-size:30px; color:#FFD700;">TA</label>
+				<label style="font-size:30px; color:#3333AA;">SHOW&#174;</label>
+				<hr/>
+				Nome: <input type="text" size="30" id="nomeAddNewManual" maxlength="60" value="" placeholder="Digite aqui o nome ou título...">
+				<br/>Autor: <input type="text" size="30" id="autorAddNewManual" maxlength="60" value="" placeholder="Digite aqui o autor...">
+				<br/>Letra:
+				<br/><textarea name="contentAddNewManual" id="contentAddNewManual" style="width:90%;" rows=5 placeholder="Coloque aqui uma nova letra de música."></textarea>
+				<br/><button id="btnConfirmImportOne" class="btn btn-primary" style="padding:9px 15px 9px 15px;"> <i class="fa fa-plus"></i> Salvar Nova Letra</button>
 			</form>
+			<br/><button id="btnCancelAddNewManual" class="btn btn-info" style="padding:9px 15px 9px 15px;"> <i class="fa fa-times"></i> Fechar</button>
 		</div>
 		
 	</div>
@@ -254,7 +262,6 @@
 
 				<table border=1>
 					<tr>
-						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 						<!--td><label class="btn btn-info">Pentateuco</label></td-->
 						<td style="text-align:left;">
 						
@@ -312,7 +319,6 @@
 					</tr>
 
 					<tr>
-						<td></td>
 						<!--td>Evangelhos</td-->
 						<td style="text-align:left;">
 							<label class="btn btn-success" style="width:150px;">Novo Testamento</label>
@@ -518,8 +524,6 @@
 				</table>
 			</div>
 		</form>
-
-
 
     <link href="style/main.css " rel="stylesheet " type="text/css " />
 
