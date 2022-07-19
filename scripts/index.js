@@ -322,7 +322,7 @@ function registerEvents() {
 //		if (result) {
 			try {
 				var group = document.getElementById('selMycodeTextGroup').value.trim();
-				confirmImport('contents0', group); //letras
+				confirmImport('contentAddNewManual', group); //letras
 				localStorage.setItem('valueLogo', document.getElementById('config_mylogo').value);
 				localStorage.setItem('valueVideoFundo', document.getElementById('config_myfundo').value);
 				alert('Clique no link "Go back" na próxima página.');
@@ -350,6 +350,9 @@ function registerEvents() {
     $('#btnCancelImport').click(function () {
 		showGridAndHideForms();
     })
+    $('#btnCancelAddNewManual').click(function () {
+		showGridAndHideForms();
+    })
     $('#btnCancelGear').click(function () {
 		showGridAndHideForms();
     })
@@ -368,6 +371,9 @@ function registerEvents() {
     $('#btnShowStudent').click(function () {
         showForm1Form2();
 		showGridAndHideForms();
+    })
+    $('#btnAddNewManual').click(function () {
+        showAddNewManual();
     })
     $('#btnShowHelp').click(function () {
 		var DataShow_Help = window.open("help/help.pdf", "datashowhelp", "top=100, width=1100, height=10000, left=0, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
@@ -645,14 +651,14 @@ function showLogo() {
 	if (localStorage.getItem('valueLogoBig') == 'true') {
 		document.getElementById('btnLogoTop').innerHTML = '<i class="fa fa-minus"></i> Logo';
 		document.getElementById('btnLogoTop').classList.remove('btn-default');
-		document.getElementById('btnLogoTop').classList.add('btn-success');
+		document.getElementById('btnLogoTop').classList.add('btn-info');
 	} else if (localStorage.getItem('valueLogoBig') == 'false') {
 		document.getElementById('btnLogoTop').innerHTML = '<i class="fa fa-times"></i> Logo';
-		document.getElementById('btnLogoTop').classList.remove('btn-success');
+		document.getElementById('btnLogoTop').classList.remove('btn-info');
 		document.getElementById('btnLogoTop').classList.add('btn-default');
 	} else if (localStorage.getItem('valueLogoBig') == '') {
 		document.getElementById('btnLogoTop').innerHTML = '<i class=\"fa fa-plus\"></i> Logo';
-		document.getElementById('btnLogoTop').classList.remove('btn-success');
+		document.getElementById('btnLogoTop').classList.remove('btn-info');
 		document.getElementById('btnLogoTop').classList.add('btn-default');
 	}
 }
@@ -665,7 +671,7 @@ async function freezeDataShow(aovivo) {
 			if (document.getElementById('btnFreezeTop') != null) {
 				document.getElementById('btnFreezeTop').innerHTML = '<i class="fa fa-lock"></i> Congela';
 				document.getElementById('btnFreezeTop').classList.remove('btn-danger');
-				document.getElementById('btnFreezeTop').classList.add('btn-default');
+				document.getElementById('btnFreezeTop').classList.add('btn-success');
 			}
 		} else { //freeze DataShow
 			localStorage.setItem('valueAoVivo', 'false');
@@ -949,15 +955,15 @@ async function refreshTableData() {
 			if (student.myorder == '000') {
 //				htmlString += "<tr><td colspan=99>&nbsp;</td></tr>"
 				varTdTh = 'th';
-				varOff = "<i class=\"fa fa-stop\" style=\"color:#000000;\"></i>&nbsp;";
-				varLogo = "<img src=\"logo/logo.png\" style=\"width:30px;\"></img>";
+				varLogo = "<a href=\"#\" class=\"favorite\" style=\"color:#000000;\"><img src=\"logo/logo.png\" style=\"width:40px; cursor:hand;\"></img></a>";
+				varOff = "<a href=\"#\" class=\"off\"> <i class=\"fa fa-stop\" style=\"color:#000000;\"></i></a>&nbsp;";
 				varFav = "<td> <!--i class=\"fa fa-heart\" style=\"color:#3333AA;\"></i --> </td>";
 				varEdit = "<i class=\"fa fa-edit\"></i>";
 				varDel = "<td><a href=\"#\" class=\"delete\" style=\"color:#777777;\"> <i class=\"fa fa-times\" style=\"color:red;\"></i> </a></td>";
 			} else {
 				varTdTh = 'td';
-				varOff = "<i class=\"fa fa-stop\" style=\"color:#000000;\"></i>&nbsp;";
-				varLogo = "<a href=\"#\" class=\"favorite\" style=\"color:#000000;\"><img src=\"logo/logo.png\" style=\"width:30px;\"></img>";
+				varLogo = "<a href=\"#\" class=\"favorite\" style=\"color:#000000;\"><img src=\"logo/logo.png\" style=\"width:20px; cursor:hand;\"></img>";
+				varOff = "<a href=\"#\" class=\"off\"> <i class=\"fa fa-stop\" style=\"color:#000000;\"></i></a>&nbsp;";
 				varFav = "<td><a href='#' class=\"favorite\" style=\"color:blue;\"> </a></td>";
 				varEdit = "<a href=\"#\" class=\"edit\"> <i class=\"fa fa-edit\"></i> </a>";
                 varDel = "<td><a href=\"#\" class=\"delete\" style=\"color:#777777;\">Del</a></td>";
@@ -981,18 +987,18 @@ async function refreshTableData() {
 			} else {
 				mytextBold = mytext;
 			}
-			
+
 			htmlString += "<tr ItemId=" + student.id + ">"
                 + "<td style=\"color:white; font-size:1px;\">" + student.mycode + "</td>"
 				+ "<td style=\"color:white; font-size:1px;\">" + student.myorder + "</td>"
-				+ "<" + varTdTh + " id=datashow" + student.id+"1" + " tabIndex=" + student.id+"1" + " onClick=\"datashow('" + student.id+"1" + "', 2, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 2, event, " + "" + (student.id+"1") + ");\" data-show='" + student.id+"1" + "'>"
+				+ "<td id=datashow" + (student.id+"3") + " tabIndex=" + (student.id+"3") + " onClick=\"showLogo();\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + (student.id+"3") + "'>" 
+				+ varLogo + "</td>"
+				+ "<" + varTdTh + " id=datashow" + student.id+"4" + " tabIndex=" + student.id+"4" + " onClick=\"datashow('" + student.id+"4" + "', 4, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 4, event, " + "" + (student.id+"4") + ");\" data-show='" + student.id+"4" + "'>"
 				+ mytextBold + "</" + varTdTh + ">"
 //				+ "<td>" + student.mysearch + "</td>"
-				+ "<" + varTdTh + " id=datashow" + student.id+"2" + " tabIndex=" + student.id+"2" + " onClick=\"datashow('" + student.id+"2" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"2") + ");\" data-show='" + student.id+"2" + "'>"
+				+ "<" + varTdTh + " id=datashow" + student.id+"5" + " tabIndex=" + student.id+"5" + " onClick=\"datashow('" + student.id+"5" + "', 5, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 5, event, " + "" + (student.id+"5") + ");\" data-show='" + student.id+"5" + "'>"
 				+ varOff + "</" + varTdTh + ">"
-				+ "<td id=datashow" + (student.id+"3") + " tabIndex=" + (student.id+"3") + " onClick=\"showLogo();\" onkeyup=\"moveCursor('" + student.mycode + "', 4, event, " + "" + (student.id+"3") + ");\" data-show='" + (student.id+"3") + "'>" 
-				+ varLogo + "</td>"
-//				+ "<td id=datashow" + (student.id+"4") + " tabIndex=" + (student.id+"4") + " onClick=\"datashow('" + (student.id+"4") + "', 5, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 5, event, " + "" + (student.id+"4") + ");\" data-show='" + (student.id+"4") + "'>" 
+//				+ "<td id=datashow" + (student.id+"6") + " tabIndex=" + (student.id+"6") + " onClick=\"datashow('" + (student.id+"6") + "', 5, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 6, event, " + "" + (student.id+"6") + ");\" data-show='" + (student.id+"6") + "'>"
 				+ "<td>" + varEdit + "</td>";
 		})
 
@@ -1176,7 +1182,7 @@ function getButtonsBar() {
 		htmlStringButtons += "<a href='#' class='logo'><button id=\"btnLogoTop\" class=\"btn btn-success\"><i class=\"fa fa-plus\"></i> Logo</button></a>"
 	}
 	if (localStorage.getItem('valueAoVivo') == 'true') {
-		htmlStringButtons += "&nbsp;<a href='#' class='freeze'><button id=\"btnFreezeTop\" class=\"btn btn-default\"><i class=\"fa fa-lock\"></i> Congela</button></a>"
+		htmlStringButtons += "&nbsp;<a href='#' class='freeze'><button id=\"btnFreezeTop\" class=\"btn btn-success\"><i class=\"fa fa-lock\"></i> Congela</button></a>"
 	} else {
 		htmlStringButtons += "&nbsp;<a href='#' class='freeze'><button id=\"btnFreezeTop\" class=\"btn btn-danger\">Ao Vivo</button></a>"
 	}
@@ -1233,10 +1239,22 @@ function showFormAddUpdate() {
 	$('#divcontent').hide();
 	$('#formBible').hide();
 	$('#divconfig').hide();
+	$('#divGearAddNewLiryc').hide();
 }
 
 function showGridAndHideForms() {
     $('#tblGrid').show();
+    $('#formAddUpdate').hide();
+	$('#divGear').hide();
+	$('#divcontent').hide();
+	$('#formBible').hide();
+	$('#divconfig').hide();
+	$('#divGearAddNewLiryc').hide();
+}
+
+function showAddNewManual() {
+	$('#divGearAddNewLiryc').show();
+    $('#tblGrid').hide();
     $('#formAddUpdate').hide();
 	$('#divGear').hide();
 	$('#divcontent').hide();
@@ -1251,6 +1269,7 @@ function showFormGear() {
 	$('#divcontent').hide();
 	$('#formBible').hide();
 	$('#divconfig').hide();
+	$('#divGearAddNewLiryc').hide();
 }
 
 function showFormImport() {
@@ -1260,6 +1279,7 @@ function showFormImport() {
 	$('#divcontent').show();
 	$('#formBible').hide();
 	$('#divconfig').hide();
+	$('#divGearAddNewLiryc').hide();
 }
 
 function showBible() {
@@ -1269,6 +1289,7 @@ function showBible() {
 	$('#divcontent').hide();
 	$('#formBible').show();
 	$('#divconfig').hide();
+	$('#divGearAddNewLiryc').hide();
 }
 
 function showIniciarConfiguracao() {
@@ -1278,6 +1299,7 @@ function showIniciarConfiguracao() {
 	$('#divcontent').hide();
 	$('#formBible').hide();
 	$('#divconfig').show();
+	$('#divGearAddNewLiryc').hide();
 }
 
 function showForm1Form2() {
@@ -1464,7 +1486,7 @@ function dispFile(contents) {
 
 function moveCursor(mycode, col, evento, index) {
 	if (evento.keyCode == 13 || event.which == 13) { //ENTER
-		if (col == 4) { //coluna logotipo
+		if (col == 3) { //coluna logotipo
 			showLogo();
 		} else {
 			freezeDataShow('false');
@@ -1495,8 +1517,10 @@ function moveCursor(mycode, col, evento, index) {
 			nextTabIndex = parseInt(index) + parseInt(10);
 		} else if (evento.keyCode == 39 || event.which == 39) { //seta para direita
 			nextTabIndex = parseInt(index) + parseInt(1);
+			col = col + 1;
 		} else if (evento.keyCode == 37 || event.which == 37) { //seta para esquerda
 			nextTabIndex = parseInt(index) - parseInt(1);
+			col = col - 1;
 		}
 		datashow(nextTabIndex, col, mycode);
 	}
@@ -1509,25 +1533,19 @@ function datashow(index, col, code) {
 	}
 	document.getElementById('datashow' + index).focus;
 
-	var valueText = removeEspecialsCommands(document.getElementById('datashow' + index).innerHTML);
-	localStorage.setItem('valueText', valueText);
-	setCookie('valueText', valueText, '1');
-
-	//Com o click, seleciona apenas uma letra da lista de pesquida
-	if (document.getElementById('txtSearch').value != removeSpecials(code.trim())) {
-		document.getElementById('txtSearch').value = removeSpecials(code.trim());
-		refreshTableData();
-	} else {
-//		localStorage.setItem('valueLogoBig', 'true');
-//		showLogo();
-	}
-
-	localStorage.setItem('valueAutor', ' ');
-
-	if (localStorage.getItem('valueArt') == '2') {
-		setPlanoFundo();
-//		localStorage.setItem('valueVideoFundo', localStorage.getItem('valueText'));
-//		setCookie('valueVideoFundo', localStorage.getItem('valueText'), '1');
+	if (col != 3) { //logotipo
+		var valueText = removeEspecialsCommands(document.getElementById('datashow' + index).innerHTML);
+		localStorage.setItem('valueText', valueText);
+		setCookie('valueText', valueText, '1');
+		//Com o click, seleciona apenas uma letra da lista de pesquida
+		if (document.getElementById('txtSearch').value != removeSpecials(code.trim())) {
+			document.getElementById('txtSearch').value = removeSpecials(code.trim());
+			refreshTableData();
+		}
+		localStorage.setItem('valueAutor', ' ');
+		if (localStorage.getItem('valueArt') == '2') {
+			setPlanoFundo();
+		}
 	}
 	
 	var startElement = document.getElementById('datashow' + index);
