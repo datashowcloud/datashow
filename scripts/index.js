@@ -317,14 +317,14 @@ function registerEvents() {
 		document.getElementById('selMycodeTextGroup').selectedIndex = 1;
 		openFile(dispFile);
     })
-    $('#btnConfirmImportOne').click(function () {
+    $('#btnConfirmImportManual').click(function () {
 //		var result = confirm('Confirma?');
 //		if (result) {
 			try {
 				var group = document.getElementById('selMycodeTextGroup').value.trim();
 				confirmImport('contentAddNewManual', group); //letras
-				localStorage.setItem('valueLogo', document.getElementById('config_mylogo').value);
-				localStorage.setItem('valueVideoFundo', document.getElementById('config_myfundo').value);
+//				localStorage.setItem('valueLogo', document.getElementById('config_mylogo').value);
+//				localStorage.setItem('valuePlanoFundoMestre', document.getElementById('config_myfundo').value);
 				alert('Clique no link "Go back" na próxima página.');
 				document.getElementById("formAdd").submit();
 			} catch (ex) {
@@ -551,8 +551,8 @@ async function deleteArt() {
 async function dropdb() {
 	var result = confirm('Reiniciar?');
 	if (result) {
-		localStorage.setItem('valueLogo', 'logo/logo.png');
-		localStorage.setItem('valueVideoFundo', 'gallery/fundo.jpeg');
+//		localStorage.setItem('valueLogo', 'logo/logo.png');
+//		localStorage.setItem('valuePlanoFundoMestre', 'gallery/fundo.jpeg');
 		jsstoreCon.dropDb().then(function() {
 			console.log('Db deleted successfully');
 			refreshTableData();
@@ -634,8 +634,9 @@ async function refreshTableResult() {
 }
 
 function showIndex() {
+	localStorage.setItem('valueOwner', document.getElementById('config_myowner').value);
 	localStorage.setItem('valueLogo', document.getElementById('config_mylogo').value);
-	localStorage.setItem('valueVideoFundo', document.getElementById('config_myfundo').value);
+	localStorage.setItem('valuePlanoFundoMestre', document.getElementById('config_myfundo').value);
 	var DataShow_Index = window.open("index.html", "_self", "location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
 }
 
@@ -955,14 +956,14 @@ async function refreshTableData() {
 			if (student.myorder == '000') {
 //				htmlString += "<tr><td colspan=99>&nbsp;</td></tr>"
 				varTdTh = 'th';
-				varLogo = "<a href=\"#\" class=\"favorite\" style=\"color:#000000;\"><img src=\"logo/logo.png\" style=\"width:40px; cursor:hand;\"></img></a>";
+				varLogo = "<a href=\"#\" class=\"favorite\" style=\"color:#000000;\"><img src=\"logo/logo.png\" style=\"width:35px; cursor:hand;\"></img></a>";
 				varOff = "<a href=\"#\" class=\"off\"> <i class=\"fa fa-stop\" style=\"color:#000000;\"></i></a>&nbsp;";
 				varFav = "<td> <!--i class=\"fa fa-heart\" style=\"color:#3333AA;\"></i --> </td>";
 				varEdit = "<i class=\"fa fa-edit\"></i>";
 				varDel = "<td><a href=\"#\" class=\"delete\" style=\"color:#777777;\"> <i class=\"fa fa-times\" style=\"color:red;\"></i> </a></td>";
 			} else {
 				varTdTh = 'td';
-				varLogo = "<a href=\"#\" class=\"favorite\" style=\"color:#000000;\"><img src=\"logo/logo.png\" style=\"width:20px; cursor:hand;\"></img>";
+				varLogo = "<a href=\"#\" class=\"favorite\" style=\"color:#000000;\"><img src=\"logo/logo.png\" style=\"width:15px; cursor:hand;\"></img>";
 				varOff = "<a href=\"#\" class=\"off\"> <i class=\"fa fa-stop\" style=\"color:#000000;\"></i></a>&nbsp;";
 				varFav = "<td><a href='#' class=\"favorite\" style=\"color:blue;\"> </a></td>";
 				varEdit = "<a href=\"#\" class=\"edit\"> <i class=\"fa fa-edit\"></i> </a>";
@@ -1303,10 +1304,15 @@ function showIniciarConfiguracao() {
 }
 
 function showForm1Form2() {
+	openOwner(document.getElementById('config_myowner').value);
 	openLogo('logo/logo.png');
-	openImagemFundo(localStorage.getItem('valueVideoFundo'));
+	openImagemFundo(localStorage.getItem('valuePlanoFundoMestre'));
 	var DataShow_Tela2 = window.open("datashowtela2.html", "datashowtela2", "top=1200, width=600, height=500, left=1200, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
 	var DataShow_Tela1 = window.open("datashowtela1.html", "datashowtela1", "top=0, width=350, height=260, left=1200, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
+}
+
+function openOwner(owner) {
+	localStorage.setItem('valueOwner', owner);
 }
 
 function openLogo(logo) {
@@ -1316,7 +1322,7 @@ function openLogo(logo) {
 function openImagemFundo(filename) {
     try {
 		//var extensao = filename.toLowerCase().substring((filename.length-3), filename.length);
-		localStorage.setItem('valueVideoFundo', filename);
+		localStorage.setItem('valuePlanoFundoMestre', filename);
     } catch (ex) {
         alert(ex.message);
     }
@@ -1528,6 +1534,7 @@ function moveCursor(mycode, col, evento, index) {
 
 //https://www.ti-enxame.com/pt/jquery/use-setas-para-navegar-em-uma-tabela-html/1046534083/
 function datashow(index, col, code) {
+//alert('datashow');
 	if (document.getElementById('datashow' + index) == null) { //não permite mover o foco para fora da tabela e dar erro de código
 		return;
 	}
@@ -1603,8 +1610,8 @@ function chooseChapter(content) {
 }
 
 function setPlanoFundo() {
-	localStorage.setItem('valueVideoFundo', localStorage.getItem('valueText'));
-	setCookie('valueVideoFundo', localStorage.getItem('valueText'), '1');
+	localStorage.setItem('valuePlanoFundoMestre', localStorage.getItem('valueText'));
+	setCookie('valuePlanoFundoMestre', localStorage.getItem('valueText'), '1');
 }
 
 function aoClicar(endereco) {

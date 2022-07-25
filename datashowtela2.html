@@ -82,8 +82,9 @@
 <script type="text/javascript">
 /* JUST TESTS DEV
 	localStorage.setItem('valueText', 'kkk \n kkkkk \n kkkkkkkkkk');
+	localStorage.setItem('valueOwner', 'IIRF');
 	localStorage.setItem('valueLogo', 'logo/logo.png');
-	localStorage.setItem('valueVideoFundo', '_fundo01.mp4');
+	localStorage.setItem('valuePlanoFundoMestre', '_fundo01.mp4');
 	localStorage.setItem('valueLogoBig', 'false');
 	localStorage.setItem('valueAutor', 'nome author \n nome música');
 	localStorage.setItem('valueAoVivo', 'false');
@@ -104,22 +105,22 @@ window.onload = function(){
 	document.getElementById("logotipo").src = localStorage.getItem('valueLogo');
 	logoBig(localStorage.getItem('valueLogoBig'), localStorage.getItem('valueLogoHeightBig'), localStorage.getItem('valueLogoHeightMini'), localStorage.getItem('valueLogoLeftBigTela2'), localStorage.getItem('valueLogoLeftMini'), localStorage.getItem('valueLogoTopBig'), localStorage.getItem('valueLogoTopMini'));
 	//plano de fundo
-//	document.getElementById("videofundo").src = localStorage.getItem('valueVideoFundo');
+//	document.getElementById("videofundo").src = localStorage.getItem('valuePlanoFundoMestre');
 	
-	var valueVideoFundo = localStorage.getItem('valueVideoFundo');
-	var extensao = valueVideoFundo.substring(parseInt(valueVideoFundo.length-3), valueVideoFundo.length);
+	var valuePlanoFundoMestre = localStorage.getItem('valuePlanoFundoMestre');
+	var extensao = valuePlanoFundoMestre.substring(parseInt(valuePlanoFundoMestre.length-3), valuePlanoFundoMestre.length);
 	if (extensao == 'mp4' || extensao == 'webm' || extensao == 'avi') {
-		var posicao = document.getElementById("videofundo").src.indexOf(valueVideoFundo, 0);
+		var posicao = document.getElementById("videofundo").src.indexOf(valuePlanoFundoMestre, 0);
 		if (posicao <= 0) {
-			document.getElementById("videofundo").src = localStorage.getItem('valueVideoFundo');
+			document.getElementById("videofundo").src = localStorage.getItem('valuePlanoFundoMestre');
 		}
 		document.getElementById("videofundo").style.display = 'block';
 		document.getElementById("imagemfundo").style.display = 'none';
 	} else {
 		console.log('tipo imagem');
-		var posicao = document.getElementById("imagemfundo").src.indexOf(valueVideoFundo, 0);
+		var posicao = document.getElementById("imagemfundo").src.indexOf(valuePlanoFundoMestre, 0);
 		if (posicao <= 0) {
-			document.getElementById("imagemfundo").src = localStorage.getItem('valueVideoFundo');
+			document.getElementById("imagemfundo").src = localStorage.getItem('valuePlanoFundoMestre');
 		}
 		document.getElementById("imagemfundo").style.display = 'block';
 		document.getElementById("videofundo").style.display = 'none';
@@ -189,19 +190,19 @@ function callback() {
 	var aovivo = localStorage.getItem('valueAoVivo');
 	if (aovivo == 'true') {
 			//plano de fundo
-			var valueVideoFundo = localStorage.getItem('valueVideoFundo');
-			var extensao = localStorage.getItem('valueVideoFundo').substring(parseInt(localStorage.getItem('valueVideoFundo').length-3), localStorage.getItem('valueVideoFundo').length);
+			var valuePlanoFundoMestre = localStorage.getItem('valuePlanoFundoMestre');
+			var extensao = localStorage.getItem('valuePlanoFundoMestre').substring(parseInt(localStorage.getItem('valuePlanoFundoMestre').length-3), localStorage.getItem('valuePlanoFundoMestre').length);
 			if (extensao == 'mp4' || extensao == 'webm' || extensao == 'avi') {
-				var posicao = document.getElementById("videofundo").src.indexOf(valueVideoFundo, 0);
+				var posicao = document.getElementById("videofundo").src.indexOf(valuePlanoFundoMestre, 0);
 				if (posicao < 0) {
-					document.getElementById("videofundo").src = localStorage.getItem('valueVideoFundo');
+					document.getElementById("videofundo").src = localStorage.getItem('valuePlanoFundoMestre');
 				}
 				document.getElementById("videofundo").style.display = 'block';
 				document.getElementById("imagemfundo").style.display = 'none';
 			} else {
-				var posicao = document.getElementById("imagemfundo").src.indexOf(valueVideoFundo, 0);
+				var posicao = document.getElementById("imagemfundo").src.indexOf(valuePlanoFundoMestre, 0);
 				if (posicao < 0) {
-					document.getElementById("imagemfundo").src = localStorage.getItem('valueVideoFundo');
+					document.getElementById("imagemfundo").src = localStorage.getItem('valuePlanoFundoMestre');
 				}
 				document.getElementById("imagemfundo").style.display = 'block';
 				document.getElementById("videofundo").style.display = 'none';

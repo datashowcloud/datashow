@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <!-- title>DataShow JsStore</title -->
-    <title>DataShow</title>
+    <title>DataShowCloud</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <script src="scripts/jquery.js"></script>
     <script src="scripts/bootstrap.js"></script>
@@ -31,19 +31,23 @@
 		
 		<div class="col-xs-12 col-sm-10 col-centered ">
 			<table border=0 align=center><tr><td>
-				<l id="bSearch"> <input type="text" id="txtSearch" value="" placeholder="Digite aqui na pesquisa" style="width:150px; height:34px;"><button id="btnSearch" style="height:34px; width:40px;" class="btn btn-info"> <i class="fa fa-search"></i></button> </l>
+				<l id="bSearch">
+					<input type="text" id="txtSearch" value="" placeholder="Digite aqui na pesquisa" style="width:200px; height:34px;"><button id="btnSearch" style="height:34px; width:40px;" class="btn btn-info">
+					<i class="fa fa-search"></i></button>
+				</l>
+				
 				<select id="selMycodeTextGroup" name="selMycodeTextGroup" style="height:34px; display:'none';">
 					<option value="0" selected>letras</option>
 					<option value="1">bíblia</option>
-					<option value="2">imagem</option>
+					<option value="2">artes</option>
 				</select>
-				<button id="btnGear" class="btn btn-default" style="display:'none';"> <i class="fa fa-cog"></i></button>
 				
 				<p/><p/>
 				<button id="btnLogoTop" class="btn btn-info" onclick="showLogo();"><i class="fa fa-minus"></i> Logo</button>
 				<button id="btnFreezeTop" class="btn btn-danger" onclick="freezeDataShow(localStorage.getItem('valueAoVivo'));">Ao Vivo</button>
 				<button id="btnShowStudent" class="btn btn-default"> <i class="fa fa-repeat"></i> Telas</button>
-				<button id="btnAddNewManual" class="btn btn-default"><i class="fa fa-plus"></i> Nova</button>
+				<button id="btnAddNewManual" class="btn btn-default"><i class="fa fa-plus"></i></button>
+				<button id="btnGear" class="btn btn-default" style="display:'none';"> <i class="fa fa-cog"></i></button>
 <!--				<button id="btnCompleteTop" class="btn btn-default" onclick="searchComplete();"><i class="fa fa-minus"></i></button>
 				<button id="btnVideoPlayTop" class="btn btn-default" onclick="videoPlayPause();"><i class="fa fa-pause"></i></button>
 -->
@@ -51,20 +55,21 @@
 		</div>
 		
 		<div id="divconfig" style="display:none;">
-			<label class="btn btn-info">
+			<label class="btn btn-info" style="cursor:default; width:300px;">
 			Em conformidade com a Lei 13.709/18
 			<br/>- Lei Geral de Proteção de Dados Pessoais,
 			<br/>concordo, autorizo, reconheço e aceito
-			<br/>de forma expressa e escrita a coleta de dados
-			<br/>com a finalidade exclusiva de atualizar e manter os arquivos
-			<br/>na ferramenta DataShow &#174; em um prazo inderteminado.
-			<br/>Além de declarar todas informações preenchidas verdadeiras.
-			<br/>É proibido copiar a ferramenta DataShow &#174;
-			<br/>sem licença e autorização do dono.
+			<br/>a coleta de dados
+			<br/>com a finalidade exclusiva de atualizar
+			<br/>e manter na ferramenta DataShowCloud&#174;
+			<br/>em um prazo inderteminado.
+			<br/>Declaro que não farei cópia da ferramenta,
+			<br/>usarei licença e autorização prévia
+			<br/>e são verdadeiras as informações fornecidas.
 			</label>			
 			<br/><br/>
-			<button id="btnIndexConfigurar" class="btn btn-info" style="padding:9px 15px 9px 15px;"> Configurar DataShow <i class="fa fa-forward"></i> </button>
-			<p/><p/><button id="btnCertifications" class="btn btn-default" style="padding:9px 15px 9px 15px;"> Certificações <i class="fa fa-forward"></i> </button>
+			<button id="btnIndexConfigurar" class="btn btn-info" style="padding:9px 15px 9px 15px; width:300px;"> Configurar DataShow (clique aqui) <i class="fa fa-forward"></i> </button>
+			<!--p/><p/><button id="btnCertifications" class="btn btn-default" style="padding:9px 15px 9px 15px;"> Certificações <i class="fa fa-forward"></i> </button -->
 		</div>
 		
 		
@@ -129,24 +134,22 @@
 <!--			<hr/>
 			<form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post">
 				<textarea name="contentAddNewManual" id="contentAddNewManual" style="width:90%;" rows=10 placeholder="Use <p> para separar várias letras de música diferentes. Logo abaixo do <p> deve conter a identificação da letra, exemplo: autor e título."></textarea>
-				<br/><button id="btnConfirmImportOne" class="btn btn-info" style="padding:9px 15px 9px 15px;"> <i class="fa fa-plus"></i> Adicionar Nova Letra</button>
+				<br/><button id="btnConfirmImportManual" class="btn btn-info" style="padding:9px 15px 9px 15px;"> <i class="fa fa-plus"></i> Adicionar Nova Letra</button>
 -->
 			<label style="font-size:30px; color:green;">DA</label>
 			<label style="font-size:30px; color:#FFD700;">TA</label>
 			<label style="font-size:30px; color:#3333AA;">SHOW&#174;</label>
 			<hr/>
-			Meu Nome Curto (até 6 caractreres): <br/><input type="text" name="config_myowner" size="16" id="config_myowner" maxlength="6" style="width:50px;" value="IIRF"/ alt="HOPE">
+			Meu Nome (até 6 caractreres): <br/><input type="text" name="config_myowner" size="16" id="config_myowner" maxlength="6" style="width:50px;" value="IIRF"/ alt="HOPE">
 			<br/>Meu Plano de Fundo: <br/><textarea type="text" name="config_myfundo" id="config_myfundo" size="16" style="width:250px;">gallery/fundo.jpeg</textarea>
 			<br/>Meu Logotipo: <br/><textarea type="text" name="config_mylogo" id="config_mylogo" size="16" style="width:250px;">logo/logo.png</textarea>
 <!--			</form>
 -->
 			<br/><br/><button id="btnDropDb" class="btn btn-default" style="padding:9px 15px 9px 15px;"> <i class="fa fa-remove"></i> Restaurar Padrão de Fábrica</button>
-			<br/><br/><button id="btnShowHelp" class="btn btn-primary" style="padding:9px 15px 9px 15px; width:150px;"> <i class="fa fa-book"></i> Tutorial</button>
+			<br/><br/><button id="btnShowHelp" class="btn btn-default" style="padding:9px 15px 9px 15px; width:150px;"> <i class="fa fa-book"></i> Tutorial</button>
 			<br/><br/><button id="btnCancelImport" class="btn btn-info" style="padding:9px 15px 9px 15px;"> <i class="fa fa-times"></i> Fechar</button>			
-
-			<hr/>
-			<i>enio.francisco@gmail.com
-			<br/>versão 19.07.22.10.00</i>
+			<br/><br/><i>datashowcloud2022@gmail.com
+			<br/>versão 23.07.22.16.00</i>
 
 			<div style="display:none;">
 				<br/><button id="btnSelectCountAll" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-asterisk"></i> Count All</button>
@@ -244,11 +247,11 @@
 				<label style="font-size:30px; color:#FFD700;">TA</label>
 				<label style="font-size:30px; color:#3333AA;">SHOW&#174;</label>
 				<hr/>
-				Nome: <input type="text" size="30" id="nomeAddNewManual" maxlength="60" value="" placeholder="Digite aqui o nome ou título...">
-				<br/>Autor: <input type="text" size="30" id="autorAddNewManual" maxlength="60" value="" placeholder="Digite aqui o autor...">
+				Nome: <input type="text" size="25" id="nomeAddNewManual" maxlength="60" value="" placeholder="Preencha o nome ou título...">
+				<br/>Autor: <input type="text" size="25" id="autorAddNewManual" maxlength="60" value="" placeholder="Preencha o autor...">
 				<br/>Letra:
-				<br/><textarea name="contentAddNewManual" id="contentAddNewManual" style="width:90%;" rows=5 placeholder="Coloque aqui uma nova letra de música."></textarea>
-				<br/><button id="btnConfirmImportOne" class="btn btn-primary" style="padding:9px 15px 9px 15px;"> <i class="fa fa-plus"></i> Salvar Nova Letra</button>
+				<br/><textarea name="contentAddNewManual" id="contentAddNewManual" style="width:90%;" rows=5 placeholder="Coloque aqui uma nova letra de música..."></textarea>
+				<br/><button id="btnConfirmImportManual" class="btn btn-primary" style="padding:9px 15px 9px 15px;"> <i class="fa fa-plus"></i> Salvar Nova Letra</button>
 			</form>
 			<br/><button id="btnCancelAddNewManual" class="btn btn-info" style="padding:9px 15px 9px 15px;"> <i class="fa fa-times"></i> Fechar</button>
 		</div>
