@@ -1008,7 +1008,13 @@ async function refreshTableData() {
 		} else {
 			htmlString += htmlStringButtons
 
-			htmlString += "<br><br><br><br>Não Encontrado <br><br>Pesquise Novamente"
+			const d = new Date();
+			htmlString += "<b>"
+			htmlString += "Não Encontrado"
+			htmlString += "<br><br>Pesquise Novamente"
+			htmlString += "<br><br>"
+			htmlString += d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ":" + d.getMilliseconds();
+			htmlString += "</b>"
 
 		}
         $('#tblGrid tbody').html(htmlString);
