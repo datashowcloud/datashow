@@ -580,8 +580,8 @@ async function refreshTableResult() {
 		});
 		if (arts == '0') {
 			var labelArts = "<label class=\"btn btn-default\" style=\"width:200px; \"> Artes: " + arts + "</label>";
-		} else if (arts > '0' && arts < '15') {
-			var labelArts = "<label class=\"btn btn-default\" style=\"width:200px; \"> Artes: " + arts + " de ~15 </label>";
+		} else if (arts > '0' && arts < '14') {
+			var labelArts = "<label class=\"btn btn-default\" style=\"width:200px; \"> Artes: " + arts + " de ~14 </label>";
 		} else {
 			var labelArts = "<label class=\"btn btn-info\" style=\"width:200px; \"> Artes: " + arts + " <i class=\"fa fa-check\"></i></label>";
 		}
