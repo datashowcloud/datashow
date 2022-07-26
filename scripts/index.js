@@ -621,7 +621,7 @@ async function refreshTableResult() {
 		
 		var buttonFechar = "";
 		if (typedata == '0') {
-			buttonFechar = "<button id=\"btnConfigResultClose\" class=\"btn btn-default\" style=\"width:200px; padding:9px 15px 9px 15px;\"> Aguarde...</button>";
+			buttonFechar = "<button id=\"btnConfigResultClose\" class=\"btn btn-default\" style=\"width:200px; padding:9px 15px 9px 15px;\"> Aguarde o botão continuar...</button>";
 		} else {
 			buttonFechar = "<button id=\"btnConfigResultClose\" class=\"btn btn-danger\" style=\"width:200px;\" onclick=\"showIndex();\" style=\"padding:9px 15px 9px 15px;\"> Continuar <i class=\"fa fa-forward\"></i> </button>";
 		}
