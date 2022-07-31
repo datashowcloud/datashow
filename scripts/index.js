@@ -1036,8 +1036,8 @@ async function refreshTableData() {
 			}
 
 			htmlString += "<tr ItemId=" + student.id + ">"
-                + "<td ZZZstyle=\"color:white; font-size:1px;\">" + student.mycode + "</td>"
-				+ "<td ZZZstyle=\"color:white; font-size:1px;\">" + student.myorder + "</td>"
+                + "<td style=\"color:white; font-size:1px;\">" + student.mycode + "</td>"
+				+ "<td style=\"color:white; font-size:1px;\">" + student.myorder + "</td>"
 				+ "<" + varTdTh + " id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " onClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
 				+ mytextBold + "</" + varTdTh + ">"
 //				+ "<td>" + student.mysearch + "</td>"
