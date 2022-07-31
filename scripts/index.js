@@ -1598,7 +1598,6 @@ function datashow(index, col, code) {
 		//Com o click, seleciona apenas uma letra da lista de pesquida
 		if (document.getElementById('txtSearch').value != removeSpecials(code.trim())) {
 			document.getElementById('txtSearch').value = removeSpecials(code.trim());
-	alert(document.getElementById('txtSearch').value);
 			refreshTableData();
 		}
 		localStorage.setItem('valueAutor', ' ');
