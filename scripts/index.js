@@ -3,6 +3,7 @@
 var jsstoreCon = new JsStore.Connection();
 
 var confirmImportSuccessfull = 'Não feche esta página (X). \nNão atualize esta página (F5). \n\nVolte na página anterior (aba ao lado) e pesquise pela palavra "configuração concluída com sucesso." \n\nQuando a palavra aparecer, a configuração terminou com sucesso.';
+var COL_LOGOTIPO = 5;
 
 window.onload = function () {
 	refreshTableData();
@@ -228,8 +229,7 @@ function getDbSchema() {
 function registerEvents() {
     $('#btnSelectCountAll').click(function () {
 		selectCountAll();
-    })
-	
+    })	
     $('#txtSearch').keyup(function () {
 		if (event.keyCode == 13 || event.which == 13) { //13=tecla ENTER
 			refreshTableData();
@@ -248,7 +248,6 @@ function registerEvents() {
 			freezeDataShow('true');
 		}
     })
-
     $('#btnSearch').click(function () {
 		refreshTableData();
 		if (document.getElementById('txtSearch').value.length <= 1) { // pesquisa somente com mais de 1 caracter preenchido no campo search
@@ -263,7 +262,6 @@ function registerEvents() {
 		$('#txtSearch').select();
 		document.getElementById('btnIndexConfigurar').style.display='none';
     })
-
     $('#btnIndexConfigurar').click(function () {
 		window.close();
 		var DataShow_Config = window.open("config.html", "datashowconfig", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
@@ -275,7 +273,6 @@ function registerEvents() {
 		var DataShow_Tests = window.open("certifications.html", "datashowcertifications");
 		datashowconfigresult.focus();
 	})
-
     $('#selMycodeTextGroup').change(function () {
 		freezeDataShow(true);
 		var selectedIndex = document.getElementById('selMycodeTextGroup').selectedIndex;
@@ -322,10 +319,13 @@ function registerEvents() {
 //		if (result) {
 			try {
 				var group = document.getElementById('selMycodeTextGroup').value.trim();
-				confirmImport('contentAddNewManual', group); //letras
+				var nomemusicaAddNewManual = document.getElementById('nomemusicaAddNewManual').value;
+				var nomeautorAddNewManual = document.getElementById('nomeautorAddNewManual').value;
+				confirmImportManual('contentAddNewManual', group, nomemusicaAddNewManual, nomeautorAddNewManual); //letras
+				return;
 //				localStorage.setItem('valueLogo', document.getElementById('config_mylogo').value);
 //				localStorage.setItem('valuePlanoFundoMestre', document.getElementById('config_myfundo').value);
-				alert('Clique no link "Go back" na próxima página.');
+				alert('Clique em "Go back". \nClique em "Go back".');
 				document.getElementById("formAdd").submit();
 			} catch (ex) {
 				alert(ex.message);
@@ -799,6 +799,52 @@ async function confirmImport(contents, group) {
 //	}
 }
 
+//This function confirm import
+async function confirmImportManual(contents, group, nomemusica, nomeautor) {
+		try {
+			valor = document.getElementById(contents).value;
+			valor = nomemusica + '\n' + nomeautor  + '\n\n' + valor; //adiciona o autor e nome da música no início da letra para o search funcionar
+			var nextpos = 0; var myorder = 0; var mycode = ''; var myrepeated = '0'; var contador = 0; var posicao = 0; repeated = 0;
+			for (posicao=0; posicao<=valor.length; posicao++) {
+				nextpos = valor.indexOf('\n\n', posicao); //próximo separador do texto correspondente a duas quebras de linhas juntas
+				if (nextpos <= 0) {
+					nextpos = valor.length; //força última gravação e encerra
+				}
+				if (valor.substring(posicao, posicao+3) == '<p>' || valor.substring(posicao, posicao+4) == '<br>' || valor.substring(posicao, posicao+4) == '<hr>') {
+					posicao = posicao+4; //pula <p>\n
+					mycode = removeSpecials(valor.substring(posicao, nextpos).trim());
+					myorder = 0;
+					contador = parseInt(contador) + 1;
+					console.log('Importar: \n' + mycode);
+					document.getElementById('txtSearch').value = parseInt(contador) + ' importados';
+				} else if (posicao == 0) { //primeiro registro sem separador <p>... executa somente 1 vez.
+					mycode = removeSpecials(valor.substring(posicao, nextpos).trim());
+				}
+				var mytext = valor.substring(posicao, nextpos).trim();
+				mytext = mytext.replaceAll('<br>', ''); //altera o <br> para ENTER (quebra de linha no mersmo texto)
+	
+//	alert('mycode='+mycode + '\n myorder='+myorder + '\n group='+group + '\n myrepeated='+myrepeated + '\n mytext='+mytext);
+				setStudentFromImport(mycode, myorder, mytext, group, myrepeated);
+				addStudentImport(group);
+				
+				setTimeout(() => { refreshTableData() }, 500); // Executa novamente a cada 500 milisegundos
+				
+				showGridAndHideForms();
+				myorder = myorder+1;
+				if (nextpos <= 0) {
+					//alert('BREAK, nextpos<=0 =' + nextpos);
+					posicao = valor.length +1; //força gravar último registro e encerra
+				}
+				posicao = nextpos+1;
+			}
+			document.getElementById('divcontent').style.display='none';
+			$('#txtSearch').focus();
+			$('#txtSearch').select();
+		} catch (ex) {
+			alert('erro \n\n\n' + ex.message + '\n\n\n' + mytext);
+		}
+}
+
 //This function refreshes the table
 async function refreshTableData() {
     try {
@@ -990,16 +1036,16 @@ async function refreshTableData() {
 			}
 
 			htmlString += "<tr ItemId=" + student.id + ">"
-                + "<td style=\"color:white; font-size:1px;\">" + student.mycode + "</td>"
-				+ "<td style=\"color:white; font-size:1px;\">" + student.myorder + "</td>"
-				+ "<td id=datashow" + (student.id+"3") + " tabIndex=" + (student.id+"3") + " onClick=\"showLogo();\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + (student.id+"3") + "'>" 
-				+ varLogo + "</td>"
-				+ "<" + varTdTh + " id=datashow" + student.id+"4" + " tabIndex=" + student.id+"4" + " onClick=\"datashow('" + student.id+"4" + "', 4, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 4, event, " + "" + (student.id+"4") + ");\" data-show='" + student.id+"4" + "'>"
+                + "<td ZZZstyle=\"color:white; font-size:1px;\">" + student.mycode + "</td>"
+				+ "<td ZZZstyle=\"color:white; font-size:1px;\">" + student.myorder + "</td>"
+				+ "<" + varTdTh + " id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " onClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
 				+ mytextBold + "</" + varTdTh + ">"
 //				+ "<td>" + student.mysearch + "</td>"
-				+ "<" + varTdTh + " id=datashow" + student.id+"5" + " tabIndex=" + student.id+"5" + " onClick=\"datashow('" + student.id+"5" + "', 5, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 5, event, " + "" + (student.id+"5") + ");\" data-show='" + student.id+"5" + "'>"
+				+ "<" + varTdTh + " id=datashow" + student.id+"4" + " tabIndex=" + student.id+"4" + " onClick=\"datashow('" + student.id+"4" + "', 4, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 4, event, " + "" + (student.id+"4") + ");\" data-show='" + student.id+"4" + "'>"
 				+ varOff + "</" + varTdTh + ">"
-//				+ "<td id=datashow" + (student.id+"6") + " tabIndex=" + (student.id+"6") + " onClick=\"datashow('" + (student.id+"6") + "', 5, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 6, event, " + "" + (student.id+"6") + ");\" data-show='" + (student.id+"6") + "'>"
+				+ "<td id=datashow" + (student.id+"5") + " tabIndex=" + (student.id+"5") + " onClick=\"showLogo();\" onkeyup=\"moveCursor('" + student.mycode + "', 5, event, " + "" + (student.id+"5") + ");\" data-show='" + (student.id+"5") + "'>" 
+				+ varLogo + "</td>"
+//				+ "<td id=datashow" + (student.id+"6") + " tabIndex=" + (student.id+"6") + " onClick=\"datashow('" + (student.id+"6") + "', 6, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 6, event, " + "" + (student.id+"6") + ");\" data-show='" + (student.id+"6") + "'>"
 				+ "<td>" + varEdit + "</td>";
 		})
 
@@ -1498,7 +1544,7 @@ function dispFile(contents) {
 
 function moveCursor(mycode, col, evento, index) {
 	if (evento.keyCode == 13 || event.which == 13) { //ENTER
-		if (col == 3) { //coluna logotipo
+		if (col == COL_LOGOTIPO) { //coluna logotipo
 			showLogo();
 		} else {
 			freezeDataShow('false');
@@ -1540,19 +1586,19 @@ function moveCursor(mycode, col, evento, index) {
 
 //https://www.ti-enxame.com/pt/jquery/use-setas-para-navegar-em-uma-tabela-html/1046534083/
 function datashow(index, col, code) {
-//alert('datashow');
+//alert(document.getElementById('datashow' + index).innerHTML);
 	if (document.getElementById('datashow' + index) == null) { //não permite mover o foco para fora da tabela e dar erro de código
 		return;
 	}
 	document.getElementById('datashow' + index).focus;
-
-	if (col != 3) { //logotipo
+	if (col != COL_LOGOTIPO) { //logotipo
 		var valueText = removeEspecialsCommands(document.getElementById('datashow' + index).innerHTML);
 		localStorage.setItem('valueText', valueText);
 		setCookie('valueText', valueText, '1');
 		//Com o click, seleciona apenas uma letra da lista de pesquida
 		if (document.getElementById('txtSearch').value != removeSpecials(code.trim())) {
 			document.getElementById('txtSearch').value = removeSpecials(code.trim());
+	alert(document.getElementById('txtSearch').value);
 			refreshTableData();
 		}
 		localStorage.setItem('valueAutor', ' ');
