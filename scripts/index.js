@@ -624,6 +624,8 @@ async function refreshTableResult() {
 			buttonFechar = '<button class="btn btn-default" style="padding:9px 15px 9px 15px; width:200px;"> Aguarde o botão continuar...</button>';
 		} else {
 			buttonFechar = '<button class="btn btn-danger" onclick="showIndex();" style="padding:9px 15px 9px 15px; width:200px;"> Continuar <i class="fa fa-forward"></i> </button>';
+			showIndex();
+			alert('Pronto! Fim da configuração.');
 		}
 		//Resultado
 		$('#tblGrid tbody').html(labelArts + '<br/>' + labelStudents + '<br/>' + labelBibles + '<br/>' + labelTypeData + '<br/>' + buttonFechar);
