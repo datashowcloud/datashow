@@ -302,6 +302,11 @@ function registerEvents() {
 			showGridAndHideForms();
 		}
     });	
+    $('#btnPlay').click(function () {
+		var mygroup = document.getElementById('selectMygroup').value;
+		getFromTablePlay('', mygroup, '1');
+		showFormSim();
+    });	
     $('#tblGrid tbody').on('click', '.edit', function () {
 		var row = $(this).parents().eq(1);
         var child = row.children();
@@ -828,9 +833,13 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
                 varDel = "&nbsp;<a href=\"#\" class=\"delete\" style=\"color:#FF0000;\">Del</a>";
 			} else {
 				varTdTh = 'td';
-				varPlay = "<a href=\"#\" class=\"playsim\"><i class=\"fa fa-play\" style=\"color:#00FF00;\"></i></a>";
-				varEdit = "<a href=\"#\" class=\"edit\"><i class=\"fa fa-edit\" style=\"color:#0000FF;\"></i></a>";
-                varDel = "<a href=\"#\" class=\"delete\" style=\"color:#ff0000;\"><i class=\"fa fa-times\" style=\"color:#FF0000;\"></i></a>";
+				
+				varPlay = "<button class=\"playsim\" style=\"height:25px; width:25px; color:#00FF00;\"><i class=\"fa fa-play\"></i></button>";
+				varEdit = "<button class=\"edit\" style=\"height:25px; width:25px; color:#0000FF;\" ><i class=\"fa fa-pencil\"></i></button>";
+                varDel = "<button class=\"delete\" style=\"height:25px; width:25px; color:#FF0000;\" ><i class=\"fa fa-times\"></i></button>";
+//				varPlay = "<a href=\"#\" class=\"playsim\"><i class=\"fa fa-play\" style=\"color:#00FF00;\"></i></a>";
+//				varEdit = "<a href=\"#\" class=\"edit\"><i class=\"fa fa-pencil\" style=\"color:#0000FF;\"></i></a>";
+//				varDel = "<a href=\"#\" class=\"delete\" style=\"color:#ff0000;\"><i class=\"fa fa-times\" style=\"color:#FF0000;\"></i></a>";
 			}
 			
 			htmlString += "<tr ItemId=" + student.id + ">"

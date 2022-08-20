@@ -32,11 +32,8 @@
 				<select id="selectMygroup" name="selectMygroup" style="height:34px; display:'none';">
 					<option value="0" selected>Simulado 0</option>
 					<option value="1">Simulado 1</option>
-					<option value="2">Simulado 2</option>
-					<option value="2">Simulado 3</option>
-					<option value="2">Simulado 4</option>
-					<option value="2">Simulado 5</option>
 				</select>
+				<!--button id="btnPlay" style="height:34px; width:40px; display:'none';" class="btn btn-info"><i class="fa fa-play"></i></button -->
 				<button id="btnRefresh" style="height:34px; width:40px; display:'none';" class="btn btn-info"><i class="fa fa-refresh"></i></button>
 				<button id="btnAddNewManual" class="btn btn-default"><i class="fa fa-plus"></i></button>
 				<button id="btnGear" class="btn btn-default" style="display:'none';"> <i class="fa fa-cog"></i></button>
@@ -85,9 +82,11 @@
 				<table border=0 align=center width="100%">
 					<tr><td>
 						<button id="btnBackward" class="btn btn-danger" style="display:'none';"> <i class="fa fa-remove"></i> </button>
-						<button id="btnPrevious" class="btn btn-info" style="display:'none';"> <i class="fa fa-chevron-left"></i></button>
+						<button id="btnPrevious" class="btn btn-default" style="display:'none';"> <i class="fa fa-chevron-left"></i></button>
 						<button id="btnNext" class="btn btn-success" style="display:'none';">Próximo <i class="fa fa-chevron-right"></i></button>
 						<button class="btn btn-default" style="display:'none';"><i class="fa fa-signal"></i></button>
+						<button class="btn btn-default" style="display:'none';"><i class="fa fa-pause"></i></button>
+						<button class="btn btn-warning" style="display:'none';"><i class="fa fa-check"></i> Fim</button>
 					</td></tr>
 					<tr><td id="mytextSim" style="display:'none'; text-align:justify;">
 					</td></tr>
@@ -135,7 +134,7 @@
 				<select id="myorder" name="myorder" style="height:35px; display:'none';"></select>
 				<p/>
 				<p/><textarea name="mytext" id="mytext" style="width:100%;" rows=4 placeholder="Digite a pergunta aqui..."></textarea>
-				<p/>
+				<font style="color:green; text-align:left;">Corretas:</font>
 				<font style="color:green"> <textarea name="mycorrect1" id="mycorrect1" style="width:100%;" rows=1 placeholder="digite aqui a correta 1... (obrigatório)"></textarea> </font>
 				<br/><font style="color:green"> <textarea name="mycorrect2" id="mycorrect2" style="width:100%;" rows=1 placeholder="digite aqui a correta 2..."></textarea> </font>
 				<br/><font style="color:green"> <textarea name="mycorrect3" id="mycorrect3" style="width:100%;" rows=1 placeholder="digite aqui a correta 3..."></textarea> </font>
@@ -163,20 +162,20 @@
 				<p/><p/><button id="btnShowHelp" class="btn btn-warning" style="padding:9px 15px 9px 15px; width:220px;"> <i class="fa fa-book"></i> Tutorial</button>
 				<p/><p/><button id="btnCancelImport" class="btn btn-info" style="padding:9px 15px 9px 15px; width:220px;"> <i class="fa fa-times"></i> Fechar</button>			
 				<p/><p/><i>datashowcloud2022@gmail.com
-				<p/><p/>versão 19.08.22.00.00</i>
+				<p/><p/>versão 20.08.22.00.00</i>
 
 				<div style="display:none;">
 					<br/><button id="btnSelectCountAll" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-asterisk"></i> Count All</button>
 					<br/><button id="btnDeleteLirics" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-minus"></i> Clear Lirycs</button>
 				</div>
 
-				<div style="display:none;">
+				<div style="display:'none';">
 					<button id="btnTest" class="btn btn-default" > <i class="fa fa-envelope"></i> </button>
 					<button id="btnTest" class="btn btn-default" > <i class="fa fa-star"></i> </button>
 					<button id="btnTest" class="btn btn-default" > <i class="fa fa-user"></i> </button>
 					<button id="btnTest" class="btn btn-default" > <i class="fa fa-film"></i> </button>
 					<button id="btnTest" class="btn btn-default" > <i class="fa fa-check"></i> </button>
-					<button id="btnTest" class="btn btn-default" > <i class="fa fa-th"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-check-square-o"></i> </button>
 					<br/>
 					<button id="btnTest" class="btn btn-default" > <i class="fa fa-remove"></i> </button>
 					<button id="btnTest" class="btn btn-default" > <i class="fa fa-signal"></i> </button>
@@ -234,12 +233,12 @@
 					<button id="btnTest" class="btn btn-default" > <i class="fa fa-edit"></i> </button>
 					<button id="btnTest" class="btn btn-default" > <i class="fa fa-share-square-o"></i> </button>
 					<br/>
-					<button id="btnTest" class="btn btn-default" > <i class="fa fa-check-square-o"></i> </button>
 					<button id="btnTest" class="btn btn-default" > <i class="fa fa-arrows"></i> </button>
 					<button id="btnTest" class="btn btn-default" > <i class="fa fa-step-backward"></i> </button>
 					<button id="btnTest" class="btn btn-default" > <i class="fa fa-fast-backward"></i> </button>
 					<button id="btnTest" class="btn btn-default" > <i class="fa fa-backward"></i> </button>
 					<button id="btnTest" class="btn btn-default" > <i class="fa fa-play"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-th"></i> </button>
 					<br/>
 					<button id="btnTest" class="btn btn-default" > <i class="fa fa-pause"></i> </button>
 					<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
