@@ -834,12 +834,14 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 			} else {
 				varTdTh = 'td';
 				
-				varPlay = "<button class=\"playsim\" style=\"height:25px; width:25px; color:#00FF00;\"><i class=\"fa fa-play\"></i></button>";
-				varEdit = "<button class=\"edit\" style=\"height:25px; width:25px; color:#0000FF;\" ><i class=\"fa fa-pencil\"></i></button>";
-                varDel = "<button class=\"delete\" style=\"height:25px; width:25px; color:#FF0000;\" ><i class=\"fa fa-times\"></i></button>";
-//				varPlay = "<a href=\"#\" class=\"playsim\"><i class=\"fa fa-play\" style=\"color:#00FF00;\"></i></a>";
-//				varEdit = "<a href=\"#\" class=\"edit\"><i class=\"fa fa-pencil\" style=\"color:#0000FF;\"></i></a>";
-//				varDel = "<a href=\"#\" class=\"delete\" style=\"color:#ff0000;\"><i class=\"fa fa-times\" style=\"color:#FF0000;\"></i></a>";
+				varPlay = "<button class=\"playsim\" style=\"color:#00FF00;\"><i class=\"fa fa-play\"></i></button>";
+				varEdit = "<button class=\"edit\" style=\"color:#0000FF;\" ><i class=\"fa fa-pencil\"></i></button>";
+				varDel = "<button class=\"delete\" style=\"color:#FF0000;\" ><i class=\"fa fa-times\"></i></button>";
+/*
+				varPlay = "<a href=\"#\" class=\"playsim\"><i class=\"fa fa-play\" style=\"color:#00FF00; height:25px; Xwidth:25px; \"></i></a>";
+				varEdit = "<a href=\"#\" class=\"edit\"><i class=\"fa fa-pencil\" style=\"color:#0000FF; height:25px; Xwidth:25px; \"></i></a>";
+				varDel = "<a href=\"#\" class=\"delete\"><i class=\"fa fa-times\" style=\"color:#FF0000; height:25px; Xwidth:25px;\"></i></a>";
+*/
 			}
 			
 			htmlString += "<tr ItemId=" + student.id + ">"
@@ -847,14 +849,16 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
                 + "<td style=\"color:#777777; font-size:12px;\">" + student.mycode + "</td>"
 				+ "<" + varTdTh + " id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " ZZZonClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
 				+ student.mytext + "</" + varTdTh + ">"
-				
+/*				
 				+ "<" + varTdTh + " id=datashow" + student.id+"4" + " tabIndex=" + student.id+"4" + " ZZZonClick=\"datashow('" + student.id+"4" + "', 4, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 4, event, " + "" + (student.id+"4") + ");\" data-show='" + student.id+"4" + "'>"
 				+ varPlay + "</" + varTdTh + ">"
 				
 				+ "<" + varTdTh + " id=datashow" + student.id+"5" + " tabIndex=" + student.id+"5" + " ZZZonClick=\"datashow('" + student.id+"5" + "', 5, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 5, event, " + "" + (student.id+"5") + ");\" data-show='" + student.id+"5" + "'>"
 				+ varEdit + "</" + varTdTh + ">"
-				
-				+ "<" + varTdTh + " id=datashow" + student.id+"6" + " tabIndex=" + student.id+"6" + " ZZZonClick=\"datashow('" + student.id+"6" + "', 6, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 6, event, " + "" + (student.id+"6") + ");\" data-show='" + student.id+"6" + "'>"
+*/				
+				+ "<" + varTdTh + " nowrap id=datashow" + student.id+"6" + " tabIndex=" + student.id+"6" + " ZZZonClick=\"datashow('" + student.id+"6" + "', 6, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 6, event, " + "" + (student.id+"6") + ");\" data-show='" + student.id+"6" + "'>"
+				+ varPlay + ' '
+				+ varEdit + ' ' 
 				+ varDel + "</" + varTdTh + ">"
 				;
 		})
