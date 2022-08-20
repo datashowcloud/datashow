@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Config DataShow</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/bootstrap.css" />
+    <link rel="stylesheet" href="style/font-awesome.min.css" />
+    <script src="scripts/jsstore.js"></script>
+    <script src="scripts/jsstore.worker.js"></script>
+    <script src="scripts/index.js"></script>
+	<style></style>
+</head>
+
+<body>
+
+    <div class="row row-centered " style="margin-top:10px; ">
+        
+		
+		<div class="col-xs-12 col-sm-10 col-centered ">
+			<div style="display:'none'; text-align:center; ">
+				<b style="font-size:30px; color:green;">DA</b>
+				<b style="font-size:30px; color:#FFD700;">TA</b>
+				<b style="font-size:30px; color:#3333AA;">SHOW &#174;</b>
+				
+				<br/><br/>
+				<label style="color:#3333AA;"> <i class="fa fa-forward"></i> Aguarde o botão "Continuar"... <br/>Ainda não faça nada...</label>
+				
+				<br/><select id="selMycodeTextGroup" name="selMycodeTextGroup" style="display:none; height:34px;">
+					<!-- option value="-1"> </option -->
+					<option value="0" selected>somente letras</option>
+					<option value="1">somente bíblia</option>
+					<option value="2">imagem e vídeo</option>
+				</select>
+				<label id="bSearch" style="display:none;">
+					<input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:200px; height:34px;">
+				</label>
+			</div>
+		</div>
+		
+		<table border=0 id="tblGrid" style="width:98%" class="table table-hover ">
+			<tbody>
+			</tbody>
+		</table>
+
+		<div class="form-group" id="divGear" style="display:'none';">
+			<hr>Meu Nome Curto (até 6 caracteres): <br/><input type="text" size="16" id="config_myowner" maxlength="4" style="width:50px;" value="IIRF" placeholder="Digite aqui..." /> <!-- HOPE -->
+			<br/>Meu Logotipo: <br/><textarea type="text" size="16" id="config_mylogo" style="width:250px;" placeholder="Informe o logotipo aqui..." />logo/logo.png</textarea>
+			<br/>Meu Plano de Fundo: <br/><textarea type="text" size="16" id="config_myfundo" style="width:250px;" placeholder="Informe a imagem de fundo aqui..." />gallery/fundo.jpeg</textarea>
+			<!-- button id="btnSalvarConfiguracao"> <i class="fa fa-check"></i> Salvar Configuração</button -->
+		</div>
+
+		<form id="formAddUpdate" class="form-horizontal" role="form" style="margin-top:50px; display: none;">
+			<div class="form-group">
+				<label for="mycode" style="display:'none';">Code:</label>
+					<input type="text" size="20" id="mycode" placeholder="título e autor" readonly/>
+				<br/>
+				<label for="myorder" style="display:'none';">Order:</label>
+					<input type="text" size="1" id="myorder"/>
+				<br/>
+				<label for="myversion" style="display:'none';">Version:</label>
+					<input type="text" size="1" id="myversion" value="0" style="display:'none';" />
+				<br/>
+				<label for="myrepeated" style="display:'none';">Repeated:</label>
+					<select id="myrepeated">
+						<option value="0" selected>letra completa</option>
+						<option value="1">repetida (esconder)</option>
+					</select>
+				<br/>
+				<label for="myowner" style="display:'none';">Owner:</label>
+					<!-- input type="text" size="1" id="myowner" value="IIRF" style="display:'none';" / -->
+					<input type="text" size="1" id="myowner" value="HOPE" style="display:'none';" />
+			</div>
+		</form>
+	</div>
+
+    <link href="style/main.css " rel="stylesheet " type="text/css " />
+</body>
+
+</html>
+
+<script type="text/javascript">
+refreshTableResult();
+
+function callback() {
+	setTimeout (function () {
+		refreshTableResult();
+		callback();
+	}, 100);
+}
+callback();
+
+</script>

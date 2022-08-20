@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Sim</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/bootstrap.css" />
+    <link rel="stylesheet" href="style/font-awesome.min.css" />
+    <script src="scripts/jsstore.js"></script>
+    <script src="scripts/jsstore.worker.js"></script>
+    <script src="index.js"></script>
+	<style>
+#myBody {
+  border: 0px dashed blue;
+  padding: 25px;
+  background-attachment: fixed;
+  background-position: top; 
+  background-repeat: no-repeat;
+} 
+	</style>
+</head>
+
+<body id="myBody" ZZZbackground="gallery/paper.jpeg">
+
+    <div class="row row-centered " style="margin-top:0px;">
+        
+		
+			<table border=0 align=center><tr><td>
+				<select id="selectMygroup" name="selectMygroup" style="height:34px; display:'none';">
+					<option value="0" selected>Simulado 0</option>
+					<option value="1">Simulado 1</option>
+					<option value="2">Simulado 2</option>
+					<option value="2">Simulado 3</option>
+					<option value="2">Simulado 4</option>
+					<option value="2">Simulado 5</option>
+				</select>
+				<button id="btnRefresh" style="height:34px; width:40px; display:'none';" class="btn btn-info"><i class="fa fa-refresh"></i></button>
+				<button id="btnAddNewManual" class="btn btn-default"><i class="fa fa-plus"></i></button>
+				<button id="btnGear" class="btn btn-default" style="display:'none';"> <i class="fa fa-cog"></i></button>
+				<l id="bSearch">
+					<input type="text" id="txtSearch" value="" placeholder="Digite aqui na pesquisa" style="width:100px; height:34px; display:none;"><button id="btnSearch" style="height:34px; width:40px; display:none;" class="btn btn-info">
+					<i class="fa fa-search"></i></button>
+				</l>
+			</td></tr></table>
+		
+		<div id="divconfig" style="display:none;">
+			<label class="btn btn-default" style="cursor:default; width:300px;">
+			Em conformidade com a Lei 13.709/18
+			<br/>- Lei Geral de Proteção de Dados Pessoais,
+			<br/>concordo, autorizo, reconheço e aceito
+			<br/>a coleta de dados
+			<br/>com a finalidade exclusiva de atualizar
+			<br/>e manter na ferramenta DataShowCloud&#174;
+			<br/>em um prazo inderteminado.
+			<br/>Declaro que não farei cópia da ferramenta,
+			<br/>usarei licença e autorização prévia
+			<br/>e são verdadeiras as informações fornecidas.
+			</label>			
+			<br/><br/>
+			<button id="btnIndexConfigurar" class="btn btn-info" style="padding:9px 15px 9px 15px; width:300px;"> Configurar (clique aqui) <i class="fa fa-forward"></i> </button>
+			<!--p/><p/><button id="btnCertifications" class="btn btn-default" style="padding:9px 15px 9px 15px;"> Certificações <i class="fa fa-forward"></i> </button -->
+		</div>
+		
+		
+		<table id="tblGrid" style="width:98%" class="table table-hover ">
+			<tbody>
+					<!--
+				<div id="botoes" style="display:none; text-align:center;">
+				</div>
+					-->
+			</tbody>
+		</table>
+
+		<div id="divcontent" style="display:none;">
+		</div>
+
+		<!-- form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post" -->
+		<!-- /form -->
+		
+		<div class="form-group" id="divFormSim" style="display:none;">
+			<font size=4.9 style=text-align:justify>
+				<table border=0 align=center width="100%">
+					<tr><td>
+						<button id="btnBackward" class="btn btn-danger" style="display:'none';"> <i class="fa fa-remove"></i> </button>
+						<button id="btnPrevious" class="btn btn-info" style="display:'none';"> <i class="fa fa-chevron-left"></i></button>
+						<button id="btnNext" class="btn btn-success" style="display:'none';">Próximo <i class="fa fa-chevron-right"></i></button>
+						<button class="btn btn-default" style="display:'none';"><i class="fa fa-signal"></i></button>
+					</td></tr>
+					<tr><td id="mytextSim" style="display:'none'; text-align:justify;">
+					</td></tr>
+					<tr><td id="mycorrect1Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect1answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect2Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect2answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect3Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect3answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect4Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect4answer"></div>
+					</td></tr>
+
+					<tr><td id="myincorrect1Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect1answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect2Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect2answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect3Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect3answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect4Sim" style="display:none; text-align:justify;">
+						<div id="myincorrectaAnswer"></div>
+					</td></tr>
+					<tr><td>
+						<br/><input type="text" id="mygroupSim" value="" Zhidden="">
+						<br/><input type="text" id="mycodeSim" value="" Zhidden="">
+						<br/><input type="text" id="myorderSim" value="" Zhidden="">
+						<br/><input type="text" id="myidSim" value="" Zhidden="">
+					</td></tr>
+				</table>
+			</font>
+		</div>
+		
+		<div class="form-group" id="divFormAddUpdate" style="display:none;">
+			<table border=0 align=center width="98%"><tr><td>
+				<b>Formulário Editor de Perguntas</b>
+				<p/><p/>
+				<select id="mygroup" name="mygroup" style="height:35px; display:'none';"></select>
+				<select id="mycode" name="mycode" style="height:35px; display:'none';"></select>
+				<select id="myorder" name="myorder" style="height:35px; display:'none';"></select>
+				<p/>
+				<p/><textarea name="mytext" id="mytext" style="width:100%;" rows=4 placeholder="Digite a pergunta aqui..."></textarea>
+				<p/>
+				<font style="color:green"> <textarea name="mycorrect1" id="mycorrect1" style="width:100%;" rows=1 placeholder="digite aqui a correta 1... (obrigatório)"></textarea> </font>
+				<br/><font style="color:green"> <textarea name="mycorrect2" id="mycorrect2" style="width:100%;" rows=1 placeholder="digite aqui a correta 2..."></textarea> </font>
+				<br/><font style="color:green"> <textarea name="mycorrect3" id="mycorrect3" style="width:100%;" rows=1 placeholder="digite aqui a correta 3..."></textarea> </font>
+				<br/><font style="color:green"> <textarea name="mycorrect4" id="mycorrect4" style="width:100%;" rows=1 placeholder="digite aqui a correta 4..."></textarea> </font>
+				<p/>
+				<font style="color:red"> <textarea name="myincorrect1" id="myincorrect1" style="width:100%;" rows=1 placeholder="digite aqui a incorreta 1... (obrigatório)"></textarea> </font>
+				<br/><font style="color:red"> <textarea name="myincorrect2" id="myincorrect2" style="width:100%;" rows=1 placeholder="digite aqui a incorreta 2..."></textarea> </font>
+				<br/><font style="color:red"> <textarea name="myincorrect3" id="myincorrect3" style="width:100%;" rows=1 placeholder="digite aqui a incorreta 3..."></textarea> </font>
+				<br/><font style="color:red"> <textarea name="myincorrect4" id="myincorrect4" style="width:100%;" rows=1 placeholder="digite aqui a incorreta 4..."></textarea> </font>
+				<p/><p/>
+				<button id="btnSubmit" type="button" class="btn btn-primary" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-check"></i> Salvar</button>
+				<p/><p/>
+				<button id="btnCancel" type="button" class="btn btn-info" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-times"></i> Não Salvar</button>
+			</td></tr></table>
+		</div>
+		
+		<div class="form-group" id="divGear" style="display:none;">
+			<table border=0 align=center width="100%"><tr><td>
+				<b>Formulário Editor de Configurações</b>
+				<p/><p/>
+			<!-- form id="formAdd" ZZZaction="https://formspree.io/f/xrgjojko" method="post" -->
+				<input type="text" name="config_myowner" size="16" id="config_myowner" maxlength="6" style="width:220px;" value="" placeholder="digite seu nome...">
+			<!-- /form -->
+				<p/><p/><button id="btnDropDb" class="btn btn-danger" style="padding:9px 15px 9px 15px; width:220px;"> <i class="fa fa-remove"></i> Restaurar Padrão de Fábrica</button>
+				<p/><p/><button id="btnShowHelp" class="btn btn-warning" style="padding:9px 15px 9px 15px; width:220px;"> <i class="fa fa-book"></i> Tutorial</button>
+				<p/><p/><button id="btnCancelImport" class="btn btn-info" style="padding:9px 15px 9px 15px; width:220px;"> <i class="fa fa-times"></i> Fechar</button>			
+				<p/><p/><i>datashowcloud2022@gmail.com
+				<p/><p/>versão 19.08.22.00.00</i>
+
+				<div style="display:none;">
+					<br/><button id="btnSelectCountAll" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-asterisk"></i> Count All</button>
+					<br/><button id="btnDeleteLirics" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-minus"></i> Clear Lirycs</button>
+				</div>
+
+				<div style="display:none;">
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-envelope"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-star"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-user"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-film"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-check"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-th"></i> </button>
+					<br/>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-remove"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-signal"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-cog"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-trash"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-home"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-file"></i> </button>
+					<br/>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-road"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-download"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-inbox"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-play"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-repeat"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-refresh"></i> </button>
+					<br/>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-list"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-lock"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-flag"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-headphones"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-off"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-down"></i> </button>
+					<br/>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-up"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-qrcode"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-barcode"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-tag"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-tags"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-book"></i> </button>
+					<br/>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-bookmark"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-print"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-camera"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-font"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-bold"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-italic"></i> </button>
+					<br/>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-text-height"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-text-width"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-left"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-center"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-right"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-justify"></i> </button>
+					<br/>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-list"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-dedent"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-outdent"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-indent"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-video-camera"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-photo"></i> </button>
+					<br/>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-pencil"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-map-marker"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-adjust"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-tint"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-edit"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-share-square-o"></i> </button>
+					<br/>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-check-square-o"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-arrows"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-step-backward"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-fast-backward"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-backward"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-play"></i> </button>
+					<br/>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-pause"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-pencil-square-o"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-forward"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-fast-forward"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-step-forward"></i> </button>
+					<br/>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-eject"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-chevron-left"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-chevron-right"></i> </button>
+					<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
+				</div>
+			</td></tr></table>
+		</div>
+	</div>
+
+
+
+		<form id="formBible" class="form-horizontal" role="form" style="margin-top:50px; display: none;">
+		</form>
+
+    <link href="style/main.css " rel="stylesheet " type="text/css " />
+
+</body>
+
+</html>
