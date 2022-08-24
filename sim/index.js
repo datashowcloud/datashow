@@ -769,7 +769,7 @@ async function salvarRegistro(mygroup, mycode, myorder, mytext) {
 	var aswers = mytext.substring(nextpos, mytext.length).trim();
 //	alert('aswers= \n'+aswers);
 	var array = getArrayAnswers(aswers);
-	alert('setStudentFromImport: \n\n mygroup='+mygroup + '\n mycode='+mycode + '\n myorder='+myorder + '\n question=[' +question+']' + '\n Respostas \n '+array[0] + '\n '+array[1] + '\n '+array[2] + '\n '+array[3] + '\n '+array[4] + '\n '+array[5] + '\n '+array[6] + '\n '+array[7]);
+//	alert('setStudentFromImport: \n\n mygroup='+mygroup + '\n mycode='+mycode + '\n myorder='+myorder + '\n question=[' +question+']' + '\n Respostas \n '+array[0] + '\n '+array[1] + '\n '+array[2] + '\n '+array[3] + '\n '+array[4] + '\n '+array[5] + '\n '+array[6] + '\n '+array[7]);
 	setStudentFromImport(mygroup, mycode, myorder, question, array[0], array[1], array[2], array[3], array[4], array[5], array[6], array[7]);
 	var studentId = $('form').attr('data-student-id');
 	addStudentImportConfig(studentId);
@@ -780,7 +780,7 @@ async function confirmImport(contents, group) {
 	try {
 		var params = new URLSearchParams(window.location.search);
 		
-		alert('params.get(sim) = ' + params.get('sim'));
+//		alert('params.get(sim) = ' + params.get('sim'));
 		var mygroup = params.get('sim');
 		var mytext = document.getElementById(contents).value;
 		var mycode = 1;
@@ -981,7 +981,7 @@ async function addStudentImport(studentId) {
 			into: 'Student',
 			values: [student]
 		});
-		alert('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext + '\n '+student.mycorrect1 + '\n '+student.mycorrect2 + '\n '+student.mycorrect3 + '\n '+student.mycorrect4);
+//		alert('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext + '\n '+student.mycorrect1 + '\n '+student.mycorrect2 + '\n '+student.mycorrect3 + '\n '+student.mycorrect4);
 //		alert('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext);
 		if (noOfDataInserted === 1) {
 			var mycode = document.getElementById('mycode').value;
