@@ -164,8 +164,9 @@ function registerEvents() {
 		showIniciarConfiguracao();
     })
     $('#btnIndexConfigurar').click(function () {
+//		alert("config" + document.getElementById('selectMygroup').value + ".html?sim=" + document.getElementById('selectMygroup').value);
+//		return;
 		window.close();
-		//alert(document.getElementById('selectMygroup').value);
 		var DataShow_Config = window.open("config" + document.getElementById('selectMygroup').value + ".html?sim=" + document.getElementById('selectMygroup').value, "datashowconfig", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
 //		var DataShow_ConfigResult = window.open("configresult.html", "datashowconfigresult");
 //		datashowconfigresult.focus();
@@ -179,7 +180,6 @@ function registerEvents() {
 		showGridAndHideForms();
 //		$('#txtSearch').focus();
 //		$('#txtSearch').select();
-		document.getElementById('btnIndexConfigurar').style.display='none';
     })
     $('#btnCertifications').click(function () {
 		window.close();
@@ -692,7 +692,8 @@ function onLoadConfig() {
 	loadCombobox('mygroup', '0', '4', 'Teste');
 	loadCombobox('mycode', '0', '65', 'Número');
 	loadCombobox('myorder', '0', '65', 'Ordem');
-	confirmImport('contents1', '0'); //letras
+	confirmImport('contents1', '0');
+//	alert('fim onLoadConfig');
 }
 
 function getArrayAnswers(valor) {
@@ -768,7 +769,7 @@ async function salvarRegistro(mygroup, mycode, myorder, mytext) {
 	var aswers = mytext.substring(nextpos, mytext.length).trim();
 //	alert('aswers= \n'+aswers);
 	var array = getArrayAnswers(aswers);
-//	alert('setStudentFromImport: \n\n mygroup='+mygroup + '\n mycode='+mycode + '\n myorder='+myorder + '\n question=[' +question+']' + '\n Respostas \n '+array[0] + '\n '+array[1] + '\n '+array[2] + '\n '+array[3] + '\n '+array[4] + '\n '+array[5] + '\n '+array[6] + '\n '+array[7]);
+	alert('setStudentFromImport: \n\n mygroup='+mygroup + '\n mycode='+mycode + '\n myorder='+myorder + '\n question=[' +question+']' + '\n Respostas \n '+array[0] + '\n '+array[1] + '\n '+array[2] + '\n '+array[3] + '\n '+array[4] + '\n '+array[5] + '\n '+array[6] + '\n '+array[7]);
 	setStudentFromImport(mygroup, mycode, myorder, question, array[0], array[1], array[2], array[3], array[4], array[5], array[6], array[7]);
 	var studentId = $('form').attr('data-student-id');
 	addStudentImportConfig(studentId);
@@ -778,6 +779,8 @@ async function salvarRegistro(mygroup, mycode, myorder, mytext) {
 async function confirmImport(contents, group) {
 	try {
 		var params = new URLSearchParams(window.location.search);
+		
+		alert('params.get(sim) = ' + params.get('sim'));
 		var mygroup = params.get('sim');
 		var mytext = document.getElementById(contents).value;
 		var mycode = 1;
@@ -800,7 +803,7 @@ async function confirmImport(contents, group) {
 			posicao = nextp;
 			mycode = parseInt(mycode) + parseInt(1);
 			myorder = parseInt(mycode);
-//			index = mytext.substring(posicao, nextp).length;
+			index = mytext.substring(posicao, nextp).length;
 		}
 	} catch (ex) {
 		alert('erro \n\n\n' + ex.message + '\n\n\n' + valor);
