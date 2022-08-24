@@ -17,9 +17,9 @@ window.onload = function () {
 	
     registerEvents();
     initDb();
-	loadCombobox('mygroup', '0', '4', 'Teste');
-	loadCombobox('mycode', '0', '65', 'Número');
-	loadCombobox('myorder', '0', '65', 'Ordem');
+	loadCombobox('mygroup', '0', '100', 'Teste');
+	loadCombobox('mycode', '0', '100', 'Número');
+	loadCombobox('myorder', '0', '100', 'Ordem');
 	showForm1Form2();
 	$('#selectMygroup').focus();
 	$('#selectMygroup').select();
