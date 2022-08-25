@@ -17,7 +17,8 @@ window.onload = function () {
 	
     registerEvents();
     initDb();
-//	loadCombobox('mygroup', '0', '100', 'Teste');
+//	loadMygroup('selectMygroup');
+	loadCombobox('mygroup', '0', '100', 'Teste');
 	loadCombobox('mycode', '0', '100', 'Número');
 	loadCombobox('myorder', '0', '100', 'Ordem');
 //	showForm1Form2();
@@ -489,6 +490,22 @@ async function loadCombobox(name, min, max, text) {
 		var option = new Option(text + ' ' + item, item);
 		document.getElementById(name).add(option);
 	}
+}
+
+//This function load combobox
+async function loadMygroup(name) {
+	var option = new Option('Teste 1.0', '10');
+	document.getElementById(name).add(option);
+	var option = new Option('Teste 1.1', '11');
+	document.getElementById(name).add(option);
+	var option = new Option('Teste 1.2', '12');
+	document.getElementById(name).add(option);
+	var option = new Option('Teste 2.0', '20');
+	document.getElementById(name).add(option);
+	var option = new Option('Teste 2.1', '21');
+	document.getElementById(name).add(option);
+	var option = new Option('Teste 2.2', '22');
+	document.getElementById(name).add(option);
 }
 
 async function clearForm() {
