@@ -521,7 +521,7 @@ async function deleteTable() {
 			alert('successfull');
 		}
     } catch (ex) {
-        alert(ex.message);
+        console.log('deleteTable'+ex.message);
     }
 }
 
@@ -570,7 +570,7 @@ async function refreshTableResult() {
 		//Resultado
 		$('#tblGrid tbody').html(labelStudents + '<br/>' + '<br/>' + buttonFechar);
 	} catch (ex) {
-        alert(ex.message)
+        console.log('refreshTableResult'+ex.message)
     }
 }
 
@@ -624,7 +624,7 @@ async function freezeDataShow(aovivo) {
 			}
 		}
     } catch (ex) {
-        alert(ex.message);
+        console.log('freezeDataShow'+ex.message);
     }
 }
 
@@ -649,7 +649,7 @@ async function searchComplete() {
 //			document.getElementById('btnCompleteTop').classList.add('btn-warning');
 		}
     } catch (ex) {
-        alert(ex.message);
+        console.log('searchComplete'+ex.message);
     }
 }
 
@@ -671,7 +671,7 @@ async function videoPlayPause() {
 			document.getElementById('btnVideoPlayTop').classList.add('btn-default');
 		}
     } catch (ex) {
-        alert(ex.message);
+        console.log('videoPlayPause'+ex.message);
     }
 }
 
@@ -684,7 +684,7 @@ async function searchSimples() {
 		var mytext = document.getElementById('mytext').value.trim();
 		refreshTableData(mycode, myorder, mygroup, mytext);
     } catch (ex) {
-        alert(ex.message);
+        console.log('searchSimples'+ex.message);
     }
 }
 
@@ -806,7 +806,7 @@ async function confirmImport(contents, group) {
 			index = mytext.substring(posicao, nextp).length;
 		}
 	} catch (ex) {
-		alert('erro \n\n\n' + ex.message + '\n\n\n' + valor);
+		console.log('confirmImport'+'erro \n\n\n' + ex.message + '\n\n\n' + valor);
 	}
 }
 
