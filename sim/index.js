@@ -17,10 +17,10 @@ window.onload = function () {
 	
     registerEvents();
     initDb();
-	loadCombobox('mygroup', '0', '100', 'Teste');
+//	loadCombobox('mygroup', '0', '100', 'Teste');
 	loadCombobox('mycode', '0', '100', 'Número');
 	loadCombobox('myorder', '0', '100', 'Ordem');
-	showForm1Form2();
+//	showForm1Form2();
 	$('#selectMygroup').focus();
 	$('#selectMygroup').select();
 //	localStorage.setItem('valueText1', document.getElementById('selectMygroup').selectedIndex);
@@ -164,7 +164,7 @@ function registerEvents() {
 		showIniciarConfiguracao();
     })
     $('#btnIndexConfigurar').click(function () {
-//		alert("config" + document.getElementById('selectMygroup').value + ".html?sim=" + document.getElementById('selectMygroup').value);
+//		console.log("config" + document.getElementById('selectMygroup').value + ".html?sim=" + document.getElementById('selectMygroup').value);
 //		return;
 		window.close();
 		var DataShow_Config = window.open("config" + document.getElementById('selectMygroup').value + ".html?sim=" + document.getElementById('selectMygroup').value, "datashowconfig", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
@@ -234,13 +234,13 @@ function registerEvents() {
 				var myincorrect3 = document.getElementById('myincorrect3').value.trim();
 				var myincorrect4 = document.getElementById('myincorrect4').value.trim();
 				
-//alert('mycode='+mycode + ' myorder='+myorder + ' mygroup='+mygroup + ' mytext='+mytext + ' mycorrect1='+mycorrect1 + ' myincorrect1='+myincorrect1);
+//console.log('mycode='+mycode + ' myorder='+myorder + ' mygroup='+mygroup + ' mytext='+mytext + ' mycorrect1='+mycorrect1 + ' myincorrect1='+myincorrect1);
 				
 				confirmImportManual(mycode, myorder, mygroup, mytext, mycorrect1, mycorrect2, mycorrect3, mycorrect4, myincorrect1, myincorrect2, myincorrect3, myincorrect4);
-//				alert('Clique em "Go back". \nClique em "Go back".');
+//				console.log('Clique em "Go back". \nClique em "Go back".');
 //				document.getElementById("formAdd").submit();
 			} catch (ex) {
-				alert(ex.message);
+				console.log(ex.message);
 			}
 //		}
     })
@@ -253,9 +253,9 @@ function registerEvents() {
 			confirmImport('contents3', '2'); //artes
 			document.getElementById('selectMygroup').selectedIndex = 0;
 			confirmImport('contents1', '0'); //a última frase é testada na pesquisa de letras
-//			alert(confirmImportSuccessfull);
+//			console.log(confirmImportSuccessfull);
 		} else {
-			alert('Configuração cancelada.');
+			console.log('Configuração cancelada.');
 		}
     })
     $('#btnCancelImport').click(function () {
@@ -356,7 +356,7 @@ function registerEvents() {
         var child = row.children();
 		var id = row.attr('itemid');
 		var mysim = child.eq(2).text();
-		alert(mysim);
+		console.log(mysim);
     });
 	$('#btnSimulator').click(function () {
 		var array = [];
@@ -364,7 +364,7 @@ function registerEvents() {
 		for (var i = 0; i < checkboxes.length; i++) {
 		  array.push(checkboxes[i].value);
 		}
-		alert(array);
+		console.log(array);
     });
 	$('#btnBackward').click(function () {
 		showGridAndHideForms();
@@ -410,49 +410,49 @@ async function getFromTablePlay(id, mygroup, mycode) {
 			
 			document.getElementById('mytextSim').innerHTML = '<b>' + student.mycode + '. ' + student.mytext + '</b>';
 
-			//alert('student.mycorrect1answer='+student.mycorrect1answer);
+			//console.log('student.mycorrect1answer='+student.mycorrect1answer);
 			if (student.mycorrect1) {
 				document.getElementById('mycorrect1answer').innerHTML = '<input id="chkMycorrect1answer" type=checkbox value="" '+student.mycorrect1answer+'> ' + student.mycorrect1 + ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
 				document.getElementById('mycorrect1Sim').style.display='block';
 			}
-			//alert('student.mycorrect2answer='+student.mycorrect2answer);
+			//console.log('student.mycorrect2answer='+student.mycorrect2answer);
 			if (student.mycorrect2) {
 				document.getElementById('mycorrect2answer').innerHTML = '<input id="chkMycorrect2answer" type=checkbox value="" '+student.mycorrect2answer+'> ' + student.mycorrect2 + ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
 				document.getElementById('mycorrect2Sim').style.display='block';
 			}
-			//alert('student.mycorrect3answer='+student.mycorrect3answer);
+			//console.log('student.mycorrect3answer='+student.mycorrect3answer);
 			if (student.mycorrect3) {
 				document.getElementById('mycorrect3answer').innerHTML = '<input id="chkMycorrect3answer" type=checkbox value="" '+student.mycorrect3answer+'> ' + student.mycorrect3 + ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
 				document.getElementById('mycorrect3Sim').style.display='block';
 			}
-			//alert('student.mycorrect4answer='+student.mycorrect4answer);
+			//console.log('student.mycorrect4answer='+student.mycorrect4answer);
 			if (student.mycorrect4) {
 				document.getElementById('mycorrect4answer').innerHTML = '<input id="chkMycorrect4answer" type=checkbox value="" '+student.mycorrect4answer+'> ' + student.mycorrect4 + ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
 				document.getElementById('mycorrect4Sim').style.display='block';
 			}
-			//alert('student.myincorrect1answer='+student.myincorrect1answer);
+			//console.log('student.myincorrect1answer='+student.myincorrect1answer);
 			if (student.myincorrect1) {
 				document.getElementById('myincorrect1answer').innerHTML = '<input id="chkMyincorrect1answer" type=checkbox value="" '+student.myincorrect1answer+'> ' + student.myincorrect1 + ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
 				document.getElementById('myincorrect1Sim').style.display='block';
 			}
-			//alert('student.myincorrect2answer='+student.myincorrect2answer);
+			//console.log('student.myincorrect2answer='+student.myincorrect2answer);
 			if (student.myincorrect2) {
 				document.getElementById('myincorrect2answer').innerHTML = '<input id="chkMyincorrect2answer" type=checkbox value="" '+student.myincorrect2answer+'> ' + student.myincorrect2 + ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
 				document.getElementById('myincorrect2Sim').style.display='block';
 			}
-			//alert('student.myincorrect3answer='+student.myincorrect3answer);
+			//console.log('student.myincorrect3answer='+student.myincorrect3answer);
 			if (student.myincorrect3) {
 				document.getElementById('myincorrect3answer').innerHTML = '<input id="chkMyincorrect3answer" type=checkbox value="" '+student.myincorrect3answer+'> ' + student.myincorrect3 + ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
 				document.getElementById('myincorrect3Sim').style.display='block';
 			}
-			//alert('student.myincorrect4answer='+student.myincorrect4answer);
+			//console.log('student.myincorrect4answer='+student.myincorrect4answer);
 			if (student.myincorrect4) {
 				document.getElementById('myincorrect4answer').innerHTML = '<input id="chkMyincorrect4answer" type=checkbox value="" '+student.myincorrect4answer+'> ' + student.myincorrect4 + ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
 				document.getElementById('myincorrect4Sim').style.display='block';
 			}
 		})
     } catch (ex) {
-        alert(ex.message)
+        console.log(ex.message)
     }	
 }
 
@@ -518,10 +518,10 @@ async function deleteTable() {
 			var mygroup = document.getElementById('mygroup').value;
 			var mytext = document.getElementById('mytext').value.trim();
 			refreshTableData(mycode, myorder, mygroup, mytext);
-			alert('successfull');
+			console.log('successfull');
 		}
     } catch (ex) {
-        console.log('deleteTable'+ex.message);
+        console.log(ex.message);
     }
 }
 
@@ -536,7 +536,7 @@ async function dropdb() {
 			var mygroup = document.getElementById('mygroup').value;
 			var mytext = document.getElementById('mytext').value.trim();
 			refreshTableData(mycode, myorder, mygroup, mytext);
-//			alert('successfull');
+//			console.log('successfull');
 		}).catch(function(error) {
 			console.log(error);
 		});;
@@ -565,12 +565,12 @@ async function refreshTableResult() {
 		} else {
 			buttonFechar = '<button class="btn btn-danger" onclick="showIndex();" style="padding:9px 15px 9px 15px; width:200px;"> Continuar <i class="fa fa-forward"></i> </button>';
 			showIndex();
-//			alert('Pronto! Fim da configuração.');
+//			console.log('Pronto! Fim da configuração.');
 		}
 		//Resultado
 		$('#tblGrid tbody').html(labelStudents + '<br/>' + '<br/>' + buttonFechar);
 	} catch (ex) {
-        console.log('refreshTableResult'+ex.message)
+        console.log(ex.message)
     }
 }
 
@@ -624,7 +624,7 @@ async function freezeDataShow(aovivo) {
 			}
 		}
     } catch (ex) {
-        console.log('freezeDataShow'+ex.message);
+        console.log(ex.message);
     }
 }
 
@@ -649,7 +649,7 @@ async function searchComplete() {
 //			document.getElementById('btnCompleteTop').classList.add('btn-warning');
 		}
     } catch (ex) {
-        console.log('searchComplete'+ex.message);
+        console.log(ex.message);
     }
 }
 
@@ -671,7 +671,7 @@ async function videoPlayPause() {
 			document.getElementById('btnVideoPlayTop').classList.add('btn-default');
 		}
     } catch (ex) {
-        console.log('videoPlayPause'+ex.message);
+        console.log(ex.message);
     }
 }
 
@@ -684,7 +684,7 @@ async function searchSimples() {
 		var mytext = document.getElementById('mytext').value.trim();
 		refreshTableData(mycode, myorder, mygroup, mytext);
     } catch (ex) {
-        console.log('searchSimples'+ex.message);
+        console.log(ex.message);
     }
 }
 
@@ -693,7 +693,7 @@ function onLoadConfig() {
 	loadCombobox('mycode', '0', '65', 'Número');
 	loadCombobox('myorder', '0', '65', 'Ordem');
 	confirmImport('contents1', '0');
-//	alert('fim onLoadConfig');
+//	console.log('fim onLoadConfig');
 }
 
 function getArrayAnswers(valor) {
@@ -703,37 +703,37 @@ function getArrayAnswers(valor) {
 	var index = 0;
 	var fim = '';
 	nextpos = valor.indexOf('\n\n', posicao);
-//	alert(valor);
+//	console.log(valor);
 	for (index=0; index<=4; index++) {
 		var ok = valor.substring(posicao, posicao+5).trim();
-//		alert('ok=' + ok + ' posicao='+posicao + ' nextpos=' + nextpos + ' index=' + index + ' \n\n' + valor.substring(posicao, nextpos).trim());
+//		console.log('ok=' + ok + ' posicao='+posicao + ' nextpos=' + nextpos + ' index=' + index + ' \n\n' + valor.substring(posicao, nextpos).trim());
 		
 		//ok
 		if (ok == '<ok>' ) {
 			valorok = valor.substring(posicao, nextpos).replaceAll('<ok>', '');
-//			alert('arrayok.push=[' + valorok + ']');
+//			console.log('arrayok.push=[' + valorok + ']');
 			arrayok.push(valorok.trim());
 		//KO
 		} else {
 			valorKO = valor.substring(posicao, nextpos);
-//			alert('arrayKO.push=[' + valorKO + ']');
+//			console.log('arrayKO.push=[' + valorKO + ']');
 			arrayKO.push(valorKO.trim());
 		}
 		//limpa variáveis
 		posicao = nextpos+1;
 		nextpos = valor.indexOf('\n\n', posicao);		
 		if (fim == 'break') {
-//			alert('fim=break');
+//			console.log('fim=break');
 			break;
 		}
 		if (nextpos == -1) {
 			fim = 'break';
 			//força gravar última e sai
 			nextpos = valor.length;
-//			alert('break: posicao='+posicao + ' nextpos=' + nextpos + ' index=' + index + ' \n' + valor.substring(posicao, nextpos).replaceAll('<ok>', ''));
+//			console.log('break: posicao='+posicao + ' nextpos=' + nextpos + ' index=' + index + ' \n' + valor.substring(posicao, nextpos).replaceAll('<ok>', ''));
 		}
-//		alert(' posicao='+posicao + ' nextpos=' + nextpos + ' index=' + index + ' \n\n' + valor.substring(posicao, nextpos).trim());
-//		alert(valor.substring(posicao, posicao+5).trim());
+//		console.log(' posicao='+posicao + ' nextpos=' + nextpos + ' index=' + index + ' \n\n' + valor.substring(posicao, nextpos).trim());
+//		console.log(valor.substring(posicao, posicao+5).trim());
 
 		valorok = '';
 		valorKO = '';
@@ -755,7 +755,7 @@ function getArrayAnswers(valor) {
 			array.push(arrayKO[index]);
 		}
 	}
-//	alert(array);
+//	console.log(array);
 	return array;
 }
 
@@ -765,11 +765,11 @@ async function salvarRegistro(mygroup, mycode, myorder, mytext) {
 	nextpos = mytext.indexOf('\n\n', posicao);
 	var question = mytext.substring(posicao, nextpos).replaceAll('<p>', ''); //remove separador <p>
 	question = question.substring(posicao, nextpos).trim(); //remove espaços
-//	alert('question='+question);
+//	console.log('question='+question);
 	var aswers = mytext.substring(nextpos, mytext.length).trim();
-//	alert('aswers= \n'+aswers);
+//	console.log('aswers= \n'+aswers);
 	var array = getArrayAnswers(aswers);
-//	alert('setStudentFromImport: \n\n mygroup='+mygroup + '\n mycode='+mycode + '\n myorder='+myorder + '\n question=[' +question+']' + '\n Respostas \n '+array[0] + '\n '+array[1] + '\n '+array[2] + '\n '+array[3] + '\n '+array[4] + '\n '+array[5] + '\n '+array[6] + '\n '+array[7]);
+	console.log('setStudentFromImport: \n\n mygroup='+mygroup + '\n mycode='+mycode + '\n myorder='+myorder + '\n question=[' +question+']' + '\n Respostas \n '+array[0] + '\n '+array[1] + '\n '+array[2] + '\n '+array[3] + '\n '+array[4] + '\n '+array[5] + '\n '+array[6] + '\n '+array[7]);
 	setStudentFromImport(mygroup, mycode, myorder, question, array[0], array[1], array[2], array[3], array[4], array[5], array[6], array[7]);
 	var studentId = $('form').attr('data-student-id');
 	addStudentImportConfig(studentId);
@@ -780,7 +780,7 @@ async function confirmImport(contents, group) {
 	try {
 		var params = new URLSearchParams(window.location.search);
 		
-//		alert('params.get(sim) = ' + params.get('sim'));
+		console.log('params.get(sim) = ' + params.get('sim'));
 		var mygroup = params.get('sim');
 		var mytext = document.getElementById(contents).value;
 		var mycode = 1;
@@ -791,13 +791,13 @@ async function confirmImport(contents, group) {
 		for (index=0; index<=mytext.length; index++) {
 			nextp = mytext.indexOf('<p>', posicao + '<p>'.length);
 			if (nextp == -1) {
-//				alert('index break='+index);
+//				console.log('index break='+index);
 				break;
 			}
-//			alert(' posicao='+posicao + ' nextp='+nextp + '\n [' + mytext.substring(posicao, nextp) + ']');
+//			console.log(' posicao='+posicao + ' nextp='+nextp + '\n [' + mytext.substring(posicao, nextp) + ']');
 			
 			var valor = mytext.substring(posicao, nextp);
-//			alert('salvarRegistro: \n [' + '\n mygroup='+mygroup + '\n mycode='+mycode + '\n myorder='+myorder + '\n [' + valor + ']');
+//			console.log('salvarRegistro: \n [' + '\n mygroup='+mygroup + '\n mycode='+mycode + '\n myorder='+myorder + '\n [' + valor + ']');
 			salvarRegistro(mygroup, mycode, myorder, valor);
 			
 			posicao = nextp;
@@ -806,7 +806,7 @@ async function confirmImport(contents, group) {
 			index = mytext.substring(posicao, nextp).length;
 		}
 	} catch (ex) {
-		console.log('confirmImport'+'erro \n\n\n' + ex.message + '\n\n\n' + valor);
+		console.log('erro \n\n\n' + ex.message + '\n\n\n' + valor);
 	}
 }
 
@@ -814,7 +814,7 @@ async function confirmImport(contents, group) {
 async function confirmImportManual(mycode, myorder, mygroup, mytext, mycorrect1, mycorrect2, mycorrect3, mycorrect4, myincorrect1, myincorrect2, myincorrect3, myincorrect4) {
 		try {
 			
-//alert(' mygroup='+mygroup + ' mycode='+mycode + ' myorder='+myorder + ' mytext='+mytext + ' mycorrect1='+mycorrect1 + ' myincorrect1='+myincorrect1);
+//console.log(' mygroup='+mygroup + ' mycode='+mycode + ' myorder='+myorder + ' mytext='+mytext + ' mycorrect1='+mycorrect1 + ' myincorrect1='+myincorrect1);
 				
 				setStudentFromImport(mygroup, mycode, myorder, mytext, mycorrect1, mycorrect2, mycorrect3, mycorrect4, myincorrect1, myincorrect2, myincorrect3, myincorrect4);
 
@@ -832,7 +832,7 @@ async function confirmImportManual(mycode, myorder, mygroup, mytext, mycorrect1,
 			$('#txtSearch').focus();
 			$('#txtSearch').select();
 		} catch (ex) {
-			alert('erro \n\n\n' + ex.message + '\n\n\n' + mytext);
+			console.log('erro \n\n\n' + ex.message + '\n\n\n' + mytext);
 		}
 }
 
@@ -915,8 +915,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 		if (htmlString.length > 0) {
 			htmlString += "</tr>"
 		} else {
-			htmlString += htmlStringButtons
-
+/*			htmlString += htmlStringButtons
 			const d = new Date();
 			htmlString += "<b>"
 			htmlString += "Não Encontrado"
@@ -924,11 +923,13 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 			htmlString += "<br><br>"
 			htmlString += d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ":" + d.getMilliseconds();
 			htmlString += "</b>"
+*/
+			showIniciarConfiguracao();
 
 		}
         $('#tblGrid tbody').html(htmlString);
     } catch (ex) {
-        alert(ex.message)
+        console.log(ex.message)
     }
 }
 
@@ -954,23 +955,24 @@ async function selectCountAll() {
         $('#tblGrid tbody').html(htmlString);
 		document.getElementById('txtSearch').value = aux + " itens";
     } catch (ex) {
-        alert(ex.message)
+        console.log(ex.message)
     }
 }
 
 async function addStudentImportConfig(studentId) {
     var student = getStudentFromForm(studentId);
     try {
+		console.log('student.mygroup=[' + student.mygroup + ']');
 		var noOfDataInserted = await jsstoreCon.insert({
 			into: 'Student',
 			values: [student]
 		});
-//		alert('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext + '\n '+student.mycorrect1 + '\n '+student.mycorrect2 + '\n '+student.mycorrect3 + '\n '+student.mycorrect4);
-//		alert('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext);
+//		console.log('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext + '\n '+student.mycorrect1 + '\n '+student.mycorrect2 + '\n '+student.mycorrect3 + '\n '+student.mycorrect4);
+		console.log('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext);
 		if (noOfDataInserted === 1) {
 		}
     } catch (ex) {
-        alert(ex.message + ' error ' + student.text);
+        console.log(ex.message + ' error ' + student.text);
     }
 }
 
@@ -981,8 +983,8 @@ async function addStudentImport(studentId) {
 			into: 'Student',
 			values: [student]
 		});
-//		alert('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext + '\n '+student.mycorrect1 + '\n '+student.mycorrect2 + '\n '+student.mycorrect3 + '\n '+student.mycorrect4);
-//		alert('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext);
+		console.log('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext + '\n '+student.mycorrect1 + '\n '+student.mycorrect2 + '\n '+student.mycorrect3 + '\n '+student.mycorrect4);
+//		console.log('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext);
 		if (noOfDataInserted === 1) {
 			var mycode = document.getElementById('mycode').value;
 			var myorder = document.getElementById('myorder').value;
@@ -992,7 +994,7 @@ async function addStudentImport(studentId) {
 			showGridAndHideForms();
 		}
     } catch (ex) {
-        alert(ex.message + ' error ' + student.text);
+        console.log(ex.message + ' error ' + student.text);
     }
 }
 
@@ -1016,7 +1018,7 @@ async function updateStudentPlay(studentId) {
 			}
 		});
     } catch (ex) {
-        alert(ex.message);
+        console.log(ex.message);
     }
 }
 
@@ -1054,7 +1056,7 @@ async function updateStudent(studentId) {
 		refreshTableData(mycode, myorder, mygroup, mytext);
         refreshFormData({});
     } catch (ex) {
-        alert(ex.message);
+        console.log(ex.message);
     }
 }
 
@@ -1073,7 +1075,7 @@ async function deleteStudent(id) {
 		var mytext = document.getElementById('mytext').value.trim();
 		refreshTableData(mycode, myorder, mygroup, mytext);
     } catch (ex) {
-        alert(ex.message);
+        console.log(ex.message);
     }
 }
 
@@ -1155,14 +1157,14 @@ function getStudentFromFormPlay(studentId) {
 		}
 	}
 /*
-alert('chkMycorrect1answer=' + chkMycorrect1answer);
-alert('chkMycorrect2answer=' + chkMycorrect2answer);
-alert('chkMycorrect3answer=' + chkMycorrect3answer);
-alert('chkMycorrect4answer=' + chkMycorrect4answer);
-alert('chkMyincorrect1answer=' + chkMyincorrect1answer);
-alert('chkMyincorrect2answer=' + chkMyincorrect2answer);
-alert('chkMyincorrect3answer=' + chkMyincorrect3answer);
-alert('chkMyincorrect4answer=' + chkMyincorrect4answer);
+console.log('chkMycorrect1answer=' + chkMycorrect1answer);
+console.log('chkMycorrect2answer=' + chkMycorrect2answer);
+console.log('chkMycorrect3answer=' + chkMycorrect3answer);
+console.log('chkMycorrect4answer=' + chkMycorrect4answer);
+console.log('chkMyincorrect1answer=' + chkMyincorrect1answer);
+console.log('chkMyincorrect2answer=' + chkMyincorrect2answer);
+console.log('chkMyincorrect3answer=' + chkMyincorrect3answer);
+console.log('chkMyincorrect4answer=' + chkMyincorrect4answer);
 */
 	var student = {
         id: Number(studentId),
@@ -1184,6 +1186,8 @@ function getStudentFromForm(studentId) {
 	var myorderFormated = '';
 	myorderFormated = '000' + $('#myorder').val();
 	myorderFormated = myorderFormated.substring(myorderFormated.length-3, myorderFormated.length);
+
+//alert('$(#mygroup).val() = ' + $('#mygroup').val() );
 	var student = {
         id: Number(studentId),
         mycode: $('#mycode').val(),
@@ -1216,7 +1220,7 @@ function setStudentFromImport(mygroup, mycode, myorder, mytext, mycorrect1, myco
 	document.getElementById('myincorrect2').value = myincorrect2;
 	document.getElementById('myincorrect3').value = myincorrect3;
 	document.getElementById('myincorrect4').value = myincorrect4;
-//alert(' mygroup='+document.getElementById('mygroup').value + '\n mycode='+document.getElementById('mycode').value + '\n myorder='+myorder + '\n mytext=[' +mytext+']' + '\n '+document.getElementById('mycorrect1').value + '\n '+mycorrect2 + '\n '+mycorrect3 + '\n '+mycorrect4 + '\n '+myincorrect1 + '\n '+myincorrect2 + '\n '+myincorrect3 + '\n '+myincorrect4);
+//console.log(' mygroup='+document.getElementById('mygroup').value + '\n mycode='+document.getElementById('mycode').value + '\n myorder='+myorder + '\n mytext=[' +mytext+']' + '\n '+document.getElementById('mycorrect1').value + '\n '+mycorrect2 + '\n '+mycorrect3 + '\n '+mycorrect4 + '\n '+myincorrect1 + '\n '+myincorrect2 + '\n '+myincorrect3 + '\n '+myincorrect4);
 return;
     $('#divFormAddUpdate').show();
 }
@@ -1310,9 +1314,9 @@ function showIniciarConfiguracao() {
 }
 
 function showForm1Form2() {
-	openOwner(document.getElementById('config_myowner').value);
-	openLogo('logo/logo.png');
-	openImagemFundo(localStorage.getItem('valuePlanoFundoMestre'));
+//	openOwner(document.getElementById('config_myowner').value);
+//	openLogo('logo/logo.png');
+//	openImagemFundo(localStorage.getItem('valuePlanoFundoMestre'));
 }
 
 function openOwner(owner) {
@@ -1328,7 +1332,7 @@ function openImagemFundo(filename) {
 		//var extensao = filename.toLowerCase().substring((filename.length-3), filename.length);
 		localStorage.setItem('valuePlanoFundoMestre', filename);
     } catch (ex) {
-        alert(ex.message);
+        console.log(ex.message);
     }
 }
 
@@ -1473,7 +1477,7 @@ function clickElem(elem) {
 function openFile(func, content) {
 	readFile = function(e) {
 		var file = e.target.files[0];
-		//alert(file.name);
+		//console.log(file.name);
 		if (!file) {
 			document.getElementById(content).style.display='none';
 			return;
@@ -1550,7 +1554,7 @@ function moveCursor(mycode, col, evento, index) {
 
 //https://www.ti-enxame.com/pt/jquery/use-setas-para-navegar-em-uma-tabela-html/1046534083/
 function datashow(index, col, code) {
-//alert(document.getElementById('datashow' + index).innerHTML);
+//console.log(document.getElementById('datashow' + index).innerHTML);
 	if (document.getElementById('datashow' + index) == null) { //não permite mover o foco para fora da tabela e dar erro de código
 		return;
 	}
