@@ -69,6 +69,14 @@ function getDbSchema() {
 			myincorrect2answer: { Null: false, dataType: 'string' }, //texto da resposta errada 2
 			myincorrect3answer: { Null: false, dataType: 'string' }, //texto da resposta errada 3
 			myincorrect4answer: { Null: false, dataType: 'string' }, //texto da resposta errada 4
+			mycorrect1order: { Null: false, dataType: 'string' }, //texto da resposta correta 1
+			mycorrect2order: { Null: false, dataType: 'string' }, //texto da resposta correta 2
+			mycorrect3order: { Null: false, dataType: 'string' }, //texto da resposta correta 3
+			mycorrect4order: { Null: false, dataType: 'string' }, //texto da resposta correta 4
+			myincorrect1order: { Null: false, dataType: 'string' }, //texto da resposta errada 1
+			myincorrect2order: { Null: false, dataType: 'string' }, //texto da resposta errada 2
+			myincorrect3order: { Null: false, dataType: 'string' }, //texto da resposta errada 3
+			myincorrect4order: { Null: false, dataType: 'string' }, //texto da resposta errada 4
 			mycomment: { Null: false, dataType: 'string' }, //comentário ou resposta sobre a letra
 			myfix: { Null: false, dataType: 'string' }, //fixa para revisão
             mytimer: { Null: false, dataType: 'string' }, //cronômetro numérico em segundos para mudar o texto automaticamente, exemplo: 4s
@@ -137,16 +145,16 @@ function registerEvents() {
 			freezeDataShow('true');
 		}
     })
-    $('#btnPrevious').click(function () {
+    $('#btnNext').click(function () {
 		var mygroup = document.getElementById('mygroupSim').value;
-		var mycode = parseInt(document.getElementById('mycodeSim').value) - 1;
+		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
 		var myid = document.getElementById('myidSim').value;
 		updateStudentPlay(myid);
 		getFromTablePlay(myid, mygroup, mycode);
     })
-    $('#btnNext').click(function () {
+    $('#btnPrevious').click(function () {
 		var mygroup = document.getElementById('mygroupSim').value;
-		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
+		var mycode = parseInt(document.getElementById('mycodeSim').value) - 1;
 		var myid = document.getElementById('myidSim').value;
 		updateStudentPlay(myid);
 		getFromTablePlay(myid, mygroup, mycode);
@@ -368,8 +376,16 @@ function registerEvents() {
 		console.log(array);
     });
 	$('#btnBackward').click(function () {
+        var result = confirm('Limparei as respostas, ok?');
+        if (result) {
+			showGridAndHideForms();
+        }
+    });
+
+	$('#btnPause').click(function () {
 		showGridAndHideForms();
     });
+	
 	$('#btnGear').click(function () {
 		if (document.getElementById('divGear').style.display == 'none') {
 			showFormGear();
@@ -886,25 +902,26 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 
 		var htmlString = "";
 		var varTdTh = '';
-		var varPlay = '';
+		var varText = '';
+//		var varPlay = '';
 		var varEdit = '';
 		var varDel = '';
 		var htmlStringButtons = ""; //getButtonsBar();
 
 		students.forEach(function (student) {
+			varText = "<a href=\"#\" class=\"playsim\">" + student.mytext + "</a>";
 			if (student.mycode == '0') {
 				varTdTh = 'th';
-				varPlay = "<a href=\"#\" class=\"playsim\" style=\"color:#00FF00;\">Start</a>";
+//				varPlay = "<a href=\"#\" class=\"playsim\" style=\"color:#00FF00;\">Start</a>";
 				varEdit = "&nbsp;<a href=\"#\" class=\"edit\" style=\"color:#0000FF;\">Edit</a>";
                 varDel = "&nbsp;<a href=\"#\" class=\"delete\" style=\"color:#FF0000;\">Del</a>";
 			} else {
 				varTdTh = 'td';
-				
-				varPlay = "<button class=\"playsim\" style=\"color:#00FF00;\"><i class=\"fa fa-play\"></i></button>";
+//				varPlay = "<button class=\"playsim\" style=\"color:#00FF00;\"><i class=\"fa fa-play\"></i></button>";
 				varEdit = "<button class=\"edit\" style=\"color:#0000FF;\" ><i class=\"fa fa-pencil\"></i></button>";
 				varDel = "<button class=\"delete\" style=\"color:#FF0000;\" ><i class=\"fa fa-times\"></i></button>";
 /*
-				varPlay = "<a href=\"#\" class=\"playsim\"><i class=\"fa fa-play\" style=\"color:#00FF00; height:25px; Xwidth:25px; \"></i></a>";
+//				varPlay = "<a href=\"#\" class=\"playsim\"><i class=\"fa fa-play\" style=\"color:#00FF00; height:25px; Xwidth:25px; \"></i></a>";
 				varEdit = "<a href=\"#\" class=\"edit\"><i class=\"fa fa-pencil\" style=\"color:#0000FF; height:25px; Xwidth:25px; \"></i></a>";
 				varDel = "<a href=\"#\" class=\"delete\"><i class=\"fa fa-times\" style=\"color:#FF0000; height:25px; Xwidth:25px;\"></i></a>";
 */
@@ -914,23 +931,26 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				+ "<td style=\"color:#777777; font-size:12px; \">" + student.mygroup + "</td>"
                 + "<td style=\"color:#777777; font-size:12px;\">" + student.mycode + "</td>"
 				+ "<" + varTdTh + " id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " ZZZonClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
-				+ student.mytext + "</" + varTdTh + ">"
+				+ varText + "</" + varTdTh + ">"
+//				+ student.mytext + "</" + varTdTh + ">"
 /*				
 				+ "<" + varTdTh + " id=datashow" + student.id+"4" + " tabIndex=" + student.id+"4" + " ZZZonClick=\"datashow('" + student.id+"4" + "', 4, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 4, event, " + "" + (student.id+"4") + ");\" data-show='" + student.id+"4" + "'>"
-				+ varPlay + "</" + varTdTh + ">"
+//				+ varPlay + "</" + varTdTh + ">"
 				
 				+ "<" + varTdTh + " id=datashow" + student.id+"5" + " tabIndex=" + student.id+"5" + " ZZZonClick=\"datashow('" + student.id+"5" + "', 5, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 5, event, " + "" + (student.id+"5") + ");\" data-show='" + student.id+"5" + "'>"
 				+ varEdit + "</" + varTdTh + ">"
 */				
 				+ "<" + varTdTh + " nowrap id=datashow" + student.id+"6" + " tabIndex=" + student.id+"6" + " ZZZonClick=\"datashow('" + student.id+"6" + "', 6, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 6, event, " + "" + (student.id+"6") + ");\" data-show='" + student.id+"6" + "'>"
-				+ varPlay + ' '
-				+ varEdit + ' ' 
+//				+ varPlay + ' '
+				+ varEdit + ' '
+				+ '<p/>'
 				+ varDel + "</" + varTdTh + ">"
 				;
 		})
 
 		if (htmlString.length > 0) {
 			htmlString += "</tr>"
+			showGridAndHideForms();
 		} else {
 /*			htmlString += htmlStringButtons
 			const d = new Date();
@@ -942,7 +962,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 			htmlString += "</b>"
 */
 			showIniciarConfiguracao();
-
+//			document.getElementById('btnPlay').style.display='none';
 		}
         $('#tblGrid tbody').html(htmlString);
     } catch (ex) {
@@ -1251,6 +1271,7 @@ function showFormSim() {
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').show();
+	document.getElementById('tableButtons').style.display='none';
 }
 
 function showFormAddUpdate() {
@@ -1273,6 +1294,10 @@ function showGridAndHideForms() {
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
+	document.getElementById('btnPlay').style.display='';
+	document.getElementById('btnAddNewManual').style.display='';
+	document.getElementById('btnGear').style.display='';
+	document.getElementById('tableButtons').style.display='';
 }
 
 function showAddNewManual() {
@@ -1328,6 +1353,9 @@ function showIniciarConfiguracao() {
 	$('#divconfig').show();
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
+	document.getElementById('btnPlay').style.display='none';
+	document.getElementById('btnAddNewManual').style.display='none';
+	document.getElementById('btnGear').style.display='none';
 }
 
 function showForm1Form2() {
