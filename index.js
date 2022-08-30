@@ -6,27 +6,35 @@ var confirmImportSuccessfull = 'Não feche esta página (X). \nNão atualize est
 var COL_LOGOTIPO = 5;
 
 window.onload = function () {
-	var mygroup = selectMygroup.value.trim();
-	var mycode = '';
-	var mytext = '';
-	var myorder = '';
-	if (mygroup == '' && mycode == '') {
-		mycode = '0';
-	}
-	refreshTableData(mycode, myorder, mygroup, mytext);
-	
+	refreshTableData();
     registerEvents();
     initDb();
-//	loadMygroup('selectMygroup');
-	loadCombobox('mygroup', '0', '100', 'Teste');
-	loadCombobox('mycode', '0', '100', 'Número');
-	loadCombobox('myorder', '0', '100', 'Ordem');
-//	showForm1Form2();
-	$('#selectMygroup').focus();
-	$('#selectMygroup').select();
-//	localStorage.setItem('valueText1', document.getElementById('selectMygroup').selectedIndex);
-//	localStorage.setItem('valueText2', '');
-//	setCookie('valueText3', '', '1');
+	showForm1Form2();
+	$('#txtSearch').focus();
+	$('#txtSearch').select();
+	localStorage.setItem('valueArt', document.getElementById('selMycodeTextGroup').selectedIndex);
+	localStorage.setItem('valueComplete', 'true');
+	localStorage.setItem('valueVideoPlay', 'true');
+	localStorage.setItem('valueLogoBig', 'false');
+	localStorage.setItem('valueText', '');
+	setCookie('valueText', '', '1');
+/*	localStorage.setItem('valueMyowner', 'hope');
+	localStorage.setItem('valueLogoHeightBig', '40%');
+	localStorage.setItem('valueLogoHeightMini', '15%');
+	localStorage.setItem('valueLogoLeftBigTela1', '15%');
+	localStorage.setItem('valueLogoLeftBigTela2', '30%');
+	localStorage.setItem('valueLogoLeftMini', '0px');
+	localStorage.setItem('valueLogoTopBig', '30%');
+	localStorage.setItem('valueLogoTopMini', '75%');
+*/
+	localStorage.setItem('valueMyowner', 'iirf');
+	localStorage.setItem('valueLogoHeightBig', '60%');
+	localStorage.setItem('valueLogoHeightMini', '25%');
+	localStorage.setItem('valueLogoLeftBigTela1', '30%');
+	localStorage.setItem('valueLogoLeftBigTela2', '30%');
+	localStorage.setItem('valueLogoLeftMini', '0px');
+	localStorage.setItem('valueLogoTopBig', '20%');
+	localStorage.setItem('valueLogoTopMini', '75%');
 };
 
 async function initDb() {
@@ -48,66 +56,175 @@ function getDbSchema() {
         name: 'Student',
         columns: {
 			id: { primaryKey: true, autoIncrement: true },
-			mygroup: { notNull: true, dataType: 'string' }, //qual grupo a pergunta pertence, exempçlo: domínio 1, domínio 2, domínio 3...
-			mycode: { notNull: true, dataType: 'string' }, //código único numérico da pergunta
-			mytext: { notNull: true, dataType: 'string' }, //uma pergunta
-			mysearch: { Null: false, dataType: 'string' }, //pergunta ou texto sem os caracteres especiais para fazer o search com maior precisão
-			myoption1: { Null: false, dataType: 'string' }, //texto da resposta correta 1
-			myoption2: { Null: false, dataType: 'string' }, //texto da resposta correta 2
-			myoption3: { Null: false, dataType: 'string' }, //texto da resposta correta 3
-			myoption4: { Null: false, dataType: 'string' }, //texto da resposta correta 4
-			myoption5: { Null: false, dataType: 'string' }, //texto da resposta errada 1
-			myoption6: { Null: false, dataType: 'string' }, //texto da resposta errada 2
-			myoption7: { Null: false, dataType: 'string' }, //texto da resposta errada 3
-			myoption8: { Null: false, dataType: 'string' }, //texto da resposta errada 4
-			myorder: { Null: true, dataType: 'string' }, //ordem de exibição
-			mycorrect1answer1: { Null: false, dataType: 'string' }, //texto da resposta correta 1
-			mycorrect2answer: { Null: false, dataType: 'string' }, //texto da resposta correta 2
-			mycorrect3answer: { Null: false, dataType: 'string' }, //texto da resposta correta 3
-			mycorrect4answer: { Null: false, dataType: 'string' }, //texto da resposta correta 4
-			mycorrect5answer: { Null: false, dataType: 'string' }, //texto da resposta errada 1
-			mycorrect6answer: { Null: false, dataType: 'string' }, //texto da resposta errada 2
-			mycorrect7answer: { Null: false, dataType: 'string' }, //texto da resposta errada 3
-			mycorrect8answer: { Null: false, dataType: 'string' }, //texto da resposta errada 4
-			mycomment: { Null: false, dataType: 'string' }, //comentário ou resposta sobre a letra
-			myfix: { Null: false, dataType: 'string' }, //fixa para revisão
-            mytimer: { Null: false, dataType: 'string' }, //cronômetro numérico em segundos para mudar o texto automaticamente, exemplo: 4s
-            mytimermax: { Null: false, dataType: 'string' }, //cronômetro numérico em segundos para mudar o texto automaticamente, exemplo: 4s
-			mycodeTry: { Null: true, dataType: 'string' }, //código único
-			mystatus: { Null: false, dataType: 'string' }, //0=inativo, 1=ativo, padrão é ativo
-			myqtde: { Null: false, dataType: 'string' }, //quantidade de respostas a serem exibidas, o padrão é totalizar 4
-            myowner: { Null: false, dataType: 'string' }, //dono do texto ou responsável por inserir na tabela
-			myversion: { Null: false, dataType: 'string' }, // versão da pergunda para indicar que houve alteração
-            mymodified: { Null: false, dataType: 'string' }, //aaaammdd hhmmss, momento que o texto foi alterado
-            mycreated: { Null: false, dataType: 'string' }, //aaaammdd hhmmss, momento que o texto foi criado
-            fontfamily: { Null: false, dataType: 'string' },
-            fontsize: { Null: false, dataType: 'string' },
-            color: { Null: false, dataType: 'string' },
-            textalign: { Null: false, dataType: 'string' },
-            backgroundcolor: { Null: false, dataType: 'string' },
-            camporeserva: { Null: false, dataType: 'string' }
+			mycode: { notNull: true, dataType: 'string' }, //capítulo ou código único
+			myorder: { notNull: true, dataType: 'string' }, //versículo ou ordem da estrofe
+			mytext: { notNull: true, dataType: 'string' }, //um texto da letra
+			mysearch: { notNull: false, dataType: 'string' }, //texto sem os caracteres especiais para fazer o search com maior precisão
+            myrepeated: { notNull: false, dataType: 'string' }, //indica texto repetido na letra, onde 0=não=exibição obrigatória, >0=sim=exibição opcional, default = 1
+            myowner: { notNull: false, dataType: 'string' }, //dono do texto ou responsável por inserir na tabela
+			myversion: { notNull: false, dataType: 'string' }, //0=padrão erudita, 1=moderna
+			mycodeTextGroup: { notNull: false, dataType: 'string' }, //0=bible, 1=lirics, 2=art
+			myfix: { notNull: false, dataType: 'string' }, //fixa para sempre ser exibido no final do resultado da pesquisa ou apresentação
+			myfavorite: { notNull: false, dataType: 'string' }, //indica texto favorito que pode ser filtrado na pesquisa
+            mytype: { notNull: false, dataType: 'string' }, //r=refrão, nulo=texto normal
+			mystatus: { notNull: false, dataType: 'string' }, //0=inativo, 1=ativo, 
+			myfavorite: { notNull: false, dataType: 'string' }, //1=favorito, 0=não favorito
+            mymodified: { notNull: false, dataType: 'string' }, //aaaammdd hhmmss, momento que o texto foi alterado
+            mycreated: { notNull: false, dataType: 'string' }, //aaaammdd hhmmss, momento que o texto foi criado
+            mytimer: { notNull: false, dataType: 'string' }, //cronômetro numérico em segundos para mudar o texto automaticamente, exemplo: 4s
+			mycomment: { notNull: false, dataType: 'string' }, //comentário sobre a letra
+            fontfamily: { notNull: false, dataType: 'string' },
+            fontsize: { notNull: false, dataType: 'string' },
+            color: { notNull: false, dataType: 'string' },
+            textalign: { notNull: false, dataType: 'string' },
+            backgroundcolor: { notNull: false, dataType: 'string' },
+            camporeserva1: { notNull: false, dataType: 'string' },
+            camporeserva2: { notNull: false, dataType: 'string' },
+            camporeserva3: { notNull: false, dataType: 'string' }
+//			mycodeMyorder:{keyPath:['mycode','myorder']}
+        }
+    }
+	
+	var tableBible = { //idêntico à Student
+        name: 'Bible',
+        columns: {
+			id: { primaryKey: true, autoIncrement: true },
+			mycode: { notNull: true, dataType: 'string' },
+			myorder: { notNull: true, dataType: 'string' },
+			mytext: { notNull: true, dataType: 'string' },
+			mysearch: { notNull: false, dataType: 'string' },
+            myrepeated: { notNull: false, dataType: 'string' },
+            myowner: { notNull: false, dataType: 'string' },
+			myversion: { notNull: false, dataType: 'string' },
+			mycodeTextGroup: { notNull: false, dataType: 'string' },
+			myfix: { notNull: false, dataType: 'string' },
+			myfavorite: { notNull: false, dataType: 'string' },
+            mytype: { notNull: false, dataType: 'string' },
+			mystatus: { notNull: false, dataType: 'string' },
+			myfavorite: { notNull: false, dataType: 'string' },
+            mymodified: { notNull: false, dataType: 'string' },
+            mycreated: { notNull: false, dataType: 'string' },
+            mytimer: { notNull: false, dataType: 'string' },
+			mycomment: { notNull: false, dataType: 'string' },
+            fontfamily: { notNull: false, dataType: 'string' },
+            fontsize: { notNull: false, dataType: 'string' },
+            color: { notNull: false, dataType: 'string' },
+            textalign: { notNull: false, dataType: 'string' },
+            backgroundcolor: { notNull: false, dataType: 'string' },
+            camporeserva1: { notNull: false, dataType: 'string' },
+            camporeserva2: { notNull: false, dataType: 'string' },
+            camporeserva3: { notNull: false, dataType: 'string' }
+//			mycodeMyorder:{keyPath:['mycode','myorder']}
         }
     }
 
-	var tableHistory = {
-        name: 'History',
+	var tableArt = { //idêntico à Student
+        name: 'Art',
         columns: {
 			id: { primaryKey: true, autoIncrement: true },
-			mycodeTry: { notNull: true, dataType: 'string' }, //código único
-			mytry: { notNull: true, dataType: 'string' }, //número da tentatica, exemplo: 1, 2, 3...; tentativa 1, tentativa 2, tentativa 3...
-			mypercent: { notNull: true, dataType: 'string' }, //porcentagem que conseguiu
-			mycorrects: { notNull: true, dataType: 'string' }, //pquantidade de perguntas corretas
-			myincorrects: { notNull: true, dataType: 'string' }, //quantidade de perguntas erradas
-			mytotal: { notNull: true, dataType: 'string' } //quantidade de perguntas
+			mycode: { notNull: true, dataType: 'string' },
+			myorder: { notNull: true, dataType: 'string' },
+			mytext: { notNull: true, dataType: 'string' },
+			mysearch: { notNull: false, dataType: 'string' },
+            myrepeated: { notNull: false, dataType: 'string' },
+            myowner: { notNull: false, dataType: 'string' },
+			myversion: { notNull: false, dataType: 'string' },
+			mycodeTextGroup: { notNull: false, dataType: 'string' },
+			myfix: { notNull: false, dataType: 'string' },
+			myfavorite: { notNull: false, dataType: 'string' },
+            mytype: { notNull: false, dataType: 'string' },
+			mystatus: { notNull: false, dataType: 'string' },
+			myfavorite: { notNull: false, dataType: 'string' },
+            mymodified: { notNull: false, dataType: 'string' },
+            mycreated: { notNull: false, dataType: 'string' },
+            mytimer: { notNull: false, dataType: 'string' },
+			mycomment: { notNull: false, dataType: 'string' },
+            fontfamily: { notNull: false, dataType: 'string' },
+            fontsize: { notNull: false, dataType: 'string' },
+            color: { notNull: false, dataType: 'string' },
+            textalign: { notNull: false, dataType: 'string' },
+            backgroundcolor: { notNull: false, dataType: 'string' },
+            camporeserva1: { notNull: false, dataType: 'string' },
+            camporeserva2: { notNull: false, dataType: 'string' },
+            camporeserva3: { notNull: false, dataType: 'string' }
+//			mycodeMyorder:{keyPath:['mycode','myorder']}
+		}
+    }
+
+	var tableMessage = { //idêntico à Student
+        name: 'Message',
+        columns: {
+			id: { primaryKey: true, autoIncrement: true },
+			mycode: { notNull: true, dataType: 'string' },
+			myorder: { notNull: true, dataType: 'string' },
+			mytext: { notNull: true, dataType: 'string' },
+			mysearch: { notNull: false, dataType: 'string' },
+            myrepeated: { notNull: false, dataType: 'string' },
+            myowner: { notNull: false, dataType: 'string' },
+			myversion: { notNull: false, dataType: 'string' },
+			mycodeTextGroup: { notNull: false, dataType: 'string' },
+			myfix: { notNull: false, dataType: 'string' },
+			myfavorite: { notNull: false, dataType: 'string' },
+            mytype: { notNull: false, dataType: 'string' },
+			mystatus: { notNull: false, dataType: 'string' },
+			myfavorite: { notNull: false, dataType: 'string' },
+            mymodified: { notNull: false, dataType: 'string' },
+            mycreated: { notNull: false, dataType: 'string' },
+            mytimer: { notNull: false, dataType: 'string' },
+			mycomment: { notNull: false, dataType: 'string' },
+            fontfamily: { notNull: false, dataType: 'string' },
+            fontsize: { notNull: false, dataType: 'string' },
+            color: { notNull: false, dataType: 'string' },
+            textalign: { notNull: false, dataType: 'string' },
+            backgroundcolor: { notNull: false, dataType: 'string' },
+            camporeserva1: { notNull: false, dataType: 'string' },
+            camporeserva2: { notNull: false, dataType: 'string' },
+            camporeserva3: { notNull: false, dataType: 'string' }
+//			mycodeMyorder:{keyPath:['mycode','myorder']}
+		}
+    }
+
+	var tableTypeData = {
+        name: 'TypeData',
+        columns: {
+			id: { primaryKey: true, autoIncrement: true },
+			mycode: { notNull: true, dataType: 'string' },
+			myorder: { notNull: true, dataType: 'string' },
+			mytext: { notNull: true, dataType: 'string' },
+			mysearch: { notNull: false, dataType: 'string' },
+            myrepeated: { notNull: false, dataType: 'string' },
+            myowner: { notNull: false, dataType: 'string' },
+			myversion: { notNull: false, dataType: 'string' },
+			mycodeTextGroup: { notNull: false, dataType: 'string' },
+			myfix: { notNull: false, dataType: 'string' },
+			myfavorite: { notNull: false, dataType: 'string' },
+            mytype: { notNull: false, dataType: 'string' },
+			mystatus: { notNull: false, dataType: 'string' },
+			myfavorite: { notNull: false, dataType: 'string' },
+            mymodified: { notNull: false, dataType: 'string' },
+            mycreated: { notNull: false, dataType: 'string' },
+            mytimer: { notNull: false, dataType: 'string' },
+			mycomment: { notNull: false, dataType: 'string' },
+            fontfamily: { notNull: false, dataType: 'string' },
+            fontsize: { notNull: false, dataType: 'string' },
+            color: { notNull: false, dataType: 'string' },
+            textalign: { notNull: false, dataType: 'string' },
+            backgroundcolor: { notNull: false, dataType: 'string' },
+            camporeserva1: { notNull: false, dataType: 'string' },
+            camporeserva2: { notNull: false, dataType: 'string' },
+            camporeserva3: { notNull: false, dataType: 'string' }
+//			mycodeMyorder:{keyPath:['mycode','myorder']}
         }
     }
 
     var db = {
-        name: 'mydbsim',
-        tables: [table, tableHistory]
+        name: 'mydb1',
+        tables: [table, tableBible, tableArt, tableMessage, tableTypeData]
     }
     return db;
 }
+
+
 
 function registerEvents() {
     $('#btnSelectCountAll').click(function () {
@@ -115,132 +232,119 @@ function registerEvents() {
     })	
     $('#txtSearch').keyup(function () {
 		if (event.keyCode == 13 || event.which == 13) { //13=tecla ENTER
-			var mycode = document.getElementById('mycode').value;
-			var myorder = document.getElementById('myorder').value;
-			var mygroup = document.getElementById('mygroup').value;
-			var mytext = document.getElementById('mytext').value.trim();
-			refreshTableData(mycode, myorder, mygroup, mytext);
+			refreshTableData();
 			if (document.getElementById('txtSearch').value.length <= 1) { // pesquisa somente com mais de 1 caracter preenchido no campo search
-				if (document.getElementById('selectMygroup').selectedIndex == '1') {
+				if (document.getElementById('selMycodeTextGroup').selectedIndex == '1') {
 					showBible();
 				}
 			} else {
 				showGridAndHideForms();
 			}
-			$('#selectMygroup').focus();
-			$('#selectMygroup').select();
+			$('#txtSearch').focus();
+			$('#txtSearch').select();
 		} else if (event.keyCode == 27 || event.which == 27) { //ESC
-			$('#selectMygroup').focus();
-			$('#selectMygroup').select();
+			$('#txtSearch').focus();
+			$('#txtSearch').select();
 			freezeDataShow('true');
 		}
     })
-    $('#btnRefresh').click(function () {
-		var mygroup = document.getElementById('selectMygroup').value;
-		var mycode = '';
-		var myorder = '';
-		var mytext = '';
-		refreshTableData(mycode, myorder, mygroup, mytext);
-		showGridAndHideForms();
-		$('#selectMygroup').focus();
-		$('#selectMygroup').select();
-    })
-    $('#btnImportSim').click(function () {
-		showIniciarConfiguracao();
+    $('#btnSearch').click(function () {
+		refreshTableData();
+		if (document.getElementById('txtSearch').value.length <= 1) { // pesquisa somente com mais de 1 caracter preenchido no campo search
+			if (document.getElementById('selMycodeTextGroup').selectedIndex == '1') {
+				showBible();
+			}
+		} else {
+			showGridAndHideForms();
+		}
+//		freezeDataShow(true);
+		$('#txtSearch').focus();
+		$('#txtSearch').select();
+		document.getElementById('btnIndexConfigurar').style.display='none';
     })
     $('#btnIndexConfigurar').click(function () {
-//		console.log("config" + document.getElementById('selectMygroup').value + ".html?sim=" + document.getElementById('selectMygroup').value);
-//		return;
 		window.close();
-		var DataShow_Config = window.open("config" + document.getElementById('selectMygroup').value + ".html?sim=" + document.getElementById('selectMygroup').value, "datashowconfig", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
-//		var DataShow_ConfigResult = window.open("configresult.html", "datashowconfigresult");
-//		datashowconfigresult.focus();
+		var DataShow_Config = window.open("config.html", "datashowconfig", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
+		var DataShow_ConfigResult = window.open("configresult.html", "datashowconfigresult");
+		datashowconfigresult.focus();
 	})
-    $('#btnSearch').click(function () {
-		var mygroup = document.getElementById('mygroup').value;
-		var mycode = document.getElementById('mycode').value;
-		var myorder = document.getElementById('myorder').value;
-		var mytext = document.getElementById('mytext').value.trim();
-		refreshTableData(mycode, myorder, mygroup, mytext);
-		showGridAndHideForms();
-//		$('#txtSearch').focus();
-//		$('#txtSearch').select();
-    })
     $('#btnCertifications').click(function () {
 		window.close();
 		var DataShow_Tests = window.open("certifications.html", "datashowcertifications");
 		datashowconfigresult.focus();
 	})
-    $('#selectMygroup').change(function () {
-		var mygroup = selectMygroup.value.trim();
-		var mycode = '';
-		var mytext = '';
-		var myorder = '';
-		if (mygroup == '' && mycode == '') {
-			mycode = '0';
+    $('#selMycodeTextGroup').change(function () {
+		freezeDataShow(true);
+		var selectedIndex = document.getElementById('selMycodeTextGroup').selectedIndex;
+		localStorage.setItem('valueArt', selectedIndex);
+		if (selectedIndex == '1') { //bíblia
+			showBible();
+		} else if (selectedIndex == '2') { //imagem e vídeo
+			document.getElementById('txtSearch').value = 'favoritos datashow';
+			refreshTableData();
+			showGridAndHideForms();
+		} else {
+			refreshTableData();
+			showGridAndHideForms();
 		}
-		refreshTableData(mycode, myorder, mygroup, mytext);
-		showGridAndHideForms();
-		$('#selectMygroup').focus();
-		$('#selectMygroup').select();
+		$('#txtSearch').focus();
+		$('#txtSearch').select();
     })
     $('#btnDeleteLirics').click(function () {
-		deleteTable();
+		deleteLirycs();
+    })
+    $('#btnDeleteBible').click(function () {
+		deleteBible();
+    })
+    $('#btnDeleteArt').click(function () {
+		deleteArt();
     })
     $('#btnDropDb').click(function () {
 		dropdb();
     })
     $('#btnImportArt').click(function () {
-		document.getElementById('selectMygroup').selectedIndex = 2;
+		document.getElementById('selMycodeTextGroup').selectedIndex = 2;
 		openFile(dispFile);
     })
     $('#btnImport').click(function () {
-		document.getElementById('selectMygroup').selectedIndex = 0;
+		document.getElementById('selMycodeTextGroup').selectedIndex = 0;
 		openFile(dispFile);
     })
     $('#btnImportBible').click(function () {
-		document.getElementById('selectMygroup').selectedIndex = 1;
+		document.getElementById('selMycodeTextGroup').selectedIndex = 1;
 		openFile(dispFile);
     })
     $('#btnConfirmImportManual').click(function () {
 //		var result = confirm('Confirma?');
 //		if (result) {
 			try {
-				var mycode = document.getElementById('mycode').value;
-				var myorder = document.getElementById('myorder').value;
-				var mygroup = document.getElementById('mygroup').value;
-				var mytext = document.getElementById('mytext').value.trim();
-				var myoption1 = document.getElementById('myoption1').value.trim();
-				var myoption2 = document.getElementById('myoption2').value.trim();
-				var myoption3 = document.getElementById('myoption3').value.trim();
-				var myoption4 = document.getElementById('myoption4').value.trim();
-				var myoption5 = document.getElementById('myoption5').value.trim();
-				var myoption6 = document.getElementById('myoption6').value.trim();
-				var myoption7 = document.getElementById('myoption7').value.trim();
-				var myoption8 = document.getElementById('myoption8').value.trim();
-				
-//console.log('mycode='+mycode + ' myorder='+myorder + ' mygroup='+mygroup + ' mytext='+mytext + ' myoption1='+myoption1 + ' myoption5='+myoption5);
-				
-				confirmImportManual(mycode, myorder, mygroup, mytext, myoption1, myoption2, myoption3, myoption4, myoption5, myoption6, myoption7, myoption8);
-//				console.log('Clique em "Go back". \nClique em "Go back".');
-//				document.getElementById("formAdd").submit();
+				var group = document.getElementById('selMycodeTextGroup').value.trim();
+				var nomemusicaAddNewManual = document.getElementById('nomemusicaAddNewManual').value;
+				var nomeautorAddNewManual = document.getElementById('nomeautorAddNewManual').value;
+				confirmImportManual('contentAddNewManual', group, nomemusicaAddNewManual, nomeautorAddNewManual); //letras
+				return;
+//				localStorage.setItem('valueLogo', document.getElementById('config_mylogo').value);
+//				localStorage.setItem('valuePlanoFundoMestre', document.getElementById('config_myfundo').value);
+				alert('Clique em "Go back". \nClique em "Go back".');
+				document.getElementById("formAdd").submit();
 			} catch (ex) {
-				console.log(ex.message);
+				alert(ex.message);
 			}
 //		}
     })
+	
     $('#btnConfigForward').click(function () {
 		var result = confirm('Confirma configuração automática? \n\nNão faça nada. Aguarde alguns segundos...');
 		if (result) {
-			document.getElementById('selectMygroup').selectedIndex = 1;
+			document.getElementById('selMycodeTextGroup').selectedIndex = 1;
 			confirmImport('contents2', '1'); //bíblia
-			document.getElementById('selectMygroup').selectedIndex = 2;
+			document.getElementById('selMycodeTextGroup').selectedIndex = 2;
 			confirmImport('contents3', '2'); //artes
-			document.getElementById('selectMygroup').selectedIndex = 0;
+			document.getElementById('selMycodeTextGroup').selectedIndex = 0;
 			confirmImport('contents1', '0'); //a última frase é testada na pesquisa de letras
-//			console.log(confirmImportSuccessfull);
+//			alert(confirmImportSuccessfull);
 		} else {
-			console.log('Configuração cancelada.');
+			alert('Configuração cancelada.');
 		}
     })
     $('#btnCancelImport').click(function () {
@@ -268,6 +372,9 @@ function registerEvents() {
         showForm1Form2();
 		showGridAndHideForms();
     })
+    $('#btnAddNewManual').click(function () {
+        showAddNewManual();
+    })
     $('#btnShowHelp').click(function () {
 		var DataShow_Help = window.open("help/help.pdf", "datashowhelp", "top=100, width=1100, height=10000, left=0, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
     })
@@ -275,54 +382,32 @@ function registerEvents() {
 		var DataShow_Help = window.open("help/helpconfig.pdf", "datashowhelp", "top=100, width=1100, height=10000, left=0, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
     })
     $('#btnSubmit').click(function () {
+        var group = document.getElementById('selMycodeTextGroup').value;
 		var studentId = $('form').attr('data-student-id');
-		if (studentId) {
-			updateStudent(studentId);
-		} else {
-			addStudentImport(studentId);
-		}
+        if (studentId) {
+			updateStudent(group);
+        } else {
+            addStudentImport(group);
+        }
     });
-    $('#btnAddNewManual').click(function () {
-		if (document.getElementById('divFormAddUpdate').style.display == 'none') {
-			clearForm();
-			showFormAddUpdate();
-		} else {
-			showGridAndHideForms();
-		}
-    });	
-    $('#btnPlay').click(function () {
-		var mygroup = document.getElementById('selectMygroup').value;
-		getFromTablePlay('', mygroup, '1');
-		showFormSim();
-    });	
     $('#tblGrid tbody').on('click', '.edit', function () {
 		var row = $(this).parents().eq(1);
         var child = row.children();
 		var id = row.attr('itemid');
-		var mygroup = child.eq(0).text();
-		var mycode = child.eq(1).text();
-		getFromTable(id, mygroup, mycode);
+		var mycode = child.eq(0).text();
+		var myorder = child.eq(1).text();
+		getFromTable(id, mycode, myorder);
 		showFormAddUpdate();
+		freezeDataShow('true');
     });
     $('#tblGrid tbody').on('click', '.delete', function () {
-        var result = confirm('Excluir, ok?');
+        var result = confirm('Are you sure, do you want to delete?');
         if (result) {
+			var group = document.getElementById('selMycodeTextGroup').value;
             var studentId = $(this).parents().eq(1).attr('itemid');
-            deleteStudent(Number(studentId));
+            deleteStudent(Number(studentId), group);
         }
     });
-    $('#tblGrid tbody').on('click', '.playsim', function () {
-//        var result = confirm('Começar, ok?');
-//        if (result) {			
-			var row = $(this).parents().eq(1);
-			var child = row.children();
-			var id = row.attr('itemid');
-			var mygroup = child.eq(0).text();
-			var mycode = child.eq(1).text();
-			getFromTablePlay(id, mygroup, mycode);
-			showFormSim();
-//        }
-    });		
     $('#tblGrid tbody').on('click', '.freeze', function () {
 		freezeDataShow(localStorage.getItem('valueAoVivo'));
     });
@@ -336,12 +421,13 @@ function registerEvents() {
     $('#tblGrid tbody').on('click', '.videoplaypause', function () {
 		videoPlayPause();
     });
+	
     $('#tblGrid tbody').on('click', '.simulator', function () {
 		var row = $(this).parents().eq(1);
         var child = row.children();
 		var id = row.attr('itemid');
 		var mysim = child.eq(2).text();
-		console.log(mysim);
+		alert(mysim);
     });
 	$('#btnSimulator').click(function () {
 		var array = [];
@@ -349,34 +435,9 @@ function registerEvents() {
 		for (var i = 0; i < checkboxes.length; i++) {
 		  array.push(checkboxes[i].value);
 		}
-		console.log(array);
+		alert(array);
     });
-    $('#btnPrevious').click(function () {
-		var myid = document.getElementById('myidSim').value;
-		var mygroup = document.getElementById('mygroupSim').value;
-		var mycode = parseInt(document.getElementById('mycodeSim').value) - 1;
-		updateStudentPlay(myid, mygroup, mycode);
-		getFromTablePlay(myid, mygroup, mycode);
-    })
-    $('#btnNext').click(function () {
-		var myid = document.getElementById('myidSim').value;
-		var mygroup = document.getElementById('mygroupSim').value;
-		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
-		updateStudentPlay(myid, mygroup, mycode);
-		getFromTablePlay(myid, mygroup, mycode);
-    })
-	$('#btnBackward').click(function () {
-        var result = confirm('Vou limpar e reorganizar as respostas, ok?');
-        if (result) {
-			var mygroup = document.getElementById('mygroupSim').value;
-			updateStudentPlayOrder(mygroup);
-			updateStudentPlayClear(mygroup);
-			showGridAndHideForms();
-        }
-    });
-	$('#btnPause').click(function () {
-		showGridAndHideForms();
-    });	
+	
 	$('#btnGear').click(function () {
 		if (document.getElementById('divGear').style.display == 'none') {
 			showFormGear();
@@ -388,210 +449,114 @@ function registerEvents() {
 
 
 
-//This function select table play
-async function getFromTablePlay(id, mygroup, mycode) {
-//    try {
+//This function select liryc
+async function getFromTable(id, code, order) {
+	var group = document.getElementById('selMycodeTextGroup').value;
+	
+	//select groupby mycode
+	if (group == 1) { //bible
 		var students = await jsstoreCon.select({
-			from: 'Student'
-			  , where: { mygroup: '' + mygroup + ''
-					   , mycode: '' + mycode + ''
+			from: 'Bible'
+			  , where: { mycode: {like: '' + code + ''} 
+					   , myorder: '' + order + ''
+					   , id: {like: '' + id + ''} 
 			  }
 		});
-		students.forEach(function (student) {
-			document.getElementById('myorderSim').style.display='none';
-			document.getElementById('myidSim').style.display='none';
-			document.getElementById('mygroupSim').style.display='none';
-			document.getElementById('mycodeSim').style.display='none';
-
-			$('#myidSim').val(student.id);
-			$('#mygroupSim').val(student.mygroup);
-			$('#mycodeSim').val(student.mycode);
-			$('#myorderSim').val(student.myorder);
-			
-			document.getElementById('mycorrect1Sim').style.display='none';
-			document.getElementById('mycorrect2Sim').style.display='none';
-			document.getElementById('mycorrect3Sim').style.display='none';
-			document.getElementById('mycorrect4Sim').style.display='none';
-			document.getElementById('mycorrect5Sim').style.display='none';
-			document.getElementById('mycorrect6Sim').style.display='none';
-			document.getElementById('mycorrect7Sim').style.display='none';
-			document.getElementById('mycorrect8Sim').style.display='none';
-
-			document.getElementById('mytextSim').innerHTML = '<b>' + student.mycode + '. ' + student.mytext + '</b>';
-
-			var myorder = student.myorder;
-			myorder = myorder.replaceAll('\,', '');
-			for (var index=0; index<=8; index++) {
-				valorIndice = myorder.substring(index,index+1);
-				if (valorIndice == '1') {
-					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-					valorIndice +
-					' <input id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
-					+ student.mycorrect1answer + '> ' + student.myoption1 + ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
-					if (student.myoption1 != '') {
-						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
-					}
-				} else if (valorIndice == '2') {
-					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-					valorIndice +
-					' <input id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
-					+ student.mycorrect2answer + '> ' + student.myoption2 + ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
-					if (student.myoption2 != '') {
-						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
-					}
-				} else if (valorIndice == '3') {
-					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-					valorIndice +
-					' <input id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
-					+ student.mycorrect3answer + '> ' + student.myoption3 + ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
-					if (student.myoption3 != '') {
-						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
-					}
-				} else if (valorIndice == '4') {
-					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-					valorIndice +
-					' <input id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
-					+ student.mycorrect4answer + '> ' + student.myoption4 + ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
-					if (student.myoption4 != '') {
-						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
-					}
-				} else if (valorIndice == '5') {
-					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-					valorIndice +
-					' <input id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
-					+ student.mycorrect5answer + '> ' + student.myoption5 + ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
-					if (student.myoption5 != '') {
-						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
-					}
-				} else if (valorIndice == '6') {
-					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-					valorIndice +
-					' <input id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
-					+ student.mycorrect6answer + '> ' + student.myoption6 + ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
-					if (student.myoption6 != '') {
-						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
-					}
-				} else if (valorIndice == '7') {
-					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-					valorIndice +
-					' <input id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
-					+ student.mycorrect7answer + '> ' + student.myoption7 + ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
-					if (student.myoption7 != '') {
-						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
-					}
-				} else if (valorIndice == '8') {
-					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-					valorIndice +
-					' <input id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
-					+ student.mycorrect8answer + '> ' + student.myoption8 + ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
-					if (student.myoption8 != '') {
-						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
-					}
-				}
-			}
-		})
-//    } catch (ex) {
-//        console.log(ex.message)
-//    }	
-}
-
-//This function select table
-async function getFromTable(id, mygroup, mycode) {
-	var students = await jsstoreCon.select({
-		from: 'Student'
-		  , where: { mygroup: {like: '' + mygroup + ''} 
-				   , mycode: '' + mycode + ''
-				   , id: {like: '' + id + ''} 
-		  }
-	});
+	} else if (group == 2) { //art
+		var students = await jsstoreCon.select({
+			from: 'Art'
+			  , where: { mycode: {like: '' + code + ''} 
+					   , myorder: '' + order + ''
+					   , id: {like: '' + id + ''} 
+			  }
+		});
+	} else { //group == 0 e group == 3
+		var students = await jsstoreCon.select({
+			from: 'Student'
+			  , where: { mycode: {like: '' + code + ''} 
+					   , myorder: '' + order + ''
+					   , id: {like: '' + id + ''} 
+			  }
+		});
+	}
 
 	students.forEach(function (student) {
 		$('form').attr('data-student-id', student.id);
-		$('#mygroup').val(student.mygroup);
 		$('#mycode').val(student.mycode);
 		$('#myorder').val(student.myorder);
 		$('#mytext').val(student.mytext);
-		$('#myoption1').val(student.myoption1);
-		$('#myoption2').val(student.myoption2);
-		$('#myoption3').val(student.myoption3);
-		$('#myoption4').val(student.myoption4);
-		$('#myoption5').val(student.myoption5);
-		$('#myoption6').val(student.myoption6);
-		$('#myoption7').val(student.myoption7);
-		$('#myoption8').val(student.myoption8);
+		$('#mycodeTextGroup').val(student.mycodeTextGroup);
+		$('#myrepeated').val(student.myrepeated);
+		if (student.myowner.toLowerCase() == '') {
+//			$('#myowner').val('iirf');
+			$('#myowner').val('hopé');
+		} else {
+			$('#myowner').val(student.myowner);
+		}
 	})
 }
 
-//This function load combobox
-async function loadCombobox(name, min, max, text) {
-	for (var item=min; item<=max; item++) {
-		var option = new Option(text + ' ' + item, item);
-		document.getElementById(name).add(option);
-	}
-}
-
-//This function load combobox
-async function loadMygroup(name) {
-	var option = new Option('Teste 1.0', '10');
-	document.getElementById(name).add(option);
-	var option = new Option('Teste 1.1', '11');
-	document.getElementById(name).add(option);
-	var option = new Option('Teste 1.2', '12');
-	document.getElementById(name).add(option);
-	var option = new Option('Teste 2.0', '20');
-	document.getElementById(name).add(option);
-	var option = new Option('Teste 2.1', '21');
-	document.getElementById(name).add(option);
-	var option = new Option('Teste 2.2', '22');
-	document.getElementById(name).add(option);
-}
-
-async function clearForm() {
-	$('form').attr('data-student-id', null);
-	$('#mytext').val('');
-	$('#myoption1').val('');
-	$('#myoption2').val('');
-	$('#myoption3').val('');
-	$('#myoption4').val('');
-	$('#myoption5').val('');
-	$('#myoption6').val('');
-	$('#myoption7').val('');
-	$('#myoption8').val('');
-}
-
 //This function delete the table
-async function deleteTable() {
+async function deleteLirycs() {
     try {
-        var result = confirm('delete all Table?');
+        var result = confirm('delete all Lirycs?');
         if (result) {
 			var noOfStudentRemoved = await jsstoreCon.remove({
 				from: 'Student'
 			});
 			console.log(`${noOfStudentRemoved} students removed`);
-			var mycode = document.getElementById('mycode').value;
-			var myorder = document.getElementById('myorder').value;
-			var mygroup = document.getElementById('mygroup').value;
-			var mytext = document.getElementById('mytext').value.trim();
-			refreshTableData(mycode, myorder, mygroup, mytext);
-			console.log('successfull');
+			refreshTableData();
+			alert('successfull');
 		}
     } catch (ex) {
-        console.log(ex.message);
+        alert(ex.message);
+    }
+}
+
+//This function delete the table
+async function deleteBible() {
+    try {
+        var result = confirm('delete all Bible?');
+        if (result) {
+			var noOfStudentRemoved = await jsstoreCon.remove({
+				from: 'Bible'
+			});
+			console.log(`${noOfStudentRemoved} students removed`);
+			refreshTableData();
+			alert('successfull');
+		}
+    } catch (ex) {
+        alert(ex.message);
+    }
+}
+
+//This function delete the table
+async function deleteArt() {
+    try {
+        var result = confirm('delete all Arts?');
+        if (result) {
+			var noOfStudentRemoved = await jsstoreCon.remove({
+				from: 'Art'
+			});
+			console.log(`${noOfStudentRemoved} students removed`);
+			refreshTableData();
+			alert('successfull');
+		}
+    } catch (ex) {
+        alert(ex.message);
     }
 }
 
 //This function drop database
 async function dropdb() {
-	var result = confirm('Vou restaurar e limpar tudo, ok?');
+	var result = confirm('Reiniciar?');
 	if (result) {
+//		localStorage.setItem('valueLogo', 'logo/logo.png');
+//		localStorage.setItem('valuePlanoFundoMestre', 'gallery/fundo.jpeg');
 		jsstoreCon.dropDb().then(function() {
 			console.log('Db deleted successfully');
-			var mycode = document.getElementById('mycode').value;
-			var myorder = document.getElementById('myorder').value;
-			var mygroup = document.getElementById('mygroup').value;
-			var mytext = document.getElementById('mytext').value.trim();
-			refreshTableData(mycode, myorder, mygroup, mytext);
-//			console.log('successfull');
+			refreshTableData();
+			alert('successfull');
 		}).catch(function(error) {
 			console.log(error);
 		});;
@@ -599,10 +564,28 @@ async function dropdb() {
 	}
 }
 
+function onLoadConfig() {
+	confirmImport('contents3', '2'); //artes
+	confirmImport('contents1', '0'); //letras
+	confirmImport('contents2', '1'); //bíblia
+	confirmImport('contents4', '3'); //licença
+}
+
 //This function refreshes the table
 async function refreshTableResult() {
     try {
-		//Perguntas
+		//Arte
+		var arts = await jsstoreCon.count({
+			from: 'Art'
+		});
+		if (arts == '0') {
+			var labelArts = "<label class=\"btn btn-default\" style=\"width:200px; \"> Artes: " + arts + "</label>";
+		} else if (arts > '0' && arts < '14') {
+			var labelArts = "<label class=\"btn btn-default\" style=\"width:200px; \"> Artes: " + arts + " de ~14 </label>";
+		} else {
+			var labelArts = "<label class=\"btn btn-info\" style=\"width:200px; \"> Artes: " + arts + " <i class=\"fa fa-check\"></i></label>";
+		}
+		//Letras
 		var students = await jsstoreCon.count({
 			from: 'Student'
 		});
@@ -613,19 +596,42 @@ async function refreshTableResult() {
 		} else {
 			var labelStudents = "<label class=\"btn btn-info\" style=\"width:200px; \"> Letras: " + students + " <i class=\"fa fa-check\"></i></label>";
 		}
+		//Bíblia
+		var bibles = await jsstoreCon.count({
+			from: 'Bible'
+		});
+		if (bibles == '0') {
+			var labelBibles = "<label class=\"btn btn-default\" style=\"width:200px; \"> Livros: " + bibles + "</label>";
+		} else if (bibles > '0' && bibles < '32221') {
+			var labelBibles = "<label class=\"btn btn-default\" style=\"width:200px; \"> Livros: " + bibles + " de ~32221 </label>";
+		} else {
+			var labelBibles = "<label class=\"btn btn-info\" style=\"width:200px; \"> Livros: " + bibles + " <i class=\"fa fa-check\"></i></label>";
+		}
+		//TypeData
+		var typedata = await jsstoreCon.count({
+			from: 'TypeData'
+		});
+		if (typedata == '0') {
+			var labelTypeData = "<label class=\"btn btn-default\" style=\"width:200px; \"> Licenças: " + typedata + "</label>";
+		} else if (typedata > '0' && typedata < '2') {
+			var labelTypeData = "<label class=\"btn btn-default\" style=\"width:200px; \"> Licenças: " + typedata + " de ~2 </label>";
+		} else {
+			var labelTypeData = "<label class=\"btn btn-info\" style=\"width:200px; \"> Licenças: " + typedata + " <i class=\"fa fa-check\"></i></label>";
+		}
 		
 		var buttonFechar = "";
-		if (students == '0') {
+		if (typedata == '0') {
 			buttonFechar = '<button class="btn btn-default" style="padding:9px 15px 9px 15px; width:200px;"> Aguarde o botão continuar...</button>';
 		} else {
 			buttonFechar = '<button class="btn btn-danger" onclick="showIndex();" style="padding:9px 15px 9px 15px; width:200px;"> Continuar <i class="fa fa-forward"></i> </button>';
 			showIndex();
-//			console.log('Pronto! Fim da configuração.');
+			alert('Pronto! Fim da configuração.');
 		}
 		//Resultado
-		$('#tblGrid tbody').html(labelStudents + '<br/>' + '<br/>' + buttonFechar);
+		$('#tblGrid tbody').html(labelArts + '<br/>' + labelStudents + '<br/>' + labelBibles + '<br/>' + labelTypeData + '<br/>' + buttonFechar);
+//		$('#tblGrid tbody').html(buttonFechar);
 	} catch (ex) {
-        console.log(ex.message)
+        alert(ex.message)
     }
 }
 
@@ -679,32 +685,28 @@ async function freezeDataShow(aovivo) {
 			}
 		}
     } catch (ex) {
-        console.log(ex.message);
+        alert(ex.message);
     }
 }
 
 //This function text repeated = myrepeated>0
 async function searchComplete() {
     try {
-		var mycode = document.getElementById('mycode').value;
-		var myorder = document.getElementById('myorder').value;
-		var mygroup = document.getElementById('mygroup').value;
-		var mytext = document.getElementById('mytext').value.trim();
 		if (localStorage.getItem('valueComplete') == 'true') {
 			localStorage.setItem('valueComplete', 'false');
 			document.getElementById('btnCompleteTop').innerHTML = '<i class=\"fa fa-minus\"></i>';
-			refreshTableData(mycode, myorder, mygroup, mytext);
+			refreshTableData();
 //			document.getElementById('btnCompleteTop').classList.remove('btn-warning');
 //			document.getElementById('btnCompleteTop').classList.add('btn-default');
 		} else {
 			localStorage.setItem('valueComplete', 'true');
 			document.getElementById('btnCompleteTop').innerHTML = '<i class=\"fa fa-list\"></i>';
-			refreshTableData(mycode, myorder, mygroup, mytext);
+			refreshTableData();
 //			document.getElementById('btnCompleteTop').classList.remove('btn-default');
 //			document.getElementById('btnCompleteTop').classList.add('btn-warning');
 		}
     } catch (ex) {
-        console.log(ex.message);
+        alert(ex.message);
     }
 }
 
@@ -726,255 +728,334 @@ async function videoPlayPause() {
 			document.getElementById('btnVideoPlayTop').classList.add('btn-default');
 		}
     } catch (ex) {
-        console.log(ex.message);
+        alert(ex.message);
     }
 }
 
 //This function text repeated = myrepeated=0
 async function searchSimples() {
     try {
-		var mycode = document.getElementById('mycode').value;
-		var myorder = document.getElementById('myorder').value;
-		var mygroup = document.getElementById('mygroup').value;
-		var mytext = document.getElementById('mytext').value.trim();
-		refreshTableData(mycode, myorder, mygroup, mytext);
+//		document.getElementById('selMycodeTextGroup').value = '3';
+		refreshTableData();
     } catch (ex) {
-        console.log(ex.message);
+        alert(ex.message);
     }
-}
-
-function onLoadConfig() {
-	loadCombobox('mygroup', '0', '4', 'Teste');
-	loadCombobox('mycode', '0', '65', 'Número');
-	loadCombobox('myorder', '0', '65', 'Ordem');
-	confirmImport('contents1', '0');
-}
-
-function getArrayAnswers(valor) {
-	var arrayok = []; var arrayKO = [];
-	var valorok = ''; var valorKO = '';
-	var posicao = 0;
-	var index = 0;
-	var fim = '';
-	nextpos = valor.indexOf('\n\n', posicao);
-//	console.log(valor);
-	for (index=0; index<=4; index++) {
-		var ok = valor.substring(posicao, posicao+5).trim();
-//		console.log('ok=' + ok + ' posicao='+posicao + ' nextpos=' + nextpos + ' index=' + index + ' \n\n' + valor.substring(posicao, nextpos).trim());
-		
-		//ok
-		if (ok == '<ok>' ) {
-			valorok = valor.substring(posicao, nextpos).replaceAll('<ok>', '');
-//			console.log('arrayok.push=[' + valorok + ']');
-			arrayok.push(valorok.trim());
-		//KO
-		} else {
-			valorKO = valor.substring(posicao, nextpos);
-//			console.log('arrayKO.push=[' + valorKO + ']');
-			arrayKO.push(valorKO.trim());
-		}
-		//limpa variáveis
-		posicao = nextpos+1;
-		nextpos = valor.indexOf('\n\n', posicao);		
-		if (fim == 'break') {
-//			console.log('fim=break');
-			break;
-		}
-		if (nextpos == -1) {
-			fim = 'break';
-			//força gravar última e sai
-			nextpos = valor.length;
-//			console.log('break: posicao='+posicao + ' nextpos=' + nextpos + ' index=' + index + ' \n' + valor.substring(posicao, nextpos).replaceAll('<ok>', ''));
-		}
-//		console.log(' posicao='+posicao + ' nextpos=' + nextpos + ' index=' + index + ' \n\n' + valor.substring(posicao, nextpos).trim());
-//		console.log(valor.substring(posicao, posicao+5).trim());
-
-		valorok = '';
-		valorKO = '';
-	}
-	var array = [];
-	//ok
-	for (index=0; index<4; index++) {
-		if (arrayok[index] == null) {
-			array.push(null); //'\'' + '' + '\''
-		} else {
-			array.push(arrayok[index]);
-		}
-	}
-	//KO
-	for (index=0; index<4; index++) {
-		if (arrayKO[index] == null) {
-			array.push(null); //'\'' + '' + '\''
-		} else {
-			array.push(arrayKO[index]);
-		}
-	}
-//	console.log(array);
-	return array;
-}
-
-async function salvarRegistro(mygroup, mycode, myorder, mytext) {
-	var posicao=0;
-	var nextpos = 0;
-	nextpos = mytext.indexOf('\n\n', posicao);
-	var question = mytext.substring(posicao, nextpos).replaceAll('<p>', ''); //remove separador <p>
-	question = question.substring(posicao, nextpos).trim(); //remove espaços
-//	console.log('question='+question);
-	var aswers = mytext.substring(nextpos, mytext.length).trim();
-//	console.log('aswers= \n'+aswers);
-	var array = getArrayAnswers(aswers);
-//	console.log('setStudentFromImport: \n\n mygroup='+mygroup + '\n mycode='+mycode + '\n myorder='+myorder + '\n question=[' +question+']' + '\n Respostas \n '+array[0] + '\n '+array[1] + '\n '+array[2] + '\n '+array[3] + '\n '+array[4] + '\n '+array[5] + '\n '+array[6] + '\n '+array[7]);
-	setStudentFromImport(mygroup, mycode, myorder, question, array[0], array[1], array[2], array[3], array[4], array[5], array[6], array[7]);
-	var studentId = $('form').attr('data-student-id');
-	addStudentImportConfig(studentId);
-	setTimeout(() => { updateStudentPlayOrder(mygroup) }, 1000); // Executa após 5 segundos para esperar o processo de insert terminar
 }
 
 //This function confirm import
 async function confirmImport(contents, group) {
-	try {
-		var params = new URLSearchParams(window.location.search);
-		
-		console.log('params.get(sim) = ' + params.get('sim'));
-		var mygroup = params.get('sim');
-		var mytext = document.getElementById(contents).value;
-		var mycode = 1;
-		var myorder = 1;
-		var index=0;
-		var posicao=0;
-		var nextp = 0;
-		for (index=0; index<=mytext.length; index++) {
-			nextp = mytext.indexOf('<p>', posicao + '<p>'.length);
-			if (nextp == -1) {
-//				console.log('index break='+index);
-				break;
-			}
-//			console.log(' posicao='+posicao + ' nextp='+nextp + '\n [' + mytext.substring(posicao, nextp) + ']');
-			
-			var valor = mytext.substring(posicao, nextp);
-//			console.log('salvarRegistro: \n [' + '\n mygroup='+mygroup + '\n mycode='+mycode + '\n myorder='+myorder + '\n [' + valor + ']');
-			salvarRegistro(mygroup, mycode, myorder, valor);
-			
-			posicao = nextp;
-			mycode = parseInt(mycode) + parseInt(1);
-			myorder = parseInt(mycode);
-			index = mytext.substring(posicao, nextp).length;
-		}
-	} catch (ex) {
-		console.log('erro \n\n\n' + ex.message + '\n\n\n' + valor);
-	}
-}
-
-//This function confirm import
-async function confirmImportManual(mycode, myorder, mygroup, mytext, myoption1, myoption2, myoption3, myoption4, myoption5, myoption6, myoption7, myoption8) {
+//	var result = confirm('Não feche esta página. \nNão atualize esta página.');
+//	if (result) {
 		try {
-			
-//console.log(' mygroup='+mygroup + ' mycode='+mycode + ' myorder='+myorder + ' mytext='+mytext + ' myoption1='+myoption1 + ' myoption5='+myoption5);
+			valor = document.getElementById(contents).value;
+			var nextpos = 0; var myorder = 0; var mycode = ''; var myrepeated = '0'; var contador = 0; var posicao = 0; repeated = 0;
+			for (posicao=0; posicao<=valor.length; posicao++) {
+				nextpos = valor.indexOf('\n\n', posicao); //próximo separador do texto correspondente a duas quebras de linhas juntas
+				if (nextpos <= 0) {
+					nextpos = valor.length; //força última gravação e encerra
+				}
+				if (valor.substring(posicao, posicao+3) == '<p>' || valor.substring(posicao, posicao+4) == '<br>' || valor.substring(posicao, posicao+4) == '<hr>') {
+					posicao = posicao+4; //pula <p>\n
+					mycode = removeSpecials(valor.substring(posicao, nextpos).trim());
+					myorder = 0;
+					contador = parseInt(contador) + 1;
+					console.log('Importar: \n' + mycode);
+					document.getElementById('txtSearch').value = parseInt(contador) + ' importados';
+				} else if (posicao == 0) { //primeiro registro sem separador <p>... executa somente 1 vez.
+					mycode = removeSpecials(valor.substring(posicao, nextpos).trim());
+				}
+/*
+				myrepeated = valor.substring(posicao, nextpos).indexOf('<repeat>', 0); //próximo separador do texto correspondente a duas quebras de linhas juntas
+				alert(myrepeated);
+				if (myrepeated > 0) {
+					valor = valor.replaceAll('<repeat>', '');
+					myrepeated = '1';
+				} else {
+					myrepeated = '1';
+				}
+*/
+				var mytext = valor.substring(posicao, nextpos).trim();
+				mytext = mytext.replaceAll('<br>', ''); //altera o <br> para ENTER (quebra de linha no mersmo texto)
+//				var group = document.getElementById('selMycodeTextGroup').value.trim();
+	
+//	alert('mycode='+mycode + '\n myorder='+myorder + '\n group='+group + '\n myrepeated='+myrepeated + '\n mytext='+mytext);
+				setStudentFromImport(mycode, myorder, mytext, group, myrepeated);
+				addStudentImport(group);
 				
-				setStudentFromImport(mygroup, mycode, myorder, mytext, myoption1, myoption2, myoption3, myoption4, myoption5, myoption6, myoption7, myoption8);
-
-				var studentId = $('form').attr('data-student-id');
-				addStudentImport(studentId);
-				
-				var mycode = document.getElementById('mycode').value;
-				var myorder = document.getElementById('myorder').value;
-				var mygroup = document.getElementById('mygroup').value;
-				var mytext = document.getElementById('mytext').value.trim();
-				setTimeout(() => { refreshTableData(mycode, myorder, mygroup, mytext) }, 500); // Executa novamente a cada 500 milisegundos
+				setTimeout(() => { refreshTableData() }, 500); // Executa novamente a cada 500 milisegundos
 				
 				showGridAndHideForms();
+				myorder = myorder+1;
+				if (nextpos <= 0) {
+					//alert('BREAK, nextpos<=0 =' + nextpos);
+					posicao = valor.length +1; //força gravar último registro e encerrar
+				}
+				posicao = nextpos+1;
+			}
 			document.getElementById('divcontent').style.display='none';
 			$('#txtSearch').focus();
 			$('#txtSearch').select();
 		} catch (ex) {
-			console.log('erro \n\n\n' + ex.message + '\n\n\n' + mytext);
+			alert('erro \n\n\n' + ex.message + '\n\n\n' + mytext);
+		}
+//	}
+}
+
+//This function confirm import
+async function confirmImportManual(contents, group, nomemusica, nomeautor) {
+		try {
+			valor = document.getElementById(contents).value;
+			valor = nomemusica + '\n' + nomeautor  + '\n\n' + valor; //adiciona o autor e nome da música no início da letra para o search funcionar
+			var nextpos = 0; var myorder = 0; var mycode = ''; var myrepeated = '0'; var contador = 0; var posicao = 0; repeated = 0;
+			for (posicao=0; posicao<=valor.length; posicao++) {
+				nextpos = valor.indexOf('\n\n', posicao); //próximo separador do texto correspondente a duas quebras de linhas juntas
+				if (nextpos <= 0) {
+					nextpos = valor.length; //força última gravação e encerra
+				}
+				if (valor.substring(posicao, posicao+3) == '<p>' || valor.substring(posicao, posicao+4) == '<br>' || valor.substring(posicao, posicao+4) == '<hr>') {
+					posicao = posicao+4; //pula <p>\n
+					mycode = removeSpecials(valor.substring(posicao, nextpos).trim());
+					myorder = 0;
+					contador = parseInt(contador) + 1;
+					console.log('Importar: \n' + mycode);
+					document.getElementById('txtSearch').value = parseInt(contador) + ' importados';
+				} else if (posicao == 0) { //primeiro registro sem separador <p>... executa somente 1 vez.
+					mycode = removeSpecials(valor.substring(posicao, nextpos).trim());
+				}
+				var mytext = valor.substring(posicao, nextpos).trim();
+				mytext = mytext.replaceAll('<br>', ''); //altera o <br> para ENTER (quebra de linha no mersmo texto)
+	
+//	alert('mycode='+mycode + '\n myorder='+myorder + '\n group='+group + '\n myrepeated='+myrepeated + '\n mytext='+mytext);
+				setStudentFromImport(mycode, myorder, mytext, group, myrepeated);
+				addStudentImport(group);
+				
+				setTimeout(() => { refreshTableData() }, 500); // Executa novamente a cada 500 milisegundos
+				
+				showGridAndHideForms();
+				myorder = myorder+1;
+				if (nextpos <= 0) {
+					//alert('BREAK, nextpos<=0 =' + nextpos);
+					posicao = valor.length +1; //força gravar último registro e encerra
+				}
+				posicao = nextpos+1;
+			}
+			document.getElementById('divcontent').style.display='none';
+			$('#txtSearch').focus();
+			$('#txtSearch').select();
+		} catch (ex) {
+			alert('erro \n\n\n' + ex.message + '\n\n\n' + mytext);
 		}
 }
 
 //This function refreshes the table
-async function refreshTableData(mycode, myorder, mygroup, mytext) {
-//    try {
-		if (mygroup != '' && mycode != '') {
+async function refreshTableData() {
+    try {
+		if (document.getElementById('txtSearch').value.length <= 1) { // pesquisa somente com mais de 1 caracter preenchido no campo search
+			$('#tblGrid tbody').html('');
+			return;
+		}
+		
+		var group = document.getElementById('selMycodeTextGroup').value;
+		var search = removeSpecials(document.getElementById('txtSearch').value);
+		var complete = localStorage.getItem('valueComplete');
+		
+		//select groupby mycode
+		if (group == 0) { //lirycs
+			if (complete == 'true') { //letra completa
+				var students = await jsstoreCon.select({
+					from: 'Student'
+				  , where: { mysearch: {like: '%' + search + '%'} 
+						   , mycodeTextGroup: '' + group + ''
+				  }
+				  , groupBy: "mycode"
+				});
+			} else { //Letra Sem Repetição
+				var students = await jsstoreCon.select({
+					from: 'Student'
+				  , where: { mysearch: {like: '%' + search + '%'} 
+						   , mycodeTextGroup: '' + '0' + ''
+						   , myrepeated: '0'
+				  }
+				  , groupBy: "mycode"
+				});
+			}
+		} else if (group == 1) { //bible
 			var students = await jsstoreCon.select({
-				from: 'Student'
-					, where: { mycode: mycode
-					, mygroup: mygroup
+				from: 'Bible'
+			  , where: { mysearch: {like: '%' + search + '%'} 
+					   , mycodeTextGroup: '' + group + ''
+			  }
+			  , groupBy: "mycode"
+			});
+		} else if (group == 2) { //arts
+			var students = await jsstoreCon.select({
+				from: 'Art'
+			  , where: { mysearch: {like: '%' + search + '%'} 
+					   , mycodeTextGroup: '' + group + ''
+			  }
+			  , groupBy: "mycode"
+			});
+		}
+		
+		var array = [];
+		students.forEach(function (student) {
+            var resultado = array.push(student.mycode);
+        })
+		for (i=0; i<=20; i++) {
+			if (array[i] == undefined) {
+				array[i] = '';
+			}
+		}
+		
+		//select where mycode
+		if (group == 0) { //lirycs
+			if (complete == 'true') { //letra completa
+				var students = await jsstoreCon.select({
+					from: 'Student'
+					, where: {
+						mycode:{in:[ 
+							array[0], array[1], array[2], array[3], array[4],
+							array[5], array[6], array[7], array[8], array[9],
+							array[10], array[11], array[12], array[13], array[14],
+							array[15], array[16], array[17], array[18], array[19],
+							array[20]
+						]}
+						, mycodeTextGroup: '' + group + ''
+					}
+					, order: [{
+						by: 'mycode',
+					}, {
+						by: 'myorder'
+					}]
+				});
+			} else { //Letra Sem Repetição
+				var students = await jsstoreCon.select({
+					from: 'Student'
+					, where: {
+						mycode:{in:[ 
+							array[0], array[1], array[2], array[3], array[4],
+							array[5], array[6], array[7], array[8], array[9],
+							array[10], array[11], array[12], array[13], array[14],
+							array[15], array[16], array[17], array[18], array[19],
+							array[20]
+						]}
+						, mycodeTextGroup: '' + group + ''
+						, mycodeTextGroup: '' + '0' + ''
+						, myrepeated: '0'
+					}
+					, order: [{
+						by: 'mycode',
+					}, {
+						by: 'myorder'
+					}]
+				});
+			}
+		} else if (group == 1) { //bible
+			var students = await jsstoreCon.select({
+				from: 'Bible'
+				, where: {
+					mycode:{in:[ 
+						array[0], array[1], array[2], array[3], array[4],
+						array[5], array[6], array[7], array[8], array[9],
+						array[10], array[11], array[12], array[13], array[14],
+						array[15], array[16], array[17], array[18], array[19],
+						array[20]
+					]}
+					, mycodeTextGroup: '' + group + ''
 				}
-				, order: [ {by: 'mygroup'}, {by: 'mycode'} ]
+				, order: [{
+					by: 'mycode',
+				}, {
+					by: 'myorder'
+				}]
+			});
+		} else if (group == 2) { //arts
+			var students = await jsstoreCon.select({
+				from: 'Art'
+				, where: {
+					mycode:{in:[ 
+						array[0], array[1], array[2], array[3], array[4],
+						array[5], array[6], array[7], array[8], array[9],
+						array[10], array[11], array[12], array[13], array[14],
+						array[15], array[16], array[17], array[18], array[19],
+						array[20]
+					]}
+					, mycodeTextGroup: '' + group + ''
+				}
+				, order: [{
+					by: 'mycode',
+				}, {
+					by: 'myorder'
+				}]
 			});
 		}
 
-		if (mygroup != '' && mycode == '') {
-			var students = await jsstoreCon.select({
-				from: 'Student'
-					, where: { mygroup: '' + mygroup + ''
-				}
-				, order: [ {by: 'mygroup'}, {by: 'mycode'} ]
-			});
-		}
-
-		if (mygroup == '' && mycode != '') {
-			var students = await jsstoreCon.select({
-				from: 'Student'
-					, where: { mycode: '' + mycode + ''
-				}
-				, order: [ {by: 'mygroup'}, {by: 'mycode'} ]
-			});
-		}
-
-		var htmlString = "";
-		var varTdTh = '';
-		var varText = '';
-//		var varPlay = '';
+        var htmlString = "";
+        var varTdTh = '';
+		var varOff = '';
+		var varLogo = '';
+		var varFav = '';
 		var varEdit = '';
 		var varDel = '';
+//		var htmlStringButtons = getButtonsBar();
 		var htmlStringButtons = ""; //getButtonsBar();
 
 		students.forEach(function (student) {
-			varText = "<a href=\"#\" class=\"playsim\">" + student.mytext + "</a>";
-			if (student.mycode == '0') {
+			if (student.myorder == '000') {
+//				htmlString += "<tr><td colspan=99>&nbsp;</td></tr>"
 				varTdTh = 'th';
-//				varPlay = "<a href=\"#\" class=\"playsim\" style=\"color:#00FF00;\">Start</a>";
-				varEdit = "&nbsp;<a href=\"#\" class=\"edit\" style=\"color:#0000FF;\">Edit</a>";
-                varDel = "&nbsp;<a href=\"#\" class=\"delete\" style=\"color:#FF0000;\">Del</a>";
+				varLogo = "<a href=\"#\" class=\"favorite\" style=\"color:#000000;\"><img src=\"logo/logo.png\" style=\"width:35px; cursor:hand;\"></img></a>";
+				varOff = "<a href=\"#\" class=\"off\"> <i class=\"fa fa-stop\" style=\"color:#000000;\"></i></a>&nbsp;";
+				varFav = "<td> <!--i class=\"fa fa-heart\" style=\"color:#3333AA;\"></i --> </td>";
+				varEdit = "<i class=\"fa fa-edit\"></i>";
+				varDel = "<td><a href=\"#\" class=\"delete\" style=\"color:#777777;\"> <i class=\"fa fa-times\" style=\"color:red;\"></i> </a></td>";
 			} else {
 				varTdTh = 'td';
-//				varPlay = "<button class=\"playsim\" style=\"color:#00FF00;\"><i class=\"fa fa-play\"></i></button>";
-				varEdit = "<button class=\"edit\" style=\"color:#0000FF;\" ><i class=\"fa fa-pencil\"></i></button>";
-				varDel = "<button class=\"delete\" style=\"color:#FF0000;\" ><i class=\"fa fa-times\"></i></button>";
-/*
-//				varPlay = "<a href=\"#\" class=\"playsim\"><i class=\"fa fa-play\" style=\"color:#00FF00; height:25px; Xwidth:25px; \"></i></a>";
-				varEdit = "<a href=\"#\" class=\"edit\"><i class=\"fa fa-pencil\" style=\"color:#0000FF; height:25px; Xwidth:25px; \"></i></a>";
-				varDel = "<a href=\"#\" class=\"delete\"><i class=\"fa fa-times\" style=\"color:#FF0000; height:25px; Xwidth:25px;\"></i></a>";
-*/
+				varLogo = "<a href=\"#\" class=\"favorite\" style=\"color:#000000;\"><img src=\"logo/logo.png\" style=\"width:15px; cursor:hand;\"></img>";
+				varOff = "<a href=\"#\" class=\"off\"> <i class=\"fa fa-stop\" style=\"color:#000000;\"></i></a>&nbsp;";
+				varFav = "<td><a href='#' class=\"favorite\" style=\"color:blue;\"> </a></td>";
+				varEdit = "<a href=\"#\" class=\"edit\"> <i class=\"fa fa-edit\"></i> </a>";
+                varDel = "<td><a href=\"#\" class=\"delete\" style=\"color:#777777;\">Del</a></td>";
 			}
 			
+			var mytext = student.mytext;
+			var txtsearch = removeSpecials(document.getElementById('txtSearch').value);
+			
+			//destaca palavra pesquisada com negrito
+			var auxiliar = removeSpecials(mytext);
+			var posIni = auxiliar.toLowerCase().indexOf(txtsearch.toLowerCase(), 0);
+			var mytextBold = '';
+			if (posIni >= 0) {
+				var diff = parseInt(mytext.substring(0, posIni+txtsearch.length).length) - parseInt(removeSpecials(mytext.substring(0, posIni+txtsearch.length)).length);
+				posIni = posIni + parseInt(diff);
+				mytextBold = mytext.substring(0, posIni)
+				+ '<b style="background-color:#EEEEEE; color:black;">'
+				+ mytext.substring(posIni, posIni+txtsearch.length)
+				+ '</b>'
+				+ mytext.substring(posIni+txtsearch.length);
+			} else {
+				mytextBold = mytext;
+			}
+
 			htmlString += "<tr ItemId=" + student.id + ">"
-				+ "<td style=\"color:#777777; font-size:12px; \">" + student.mygroup + "</td>"
-                + "<td style=\"color:#777777; font-size:12px;\">" + student.mycode + "</td>"
-				+ "<" + varTdTh + " id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " ZZZonClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
-				+ varText + "</" + varTdTh + ">"
-//				+ student.mytext + "</" + varTdTh + ">"
-/*				
-				+ "<" + varTdTh + " id=datashow" + student.id+"4" + " tabIndex=" + student.id+"4" + " ZZZonClick=\"datashow('" + student.id+"4" + "', 4, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 4, event, " + "" + (student.id+"4") + ");\" data-show='" + student.id+"4" + "'>"
-//				+ varPlay + "</" + varTdTh + ">"
-				
-				+ "<" + varTdTh + " id=datashow" + student.id+"5" + " tabIndex=" + student.id+"5" + " ZZZonClick=\"datashow('" + student.id+"5" + "', 5, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 5, event, " + "" + (student.id+"5") + ");\" data-show='" + student.id+"5" + "'>"
-				+ varEdit + "</" + varTdTh + ">"
-*/				
-				+ "<" + varTdTh + " nowrap id=datashow" + student.id+"6" + " tabIndex=" + student.id+"6" + " ZZZonClick=\"datashow('" + student.id+"6" + "', 6, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 6, event, " + "" + (student.id+"6") + ");\" data-show='" + student.id+"6" + "'>"
-//				+ varPlay + ' '
-				+ varEdit + ' '
-				+ '<p/>'
-				+ varDel + "</" + varTdTh + ">"
-				;
+                + "<td style=\"color:white; font-size:1px;\">" + student.mycode + "</td>"
+				+ "<td style=\"color:white; font-size:1px;\">" + student.myorder + "</td>"
+				+ "<" + varTdTh + " id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " onClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
+				+ mytextBold + "</" + varTdTh + ">"
+//				+ "<td>" + student.mysearch + "</td>"
+				+ "<" + varTdTh + " id=datashow" + student.id+"4" + " tabIndex=" + student.id+"4" + " onClick=\"datashow('" + student.id+"4" + "', 4, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 4, event, " + "" + (student.id+"4") + ");\" data-show='" + student.id+"4" + "'>"
+				+ varOff + "</" + varTdTh + ">"
+				+ "<td id=datashow" + (student.id+"5") + " tabIndex=" + (student.id+"5") + " onClick=\"showLogo();\" onkeyup=\"moveCursor('" + student.mycode + "', 5, event, " + "" + (student.id+"5") + ");\" data-show='" + (student.id+"5") + "'>" 
+				+ varLogo + "</td>"
+//				+ "<td id=datashow" + (student.id+"6") + " tabIndex=" + (student.id+"6") + " onClick=\"datashow('" + (student.id+"6") + "', 6, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 6, event, " + "" + (student.id+"6") + ");\" data-show='" + (student.id+"6") + "'>"
+				+ "<td>" + varEdit + "</td>";
 		})
 
 		if (htmlString.length > 0) {
 			htmlString += "</tr>"
-			showGridAndHideForms();
 		} else {
-/*			htmlString += htmlStringButtons
+			htmlString += htmlStringButtons
+
 			const d = new Date();
 			htmlString += "<b>"
 			htmlString += "Não Encontrado"
@@ -982,14 +1063,12 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 			htmlString += "<br><br>"
 			htmlString += d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ":" + d.getMilliseconds();
 			htmlString += "</b>"
-*/
-			showIniciarConfiguracao();
-//			document.getElementById('btnPlay').style.display='none';
+
 		}
         $('#tblGrid tbody').html(htmlString);
-//    } catch (ex) {
-//        console.log(ex.message)
-//    }
+    } catch (ex) {
+        alert(ex.message)
+    }
 }
 
 //This function refreshes the table
@@ -1014,250 +1093,137 @@ async function selectCountAll() {
         $('#tblGrid tbody').html(htmlString);
 		document.getElementById('txtSearch').value = aux + " itens";
     } catch (ex) {
-        console.log(ex.message)
+        alert(ex.message)
     }
 }
 
-async function addStudentImportConfig(studentId) {
-    var student = getStudentFromForm(studentId);
+async function addStudentImport(group) {
+    var student = getStudentFromForm();
     try {
-		console.log('student.mygroup=[' + student.mygroup + ']');
-		var noOfDataInserted = await jsstoreCon.insert({
-			into: 'Student',
-			values: [student]
-		});
-//		console.log('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext + '\n '+student.myoption1 + '\n '+student.myoption2 + '\n '+student.myoption3 + '\n '+student.myoption4);
-		console.log('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext);
+		if (group == '0') { //liryc
+			var noOfDataInserted = await jsstoreCon.insert({
+				into: 'Student',
+				values: [student]
+			});
+		} else if (group == '1') { //bible
+			var noOfDataInserted = await jsstoreCon.insert({
+				into: 'Bible',
+				values: [student]
+			});
+		} else if (group == '2') { //art
+			var noOfDataInserted = await jsstoreCon.insert({
+				into: 'Art',
+				values: [student]
+			});
+		} else if (group == '3') { //TypeData
+			var noOfDataInserted = await jsstoreCon.insert({
+				into: 'TypeData',
+				values: [student]
+			});
+		}
 		if (noOfDataInserted === 1) {
+			refreshTableData();
+			if (document.getElementById('txtSearch').value.length <= 1) { // pesquisa somente com mais de 1 caracter preenchido no campo search
+				if (document.getElementById('selMycodeTextGroup').selectedIndex == '1') {
+					showBible();
+				}
+			} else {
+				showGridAndHideForms();
+			}
+//			showGridAndHideForms();
 		}
     } catch (ex) {
-        console.log(ex.message + ' error ' + student.text);
+        alert(ex.message + ' error ' + student.text);
     }
 }
 
-async function addStudentImport(studentId) {
-    var student = getStudentFromForm(studentId);
-    try {
-		var noOfDataInserted = await jsstoreCon.insert({
-			into: 'Student',
-			values: [student]
-		});
-		console.log('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext + '\n '+student.myoption1 + '\n '+student.myoption2 + '\n '+student.myoption3 + '\n '+student.myoption4);
-//		console.log('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext);
-		if (noOfDataInserted === 1) {
-			var mycode = document.getElementById('mycode').value;
-			var myorder = document.getElementById('myorder').value;
-			var mygroup = document.getElementById('mygroup').value;
-			var mytext = document.getElementById('mytext').value.trim();
-			refreshTableData(mycode, myorder, mygroup, mytext);
-			showGridAndHideForms();
+async function updateStudent(group) {
+    var student = getStudentFromForm();
+	try {
+        if (group == '0') { //somente letras
+			var noOfDataUpdated = await jsstoreCon.update({
+				in: 'Student',
+				set: {
+					mycode: student.mycode,
+					myorder: student.myorder,
+					mytext: student.mytext,
+					mysearch: student.mysearch,
+					myrepeated: student.myrepeated,
+					myowner: student.myowner
+				},
+				where: {
+					id: student.id
+				}
+			});
+		} else if (group == '1') { //bible
+			var noOfDataUpdated = await jsstoreCon.update({
+				in: 'Bible',
+				set: {
+					mycode: student.mycode,
+					myorder: student.myorder,
+					mytext: student.mytext,
+					mysearch: student.mysearch,
+					myrepeated: student.myrepeated,
+					myowner: student.myowner
+				},
+				where: {
+					id: student.id
+				}
+			});
+		} else if (group == '2') { //art
+			var noOfDataUpdated = await jsstoreCon.update({
+				in: 'Art',
+				set: {
+					mycode: student.mycode,
+					myorder: student.myorder,
+					mytext: student.mytext,
+					mysearch: student.mysearch,
+					myrepeated: student.myrepeated,
+					myowner: student.myowner
+				},
+				where: {
+					id: student.id
+				}
+			});
 		}
-    } catch (ex) {
-        console.log(ex.message + ' error ' + student.text);
-    }
-}
-
-async function updateStudentPlay(studentId, mygroup, mycode) {
-    var student = getStudentFromFormPlay(studentId, mygroup, mycode);
-//	try {
-/*
-	alert('student.mycorrect1answer='+student.mycorrect1answer);
-	alert('student.mycorrect2answer='+student.mycorrect2answer);
-	alert('student.mycorrect3answer='+student.mycorrect3answer);
-	alert('student.mycorrect4answer='+student.mycorrect4answer);
-	alert('student.mycorrect5answer='+student.mycorrect5answer);
-	alert('student.mycorrect6answer='+student.mycorrect6answer);
-	alert('student.mycorrect7answer='+student.mycorrect7answer);
-	alert('student.mycorrect8answer='+student.mycorrect8answer);
-*/
-		var noOfDataUpdated = await jsstoreCon.update({
-			in: 'Student',
-			set: {
-				mycorrect1answer: student.mycorrect1answer,
-				mycorrect2answer: student.mycorrect2answer,
-				mycorrect3answer: student.mycorrect3answer,
-				mycorrect4answer: student.mycorrect4answer,
-				mycorrect5answer: student.mycorrect5answer,
-				mycorrect6answer: student.mycorrect6answer,
-				mycorrect7answer: student.mycorrect7answer,
-				mycorrect8answer: student.mycorrect8answer
-			},
-			where: {
-				id: student.id
-			}
-		});
-//    } catch (ex) {
-//        console.log(ex.message);
-//    }
-}
-
-async function updateStudentPlayClear(mygroup) {
-//	try {
-		var noOfDataUpdated = await jsstoreCon.update({
-			in: 'Student',
-			set: {
-				mycorrect1answer: '',
-				mycorrect2answer: '',
-				mycorrect3answer: '',
-				mycorrect4answer: '',
-				mycorrect5answer: '',
-				mycorrect6answer: '',
-				mycorrect7answer: '',
-				mycorrect8answer: ''
-			},
-			where: {
-				mygroup: mygroup
-			}
-		});
-//    } catch (ex) {
-//        console.log(ex.message);
-//    }
-}
-
-function getStudentFromFormPlay(studentId, mygroup, mycode) {
-	var chkMycorrect1answer = '';
-	if (document.getElementById('chkMycorrect1answer').checked == true) { chkMycorrect1answer = 'checked'; }
-	var chkMycorrect2answer = '';
-	if (document.getElementById('chkMycorrect2answer').checked == true) { chkMycorrect2answer = 'checked'; }
-	var chkMycorrect3answer = '';
-	if (document.getElementById('chkMycorrect3answer').checked == true) { chkMycorrect3answer = 'checked'; }
-	var chkMycorrect4answer = '';
-	if (document.getElementById('chkMycorrect4answer').checked == true) { chkMycorrect4answer = 'checked'; }
-	var chkMycorrect5answer = '';
-	if (document.getElementById('chkMycorrect5answer').checked == true) { chkMycorrect5answer = 'checked'; }
-	var chkMycorrect6answer = '';
-	if (document.getElementById('chkMycorrect6answer').checked == true) { chkMycorrect6answer = 'checked'; }
-	var chkMycorrect7answer = '';
-	if (document.getElementById('chkMycorrect7answer').checked == true) { chkMycorrect7answer = 'checked'; }
-	var chkMycorrect8answer = '';
-	if (document.getElementById('chkMycorrect8answer').checked == true) { chkMycorrect8answer = 'checked'; }
-/*
-console.log('mygroup='+mygroup + ' mycode='+mycode + ' chkMycorrect1answer=' + chkMycorrect1answer);
-console.log('mygroup='+mygroup + ' mycode='+mycode + ' chkMycorrect2answer=' + chkMycorrect2answer);
-console.log('mygroup='+mygroup + ' mycode='+mycode + ' chkMycorrect3answer=' + chkMycorrect3answer);
-console.log('mygroup='+mygroup + ' mycode='+mycode + ' chkMycorrect4answer=' + chkMycorrect4answer);
-console.log('mygroup='+mygroup + ' mycode='+mycode + ' chkMycorrect5answer=' + chkMycorrect5answer);
-console.log('mygroup='+mygroup + ' mycode='+mycode + ' chkMycorrect6answer=' + chkMycorrect6answer);
-console.log('mygroup='+mygroup + ' mycode='+mycode + ' chkMycorrect7answer=' + chkMycorrect7answer);
-console.log('mygroup='+mygroup + ' mycode='+mycode + ' chkMycorrect8answer=' + chkMycorrect8answer);
-*/
-	var student = {
-        id: Number(studentId),
-		mygroup: $('#mygroup').val(),
-        mycode: $('#mycode').val(),
-		mycorrect1answer: chkMycorrect1answer,
-		mycorrect2answer: chkMycorrect2answer,
-		mycorrect3answer: chkMycorrect3answer,
-		mycorrect4answer: chkMycorrect4answer,
-		mycorrect5answer: chkMycorrect5answer,
-		mycorrect6answer: chkMycorrect6answer,
-		mycorrect7answer: chkMycorrect7answer,
-		mycorrect8answer: chkMycorrect8answer
-    };
-	return student;
-}
-
-function shuffle(o) {
-    for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-    return o;
-};
-
-function getRandomArray(min, max) {
-	var numeros = [1, 2, 3, 4, 5, 6, 7, 8];
-	var numeros_gerados = shuffle(numeros);
-	return numeros_gerados;
-}
-
-async function updateOrder(id, min, max) {
-	try {
-		var myorder = String(getRandomArray(min, max));
-		var noOfDataUpdated = await jsstoreCon.update({
-			in: 'Student',
-			set: {
-				myorder: myorder
-			},
-			where: {
-				id: id
-			}
-		});
-console.log('id='+id + ' myorder='+myorder);
-        console.log(`data updated ${noOfDataUpdated}`);
-    } catch (ex) {
-        console.log(ex.message);
-    }
-}
-
-async function updateStudentPlayOrder(mygroup) {
-    try {
-		var students = await jsstoreCon.select({
-			from: 'Student'
-			  , where: { mygroup: mygroup
-			  }
-		});
-		students.forEach(function (student) {
-//			alert('mygroup='+mygroup + ' mycode='+mycode + ' student.id='+student.id);
-			var min = 1; var max = 8;
-			updateOrder(student.id, min, max);
-		})
-    } catch (ex) {
-        console.log(ex.message)
-    }	
-}
-
-async function updateStudent(studentId) {
-    var student = getStudentFromForm(studentId);
-	try {
-		var noOfDataUpdated = await jsstoreCon.update({
-			in: 'Student',
-			set: {
-				mygroup: student.mygroup,
-				mycode: student.mycode,
-				mytext: student.mytext,
-				myorder: student.myorder,
-				mysearch: student.mysearch,
-				myoption1: student.myoption1,
-				myoption2: student.myoption2,
-				myoption3: student.myoption3,
-				myoption4: student.myoption4,
-				myoption5: student.myoption5,
-				myoption6: student.myoption6,
-				myoption7: student.myoption7,
-				myoption8: student.myoption8
-			},
-			where: {
-				id: student.id
-			}
-		});
         console.log(`data updated ${noOfDataUpdated}`);
         showGridAndHideForms();
         $('form').attr('data-student-id', null);
-		var mygroup = document.getElementById('mygroup').value;
-		var mycode = '';
-		var mytext = '';
-		var myorder = '';
-		refreshTableData(mycode, myorder, mygroup, mytext);
+        refreshTableData();
         refreshFormData({});
     } catch (ex) {
-        console.log(ex.message);
+        alert(ex.message);
     }
 }
 
-async function deleteStudent(id) {
+async function deleteStudent(id, group) {
     try {
-		var noOfStudentRemoved = await jsstoreCon.remove({
-			from: 'Student',
-			where: {
-				id: id
-			}
-		});
+        if (group == '0') { //liryc
+			var noOfStudentRemoved = await jsstoreCon.remove({
+				from: 'Student',
+				where: {
+					id: id
+				}
+			});
+		} else if (group == '1') { //bible
+			var noOfStudentRemoved = await jsstoreCon.remove({
+				from: 'Bible',
+				where: {
+					id: id
+				}
+			});
+		} else if (group == '2') { //art
+			var noOfStudentRemoved = await jsstoreCon.remove({
+				from: 'Art',
+				where: {
+					id: id
+				}
+			});
+		}
         console.log(`${noOfStudentRemoved} students removed`);
-		var mycode = document.getElementById('mycode').value;
-		var myorder = document.getElementById('myorder').value;
-		var mygroup = document.getElementById('mygroup').value;
-		var mytext = document.getElementById('mytext').value.trim();
-		refreshTableData(mycode, myorder, mygroup, mytext);
+        refreshTableData();
     } catch (ex) {
-        console.log(ex.message);
+        alert(ex.message);
     }
 }
 
@@ -1288,150 +1254,115 @@ function getButtonsBar() {
 	return htmlStringButtons;
 }
 
-function getStudentFromForm(studentId) {
+function getStudentFromForm() {
 	var myorderFormated = '';
 	myorderFormated = '000' + $('#myorder').val();
 	myorderFormated = myorderFormated.substring(myorderFormated.length-3, myorderFormated.length);
-
-//alert('$(#mygroup).val() = ' + $('#mygroup').val() );
 	var student = {
-        id: Number(studentId),
+        id: Number($('form').attr('data-student-id')),
         mycode: $('#mycode').val(),
 		myorder: myorderFormated,
-		mygroup: $('#mygroup').val(),
         mytext: $('#mytext').val(),
-		mysearch: removeSpecials($('#mytext').val()),
-		myoption1: $('#myoption1').val(),
-		myoption2: $('#myoption2').val(),
-		myoption3: $('#myoption3').val(),
-		myoption4: $('#myoption4').val(),
-		myoption5: $('#myoption5').val(),
-		myoption6: $('#myoption6').val(),
-		myoption7: $('#myoption7').val(),
-		myoption8: $('#myoption8').val()
+        mysearch: removeSpecials($('#mytext').val()),
+        mycodeTextGroup: $('#selMycodeTextGroup').val(),
+        myrepeated: $('#myrepeated').val(),
+		myowner: 'iirf'
+//		myowner: 'hope'
     };
     return student;
 }
 
-function setStudentFromImport(mygroup, mycode, myorder, mytext, myoption1, myoption2, myoption3, myoption4, myoption5, myoption6, myoption7, myoption8) {
-	document.getElementById('mygroup').value = mygroup;
+function setStudentFromImport(mycode, myorder, mytext, mycodeTextGroup, myrepeated) {
 	document.getElementById('mycode').value = mycode;
 	document.getElementById('myorder').value = myorder;
-	document.getElementById('mytext').value = mytext;
-	document.getElementById('myoption1').value = myoption1;
-	document.getElementById('myoption2').value = myoption2;
-	document.getElementById('myoption3').value = myoption3;
-	document.getElementById('myoption4').value = myoption4;
-	document.getElementById('myoption5').value = myoption5;
-	document.getElementById('myoption6').value = myoption6;
-	document.getElementById('myoption7').value = myoption7;
-	document.getElementById('myoption8').value = myoption8;
-//console.log(' mygroup='+document.getElementById('mygroup').value + '\n mycode='+document.getElementById('mycode').value + '\n myorder='+myorder + '\n mytext=[' +mytext+']' + '\n '+document.getElementById('myoption1').value + '\n '+myoption2 + '\n '+myoption3 + '\n '+myoption4 + '\n '+myoption5 + '\n '+myoption6 + '\n '+myoption7 + '\n '+myoption8);
-return;
-    $('#divFormAddUpdate').show();
-}
-
-function showFormSim() {
-    $('#tblGrid').hide();
-    $('#divFormAddUpdate').hide();
-	$('#divGear').hide();
-	$('#divcontent').hide();
-	$('#formBible').hide();
-	$('#divconfig').hide();
-	$('#divGearAddNewLiryc').hide();
-	$('#divFormSim').show();
-	document.getElementById('tableButtons').style.display='none';
+	if (mytext == '') {
+		document.getElementById('mytext').value = ' ';
+	} else {
+		document.getElementById('mytext').value = mytext;
+	}
+	document.getElementById('selMycodeTextGroup').selectedIndex = mycodeTextGroup;
+	document.getElementById('myrepeated').selectedIndex = myrepeated;
+	document.getElementById('myowner').value = 'iirf';
+//	document.getElementById('myowner').value = 'hope';
+    $('#formAddUpdate').show();
 }
 
 function showFormAddUpdate() {
     $('#tblGrid').hide();
-    $('#divFormAddUpdate').show();
+    $('#formAddUpdate').show();
 	$('#divGear').hide();
 	$('#divcontent').hide();
 	$('#formBible').hide();
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
-	$('#divFormSim').hide();
 }
 
 function showGridAndHideForms() {
     $('#tblGrid').show();
-    $('#divFormAddUpdate').hide();
+    $('#formAddUpdate').hide();
 	$('#divGear').hide();
 	$('#divcontent').hide();
 	$('#formBible').hide();
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
-	$('#divFormSim').hide();
-
-	if (document.getElementById('btnPlay') != null) { document.getElementById('btnPlay').style.display=''; }
-	if (document.getElementById('btnAddNewManual') != null) { document.getElementById('btnAddNewManual').style.display=''; }
-	if (document.getElementById('btnGear') != null) { document.getElementById('btnGear').style.display=''; }
-	if (document.getElementById('tableButtons') != null) { document.getElementById('tableButtons').style.display=''; }
 }
 
 function showAddNewManual() {
 	$('#divGearAddNewLiryc').show();
     $('#tblGrid').hide();
-    $('#divFormAddUpdate').hide();
+    $('#formAddUpdate').hide();
 	$('#divGear').hide();
 	$('#divcontent').hide();
 	$('#formBible').hide();
 	$('#divconfig').hide();
-	$('#divFormSim').hide();
 }
 
 function showFormGear() {
     $('#tblGrid').hide();
-    $('#divFormAddUpdate').hide();
+//    $('#formAddUpdate').hide();
 	$('#divGear').show();
 	$('#divcontent').hide();
 	$('#formBible').hide();
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
-	$('#divFormSim').hide();
 }
 
 function showFormImport() {
     $('#tblGrid').hide();
-    $('#divFormAddUpdate').hide();
+    $('#formAddUpdate').hide();
 	$('#divGear').hide();
 	$('#divcontent').show();
 	$('#formBible').hide();
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
-	$('#divFormSim').hide();
 }
 
 function showBible() {
     $('#tblGrid').hide();
-    $('#divFormAddUpdate').hide();
+    $('#formAddUpdate').hide();
 	$('#divGear').hide();
 	$('#divcontent').hide();
 	$('#formBible').show();
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
-	$('#divFormSim').hide();
 }
 
 function showIniciarConfiguracao() {
     $('#tblGrid').hide();
-    $('#divFormAddUpdate').hide();
+    $('#formAddUpdate').hide();
 	$('#divGear').hide();
 	$('#divcontent').hide();
 	$('#formBible').hide();
 	$('#divconfig').show();
 	$('#divGearAddNewLiryc').hide();
-	$('#divFormSim').hide();
-	document.getElementById('btnPlay').style.display='none';
-	document.getElementById('btnAddNewManual').style.display='none';
-	document.getElementById('btnGear').style.display='none';
 }
 
 function showForm1Form2() {
-//	openOwner(document.getElementById('config_myowner').value);
-//	openLogo('logo/logo.png');
-//	openImagemFundo(localStorage.getItem('valuePlanoFundoMestre'));
+	openOwner(document.getElementById('config_myowner').value);
+	openLogo('logo/logo.png');
+	openImagemFundo(localStorage.getItem('valuePlanoFundoMestre'));
+	var DataShow_Tela2 = window.open("datashowtela2.html", "datashowtela2", "top=1200, width=600, height=500, left=1200, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
+	var DataShow_Tela1 = window.open("datashowtela1.html", "datashowtela1", "top=0, width=350, height=260, left=1200, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
 }
 
 function openOwner(owner) {
@@ -1447,25 +1378,17 @@ function openImagemFundo(filename) {
 		//var extensao = filename.toLowerCase().substring((filename.length-3), filename.length);
 		localStorage.setItem('valuePlanoFundoMestre', filename);
     } catch (ex) {
-        console.log(ex.message);
+        alert(ex.message);
     }
 }
 
 function refreshFormData(student) {
     $('form').attr('data-student-id', student.id);
-    $('#mygroup').val(student.mygroup);
     $('#mycode').val(student.mycode);
     $('#myorder').val(student.myorder);
     $('#mytext').val(student.mytext);
     $('#mysearch').val(student.mysearch);
-    $('#myoption1').val(student.myoption1);
-    $('#myoption2').val(student.myoption2);
-    $('#myoption3').val(student.myoption3);
-    $('#myoption4').val(student.myoption4);
-    $('#myoption5').val(student.myoption5);
-    $('#myoption6').val(student.myoption6);
-    $('#myoption7').val(student.myoption7);
-    $('#myoption8').val(student.myoption8);
+    $('#myrepeated').val(student.myrepeated);
 }
 
 function scrollOverflow(overflow) {
@@ -1592,7 +1515,7 @@ function clickElem(elem) {
 function openFile(func, content) {
 	readFile = function(e) {
 		var file = e.target.files[0];
-		//console.log(file.name);
+		//alert(file.name);
 		if (!file) {
 			document.getElementById(content).style.display='none';
 			return;
@@ -1631,11 +1554,7 @@ function moveCursor(mycode, col, evento, index) {
 				setColor(index, localStorage.getItem('valueAoVivo'));
 			}
 			document.getElementById('txtSearch').value = removeSpecials(index.trim());
-			var mycode = document.getElementById('mycode').value;
-			var myorder = document.getElementById('myorder').value;
-			var mygroup = document.getElementById('mygroup').value;
-			var mytext = document.getElementById('mytext').value.trim();
-			refreshTableData(mycode, myorder, mygroup, mytext);
+			refreshTableData();
 		}
     } else if (evento.keyCode == 27 || event.which == 27) { //ESC
 		if (localStorage.getItem('valueAoVivo') == 'false') {
@@ -1669,7 +1588,7 @@ function moveCursor(mycode, col, evento, index) {
 
 //https://www.ti-enxame.com/pt/jquery/use-setas-para-navegar-em-uma-tabela-html/1046534083/
 function datashow(index, col, code) {
-//console.log(document.getElementById('datashow' + index).innerHTML);
+//alert(document.getElementById('datashow' + index).innerHTML);
 	if (document.getElementById('datashow' + index) == null) { //não permite mover o foco para fora da tabela e dar erro de código
 		return;
 	}
@@ -1681,11 +1600,7 @@ function datashow(index, col, code) {
 		//Com o click, seleciona apenas uma letra da lista de pesquida
 		if (document.getElementById('txtSearch').value != removeSpecials(code.trim())) {
 			document.getElementById('txtSearch').value = removeSpecials(code.trim());
-			var mycode = document.getElementById('mycode').value;
-			var myorder = document.getElementById('myorder').value;
-			var mygroup = document.getElementById('mygroup').value;
-			var mytext = document.getElementById('mytext').value.trim();
-			refreshTableData(mycode, myorder, mygroup, mytext);
+			refreshTableData();
 		}
 		localStorage.setItem('valueAutor', ' ');
 		if (localStorage.getItem('valueArt') == '2') {
@@ -1734,13 +1649,9 @@ function chooseChapter(content) {
 	if (document.getElementById('txtSearch').value.length = 2) {
 		var sizeSearch = document.getElementById('txtSearch').value.length;
 		document.getElementById('txtSearch').value = document.getElementById('txtSearch').value.substring(0, sizeSearch) + content + ';';
-		var mycode = document.getElementById('mycode').value;
-		var myorder = document.getElementById('myorder').value;
-		var mygroup = document.getElementById('mygroup').value;
-		var mytext = document.getElementById('mytext').value.trim();
-		refreshTableData(mycode, myorder, mygroup, mytext);
+		refreshTableData();
 		if (document.getElementById('txtSearch').value.length <= 1) { // pesquisa somente com mais de 1 caracter preenchido no campo search
-			if (document.getElementById('selectMygroup').selectedIndex == '1') {
+			if (document.getElementById('selMycodeTextGroup').selectedIndex == '1') {
 				showBible();
 			}
 		} else {
@@ -1785,14 +1696,3 @@ function getCookie(cname) {
   }
   return "";
 }
-
-//COMMANDS window.location
-//hash	parte (#) de uma URL
-//host	nome de host e número de porta de uma URL
-//hostname	hostname de um URL
-//href	URL inteira
-//origin	protocolo, hostname e número de porta de uma URL
-//pathname	caminho de um URL
-//port	número de porta de um URL
-//protocol	protocolo de um URL
-//search	consulta parte de um URL

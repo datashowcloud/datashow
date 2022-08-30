@@ -425,7 +425,7 @@ async function getFromTablePlay(id, mygroup, mycode) {
 				valorIndice = myorder.substring(index,index+1);
 				if (valorIndice == '1') {
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-					valorIndice +
+//					valorIndice +
 					' <input id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect1answer + '> ' + student.myoption1 + ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
 					if (student.myoption1 != '') {
@@ -433,7 +433,7 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					}
 				} else if (valorIndice == '2') {
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-					valorIndice +
+//					valorIndice +
 					' <input id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect2answer + '> ' + student.myoption2 + ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
 					if (student.myoption2 != '') {
@@ -441,7 +441,7 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					}
 				} else if (valorIndice == '3') {
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-					valorIndice +
+//					valorIndice +
 					' <input id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect3answer + '> ' + student.myoption3 + ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
 					if (student.myoption3 != '') {
@@ -449,7 +449,7 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					}
 				} else if (valorIndice == '4') {
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-					valorIndice +
+//					valorIndice +
 					' <input id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect4answer + '> ' + student.myoption4 + ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
 					if (student.myoption4 != '') {
@@ -457,7 +457,7 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					}
 				} else if (valorIndice == '5') {
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-					valorIndice +
+//					valorIndice +
 					' <input id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect5answer + '> ' + student.myoption5 + ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
 					if (student.myoption5 != '') {
@@ -465,7 +465,7 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					}
 				} else if (valorIndice == '6') {
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-					valorIndice +
+//					valorIndice +
 					' <input id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect6answer + '> ' + student.myoption6 + ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
 					if (student.myoption6 != '') {
@@ -473,7 +473,7 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					}
 				} else if (valorIndice == '7') {
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-					valorIndice +
+//					valorIndice +
 					' <input id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect7answer + '> ' + student.myoption7 + ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
 					if (student.myoption7 != '') {
@@ -481,7 +481,7 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					}
 				} else if (valorIndice == '8') {
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-					valorIndice +
+//					valorIndice +
 					' <input id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect8answer + '> ' + student.myoption8 + ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
 					if (student.myoption8 != '') {
