@@ -97,7 +97,7 @@
 						<div id="myincorrect3answer"></div>
 					</td></tr>
 					<tr><td id="myincorrect4Sim" style="display:none; text-align:justify;">
-						<div id="myincorrectaAnswer"></div>
+						<div id="myincorrecta4answer"></div>
 					</td></tr>
 					<tr><td>
 						<br/><input type="text" id="mygroupSim" value="" Zhidden="">
@@ -128,18 +128,18 @@
 				<p/><textarea name="mytext" id="mytext" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui..."></textarea>
 				<font style="color:green;">
 					Corretas:
-					<textarea name="mycorrect1" id="mycorrect1" style="width:100%;" rows=1 placeholder="digite aqui a correta 1... (obrigatório)"></textarea>
-					<br/><textarea name="mycorrect2" id="mycorrect2" style="width:100%;" rows=1 placeholder="digite aqui a correta 2..."></textarea>
-					<br/><textarea name="mycorrect3" id="mycorrect3" style="width:100%;" rows=1 placeholder="digite aqui a correta 3..."></textarea>
-					<br/><textarea name="mycorrect4" id="mycorrect4" style="width:100%;" rows=1 placeholder="digite aqui a correta 4..."></textarea>
+					<textarea name="myoption1" id="myoption1" style="width:100%;" rows=1 placeholder="digite aqui a correta 1... (obrigatório)"></textarea>
+					<br/><textarea name="myoption2" id="myoption2" style="width:100%;" rows=1 placeholder="digite aqui a correta 2..."></textarea>
+					<br/><textarea name="myoption3" id="myoption3" style="width:100%;" rows=1 placeholder="digite aqui a correta 3..."></textarea>
+					<br/><textarea name="myoption4" id="myoption4" style="width:100%;" rows=1 placeholder="digite aqui a correta 4..."></textarea>
 				</font>
 				
 				<font style="color:red; text-align:left;">
 					Incorretas:
-					<textarea name="myincorrect1" id="myincorrect1" style="width:100%;" rows=1 placeholder="digite aqui a incorreta 1... (obrigatório)"></textarea>
-					<br/><textarea name="myincorrect2" id="myincorrect2" style="width:100%;" rows=1 placeholder="digite aqui a incorreta 2..."></textarea>
-					<br/><textarea name="myincorrect3" id="myincorrect3" style="width:100%;" rows=1 placeholder="digite aqui a incorreta 3..."></textarea>
-					<br/><textarea name="myincorrect4" id="myincorrect4" style="width:100%;" rows=1 placeholder="digite aqui a incorreta 4..."></textarea>
+					<textarea name="myoption5" id="myoption5" style="width:100%;" rows=1 placeholder="digite aqui a incorreta 1... (obrigatório)"></textarea>
+					<br/><textarea name="myoption6" id="myoption6" style="width:100%;" rows=1 placeholder="digite aqui a incorreta 2..."></textarea>
+					<br/><textarea name="myoption7" id="myoption7" style="width:100%;" rows=1 placeholder="digite aqui a incorreta 3..."></textarea>
+					<br/><textarea name="myoption8" id="myoption8" style="width:100%;" rows=1 placeholder="digite aqui a incorreta 4..."></textarea>
 				</font>
 				<p/><p/>
 				<button id="btnSubmit" type="button" class="btn btn-primary" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-check"></i> Salvar</button>
@@ -371,7 +371,7 @@ AWS Batch
 <p>
 Sua empresa precisa lançar um novo produto e para isso deseja criar um novo domínio público para associar a um novo site. Qual é a maneira mais rápida de fazer isso?
 
-Desenvolver o novo site no AWS BeanStalk, que provisiona toda a infra para o desenvolvedor  apenas programar. (<a href="https://aws.amazon.com/pt/elasticbeanstalk/" target="_blank">link estudar mais na internet</a>)
+Desenvolver o novo site no AWS BeanStalk, que provisiona toda a infra para o desenvolvedor  apenas programar.
 
 <ok>
 Criar um novo domínio no AWS Route53
@@ -405,7 +405,7 @@ EBS
 KMS
 
 <p>
-Qual é o serviço serverless que permite a execução de "queries" utilizando padrão SQL para analisar dados no Amazon S3?
+Qual é o serviço serverless que permite a execução de queries utilizando padrão SQL para analisar dados no Amazon S3?
 
 <ok>
 Athena
@@ -419,14 +419,14 @@ Amazon Query Analyzer
 <p>
 Sua empresa deseja otimizar o custo com a utilização do S3 e você percebeu que existem muitas logs de sistemas que estão armazenadas, mas que poderiam ser deletadas após 30 dias da criação. O que você precisa fazer para atender a necessidade de sua empresa?
 
-Criar uma cópia destes objetos em outra região
+Criar uma cópia destes objetos em outra região.
 
 <ok>
 Configurar no S3 Lifecycle para que os objetos expirem em 30 dias para serem automaticamente excluídos.
 
-Configurar o CloudWatch para monitorar o S3 e enviar um email solicitando a exclusão dos arquivos
+Configurar o CloudWatch para monitorar o S3 e enviar um email solicitando a exclusão dos arquivos.
 
-Criar uma cópia destes objetos em outra zona de disponibilidade
+Criar uma cópia destes objetos em outra zona de disponibilidade.
 
 <p>
 Sua empresa tem um sistema que suporta em média 2000 usuários por dia, porém em dias com o aumento de vendas, o sistema chega a 3000 usuários apresentando lentidão e indisponibilidade. Como você automatizaria o processo para o provisionamento automático de máquinas adicionais para suportar essas cargas em dias de pico?
