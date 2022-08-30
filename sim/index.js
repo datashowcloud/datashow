@@ -89,11 +89,22 @@ function getDbSchema() {
         }
     }
 
+	var tableHelp = {
+        name: 'Help',
+        columns: {
+			id: { primaryKey: true, autoIncrement: true },
+			mycode: { notNull: true, dataType: 'string' }, //código único identificador
+			mytext: { notNull: true, dataType: 'string' }, //texto explicativo do código
+			mysearch: { Null: false, dataType: 'string' }, //texto sem os caracteres especiais para fazer o search com maior precisão
+			mylink: { notNull: true, dataType: 'string' } //link para internet
+        }
+    }
+
 	var tableHistory = {
         name: 'History',
         columns: {
 			id: { primaryKey: true, autoIncrement: true },
-			mycodeTry: { notNull: true, dataType: 'string' }, //código único
+			mycodeHistory: { notNull: true, dataType: 'string' }, //código único
 			mytry: { notNull: true, dataType: 'string' }, //número da tentatica, exemplo: 1, 2, 3...; tentativa 1, tentativa 2, tentativa 3...
 			mypercent: { notNull: true, dataType: 'string' }, //porcentagem que conseguiu
 			mycorrects: { notNull: true, dataType: 'string' }, //pquantidade de perguntas corretas
@@ -104,7 +115,7 @@ function getDbSchema() {
 
     var db = {
         name: 'mydbsim',
-        tables: [table, tableHistory]
+        tables: [table, tableHelp, tableHistory]
     }
     return db;
 }
@@ -366,7 +377,7 @@ function registerEvents() {
 		getFromTablePlay(myid, mygroup, mycode);
     })
 	$('#btnBackward').click(function () {
-        var result = confirm('Vou limpar e reorganizar as respostas, ok?');
+        var result = confirm('Vou reiniciar as respostas, ok?');
         if (result) {
 			var mygroup = document.getElementById('mygroupSim').value;
 			updateStudentPlayOrder(mygroup);
@@ -385,8 +396,6 @@ function registerEvents() {
 		}
     })
 }
-
-
 
 //This function select table play
 async function getFromTablePlay(id, mygroup, mycode) {
@@ -426,70 +435,105 @@ async function getFromTablePlay(id, mygroup, mycode) {
 				if (valorIndice == '1') {
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
-					' <input id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
-					+ student.mycorrect1answer + '> ' + student.myoption1 + ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
+					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+					+ student.mycorrect1answer + '> ' + student.myoption1
+					+ ' <a href="' + student.myoption1 + '#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>'
+					+ ' <label id=lblcorrect' + valorIndice + ' style="color:green; display:none"> correta</label>';
 					if (student.myoption1 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
 				} else if (valorIndice == '2') {
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
-					' <input id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
-					+ student.mycorrect2answer + '> ' + student.myoption2 + ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
+					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+					+ student.mycorrect2answer + '> ' + student.myoption2
+					+ ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>'
+					+ ' <label id=lblcorrect' + valorIndice + ' style="color:green; display:none"> correta</label>';
 					if (student.myoption2 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
 				} else if (valorIndice == '3') {
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
-					' <input id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
-					+ student.mycorrect3answer + '> ' + student.myoption3 + ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
+					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+					+ student.mycorrect3answer + '> ' + student.myoption3
+					+ ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
+					+ ' <label id=lblcorrect' + valorIndice + ' style="color:green; display:none"> correta</label>';
 					if (student.myoption3 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
 				} else if (valorIndice == '4') {
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
-					' <input id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
-					+ student.mycorrect4answer + '> ' + student.myoption4 + ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
+					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+					+ student.mycorrect4answer + '> ' + student.myoption4
+					+ ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>'
+					+ ' <label id=lblcorrect' + valorIndice + ' style="color:green; display:none"> correta</label>';
 					if (student.myoption4 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
 				} else if (valorIndice == '5') {
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
-					' <input id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
-					+ student.mycorrect5answer + '> ' + student.myoption5 + ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
+					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+					+ student.mycorrect5answer + '> ' + student.myoption5
+					+ ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>'
+					+ ' <label id=lblcorrect' + valorIndice + ' style="color:red; display:none"> incorreta</label>';
 					if (student.myoption5 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
 				} else if (valorIndice == '6') {
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
-					' <input id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
-					+ student.mycorrect6answer + '> ' + student.myoption6 + ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
+					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+					+ student.mycorrect6answer + '> ' + student.myoption6
+					+ ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>'
+					+ ' <label id=lblcorrect' + valorIndice + ' style="color:red; display:none"> incorreta</label>';
 					if (student.myoption6 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
 				} else if (valorIndice == '7') {
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
-					' <input id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
-					+ student.mycorrect7answer + '> ' + student.myoption7 + ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
+					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+					+ student.mycorrect7answer + '> ' + student.myoption7
+					+ ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>'
+					+ ' <label id=lblcorrect' + valorIndice + ' style="color:red; display:none"> incorreta</label>';
 					if (student.myoption7 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
 				} else if (valorIndice == '8') {
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
-					' <input id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
-					+ student.mycorrect8answer + '> ' + student.myoption8 + ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
+					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+					+ student.mycorrect8answer + '> ' + student.myoption8
+					+ ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>'
+					+ ' <label id=lblcorrect' + valorIndice + ' style="color:red; display:none"> incorreta</label>';
 					if (student.myoption8 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
 				}
 			}
 		})
+		
+		//popula help
+		var students = await jsstoreCon.select({
+			from: 'Help'
+			  , where: { mytext: {like: '' + '' + ''} 
+			  }
+		});
+			
+			var help = '';
+			help = help + '<br/><br/><br/><br/><br/><br/><br/> <button type="button" class="btn btn-default">HELP</button> <br/><br/>';
+			students.forEach(function (student) {
+				help = help + '<p/><a id="' + student.mycode + '" href="#top" class="btn btn-default"><i class="fa fa-arrow-up"></i></a>';;
+				help = help + '<b>' + student.mycode + '</b>';
+				help = help + '<br/>' + student.mytext;;
+				help = help + '<br/>(<a href="' + student.mylink + '" target="_blank">link internet</a>)';
+				help = help + '<br/><br/>';
+			})
+			document.getElementById('divhelp').innerHTML = help;
+		
 //    } catch (ex) {
 //        console.log(ex.message)
 //    }	
@@ -838,7 +882,7 @@ async function confirmImport(contents, group) {
 		console.log('params.get(sim) = ' + params.get('sim'));
 		var mygroup = params.get('sim');
 		var mytext = document.getElementById(contents).value;
-		var mycode = 1;
+		var mycode = 0;
 		var myorder = 1;
 		var index=0;
 		var posicao=0;
@@ -1293,6 +1337,10 @@ function getStudentFromForm(studentId) {
 	myorderFormated = '000' + $('#myorder').val();
 	myorderFormated = myorderFormated.substring(myorderFormated.length-3, myorderFormated.length);
 
+	var mycodeFormated = '';
+	mycodeFormated = '000' + $('#mycode').val();
+	mycodeFormated = mycodeFormated.substring(mycodeFormated.length-3, mycodeFormated.length);
+
 //alert('$(#mygroup).val() = ' + $('#mygroup').val() );
 	var student = {
         id: Number(studentId),
@@ -1329,6 +1377,14 @@ function setStudentFromImport(mygroup, mycode, myorder, mytext, myoption1, myopt
 //console.log(' mygroup='+document.getElementById('mygroup').value + '\n mycode='+document.getElementById('mycode').value + '\n myorder='+myorder + '\n mytext=[' +mytext+']' + '\n '+document.getElementById('myoption1').value + '\n '+myoption2 + '\n '+myoption3 + '\n '+myoption4 + '\n '+myoption5 + '\n '+myoption6 + '\n '+myoption7 + '\n '+myoption8);
 return;
     $('#divFormAddUpdate').show();
+}
+
+function showCorrect(valorindice) {
+	if (document.getElementById('chkMycorrect'+valorindice+'answer').checked == true) {
+		document.getElementById('lblcorrect' + valorindice).style.display='block';
+	} else {
+		document.getElementById('lblcorrect' + valorindice).style.display='none';
+	}
 }
 
 function showFormSim() {

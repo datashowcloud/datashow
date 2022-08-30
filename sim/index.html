@@ -170,6 +170,7 @@
 		
 		<div class="form-group" id="divFormSim" style="display:none;">
 			<font size=4.9 style=text-align:justify>
+	<a id="top"></a>
 				<table border=0 align=center width="100%">
 					<tr><td>
 						<button id="btnPause" class="btn btn-info" style="display:'none';"><i class="fa fa-pause"></i></button>
@@ -206,6 +207,9 @@
 					<tr><td id="mycorrect8Sim" style="display:none; text-align:justify;">
 						<div id="mycorrect8answer"></div>
 					</td></tr>
+					<tr><td id="help" style="display:none; text-align:justify;">
+						<div id="divhelp"></div>
+					</td></tr>
 					<tr><td>
 						<br/><input type="text" id="mygroupSim" value="" Zhidden="">
 						<br/><input type="text" id="mycodeSim" value="" Zhidden="">
@@ -220,17 +224,17 @@
 			<table border=0 align=center width="98%"><tr><td>
 				<b>Formulário Editor de Perguntas</b>
 				<p/><p/><button id="btnSubmit" type="button" class="btn btn-success" style="padding:9px 15px 9px 15px;margin-left:10px; width:110px;"> <i class="fa fa-check"></i> Salvar</button>
-				<button id="btnCancel" type="button" class="btn btn-info" style="padding:9px 15px 9px 15px;margin-left:10px; width:110px;"> <i class="fa fa-times"></i> Não Salvar</button>
+				<button id="btnCancel" type="button" class="btn btn-default" style="padding:9px 15px 9px 15px;margin-left:10px; width:110px;"> <i class="fa fa-times"></i> Não Salvar</button>
 				<!-- p/><p/>
 				<button id="btnImportSim" type="button" class="btn btn-danger" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-check"></i> Importar</button -->
 				<p/><p/><select id="mygroup" name="mygroup" style="height:35px; display:'none';">
-					<option value="10" selected>Teste 1.0</option>
-					<option value="11">Teste 1.1</option>
-					<option value="12">Teste 1.2</option>
-					<option value="20">Teste 2.0</option>
-					<option value="21">Teste 2.1</option>
-					<option value="22">Teste 2.2</option>
-					<option value="30">Teste 3.0</option>
+					<option value="10" selected>Teste v1.0</option>
+					<option value="11">Teste v1.1</option>
+					<option value="12">Teste v1.2</option>
+					<option value="20">Teste v2.0</option>
+					<option value="21">Teste v2.1</option>
+					<option value="22">Teste v2.2</option>
+					<option value="30">Teste v3.0</option>
 				</select>
 				<select id="mycode" name="mycode" style="height:35px; display:'none';"></select>
 				<select id="myorder" name="myorder" style="height:35px; display:'none';"></select>
@@ -246,10 +250,10 @@
 				
 				<font style="color:red; text-align:left;">
 					Incorretas:
-					<textarea name="myincorrect1" id="myincorrect1" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
-					<br/><textarea name="myincorrect2" id="myincorrect2" style="width:100%;" rows=1 placeholder="2..."></textarea>
-					<br/><textarea name="myincorrect3" id="myincorrect3" style="width:100%;" rows=1 placeholder="3..."></textarea>
-					<br/><textarea name="myincorrect4" id="myincorrect4" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<textarea name="myoption5" id="myoption5" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoption6" id="myoption6" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoption7" id="myoption7" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoption8" id="myoption8" style="width:100%;" rows=1 placeholder="4..."></textarea>
 				</font>
 			</td></tr></table>
 		</div>
@@ -269,7 +273,7 @@
 				</div>
 
 				<p/><p/><i>datashowcloud2022@gmail.com
-				<p/><p/>versão 29.08.22.23.23</i>
+				<p/><p/>versão 30.08.22.19.00</i>
 
 			</td></tr></table>
 		</div>
