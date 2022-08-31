@@ -399,15 +399,6 @@ function registerEvents() {
 		updateStudentPlay(myid, mygroup, mycode);
 		getFromTablePlay(myid, mygroup, mycode);
     })
-	$('#btnBackward').click(function () {
-        var result = confirm('Vou reiniciar as respostas, ok?');
-        if (result) {
-			var mygroup = document.getElementById('mygroupSim').value;
-			updateStudentPlayOrder(mygroup);
-			updateStudentPlayClear(mygroup);
-			showGridAndHideForms();
-        }
-    });
 	$('#btnPause').click(function () {
 		showGridAndHideForms();
     });	
