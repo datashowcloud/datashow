@@ -388,7 +388,6 @@ function registerEvents() {
 	$('#btnPause').click(function () {
 		showGridAndHideForms();
     });	
-    });	
 	$('#btnPoints').click(function () {
 		showGridAndHideForms();
     });	
