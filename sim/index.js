@@ -398,7 +398,9 @@ function registerEvents() {
 		showGridAndHideForms();
     });	
 	$('#btnPoints').click(function () {
-		showGridAndHideForms();
+		var mygroup = document.getElementById('mygroupSim').value;
+		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
+		showPoints(mygroup, mycode);
     });	
 	$('#btnGear').click(function () {
 		if (document.getElementById('divGear').style.display == 'none') {
@@ -407,6 +409,73 @@ function registerEvents() {
 			showGridAndHideForms();
 		}
     })
+}
+
+async function showPoints(mygroup, mycode) {
+	var students = await jsstoreCon.select({
+		from: 'Student'
+		  , where: { mygroup: mygroup 
+		  }
+	});
+	
+	var totalCorretas = 0;
+	var totalIncorretas = 0;
+	var totalNaoRespondidas = 0;
+
+	students.forEach(function (student) {
+		if (student.mycode != '0') {
+			var ok = '';
+			if (student.mycorrect1answer == '' && student.mycorrect2answer == '' && student.mycorrect3answer == '' && student.mycorrect4answer == ''
+			 && student.mycorrect5answer == '' && student.mycorrect6answer == '' && student.mycorrect7answer == '' && student.mycorrect8answer == '') {
+				ok = '';
+			} else {
+				for (var index=1; index<=4; index++) {
+					if (student.myoption1 != '') {
+						if (student.mycorrect1answer != '') { ok = 'true'; }
+						if (student.mycorrect1answer == '') { ok = 'false'; break; }
+					}
+					if (student.myoption2 != '') {
+						if (student.mycorrect2answer != '') { ok = 'true'; }
+						if (student.mycorrect2answer == '') { ok = 'false'; break; }
+					}
+					if (student.myoption3 != '') {
+						if (student.mycorrect3answer != '') { ok = 'true'; }
+						if (student.mycorrect3answer == '') { ok = 'false'; break; }
+					}
+					if (student.myoption4 != '') {
+						if (student.mycorrect4answer != '') { ok = 'true'; }
+						if (student.mycorrect4answer == '') { ok = 'false'; break; }
+					}
+				}
+			}
+			if (ok == 'true') {
+				totalCorretas = parseInt(totalCorretas) + 1;
+			} else if (ok == 'false') {
+				totalIncorretas = parseInt(totalIncorretas) + 1;
+			} else if (ok == '') {
+				totalNaoRespondidas = parseInt(totalNaoRespondidas) + 1;
+			}
+		}
+	})
+	
+	totalperguntas = 20;
+	var calculo = (totalCorretas*100) / totalperguntas;
+	calculo = calculo.toFixed(0);
+	var resultado = '';
+	resultado = resultado + totalIncorretas + ' erradas ';//+ erradas;
+	resultado = resultado + '\n\n' + totalCorretas + ' corretas';
+	resultado = resultado + '\n\n' + totalNaoRespondidas + ' não respondidas ';// + responder;
+//	resultado = resultado + '\n\nResponda: '  + responder;
+	
+	if (calculo >= 70) {
+		resultado = resultado + '\n\n' + 'APROVADO \n' + calculo + '% de acerto é >= que 70%';
+	} else {
+		resultado = resultado + '\n\n' + 'REPROVADO \n' + calculo + '% de acerto é < que 70%';
+	}
+
+//	resultado = resultado + '\nDuração: ' + document.getElementById('tempoduracao').value + 'h';
+
+	alert(resultado);
 }
 
 //This function select table play
@@ -1372,7 +1441,15 @@ function getStudentFromForm(studentId, mygroup, mycode) {
 		myoption5: $('#myoption5').val(),
 		myoption6: $('#myoption6').val(),
 		myoption7: $('#myoption7').val(),
-		myoption8: $('#myoption8').val()
+		myoption8: $('#myoption8').val(),
+		mycorrect1answer: '',
+		mycorrect2answer: '',
+		mycorrect3answer: '',
+		mycorrect4answer: '',
+		mycorrect5answer: '',
+		mycorrect6answer: '',
+		mycorrect7answer: '',
+		mycorrect8answer: ''		
     };
     return student;
 }
