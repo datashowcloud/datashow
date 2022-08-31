@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Configuração Sim</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/bootstrap.css" />
+    <link rel="stylesheet" href="style/font-awesome.min.css" />
+    <script src="scripts/jsstore.js"></script>
+    <script src="scripts/jsstore.worker.js"></script>
+    <script src="index.js"></script>
+	<style>
+#myBody {
+  border: 0px dashed blue;
+  padding: 25px;
+  background-attachment: fixed;
+  background-position: top; 
+  background-repeat: no-repeat;
+} 
+	</style>
+</head>
+
+<body id="myBody" ZZZbackground="gallery/paper.jpeg">
+
+        
+		
+		<div class="col-xs-12 col-sm-10 col-centered ">
+			<div style="display:'none'; text-align:center; ">
+				<!-- br/>Aguarde o resultado na janela da configuração -->
+				<br/><a href="#" onclick="window.close();"><button id="btnConfigBookClose" class="btn btn-info" style="padding:9px 15px 9px 15px;">Feche Esta Janela Após 10 segundos</button></a>
+				
+				<select id="selectMygroup" name="selectMygroup" style="height:34px; display:none;">
+					<option value="10" selected>Teste v1.0</option>
+					<option value="11">Teste v1.1</option>
+					<option value="12">Teste v1.2</option>
+					<option value="20">Teste v2.0</option>
+					<option value="21">Teste v2.1</option>
+					<option value="22">Teste v2.2</option>
+					<option value="30">Teste v3.0</option>
+				</select>
+				<label id="bSearch" style="display:none;">
+					<input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:200px; height:34px;">
+				</label>
+			</div>
+		</div>
+		
+		<table id="tblGrid" style="width:98%" class="table table-hover ">
+			<tbody>
+					<!--
+				<div id="botoes" style="display:none; text-align:center;">
+				</div>
+					-->
+			</tbody>
+		</table>
+
+		<div id="divcontent" style="display:none;"></div>
+
+		<!-- form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post" -->
+		<!-- /form -->
+		
+		<div class="form-group" id="divFormSim" style="display:none;">
+			<font size=4.9 style=text-align:justify>
+				<table border=0 align=center width="100%">
+					<tr><td>
+						<button id="btnBackward" class="btn btn-danger" style="display:none;"> <i class="fa fa-remove"></i> </button>
+						<button id="btnPrevious" class="btn btn-default" style="display:none;"> <i class="fa fa-chevron-left"></i></button>
+						<button id="btnNext" class="btn btn-success" style="display:none;">Próximo <i class="fa fa-chevron-right"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-signal"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-pause"></i></button>
+						<button class="btn btn-warning" style="display:none;"><i class="fa fa-check"></i> Fim</button>
+					</td></tr>
+					<tr><td id="mytextSim" style="display:none; text-align:justify;">
+					</td></tr>
+					<tr><td id="mycorrect1Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect1answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect2Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect2answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect3Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect3answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect4Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect4answer"></div>
+					</td></tr>
+
+					<tr><td id="myincorrect1Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect1answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect2Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect2answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect3Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect3answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect4Sim" style="display:none; text-align:justify;">
+						<div id="myincorrecta4answer"></div>
+					</td></tr>
+					<tr><td>
+						<br/><input type="text" id="mygroupSim" value="" Zhidden="">
+						<br/><input type="text" id="mycodeSim" value="" Zhidden="">
+						<br/><input type="text" id="myorderSim" value="" Zhidden="">
+						<br/><input type="text" id="myidSim" value="" Zhidden="">
+					</td></tr>
+				</table>
+			</font>
+		</div>
+
+		<div class="form-group" id="divFormAddUpdate" style="display:none;">
+			<table border=0 align=center width="98%"><tr><td>
+				<b>Formulário Editor de Perguntas</b>
+				<p/><p/>
+				<select id="mygroup" name="mygroup" style="height:35px; display:none;">
+					<option value="10" selected>Teste 1.0</option>
+					<option value="11">Teste 1.1</option>
+					<option value="12">Teste 1.2</option>
+					<option value="20">Teste 2.0</option>
+					<option value="21">Teste 2.1</option>
+					<option value="22">Teste 2.2</option>
+					<option value="30">Teste 3.0</option>
+				</select>
+				<select id="mycode" name="mycode" style="height:35px; display:none;"></select>
+				<select id="myorder" name="myorder" style="height:35px; display:none;"></select>
+				<p/>
+				<p/><textarea name="mytext" id="mytext" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui..."></textarea>
+				<font style="color:green;">
+					Corretas:
+					<textarea name="myoption1" id="myoption1" style="width:100%;" rows=1 placeholder="digite aqui a correta 1... (obrigatório)"></textarea>
+					<br/><textarea name="myoption2" id="myoption2" style="width:100%;" rows=1 placeholder="digite aqui a correta 2..."></textarea>
+					<br/><textarea name="myoption3" id="myoption3" style="width:100%;" rows=1 placeholder="digite aqui a correta 3..."></textarea>
+					<br/><textarea name="myoption4" id="myoption4" style="width:100%;" rows=1 placeholder="digite aqui a correta 4..."></textarea>
+				</font>
+				
+				<font style="color:red; text-align:left;">
+					Incorretas:
+					<textarea name="myoption5" id="myoption5" style="width:100%;" rows=1 placeholder="digite aqui a incorreta 1... (obrigatório)"></textarea>
+					<br/><textarea name="myoption6" id="myoption6" style="width:100%;" rows=1 placeholder="digite aqui a incorreta 2..."></textarea>
+					<br/><textarea name="myoption7" id="myoption7" style="width:100%;" rows=1 placeholder="digite aqui a incorreta 3..."></textarea>
+					<br/><textarea name="myoption8" id="myoption8" style="width:100%;" rows=1 placeholder="digite aqui a incorreta 4..."></textarea>
+				</font>
+				<p/><p/>
+				<button id="btnSubmit" type="button" class="btn btn-primary" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-check"></i> Salvar</button>
+				<p/><p/>
+				<button id="btnCancel" type="button" class="btn btn-default" style="padding:9px 15px 9px 15px;margin-left:10px; width:110px;"> <i class="fa fa-times"></i> Não Salvar</button>
+			</td></tr></table>
+		</div>
+		
+		<div id="divcontent" style="display:none;">
+
+<!-- Configuração: 1 -->
+<br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
+<p>
+<div align=center>
+AWS Cloud Practitioner Essentials
+<br/> Versão 2.2
+<br/>
+<br/> Total de 25 perguntas
+<br/> Tempo médio de 40 minutos
+<br/> Aprovação mínima de 70%
+</div>
+
+<p>
+Selecione as opções verdadeiras que ser referem ao AWS IAM? (selecione 3 alternativas)
+
+<ok>
+A maioria das Policies são armazenadas em documentos JSON
+
+<ok>
+Permissões determinam se a requisição é permitida ou negada
+
+Policy é um documento que todos os usuários devem assinar digitalmente quando acessam a AWS pela primeira vez
+
+Policy é um objeto da AWS que quando associado a um usuário ou recurso define suas permissões
+
+<p>
+Quais são as regras para a criação de nome de Bucket do S3?
+
+<ok>
+Devem consistir apenas em letras minúsculas, números, pontos (.) e hífens (-)
+
+<ok>
+Devem começar e terminar com uma letra ou um número
+
+Devem ser formatados como um endereço IP sempre que possível
+
+<ok>
+Devem possuir de 3 a 63 caracteres
+
+<p>
+Você está dando consultoria para uma pequena empresa que deseja disponibilizar um site dinâmico em WordPress e com custo mínimo. Qual dos serviços abaixo oferece um servidor privado virtual simples (VPS) de baixo custo e que pode atender essa necessidade?
+
+Amazon ECS
+
+<ok>
+Amazon LightSail
+
+Amazon S3
+
+Amazon EC2
+
+<p>
+Sua empresa começou a utilizar o ECS e conteinerizou 2 microsserviços de uma aplicação que possuem cargas de trabalho diferentes ao longo dia. O primeiro tem mais acessos durante a manhã e o segundo tem mais acesso à tarde, invertendo o cenário no consumo de recursos. Qual solução você deve adotar para que esses serviços escalem de forma automática para otimizar o uso dos recursos da sua infraestrutura?
+
+ECR
+
+EC2
+
+<ok>
+EKS
+
+Lambda
+
+<p>
+Qual é o serviço utilizado para executar containers sem servidores e diminuir a necessidade dos desenvolvedores se preocuparem com questões relacionadas ao gerenciamento de instâncias e infraestrutura?
+
+ECS
+
+<ok>
+Fargate
+
+Lambda
+
+EKS
+
+<p>
+No modelo de responsabilidade compartilhada, a AWS deve proteger todos os dados trafegados na sua infraestrutura global. Sobre a criptografia realizada neste processo, podemos afirmar que:
+
+A AWS criptografa automaticamente os dados na camada lógica antes de sair de suas instalações protegidas
+
+<ok>
+A AWS criptografa automaticamente os dados na camada física antes de sair de suas instalações protegidas
+
+A AWS não criptografa os dados, entretanto fornece o KMS para o usuário fazê-la
+
+A AWS não criptografa os dados, entretanto fornece o AWS Certificate Manager para o usuário fazê-la
+
+<p>
+Qual é o modelo de planos flexíveis que oferece preços mais baixos em comparação com os preços sob demanda, em troca de um compromisso de uso específico (medido em USD/hora) por um período de um ou três anos?
+
+AWS Efficient Cost
+
+Low Cost
+
+<ok>
+Savings Plans
+
+AWS Billing
+
+<p>
+Seu time de desenvolvimento está planejando modernizar um sistema e redesenhá-lo dentro da AWS. Um dos requisitos não funcionais é  a redução de interdependência para minimizar falhas que acontecem e impactam outros componentes. Qual dos seguintes conceitos se refere a esse requisito?
+
+Segregação
+
+Integração
+
+Agregação
+
+<ok>
+Desacoplamento
+
+<p>
+Na implementação de uma estratégia de backups, qual é número máximo de snapshots manuais de RDS permitidas por região?
+
+256 por região
+
+<ok>
+100 por região
+
+o número de cópia é virtualmente ilimitado
+
+128 por região
+
+<p>
+Qual é o formato de arquivo utilizado na maioria das configurações de serviços da AWS?
+
+<ok>
+JSON
+
+TXT
+
+XML
+
+Config
+
+<p>
+Você trabalha numa multinacional que opera em todos os continentes e com clientes em quase todos os países. Qual é o maior benefício no uso da AWS para esse contexto?
+
+Suporte em mais de 50 idiomas
+
+Suporte ao usuário final
+
+Documentações bem traduzidas
+
+<ok>
+Presença Global
+
+<p>
+Qual é o serviço da AWS que oferece diversos tipos de máquinas com capacidades computacionais para atender a diversas necessidades de cargas de trabalho (workloads)?
+
+<ok>
+EC2
+
+S3
+
+EBS
+
+EFS
+
+<p>
+Você construiu uma aplicação no EC2 que se conecta aos dados no RDS. Qual serviço você deve utilizar para que as devidas configurações de acesso entre a aplicação e o banco de dados sejam realizadas?
+
+<ok>
+IAM Roles
+
+IAM Grant
+
+IAM Users
+
+IAM Groups
+
+<p>
+Qual é a plataforma da AWS para Big Data em Cloud que permite integração com várias ferramentas de código livre como Apache Spark, Apache Hive, Apache HBase, Apache Flink, Apache Hudi?
+
+<ok>
+Amazon EMR
+
+Amazon Hadoop
+
+Amazon Kinesis
+
+Amazon RedShift
+
+<p>
+Qual é o serviço, que através da infraestrutura global da AWS, pode ser utilizado quando as suas aplicações apresentarem problemas de tráfego devido ao congestionamento da Internet?
+
+<ok>
+AWS Global Accelerator
+
+AWS CloudFront
+
+AWS DataSync
+
+AWS Snowball
+
+<p>
+Qual serviço é utilizado para logar as ações dos seus usuários dentro da AWS?
+
+IAM
+
+S3
+
+CloudWatch logs
+
+<ok>
+CloudTrail
+
+<p>
+Sua empresa precisa implementar a integração rápida entre escritórios em São Paulo, Moscow e 2 mil funcionários ao redor do mundo. Qual é o serviço da AWS que permite realizar essa integração de forma ágil e escalável?
+
+AWS VPC
+
+AWS DataSync
+
+AWS Link
+
+<ok>
+AWS VPN
+
+<p>
+Você precisa garantir a alta disponibilidade de uma aplicação que será lançada na sua empresa no Brasil. Qual é a melhor estratégia de uso do AWS RDS para esse requisito?
+
+Criar um Security Group para isolar apenas os bancos de dados e aumentar a performance
+
+Read Replicas (Utilizar cópias de leitura)
+
+<ok>
+Multi A-Z  (Distribuir os bancos em mais de uma zona de disponibilidade)
+
+Multi Regions (Distribuir os banco em mais de uma região)
+
+<p>
+Uma das grandes vantagens no uso da AWS está nas formas de pagamentos dos seus serviços. Qual é forma de pagamentos padrão utilizada na maior parte dos seus serviços?
+
+Pagamento conforme a compra
+
+Pagamento conforme o contrato
+
+Pagamento conforme o licenciamento
+
+<ok>
+Pagamento conforme o uso
+
+<p>
+Sua empresa fez um contrato para obter um pacote com 50 licenças do Microsoft SQL Server. Os softwares serão instalados em novos servidores à medida que a empresa expandir seus negócios ao redor do mundo. A empresa passa por auditorias frequentes e precisa garantir que só existem softwares licenciados na sua rede. Qual serviço da AWS facilita essa conformidade?
+
+CloudFormation
+
+Config
+
+Certificate Manager
+
+<ok>
+License Manager
+
+<p>
+Sua empresa está desenhando uma nova plataforma para distribuição de vídeos em nível global. Qual é o serviço que pode diminuir a latência entre a requisição e entrega do serviço?
+
+<ok>
+Amazon CloudFront
+
+Amazon ElasticCache
+
+Amazon Redis
+
+Amazon S3
+
+<p>
+Qual é o serviço da AWS utilizado para migrar banco de dados de forma rápida e segura?
+
+AWS Glue
+
+AWS Snow
+
+AWS Connect
+
+<ok>
+AWS DMS
+
+<p>
+Com a AWS você pode obter descontos baseados em volume e obter economias substanciais à medida que o seu uso aumenta. Em qual serviço abaixo a definição de preço é feita em camadas e quanto mais você usar, menor será o preço por GB?
+
+Lambda
+
+EKS
+
+ECS
+
+<ok>
+S3
+
+<p>
+Qual serviço da AWS deve ser usado se você deseja configurar alarme de cobrança? (AWS billing alarm)
+
+CloudTrail
+
+CloudMonitor
+
+<ok>
+CloudWatch
+
+CloudBilling
+
+<p>
+Qual é o serviço de mensagens desenvolvido para Apache Active MQ e Rabbit MQ que torna a migração mais fácil e permite arquiteturas híbridas?
+
+SNS
+
+<ok>
+Amazon MQ
+
+SQS
+
+Kafka
+
+<p>
+
+</textarea>
+
+		</div>
+
+    <link href="style/main.css " rel="stylesheet " type="text/css " />
+</body>
+
+</html>
+
+<script type="text/javascript">
+	onLoadConfig();
+</script>

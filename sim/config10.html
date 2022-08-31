@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Configuração Sim</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/bootstrap.css" />
+    <link rel="stylesheet" href="style/font-awesome.min.css" />
+    <script src="scripts/jsstore.js"></script>
+    <script src="scripts/jsstore.worker.js"></script>
+    <script src="index.js"></script>
+	<style>
+#myBody {
+  border: 0px dashed blue;
+  padding: 25px;
+  background-attachment: fixed;
+  background-position: top; 
+  background-repeat: no-repeat;
+} 
+	</style>
+</head>
+
+<body id="myBody" ZZZbackground="gallery/paper.jpeg">
+
+        
+		
+		<div class="col-xs-12 col-sm-10 col-centered ">
+			<div style="display:'none'; text-align:center; ">
+				<!-- br/>Aguarde o resultado na janela da configuração -->
+				<br/><a href="#" onclick="window.close();"><button id="btnConfigBookClose" class="btn btn-info" style="padding:9px 15px 9px 15px;">Feche Esta Janela Após 10 segundos</button></a>
+				
+				<select id="selectMygroup" name="selectMygroup" style="height:34px; display:none;">
+					<option value="10" selected>Teste v1.0</option>
+					<option value="11">Teste v1.1</option>
+					<option value="12">Teste v1.2</option>
+					<option value="20">Teste v2.0</option>
+					<option value="21">Teste v2.1</option>
+					<option value="22">Teste v2.2</option>
+					<option value="30">Teste v3.0</option>
+				</select>
+				<label id="bSearch" style="display:none;">
+					<input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:200px; height:34px;">
+				</label>
+			</div>
+		</div>
+		
+		<table id="tblGrid" style="width:98%" class="table table-hover ">
+			<tbody>
+					<!--
+				<div id="botoes" style="display:none; text-align:center;">
+				</div>
+					-->
+			</tbody>
+		</table>
+
+		<div id="divcontent" style="display:none;"></div>
+
+		<!-- form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post" -->
+		<!-- /form -->
+		
+		<div class="form-group" id="divFormSim" style="display:none;">
+			<font size=4.9 style=text-align:justify>
+				<table border=0 align=center width="100%">
+					<tr><td>
+						<button id="btnBackward" class="btn btn-danger" style="display:none;"> <i class="fa fa-remove"></i> </button>
+						<button id="btnPrevious" class="btn btn-default" style="display:none;"> <i class="fa fa-chevron-left"></i></button>
+						<button id="btnNext" class="btn btn-success" style="display:none;">Próximo <i class="fa fa-chevron-right"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-signal"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-pause"></i></button>
+						<button class="btn btn-warning" style="display:none;"><i class="fa fa-check"></i> Fim</button>
+					</td></tr>
+					<tr><td id="mytextSim" style="display:none; text-align:justify;">
+					</td></tr>
+					<tr><td id="mycorrect1Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect1answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect2Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect2answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect3Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect3answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect4Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect4answer"></div>
+					</td></tr>
+
+					<tr><td id="myincorrect1Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect1answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect2Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect2answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect3Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect3answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect4Sim" style="display:none; text-align:justify;">
+						<div id="myincorrecta4answer"></div>
+					</td></tr>
+					<tr><td>
+						<br/><input type="text" id="mygroupSim" value="" Zhidden="">
+						<br/><input type="text" id="mycodeSim" value="" Zhidden="">
+						<br/><input type="text" id="myorderSim" value="" Zhidden="">
+						<br/><input type="text" id="myidSim" value="" Zhidden="">
+					</td></tr>
+				</table>
+			</font>
+		</div>
+
+		<div class="form-group" id="divFormAddUpdate" style="display:none;">
+			<table border=0 align=center width="98%"><tr><td>
+				<b>Formulário Editor de Perguntas</b>
+				<p/><p/>
+				<select id="mygroup" name="mygroup" style="height:35px; display:none;">
+					<option value="10" selected>Teste v1.0</option>
+					<option value="11">Teste v1.1</option>
+					<option value="12">Teste v1.2</option>
+					<option value="20">Teste v2.0</option>
+					<option value="21">Teste v2.1</option>
+					<option value="22">Teste v2.2</option>
+					<option value="30">Teste v3.0</option>				</select>
+				<select id="mycode" name="mycode" style="height:35px; display:none;"></select>
+				<select id="myorder" name="myorder" style="height:35px; display:none;"></select>
+				<p/>
+				<p/><textarea name="mytext" id="mytext" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui..."></textarea>
+				<font style="color:green;">
+					Corretas:
+					<textarea name="myoption1" id="myoption1" style="width:100%;" rows=1 placeholder="digite aqui a correta 1... (obrigatório)"></textarea>
+					<br/><textarea name="myoption2" id="myoption2" style="width:100%;" rows=1 placeholder="digite aqui a correta 2..."></textarea>
+					<br/><textarea name="myoption3" id="myoption3" style="width:100%;" rows=1 placeholder="digite aqui a correta 3..."></textarea>
+					<br/><textarea name="myoption4" id="myoption4" style="width:100%;" rows=1 placeholder="digite aqui a correta 4..."></textarea>
+				</font>
+				
+				<font style="color:red; text-align:left;">
+					Incorretas:
+					<textarea name="myoption5" id="myoption5" style="width:100%;" rows=1 placeholder="digite aqui a incorreta 1... (obrigatório)"></textarea>
+					<br/><textarea name="myoption6" id="myoption6" style="width:100%;" rows=1 placeholder="digite aqui a incorreta 2..."></textarea>
+					<br/><textarea name="myoption7" id="myoption7" style="width:100%;" rows=1 placeholder="digite aqui a incorreta 3..."></textarea>
+					<br/><textarea name="myoption8" id="myoption8" style="width:100%;" rows=1 placeholder="digite aqui a incorreta 4..."></textarea>
+				</font>
+				<p/><p/>
+				<button id="btnSubmit" type="button" class="btn btn-primary" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-check"></i> Salvar</button>
+				<p/><p/>
+				<button id="btnCancel" type="button" class="btn btn-default" style="padding:9px 15px 9px 15px;margin-left:10px; width:110px;"> <i class="fa fa-times"></i> Não Salvar</button>
+			</td></tr></table>
+		</div>
+		
+		<div id="divcontent" style="display:none;">
+
+<!-- Configuração: 1 -->
+<br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
+<p>
+<div align=center>
+AWS Cloud Practitioner Essentials
+<br/> Versão 1.0
+<br/>
+<br/> Total de 20 perguntas
+<br/> Tempo médio de 30 minutos
+<br/> Aprovação mínima de 70%
+</div>
+
+<p>
+Qual serviço da AWS é recomendado para estimar o custo de implementação dos serviços de Cloud para o seu negócio?
+
+<ok>
+AWS Princing Calculator
+
+AWS Organizations
+
+AWS Billing
+
+AWS Cost Explorer
+
+<p>
+Analise os serviços abaixo:
+<br/>O primeiro serviço permite que aplicativos enviem mensagens críticas, em termos de tempo, para vários assinantes através de um mecanismo de “push”, eliminando a necessidade de verificar periodicamente ou “pesquisar” por atualizações.
+<br/>O segundo é um serviço de fila de mensagens, usado por aplicativos distribuídos para trocar mensagens através de um modelo de sondagem e pode ser usado para desacoplar componentes de envio e recebimento. Qual é a sequência abaixo que informa corretamente os dois serviços?
+
+SES e SNS
+
+SQS e SNS
+
+SES e SQS
+
+<ok>
+SNS e SQS
+
+<p>
+O que é Free Tier (Nível Gratuito)?
+
+<ok>
+É um modelo de uso dos produtos da AWS onde você não é cobrado.
+
+É um serviço de firewall que protege suas aplicações.
+
+É uma camada de banco de dados NoSQL.
+
+É um modelo open source para o desenvolvimento de aplicações em camadas.
+
+<p>
+O que é o MFA - Multi-Factor-Authentication (Autenticação Multi Fator)?
+
+<ok>
+Um serviço que inclui uma etapa a mais no processo de autenticação de acesso à conta da AWS pela Web.
+
+Um serviço para conectar instâncias EC2 no banco de dados DynamoDb.
+
+Um serviço que permite uso de tokens em aplicações web e mobile.
+
+Um serviço que permite fazer acesso SSH em instâncias EC2.
+
+<p>
+Qual é a opção de armazenamento default do serviço S3?
+
+<ok>
+Standard
+
+Frequent Access
+
+Infrequent Access
+
+Glacier
+
+<p>
+Numa estratégia de utilização de nuvem híbrida, onde você deseja manter seu workload on-premises e parte dos arquivos na AWS. Qual opção abaixo oferece uma gama de serviços para realizar essa finalidade de integração e armazenamento para sua arquitetura?
+
+<ok>
+AWS Storage Gateway
+
+Amazon Virtual Private Cloud (VPC)
+
+AWS Organizations
+
+AWS Database Migration Service
+
+<p>
+Você está migrando parte de uma aplicação que trabalha com sistema de arquivos para armazenar e manipular alguns dados. Qual das opções abaixo indica o serviço que pode ser utilizado para atender essa parte da aplicação na AWS?
+
+EC2
+
+KMS
+
+<ok>
+EFS
+
+AWS Config
+
+<p>
+Você trabalha numa agência de viagens online e precisa armazenar, analisar e correlacionar dados de logs de seus aplicativos para identificar e resolver gargalos de desempenho e problemas de disponibilidade para garantir uma experiência de reserva otimizada para os seus clientes. Qual serviço da AWS abaixo é o mais indicado?
+
+Amazon CloudSearch
+
+Amazon EMR
+
+Amazon Athena
+
+<ok>
+Amazon ElasticSearch
+
+<p>
+Sua aplicação precisa persistir dados não estruturados de clientes. Qual serviço abaixo é o mais indicado para essa finalidade?
+
+Amazon RedShift
+
+Amazon Aurora
+
+Amazon EMR
+
+<ok>
+Amazon DynamoDB
+
+<p>
+Você está auditando a infraestrutura da sua empresa na AWS para tentar identificar ações não programadas de desligamentos de recursos. Qual dos itens abaixo pode te auxiliar nesta atividade?
+
+AWS Audit
+
+<ok>
+AWS CloudTrail
+
+AWS CloudSearch
+
+AWS Cloud ElasticSearch
+
+<p>
+Qual afirmação abaixo NÃO se refere ao AWS Lambda?
+
+Pode ser acionado diretamente pelo AWS SNS
+
+Processa dados sem servidor
+
+Pode ser acionado diretamente pelo AWS S3
+
+<ok>
+Permite o gerenciamento total dos recursos de infraestrutura
+
+<p>
+Qual é o serviço que você precisa configurar, dentro da sua rede privada na AWS, para controlar o tráfego de dados de entrada e saída em um parque de servidores de bancos de dados?
+
+AWS Shield
+
+AWS WAF
+
+<ok>
+AWS Security Group
+
+AWS GuardDuty
+
+<p>
+Qual é a solução de banco de dados em Grafo, gerenciado pela AWS, que permite diversos tipos de relacionamentos entre os seus nós e que pode ser utilizado em muitos contextos que representam as conexões que temos em nosso cotidiano, como em rede sociais, cadeias logísticas, empresariais, entre outros?
+
+Amazon Graph
+
+<ok>
+Amazon Neptune
+
+Amazon Neo4j
+
+Amazon JanusGraph
+
+<p>
+Você trabalha numa agência de publicidade que deseja implantar um site com o conteúdo estático para fazer a primeira divulgação de um produto. Qual é o serviço da AWS mais indicado para esse cenário?
+
+EC2
+
+Docker
+
+EFS
+
+<ok>
+S3
+
+<p>
+Qual serviço da AWS possui um catálogo onde os clientes podem encontrar aplicações desenvolvidas por terceiros e prontas para ser instaladas e executadas, atendendo as mais diversas necessidades de negócio?
+
+AWS AMI
+
+AWS MFA
+
+<ok>
+AWS Marketplace
+
+AWS OpsWorks
+
+<p>
+Quais são os cinco planos de suporte ofertados pela AWS?
+
+Bronze, Silver, Gold, Diamond, Ruby
+
+Basic, Developer, Business, Advanced, Enterprise On-Ramp
+
+<ok>
+Basic, Developer, Business, Enterprise On-Ramp, Enterprise
+
+Standard, Developer, Business, Enterprise, Enterprise On-Ramp
+
+<p>
+Você precisa implementar uma estratégia de DR (Recuperação de Desastre) na sua empresa, qual é a recomendação de melhor uso do AWS RDS?
+
+<ok>
+Multi Regions (Distribuir em regiões diferentes)
+
+Multi A-Z (Distribuir em zonas de disponibilidade diferentes)
+
+Read Replicas (Fazer cópias de leitura)
+
+Implementar uma cópia do banco numa instância EC2
+
+<p>
+Qual é o usuário utilizado para acessar o AWS Console pela primeira vez e que possui acesso a todos os recursos da conta? (Não sendo recomendado o uso no dia a dia.)
+
+AWS IAM
+
+AWS Administrator
+
+<ok>
+AWS account root user
+
+AWS full user
+
+<p>
+Qual opção abaixo descreve o serviço Elastic Load Balancer?
+
+Distribui o tráfego de entrada entre instâncias em diferentes regiões
+
+Instancia uma nova máquina quando uma das máquinas apresenta falha
+
+<ok>
+Distribui o tráfego de entrada entre suas instâncias
+
+Cria um cluster de máquinas dentro da mesma zona de disponibilidade
+
+<p>
+Você lidera um time de desenvolvimento pequeno e que não tem tempo de se envolver com muitas questões de infraestrutura AWS, porém você gostaria de fazer o uso de container, pois acredita que esse modelo de arquitetura tem muitas vantagens. Qual serviço da Amazon permite que você crie e use container sem precisar se preocupar com questões de infraestrutura e que usa uma infraestrutura sem servidor (servless)?
+
+EKS
+
+ECS
+
+ECR
+
+<ok>
+Fargate
+
+<p>
+
+</textarea>
+
+		</div>
+
+    <link href="style/main.css " rel="stylesheet " type="text/css " />
+</body>
+
+</html>
+
+<script type="text/javascript">
+	onLoadConfig();
+</script>
