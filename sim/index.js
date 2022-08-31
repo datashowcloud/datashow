@@ -890,7 +890,9 @@ async function salvarRegistro(mygroup, mycode, myorder, mytext) {
 	setStudentFromImport(mygroup, mycode, myorder, question, array[0], array[1], array[2], array[3], array[4], array[5], array[6], array[7]);
 	var studentId = $('form').attr('data-student-id');
 	addStudentImportConfig(studentId, mygroup, mycode);
-	setTimeout(() => { updateStudentPlayOrder(mygroup) }, 1000); // Executa após 5 segundos para esperar o processo de insert terminar
+	
+	//var mygroup = document.getElementById('mygroupSim').value;
+	updateStudentPlayOrder(mygroup);
 }
 
 //This function confirm import
@@ -1293,7 +1295,8 @@ async function updateStudent(studentId, mygroup, mycode) {
 			}
 		});
         console.log(`data updated ${noOfDataUpdated}`);
-		setTimeout(() => { updateStudentPlayOrder(mygroup) }, 1000); // Executa após 5 segundos para esperar o processo de update/insert terminar
+		
+		updateStudentPlayOrder(mygroup);
 		showGridAndHideForms();
         $('form').attr('data-student-id', null);
 		var mygroup = document.getElementById('mygroup').value;
@@ -1362,8 +1365,6 @@ function getStudentFromForm(studentId, mygroup, mycode) {
 	mycodeFormated = '000' + $('#mycode').val();
 	mycodeFormated = mycodeFormated.substring(mycodeFormated.length-3, mycodeFormated.length);
 
-	var mygroup = document.getElementById('mygroupSim').value;
-	setTimeout(() => { updateStudentPlayOrder(mygroup) }, 1000); // Executa após 5 segundos para esperar o processo de insert terminar
 //alert('$(#mygroup).val() = ' + $('#mygroup').val() );
 	var student = {
         id: Number(studentId),
