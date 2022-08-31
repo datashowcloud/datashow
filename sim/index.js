@@ -378,21 +378,7 @@ function registerEvents() {
 		updateStudentPlay(myid, mygroup, mycode);
 		getFromTablePlay(myid, mygroup, mycode);
     })
-    $('#btnPrevious2').click(function () {
-		var myid = document.getElementById('myidSim').value;
-		var mygroup = document.getElementById('mygroupSim').value;
-		var mycode = parseInt(document.getElementById('mycodeSim').value) - 1;
-		updateStudentPlay(myid, mygroup, mycode);
-		getFromTablePlay(myid, mygroup, mycode);
-    })
     $('#btnNext').click(function () {
-		var myid = document.getElementById('myidSim').value;
-		var mygroup = document.getElementById('mygroupSim').value;
-		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
-		updateStudentPlay(myid, mygroup, mycode);
-		getFromTablePlay(myid, mygroup, mycode);
-    })
-    $('#btnNext2').click(function () {
 		var myid = document.getElementById('myidSim').value;
 		var mygroup = document.getElementById('mygroupSim').value;
 		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
@@ -411,13 +397,7 @@ function registerEvents() {
 	$('#btnPause').click(function () {
 		showGridAndHideForms();
     });	
-	$('#btnPause2').click(function () {
-		showGridAndHideForms();
-    });	
 	$('#btnPoints').click(function () {
-		showGridAndHideForms();
-    });	
-	$('#btnPoints2').click(function () {
 		showGridAndHideForms();
     });	
 	$('#btnGear').click(function () {
