@@ -147,6 +147,13 @@ function registerEvents() {
 		}
     })
     $('#btnRefresh').click(function () {
+        var result = confirm('Vou reiniciar as respostas, ok?');
+        if (result) {
+			var mygroup = document.getElementById('mygroupSim').value;
+			updateStudentPlayOrder(mygroup);
+			updateStudentPlayClear(mygroup);
+			showGridAndHideForms();
+        }
 		var mygroup = document.getElementById('selectMygroup').value;
 		var mycode = '';
 		var myorder = '';
@@ -287,10 +294,12 @@ function registerEvents() {
     })
     $('#btnSubmit').click(function () {
 		var studentId = $('form').attr('data-student-id');
+		var mygroup = document.getElementById('mygroupSim').value;
+		var mycode = parseInt(document.getElementById('mycodeSim').value) - 1;
 		if (studentId) {
-			updateStudent(studentId);
+			updateStudent(studentId, mygroup, mycode);
 		} else {
-			addStudentImport(studentId);
+			addStudentImport(studentId, mygroup, mycode);
 		}
     });
     $('#btnAddNewManual').click(function () {
@@ -369,7 +378,21 @@ function registerEvents() {
 		updateStudentPlay(myid, mygroup, mycode);
 		getFromTablePlay(myid, mygroup, mycode);
     })
+    $('#btnPrevious2').click(function () {
+		var myid = document.getElementById('myidSim').value;
+		var mygroup = document.getElementById('mygroupSim').value;
+		var mycode = parseInt(document.getElementById('mycodeSim').value) - 1;
+		updateStudentPlay(myid, mygroup, mycode);
+		getFromTablePlay(myid, mygroup, mycode);
+    })
     $('#btnNext').click(function () {
+		var myid = document.getElementById('myidSim').value;
+		var mygroup = document.getElementById('mygroupSim').value;
+		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
+		updateStudentPlay(myid, mygroup, mycode);
+		getFromTablePlay(myid, mygroup, mycode);
+    })
+    $('#btnNext2').click(function () {
 		var myid = document.getElementById('myidSim').value;
 		var mygroup = document.getElementById('mygroupSim').value;
 		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
@@ -386,6 +409,15 @@ function registerEvents() {
         }
     });
 	$('#btnPause').click(function () {
+		showGridAndHideForms();
+    });	
+	$('#btnPause2').click(function () {
+		showGridAndHideForms();
+    });	
+	$('#btnPoints').click(function () {
+		showGridAndHideForms();
+    });	
+	$('#btnPoints2').click(function () {
 		showGridAndHideForms();
     });	
 	$('#btnGear').click(function () {
@@ -457,7 +489,7 @@ async function getFromTablePlay(id, mygroup, mycode) {
 //					valorIndice +
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect3answer + '> ' + student.myoption3
-					+ ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>';
+					+ ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>'
 					+ ' <label id=lblcorrect' + valorIndice + ' style="color:green; display:none"> correta</label>';
 					if (student.myoption3 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
@@ -870,7 +902,7 @@ async function salvarRegistro(mygroup, mycode, myorder, mytext) {
 //	console.log('setStudentFromImport: \n\n mygroup='+mygroup + '\n mycode='+mycode + '\n myorder='+myorder + '\n question=[' +question+']' + '\n Respostas \n '+array[0] + '\n '+array[1] + '\n '+array[2] + '\n '+array[3] + '\n '+array[4] + '\n '+array[5] + '\n '+array[6] + '\n '+array[7]);
 	setStudentFromImport(mygroup, mycode, myorder, question, array[0], array[1], array[2], array[3], array[4], array[5], array[6], array[7]);
 	var studentId = $('form').attr('data-student-id');
-	addStudentImportConfig(studentId);
+	addStudentImportConfig(studentId, mygroup, mycode);
 	setTimeout(() => { updateStudentPlayOrder(mygroup) }, 1000); // Executa após 5 segundos para esperar o processo de insert terminar
 }
 
@@ -918,7 +950,7 @@ async function confirmImportManual(mycode, myorder, mygroup, mytext, myoption1, 
 				setStudentFromImport(mygroup, mycode, myorder, mytext, myoption1, myoption2, myoption3, myoption4, myoption5, myoption6, myoption7, myoption8);
 
 				var studentId = $('form').attr('data-student-id');
-				addStudentImport(studentId);
+				addStudentImport(studentId, mygroup, mycode);
 				
 				var mycode = document.getElementById('mycode').value;
 				var myorder = document.getElementById('myorder').value;
@@ -1062,8 +1094,8 @@ async function selectCountAll() {
     }
 }
 
-async function addStudentImportConfig(studentId) {
-    var student = getStudentFromForm(studentId);
+async function addStudentImportConfig(studentId, mygroup, mycode) {
+    var student = getStudentFromForm(studentId, mygroup, mycode);
     try {
 		console.log('student.mygroup=[' + student.mygroup + ']');
 		var noOfDataInserted = await jsstoreCon.insert({
@@ -1079,8 +1111,8 @@ async function addStudentImportConfig(studentId) {
     }
 }
 
-async function addStudentImport(studentId) {
-    var student = getStudentFromForm(studentId);
+async function addStudentImport(studentId, mygroup, mycode) {
+    var student = getStudentFromForm(studentId, mygroup, mycode);
     try {
 		var noOfDataInserted = await jsstoreCon.insert({
 			into: 'Student',
@@ -1096,6 +1128,7 @@ async function addStudentImport(studentId) {
 			refreshTableData(mycode, myorder, mygroup, mytext);
 			showGridAndHideForms();
 		}
+		setTimeout(() => { updateStudentPlayOrder(mygroup) }, 1000); // Executa após 5 segundos para esperar o processo de update/insert terminar
     } catch (ex) {
         console.log(ex.message + ' error ' + student.text);
     }
@@ -1248,8 +1281,8 @@ async function updateStudentPlayOrder(mygroup) {
     }	
 }
 
-async function updateStudent(studentId) {
-    var student = getStudentFromForm(studentId);
+async function updateStudent(studentId, mygroup, mycode) {
+    var student = getStudentFromForm(studentId, mygroup, mycode);
 	try {
 		var noOfDataUpdated = await jsstoreCon.update({
 			in: 'Student',
@@ -1257,7 +1290,7 @@ async function updateStudent(studentId) {
 				mygroup: student.mygroup,
 				mycode: student.mycode,
 				mytext: student.mytext,
-				myorder: student.myorder,
+//				myorder: student.myorder,
 				mysearch: student.mysearch,
 				myoption1: student.myoption1,
 				myoption2: student.myoption2,
@@ -1273,7 +1306,8 @@ async function updateStudent(studentId) {
 			}
 		});
         console.log(`data updated ${noOfDataUpdated}`);
-        showGridAndHideForms();
+		setTimeout(() => { updateStudentPlayOrder(mygroup) }, 1000); // Executa após 5 segundos para esperar o processo de update/insert terminar
+		showGridAndHideForms();
         $('form').attr('data-student-id', null);
 		var mygroup = document.getElementById('mygroup').value;
 		var mycode = '';
@@ -1332,7 +1366,7 @@ function getButtonsBar() {
 	return htmlStringButtons;
 }
 
-function getStudentFromForm(studentId) {
+function getStudentFromForm(studentId, mygroup, mycode) {
 	var myorderFormated = '';
 	myorderFormated = '000' + $('#myorder').val();
 	myorderFormated = myorderFormated.substring(myorderFormated.length-3, myorderFormated.length);
@@ -1341,11 +1375,13 @@ function getStudentFromForm(studentId) {
 	mycodeFormated = '000' + $('#mycode').val();
 	mycodeFormated = mycodeFormated.substring(mycodeFormated.length-3, mycodeFormated.length);
 
+	var mygroup = document.getElementById('mygroupSim').value;
+	setTimeout(() => { updateStudentPlayOrder(mygroup) }, 1000); // Executa após 5 segundos para esperar o processo de insert terminar
 //alert('$(#mygroup).val() = ' + $('#mygroup').val() );
 	var student = {
         id: Number(studentId),
         mycode: $('#mycode').val(),
-		myorder: myorderFormated,
+//		myorder: myorderFormated,
 		mygroup: $('#mygroup').val(),
         mytext: $('#mytext').val(),
 		mysearch: removeSpecials($('#mytext').val()),
