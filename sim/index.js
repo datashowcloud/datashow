@@ -389,7 +389,10 @@ function registerEvents() {
 		showGridAndHideForms();
     });	
 	$('#btnPoints').click(function () {
-		showGridAndHideForms();
+		var myid = document.getElementById('myidSim').value;
+		var mygroup = document.getElementById('mygroupSim').value;
+		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
+		showPoints(myid, mygroup, mycode);
     });	
 	$('#btnGear').click(function () {
 		if (document.getElementById('divGear').style.display == 'none') {
@@ -398,6 +401,19 @@ function registerEvents() {
 			showGridAndHideForms();
 		}
     })
+}
+
+async function showPoints(myid, mygroup, mycode) {
+	var students = await jsstoreCon.select({
+		from: 'Student'
+		  , where: { mygroup: '' + mygroup + ''
+		  }
+	});
+	var valor = 'Pontuação mínima é 70% de acerto.';
+	students.forEach(function (student) {
+		//valor = valor + '<b>' + student.mycode + '</b>';
+	})
+	alert(valor);
 }
 
 //This function select table play
