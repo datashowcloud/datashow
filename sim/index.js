@@ -447,7 +447,13 @@ async function showPoints(mygroup, mycode) {
 						if (student.mycorrect4answer == '') { ok = 'false'; break; }
 					}
 				}
+				//resposta incorreta para opções 5, 6, 7 e 8.
+				if (student.mycorrect5answer != '') { ok = 'false'; }
+				if (student.mycorrect6answer != '') { ok = 'false'; }
+				if (student.mycorrect7answer != '') { ok = 'false'; }
+				if (student.mycorrect8answer != '') { ok = 'false'; }
 			}
+
 			if (ok == 'true') {
 				totalCorretas = parseInt(totalCorretas) + 1;
 			} else if (ok == 'false') {
