@@ -474,9 +474,9 @@ async function showPoints(mygroup, mycode) {
 //	resultado = resultado + '\n\nResponda: '  + responder;
 	
 	if (calculo >= 70) {
-		resultado = resultado + '\n\n' + 'APROVADO \n' + calculo + '% de acerto é >= que 70%';
+		resultado = resultado + '\n\n' + 'JÁ ESTÁ APROVADO \n' + calculo + '% de acerto é >= que 70%';
 	} else {
-		resultado = resultado + '\n\n' + 'REPROVADO \n' + calculo + '% de acerto é < que 70%';
+		resultado = resultado + '\n\n' + 'AINDA ESTÁ REPROVADO \n' + calculo + '% de acerto é < que 70%';
 	}
 
 //	resultado = resultado + '\nDuração: ' + document.getElementById('tempoduracao').value + 'h';
