@@ -39,7 +39,6 @@ async function initDb() {
     }
     else {
         console.log('db opened');
-//		document.getElementById('txtSearch').value = 'opened';
      }
 }
 
@@ -60,15 +59,23 @@ function getDbSchema() {
 			myoption6: { Null: false, dataType: 'string' }, //texto da resposta errada 2
 			myoption7: { Null: false, dataType: 'string' }, //texto da resposta errada 3
 			myoption8: { Null: false, dataType: 'string' }, //texto da resposta errada 4
-			myorder: { Null: true, dataType: 'string' }, //ordem de exibição
-			mycorrect1answer1: { Null: false, dataType: 'string' }, //texto da resposta correta 1
-			mycorrect2answer: { Null: false, dataType: 'string' }, //texto da resposta correta 2
-			mycorrect3answer: { Null: false, dataType: 'string' }, //texto da resposta correta 3
-			mycorrect4answer: { Null: false, dataType: 'string' }, //texto da resposta correta 4
-			mycorrect5answer: { Null: false, dataType: 'string' }, //texto da resposta errada 1
-			mycorrect6answer: { Null: false, dataType: 'string' }, //texto da resposta errada 2
-			mycorrect7answer: { Null: false, dataType: 'string' }, //texto da resposta errada 3
-			mycorrect8answer: { Null: false, dataType: 'string' }, //texto da resposta errada 4
+			myorder: { Null: true, dataType: 'string' }, //ordem de exibição das respostas para uma determinada pergunta
+			mycorrect1answer1: { Null: false, dataType: 'string' }, //resposta selecionada pelo usuário
+			mycorrect2answer: { Null: false, dataType: 'string' }, //resposta selecionada pelo usuário
+			mycorrect3answer: { Null: false, dataType: 'string' }, //resposta selecionada pelo usuário
+			mycorrect4answer: { Null: false, dataType: 'string' }, //resposta selecionada pelo usuário
+			mycorrect5answer: { Null: false, dataType: 'string' }, //resposta selecionada pelo usuário
+			mycorrect6answer: { Null: false, dataType: 'string' }, //resposta selecionada pelo usuário
+			mycorrect7answer: { Null: false, dataType: 'string' }, //resposta selecionada pelo usuário
+			mycorrect8answer: { Null: false, dataType: 'string' }, //resposta selecionada pelo usuário
+			myoptionlink1: { Null: false, dataType: 'string' }, //texto da resposta correta 1
+			myoptionlink2: { Null: false, dataType: 'string' }, //texto da resposta correta 2
+			myoptionlink3: { Null: false, dataType: 'string' }, //texto da resposta correta 3
+			myoptionlink4: { Null: false, dataType: 'string' }, //texto da resposta correta 4
+			myoptionlink5: { Null: false, dataType: 'string' }, //texto da resposta errada 1
+			myoptionlink6: { Null: false, dataType: 'string' }, //texto da resposta errada 2
+			myoptionlink7: { Null: false, dataType: 'string' }, //texto da resposta errada 3
+			myoptionlink8: { Null: false, dataType: 'string' }, //texto da resposta errada 4
 			mycomment: { Null: false, dataType: 'string' }, //comentário ou resposta sobre a letra
 			myfix: { Null: false, dataType: 'string' }, //fixa para revisão
             mytimer: { Null: false, dataType: 'string' }, //cronômetro numérico em segundos para mudar o texto automaticamente, exemplo: 4s
@@ -89,17 +96,6 @@ function getDbSchema() {
         }
     }
 
-	var tableHelp = {
-        name: 'Help',
-        columns: {
-			id: { primaryKey: true, autoIncrement: true },
-			mycode: { notNull: true, dataType: 'string' }, //código único identificador
-			mytext: { notNull: true, dataType: 'string' }, //texto explicativo do código
-			mysearch: { Null: false, dataType: 'string' }, //texto sem os caracteres especiais para fazer o search com maior precisão
-			mylink: { notNull: true, dataType: 'string' } //link para internet
-        }
-    }
-
 	var tableHistory = {
         name: 'History',
         columns: {
@@ -115,7 +111,7 @@ function getDbSchema() {
 
     var db = {
         name: 'mydbsim',
-        tables: [table, tableHelp, tableHistory]
+        tables: [table, tableHistory]
     }
     return db;
 }
@@ -411,6 +407,19 @@ function registerEvents() {
     })
 }
 
+function getStudentFromForm(studentId, mygroup, mycode) {
+	var mygroup = document.getElementById('mygroupSim').value;
+	setTimeout(() => { updateStudentPlayOrder(mygroup) }, 1000); // Executa após 5 segundos para esperar o processo de insert terminar
+	var student = {
+        id: Number(studentId),
+        mycode: $('#mycode').val(),
+		mygroup: $('#mygroup').val(),
+        mytext: $('#mytext').val(),
+		mysearch: removeSpecials($('#mytext').val())
+    };
+    return student;
+}
+
 async function showPoints(mygroup, mycode) {
 	var students = await jsstoreCon.select({
 		from: 'Student'
@@ -524,8 +533,8 @@ async function getFromTablePlay(id, mygroup, mycode) {
 //					valorIndice +
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect1answer + '> ' + student.myoption1
-					+ ' <a href="' + student.myoption1 + '#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>'
-					+ ' <label id=lblcorrect' + valorIndice + ' style="color:green; display:none"> correta</label>';
+					+ ' <a href="#' + student.myoption1 + '" class="btn btn-default"><b>?</b></a>'
+					+ ' <label id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> correta</label>'
 					if (student.myoption1 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
@@ -534,8 +543,8 @@ async function getFromTablePlay(id, mygroup, mycode) {
 //					valorIndice +
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect2answer + '> ' + student.myoption2
-					+ ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>'
-					+ ' <label id=lblcorrect' + valorIndice + ' style="color:green; display:none"> correta</label>';
+					+ ' <a href="#' + student.myoption2 + '" class="btn btn-default"><b>?</b></a>'
+					+ ' <label id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> correta</label>';
 					if (student.myoption2 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
@@ -544,8 +553,8 @@ async function getFromTablePlay(id, mygroup, mycode) {
 //					valorIndice +
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect3answer + '> ' + student.myoption3
-					+ ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>'
-					+ ' <label id=lblcorrect' + valorIndice + ' style="color:green; display:none"> correta</label>';
+					+ ' <a href="#' + student.myoption3 + '" class="btn btn-default"><b>?</b></a>'
+					+ ' <label id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> correta</label>';
 					if (student.myoption3 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
@@ -554,8 +563,8 @@ async function getFromTablePlay(id, mygroup, mycode) {
 //					valorIndice +
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect4answer + '> ' + student.myoption4
-					+ ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>'
-					+ ' <label id=lblcorrect' + valorIndice + ' style="color:green; display:none"> correta</label>';
+					+ ' <a href="#' + student.myoption4 + '" class="btn btn-default"><b>?</b></a>'
+					+ ' <label id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> correta</label>';
 					if (student.myoption4 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
@@ -564,8 +573,8 @@ async function getFromTablePlay(id, mygroup, mycode) {
 //					valorIndice +
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect5answer + '> ' + student.myoption5
-					+ ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>'
-					+ ' <label id=lblcorrect' + valorIndice + ' style="color:red; display:none"> incorreta</label>';
+					+ ' <a href="#' + student.myoption5 + '" class="btn btn-default"><b>?</b></a>'
+					+ ' <label id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> incorreta</label>';
 					if (student.myoption5 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
@@ -574,8 +583,8 @@ async function getFromTablePlay(id, mygroup, mycode) {
 //					valorIndice +
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect6answer + '> ' + student.myoption6
-					+ ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>'
-					+ ' <label id=lblcorrect' + valorIndice + ' style="color:red; display:none"> incorreta</label>';
+					+ ' <a href="#' + student.myoption6 + '" class="btn btn-default"><b>?</b></a>'
+					+ ' <label id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> incorreta</label>';
 					if (student.myoption6 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
@@ -584,8 +593,8 @@ async function getFromTablePlay(id, mygroup, mycode) {
 //					valorIndice +
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect7answer + '> ' + student.myoption7
-					+ ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>'
-					+ ' <label id=lblcorrect' + valorIndice + ' style="color:red; display:none"> incorreta</label>';
+					+ ' <a href="#' + student.myoption7 + '" class="btn btn-default"><b>?</b></a>'
+					+ ' <label id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> incorreta</label>';
 					if (student.myoption7 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
@@ -594,36 +603,77 @@ async function getFromTablePlay(id, mygroup, mycode) {
 //					valorIndice +
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect8answer + '> ' + student.myoption8
-					+ ' <a href="#" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>'
-					+ ' <label id=lblcorrect' + valorIndice + ' style="color:red; display:none"> incorreta</label>';
+					+ ' <a href="#' + student.myoption8 + '" class="btn btn-default"><b>?</b></a>'
+					+ ' <label id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> incorreta</label>';
 					if (student.myoption8 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
 				}
 			}
 		})
-		
-		//popula help
-		var students = await jsstoreCon.select({
-			from: 'Help'
-			  , where: { mytext: {like: '' + '' + ''} 
-			  }
-		});
-			
-			var help = '';
-			help = help + '<br/><br/><br/><br/><br/><br/><br/> <button type="button" class="btn btn-default">HELP</button> <br/><br/>';
-			students.forEach(function (student) {
-				help = help + '<p/><a id="' + student.mycode + '" href="#top" class="btn btn-default"><i class="fa fa-arrow-up"></i></a>';;
-				help = help + '<b>' + student.mycode + '</b>';
-				help = help + '<br/>' + student.mytext;;
-				help = help + '<br/>(<a href="' + student.mylink + '" target="_blank">link internet</a>)';
-				help = help + '<br/><br/>';
-			})
-			document.getElementById('divhelp').innerHTML = help;
+
+		refreshLinkHelp();
 		
 //    } catch (ex) {
 //        console.log(ex.message)
 //    }	
+}
+
+function getLinkHelp(namelink, valuelink, textlink) {
+	var linkhelp = '';
+	linkhelp = linkhelp + '<p/><a id="'+ namelink + '" href="#top" class="btn btn-default"><i class="fa fa-arrow-up"></i></a>';
+	linkhelp = linkhelp + '<b> ' + namelink + '</b>';
+	linkhelp = linkhelp + '<br/>' + textlink;
+	linkhelp = linkhelp + '<br/>(<a href="'+ valuelink + '" target="_blank">link internet</a>)';
+	
+	if (namelink == '') {
+		return '';
+	} else {
+		return linkhelp;
+	}
+}
+
+async function refreshLinkHelp() {
+	var linkhelp = '<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/> <b>MINHA AJUDA</b> <br/><br/>';
+	var namelink = '';
+	var valuelink = '';
+	var textlink = '';
+	
+	valuelink = 'Estima o custo para solução de arquitetura, antes do uso, antes da implementação.';
+	linkhelp = linkhelp + getLinkHelp('AWS Princing Calculator', 'https://calculator.aws/#/', valuelink);
+	
+	valuelink = 'Permite criar novas contas da AWS e alocar recursos, agrupar contas para organizar seus fluxos de trabalho, aplicar políticas a contas ou grupos para governança.';
+	linkhelp = linkhelp + getLinkHelp('AWS Organizations', 'https://aws.amazon.com/pt/organizations/?nc2=type_a', valuelink);
+	
+	valuelink = 'AWS Billing e Cost Management é um conjunto de serviços para visualizar e pagar faturas, monitorar, analisar e controlar os custos financeiros na nuvem.';
+	linkhelp = linkhelp + getLinkHelp('AWS Billing', 'https://aws.amazon.com/pt/aws-cost-management/aws-billing/', valuelink);
+
+	valuelink = 'Interface que permite visualizar, entender e gerenciar os custos e o uso da AWS relacionado ao tempo gasto que já passou.';
+	linkhelp = linkhelp + getLinkHelp('AWS Cost Explorer', 'https://aws.amazon.com/pt/aws-cost-management/aws-cost-explorer/', valuelink);
+
+	valuelink = 'Banco de dados de chave-valor NoSQL totalmente gerenciado e sem servidor, projetado para executar aplicações de alta performance em qualquer escala.';
+	linkhelp = linkhelp + getLinkHelp('AWS DynamoDB', 'https://aws.amazon.com/pt/dynamodb/', valuelink);
+
+	valuelink = 'Ajuda você a migrar bancos de dados para a AWS de modo rápido e seguro.';
+	linkhelp = linkhelp + getLinkHelp('AWS DMS (Database Migration Service)', 'https://aws.amazon.com/pt/dms/', valuelink);
+
+	valuelink = 'Oferece uma capacidade de computação escalável na Nuvem da Amazon Web Services (AWS). O uso do Amazon EC2 elimina a necessidade de investir em hardware inicialmente, portanto, você pode desenvolver e implantar aplicativos com mais rapidez.';
+	linkhelp = linkhelp + getLinkHelp('AWS EC2 (Elastic Compute Cloud)', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', valuelink);
+
+	valuelink = 'Modelo de uso onde você não é cobrado e pode explorar e testar gratuitamente serviços da AWS até os limites especificados para cada serviço. Composto por três tipos:' + '<br/>1) 12 meses de gratuídade' + '<br/>2) Sempre gratuito' + '<br/>3) Experimentação';
+	linkhelp = linkhelp + getLinkHelp('Nível Gratuito (Free Tier)', 'https://aws.amazon.com/pt/free/free-tier-faqs/', valuelink);
+
+	valuelink = 'Serviço que inclui uma etapa a mais no processo de autenticação de acesso à conta da AWS pela Web.';
+	linkhelp = linkhelp + getLinkHelp('MFA - Autenticação Multi Fator', 'https://aws.amazon.com/pt/dynamodb/', valuelink);
+
+
+
+	valuelink = '';
+	linkhelp = linkhelp + getLinkHelp('', '', valuelink);
+
+	linkhelp = linkhelp + '<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>';
+	
+	document.getElementById('divlinkhelp').innerHTML = linkhelp;
 }
 
 //This function select table
