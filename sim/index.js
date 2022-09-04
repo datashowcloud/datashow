@@ -21,6 +21,9 @@ window.onload = function () {
 	loadCombobox('mygroup', '0', '100', 'Teste');
 	loadCombobox('mycode', '0', '100', 'Número');
 	loadCombobox('myorder', '0', '100', 'Ordem');
+
+	refreshLinkHelp();
+
 //	showForm1Form2();
 	$('#selectMygroup').focus();
 	$('#selectMygroup').select();
@@ -534,7 +537,8 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect1answer + '> ' + student.myoption1
 					+ ' <a href="#' + student.myoption1 + '" class="btn btn-default"><b>?</b></a>'
-					+ ' <label id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> correta</label>'
+					+ ' <label id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> correta'
+					+ '<p/>' + document.getElementById('AWS Princing Calculator').innerHTML + '</label>';
 					if (student.myoption1 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
@@ -612,7 +616,7 @@ async function getFromTablePlay(id, mygroup, mycode) {
 			}
 		})
 
-		refreshLinkHelp();
+//		refreshLinkHelp();
 		
 //    } catch (ex) {
 //        console.log(ex.message)
@@ -621,10 +625,10 @@ async function getFromTablePlay(id, mygroup, mycode) {
 
 function getLinkHelp(namelink, valuelink, textlink) {
 	var linkhelp = '';
-	linkhelp = linkhelp + '<p/><a id="'+ namelink + '" href="#top" class="btn btn-default"><i class="fa fa-arrow-up"></i></a>';
+	linkhelp = linkhelp + '<p/><a href="#top" class="btn btn-default"><i class="fa fa-arrow-up"></i></a>';
 	linkhelp = linkhelp + '<b> ' + namelink + '</b>';
-	linkhelp = linkhelp + '<br/>' + textlink;
-	linkhelp = linkhelp + '<br/>(<a href="'+ valuelink + '" target="_blank">link internet</a>)';
+	linkhelp = linkhelp + '<i id="' + namelink + '" value="' + valuelink + '">' + textlink + '</i>';
+	linkhelp = linkhelp + '<br/>(<a target="_blank">link internet</a>)';
 	
 	if (namelink == '') {
 		return '';
