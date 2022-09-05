@@ -146,7 +146,7 @@ function registerEvents() {
 		}
     })
     $('#btnRefresh').click(function () {
-        var result = confirm('Vou reiniciar as respostas, ok?');
+        var result = confirm('Vou limpar e reorganizar as respostas, ok?');
         if (result) {
 			var mygroup = document.getElementById('mygroupSim').value;
 			updateStudentPlayOrder(mygroup);
