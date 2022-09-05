@@ -145,7 +145,16 @@ function registerEvents() {
 			freezeDataShow('true');
 		}
     })
-    $('#btnRefresh').click(function () {
+	$('#btnBackward').click(function () {
+        var result = confirm('Vou limpar e reorganizar as respostas, ok?');
+        if (result) {
+			var mygroup = document.getElementById('mygroupSim').value;
+			updateStudentPlayOrder(mygroup);
+			updateStudentPlayClear(mygroup);
+			showGridAndHideForms();
+        }
+    });
+/*    $('#btnRefresh').click(function () {
         var result = confirm('Vou limpar e reorganizar as respostas, ok?');
         if (result) {
 			var mygroup = document.getElementById('mygroupSim').value;
@@ -162,6 +171,7 @@ function registerEvents() {
 		$('#selectMygroup').focus();
 		$('#selectMygroup').select();
     })
+*/
     $('#btnImportSim').click(function () {
 		showIniciarConfiguracao();
     })
@@ -384,15 +394,6 @@ function registerEvents() {
 		updateStudentPlay(myid, mygroup, mycode);
 		getFromTablePlay(myid, mygroup, mycode);
     })
-	$('#btnBackward').click(function () {
-        var result = confirm('Vou reiniciar as respostas, ok?');
-        if (result) {
-			var mygroup = document.getElementById('mygroupSim').value;
-			updateStudentPlayOrder(mygroup);
-			updateStudentPlayClear(mygroup);
-			showGridAndHideForms();
-        }
-    });
 	$('#btnPause').click(function () {
 		showGridAndHideForms();
     });	
