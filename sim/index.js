@@ -532,83 +532,106 @@ async function getFromTablePlay(id, mygroup, mycode) {
 			for (var index=0; index<=8; index++) {
 				valorIndice = myorder.substring(index,index+1);
 				if (valorIndice == '1') {
+					var aux = '';
+					if (document.getElementById(student.myoption1) != null) { aux = document.getElementById(student.myoption1).innerHTML; }
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect1answer + '> ' + student.myoption1
 					+ ' <a href="#' + student.myoption1 + '" class="btn btn-default"><b>?</b></a>'
 					+ ' <label id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> correta'
-					+ '<p/>' + document.getElementById('AWS Princing Calculator').innerHTML + '</label>';
+					+ '<p/>' + aux + '</label>';
 					if (student.myoption1 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
 				} else if (valorIndice == '2') {
+					var aux = '';
+					if (document.getElementById(student.myoption2) != null) { aux = document.getElementById(student.myoption2).innerHTML; }
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect2answer + '> ' + student.myoption2
 					+ ' <a href="#' + student.myoption2 + '" class="btn btn-default"><b>?</b></a>'
-					+ ' <label id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> correta</label>';
+					+ ' <label id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> correta'
+					+ '<p/>' + aux + '</label>';
 					if (student.myoption2 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
 				} else if (valorIndice == '3') {
+					var aux = '';
+					if (document.getElementById(student.myoption3) != null) { aux = document.getElementById(student.myoption3).innerHTML; }
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect3answer + '> ' + student.myoption3
 					+ ' <a href="#' + student.myoption3 + '" class="btn btn-default"><b>?</b></a>'
-					+ ' <label id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> correta</label>';
+					+ ' <label id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> correta'
+					+ '<p/>' + aux + '</label>';
 					if (student.myoption3 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
 				} else if (valorIndice == '4') {
+					var aux = '';
+					if (document.getElementById(student.myoption3) != null) { aux = document.getElementById(student.myoption3).innerHTML; }
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect4answer + '> ' + student.myoption4
 					+ ' <a href="#' + student.myoption4 + '" class="btn btn-default"><b>?</b></a>'
-					+ ' <label id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> correta</label>';
+					+ ' <label id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> correta'
+					+ '<p/>' + aux + '</label>';
 					if (student.myoption4 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
 				} else if (valorIndice == '5') {
+					var aux = '';
+					if (document.getElementById(student.myoption5) != null) { aux = document.getElementById(student.myoption5).innerHTML; }
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect5answer + '> ' + student.myoption5
 					+ ' <a href="#' + student.myoption5 + '" class="btn btn-default"><b>?</b></a>'
-					+ ' <label id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> incorreta</label>';
+					+ ' <label id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> incorreta'
+					+ '<p/>' + aux + '</label>';
 					if (student.myoption5 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
 				} else if (valorIndice == '6') {
+					var aux = '';
+					if (document.getElementById(student.myoption6) != null) { aux = document.getElementById(student.myoption6).innerHTML; }
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect6answer + '> ' + student.myoption6
 					+ ' <a href="#' + student.myoption6 + '" class="btn btn-default"><b>?</b></a>'
-					+ ' <label id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> incorreta</label>';
+					+ ' <label id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> incorreta'
+					+ '<p/>' + aux + '</label>';
 					if (student.myoption6 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
 				} else if (valorIndice == '7') {
+					var aux = '';
+					if (document.getElementById(student.myoption7) != null) { aux = document.getElementById(student.myoption7).innerHTML; }
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect7answer + '> ' + student.myoption7
 					+ ' <a href="#' + student.myoption7 + '" class="btn btn-default"><b>?</b></a>'
-					+ ' <label id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> incorreta</label>';
+					+ ' <label id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> incorreta'
+					+ '<p/>' + aux + '</label>';
 					if (student.myoption7 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
 				} else if (valorIndice == '8') {
+					var aux = '';
+					if (document.getElementById(student.myoption8) != null) { aux = document.getElementById(student.myoption8).innerHTML; }
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect8answer + '> ' + student.myoption8
 					+ ' <a href="#' + student.myoption8 + '" class="btn btn-default"><b>?</b></a>'
-					+ ' <label id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> incorreta</label>';
+					+ ' <label id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> incorreta'
+					+ '<p/>' + aux + '</label>';
 					if (student.myoption8 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
@@ -663,6 +686,9 @@ async function refreshLinkHelp() {
 
 	valuelink = 'Oferece uma capacidade de computação escalável na Nuvem da Amazon Web Services (AWS). O uso do Amazon EC2 elimina a necessidade de investir em hardware inicialmente, portanto, você pode desenvolver e implantar aplicativos com mais rapidez.';
 	linkhelp = linkhelp + getLinkHelp('AWS EC2 (Elastic Compute Cloud)', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', valuelink);
+
+	valuelink = 'Oferece uma capacidade de computação escalável na Nuvem da Amazon Web Services (AWS). O uso do Amazon EC2 elimina a necessidade de investir em hardware inicialmente, portanto, você pode desenvolver e implantar aplicativos com mais rapidez.';
+	linkhelp = linkhelp + getLinkHelp('EC2', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', valuelink);
 
 	valuelink = 'Modelo de uso onde você não é cobrado e pode explorar e testar gratuitamente serviços da AWS até os limites especificados para cada serviço. Composto por três tipos:' + '<br/>1) 12 meses de gratuídade' + '<br/>2) Sempre gratuito' + '<br/>3) Experimentação';
 	linkhelp = linkhelp + getLinkHelp('Nível Gratuito (Free Tier)', 'https://aws.amazon.com/pt/free/free-tier-faqs/', valuelink);
