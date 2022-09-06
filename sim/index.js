@@ -540,8 +540,8 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect1answer + '> ' + student.myoption1
 					+ ' <a href="#' + student.myoption1 + '" class="btn btn-default"><b>?</b></a>'
-					+ ' <label id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> correta'
-					+ '<p/>' + aux + '</label>';
+					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
+					+ '<p/><u>' + aux + '</u></zzz>';
 					if (student.myoption1 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
@@ -553,8 +553,8 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect2answer + '> ' + student.myoption2
 					+ ' <a href="#' + student.myoption2 + '" class="btn btn-default"><b>?</b></a>'
-					+ ' <label id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> correta'
-					+ '<p/>' + aux + '</label>';
+					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
+					+ '<p/><u>' + aux + '</u></zzz>';
 					if (student.myoption2 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
@@ -566,8 +566,8 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect3answer + '> ' + student.myoption3
 					+ ' <a href="#' + student.myoption3 + '" class="btn btn-default"><b>?</b></a>'
-					+ ' <label id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> correta'
-					+ '<p/>' + aux + '</label>';
+					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
+					+ '<p/><u>' + aux + '</u></zzz>';
 					if (student.myoption3 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
@@ -579,8 +579,8 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect4answer + '> ' + student.myoption4
 					+ ' <a href="#' + student.myoption4 + '" class="btn btn-default"><b>?</b></a>'
-					+ ' <label id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> correta'
-					+ '<p/>' + aux + '</label>';
+					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
+					+ '<p/><u>' + aux + '</u></zzz>';
 					if (student.myoption4 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
@@ -592,8 +592,8 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect5answer + '> ' + student.myoption5
 					+ ' <a href="#' + student.myoption5 + '" class="btn btn-default"><b>?</b></a>'
-					+ ' <label id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> incorreta'
-					+ '<p/>' + aux + '</label>';
+					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
+					+ '<p/><u>' + aux + '</u></zzz>';
 					if (student.myoption5 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
@@ -605,8 +605,8 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect6answer + '> ' + student.myoption6
 					+ ' <a href="#' + student.myoption6 + '" class="btn btn-default"><b>?</b></a>'
-					+ ' <label id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> incorreta'
-					+ '<p/>' + aux + '</label>';
+					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
+					+ '<p/><u>' + aux + '</u></zzz>';
 					if (student.myoption6 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
@@ -618,8 +618,8 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect7answer + '> ' + student.myoption7
 					+ ' <a href="#' + student.myoption7 + '" class="btn btn-default"><b>?</b></a>'
-					+ ' <label id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> incorreta'
-					+ '<p/>' + aux + '</label>';
+					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
+					+ '<p/><u>' + aux + '</u></zzz>';
 					if (student.myoption7 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
@@ -631,8 +631,8 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect8answer + '> ' + student.myoption8
 					+ ' <a href="#' + student.myoption8 + '" class="btn btn-default"><b>?</b></a>'
-					+ ' <label id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> incorreta'
-					+ '<p/>' + aux + '</label>';
+					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
+					+ '<p/><u>' + aux + '</u></zzz>';
 					if (student.myoption8 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
@@ -651,7 +651,7 @@ function getLinkHelp(namelink, valuelink, textlink) {
 	var linkhelp = '';
 	linkhelp = linkhelp + '<p/><a href="#top" class="btn btn-default"><i class="fa fa-arrow-up"></i></a>';
 	linkhelp = linkhelp + '<b> ' + namelink + '</b>';
-	linkhelp = linkhelp + '<i id="' + namelink + '" value="' + valuelink + '">' + textlink + '</i>';
+	linkhelp = linkhelp + '<i id="' + namelink + '" value="' + valuelink + '"> ' + textlink + '</i>';
 	linkhelp = linkhelp + '<br/>(<a target="_blank">link internet</a>)';
 	
 	if (namelink == '') {
@@ -688,17 +688,106 @@ async function refreshLinkHelp() {
 	valuelink = 'Oferece uma capacidade de computação escalável na Nuvem da Amazon Web Services (AWS). O uso do Amazon EC2 elimina a necessidade de investir em hardware inicialmente, portanto, você pode desenvolver e implantar aplicativos com mais rapidez.';
 	linkhelp = linkhelp + getLinkHelp('AWS EC2 (Elastic Compute Cloud)', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', valuelink);
 
-	valuelink = 'Oferece uma capacidade de computação escalável na Nuvem da Amazon Web Services (AWS). O uso do Amazon EC2 elimina a necessidade de investir em hardware inicialmente, portanto, você pode desenvolver e implantar aplicativos com mais rapidez.';
-	linkhelp = linkhelp + getLinkHelp('EC2', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', valuelink);
+	valuelink = 'O nível gratuito da AWS oferece aos clientes a capacidade de explorar e testar gratuitamente serviços da AWS até os limites especificados para cada serviço. O nível gratuito é composto por três tipos diferentes de ofertas: um nível gratuito de 12 meses, uma oferta Always Free e testes de curto prazo.';
+	linkhelp = linkhelp + getLinkHelp('É um modelo de uso dos produtos da AWS onde você não é cobrado.', 'https://aws.amazon.com/pt/free/free-tier-faqs/', valuelink);
 
-	valuelink = 'Modelo de uso onde você não é cobrado e pode explorar e testar gratuitamente serviços da AWS até os limites especificados para cada serviço. Composto por três tipos:' + '<br/>1) 12 meses de gratuídade' + '<br/>2) Sempre gratuito' + '<br/>3) Experimentação';
-	linkhelp = linkhelp + getLinkHelp('Nível Gratuito (Free Tier)', 'https://aws.amazon.com/pt/free/free-tier-faqs/', valuelink);
+	valuelink = 'O AWS WAF é um firewall de aplicações Web que ajuda a proteger suas aplicações Web ou APIs contra bots e exploits comuns na Web que podem afetar a disponibilidade, comprometer a segurança ou consumir recursos em excesso.';
+	linkhelp = linkhelp + getLinkHelp('É um serviço de firewall que protege suas aplicações.', 'https://aws.amazon.com/pt/waf/#:~:text=O%20AWS%20WAF%20%C3%A9%20um%20firewall%20de%20aplica%C3%A7%C3%B5es,comprometer%20a%20seguran%C3%A7a%20ou%20consumir%20recursos%20em%20excesso.', valuelink);
+
+	valuelink = 'É um banco de dados de chave-valor NoSQL, sem servidor e totalmente gerenciado, projetado para executar aplicações de alta performance em qualquer escala.';
+	linkhelp = linkhelp + getLinkHelp('É uma camada de banco de dados NoSQL.', 'https://aws.amazon.com/pt/dynamodb/', valuelink);
+
+	valuelink = 'Originalmente, open source é um termo que se refere ao software open source (OSS). Ele é um código projetado para ser acessado abertamente pelo público: todas as pessoas podem vê-lo, modificá-lo e distribuí-lo conforme suas necessidades.';
+	linkhelp = linkhelp + getLinkHelp('É um modelo open source para o desenvolvimento de aplicações em camadas.', 'https://www.redhat.com/pt-br/topics/open-source/what-is-open-source', valuelink);
 
 	valuelink = 'Serviço que inclui uma etapa a mais no processo de autenticação de acesso à conta da AWS pela Web.';
 	linkhelp = linkhelp + getLinkHelp('MFA - Autenticação Multi Fator', 'https://aws.amazon.com/pt/dynamodb/', valuelink);
 
+	valuelink = 'É um conjunto de serviços de armazenamento na nuvem híbrida que oferece acesso on-premises para armazenamento virtual na nuvem praticamente ilimitado.';
+	linkhelp = linkhelp + getLinkHelp('AWS Storage Gateway', 'https://aws.amazon.com/pt/storagegateway/', valuelink);
 
+	valuelink = 'Define e lança recursos da AWS em uma rede virtual isolada logicamente. Oferece controle total sobre seu ambiente de redes virtual, incluindo posicionamento de recursos, conectividade e segurança.';
+	linkhelp = linkhelp + getLinkHelp('AWS VPC (Virtual Private Cloud)', 'https://aws.amazon.com/pt/vpc/', valuelink);
 
+	valuelink = 'É um sistema de arquivos simples e sem servidor para definição única. Não são objetos, exemplo: html, js, css.';
+	linkhelp = linkhelp + getLinkHelp('AWS EFS (Elastic File System)', 'https://aws.amazon.com/pt/dynamodb/', valuelink);
+
+	valuelink = 'É um serviço de armazenamento de objetos que armazena dados como objetos em buckets. Um objeto é um arquivo e quaisquer metadados que descrevam o arquivo. Um bucket é um contêiner de objetos. Você pode controlar o acesso a grupos de objetos que começam com um prefixo ou termine com uma determinada extensão, exemplos de arquivos estáticos: .html, .js, .cs.';
+	linkhelp = linkhelp + getLinkHelp('AWS S3 (Simple Storage Service)', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', valuelink);
+
+	valuelink = 'Categorias de Armazenamento do Serviço S3 do mais caro(1) ao mais barato(8). <br/>1 Standard (custo mais alto) (padrão) <br/>2 Intelligent Tiering <br/>3 Standard-IA <br/>4 One Zone-IA <br/>5 Glacier Instant Retrieval <br/>6 Glacier Flexible <br/>7 Glacier Deep Archive <br/>8 Outposts';
+	linkhelp = linkhelp + getLinkHelp('Categorias de Armazenamento S3', 'https://aws.amazon.com/pt/s3/storage-classes/', valuelink);
+
+	valuelink = 'Banco de dados de chave-valor NoSQL totalmente gerenciado e sem servidor, projetado para executar aplicações de alta performance em qualquer escala.';
+	linkhelp = linkhelp + getLinkHelp('AWS DynamoDB', 'https://aws.amazon.com/pt/dynamodb/', valuelink);
+
+	valuelink = 'Ajuda você a migrar bancos de dados para a AWS de modo rápido e seguro.';
+	linkhelp = linkhelp + getLinkHelp('AWS DMS (Database Migration Service)', 'https://aws.amazon.com/pt/dms/', valuelink);
+
+	valuelink = 'O AWS KMS (Key Management Service) é um serviço gerenciado que facilita a criação e o controle de chaves criptográficas usadas para proteger os dados. Para proteger e validar suas AWS KMS keys, o AWS KMS usa módulos de segurança de hardware (HSMs) de acordo com o Programa de validação de módulos criptográficos FIPS 140-2.';
+	linkhelp = linkhelp + getLinkHelp('AWS KMS (Key Management Service)', 'https://docs.aws.amazon.com/pt_br/kms/latest/developerguide/overview.html', valuelink);
+
+	valuelink = 'É um serviço que permite acessar, auditar e avaliar as configurações dos recursos da AWS. Você pode analisar alterações feitas nas configurações e relacionamentos entre os recursos da AWS, aprofundar-se de forma detalhada no histórico de configuração de recursos e determinar a conformidade geral em relação às configurações especificadas em suas diretrizes internas.';
+	linkhelp = linkhelp + getLinkHelp('AWS Config', 'https://aws.amazon.com/pt/config/', valuelink);
+
+	valuelink = 'É um serviço gerenciado na nuvem AWS com o qual é possível configurar, gerenciar e dimensionar uma solução de pesquisa para o seu site ou aplicativo de forma simples e econômica.';
+	linkhelp = linkhelp + getLinkHelp('Amazon CloudSearch', 'https://aws.amazon.com/pt/cloudsearch/', valuelink);
+
+	valuelink = 'EMR (Amazon Elastic MapReduce) é uma plataforma de big data em nuvem usada para executar trabalhos de processamento de dados distribuídos em grande escala, consultas SQL interativas e aplicações de machine learning (ML) usando frameworks de análise de código aberto como Apache Spark, Apache Hive e Presto.';
+	linkhelp = linkhelp + getLinkHelp('EMR (Amazon Elastic MapReduce)', 'https://aws.amazon.com/pt/emr/', valuelink);
+
+	valuelink = 'É um serviço de consultas interativas que facilita a análise de dados no Amazon S3 usando SQL padrão. O Athena não precisa de servidor. Portanto, não há infraestrutura para gerenciar e você paga apenas pelas consultas executadas. O Athena é fornecido já integrado ao AWS Glue Data Catalog, o que permite criar um repositório de metadados unificado em vários serviços.';
+	linkhelp = linkhelp + getLinkHelp('Amazon Athena', 'https://aws.amazon.com/pt/athena/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc', valuelink);
+
+	valuelink = 'É um mecanismo distribuído de pesquisa e análise desenvolvido com base no Apache Lucene usado para casos de uso de análises de log. Foi introduzido o projeto OpenSearch que é uma bifurcação do Elasticsearch e Kibana de código aberto.';
+	linkhelp = linkhelp + getLinkHelp('Amazon ElasticSearch', 'https://aws.amazon.com/pt/opensearch-service/the-elk-stack/what-is-elasticsearch/', valuelink);
+
+	valuelink = 'É um serviço de data warehouse em escala de petabytes totalmente gerenciado na nuvem. Permite usar os dados para adquirir novos insights para seus negócios e clientes.';
+	linkhelp = linkhelp + getLinkHelp('Amazon RedShift', 'https://docs.aws.amazon.com/pt_br/redshift/latest/mgmt/welcome.html', valuelink);
+
+	valuelink = 'O Amazon Aurora (Aurora) é um mecanismo de banco de dados relacional gerenciado compatível com o MySQL e o PostgreSQL. O Aurora pode oferecer até cinco vezes a taxa de processamento do MySQL e até três vezes a taxa de processamento do PostgreSQL, sem exigir alterações na maioria das aplicações existentes.';
+	linkhelp = linkhelp + getLinkHelp('Amazon Aurora', 'https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html', valuelink);
+
+	valuelink = 'O Amazon SNS (Amazon Simple Notification Service) é um serviço gerenciado que fornece entrega de mensagens de editores para assinantes (também conhecido comoProdutoreseConsumidores). Os clientes podem se inscrever no tópico SNS e receber mensagens publicadas usando um tipo de endpoint compatível, como Amazon Kinesis Data Firehose, Amazon SQS,AWS Lambda, HTTP, e-mail, notificações push móveis e mensagens de texto móveis (SMS).';
+	linkhelp = linkhelp + getLinkHelp('Amazon SNS', 'https://aws.amazon.com/pt/sns/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc', valuelink);
+
+	valuelink = 'O Amazon SQS (Amazon Simple Queue Service) oferece uma fila hospedada segura, durável e disponível que permite integrar e desacoplar sistemas de software e componentes distribuídos. O Amazon SQS oferece constructos comuns, como filas de mensagens mortas e tags de alocação de custos.';
+	linkhelp = linkhelp + getLinkHelp('Amazon SQS (Amazon Simple Queue Service)', 'https://aws.amazon.com/pt/sqs/', valuelink);
+
+	valuelink = 'O Amazon SES (Amazon Simple Email Service) é uma plataforma de e-mail que oferece uma forma fácil e econômica para você enviar e receber e-mail usando seus próprios endereços de e-mail e domínios.';
+	linkhelp = linkhelp + getLinkHelp('Amazon SES (Amazon Simple Email Service)', 'https://docs.aws.amazon.com/pt_br/ses/latest/dg/Welcome.html', valuelink);
+
+	valuelink = 'Não existe na AWS. Outro nome muito semelhante existente na AWS é AWS Audit Manager.';
+	linkhelp = linkhelp + getLinkHelp('AWS Audit', 'https://docs.aws.amazon.com/pt_br/awscloudtrail/latest/userguide/cloudtrail-user-guide.html', valuelink);
+
+	valuelink = 'Rastreia atividades dos usuários e uso de APIs. O AWS CloudTrail monitora e registra a atividade da conta por toda a infraestrutura da AWS, oferecendo controle sobre o armazenamento, análise e ações de remediação.';
+	linkhelp = linkhelp + getLinkHelp('AWS CloudTrail', 'https://docs.aws.amazon.com/pt_br/awscloudtrail/latest/userguide/cloudtrail-user-guide.html', valuelink);
+
+	valuelink = 'O Lambda é um serviço de computação que permite que você execute o código sem provisionar ou gerenciar servidores. O Lambda executa seu código em uma infraestrutura de computação de alta disponibilidade e executa toda a administração dos recursos computacionais, inclusive a manutenção do servidor e do sistema operacional, o provisionamento e a escalabilidade automática da capacidade e o monitoramento e o registro em log do código.';
+	linkhelp = linkhelp + getLinkHelp('Pode ser acionado diretamente pelo AWS SNS', 'https://docs.aws.amazon.com/pt_br/lambda/latest/dg/welcome.html', valuelink);
+
+	valuelink = 'O Lambda é um serviço de computação que permite que você execute o código sem provisionar ou gerenciar servidores. O Lambda executa seu código em uma infraestrutura de computação de alta disponibilidade e executa toda a administração dos recursos computacionais, inclusive a manutenção do servidor e do sistema operacional, o provisionamento e a escalabilidade automática da capacidade e o monitoramento e o registro em log do código.';
+	linkhelp = linkhelp + getLinkHelp('Processa dados sem servidor', 'https://docs.aws.amazon.com/pt_br/lambda/latest/dg/welcome.html', valuelink);
+
+	valuelink = 'O Lambda é um serviço de computação que permite que você execute o código sem provisionar ou gerenciar servidores. O Lambda executa seu código em uma infraestrutura de computação de alta disponibilidade e executa toda a administração dos recursos computacionais, inclusive a manutenção do servidor e do sistema operacional, o provisionamento e a escalabilidade automática da capacidade e o monitoramento e o registro em log do código.';
+	linkhelp = linkhelp + getLinkHelp('Pode ser acionado diretamente pelo AWS S3', 'https://docs.aws.amazon.com/pt_br/lambda/latest/dg/welcome.html', valuelink);
+
+	valuelink = 'Não se refere ao Lambda na AWS.';
+	linkhelp = linkhelp + getLinkHelp('Permite o gerenciamento total dos recursos de infraestrutura', 'https://docs.aws.amazon.com/pt_br/lambda/latest/dg/welcome.html', valuelink);
+
+	valuelink = 'É um serviço gerenciado de proteção contra DDoS (Negação de serviço distribuída) que protege os aplicativos executados na AWS. O AWS Shield oferece de detecção e mitigações em linha automáticas e sempre ativas que minimizam o tempo de inatividade e a latência dos aplicativos, fornecendo proteção contra DDoS sem necessidade de envolver o AWS Support. O AWS Shield tem dois níveis, Standard e Advanced.';
+	linkhelp = linkhelp + getLinkHelp('AWS Shield', 'https://aws.amazon.com/pt/shield/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc', valuelink);
+
+	valuelink = 'É um firewall de aplicações Web que ajuda a proteger suas aplicações Web ou APIs contra bots e exploits comuns na Web que podem afetar a disponibilidade, comprometer a segurança ou consumir recursos em excesso. O AWS WAF oferece controle sobre como o tráfego atinge suas aplicações, permitindo que você crie regras de segurança que controlam o tráfego de bots e bloqueiam padrões de ataque comuns, como injeção de SQL ou cross-site scripting.';
+	linkhelp = linkhelp + getLinkHelp('AWS WAF', 'https://aws.amazon.com/pt/waf/', valuelink);
+
+	valuelink = 'Um grupo de segurança atua como firewall virtual para as instâncias do EC2 visando controlar o tráfego de entrada e de saída.';
+	linkhelp = linkhelp + getLinkHelp('AWS Security Group', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/ec2-security-groups.html', valuelink);
+
+	valuelink = 'É um serviço de detecção de ameaças que monitora continuamente suas contas e workloads da AWS para detectar atividade maliciosa e entrega resultados de segurança detalhados para visibilidade e correção.';
+	linkhelp = linkhelp + getLinkHelp('AWS GuardDuty', 'https://aws.amazon.com/pt/guardduty/', valuelink);
+
+//próxima 13
 	valuelink = '';
 	linkhelp = linkhelp + getLinkHelp('', '', valuelink);
 
