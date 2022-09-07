@@ -533,106 +533,138 @@ async function getFromTablePlay(id, mygroup, mycode) {
 			for (var index=0; index<=8; index++) {
 				valorIndice = myorder.substring(index,index+1);
 				if (valorIndice == '1') {
-					var aux = '';
-					if (document.getElementById(student.myoption1) != null) { aux = document.getElementById(student.myoption1).innerHTML; }
+					var aux = ''; var linkhref = '';
+					if (document.getElementById(student.myoption1) != null) {
+						aux = document.getElementById(student.myoption1).innerHTML;
+						linkhref = document.getElementById('link_'+student.myoption1).href;
+					}
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect1answer + '> ' + student.myoption1
 //					+ ' <a href="#' + student.myoption1 + '" class="btn btn-default"><b>?</b></a>'
 					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
-					+ '<p/>' + aux + '</zzz>';
+					+ '<p/>' + aux + '</zzz>'
+					+ '<br/>(<a href=' + linkhref + ' target="_blank">link internet</a>)';
 					if (student.myoption1 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
 				} else if (valorIndice == '2') {
-					var aux = '';
-					if (document.getElementById(student.myoption2) != null) { aux = document.getElementById(student.myoption2).innerHTML; }
+					var aux = ''; var linkhref = '';
+					if (document.getElementById(student.myoption2) != null) {
+						aux = document.getElementById(student.myoption2).innerHTML;
+						linkhref = document.getElementById('link_'+student.myoption2).href;
+					}
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect2answer + '> ' + student.myoption2
 //					+ ' <a href="#' + student.myoption2 + '" class="btn btn-default"><b>?</b></a>'
 					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
-					+ '<p/>' + aux + '</zzz>';
+					+ '<p/>' + aux + '</zzz>'
+					+ '<br/>(<a href=' + linkhref + ' target="_blank">link internet</a>)';
 					if (student.myoption2 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
 				} else if (valorIndice == '3') {
-					var aux = '';
-					if (document.getElementById(student.myoption3) != null) { aux = document.getElementById(student.myoption3).innerHTML; }
+					var aux = ''; var linkhref = '';
+					if (document.getElementById(student.myoption3) != null) {
+						aux = document.getElementById(student.myoption3).innerHTML;
+						linkhref = document.getElementById('link_'+student.myoption3).href;
+					}
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect3answer + '> ' + student.myoption3
 //					+ ' <a href="#' + student.myoption3 + '" class="btn btn-default"><b>?</b></a>'
 					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
-					+ '<p/>' + aux + '</zzz>';
+					+ '<p/>' + aux + '</zzz>'
+					+ '<br/>(<a href=' + linkhref + ' target="_blank">link internet</a>)';
 					if (student.myoption3 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
 				} else if (valorIndice == '4') {
-					var aux = '';
-					if (document.getElementById(student.myoption3) != null) { aux = document.getElementById(student.myoption3).innerHTML; }
+					var aux = ''; var linkhref = '';
+					if (document.getElementById(student.myoption4) != null) {
+						aux = document.getElementById(student.myoption4).innerHTML;
+						linkhref = document.getElementById('link_'+student.myoption4).href;
+					}
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect4answer + '> ' + student.myoption4
 //					+ ' <a href="#' + student.myoption4 + '" class="btn btn-default"><b>?</b></a>'
 					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
-					+ '<p/>' + aux + '</zzz>';
+					+ '<p/>' + aux + '</zzz>'
+					+ '<br/>(<a href=' + linkhref + ' target="_blank">link internet</a>)';
 					if (student.myoption4 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
 				} else if (valorIndice == '5') {
-					var aux = '';
-					if (document.getElementById(student.myoption5) != null) { aux = document.getElementById(student.myoption5).innerHTML; }
+					var aux = ''; var linkhref = '';
+					if (document.getElementById(student.myoption5) != null) {
+						aux = document.getElementById(student.myoption5).innerHTML;
+						linkhref = document.getElementById('link_'+student.myoption5).href;
+					}
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect5answer + '> ' + student.myoption5
 //					+ ' <a href="#' + student.myoption5 + '" class="btn btn-default"><b>?</b></a>'
 					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
-					+ '<p/>' + aux + '</zzz>';
+					+ '<p/>' + aux + '</zzz>'
+					+ '<br/>(<a href=' + linkhref + ' target="_blank">link internet</a>)';
 					if (student.myoption5 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
 				} else if (valorIndice == '6') {
-					var aux = '';
-					if (document.getElementById(student.myoption6) != null) { aux = document.getElementById(student.myoption6).innerHTML; }
+					var aux = ''; var linkhref = '';
+					if (document.getElementById(student.myoption6) != null) {
+						aux = document.getElementById(student.myoption6).innerHTML;
+						linkhref = document.getElementById('link_'+student.myoption6).href;
+					}
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect6answer + '> ' + student.myoption6
 //					+ ' <a href="#' + student.myoption6 + '" class="btn btn-default"><b>?</b></a>'
 					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
-					+ '<p/>' + aux + '</zzz>';
+					+ '<p/>' + aux + '</zzz>'
+					+ '<br/>(<a href=' + linkhref + ' target="_blank">link internet</a>)';
 					if (student.myoption6 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
 				} else if (valorIndice == '7') {
-					var aux = '';
-					if (document.getElementById(student.myoption7) != null) { aux = document.getElementById(student.myoption7).innerHTML; }
+					var aux = ''; var linkhref = '';
+					if (document.getElementById(student.myoption7) != null) {
+						aux = document.getElementById(student.myoption7).innerHTML;
+						linkhref = document.getElementById('link_'+student.myoption7).href;
+					}
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect7answer + '> ' + student.myoption7
 //					+ ' <a href="#' + student.myoption7 + '" class="btn btn-default"><b>?</b></a>'
 					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
-					+ '<p/>' + aux + '</zzz>';
+					+ '<p/>' + aux + '</zzz>'
+					+ '<br/>(<a href=' + linkhref + ' target="_blank">link internet</a>)';
 					if (student.myoption7 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
 				} else if (valorIndice == '8') {
-					var aux = '';
-					if (document.getElementById(student.myoption8) != null) { aux = document.getElementById(student.myoption8).innerHTML; }
+					var aux = ''; var linkhref = '';
+					if (document.getElementById(student.myoption8) != null) {
+						aux = document.getElementById(student.myoption8).innerHTML;
+						linkhref = document.getElementById('link_'+student.myoption8).href;
+					}
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
 					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect8answer + '> ' + student.myoption8
 //					+ ' <a href="#' + student.myoption8 + '" class="btn btn-default"><b>?</b></a>'
 					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
-					+ '<p/>' + aux + '</zzz>';
+					+ '<p/>' + aux + '</zzz>'
+					+ '<br/>(<a href=' + linkhref + ' target="_blank">link internet</a>)';
 					if (student.myoption8 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
@@ -652,7 +684,7 @@ function getLinkHelp(namelink, valuelink, textlink) {
 	linkhelp = linkhelp + '<p/><a href="#top" class="btn btn-default"><i class="fa fa-arrow-up"></i></a>';
 	linkhelp = linkhelp + '<b> ' + namelink + '</b>';
 	linkhelp = linkhelp + '<i id="' + namelink + '" value="' + valuelink + '"> ' + textlink + '</i>';
-	linkhelp = linkhelp + '<br/>(<a target="_blank">link internet</a>)';
+	linkhelp = linkhelp + '<br/>(<a id="link_' + namelink + '" href=' + valuelink + ' target="_blank">link internet</a>)';
 	
 	if (namelink == '') {
 		return '';
