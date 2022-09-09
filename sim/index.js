@@ -64,21 +64,21 @@ function getDbSchema() {
 			myoption8: { Null: false, dataType: 'string' }, //texto da resposta errada 4
 			myorder: { Null: true, dataType: 'string' }, //ordem de exibição das respostas para uma determinada pergunta
 			mycorrect1answer1: { Null: false, dataType: 'string' }, //resposta selecionada pelo usuário
-			mycorrect2answer: { Null: false, dataType: 'string' }, //resposta selecionada pelo usuário
-			mycorrect3answer: { Null: false, dataType: 'string' }, //resposta selecionada pelo usuário
-			mycorrect4answer: { Null: false, dataType: 'string' }, //resposta selecionada pelo usuário
-			mycorrect5answer: { Null: false, dataType: 'string' }, //resposta selecionada pelo usuário
-			mycorrect6answer: { Null: false, dataType: 'string' }, //resposta selecionada pelo usuário
-			mycorrect7answer: { Null: false, dataType: 'string' }, //resposta selecionada pelo usuário
-			mycorrect8answer: { Null: false, dataType: 'string' }, //resposta selecionada pelo usuário
-			myoptionlink1: { Null: false, dataType: 'string' }, //texto da resposta correta 1
-			myoptionlink2: { Null: false, dataType: 'string' }, //texto da resposta correta 2
-			myoptionlink3: { Null: false, dataType: 'string' }, //texto da resposta correta 3
-			myoptionlink4: { Null: false, dataType: 'string' }, //texto da resposta correta 4
-			myoptionlink5: { Null: false, dataType: 'string' }, //texto da resposta errada 1
-			myoptionlink6: { Null: false, dataType: 'string' }, //texto da resposta errada 2
-			myoptionlink7: { Null: false, dataType: 'string' }, //texto da resposta errada 3
-			myoptionlink8: { Null: false, dataType: 'string' }, //texto da resposta errada 4
+			mycorrect2answer: { Null: false, dataType: 'string' }, //idem
+			mycorrect3answer: { Null: false, dataType: 'string' }, //idem
+			mycorrect4answer: { Null: false, dataType: 'string' }, //idem
+			mycorrect5answer: { Null: false, dataType: 'string' }, //idem
+			mycorrect6answer: { Null: false, dataType: 'string' }, //idem
+			mycorrect7answer: { Null: false, dataType: 'string' }, //idem
+			mycorrect8answer: { Null: false, dataType: 'string' }, //idem
+			myoptionkey1: { Null: false, dataType: 'string' }, //chave da resposta correta para pesquisar na tabela de respostas com join
+			myoptionkey2: { Null: false, dataType: 'string' }, //idem
+			myoptionkey3: { Null: false, dataType: 'string' }, //idem
+			myoptionkey4: { Null: false, dataType: 'string' }, //idem
+			myoptionkey5: { Null: false, dataType: 'string' }, //idem
+			myoptionkey6: { Null: false, dataType: 'string' }, //idem
+			myoptionkey7: { Null: false, dataType: 'string' }, //idem
+			myoptionkey8: { Null: false, dataType: 'string' }, //idem
 			mycomment: { Null: false, dataType: 'string' }, //comentário ou resposta sobre a letra
 			myfix: { Null: false, dataType: 'string' }, //fixa para revisão
             mytimer: { Null: false, dataType: 'string' }, //cronômetro numérico em segundos para mudar o texto automaticamente, exemplo: 4s
@@ -120,6 +120,24 @@ function getDbSchema() {
 }
 
 function registerEvents() {
+/*    $('#btnRefresh').click(function () {
+        var result = confirm('Vou limpar e reorganizar as respostas, ok?');
+        if (result) {
+			var mygroup = document.getElementById('mygroupSim').value;
+			updateStudentPlayOrder(mygroup);
+			updateStudentPlayClear(mygroup);
+			showGridAndHideForms();
+        }
+		var mygroup = document.getElementById('selectMygroup').value;
+		var mycode = '';
+		var myorder = '';
+		var mytext = '';
+		refreshTableData(mycode, myorder, mygroup, mytext);
+		showGridAndHideForms();
+		$('#selectMygroup').focus();
+		$('#selectMygroup').select();
+    })
+*/
     $('#btnSelectCountAll').click(function () {
 		selectCountAll();
     })	
@@ -146,7 +164,7 @@ function registerEvents() {
 		}
     })
 	$('#btnBackward').click(function () {
-        var result = confirm('Vou limpar e reorganizar as respostas, ok?');
+        var result = confirm('Vou limpar e reorganizar todas respostas, ok?');
         if (result) {
 			var mygroup = document.getElementById('mygroupSim').value;
 			updateStudentPlayOrder(mygroup);
@@ -154,24 +172,6 @@ function registerEvents() {
 			showGridAndHideForms();
         }
     });
-/*    $('#btnRefresh').click(function () {
-        var result = confirm('Vou limpar e reorganizar as respostas, ok?');
-        if (result) {
-			var mygroup = document.getElementById('mygroupSim').value;
-			updateStudentPlayOrder(mygroup);
-			updateStudentPlayClear(mygroup);
-			showGridAndHideForms();
-        }
-		var mygroup = document.getElementById('selectMygroup').value;
-		var mycode = '';
-		var myorder = '';
-		var mytext = '';
-		refreshTableData(mycode, myorder, mygroup, mytext);
-		showGridAndHideForms();
-		$('#selectMygroup').focus();
-		$('#selectMygroup').select();
-    })
-*/
     $('#btnImportSim').click(function () {
 		showIniciarConfiguracao();
     })
@@ -699,6 +699,9 @@ async function refreshLinkHelp() {
 	var valuelink = '';
 	var textlink = '';
 	
+	valuelink = 'Oferece uma capacidade de computação escalável na Nuvem da Amazon Web Services (AWS). O uso do Amazon EC2 elimina a necessidade de investir em hardware inicialmente, portanto, você pode desenvolver e implantar aplicativos com mais rapidez.';
+	linkhelp = linkhelp + getLinkHelp('AWS EC2 (Elastic Compute Cloud)', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', valuelink);
+
 	valuelink = 'É um serviço de armazenamento de objetos que armazena dados como objetos em buckets. Um objeto é um arquivo e quaisquer metadados que descrevam o arquivo. Um bucket é um contêiner de objetos. Você pode controlar o acesso a grupos de objetos que começam com um prefixo ou termine com uma determinada extensão, exemplos de arquivos estáticos: .html, .js, .cs.';
 	linkhelp = linkhelp + getLinkHelp('AWS S3 (Simple Storage Service)', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', valuelink);
 
@@ -725,9 +728,6 @@ async function refreshLinkHelp() {
 
 	valuelink = 'Ajuda você a migrar bancos de dados para a AWS de modo rápido e seguro.';
 	linkhelp = linkhelp + getLinkHelp('AWS DMS (Database Migration Service)', 'https://aws.amazon.com/pt/dms/', valuelink);
-
-	valuelink = 'Oferece uma capacidade de computação escalável na Nuvem da Amazon Web Services (AWS). O uso do Amazon EC2 elimina a necessidade de investir em hardware inicialmente, portanto, você pode desenvolver e implantar aplicativos com mais rapidez.';
-	linkhelp = linkhelp + getLinkHelp('AWS EC2 (Elastic Compute Cloud)', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', valuelink);
 
 	valuelink = 'O nível gratuito da AWS oferece aos clientes a capacidade de explorar e testar gratuitamente serviços da AWS até os limites especificados para cada serviço. O nível gratuito é composto por três tipos diferentes de ofertas: um nível gratuito de 12 meses, uma oferta Always Free e testes de curto prazo.';
 	linkhelp = linkhelp + getLinkHelp('É um modelo de uso dos produtos da AWS onde você não é cobrado', 'https://aws.amazon.com/pt/free/free-tier-faqs/', valuelink);
@@ -873,13 +873,13 @@ async function refreshLinkHelp() {
 	valuelink = 'O AWS Support oferece cinco planos de suporte: <br/>Basic <br/>Desenvolvedor <br/>Business <br/>Enterprise On-Ramp <br/>Enterprise <br/>Todos os planos de suporte oferecem acesso 24 horas por dia, 7 dias por semana ao atendimento ao cliente, à documentação da AWS, aos whitepapers e aos fóruns de suporte.';
 	linkhelp = linkhelp + getLinkHelp('Basic, Developer, Business, Enterprise On-Ramp, Enterprise', 'https://docs.aws.amazon.com/pt_br/awssupport/latest/user/getting-started.html', valuelink);
 
-	valuelink = 'O AWS Support oferece cinco planos de suporte: <br/>Basic <br/>Desenvolvedor <br/>Business <br/>Enterprise On-Ramp <br/>Enterprise <br/>Todos os planos de suporte oferecem acesso 24 horas por dia, 7 dias por semana ao atendimento ao cliente, à documentação da AWS, aos whitepapers e aos fóruns de suporte.';
+	valuelink = 'Nenhuma dessas opções existem nos cinco planos de suporte do AWS Support.';
 	linkhelp = linkhelp + getLinkHelp('Bronze, Silver, Gold, Diamond, Ruby', 'https://docs.aws.amazon.com/pt_br/awssupport/latest/user/getting-started.html', valuelink);
 
-	valuelink = 'O AWS Support oferece cinco planos de suporte: <br/>Basic <br/>Desenvolvedor <br/>Business <br/>Enterprise On-Ramp <br/>Enterprise <br/>Todos os planos de suporte oferecem acesso 24 horas por dia, 7 dias por semana ao atendimento ao cliente, à documentação da AWS, aos whitepapers e aos fóruns de suporte.';
+	valuelink = 'Não existe Advanced nos cinco planos de suporte do AWS Support.';
 	linkhelp = linkhelp + getLinkHelp('Basic, Developer, Business, Advanced, Enterprise On-Ramp', 'https://docs.aws.amazon.com/pt_br/awssupport/latest/user/getting-started.html', valuelink);
 
-	valuelink = 'O AWS Support oferece cinco planos de suporte: <br/>Basic <br/>Desenvolvedor <br/>Business <br/>Enterprise On-Ramp <br/>Enterprise <br/>Todos os planos de suporte oferecem acesso 24 horas por dia, 7 dias por semana ao atendimento ao cliente, à documentação da AWS, aos whitepapers e aos fóruns de suporte.';
+	valuelink = 'Não existe Standard nos cinco planos de suporte do AWS Support.';
 	linkhelp = linkhelp + getLinkHelp('Standard, Developer, Business, Enterprise, Enterprise On-Ramp', 'https://docs.aws.amazon.com/pt_br/awssupport/latest/user/getting-started.html', valuelink);
 
 	valuelink = 'O Amazon RDS permite que você coloque recursos, como instâncias de banco de dados, e dados em vários locais diferentes, minimizando o tempo de inatividade e a perda de dados com recuperação rápida e confiável de aplicações com DR (Disaster Recovery). Se você hospeda todas as instâncias de banco de dados em um único local afetado por tal falha, nenhuma delas estará disponível quando ocorrer um desastre.';
@@ -910,7 +910,7 @@ async function refreshLinkHelp() {
 	linkhelp = linkhelp + getLinkHelp('Distribui o tráfego de entrada entre instâncias em diferentes regiões', 'https://docs.aws.amazon.com/pt_br/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html', valuelink);
 
 	valuelink = 'Uma instância é um servidor virtual na Nuvem AWS. Com o Amazon EC2 você pode definir e configurar o sistema operacional e as aplicações que são executadas em sua instância.';
-	linkhelp = linkhelp + getLinkHelp('instancia uma nova máquina quando uma das máquinas apresenta falha', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html', valuelink);
+	linkhelp = linkhelp + getLinkHelp('Instancia uma nova máquina quando uma das máquinas apresenta falha', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html', valuelink);
 
 	valuelink = 'Um load balancer aceita o tráfego de entrada de clientes e roteia solicitações para seus destinos registrados (como instâncias do EC2) em uma ou mais Zonas de disponibilidade.';
 	linkhelp = linkhelp + getLinkHelp('Distribui o tráfego de entrada entre suas instâncias', 'https://docs.aws.amazon.com/pt_br/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html', valuelink);
@@ -942,12 +942,6 @@ async function refreshLinkHelp() {
 	valuelink = 'É um banco de dados relacional de código aberto conhecido no mercado, que foi criado pelos desenvolvedores originais do MySQL. O Amazon RDS facilita a configuração, a operação e a escalabilidade de implantações do servidor MariaDB na nuvem.';
 	linkhelp = linkhelp + getLinkHelp('MariaDb', 'https://aws.amazon.com/pt/rds/mariadb/', valuelink);
 
-	valuelink = 'Os pilares são: <br/>Excelência operacional, <br/>Segurança, <br/>Confiabilidade, <br/>Eficiência de desempenho, <br/>Otimização de custos, <br/>Sustentabilidade';
-	linkhelp = linkhelp + getLinkHelp('Segurança', 'https://wa.aws.amazon.com/wat.pillars.wa-pillars.pt_BR.html', valuelink);
-
-	valuelink = 'Os pilares são: <br/>Excelência operacional, <br/>Segurança, <br/>Confiabilidade, <br/>Eficiência de desempenho, <br/>Otimização de custos, <br/>Sustentabilidade';
-	linkhelp = linkhelp + getLinkHelp('Excelência Operacional', 'https://wa.aws.amazon.com/wat.pillars.wa-pillars.pt_BR.html', valuelink);
-
 	valuelink = 'O Amazon EC2 Auto Scaling ajuda a manter a disponibilidade das aplicações e permite adicionar ou remover instâncias do EC2 automaticamente de acordo com as condições que você definir.';
 	linkhelp = linkhelp + getLinkHelp('EC2 Auto Scaling', 'https://aws.amazon.com/pt/ec2/autoscaling/', valuelink);
 
@@ -971,6 +965,12 @@ async function refreshLinkHelp() {
 
 	valuelink = 'Avalia a sua conta por meio de verificações. Essas verificações identificam formas de otimizar sua infraestrutura da AWS, aumentar a segurança e o desempenho, reduzir os custos gerais e monitorar as cotas do serviço. <br/>Benefícios: <br/>Otimização de custos <br/>Performance <br/>Segurança <br/>Tolerância a falhas <br/>Cotas de serviço';
 	linkhelp = linkhelp + getLinkHelp('AWS Trusted Advisor', 'https://aws.amazon.com/pt/premiumsupport/technology/trusted-advisor/', valuelink);
+
+	valuelink = 'Os pilares são: <br/>Excelência operacional, <br/>Segurança, <br/>Confiabilidade, <br/>Eficiência de desempenho, <br/>Otimização de custos, <br/>Sustentabilidade';
+	linkhelp = linkhelp + getLinkHelp('Segurança', 'https://wa.aws.amazon.com/wat.pillars.wa-pillars.pt_BR.html', valuelink);
+
+	valuelink = 'Os pilares são: <br/>Excelência operacional, <br/>Segurança, <br/>Confiabilidade, <br/>Eficiência de desempenho, <br/>Otimização de custos, <br/>Sustentabilidade';
+	linkhelp = linkhelp + getLinkHelp('Excelência Operacional', 'https://wa.aws.amazon.com/wat.pillars.wa-pillars.pt_BR.html', valuelink);
 
 //a próxima é a 27 do arquivo file:///C:/DataShow/sim/sim1.html
 	valuelink = '';
@@ -1275,6 +1275,29 @@ function onLoadConfig() {
 	confirmImport('contents1', '0');
 }
 
+function buscaValorTag(valor, key) {	
+	var posini = valor.indexOf('<' + key + '>', 0);
+	var posfim = valor.indexOf('</' + key + '>', 0);
+	var result = valor.substring(posini, posfim).trim();
+	result = result.replaceAll('<' + key + '>', '');
+	result = result.replaceAll('</' + key + '>', '');
+//	alert('posini: '+posini + ' posfim: '+posfim + ' result: ['+result+']');
+	return result;
+}
+
+function removeTags(valor, key) {
+	var posini = valor.indexOf('<' + key + '>', 0);
+	var posfim = valor.indexOf('</' + key + '>', 0);
+	if (posini == -1 || posfim == -1) {
+//		alert('posini: '+posini + ' posfim: '+posfim + ' vazio: ' + valor);
+		return valor;
+	} else {
+		var result = valor.substring(0, posini).trim() + '' + valor.substring(posfim+key.length+3, valor.length).trim();
+//		alert('posini: '+posini + ' posfim: '+posfim + ' result: [' + result + ']');
+		return result;
+	}
+}
+
 function getArrayAnswers(valor) {
 	var arrayok = []; var arrayKO = [];
 	var valorok = ''; var valorKO = '';
@@ -1284,19 +1307,34 @@ function getArrayAnswers(valor) {
 	nextpos = valor.indexOf('\n\n', posicao);
 //	console.log(valor);
 	for (index=0; index<=4; index++) {
+		var valorkey = '';
+		var valorsemkey = '';
+		
 		var ok = valor.substring(posicao, posicao+5).trim();
 //		console.log('ok=' + ok + ' posicao='+posicao + ' nextpos=' + nextpos + ' index=' + index + ' \n\n' + valor.substring(posicao, nextpos).trim());
 		
 		//ok
 		if (ok == '<ok>' ) {
 			valorok = valor.substring(posicao, nextpos).replaceAll('<ok>', '');
-//			console.log('arrayok.push=[' + valorok + ']');
-			arrayok.push(valorok.trim());
+
+			valorsemkey = removeTags(valorok, 'key');
+			arrayok.push(valorsemkey.trim());
+//			alert('valorok_semtag: [' + valorsemkey.trim() + ']');
+
+			valorkey = buscaValorTag(valorok, 'key');
+			arrayok.push(valorkey.trim());
+//			alert('arrayok: [' + arrayok + ']');
 		//KO
 		} else {
-			valorKO = valor.substring(posicao, nextpos);
-//			console.log('arrayKO.push=[' + valorKO + ']');
-			arrayKO.push(valorKO.trim());
+			valorKO = valor.substring(posicao, nextpos).replaceAll('<ok>', '');
+
+			valorsemkey = removeTags(valorKO, 'key');
+			arrayKO.push(valorsemkey.trim());
+//			alert('valorKO_semkey: [' + valorsemkey.trim() + ']');
+
+			valorkey = buscaValorTag(valorKO, 'key');
+			arrayKO.push(valorkey.trim());
+//			alert('array_KO: [' + arrayKO + ']');
 		}
 		//limpa variáveis
 		posicao = nextpos+1;
@@ -1319,7 +1357,7 @@ function getArrayAnswers(valor) {
 	}
 	var array = [];
 	//ok
-	for (index=0; index<4; index++) {
+	for (index=0; index<8; index++) {
 		if (arrayok[index] == null) {
 			array.push(null); //'\'' + '' + '\''
 		} else {
@@ -1327,14 +1365,14 @@ function getArrayAnswers(valor) {
 		}
 	}
 	//KO
-	for (index=0; index<4; index++) {
+	for (index=0; index<8; index++) {
 		if (arrayKO[index] == null) {
 			array.push(null); //'\'' + '' + '\''
 		} else {
 			array.push(arrayKO[index]);
 		}
 	}
-//	console.log(array);
+//	alert('array: '+array);
 	return array;
 }
 
@@ -1348,8 +1386,10 @@ async function salvarRegistro(mygroup, mycode, myorder, mytext) {
 	var aswers = mytext.substring(nextpos, mytext.length).trim();
 //	console.log('aswers= \n'+aswers);
 	var array = getArrayAnswers(aswers);
-//	console.log('setStudentFromImport: \n\n mygroup='+mygroup + '\n mycode='+mycode + '\n myorder='+myorder + '\n question=[' +question+']' + '\n Respostas \n '+array[0] + '\n '+array[1] + '\n '+array[2] + '\n '+array[3] + '\n '+array[4] + '\n '+array[5] + '\n '+array[6] + '\n '+array[7]);
-	setStudentFromImport(mygroup, mycode, myorder, question, array[0], array[1], array[2], array[3], array[4], array[5], array[6], array[7]);
+
+//	alert('setStudentFromImport:\n'+array[0]+', '+array[1] + '\n '+array[2]+', '+array[3] + '\n '+array[4]+', '+array[5] + '\n '+array[6]+', '+array[7] + '\n '+array[8]+', '+array[9] + '\n '+array[10]+', '+array[11] + '\n '+array[12]+', '+array[13] + '\n '+array[14]+', '+array[15]);
+//	setStudentFromImport(mygroup, mycode, myorder, question, array[0], array[1], array[2], array[3], array[4], array[5], array[6], array[7]);
+	setStudentFromImport(mygroup, mycode, myorder, question, array[0], array[1], array[2], array[3], array[4], array[5], array[6], array[7], array[8], array[9], array[10], array[11], array[12], array[13], array[14], array[15]);
 	var studentId = $('form').attr('data-student-id');
 	addStudentImportConfig(studentId, mygroup, mycode);
 	setTimeout(() => { updateStudentPlayOrder(mygroup) }, 1000); // Executa após 5 segundos para esperar o processo de insert terminar
@@ -1360,7 +1400,7 @@ async function confirmImport(contents, group) {
 	try {
 		var params = new URLSearchParams(window.location.search);
 		
-		console.log('params.get(sim) = ' + params.get('sim'));
+//		console.log('params.get(sim) = ' + params.get('sim'));
 		var mygroup = params.get('sim');
 		var mytext = document.getElementById(contents).value;
 		var mycode = 0;
@@ -1396,7 +1436,7 @@ async function confirmImportManual(mycode, myorder, mygroup, mytext, myoption1, 
 			
 //console.log(' mygroup='+mygroup + ' mycode='+mycode + ' myorder='+myorder + ' mytext='+mytext + ' myoption1='+myoption1 + ' myoption5='+myoption5);
 				
-				setStudentFromImport(mygroup, mycode, myorder, mytext, myoption1, myoption2, myoption3, myoption4, myoption5, myoption6, myoption7, myoption8);
+				setStudentFromImport(mygroup, mycode, myorder, mytext, myoption1, '', myoption2, '', myoption3, '', myoption4, '', myoption5, '', myoption6, '', myoption7, '', myoption8, '');
 
 				var studentId = $('form').attr('data-student-id');
 				addStudentImport(studentId, mygroup, mycode);
@@ -1546,13 +1586,12 @@ async function selectCountAll() {
 async function addStudentImportConfig(studentId, mygroup, mycode) {
     var student = getStudentFromForm(studentId, mygroup, mycode);
     try {
-		console.log('student.mygroup=[' + student.mygroup + ']');
 		var noOfDataInserted = await jsstoreCon.insert({
 			into: 'Student',
 			values: [student]
 		});
-//		console.log('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext + '\n '+student.myoption1 + '\n '+student.myoption2 + '\n '+student.myoption3 + '\n '+student.myoption4);
-		console.log('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext);
+//		alert('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext + '\n '+student.myoption1 + ', '+student.myoptionkey1 + '\n '+student.myoption2 + ', '+student.myoptionkey2 + '\n '+student.myoption3 + ', '+student.myoptionkey3 + '\n '+student.myoption4 + ', '+student.myoptionkey4 + '\n '+student.myoption5 + ', '+student.myoptionkey5 + '\n '+student.myoption6 + ', '+student.myoptionkey6 + '\n '+student.myoption7 + ', '+student.myoptionkey7 + '\n '+student.myoption8 + ', '+student.myoptionkey8 + '\n '+student.myoption9 + ', '+student.myoptionkey9 + '\n '+student.myoption10 + ', '+student.myoptionkey10 + '\n '+student.myoption11 + ', '+student.myoptionkey11 + '\n '+student.myoption12 + ', '+student.myoptionkey12 + '\n '+student.myoption13 + ', '+student.myoptionkey13 + '\n '+student.myoption14 + ', '+student.myoptionkey14 + '\n '+student.myoption15 + ', '+student.myoptionkey15);
+//		console.log('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext);
 		if (noOfDataInserted === 1) {
 		}
     } catch (ex) {
@@ -1567,7 +1606,7 @@ async function addStudentImport(studentId, mygroup, mycode) {
 			into: 'Student',
 			values: [student]
 		});
-		console.log('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext + '\n '+student.myoption1 + '\n '+student.myoption2 + '\n '+student.myoption3 + '\n '+student.myoption4);
+//		console.log('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext + '\n '+student.myoption1 + '\n '+student.myoption2 + '\n '+student.myoption3 + '\n '+student.myoption4);
 //		console.log('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext);
 		if (noOfDataInserted === 1) {
 			var mycode = document.getElementById('mycode').value;
@@ -1706,7 +1745,7 @@ async function updateOrder(id, min, max) {
 				id: id
 			}
 		});
-console.log('id='+id + ' myorder='+myorder);
+		//console.log('id='+id + ' myorder='+myorder);
         console.log(`data updated ${noOfDataUpdated}`);
     } catch (ex) {
         console.log(ex.message);
@@ -1849,12 +1888,20 @@ function getStudentFromForm(studentId, mygroup, mycode) {
 		mycorrect5answer: '',
 		mycorrect6answer: '',
 		mycorrect7answer: '',
-		mycorrect8answer: ''		
+		mycorrect8answer: '',
+		myoptionkey1: $('#myoptionkey1').val(),
+		myoptionkey2: $('#myoptionkey2').val(),
+		myoptionkey3: $('#myoptionkey3').val(),
+		myoptionkey4: $('#myoptionkey4').val(),
+		myoptionkey5: $('#myoptionkey5').val(),
+		myoptionkey6: $('#myoptionkey6').val(),
+		myoptionkey7: $('#myoptionkey7').val(),
+		myoptionkey8: $('#myoptionkey8').val()
     };
     return student;
 }
 
-function setStudentFromImport(mygroup, mycode, myorder, mytext, myoption1, myoption2, myoption3, myoption4, myoption5, myoption6, myoption7, myoption8) {
+function setStudentFromImport(mygroup, mycode, myorder, mytext, myoption1, myoptionkey1, myoption2, myoptionkey2, myoption3, myoptionkey3, myoption4, myoptionkey4, myoption5, myoptionkey5, myoption6, myoptionkey6, myoption7, myoptionkey7, myoption8, myoptionkey8) {
 	document.getElementById('mygroup').value = mygroup;
 	document.getElementById('mycode').value = mycode;
 	document.getElementById('myorder').value = myorder;
@@ -1867,8 +1914,15 @@ function setStudentFromImport(mygroup, mycode, myorder, mytext, myoption1, myopt
 	document.getElementById('myoption6').value = myoption6;
 	document.getElementById('myoption7').value = myoption7;
 	document.getElementById('myoption8').value = myoption8;
-//console.log(' mygroup='+document.getElementById('mygroup').value + '\n mycode='+document.getElementById('mycode').value + '\n myorder='+myorder + '\n mytext=[' +mytext+']' + '\n '+document.getElementById('myoption1').value + '\n '+myoption2 + '\n '+myoption3 + '\n '+myoption4 + '\n '+myoption5 + '\n '+myoption6 + '\n '+myoption7 + '\n '+myoption8);
-return;
+	document.getElementById('myoptionkey1').value = myoptionkey1;
+	document.getElementById('myoptionkey2').value = myoptionkey2;
+	document.getElementById('myoptionkey3').value = myoptionkey3;
+	document.getElementById('myoptionkey4').value = myoptionkey4;
+	document.getElementById('myoptionkey5').value = myoptionkey5;
+	document.getElementById('myoptionkey6').value = myoptionkey6;
+	document.getElementById('myoptionkey7').value = myoptionkey7;
+	document.getElementById('myoptionkey8').value = myoptionkey8;
+//	alert(' mygroup='+document.getElementById('mygroup').value + '\n mycode='+document.getElementById('mycode').value + '\n myorder='+myorder + '\n mytext=[' +mytext+']\n' + '\n '+myoption1 + ', '+myoptionkey1 + '\n '+myoption2 + ', '+myoptionkey2 + '\n '+myoption3 + ', '+myoptionkey3 + '\n '+myoption4 + ', '+myoptionkey4 + '\n '+myoption5 + ', '+myoptionkey5 + '\n '+myoption6 + ', '+myoptionkey6 + '\n '+myoption7 + ', '+myoptionkey7 + '\n '+myoption8 + ', '+myoptionkey8);
     $('#divFormAddUpdate').show();
 }
 

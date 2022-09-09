@@ -33,12 +33,15 @@
 				<br/><a href="#" onclick="window.close();"><button id="btnConfigBookClose" class="btn btn-info" style="padding:9px 15px 9px 15px;">Feche Esta Janela Após 10 segundos</button></a>
 				
 				<select id="selectMygroup" name="selectMygroup" style="height:34px; display:none;">
-					<option value="10" selected>Teste v1.0</option>
+					<option value="00" selected>Explicação v0</option>
+					<option value="10">Teste v1.0</option>
 					<option value="11">Teste v1.1</option>
 					<option value="12">Teste v1.2</option>
+					<option value="13">Teste v1.3</option>
 					<option value="20">Teste v2.0</option>
 					<option value="21">Teste v2.1</option>
 					<option value="22">Teste v2.2</option>
+					<option value="23">Teste v2.3</option>
 					<option value="30">Teste v3.0</option>
 					<option value="31">Teste v3.1</option>
 					<option value="32">Teste v3.2</option>
@@ -121,12 +124,15 @@
 				<b>Formulário Editor de Perguntas</b>
 				<p/><p/>
 				<select id="mygroup" name="mygroup" style="height:35px; display:none;">
-					<option value="10" selected>Teste v1.0</option>
+					<option value="00" selected>Explicação v0</option>
+					<option value="10">Teste v1.0</option>
 					<option value="11">Teste v1.1</option>
 					<option value="12">Teste v1.2</option>
+					<option value="13">Teste v1.3</option>
 					<option value="20">Teste v2.0</option>
 					<option value="21">Teste v2.1</option>
 					<option value="22">Teste v2.2</option>
+					<option value="23">Teste v2.3</option>
 					<option value="30">Teste v3.0</option>
 					<option value="31">Teste v3.1</option>
 					<option value="32">Teste v3.2</option>
@@ -142,18 +148,26 @@
 				<p/><textarea name="mytext" id="mytext" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui..."></textarea>
 				<font style="color:green;">
 					Corretas:
-					<textarea name="myoption1" id="myoption1" style="width:100%;" rows=1 placeholder="digite aqui a correta 1... (obrigatório)"></textarea>
-					<br/><textarea name="myoption2" id="myoption2" style="width:100%;" rows=1 placeholder="digite aqui a correta 2..."></textarea>
-					<br/><textarea name="myoption3" id="myoption3" style="width:100%;" rows=1 placeholder="digite aqui a correta 3..."></textarea>
-					<br/><textarea name="myoption4" id="myoption4" style="width:100%;" rows=1 placeholder="digite aqui a correta 4..."></textarea>
+					<textarea name="myoption1" id="myoption1" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey1" id="myoptionkey1" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption2" id="myoption2" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey2" id="myoptionkey2" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption3" id="myoption3" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey3" id="myoptionkey3" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption4" id="myoption4" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey4" id="myoptionkey4" rows=1 placeholder="explicação..."></textarea>
 				</font>
 				
 				<font style="color:red; text-align:left;">
 					Incorretas:
-					<textarea name="myoption5" id="myoption5" style="width:100%;" rows=1 placeholder="digite aqui a incorreta 1... (obrigatório)"></textarea>
-					<br/><textarea name="myoption6" id="myoption6" style="width:100%;" rows=1 placeholder="digite aqui a incorreta 2..."></textarea>
-					<br/><textarea name="myoption7" id="myoption7" style="width:100%;" rows=1 placeholder="digite aqui a incorreta 3..."></textarea>
-					<br/><textarea name="myoption8" id="myoption8" style="width:100%;" rows=1 placeholder="digite aqui a incorreta 4..."></textarea>
+					<textarea name="myoption5" id="myoption5" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey5" id="myoptionkey5" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption6" id="myoption6" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey6" id="myoptionkey6" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption7" id="myoption7" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey7" id="myoptionkey7" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption8" id="myoption8" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey8" id="myoptionkey8" rows=1 placeholder="explicação..."></textarea>
 				</font>
 				<p/><p/>
 				<button id="btnSubmit" type="button" class="btn btn-primary" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-check"></i> Salvar</button>
@@ -179,7 +193,7 @@ AWS Cloud Practitioner Essentials
 <p>
 Sua empresa iniciou um processo de transformação digital de todas as suas plataformas e decidiu utilizar uma arquitetura de sistemas orientada a eventos para desacoplar os sistemas. Qual dos serviços abaixo pode ser utilizado como um barramento escalável de eventos para facilitar a criação dessa arquitetura?
 
-Amazon SQS
+Amazon SQS (Simple Queue Service)
 
 Amazon EventSync
 
@@ -192,13 +206,13 @@ Amazon EventBridge
 Qual é o banco de dados relacional que é totalmente gerenciado pela AWS e pode ser 5 x mais rápido que o MySQL?
 
 <ok>
-Aurora
+AWS Aurora
 
-DynamoDb
+AWS DynamoDB
 
 MariaDb
 
-Neptune
+Amazon Neptune
 
 <p>
 Quais itens fazem parte dos pilares do Well-Architected Framework? (Selecione 2)
