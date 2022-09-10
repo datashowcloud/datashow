@@ -1273,6 +1273,11 @@ function onLoadConfig() {
 	loadCombobox('mycode', '0', '65', 'Número');
 	loadCombobox('myorder', '0', '65', 'Ordem');
 	confirmImport('contents1', '0');
+	importConfigZero();
+}
+
+function importConfigZero() {
+	return '';
 }
 
 function buscaValorTag(valor, key) {	
