@@ -534,9 +534,9 @@ async function getFromTablePlay(id, mygroup, mycode) {
 				valorIndice = myorder.substring(index,index+1);
 				if (valorIndice == '1') {
 					var aux = ''; var linkhref = '';
-					if (document.getElementById(student.myoption1) != null) {
-						aux = document.getElementById(student.myoption1).innerHTML;
-						linkhref = document.getElementById('link_'+student.myoption1).href;
+					if (document.getElementById(student.myoptionkey1) != null) {
+						aux = document.getElementById(student.myoptionkey1).innerHTML;
+						linkhref = document.getElementById('link_' + student.myoptionkey1);
 					}
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
@@ -551,9 +551,9 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					}
 				} else if (valorIndice == '2') {
 					var aux = ''; var linkhref = '';
-					if (document.getElementById(student.myoption2) != null) {
-						aux = document.getElementById(student.myoption2).innerHTML;
-						linkhref = document.getElementById('link_'+student.myoption2).href;
+					if (document.getElementById(student.myoptionkey2) != null) {
+						aux = document.getElementById(student.myoptionkey2).innerHTML;
+						linkhref = document.getElementById('link_' + student.myoptionkey2);
 					}
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
@@ -568,9 +568,9 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					}
 				} else if (valorIndice == '3') {
 					var aux = ''; var linkhref = '';
-					if (document.getElementById(student.myoption3) != null) {
-						aux = document.getElementById(student.myoption3).innerHTML;
-						linkhref = document.getElementById('link_'+student.myoption3).href;
+					if (document.getElementById(student.myoptionkey3) != null) {
+						aux = document.getElementById(student.myoptionkey3).innerHTML;
+						linkhref = document.getElementById('link_' + student.myoptionkey3);
 					}
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
@@ -585,9 +585,9 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					}
 				} else if (valorIndice == '4') {
 					var aux = ''; var linkhref = '';
-					if (document.getElementById(student.myoption4) != null) {
-						aux = document.getElementById(student.myoption4).innerHTML;
-						linkhref = document.getElementById('link_'+student.myoption4).href;
+					if (document.getElementById(student.myoptionkey4) != null) {
+						aux = document.getElementById(student.myoptionkey4).innerHTML;
+						linkhref = document.getElementById('link_' + student.myoptionkey4);
 					}
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
@@ -602,9 +602,9 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					}
 				} else if (valorIndice == '5') {
 					var aux = ''; var linkhref = '';
-					if (document.getElementById(student.myoption5) != null) {
-						aux = document.getElementById(student.myoption5).innerHTML;
-						linkhref = document.getElementById('link_'+student.myoption5).href;
+					if (document.getElementById(student.myoptionkey5) != null) {
+						aux = document.getElementById(student.myoptionkey5).innerHTML;
+						linkhref = document.getElementById('link_' + student.myoptionkey5);
 					}
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
@@ -619,9 +619,9 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					}
 				} else if (valorIndice == '6') {
 					var aux = ''; var linkhref = '';
-					if (document.getElementById(student.myoption6) != null) {
-						aux = document.getElementById(student.myoption6).innerHTML;
-						linkhref = document.getElementById('link_'+student.myoption6).href;
+					if (document.getElementById(student.myoptionkey6) != null) {
+						aux = document.getElementById(student.myoptionkey6).innerHTML;
+						linkhref = document.getElementById('link_' + student.myoptionkey6);
 					}
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
@@ -636,9 +636,9 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					}
 				} else if (valorIndice == '7') {
 					var aux = ''; var linkhref = '';
-					if (document.getElementById(student.myoption7) != null) {
-						aux = document.getElementById(student.myoption7).innerHTML;
-						linkhref = document.getElementById('link_'+student.myoption7).href;
+					if (document.getElementById(student.myoptionkey7) != null) {
+						aux = document.getElementById(student.myoptionkey7).innerHTML;
+						linkhref = document.getElementById('link_' + student.myoptionkey7);
 					}
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
@@ -653,9 +653,9 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					}
 				} else if (valorIndice == '8') {
 					var aux = ''; var linkhref = '';
-					if (document.getElementById(student.myoption8) != null) {
-						aux = document.getElementById(student.myoption8).innerHTML;
-						linkhref = document.getElementById('link_'+student.myoption8).href;
+					if (document.getElementById(student.myoptionkey8) != null) {
+						aux = document.getElementById(student.myoptionkey8).innerHTML;
+						linkhref = document.getElementById('link_' + student.myoptionkey8);
 					}
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
@@ -679,14 +679,14 @@ async function getFromTablePlay(id, mygroup, mycode) {
 //    }	
 }
 
-function getLinkHelp(namelink, valuelink, textlink) {
+function getLinkHelp(keylink, hreflink, textlink) {
 	var linkhelp = '';
 	linkhelp = linkhelp + '<p/><a href="#top" class="btn btn-default"><i class="fa fa-arrow-up"></i></a>';
-	linkhelp = linkhelp + '<b> ' + namelink + '</b>';
-	linkhelp = linkhelp + '<i id="' + namelink + '" value="' + valuelink + '"> ' + textlink + '</i>';
-	linkhelp = linkhelp + '<br/>(<a id="link_' + namelink + '" href=' + valuelink + ' target="_blank">link internet</a>)';
-	
-	if (namelink == '') {
+	linkhelp = linkhelp + '<b> ' + keylink + '</b>';
+	linkhelp = linkhelp + '<br/><i id="' + keylink + '" value="' + hreflink + '"> ' + textlink + '</i>';
+	linkhelp = linkhelp + '<br/>(<a id="link_' + keylink + '" href=' + hreflink + ' target="_blank">link internet</a>)';
+
+	if (keylink == '') {
 		return '';
 	} else {
 		return linkhelp;
@@ -694,328 +694,17 @@ function getLinkHelp(namelink, valuelink, textlink) {
 }
 
 async function refreshLinkHelp() {
-	var linkhelp = '<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/> <b>MINHA AJUDA</b> <br/><br/>';
-	var namelink = '';
-	var valuelink = '';
-	var textlink = '';
-	
-	valuelink = 'Oferece uma capacidade de computação escalável na Nuvem da Amazon Web Services (AWS). O uso do Amazon EC2 elimina a necessidade de investir em hardware inicialmente, portanto, você pode desenvolver e implantar aplicativos com mais rapidez.';
-	linkhelp = linkhelp + getLinkHelp('AWS EC2 (Elastic Compute Cloud)', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', valuelink);
-
-	valuelink = 'É um serviço de armazenamento de objetos que armazena dados como objetos em buckets. Um objeto é um arquivo e quaisquer metadados que descrevam o arquivo. Um bucket é um contêiner de objetos. Você pode controlar o acesso a grupos de objetos que começam com um prefixo ou termine com uma determinada extensão, exemplos de arquivos estáticos: .html, .js, .cs.';
-	linkhelp = linkhelp + getLinkHelp('AWS S3 (Simple Storage Service)', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', valuelink);
-
-	valuelink = 'Não existe na AWS. Outro nome muito semelhante existente na AWS é AWS Audit Manager.';
-	linkhelp = linkhelp + getLinkHelp('AWS Audit', 'https://docs.aws.amazon.com/pt_br/awscloudtrail/latest/userguide/cloudtrail-user-guide.html', valuelink);
-
-	valuelink = 'Estima o custo para solução de arquitetura, antes do uso, antes da implementação.';
-	linkhelp = linkhelp + getLinkHelp('AWS Princing Calculator', 'https://calculator.aws/#/', valuelink);
-	
-	valuelink = 'Permite criar novas contas da AWS e alocar recursos, agrupar contas para organizar seus fluxos de trabalho, aplicar políticas a contas ou grupos para governança.';
-	linkhelp = linkhelp + getLinkHelp('AWS Organizations', 'https://aws.amazon.com/pt/organizations/?nc2=type_a', valuelink);
-	
-	valuelink = 'Também o Cost Management, é um conjunto de serviços para visualizar e pagar faturas, monitorar, analisar e controlar os custos financeiros na nuvem.';
-	linkhelp = linkhelp + getLinkHelp('AWS Billing', 'https://aws.amazon.com/pt/aws-cost-management/aws-billing/', valuelink);
-
-	valuelink = 'Interface que permite visualizar, entender e gerenciar os custos e o uso da AWS relacionado ao tempo gasto que já passou.';
-	linkhelp = linkhelp + getLinkHelp('AWS Cost Explorer', 'https://aws.amazon.com/pt/aws-cost-management/aws-cost-explorer/', valuelink);
-
-	valuelink = 'Configure orçamentos personalizados e mantenha-se informado sobre o progresso de seu custo e uso e responda rapidamente quando o custo ou uso exceder o limite.';
-	linkhelp = linkhelp + getLinkHelp('AWS Budgets', 'https://aws.amazon.com/pt/aws-cost-management/aws-budgets/', valuelink);
-
-	valuelink = 'Banco de dados de chave-valor NoSQL totalmente gerenciado e sem servidor, projetado para executar aplicações de alta performance em qualquer escala.';
-	linkhelp = linkhelp + getLinkHelp('AWS DynamoDB', 'https://aws.amazon.com/pt/dynamodb/', valuelink);
-
-	valuelink = 'Ajuda você a migrar bancos de dados para a AWS de modo rápido e seguro.';
-	linkhelp = linkhelp + getLinkHelp('AWS DMS (Database Migration Service)', 'https://aws.amazon.com/pt/dms/', valuelink);
-
-	valuelink = 'O nível gratuito da AWS oferece aos clientes a capacidade de explorar e testar gratuitamente serviços da AWS até os limites especificados para cada serviço. O nível gratuito é composto por três tipos diferentes de ofertas: um nível gratuito de 12 meses, uma oferta Always Free e testes de curto prazo.';
-	linkhelp = linkhelp + getLinkHelp('É um modelo de uso dos produtos da AWS onde você não é cobrado', 'https://aws.amazon.com/pt/free/free-tier-faqs/', valuelink);
-
-	valuelink = 'O AWS WAF é um firewall de aplicações Web que ajuda a proteger suas aplicações Web ou APIs contra bots e exploits comuns na Web que podem afetar a disponibilidade, comprometer a segurança ou consumir recursos em excesso.';
-	linkhelp = linkhelp + getLinkHelp('É um serviço de firewall que protege suas aplicações', 'https://aws.amazon.com/pt/waf/#:~:text=O%20AWS%20WAF%20%C3%A9%20um%20firewall%20de%20aplica%C3%A7%C3%B5es,comprometer%20a%20seguran%C3%A7a%20ou%20consumir%20recursos%20em%20excesso.', valuelink);
-
-	valuelink = 'É um banco de dados de chave-valor NoSQL, sem servidor e totalmente gerenciado, projetado para executar aplicações de alta performance em qualquer escala.';
-	linkhelp = linkhelp + getLinkHelp('É uma camada de banco de dados NoSQL', 'https://aws.amazon.com/pt/dynamodb/', valuelink);
-
-	valuelink = 'Originalmente, open source é um termo que se refere ao software open source (OSS). Ele é um código projetado para ser acessado abertamente pelo público: todas as pessoas podem vê-lo, modificá-lo e distribuí-lo conforme suas necessidades.';
-	linkhelp = linkhelp + getLinkHelp('É um modelo open source para o desenvolvimento de aplicações em camadas', 'https://www.redhat.com/pt-br/topics/open-source/what-is-open-source', valuelink);
-
-	valuelink = 'Serviço que inclui uma etapa a mais no processo de autenticação de acesso à conta da AWS pela Web.';
-	linkhelp = linkhelp + getLinkHelp('AWS MFA (Autenticação Multi Fator)', 'https://aws.amazon.com/pt/dynamodb/', valuelink);
-
-	valuelink = 'É um conjunto de serviços de armazenamento na nuvem híbrida que oferece acesso on-premises para armazenamento virtual na nuvem praticamente ilimitado.';
-	linkhelp = linkhelp + getLinkHelp('AWS Storage Gateway', 'https://aws.amazon.com/pt/storagegateway/', valuelink);
-
-	valuelink = 'Define e lança recursos da AWS em uma rede virtual isolada logicamente. Oferece controle total sobre seu ambiente de redes virtual, incluindo posicionamento de recursos, conectividade e segurança.';
-	linkhelp = linkhelp + getLinkHelp('AWS VPC (Virtual Private Cloud)', 'https://aws.amazon.com/pt/vpc/', valuelink);
-
-	valuelink = 'É um sistema de arquivos simples e sem servidor para definição única. Não são objetos, exemplo: html, js, css.';
-	linkhelp = linkhelp + getLinkHelp('AWS EFS (Elastic File System)', 'https://aws.amazon.com/pt/dynamodb/', valuelink);
-
-	valuelink = 'Do Serviço S3 do mais caro(1) ao mais barato(8). <br/>1 Standard (custo mais alto) (padrão) <br/>2 Intelligent Tiering <br/>3 Standard-IA <br/>4 One Zone-IA <br/>5 Glacier Instant Retrieval <br/>6 Glacier Flexible <br/>7 Glacier Deep Archive <br/>8 Outposts';
-	linkhelp = linkhelp + getLinkHelp('Categorias de Armazenamento S3', 'https://aws.amazon.com/pt/s3/storage-classes/', valuelink);
-
-	valuelink = 'Banco de dados de chave-valor NoSQL totalmente gerenciado e sem servidor, projetado para executar aplicações de alta performance em qualquer escala.';
-	linkhelp = linkhelp + getLinkHelp('AWS DynamoDB', 'https://aws.amazon.com/pt/dynamodb/', valuelink);
-
-	valuelink = 'Ajuda você a migrar bancos de dados para a AWS de modo rápido e seguro.';
-	linkhelp = linkhelp + getLinkHelp('AWS DMS (Database Migration Service)', 'https://aws.amazon.com/pt/dms/', valuelink);
-
-	valuelink = 'É um serviço gerenciado que facilita a criação e o controle de chaves criptográficas usadas para proteger os dados. Para proteger e validar suas AWS KMS keys, o AWS KMS usa módulos de segurança de hardware (HSMs) de acordo com o Programa de validação de módulos criptográficos FIPS 140-2.';
-	linkhelp = linkhelp + getLinkHelp('AWS KMS (Key Management Service)', 'https://docs.aws.amazon.com/pt_br/kms/latest/developerguide/overview.html', valuelink);
-
-	valuelink = 'É um serviço que permite acessar, auditar e avaliar as configurações dos recursos da AWS. Você pode analisar alterações feitas nas configurações e relacionamentos entre os recursos da AWS, aprofundar-se de forma detalhada no histórico de configuração de recursos e determinar a conformidade geral em relação às configurações especificadas em suas diretrizes internas.';
-	linkhelp = linkhelp + getLinkHelp('AWS Config', 'https://aws.amazon.com/pt/config/', valuelink);
-
-	valuelink = 'É um serviço gerenciado na nuvem AWS com o qual é possível configurar, gerenciar e dimensionar uma solução de pesquisa para o seu site ou aplicativo de forma simples e econômica.';
-	linkhelp = linkhelp + getLinkHelp('AWS CloudSearch', 'https://aws.amazon.com/pt/cloudsearch/', valuelink);
-
-	valuelink = 'É uma plataforma de big data em nuvem usada para executar trabalhos de processamento de dados distribuídos em grande escala, consultas SQL interativas e aplicações de machine learning (ML) usando frameworks de análise de código aberto como Apache Spark, Apache Hive e Presto.';
-	linkhelp = linkhelp + getLinkHelp('AWS EMR (Amazon Elastic MapReduce)', 'https://aws.amazon.com/pt/emr/', valuelink);
-
-	valuelink = 'É um serviço de consultas interativas que facilita a análise de dados no Amazon S3 usando SQL padrão. O Athena não precisa de servidor. Portanto, não há infraestrutura para gerenciar e você paga apenas pelas consultas executadas. O Athena é fornecido já integrado ao AWS Glue Data Catalog, o que permite criar um repositório de metadados unificado em vários serviços.';
-	linkhelp = linkhelp + getLinkHelp('AWS Athena', 'https://aws.amazon.com/pt/athena/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc', valuelink);
-
-	valuelink = 'É um mecanismo distribuído de pesquisa e análise desenvolvido com base no Apache Lucene usado para casos de uso de análises de log. Foi introduzido o projeto OpenSearch que é uma bifurcação do Elasticsearch e Kibana de código aberto.';
-	linkhelp = linkhelp + getLinkHelp('AWS ElasticSearch', 'https://aws.amazon.com/pt/opensearch-service/the-elk-stack/what-is-elasticsearch/', valuelink);
-
-	valuelink = 'É um serviço de data warehouse em escala de petabytes totalmente gerenciado na nuvem. Permite usar os dados para adquirir novos insights para seus negócios e clientes.';
-	linkhelp = linkhelp + getLinkHelp('AWS RedShift', 'https://docs.aws.amazon.com/pt_br/redshift/latest/mgmt/welcome.html', valuelink);
-
-	valuelink = 'É um mecanismo de banco de dados relacional gerenciado compatível com o MySQL e o PostgreSQL. O Aurora pode oferecer até cinco vezes a taxa de processamento do MySQL e até três vezes a taxa de processamento do PostgreSQL, sem exigir alterações na maioria das aplicações existentes.';
-	linkhelp = linkhelp + getLinkHelp('AWS Aurora', 'https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html', valuelink);
-
-	valuelink = 'É um serviço gerenciado que fornece entrega de mensagens de editores para assinantes (também conhecido comoProdutoreseConsumidores). Os clientes podem se inscrever no tópico SNS e receber mensagens publicadas usando um tipo de endpoint compatível, como Amazon Kinesis Data Firehose, Amazon SQS,AWS Lambda, HTTP, e-mail, notificações push móveis e mensagens de texto móveis (SMS).';
-	linkhelp = linkhelp + getLinkHelp('Amazon SNS (Simple Notification Service)', 'https://aws.amazon.com/pt/sns/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc', valuelink);
-
-	valuelink = 'Oferece uma fila hospedada segura, durável e disponível que permite integrar e desacoplar sistemas de software e componentes distribuídos. O Amazon SQS oferece constructos comuns, como filas de mensagens mortas e tags de alocação de custos.';
-	linkhelp = linkhelp + getLinkHelp('Amazon SQS (Simple Queue Service)', 'https://aws.amazon.com/pt/sqs/', valuelink);
-
-	valuelink = 'É uma plataforma de e-mail que oferece uma forma fácil e econômica para você enviar e receber e-mail usando seus próprios endereços de e-mail e domínios.';
-	linkhelp = linkhelp + getLinkHelp('Amazon SES (Simple Email Service)', 'https://docs.aws.amazon.com/pt_br/ses/latest/dg/Welcome.html', valuelink);
-
-	valuelink = 'Rastreia atividades dos usuários e uso de APIs. O AWS CloudTrail monitora e registra a atividade da conta por toda a infraestrutura da AWS, oferecendo controle sobre o armazenamento, análise e ações de remediação.';
-	linkhelp = linkhelp + getLinkHelp('AWS CloudTrail', 'https://docs.aws.amazon.com/pt_br/awscloudtrail/latest/userguide/cloudtrail-user-guide.html', valuelink);
-
-	valuelink = 'O Lambda é um serviço de computação que permite que você execute o código sem provisionar ou gerenciar servidores. O Lambda executa seu código em uma infraestrutura de computação de alta disponibilidade e executa toda a administração dos recursos computacionais, inclusive a manutenção do servidor e do sistema operacional, o provisionamento e a escalabilidade automática da capacidade e o monitoramento e o registro em log do código.';
-	linkhelp = linkhelp + getLinkHelp('Pode ser acionado diretamente pelo AWS SNS', 'https://docs.aws.amazon.com/pt_br/lambda/latest/dg/welcome.html', valuelink);
-
-	valuelink = 'O Lambda é um serviço de computação que permite que você execute o código sem provisionar ou gerenciar servidores. O Lambda executa seu código em uma infraestrutura de computação de alta disponibilidade e executa toda a administração dos recursos computacionais, inclusive a manutenção do servidor e do sistema operacional, o provisionamento e a escalabilidade automática da capacidade e o monitoramento e o registro em log do código.';
-	linkhelp = linkhelp + getLinkHelp('Processa dados sem servidor', 'https://docs.aws.amazon.com/pt_br/lambda/latest/dg/welcome.html', valuelink);
-
-	valuelink = 'O Lambda é um serviço de computação que permite que você execute o código sem provisionar ou gerenciar servidores. O Lambda executa seu código em uma infraestrutura de computação de alta disponibilidade e executa toda a administração dos recursos computacionais, inclusive a manutenção do servidor e do sistema operacional, o provisionamento e a escalabilidade automática da capacidade e o monitoramento e o registro em log do código.';
-	linkhelp = linkhelp + getLinkHelp('Pode ser acionado diretamente pelo AWS S3', 'https://docs.aws.amazon.com/pt_br/lambda/latest/dg/welcome.html', valuelink);
-
-	valuelink = 'Não se refere ao Lambda na AWS.';
-	linkhelp = linkhelp + getLinkHelp('Permite o gerenciamento total dos recursos de infraestrutura', 'https://docs.aws.amazon.com/pt_br/lambda/latest/dg/welcome.html', valuelink);
-
-	valuelink = 'É um serviço gerenciado de proteção contra DDoS (Negação de serviço distribuída) que protege os aplicativos executados na AWS. O AWS Shield oferece de detecção e mitigações em linha automáticas e sempre ativas que minimizam o tempo de inatividade e a latência dos aplicativos, fornecendo proteção contra DDoS sem necessidade de envolver o AWS Support. O AWS Shield tem dois níveis, Standard e Advanced.';
-	linkhelp = linkhelp + getLinkHelp('AWS Shield', 'https://aws.amazon.com/pt/shield/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc', valuelink);
-
-	valuelink = 'É um firewall de aplicações Web que ajuda a proteger suas aplicações Web ou APIs contra bots e exploits comuns na Web que podem afetar a disponibilidade, comprometer a segurança ou consumir recursos em excesso. O AWS WAF oferece controle sobre como o tráfego atinge suas aplicações, permitindo que você crie regras de segurança que controlam o tráfego de bots e bloqueiam padrões de ataque comuns, como injeção de SQL ou cross-site scripting.';
-	linkhelp = linkhelp + getLinkHelp('AWS WAF', 'https://aws.amazon.com/pt/waf/', valuelink);
-
-	valuelink = 'Um grupo de segurança atua como firewall virtual para as instâncias do EC2 visando controlar o tráfego de entrada e de saída.';
-	linkhelp = linkhelp + getLinkHelp('AWS Security Group', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/ec2-security-groups.html', valuelink);
-
-	valuelink = 'É um serviço de detecção de ameaças que monitora continuamente suas contas e workloads da AWS para detectar atividade maliciosa e entrega resultados de segurança detalhados para visibilidade e correção.';
-	linkhelp = linkhelp + getLinkHelp('AWS GuardDuty', 'https://aws.amazon.com/pt/guardduty/', valuelink);
-
-	valuelink = 'A MFA agrega mais segurança porque requer dos usuários fornecer autenticação exclusiva de um mecanismo de MFA com suporte da AWS, além das suas credenciais de login regular ao acessarem sites ou serviços da AWS.';
-	linkhelp = linkhelp + getLinkHelp('Um serviço que inclui uma etapa a mais no processo de autenticação de acesso à conta da AWS pela Web', 'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_credentials_mfa.html', valuelink);
-
-	valuelink = 'O Amazon DynamoDB é um banco de dados de chave-valor NoSQL, sem servidor e totalmente gerenciado, projetado para executar aplicações de alta performance em qualquer escala.';
-	linkhelp = linkhelp + getLinkHelp('Um serviço para conectar instâncias EC2 no banco de dados DynamoDB', 'https://aws.amazon.com/pt/dynamodb/', valuelink);
-
-	valuelink = 'AWS Security Token Service (STS) oferece suporte à habilitação do endpoint global do STS para emissão de tokens de sessão compatíveis com todas as regiões da AWS.';
-	linkhelp = linkhelp + getLinkHelp('Um serviço que permite uso de tokens em aplicações web e mobile', 'https://aws.amazon.com/pt/about-aws/whats-new/2019/04/aws-security-token-service-sts-now-supports-enabling-the-global-sts-endpoint-to-issue-session-tokens-compatible-with-all-aws-regions/', valuelink);
-
-	valuelink = 'Um par de chaves, que consiste em uma chave pública e uma chave privada, trata-se de um conjunto de credenciais de segurança usadas para provar sua identidade ao se conectar a uma instância do Amazon EC2.';
-	linkhelp = linkhelp + getLinkHelp('Um serviço que permite fazer acesso SSH em instâncias EC2', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/ec2-key-pairs.html', valuelink);
-
-	valuelink = 'Opção padrão (default) de armazenamento de objetos com altos níveis de resiliência, disponibilidade e performance para dados acessados com frequência. Tem baixa latência e alto throughput. <br/> 1 Standard (padrão), <br/> 2 Intelligent Tiering, <br/> 3 Standard-IA, <br/> 4 One Zone-IA, <br/> 5 Glacier Instant Retrieval, <br/> 6 Glacier Flexible, <br/> 7 Glacier Deep Archive, <br/> 8 Outposts.';
-	linkhelp = linkhelp + getLinkHelp('Standard', 'https://aws.amazon.com/pt/s3/storage-classes/', valuelink);
-
-	valuelink = 'A S3 Intelligent-Tiering (camada inteligente) oferece latência de milissegundos e alta performance de taxa de transferência para dados acessados com muita frequência, com pouca frequência e raramente acessados nos níveis Frequent Access, Infrequent Access e o Archive Instant Access.';
-	linkhelp = linkhelp + getLinkHelp('Frequent Access', 'https://aws.amazon.com/pt/s3/storage-classes/', valuelink);
-
-	valuelink = 'Acesso infrequente do S3 Standard-IA é indicado para dados acessados com menos frequência, mas que exigem acesso rápido quando necessários. Oferece os altos níveis de resiliência e throughput e a baixa latência. Combina baixo custo e alta performance.';
-	linkhelp = linkhelp + getLinkHelp('Infrequent Access', 'https://aws.amazon.com/pt/s3/storage-classes/', valuelink);
-
-	valuelink = 'É uma classe de armazenamento do Amazon S3 segura, durável e de custo extremamente baixo para arquivamento de dados e backup de longo prazo.';
-	linkhelp = linkhelp + getLinkHelp('Glacier', 'https://docs.aws.amazon.com/pt_br/amazonglacier/latest/dev/introduction.html', valuelink);
-
-	valuelink = 'Um conceito para traçar gráficos de funções matemáticas e outras curvas de natureza similar, em um sistema de coordenadas.';
-	linkhelp = linkhelp + getLinkHelp('Amazon Graph', 'https://www.padowan.dk/doc/portuguese/Introduction.html', valuelink);
-
-	valuelink = 'É um serviço de banco de dados de grafos rápido, confiável e totalmente gerenciado que facilita a criação e a execução de aplicativos na AWS. O núcleo do Neptune é um mecanismo de banco de dados gráfico com projeto específico e alta performance.';
-	linkhelp = linkhelp + getLinkHelp('Amazon Neptune', 'https://aws.amazon.com/pt/neptune/', valuelink);
-
-	valuelink = 'Trabalha com a AWS (partner). Capacita desenvolvedores e cientistas de dados a criar rapidamente aplicativos escaláveis ​​e orientados por IA ou analisar big data com algoritmos. Como um banco de dados gráfico nativo criado para armazenar dados e conectar os relacionamentos, o Neo4j permite insights rápidos e profundamente contextuais.';
-	linkhelp = linkhelp + getLinkHelp('Amazon Neo4j', 'https://neo4j.com/partners/amazon/', valuelink);
-
-	valuelink = 'Trabalha com a AWS (partner). É um banco de dados (open source) gráfico escalável otimizado para armazenar e consultar gráficos contendo centenas de bilhões de vértices e arestas distribuídos em um cluster de várias máquinas.';
-	linkhelp = linkhelp + getLinkHelp('Amazon JanusGraph', 'https://janusgraph.org/', valuelink);
-
-	valuelink = 'O Docker é uma plataforma de software que permite a criação, o teste e a implantação de aplicações rapidamente. O Docker permite executar o código de maneira padronizada. O Docker é um sistema operacional para contêineres. Da mesma maneira que uma máquina virtual virtualiza.';
-	linkhelp = linkhelp + getLinkHelp('Docker', 'https://aws.amazon.com/pt/docker/', valuelink);
-
-	valuelink = 'É um serviço de gerenciamento de configurações que oferece instâncias gerenciadas do Chef e do Puppet. O Chef e o Puppet são plataformas de automação que permitem usar código para automatizar a configuração de servidores. Ele permite usar o Chef e o Puppet para automatizar a forma como os servidores são configurados, implantados e gerenciados em instâncias do Amazon EC2 ou ambientes de computação no local.';
-	linkhelp = linkhelp + getLinkHelp('AWS OpsWorks', 'https://aws.amazon.com/pt/opsworks/', valuelink);
-
-	valuelink = 'É um catálogo digital que facilita encontrar, testar, comprar e implantar software pronto de terceiros que podem ser executados no AWS.';
-	linkhelp = linkhelp + getLinkHelp('AWS Marketplace', 'https://aws.amazon.com/pt/mp/marketplace-service/overview/', valuelink);
-
-	valuelink = 'Uma Imagem de Máquina da Amazon (AMI) é uma imagem suportada e mantida pela AWS que fornece as informações necessárias para iniciar uma instância.';
-	linkhelp = linkhelp + getLinkHelp('AWS AMI', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/AMIs.html', valuelink);
-
-	valuelink = 'O AWS Support oferece cinco planos de suporte: <br/>Basic <br/>Desenvolvedor <br/>Business <br/>Enterprise On-Ramp <br/>Enterprise <br/>Todos os planos de suporte oferecem acesso 24 horas por dia, 7 dias por semana ao atendimento ao cliente, à documentação da AWS, aos whitepapers e aos fóruns de suporte.';
-	linkhelp = linkhelp + getLinkHelp('Basic, Developer, Business, Enterprise On-Ramp, Enterprise', 'https://docs.aws.amazon.com/pt_br/awssupport/latest/user/getting-started.html', valuelink);
-
-	valuelink = 'Nenhuma dessas opções existem nos cinco planos de suporte do AWS Support.';
-	linkhelp = linkhelp + getLinkHelp('Bronze, Silver, Gold, Diamond, Ruby', 'https://docs.aws.amazon.com/pt_br/awssupport/latest/user/getting-started.html', valuelink);
-
-	valuelink = 'Não existe Advanced nos cinco planos de suporte do AWS Support.';
-	linkhelp = linkhelp + getLinkHelp('Basic, Developer, Business, Advanced, Enterprise On-Ramp', 'https://docs.aws.amazon.com/pt_br/awssupport/latest/user/getting-started.html', valuelink);
-
-	valuelink = 'Não existe Standard nos cinco planos de suporte do AWS Support.';
-	linkhelp = linkhelp + getLinkHelp('Standard, Developer, Business, Enterprise, Enterprise On-Ramp', 'https://docs.aws.amazon.com/pt_br/awssupport/latest/user/getting-started.html', valuelink);
-
-	valuelink = 'O Amazon RDS permite que você coloque recursos, como instâncias de banco de dados, e dados em vários locais diferentes, minimizando o tempo de inatividade e a perda de dados com recuperação rápida e confiável de aplicações com DR (Disaster Recovery). Se você hospeda todas as instâncias de banco de dados em um único local afetado por tal falha, nenhuma delas estará disponível quando ocorrer um desastre.';
-	linkhelp = linkhelp + getLinkHelp('Multi Regions (Distribuir em regiões diferentes)', 'https://aws.amazon.com/rds/features/read-replicas/', valuelink);
-
-	valuelink = 'Implantações Multi-AZ para alta disponibilidade, o Amazon RDS cria automaticamente uma instância de banco de dados (BD) primária e replica de forma síncrona os dados para uma instância em uma AZ diferente. Quando detecta uma falha, o Amazon RDS executa automaticamente o failover para uma instância secundária sem nenhuma intervenção manual.';
-	linkhelp = linkhelp + getLinkHelp('Multi A-Z (Distribuir em zonas de disponibilidade diferentes)', 'https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html', valuelink);
-
-	valuelink = 'As Réplicas de leitura do Amazon RDS facilitam a escalabilidade de maneira elástica além dos limites de capacidade de uma única instância de DB para cargas de trabalho de banco de dados com uso intenso de leitura. complementam as implantações Multi-AZ. Embora ambos os recursos mantenham uma segunda cópia dos dados, há diferenças entre os dois.';
-	linkhelp = linkhelp + getLinkHelp('Read Replicas (Fazer cópias de leitura)', 'https://aws.amazon.com/pt/rds/features/read-replicas/', valuelink);
-
-	valuelink = 'Veja a tabela comparando as três estratégias no link.';
-	linkhelp = linkhelp + getLinkHelp('Implementar uma cópia do banco numa instância EC2', 'https://aws.amazon.com/rds/features/read-replicas/', valuelink);
-
-	valuelink = 'O AWS Identity and Access Management (IAM) fornece controle de acesso refinado em toda a AWS. Com o IAM, é possível especificar quem pode acessar quais serviços e recursos e em que condições. Com as políticas do IAM, você gerencia permissões para seu quadro de funcionários e sistemas para garantir permissões com privilégios mínimos.';
-	linkhelp = linkhelp + getLinkHelp('AWS IAM', 'https://aws.amazon.com/pt/iam/', valuelink);
-
-	valuelink = 'O AWS Identity and Access Management (IAM) fornece controle de acesso refinado em toda a AWS. Com o IAM, é possível especificar quem pode acessar quais serviços e recursos e em que condições. Com as políticas do IAM, você gerencia permissões para seu quadro de funcionários e sistemas para garantir permissões com privilégios mínimos.';
-	linkhelp = linkhelp + getLinkHelp('AWS Administrator', 'https://aws.amazon.com/pt/iam/', valuelink);
-
-	valuelink = 'Ao criar uma conta da Amazon Web Services (AWS) pela primeira vez, você começa com uma única identidade que tem acesso total a todos os produtos e recursos da AWS na conta. Essa identidade é chamada de usuário root da conta da AWS. Recomendamos que não use o usuário raiz para suas tarefas do dia a dia, nem mesmo as administrativas.';
-	linkhelp = linkhelp + getLinkHelp('AWS account root user', 'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_root-user.html', valuelink);
-
-	valuelink = 'O AWS Identity and Access Management (IAM) fornece controle de acesso refinado em toda a AWS. Com o IAM, é possível especificar quem pode acessar quais serviços e recursos e em que condições. Com as políticas do IAM, você gerencia permissões para seu quadro de funcionários e sistemas para garantir permissões com privilégios mínimos.';
-	linkhelp = linkhelp + getLinkHelp('AWS full user', 'https://aws.amazon.com/pt/iam/', valuelink);
-
-	valuelink = 'Um load balancer aceita o tráfego de entrada de clientes e roteia solicitações para seus destinos registrados (como instâncias do EC2) em uma ou mais Zonas de disponibilidade.';
-	linkhelp = linkhelp + getLinkHelp('Distribui o tráfego de entrada entre instâncias em diferentes regiões', 'https://docs.aws.amazon.com/pt_br/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html', valuelink);
-
-	valuelink = 'Uma instância é um servidor virtual na Nuvem AWS. Com o Amazon EC2 você pode definir e configurar o sistema operacional e as aplicações que são executadas em sua instância.';
-	linkhelp = linkhelp + getLinkHelp('Instancia uma nova máquina quando uma das máquinas apresenta falha', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html', valuelink);
-
-	valuelink = 'Um load balancer aceita o tráfego de entrada de clientes e roteia solicitações para seus destinos registrados (como instâncias do EC2) em uma ou mais Zonas de disponibilidade.';
-	linkhelp = linkhelp + getLinkHelp('Distribui o tráfego de entrada entre suas instâncias', 'https://docs.aws.amazon.com/pt_br/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html', valuelink);
-
-	valuelink = 'Um cluster do Amazon ECS é um agrupamento lógico de tarefas ou serviços.';
-	linkhelp = linkhelp + getLinkHelp('Cria um cluster de máquinas dentro da mesma zona de disponibilidade', 'https://docs.aws.amazon.com/pt_br/AmazonECS/latest/userguide/clusters.html', valuelink);
-
-	valuelink = 'É um serviço de contêiner gerenciado para executar e escalar aplicações do Kubernetes na nuvem ou on-premises.';
-	linkhelp = linkhelp + getLinkHelp('Amazon EKS (Elastic Kubernetes Service)', 'https://aws.amazon.com/pt/eks/', valuelink);
-
-	valuelink = 'É um serviço de gerenciamento de contêineres altamente rápido e escalável. Você pode usá-lo para executar, interromper e gerenciar contêineres em um cluster.';
-	linkhelp = linkhelp + getLinkHelp('Amazon ECS (Elastic Container Service)', 'https://docs.aws.amazon.com/pt_br/AmazonECS/latest/developerguide/Welcome.html', valuelink);
-
-	valuelink = 'É um registro de contêiner totalmente gerenciado que oferece hospedagem de alta performance para que você possa implantar imagens e artefatos de aplicações de forma confiável em qualquer lugar.';
-	linkhelp = linkhelp + getLinkHelp('Amazon ECR (Elastic Container Registry)', 'https://aws.amazon.com/pt/ecr/', valuelink);
-
-	valuelink = 'É uma tecnologia que pode ser usada com o Amazon ECS para executar contêineres sem a necessidade de gerenciar servidores ou clusters de instâncias do Amazon EC2. Com o AWS Fargate, não é mais necessário provisionar, configurar nem dimensionar os clusters de máquinas virtuais para executar contêineres. Isso elimina a necessidade de escolher tipos de servidor, decidir quando dimensionar clusters ou otimizar o agrupamento de clusters.';
-	linkhelp = linkhelp + getLinkHelp('Fargate', 'https://docs.aws.amazon.com/pt_br/AmazonECS/latest/developerguide/AWS_Fargate.html', valuelink);
-
-	valuelink = 'O Amazon Cognito Sync é um serviço da AWS e uma biblioteca de clientes que permite a sincronização dos dados de usuários relacionados a aplicações entre dispositivos.';
-	linkhelp = linkhelp + getLinkHelp('Amazon EventSync', 'https://docs.aws.amazon.com/pt_br/cognito/latest/developerguide/getting-started-with-cognito-sync.html', valuelink);
-
-	valuelink = 'O Lambda é um serviço de computação que permite que você execute o código sem provisionar ou gerenciar servidores. O Lambda executa seu código em uma infraestrutura de computação de alta disponibilidade e executa toda a administração dos recursos computacionais.';
-	linkhelp = linkhelp + getLinkHelp('Amazon Lambda', 'https://aws.amazon.com/pt/lambda/features/', valuelink);
-
-	valuelink = 'O Amazon EventBridge é um barramento de eventos sem servidor que torna mais fácil a criação de aplicações orientadas por eventos em escala usando eventos gerados com base em suas aplicações, aplicações integradas de software como serviço (SaaS) e serviços da AWS.';
-	linkhelp = linkhelp + getLinkHelp('Amazon EventBridge', 'https://aws.amazon.com/pt/eventbridge/', valuelink);
-
-	valuelink = 'É um banco de dados relacional de código aberto conhecido no mercado, que foi criado pelos desenvolvedores originais do MySQL. O Amazon RDS facilita a configuração, a operação e a escalabilidade de implantações do servidor MariaDB na nuvem.';
-	linkhelp = linkhelp + getLinkHelp('MariaDb', 'https://aws.amazon.com/pt/rds/mariadb/', valuelink);
-
-	valuelink = 'O Amazon EC2 Auto Scaling ajuda a manter a disponibilidade das aplicações e permite adicionar ou remover instâncias do EC2 automaticamente de acordo com as condições que você definir.';
-	linkhelp = linkhelp + getLinkHelp('EC2 Auto Scaling', 'https://aws.amazon.com/pt/ec2/autoscaling/', valuelink);
-
-	valuelink = 'O Amazon Route 53 é um web service Domain Name System (DNS) na nuvem altamente disponível e escalável.';
-	linkhelp = linkhelp + getLinkHelp('Route53', 'https://aws.amazon.com/pt/route53/', valuelink);
-
-	valuelink = 'Distribui automaticamente o tráfego de aplicações de entrada entre vários destinos e dispositivos virtuais em uma ou mais Zonas de disponibilidade (AZs).';
-	linkhelp = linkhelp + getLinkHelp('ELB (Elastic Load Balancing)', 'https://aws.amazon.com/pt/elasticloadbalancing/', valuelink);
-
-	valuelink = 'Um Host Dedicado do Amazon EC2 é um servidor físico com capacidade de instância do EC2 totalmente dedicado para seu uso. Os hosts dedicados permitem que você use suas licenças de software existentes por soquete, por núcleo ou por VM, incluindo o Windows Server, o Microsoft SQL Server, o SUSE e o Linux Enterprise Server.';
-	linkhelp = linkhelp + getLinkHelp('AWS Dedicted Hosts', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html', valuelink);
-
-	valuelink = 'AWS Reserved não existe na AWS. Existe Reserved Instances. As instâncias reservadas não são instâncias físicas, mas um desconto na fatura aplicado na sua conta pelo uso de instâncias sob demanda.';
-	linkhelp = linkhelp + getLinkHelp('AWS Reserved', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/ec2-reserved-instances.html', valuelink);
-
-	valuelink = 'AWS Gateway não existe na AWS. Existe o Amazon API Gateway é um serviço gerenciado que permite que desenvolvedores criem, publiquem, mantenham, monitorem e protejam APIs em qualquer escala com facilidade.';
-	linkhelp = linkhelp + getLinkHelp('AWS Gateway', 'https://aws.amazon.com/pt/api-gateway/', valuelink);
-
-	valuelink = 'O Amazon Inspector é um serviço automatizado de gerenciamento de vulnerabilidade que verifica continuamente as workloads da AWS em busca de vulnerabilidades de software e exposição não intencional à rede.';
-	linkhelp = linkhelp + getLinkHelp('AWS Inspector', 'https://aws.amazon.com/pt/inspector/', valuelink);
-
-	valuelink = 'Avalia a sua conta por meio de verificações. Essas verificações identificam formas de otimizar sua infraestrutura da AWS, aumentar a segurança e o desempenho, reduzir os custos gerais e monitorar as cotas do serviço. <br/>Benefícios: <br/>Otimização de custos <br/>Performance <br/>Segurança <br/>Tolerância a falhas <br/>Cotas de serviço';
-	linkhelp = linkhelp + getLinkHelp('AWS Trusted Advisor', 'https://aws.amazon.com/pt/premiumsupport/technology/trusted-advisor/', valuelink);
-
-	valuelink = 'Os pilares são: <br/>Excelência operacional, <br/>Segurança, <br/>Confiabilidade, <br/>Eficiência de desempenho, <br/>Otimização de custos, <br/>Sustentabilidade';
-	linkhelp = linkhelp + getLinkHelp('Segurança', 'https://wa.aws.amazon.com/wat.pillars.wa-pillars.pt_BR.html', valuelink);
-
-	valuelink = 'Os pilares são: <br/>Excelência operacional, <br/>Segurança, <br/>Confiabilidade, <br/>Eficiência de desempenho, <br/>Otimização de custos, <br/>Sustentabilidade';
-	linkhelp = linkhelp + getLinkHelp('Excelência Operacional', 'https://wa.aws.amazon.com/wat.pillars.wa-pillars.pt_BR.html', valuelink);
-
-//a próxima é a 27 do arquivo file:///C:/DataShow/sim/sim1.html
-	valuelink = '';
-	linkhelp = linkhelp + getLinkHelp('', '', valuelink);
-
-	valuelink = '';
-	linkhelp = linkhelp + getLinkHelp('', '', valuelink);
-
-	valuelink = '';
-	linkhelp = linkhelp + getLinkHelp('', '', valuelink);
-
-	valuelink = '';
-	linkhelp = linkhelp + getLinkHelp('', '', valuelink);
-
-	valuelink = '';
-	linkhelp = linkhelp + getLinkHelp('', '', valuelink);
-
-	valuelink = '';
-	linkhelp = linkhelp + getLinkHelp('', '', valuelink);
-
-	valuelink = '';
-	linkhelp = linkhelp + getLinkHelp('', '', valuelink);
-
-	valuelink = '';
-	linkhelp = linkhelp + getLinkHelp('', '', valuelink);
-
-	valuelink = '';
-	linkhelp = linkhelp + getLinkHelp('', '', valuelink);
-
-	valuelink = '';
-	linkhelp = linkhelp + getLinkHelp('', '', valuelink);
-
-	valuelink = '';
-	linkhelp = linkhelp + getLinkHelp('', '', valuelink);
-
-	valuelink = '';
-	linkhelp = linkhelp + getLinkHelp('', '', valuelink);
-
-	valuelink = '';
-	linkhelp = linkhelp + getLinkHelp('', '', valuelink);
-
-	valuelink = '';
-	linkhelp = linkhelp + getLinkHelp('', '', valuelink);
-
-	linkhelp = linkhelp + '<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>';
+	var students = await jsstoreCon.select({
+		from: 'Student'
+		  , where: { mygroup: {like: '00' + ''} 
+		  }
+	});
+
+	var linkhelp = '<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/> <b>MINHA AJUDA</b> <br/><br/>';
+	students.forEach(function (student) {
+		linkhelp = linkhelp + getLinkHelp(student.mytext, student.myoption2, student.myoption1); //mytext=key, myoption2=href, myoption1=texto
+	})
+	linkhelp = linkhelp + '<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>';
 	
 	document.getElementById('divlinkhelp').innerHTML = linkhelp;
 }
