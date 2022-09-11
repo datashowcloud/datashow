@@ -958,9 +958,9 @@ async function searchSimples() {
 }
 
 function onLoadConfig() {
-	loadCombobox('mygroup', '0', '4', 'Teste');
-	loadCombobox('mycode', '0', '65', 'Número');
-	loadCombobox('myorder', '0', '65', 'Ordem');
+	loadCombobox('mygroup', '0', '200', 'Teste');
+	loadCombobox('mycode', '0', '200', 'Número');
+	loadCombobox('myorder', '0', '200', 'Ordem');
 	confirmImport('contents1', '0');
 	importConfigZero();
 }
@@ -1086,7 +1086,7 @@ async function salvarRegistro(mygroup, mycode, myorder, mytext) {
 	setStudentFromImport(mygroup, mycode, myorder, question, array[0], array[1], array[2], array[3], array[4], array[5], array[6], array[7], array[8], array[9], array[10], array[11], array[12], array[13], array[14], array[15]);
 	var studentId = $('form').attr('data-student-id');
 	addStudentImportConfig(studentId, mygroup, mycode);
-	setTimeout(() => { updateStudentPlayOrder(mygroup) }, 1000); // Executa após 5 segundos para esperar o processo de insert terminar
+//	setTimeout(() => { updateStudentPlayOrder(mygroup) }, 1000); // Executa após 5 segundos para esperar o processo de insert terminar
 }
 
 //This function confirm import
@@ -1558,8 +1558,8 @@ function getStudentFromForm(studentId, mygroup, mycode) {
 	mycodeFormated = mycodeFormated.substring(mycodeFormated.length-3, mycodeFormated.length);
 
 	var mygroup = document.getElementById('mygroupSim').value;
-	setTimeout(() => { updateStudentPlayOrder(mygroup) }, 1000); // Executa após 5 segundos para esperar o processo de insert terminar
-//alert('$(#mygroup).val() = ' + $('#mygroup').val() );
+	
+	setTimeout(() => { updateStudentPlayOrder($('#mygroup').val()) }, 1000); // Executa após 5 segundos para esperar o processo de insert terminar
 	var student = {
         id: Number(studentId),
         mycode: $('#mycode').val(),
