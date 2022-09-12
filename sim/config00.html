@@ -331,10 +331,10 @@ AWS DynamoDB é um banco de dados de chave-valor NoSQL, sem servidor e totalment
 https://aws.amazon.com/pt/dynamodb/
 
 <p>
-MariaDb
+MariaDB
 
 <ok>
-MariaDb é um banco de dados relacional de código aberto conhecido no mercado, que foi criado pelos desenvolvedores originais do MySQL. O Amazon RDS facilita a configuração, a operação e a escalabilidade de implantações do servidor MariaDB na nuvem.
+MariaDB é um banco de dados relacional de código aberto conhecido no mercado, que foi criado pelos desenvolvedores originais do MySQL. O Amazon RDS facilita a configuração, a operação e a escalabilidade de implantações do servidor MariaDB na nuvem.
 
 <ok>
 https://aws.amazon.com/pt/rds/mariadb/
@@ -714,10 +714,10 @@ Multi Regions (Distribuir em regiões diferentes), os recursos de computação e
 https://aws.amazon.com/pt/solutions/implementations/multi-region-application-architecture/
 
 <p>
-Multi A-Z
+Multi-AZ
 
 <ok>
-Implantações Multi-AZ para alta disponibilidade, o Amazon RDS cria automaticamente uma instância de banco de dados (BD) primária e replica de forma síncrona os dados para uma instância em uma AZ diferente. Quando detecta uma falha, o Amazon RDS executa automaticamente o failover para uma instância secundária sem nenhuma intervenção manual.
+Em uma implantação Multi-AZ, o Amazon RDS cria automaticamente uma instância de banco de dados (BD) primária e replica de forma síncrona os dados para uma instância em uma AZ diferente. Quando detecta uma falha, o Amazon RDS executa automaticamente o failover para uma instância secundária sem nenhuma intervenção manual.
 
 <ok>
 https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html
@@ -766,6 +766,15 @@ Amazon ECS (Elastic Container Service) é um serviço de gerenciamento de contê
 
 <ok>
 https://docs.aws.amazon.com/pt_br/AmazonECS/latest/developerguide/Welcome.html
+
+<p>
+Refatoração
+
+<ok>
+A refatoração é uma forma disciplinada de reestruturar o código quando pequenas mudanças são feitas nele para melhorar o design. Ao usar o Refactor Spaces, os clientes se concentram na refatoração das suas aplicações, e não na criação e no gerenciamento da infraestrutura subjacente que torna a refatoração possível.
+
+<ok>
+https://aws.amazon.com/pt/getting-started/hands-on/break-monolith-app-microservices-ecs-docker-ec2/module-one/" target="_blank">link estudar mais na internet</a>) (<a href="https://aws.amazon.com/pt/about-aws/whats-new/2022/02/aws-migration-hub-refactor-spaces-available/#:~:text=O%20AWS%20Migration%20Hub%20Refactor,que%20torna%20a%20refatora%C3%A7%C3%A3o%20poss%C3%ADvel
 
 <p>
 ECR
@@ -1089,6 +1098,15 @@ EBS (Amazon Elastic Block Store) é um serviço de armazenamento em blocos fáci
 https://aws.amazon.com/pt/ebs/
 
 <p>
+EBS Snapshots
+
+<ok>
+EBS Snapshots são backups incrementais, o que significa que somente os blocos no dispositivo que tiverem mudado depois do snapshot mais recente serão salvos. Isso minimiza o tempo necessário para criar o snapshot e economiza em custos de armazenamento ao não duplicar os dados.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/EBSSnapshots.html
+
+<p>
 Git
 
 <ok>
@@ -1146,6 +1164,96 @@ Direct Connect vincula sua rede interna a um local do AWS Direct Connect usando 
 https://docs.aws.amazon.com/pt_br/directconnect/latest/UserGuide/Welcome.html
 
 <p>
+WorkSpaces
+
+<ok>
+O Amazon Workspaces é um serviço de virtualização de desktop totalmente gerenciado para Windows e Linux que habilita o acesso a recursos a partir de qualquer dispositivo compatível.
+
+<ok>
+https://aws.amazon.com/pt/workspaces/#:~:text=O%20Amazon%20Workspaces%20%C3%A9%20um,partir%20de%20qualquer%20dispositivo%20compat%C3%ADvel
+
+<p>
+CLI
+
+<ok>
+CLI (AWS Command Line Interface) é uma ferramenta de código aberto que permite interagir com os serviços da AWS usando comandos no shell da linha de comando.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/cli/latest/userguide/cli-chap-welcome.html
+
+<p>
+X-Ray
+
+<ok>
+AWS X-Ray ajuda desenvolvedores a analisar e depurar aplicações distribuídas de produção, como as criadas usando uma arquitetura de microsserviços. Com o X-Ray, é possível entender a performance de aplicativos e de seus serviços subjacentes para identificar e solucionar problemas e erros de performance.
+
+<ok>
+https://aws.amazon.com/pt/xray/
+
+<p>
+Certificate Manager
+
+<ok>
+Certificate Manager é um serviço que permite provisionar, gerenciar e implantar facilmente certificados Secure Sockets Layer (SSL)/Transport Layer Security (TLS) para uso com os serviços da AWS e os recursos internos conectados.
+
+<ok>
+https://aws.amazon.com/pt/certificate-manager/#:~:text=O%20AWS%20Certificate%20Manager%20%C3%A9,e%20os%20recursos%20internos%20conectados
+
+<p>
+Kinesis
+
+<ok>
+Amazon Kinesis Data Streams é um serviço escalável e durável de streaming de dados em tempo real capaz de capturar continuamente gigabytes de dados por segundo de centenas de milhares de fontes. 
+
+<ok>
+https://aws.amazon.com/pt/kinesis/#:~:text=O%20Amazon%20Kinesis%20Data%20Streams,centenas%20de%20milhares%20de%20fontes
+
+<p>
+Batch
+
+<ok>
+AWS Batch planeja, programa e executa suas cargas de trabalho de computação em lote em toda a linha de recursos e produtos de computação da AWS, como AWS Fargate, Amazon EC2 e instâncias spot.
+
+<ok>
+https://aws.amazon.com/pt/batch/?nc2=h_ql_prod_cp_ba
+
+<p>
+Elastic Beanstalk
+
+<ok>
+AWS Elastic Beanstalk é um serviço de fácil utilização para implantação e escalabilidade de aplicações e serviços da web desenvolvidos com Java, .NET, PHP, Node.js, Python, Ruby, Go e Docker em servidores familiares como Apache, Nginx, Passenger e IIS.
+
+<ok>
+https://aws.amazon.com/pt/elasticbeanstalk/
+
+<p>
+Lifecycle
+
+<ok>
+Lifecycle, uma configuração do S3 Lifecycle é um arquivo XML que consiste em um conjunto de regras com ações predefinidas que você deseja que o Amazon S3 execute em objetos durante sua vida útil.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/object-lifecycle-mgmt.html
+
+<p>
+CloudFormation
+
+<ok>
+Permite modelar, provisionar e gerenciar recursos da AWS e de terceiros ao tratar a infraestrutura como código.
+
+<ok>
+https://aws.amazon.com/pt/cloudformation/
+
+<p>
+Shared Responsability
+
+<ok>
+A AWS é responsável por proteger a infraestrutura que executa todos os serviços oferecidos na Nuvem AWS. Essa infraestrutura é composta por hardware, software, redes e instalações que executam os Serviços de nuvem AWS.
+
+<ok>
+https://aws.amazon.com/pt/compliance/shared-responsibility-model/#:~:text=Responsabilidade%20da%20AWS%3A%20%E2%80%9Cseguran%C3%A7a%20da,os%20Servi%C3%A7os%20de%20nuvem%20AWS
+
+<p>
 
 </textarea>
 
@@ -1160,7 +1268,7 @@ https://docs.aws.amazon.com/pt_br/directconnect/latest/UserGuide/Welcome.html
 //////////////////////////////////
 //////////////////////////////////
 //////////////////////////////////
-//continua na 41. do sim1,html ///
+//continua na 57. do sim1,html ///
 //////////////////////////////////
 //////////////////////////////////
 //////////////////////////////////

@@ -481,6 +481,7 @@ async function showPoints(mygroup, mycode) {
 	var calculo = (totalCorretas*100) / totalperguntas;
 	calculo = calculo.toFixed(0);
 	var resultado = '';
+	resultado = resultado + 'Id: ' + mygroup;
 	resultado = resultado + totalIncorretas + ' erradas ';//+ erradas;
 	resultado = resultado + '\n\n' + totalCorretas + ' corretas';
 	resultado = resultado + '\n\n' + totalNaoRespondidas + ' não respondidas ';// + responder;
