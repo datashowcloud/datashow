@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Configuração Sim</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/bootstrap.css" />
+    <link rel="stylesheet" href="style/font-awesome.min.css" />
+    <script src="scripts/jsstore.js"></script>
+    <script src="scripts/jsstore.worker.js"></script>
+    <script src="index.js"></script>
+	<style>
+#myBody {
+  border: 0px dashed blue;
+  padding: 25px;
+  background-attachment: fixed;
+  background-position: top; 
+  background-repeat: no-repeat;
+} 
+	</style>
+</head>
+
+<body id="myBody" ZZZbackground="gallery/paper.jpeg">
+
+        
+		
+		<div class="col-xs-12 col-sm-10 col-centered ">
+			<div style="display:'none'; text-align:center; ">
+				<!-- br/>Aguarde o resultado na janela da configuração -->
+				<br/><a href="#" onclick="window.close();"><button id="btnConfigBookClose" class="btn btn-info" style="padding:9px 15px 9px 15px;">Feche Esta Janela Após 10 segundos</button></a>
+				
+				<select id="selectMygroup" name="selectMygroup" style="height:34px; display:none;">
+					<option value="00" selected>Configurações</option>
+					<option value="10">Teste v1.0</option>
+					<option value="11">Teste v1.1</option>
+					<option value="12">Teste v1.2</option>
+					<option value="13">Teste v1.3</option>
+					<option value="20">Teste v2.0</option>
+					<option value="21">Teste v2.1</option>
+					<option value="22">Teste v2.2</option>
+					<option value="23">Teste v2.3</option>
+					<option value="30">Teste v3.0</option>
+					<option value="31">Teste v3.1</option>
+					<option value="32">Teste v3.2</option>
+					<option value="33">Teste v3.3</option>
+					<option value="40">Teste v4.0</option>
+					<option value="41">Teste v4.1</option>
+					<option value="42">Teste v4.2</option>
+					<option value="43">Teste v4.3</option>
+				</select>
+				<label id="bSearch" style="display:none;">
+					<input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:200px; height:34px;">
+				</label>
+			</div>
+		</div>
+		
+		<table id="tblGrid" style="width:98%" class="table table-hover ">
+			<tbody>
+					<!--
+				<div id="botoes" style="display:none; text-align:center;">
+				</div>
+					-->
+			</tbody>
+		</table>
+
+		<div id="divcontent" style="display:none;"></div>
+
+		<!-- form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post" -->
+		<!-- /form -->
+		
+		<div class="form-group" id="divFormSim" style="display:none;">
+			<font size=4.9 style=text-align:justify>
+				<table border=0 align=center width="100%">
+					<tr><td>
+						<button id="btnBackward" class="btn btn-danger" style="display:none;"> <i class="fa fa-remove"></i> </button>
+						<button id="btnPrevious" class="btn btn-default" style="display:none;"> <i class="fa fa-chevron-left"></i></button>
+						<button id="btnNext" class="btn btn-success" style="display:none;">Próximo <i class="fa fa-chevron-right"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-signal"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-pause"></i></button>
+						<button class="btn btn-warning" style="display:none;"><i class="fa fa-check"></i> Fim</button>
+					</td></tr>
+					<tr><td id="mytextSim" style="display:none; text-align:justify;">
+					</td></tr>
+					<tr><td id="mycorrect1Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect1answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect2Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect2answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect3Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect3answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect4Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect4answer"></div>
+					</td></tr>
+
+					<tr><td id="myincorrect1Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect1answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect2Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect2answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect3Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect3answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect4Sim" style="display:none; text-align:justify;">
+						<div id="myincorrecta4answer"></div>
+					</td></tr>
+					<tr><td>
+						<br/><input type="text" id="mygroupSim" value="" Zhidden="">
+						<br/><input type="text" id="mycodeSim" value="" Zhidden="">
+						<br/><input type="text" id="myorderSim" value="" Zhidden="">
+						<br/><input type="text" id="myidSim" value="" Zhidden="">
+					</td></tr>
+				</table>
+			</font>
+		</div>
+
+		<div class="form-group" id="divFormAddUpdate" style="display:none;">
+			<table border=0 align=center width="98%"><tr><td>
+				<b>Formulário Editor de Perguntas</b>
+				<p/><p/>
+				<select id="mygroup" name="mygroup" style="height:35px; display:none;">
+					<option value="00" selected>Configurações</option>
+					<option value="10">Teste v1.0</option>
+					<option value="11">Teste v1.1</option>
+					<option value="12">Teste v1.2</option>
+					<option value="13">Teste v1.3</option>
+					<option value="20">Teste v2.0</option>
+					<option value="21">Teste v2.1</option>
+					<option value="22">Teste v2.2</option>
+					<option value="23">Teste v2.3</option>
+					<option value="30">Teste v3.0</option>
+					<option value="31">Teste v3.1</option>
+					<option value="32">Teste v3.2</option>
+					<option value="33">Teste v3.3</option>
+					<option value="40">Teste v4.0</option>
+					<option value="41">Teste v4.1</option>
+					<option value="42">Teste v4.2</option>
+					<option value="43">Teste v4.3</option>
+				</select>
+				<select id="mycode" name="mycode" style="height:35px; display:none;"></select>
+				<select id="myorder" name="myorder" style="height:35px; display:none;"></select>
+				<p/>
+				<p/><textarea name="mytext" id="mytext" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui..."></textarea>
+				<font style="color:green;">
+					Corretas:
+					<textarea name="myoption1" id="myoption1" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey1" id="myoptionkey1" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption2" id="myoption2" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey2" id="myoptionkey2" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption3" id="myoption3" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey3" id="myoptionkey3" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption4" id="myoption4" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey4" id="myoptionkey4" rows=1 placeholder="explicação..."></textarea>
+				</font>
+				
+				<font style="color:red; text-align:left;">
+					Incorretas:
+					<textarea name="myoption5" id="myoption5" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey5" id="myoptionkey5" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption6" id="myoption6" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey6" id="myoptionkey6" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption7" id="myoption7" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey7" id="myoptionkey7" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption8" id="myoption8" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey8" id="myoptionkey8" rows=1 placeholder="explicação..."></textarea>
+				</font>
+				<p/><p/>
+				<button id="btnSubmit" type="button" class="btn btn-primary" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-check"></i> Salvar</button>
+				<p/><p/>
+				<button id="btnCancel" type="button" class="btn btn-default" style="padding:9px 15px 9px 15px;margin-left:10px; width:110px;"> <i class="fa fa-times"></i> Não Salvar</button>
+			</td></tr></table>
+		</div>
+		
+		<div id="divcontent" style="display:none;">
+
+<!-- Configuração: 1 -->
+<br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
+<p>
+<div align=center>
+AWS Cloud Practitioner Essentials
+<br/> Versão 4.2
+<br/>
+<br/> Total de 20 perguntas
+<br/> Tempo médio de 30 minutos
+<br/> Aprovação mínima de 70%
+</div>
+
+<p>
+O que é um Bucket?
+
+<ok>
+Um container de objetos do S3
+
+um banco de dados RDS
+
+um banco de dados totalmente gerenciado noSQL
+
+Um container de microserviços no ECS
+
+<p>
+Sua empresa é dividida em 6 departamentos e cada um deles tem uma conta própria na AWS. Qual serviço abaixo permite a consolidação dos custos e a integração de outros serviços?
+
+AWS Cost Calculator
+
+AWS Cost Explorer
+
+<ok>
+AWS Organizations
+
+AWS Budget
+
+<p>
+Qual é o serviço que permite que os desenvolvedores adicionem, diretamente ou usando o AWS SDK, funcionalidades de criptografia ou assinatura digital ao código de aplicativos?
+
+CodeCommit
+
+<ok>
+KMS
+
+Certificate Manager
+
+CodePipeline
+
+<p>
+Qual dos seguintes bancos de dados  é do tipo não relacional?
+
+MySql
+
+<ok>
+DynamoDB
+
+Oracle
+
+MariaDB
+
+<p>
+Qual é o serviço que pode ser utilizado para transferir dados do seu ambiente on-premises para a Cloud AWS?
+
+<ok>
+AWS DataSync
+
+AWS Glue
+
+AWS DMS
+
+AWS Glacier
+
+<p>
+Qual serviço oferece uma forma fácil de modelar uma coleção de recursos, relacionados da AWS e de terceiros, provisioná-los com rapidez e consistência e gerenciar todo o seu ciclo de vida mediante o tratamento da infraestrutura como código?
+
+<ok>
+AWS CloudFormation
+
+AWS IAC
+
+AWS YAML
+
+AWS Stack
+
+<p>
+Amazon DocumentDB é um serviço que pode ser utilizado em qual dos cenários abaixo?
+
+Armazenamento de dados em grafos para redes sociais
+
+<ok>
+Armazenamento de dados baseado em documentos JSON.
+
+Armazenamento de dados em documentos e execução de Map Reduce
+
+Armazenamento de dados relacionais com forte consistência de dados.
+
+<p>
+Você é o responsável por criar os microsserviços do seu time e escolheu utilizar o ECS para conteneirizar o ambiente e a aplicação. Agora você deseja criar uma imagem e compartilhar com o seu time e com a organização. Qual é o serviço da AWS recomendado para registrar e compartilhar essa imagem?
+
+EC2
+
+EMR
+
+EKS
+
+<ok>
+ECR
+
+<p>
+Quais são os três principais tipos de cloud computing?
+<br>(Selecione 3)
+
+<ok>
+IaaS - Infraestrutura como serviço
+
+<ok>
+SaaS - Software como serviço
+
+<ok>
+PaaS - Plataforma como serviço
+
+BaaS - Backend como serviço
+
+<p>
+O Amazon EC2 é o principal serviço que permite computação em nuvem. Qual é a menor instância, em relação ao processamento, ofertada pela AWS e que só tem 1 vCPU?
+
+<ok>
+nano
+
+pequena
+
+fit
+
+micro
+
+<p>
+Você precisa publicar um site estático com custo mínimo. Qual serviço da AWS você usaria para hospedá-lo?
+
+EC2 rodando Windows
+
+EFS
+
+<ok>
+S3
+
+EC2 rodando Linux
+
+<p>
+Você está hospedando 10 instâncias EC2. Qual é o serviço que pode te ajudar a monitorar a utilização da CPU que elas utilizam?
+
+Amazon CloudTrail
+
+Amazon AMI
+
+<ok>
+Amazon CloudWatch
+
+Amazon Log
+
+<p>
+O que estende as orientações oferecidas pelo AWS Well-Architected a domínios específicos da indústria e da tecnologia tais como: machine learning (ML), análise de dados, tecnologia sem servidor, computação de alta performance (HPC), Internet das Coisas (IoT) SAP, mídia de streaming, indústria de jogos, rede híbrida e serviços financeiros?
+
+<ok>
+As perspectivas do AWS Well-Architected
+
+Os modelos do AWS Well-Architected
+
+Os planos do AWS Well-Architected
+
+As rotas do AWS Well-Architected
+
+<p>
+Qual é o serviço de Pub/Sub utilizado para desacoplar sistemas, filtrar e enviar mensagens para diversos serviços como SQS, E-mail, Kinesis, entre outros?
+
+<ok>
+SNS
+
+RDS
+
+EC2
+
+AWS Topic
+
+<p>
+Sua empresa estimou um gasto de US$ 12.000,00 por mês com infraestrutura AWS. Qual é o serviço que te auxilia, enviando mensagem, quando o consumo estiver atingindo um percentual pré-configurado deste valor?
+
+AWS Pricing Calculator
+
+<ok>
+AWS Budgets
+
+AWS Organizations
+
+AWS Cost Explorer
+
+<p>
+Qual categoria abaixo não faz parte das ofertadas para instâncias EC2?
+
+Computação Acelerada
+
+<ok>
+Propósitos Específicos
+
+Propósitos Gerais
+
+Computação Otimizada
+
+<p>
+Qual é o serviço da AWS recomendado para armazenar arquivos de dados, filmes e  música como objetos?
+
+DynamoDb
+
+EC2
+
+Amazon Elastic Cache
+
+<ok>
+S3
+
+<p>
+Qual plano de suporte é recomendado se você tem cargas de trabalho empresariais e/ou de missão crítica na AWS?
+
+<ok>
+Enterprise
+
+Basic
+
+Business
+
+Developer
+
+<p>
+Decidi implementar na minha arquitetura um banco de dados totalmente gerenciado pelo meu time rodando numa instância EC2. Qual é o serviço que será utilizado para armazenar os dados deste banco?
+
+DynamoDb
+
+RDS
+
+<ok>
+EBS
+
+Aurora
+
+<p>
+Qual serviço da AWS pode ser utilizado se você deseja hospedar aplicações web de várias camadas e estabelecer o acesso e as restrições de segurança entre seus servidores web, aplicações e bancos de dados?
+
+Security Group
+
+<ok>
+VPC
+
+NACL
+
+VPN
+
+<p>
+
+</textarea>
+
+		</div>
+
+    <link href="style/main.css " rel="stylesheet " type="text/css " />
+</body>
+
+</html>
+
+<script type="text/javascript">
+	onLoadConfig();
+</script>

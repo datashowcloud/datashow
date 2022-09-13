@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Configuração Sim</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/bootstrap.css" />
+    <link rel="stylesheet" href="style/font-awesome.min.css" />
+    <script src="scripts/jsstore.js"></script>
+    <script src="scripts/jsstore.worker.js"></script>
+    <script src="index.js"></script>
+	<style>
+#myBody {
+  border: 0px dashed blue;
+  padding: 25px;
+  background-attachment: fixed;
+  background-position: top; 
+  background-repeat: no-repeat;
+} 
+	</style>
+</head>
+
+<body id="myBody" ZZZbackground="gallery/paper.jpeg">
+
+        
+		
+		<div class="col-xs-12 col-sm-10 col-centered ">
+			<div style="display:'none'; text-align:center; ">
+				<!-- br/>Aguarde o resultado na janela da configuração -->
+				<br/><a href="#" onclick="window.close();"><button id="btnConfigBookClose" class="btn btn-info" style="padding:9px 15px 9px 15px;">Feche Esta Janela Após 10 segundos</button></a>
+				
+				<select id="selectMygroup" name="selectMygroup" style="height:34px; display:none;">
+					<option value="00" selected>Configurações</option>
+					<option value="10">Teste v1.0</option>
+					<option value="11">Teste v1.1</option>
+					<option value="12">Teste v1.2</option>
+					<option value="13">Teste v1.3</option>
+					<option value="20">Teste v2.0</option>
+					<option value="21">Teste v2.1</option>
+					<option value="22">Teste v2.2</option>
+					<option value="23">Teste v2.3</option>
+					<option value="30">Teste v3.0</option>
+					<option value="31">Teste v3.1</option>
+					<option value="32">Teste v3.2</option>
+					<option value="33">Teste v3.3</option>
+					<option value="40">Teste v4.0</option>
+					<option value="41">Teste v4.1</option>
+					<option value="42">Teste v4.2</option>
+					<option value="43">Teste v4.3</option>
+				</select>
+				<label id="bSearch" style="display:none;">
+					<input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:200px; height:34px;">
+				</label>
+			</div>
+		</div>
+		
+		<table id="tblGrid" style="width:98%" class="table table-hover ">
+			<tbody>
+					<!--
+				<div id="botoes" style="display:none; text-align:center;">
+				</div>
+					-->
+			</tbody>
+		</table>
+
+		<div id="divcontent" style="display:none;"></div>
+
+		<!-- form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post" -->
+		<!-- /form -->
+		
+		<div class="form-group" id="divFormSim" style="display:none;">
+			<font size=4.9 style=text-align:justify>
+				<table border=0 align=center width="100%">
+					<tr><td>
+						<button id="btnBackward" class="btn btn-danger" style="display:none;"> <i class="fa fa-remove"></i> </button>
+						<button id="btnPrevious" class="btn btn-default" style="display:none;"> <i class="fa fa-chevron-left"></i></button>
+						<button id="btnNext" class="btn btn-success" style="display:none;">Próximo <i class="fa fa-chevron-right"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-signal"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-pause"></i></button>
+						<button class="btn btn-warning" style="display:none;"><i class="fa fa-check"></i> Fim</button>
+					</td></tr>
+					<tr><td id="mytextSim" style="display:none; text-align:justify;">
+					</td></tr>
+					<tr><td id="mycorrect1Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect1answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect2Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect2answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect3Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect3answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect4Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect4answer"></div>
+					</td></tr>
+
+					<tr><td id="myincorrect1Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect1answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect2Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect2answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect3Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect3answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect4Sim" style="display:none; text-align:justify;">
+						<div id="myincorrecta4answer"></div>
+					</td></tr>
+					<tr><td>
+						<br/><input type="text" id="mygroupSim" value="" Zhidden="">
+						<br/><input type="text" id="mycodeSim" value="" Zhidden="">
+						<br/><input type="text" id="myorderSim" value="" Zhidden="">
+						<br/><input type="text" id="myidSim" value="" Zhidden="">
+					</td></tr>
+				</table>
+			</font>
+		</div>
+
+		<div class="form-group" id="divFormAddUpdate" style="display:none;">
+			<table border=0 align=center width="98%"><tr><td>
+				<b>Formulário Editor de Perguntas</b>
+				<p/><p/>
+				<select id="mygroup" name="mygroup" style="height:35px; display:none;">
+					<option value="00" selected>Configurações</option>
+					<option value="10">Teste v1.0</option>
+					<option value="11">Teste v1.1</option>
+					<option value="12">Teste v1.2</option>
+					<option value="13">Teste v1.3</option>
+					<option value="20">Teste v2.0</option>
+					<option value="21">Teste v2.1</option>
+					<option value="22">Teste v2.2</option>
+					<option value="23">Teste v2.3</option>
+					<option value="30">Teste v3.0</option>
+					<option value="31">Teste v3.1</option>
+					<option value="32">Teste v3.2</option>
+					<option value="33">Teste v3.3</option>
+					<option value="40">Teste v4.0</option>
+					<option value="41">Teste v4.1</option>
+					<option value="42">Teste v4.2</option>
+					<option value="43">Teste v4.3</option>
+				</select>
+				<select id="mycode" name="mycode" style="height:35px; display:none;"></select>
+				<select id="myorder" name="myorder" style="height:35px; display:none;"></select>
+				<p/>
+				<p/><textarea name="mytext" id="mytext" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui..."></textarea>
+				<font style="color:green;">
+					Corretas:
+					<textarea name="myoption1" id="myoption1" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey1" id="myoptionkey1" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption2" id="myoption2" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey2" id="myoptionkey2" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption3" id="myoption3" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey3" id="myoptionkey3" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption4" id="myoption4" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey4" id="myoptionkey4" rows=1 placeholder="explicação..."></textarea>
+				</font>
+				
+				<font style="color:red; text-align:left;">
+					Incorretas:
+					<textarea name="myoption5" id="myoption5" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey5" id="myoptionkey5" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption6" id="myoption6" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey6" id="myoptionkey6" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption7" id="myoption7" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey7" id="myoptionkey7" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption8" id="myoption8" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey8" id="myoptionkey8" rows=1 placeholder="explicação..."></textarea>
+				</font>
+				<p/><p/>
+				<button id="btnSubmit" type="button" class="btn btn-primary" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-check"></i> Salvar</button>
+				<p/><p/>
+				<button id="btnCancel" type="button" class="btn btn-default" style="padding:9px 15px 9px 15px;margin-left:10px; width:110px;"> <i class="fa fa-times"></i> Não Salvar</button>
+			</td></tr></table>
+		</div>
+		
+		<div id="divcontent" style="display:none;">
+
+<!-- Configuração: 1 -->
+<br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
+<p>
+<div align=center>
+AWS Cloud Practitioner Essentials
+<br/> Versão 2.1
+<br/>
+<br/> Total de 20 perguntas
+<br/> Tempo médio de 30 minutos
+<br/> Aprovação mínima de 70%
+</div>
+
+<p>
+Qual serviço que é totalmente gerenciado pela AWS e que faz parte da arquitetura da esteira de integração contínua que compila, testa e cria pacotes para a implantação?
+
+AWS CodeCommit
+
+AWS CodeDeploy
+
+AWS Pipeline
+
+<ok>
+AWS CodeBuild
+
+<p>
+Como você pode proteger sua conta da AWS contra acessos não autorizados?
+
+Configurando uma segunda senha
+
+<ok>
+Habilitando a Autenticação Multifator - Multi-Facto Authentication (MFA)
+
+Desabilitando o acesso pela AWS Console
+
+Implementando o serviço AWS Cognito
+
+<p>
+A Amazon oferece várias classes de armazenamento no S3 específicas para cada tipo de uso. Qual das opções abaixo são classes existentes no serviço? (selecione 3)
+
+S3 Business
+
+S3 Enterprise
+
+<ok>
+S3 Intelligent-Tiering
+
+<ok>
+S3 Standard
+
+<ok>
+S3 Standard Infrequent Access
+
+<p>
+Sua empresa possui diversas áreas que devem construir suas aplicações dentro da AWS usando templates de infraestrutura pré-definidos pelo time de arquitetos. As soluções deverão ser implementadas como código IAC (Infra as Code). Qual serviço pode ser utilizado para essa finalidade?
+
+Cloud Templates
+
+Cloud Stacks
+
+<ok>
+AWS CloudFormation
+
+AWS Config
+
+<p>
+Você está implementando um microsserviço para realizar análise de crédito solicitada pelos seus clientes. A resposta desta análise deverá ser enviada para um sistema de vendas, um sistema de empréstimos, e também para, um serviço de log do próprio microsserviço. Qual serviço da AWS é o mais indicado para implementar essas e futuras integrações de uma forma rápida?
+
+<ok>
+AWS SNS
+
+AWS Docker
+
+AWS Lambda
+
+AWS ECS
+
+<p>
+Algumas aplicações críticas da sua empresa começaram a apresentar erros e, por falta de logs, a equipe de suporte está tendo dificuldade na resolução dos problemas. Qual serviço da AWS você recomendaria para monitorar o ambiente e coletar as logs?
+
+<ok>
+AWS CloudWatch
+
+AWS Monitor
+
+AWS CloudTrail
+
+AWS Log
+
+<p>
+Qual dos seguintes ítens é de responsabilidade exclusiva da AWS no modelo de responsabilidade compartilhada (shared responsability model)?
+
+Gerenciar imagens customizadas das instâncias do AMI
+
+Atualizar patch de segurança em instâncias do clientes
+
+<ok>
+Proteger a infraestrutura global
+
+Proteger os dados das aplicações dos usuários
+
+<p>
+Qual é a quantidade atual de regiões disponíveis na infraestrutura global da AWS?
+
+262
+
+<ok>
+26
+
+6
+
+81
+
+<p>
+A AWS obtém regularmente, a validação de terceiros para milhares de requisitos globais de conformidade para ajudá-la a atender aos padrões de segurança e conformidade. Com o seu uso, você herda os controles de segurança mais recentes, fortalecendo seus próprios programas de conformidade e certificação. Para quais padrões de segurança e certificações a AWS oferece suporte? (selecione 2 alternativas)
+
+GDPR, FIPS 140-2 e NTFS-BB1
+
+<ok>
+GDPR, FIPS 140-2 e NIST 800-171
+
+PCI-DSS, HIPAA/HITECH, CFL01
+
+<ok>
+PCI-DSS, HIPAA/HITECH, FedRAMP
+
+<p>
+Quais são os 6 pilares do Well-Architected Framework?
+
+<ok>
+Excelência Operacional, Segurança, Confiabilidade, Desempenho Eficiente, Otimização de Custos, Sustentabilidade
+
+Excelência Operacional, Escalabilidade, Confiabilidade, Desempenho Eficiente, Otimização de Custos, Disciplina
+
+Excelência Operacional, Segurança, Confiabilidade, Desempenho Eficiente, Escalabilidade, Disciplina
+
+Excelência Operacional, Segurança, Escalabilidade, Desempenho Eficiente, Otimização de Custos, Sustentabilidade
+
+<p>
+Se você deseja fazer um gerenciamento total do seu banco de dados, qual é o serviço mais indicado para implementá-lo?
+
+<br>
+EC2
+
+RDS
+
+DynamoDB
+
+DocumentDB
+
+<p>
+No modelo de Responsabilidade Compartilhada, qual é o papel da AWS?
+
+<ok>
+Proteger o data center
+
+Proteger o acesso aos dados das aplicações dos usuários
+
+Atualizar o Sistema Operacional das Instâncias EC2
+
+<ok>
+Fazer a manutenção dos hardware
+
+<p>
+Qual é a maior diferença entre os serviços AWS RDS e DynamoDB?
+
+<ok>
+RDS é SQL, DynamoDB é NoSQL
+
+RDS é totalmente gerenciado, DynamoDB não é gerenciado
+
+RDS é NoSQL, DynamoDB é SQL
+
+Nenhuma das opções
+
+<p>
+Sua equipe de desenvolvimento backend começou a utilizar o API Gateway para o desenvolvimento das novas apis de um projeto. Quais itens abaixo representam funcionalidades deste serviço que você irá compartilhar com o time? (Selecione 2)
+
+Não possui suporte a conteinirização
+
+<ok>
+Criar, publicar, manter, monitorar APIs
+
+<ok>
+Criação de APIs RESTfull e WebSocket
+
+Não possui suporte a funções sem servidor
+
+<p>
+Se você quer desenvolver uma aplicação em Java ou C#, qual das seguintes ferramentas você pode usar?
+
+AWS IDE
+
+AWS CLI
+
+AWS Console
+
+<ok>
+AWS SDK
+
+<p>
+Sua empresa recentemente foi auditada e autuada, pois mantinha arquivos com dados sensíveis do cliente expostos na sua rede interna, colocando em risco a imagem do cliente e da empresa. Qual serviço da AWS pode ser utilizado para monitorar os dados e evitar esse tipo de ocorrência?
+
+AWS Sensitive
+
+<ok>
+AWS Macie
+
+AWS GuardDuty
+
+AWS KMS
+
+<p>
+Qual é o banco de dados sem servidor (serverless) ofertado pela AWS?
+
+<ok>
+DynamoDB
+
+MySql
+
+MariaDB
+
+Aurora
+
+<p>
+Sua empresa está analisando o banco de dados DynamoDB para conhecer oportunidades em seu uso. Qual opção abaixo não é uma característica do serviço?
+
+É um banco de dados sem servidor
+
+É um banco de dados de valores-chave e documentos
+
+<ok>
+É um banco de dados cobrado por MB na solicitação de gravação e leitura
+
+É um banco de dados totalmente gerenciado
+
+<p>
+Qual plano de suporte oferece o AWS Trusted Advisor, serviço que fornece recomendações para ajudar na utilização das melhores práticas de uso?
+
+Developer
+
+Enterprise
+
+<ok>
+Todos
+
+Business
+
+<p>
+Qual é o banco de dados NoSql do tipo chave e valor gerenciado pela AWS?
+
+<ok>
+DynamoDB
+
+Aurora
+
+MySql
+
+Cassandra
+
+<p>
+
+</textarea>
+
+		</div>
+
+    <link href="style/main.css " rel="stylesheet " type="text/css " />
+</body>
+
+</html>
+
+<script type="text/javascript">
+	onLoadConfig();
+</script>
