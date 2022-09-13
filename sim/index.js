@@ -178,7 +178,6 @@ function registerEvents() {
 		var DataShow_Config = window.open("config" + document.getElementById('selectMygroup').value + ".html?sim=" + document.getElementById('selectMygroup').value, "datashowconfig", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
 //		var DataShow_ConfigResult = window.open("configresult.html", "datashowconfigresult");
 //		datashowconfigresult.focus();
-		document.getElementById('btnLetsGo').style.display == 'block';
 	})
     $('#btnSearch').click(function () {
 		var mygroup = document.getElementById('mygroup').value;
@@ -412,6 +411,9 @@ function registerEvents() {
 	$('#selBackground').change(function () {
 		updateConfigGeneral();
     })
+	$('#btnLetsGo').click(function () {
+		location.reload();
+    })
 }
 
 async function initConfigGeneral() {
@@ -434,8 +436,6 @@ async function initConfigGeneral() {
 		}
 		
 		var DataShow_Config = window.open("config00.html?sim=00", "datashowconfig", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
-
-		document.getElementById('btnLetsGo').style.display == 'block';
 
     } catch (ex) {
         console.log(ex.message + ' error ');
