@@ -3,6 +3,7 @@
 var jsstoreCon = new JsStore.Connection();
 
 var GLOBAL_textcolor = 'white';
+var GLOBAL_background = 'black';
 var confirmImportSuccessfull = 'Não feche esta página (X). \nNão atualize esta página (F5). \n\nVolte na página anterior (aba ao lado) e pesquise pela palavra "configuração concluída com sucesso." \n\nQuando a palavra aparecer, a configuração terminou com sucesso.';
 var COL_LOGOTIPO = 5;
 
@@ -466,6 +467,7 @@ async function getConfigGeneral() {
 	});
 	configsgeneral.forEach(function (configgeneral) {
 		GLOBAL_textcolor = configgeneral.textcolor;
+		GLOBAL_background = configgeneral.background;
 		document.getElementById('myBody').style.background = configgeneral.background;
 	})
 	//carrega cor de fundo
@@ -481,7 +483,7 @@ async function getConfigGeneral() {
 	var varItensFundo = document.getElementById('selBackground');
 	for(index = 0;index < varItensFundo.length;index++)
 	{
-		if (varItensFundo.options[index].value == configgeneral.background) {
+		if (varItensFundo.options[index].value == GLOBAL_background) {
 			varItensFundo.selectedIndex = index;
 			break;
 		}
