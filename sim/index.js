@@ -172,10 +172,13 @@ function registerEvents() {
 		showIniciarConfiguracao();
     })
     $('#btnIndexConfigurar').click(function () {
-//		console.log("config" + document.getElementById('selectMygroup').value + ".html?sim=" + document.getElementById('selectMygroup').value);
-//		return;
-		window.close();
+//		window.close();
+		document.getElementById('btnIndexConfigurar').style.display = 'none';
+		document.getElementById('btnLetsGo').style.display = '';
+		document.getElementById('lei13709').style.display = 'none';
 		var DataShow_Config = window.open("config" + document.getElementById('selectMygroup').value + ".html?sim=" + document.getElementById('selectMygroup').value, "datashowconfig", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
+//		location.reload(); //recarrega página importando também o teste 01
+
 //		var DataShow_ConfigResult = window.open("configresult.html", "datashowconfigresult");
 //		datashowconfigresult.focus();
 	})

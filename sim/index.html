@@ -31,7 +31,7 @@
 			<tr>
 				<td>
 					<select id="selectMygroup" name="selectMygroup" style="height:34px; display:'none';">
-						<!-- option value="00">Configurações</option -->
+						<option value="00">Configurações</option>
 						<option value="10" selected>Teste v1.0</option>
 						<option value="11">Teste v1.1</option>
 						<option value="12">Teste v1.2</option>
@@ -61,7 +61,7 @@
 		</table>
 		
 		<div id="divconfig" style="display:none;">
-			<label class="btn btn-default" style="cursor:default; width:300px;">
+			<label id="lei13709" class="btn btn-default" style="cursor:default; width:300px; display:'none';">
 			Em conformidade com a Lei 13.709/18
 			<br/>- Lei Geral de Proteção de Dados Pessoais,
 			<br/>concordo, autorizo, reconheço e aceito
@@ -76,8 +76,9 @@
 			<br/>
 			<!-- input type="text" name="config_myowner" size="16" id="config_myowner" maxlength="6" style="width:300px;" value="" placeholder="digite sua chave ou licença... (opcional)" -->
 			<!-- br/><br/ -->
-			<button id="btnIndexConfigurar" class="btn btn-info" style="padding:9px 15px 9px 15px; width:300px;"> 1º. Importar Configuração (clique aqui) <i class="fa fa-forward"></i> </button>
-			<br/><br/><button id="btnLetsGo" class="btn btn-info" style="padding:9px 15px 9px 15px; width:300px; display:'none';"> 2º. Vamos lá! </button>
+			<button id="btnIndexConfigurar" class="btn btn-info" style="padding:9px 15px 9px 15px; width:300px; display:'none';"> clique aqui para configurar </button>
+			<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+			<button id="btnLetsGo" class="btn btn-success" style="padding:9px 15px 9px 15px; width:300px; display:none;"> Tudo pronto! Vamos lá! </button>
 
 		</div>
 		
@@ -160,7 +161,7 @@
 				<!-- p/><p/>
 				<button id="btnImportSim" type="button" class="btn btn-danger" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-check"></i> Importar</button -->
 				<p/><p/><select id="mygroup" name="mygroup" style="height:35px; display:'none';">
-					<!-- option value="00">Configurações</option -->
+					<option value="00">Configurações</option>
 					<option value="10" selected>Teste v1.0</option>
 					<option value="11">Teste v1.1</option>
 					<option value="12">Teste v1.2</option>
@@ -242,7 +243,7 @@
 				</div>
 
 				<p/><p/><i id="email">datashowcloud2022@gmail.com</i>
-				<p/><p/><i id="version">versão 13.09.22.19.37</i>
+				<p/><p/><i id="version">versão 14.09.22.00.00</i>
 
 			<div style="display:none;">
 				<button id="btnTest" class="btn btn-default" > <i class="fa fa-envelope"></i> </button>
