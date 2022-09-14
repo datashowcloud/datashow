@@ -233,6 +233,68 @@ O Amazon S3 (Simple Storage Service) é um serviço de armazenamento de objetos 
 https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html
 
 <p>
+Storage Classes
+
+<ok>
+Opção padrão (default) de armazenamento de objetos com altos níveis de resiliência, disponibilidade e performance para dados acessados com frequência. Tem baixa latência e alto throughput.
+<br/>1 Standard (padrão),
+<br/>2 Intelligent Tiering,
+<br/>3 Standard-IA,
+<br/>4 One Zone-IA,
+<br/>5 Glacier Instant Retrieval,
+<br/>6 Glacier Flexible,
+<br/>7 Glacier Deep Archive,
+<br/>8 Outposts.
+
+<ok>
+https://aws.amazon.com/pt/s3/storage-classes/
+
+<p>
+Frequent Access
+
+<ok>
+A S3 Intelligent-Tiering (camada inteligente) oferece latência de milissegundos e alta performance de taxa de transferência para dados acessados com muita frequência, com pouca frequência e raramente acessados nos níveis Frequent Access, Infrequent Access e o Archive Instant Access.
+
+<ok>
+https://aws.amazon.com/pt/s3/storage-classes/
+
+<p>
+Infrequent Access
+
+<ok>
+Acesso infrequente do S3 Standard-IA é indicado para dados acessados com menos frequência, mas que exigem acesso rápido quando necessários. Oferece os altos níveis de resiliência e throughput e a baixa latência. Combina baixo custo e alta performance.
+
+<ok>
+https://aws.amazon.com/pt/s3/storage-classes/
+
+<p>
+Glacier
+
+<ok>
+É uma classe de armazenamento do Amazon S3 segura, durável e de custo extremamente baixo para arquivamento de dados e backup de longo prazo.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/amazonglacier/latest/dev/introduction.html
+
+<p>
+Intelligent Tiering
+
+<ok>
+Intelligent Tiering (Camada Inteligente) oferece latência de milissegundos e alta performance de taxa de transferência para dados acessados com muita frequência, com pouca frequência e raramente acessados nos níveis Frequent Access, Infrequent Access e o Archive Instant Access.
+
+<ok>
+https://aws.amazon.com/pt/s3/storage-classes/
+
+<p>
+Standard
+
+<ok>
+Standard oferece um armazenamento de objetos com altos níveis de resiliência, disponibilidade e performance para dados acessados com frequência. Como fornece baixa latência e alto throughput, o S3 Standard é adequado para uma grande variedade de casos de uso, como aplicativos na nuvem, sites dinâmicos, distribuição de conteúdo, aplicativos móveis e de jogos e dados analíticos de big data.
+
+<ok>
+https://aws.amazon.com/pt/s3/storage-classes/
+
+<p>
 Princing Calculator
 
 <ok>
@@ -375,68 +437,6 @@ SSH (Secure Socket Shell) é um par de chaves, que consiste em uma chave públic
 
 <ok>
 https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/ec2-key-pairs.html
-
-<p>
-Opção de Armazenamento
-
-<ok>
-Opção padrão (default) de armazenamento de objetos com altos níveis de resiliência, disponibilidade e performance para dados acessados com frequência. Tem baixa latência e alto throughput.
-<br/>1 Standard (padrão),
-<br/>2 Intelligent Tiering,
-<br/>3 Standard-IA,
-<br/>4 One Zone-IA,
-<br/>5 Glacier Instant Retrieval,
-<br/>6 Glacier Flexible,
-<br/>7 Glacier Deep Archive,
-<br/>8 Outposts.
-
-<ok>
-https://aws.amazon.com/pt/s3/storage-classes/
-
-<p>
-Frequent Access
-
-<ok>
-A S3 Intelligent-Tiering (camada inteligente) oferece latência de milissegundos e alta performance de taxa de transferência para dados acessados com muita frequência, com pouca frequência e raramente acessados nos níveis Frequent Access, Infrequent Access e o Archive Instant Access.
-
-<ok>
-https://aws.amazon.com/pt/s3/storage-classes/
-
-<p>
-Infrequent Access
-
-<ok>
-Acesso infrequente do S3 Standard-IA é indicado para dados acessados com menos frequência, mas que exigem acesso rápido quando necessários. Oferece os altos níveis de resiliência e throughput e a baixa latência. Combina baixo custo e alta performance.
-
-<ok>
-https://aws.amazon.com/pt/s3/storage-classes/
-
-<p>
-Glacier
-
-<ok>
-É uma classe de armazenamento do Amazon S3 segura, durável e de custo extremamente baixo para arquivamento de dados e backup de longo prazo.
-
-<ok>
-https://docs.aws.amazon.com/pt_br/amazonglacier/latest/dev/introduction.html
-
-<p>
-Intelligent Tiering
-
-<ok>
-Intelligent Tiering (Camada Inteligente) oferece latência de milissegundos e alta performance de taxa de transferência para dados acessados com muita frequência, com pouca frequência e raramente acessados nos níveis Frequent Access, Infrequent Access e o Archive Instant Access.
-
-<ok>
-https://aws.amazon.com/pt/s3/storage-classes/
-
-<p>
-Standard
-
-<ok>
-Standard oferece um armazenamento de objetos com altos níveis de resiliência, disponibilidade e performance para dados acessados com frequência. Como fornece baixa latência e alto throughput, o S3 Standard é adequado para uma grande variedade de casos de uso, como aplicativos na nuvem, sites dinâmicos, distribuição de conteúdo, aplicativos móveis e de jogos e dados analíticos de big data.
-
-<ok>
-https://aws.amazon.com/pt/s3/storage-classes/
 
 <p>
 Storage Gateway
@@ -850,6 +850,14 @@ Configure orçamentos personalizados e mantenha-se informado sobre o progresso d
 https://aws.amazon.com/pt/aws-cost-management/aws-budgets/
 
 <p>
+Budgets Destinatários por Email
+
+<ok>
+
+<ok>
+https://docs.aws.amazon.com/pt_br/cost-management/latest/userguide/budgets-controls.html
+
+<p>
 Inspector
 
 <ok>
@@ -1117,15 +1125,6 @@ Repositório privado do Github.
 https://aws.amazon.com/pt/getting-started/hands-on/migrate-git-repository/
 
 <p>
-CodeCommit
-
-<ok>
-CodeCommit é um serviço de controle de código-fonte seguro, altamente escalável e gerenciado que hospeda repositórios Git privados. 
-
-<ok>
-https://docs.aws.amazon.com/pt_br/codecommit/latest/userguide/welcome.html
-
-<p>
 Glacier Deep Arquive
 
 <ok>
@@ -1145,6 +1144,33 @@ Ordem dos serviços AWS em um pipeline de CI/CD é 1, 2, 3.
 
 <ok>
 https://aws.amazon.com/pt/blogs/aws-brasil/construindo-um-pipeline-de-ci-cd-aws-devsecops-de-ponta-a-ponta-com-ferramentas-de-codigo-aberto-sca-sast-e-dast/#:~:text=Servi%C3%A7os%20de%20CI%2FCD&text=AWS%20CodeDeploy%20%E2%80%93%20%C3%A9%20um%20servi%C3%A7o,AWS%20Lambda%20e%20servidores%20locais
+
+<p>
+CodeDeploy
+
+<ok>
+AWS CodeDeploy é um serviço totalmente gerenciado de implantação que automatiza implantações de software em diversos serviços de computação como Amazon EC2, AWS Fargate, AWS Lambda e servidores locais.
+
+<ok>
+https://aws.amazon.com/pt/codedeploy/
+
+<p>
+CodeBuild
+
+<ok>
+AWS CodeBuild é um serviço de integração contínua totalmente gerenciado que compila o código-fonte, executa testes e produz pacotes de software que estão prontos para implantação.
+
+<ok>
+https://aws.amazon.com/pt/codebuild/
+
+<p>
+CodeCommit
+
+<ok>
+O AWS CodeCommit é um serviço de controle de origem gerenciado seguro e altamente dimensionável que hospeda repositórios privados do Git. Ele torna mais fácil para as equipes colaborarem com segurança no código com contribuições criptografadas em trânsito e em repouso.
+
+<ok>
+https://aws.amazon.com/pt/codecommit/
 
 <p>
 API Gateway
@@ -1180,7 +1206,7 @@ CLI
 CLI (AWS Command Line Interface) é uma ferramenta de código aberto que permite interagir com os serviços da AWS usando comandos no shell da linha de comando.
 
 <ok>
-https://docs.aws.amazon.com/pt_br/cli/latest/userguide/cli-chap-welcome.html
+https://aws.amazon.com/pt/cli/
 
 <p>
 X-Ray
@@ -1322,6 +1348,41 @@ On premises é a infraestrutura ou Data Center particular, privado, local de uma
 
 <ok>
 https://docs.aws.amazon.com/codedeploy/latest/userguide/instances-on-premises.html
+
+<p>
+CloudFront
+
+<ok>
+O Amazon CloudFront é um serviço da web que acelera a distribuição do conteúdo estático e dinâmico da web, como arquivos .html, .css, .js e arquivos de imagem, para os usuários. O CloudFront distribui o conteúdo por meio de uma rede global de datacenters denominados pontos de presença. Quando um usuário solicita um conteúdo que você está disponibilizando com o CloudFront, a solicitação é roteada para o ponto de presença que fornece a menor latência (atraso), assim o conteúdo é entregue com a melhor performance possível.
+<ok>
+https://docs.aws.amazon.com/pt_br/AmazonCloudFront/latest/DeveloperGuide/Introduction.html
+
+<p>
+TCO
+
+<ok>
+TCO (Calculadora de Preços da AWS) é um serviço baseado na web que você pode usar para criar estimativas de custo adequadas aos seus casos de uso da AWS.
+
+<ok>
+https://calculator.aws/#/
+
+<p>
+Console Manager
+
+<ok>
+AWS Management Console (Console de Ggerenciamento da AWS) é um aplicativo da web que compreende e se refere a uma ampla coleção de consoles de serviço para gerenciar recursos da AWS.
+
+<ok>
+https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/learn-whats-new.html
+
+<p>
+Service Catalog
+
+<ok>
+O AWS Service Catalog permite que empresas criem e gerenciem catálogos de serviços de TI que estejam aprovados para uso na AWS. Esses serviços de TI podem incluir tudo, de imagens de máquinas virtuais, servidores, software e bancos de dados a arquiteturas completas de aplicações multicamadas.
+
+<ok>
+https://aws.amazon.com/pt/servicecatalog/?aws-service-catalog.sort-by=item.additionalFields.createdDate&aws-service-catalog.sort-order=desc
 
 <p>
 
