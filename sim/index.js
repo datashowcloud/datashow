@@ -177,7 +177,7 @@ function registerEvents() {
 		document.getElementById('btnLetsGo').style.display = '';
 		document.getElementById('lei13709').style.display = 'none';
 		var DataShow_Config = window.open("config" + document.getElementById('selectMygroup').value + ".html?sim=" + document.getElementById('selectMygroup').value, "datashowconfig", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
-		location.reload(); //recarrega página importando também o teste 01
+//		location.reload(); //recarrega página importando também o teste 01
 
 //		var DataShow_ConfigResult = window.open("configresult.html", "datashowconfigresult");
 //		datashowconfigresult.focus();
@@ -636,7 +636,7 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					+ student.mycorrect1answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption1 + ' </font>'
 //					+ ' <a href="#' + student.myoption1 + '" class="btn btn-default"><b>?</b></a>'
 					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
-					+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + ' </font>' + '</zzz>'
+					+ '<p/>' + textlink + '</zzz>'
 					+ '<br/>(<a href=' + linkhref + ' target="_blank">link internet</a>)';
 					if (student.myoption1 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
@@ -653,7 +653,7 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					+ student.mycorrect2answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption2 + ' </font>'
 //					+ ' <a href="#' + student.myoption2 + '" class="btn btn-default"><b>?</b></a>'
 					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
-					+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + ' </font>' + '</zzz>'
+					+ '<p/>' + textlink + '</zzz>'
 					+ '<br/>(<a href=' + linkhref + ' target="_blank">link internet</a>)';
 					if (student.myoption2 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
@@ -670,7 +670,7 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					+ student.mycorrect3answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption3 + ' </font>'
 //					+ ' <a href="#' + student.myoption3 + '" class="btn btn-default"><b>?</b></a>'
 					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
-					+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + ' </font>' + '</zzz>'
+					+ '<p/>' + textlink + '</zzz>'
 					+ '<br/>(<a href=' + linkhref + ' target="_blank">link internet</a>)';
 					if (student.myoption3 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
@@ -687,7 +687,7 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					+ student.mycorrect4answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption4 + ' </font>'
 //					+ ' <a href="#' + student.myoption4 + '" class="btn btn-default"><b>?</b></a>'
 					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
-					+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + ' </font>' + '</zzz>'
+					+ '<p/>' + textlink + '</zzz>'
 					+ '<br/>(<a href=' + linkhref + ' target="_blank">link internet</a>)';
 					if (student.myoption4 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
