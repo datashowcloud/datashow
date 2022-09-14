@@ -383,14 +383,14 @@ function registerEvents() {
 		var myid = document.getElementById('myidSim').value;
 		var mygroup = document.getElementById('mygroupSim').value;
 		var mycode = parseInt(document.getElementById('mycodeSim').value) - 1;
-		updateStudentPlay(myid, mygroup, mycode);
+//		updateStudentPlay(myid, mygroup, mycode);
 		getFromTablePlay(myid, mygroup, mycode);
     })
     $('#btnNext').click(function () {
 		var myid = document.getElementById('myidSim').value;
 		var mygroup = document.getElementById('mygroupSim').value;
 		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
-		updateStudentPlay(myid, mygroup, mycode);
+//		updateStudentPlay(myid, mygroup, mycode);
 		getFromTablePlay(myid, mygroup, mycode);
     })
 	$('#btnPause').click(function () {
@@ -566,9 +566,14 @@ async function showPoints(mygroup, mycode) {
 			}
 		}
 	})
-	
-	totalperguntas = 20;
-	var calculo = (totalCorretas*100) / totalperguntas;
+
+	var totalperguntas = await jsstoreCon.count({
+		from: 'Student'
+		  , where: {
+			  mygroup: mygroup
+		  }
+	});
+	var calculo = (totalCorretas*100) / (parseInt(totalperguntas)-1); //tira a pergunta zero que é o título da lista de perguntas
 	calculo = calculo.toFixed(0);
 	var resultado = '';
 	resultado = resultado + totalIncorretas + ' erradas ';//+ erradas;
@@ -632,7 +637,7 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					}
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
-					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+					' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect1answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption1 + ' </font>'
 //					+ ' <a href="#' + student.myoption1 + '" class="btn btn-default"><b>?</b></a>'
 					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
@@ -649,7 +654,7 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					}
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
-					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+					' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect2answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption2 + ' </font>'
 //					+ ' <a href="#' + student.myoption2 + '" class="btn btn-default"><b>?</b></a>'
 					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
@@ -666,7 +671,7 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					}
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
-					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+					' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect3answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption3 + ' </font>'
 //					+ ' <a href="#' + student.myoption3 + '" class="btn btn-default"><b>?</b></a>'
 					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
@@ -683,7 +688,7 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					}
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
-					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+					' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect4answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption4 + ' </font>'
 //					+ ' <a href="#' + student.myoption4 + '" class="btn btn-default"><b>?</b></a>'
 					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
@@ -700,7 +705,7 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					}
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
-					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+					' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect5answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption5 + ' </font>'
 //					+ ' <a href="#' + student.myoption5 + '" class="btn btn-default"><b>?</b></a>'
 					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
@@ -717,7 +722,7 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					}
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
-					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+					' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect6answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption6 + ' </font>'
 //					+ ' <a href="#' + student.myoption6 + '" class="btn btn-default"><b>?</b></a>'
 					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
@@ -734,7 +739,7 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					}
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
-					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+					' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect7answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption7 + ' </font>'
 //					+ ' <a href="#' + student.myoption7 + '" class="btn btn-default"><b>?</b></a>'
 					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
@@ -751,7 +756,7 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					}
 					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 //					valorIndice +
-					' <input onclick="showCorrect(\'' + valorIndice + '\');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+					' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 					+ student.mycorrect8answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption8 + ' </font>'
 //					+ ' <a href="#' + student.myoption8 + '" class="btn btn-default"><b>?</b></a>'
 					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
@@ -998,11 +1003,14 @@ async function dropdb() {
 			var mygroup = document.getElementById('mygroup').value;
 			var mytext = document.getElementById('mytext').value.trim();
 			refreshTableData(mycode, myorder, mygroup, mytext);
+
+			location.reload();
+//			showIniciarConfiguracao();
+
 //			console.log('successfull');
 		}).catch(function(error) {
 			console.log(error);
-		});;
-		showIniciarConfiguracao();
+		});
 	}
 }
 
@@ -1707,12 +1715,14 @@ function setStudentFromImport(mygroup, mycode, myorder, mytext, myoption1, myopt
     $('#divFormAddUpdate').show();
 }
 
-function showCorrect(valorindice) {
+function showCorrect(valorindice, myid, mygroup, mycode) {
 	if (document.getElementById('chkMycorrect'+valorindice+'answer').checked == true) {
 		document.getElementById('lblcorrect' + valorindice).style.display='block';
 	} else {
 		document.getElementById('lblcorrect' + valorindice).style.display='none';
 	}
+	updateStudentPlay(myid, mygroup, mycode);
+//	alert('id='+id + ' mygroup='+mygroup + ' mycode='+mycode);
 }
 
 function showFormSim() {
@@ -2180,3 +2190,4 @@ function getCookie(cname) {
 //port	número de porta de um URL
 //protocol	protocolo de um URL
 //search	consulta parte de um URL
+//https://jsstore.net/tutorial/get-started/
