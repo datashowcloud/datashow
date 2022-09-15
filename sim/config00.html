@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Configuração Sim</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/bootstrap.css" />
+    <link rel="stylesheet" href="style/font-awesome.min.css" />
+    <script src="scripts/jsstore.js"></script>
+    <script src="scripts/jsstore.worker.js"></script>
+    <script src="index.js"></script>
+	<style>
+#myBody {
+  border: 0px dashed blue;
+  padding: 25px;
+  background-attachment: fixed;
+  background-position: top; 
+  background-repeat: no-repeat;
+} 
+	</style>
+</head>
+
+<body id="myBody" ZZZbackground="gallery/paper.jpeg">
+
+        
+		
+		<div class="col-xs-12 col-sm-10 col-centered ">
+			<div style="display:'none'; text-align:center; ">
+				<!-- br/>Aguarde o resultado na janela da configuração -->
+				<button class="btn btn-info" onclick="window.close();" style="padding:9px 15px 9px 15px;">Configurações prontas. Continuar.</button>
+				
+				<select id="selectMygroup" name="selectMygroup" style="height:34px; display:none;">
+					<option value="00" selected>Configurações</option>
+					<option value="10">Nível 1.0</option>
+					<option value="11">Nível 1.1</option>
+					<option value="12">Nível 1.2</option>
+					<option value="13">Nível 1.3</option>
+					<option value="20">Nível 2.0</option>
+					<option value="21">Nível 2.1</option>
+					<option value="22">Nível 2.2</option>
+					<option value="23">Nível 2.3</option>
+					<option value="30">Nível 3.0</option>
+					<option value="31">Nível 3.1</option>
+					<option value="32">Nível 3.2</option>
+					<option value="33">Nível 3.3</option>
+					<option value="40">Nível 4.0</option>
+					<option value="41">Nível 4.1</option>
+					<option value="42">Nível 4.2</option>
+					<option value="43">Nível 4.3</option>
+				</select>
+				<label id="bSearch" style="display:none;">
+					<input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:200px; height:34px;">
+				</label>
+			</div>
+		</div>
+		
+		<table id="tblGrid" style="width:98%" class="table table-hover ">
+			<tbody>
+					<!--
+				<div id="botoes" style="display:none; text-align:center;">
+				</div>
+					-->
+			</tbody>
+		</table>
+
+		<div id="divcontent" style="display:none;"></div>
+
+		<!-- form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post" -->
+		<!-- /form -->
+		
+		<div class="form-group" id="divFormSim" style="display:none;">
+			<font size=4.9 style=text-align:justify>
+				<table border=0 align=center width="100%">
+					<tr><td>
+						<button id="btnBackward" class="btn btn-danger" style="display:none;"> <i class="fa fa-remove"></i> </button>
+						<button id="btnPrevious" class="btn btn-default" style="display:none;"> <i class="fa fa-chevron-left"></i></button>
+						<button id="btnNext" class="btn btn-success" style="display:none;">Próximo <i class="fa fa-chevron-right"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-signal"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-pause"></i></button>
+						<button class="btn btn-warning" style="display:none;"><i class="fa fa-check"></i> Fim</button>
+					</td></tr>
+					<tr><td id="mytextSim" style="display:none; text-align:justify;">
+					</td></tr>
+					<tr><td id="mycorrect1Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect1answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect2Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect2answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect3Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect3answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect4Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect4answer"></div>
+					</td></tr>
+
+					<tr><td id="myincorrect1Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect1answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect2Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect2answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect3Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect3answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect4Sim" style="display:none; text-align:justify;">
+						<div id="myincorrecta4answer"></div>
+					</td></tr>
+					<tr><td>
+						<br/><input type="text" id="mygroupSim" value="" Zhidden="">
+						<br/><input type="text" id="mycodeSim" value="" Zhidden="">
+						<br/><input type="text" id="myorderSim" value="" Zhidden="">
+						<br/><input type="text" id="myidSim" value="" Zhidden="">
+					</td></tr>
+				</table>
+			</font>
+		</div>
+
+		<div class="form-group" id="divFormAddUpdate" style="display:none;">
+			<table border=0 align=center width="98%"><tr><td>
+				<b>Formulário Editor de Perguntas</b>
+				<p/><p/>
+				<select id="mygroup" name="mygroup" style="height:35px; display:none;">
+					<option value="00" selected>Configurações</option>
+					<option value="10">Nível 1.0</option>
+					<option value="11">Nível 1.1</option>
+					<option value="12">Nível 1.2</option>
+					<option value="13">Nível 1.3</option>
+					<option value="20">Nível 2.0</option>
+					<option value="21">Nível 2.1</option>
+					<option value="22">Nível 2.2</option>
+					<option value="23">Nível 2.3</option>
+					<option value="30">Nível 3.0</option>
+					<option value="31">Nível 3.1</option>
+					<option value="32">Nível 3.2</option>
+					<option value="33">Nível 3.3</option>
+					<option value="40">Nível 4.0</option>
+					<option value="41">Nível 4.1</option>
+					<option value="42">Nível 4.2</option>
+					<option value="43">Nível 4.3</option>
+				</select>
+				<select id="mycode" name="mycode" style="height:35px; display:none;"></select>
+				<select id="myorder" name="myorder" style="height:35px; display:none;"></select>
+				<p/>
+				<p/><textarea name="mytext" id="mytext" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui..."></textarea>
+				<font style="color:green;">
+					Corretas:
+					<textarea name="myoption1" id="myoption1" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey1" id="myoptionkey1" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption2" id="myoption2" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey2" id="myoptionkey2" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption3" id="myoption3" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey3" id="myoptionkey3" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption4" id="myoption4" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey4" id="myoptionkey4" rows=1 placeholder="explicação..."></textarea>
+				</font>
+				
+				<font style="color:red; text-align:left;">
+					Incorretas:
+					<textarea name="myoption5" id="myoption5" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey5" id="myoptionkey5" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption6" id="myoption6" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey6" id="myoptionkey6" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption7" id="myoption7" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey7" id="myoptionkey7" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption8" id="myoption8" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey8" id="myoptionkey8" rows=1 placeholder="explicação..."></textarea>
+				</font>
+				<p/><p/>
+				<button id="btnSubmit" type="button" class="btn btn-primary" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-check"></i> Salvar</button>
+				<p/><p/>
+				<button id="btnCancel" type="button" class="btn btn-default" style="padding:9px 15px 9px 15px;margin-left:10px; width:110px;"> <i class="fa fa-times"></i> Não Salvar</button>
+			</td></tr></table>
+		</div>
+		
+		<div id="divcontent" style="display:none;">
+
+<!-- Configuração: 1 -->
+<br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
+<p>
+Configurações Versão 0.0
+
+<ok>
+Resumos e links das siglas.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html
+
+<p>
+Well-Architected Framework
+
+<ok>
+Os pilares são:
+<br/>Excelência operacional,
+<br/>Segurança,
+<br/>Confiabilidade,
+<br/>Eficiência de desempenho,
+<br/>Otimização de custos,
+<br/>Sustentabilidade
+
+<ok>
+https://wa.aws.amazon.com/wat.pillars.wa-pillars.pt_BR.html
+
+<p>
+Não Se Aplica
+
+<ok>
+Não Se Aplica na AWS
+
+<ok>
+https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html
+
+<p>
+EC2
+
+<ok>
+O Amazon EC2 (Elastic Compute Cloud) oferece uma capacidade de computação escalável na Nuvem da Amazon Web Services (AWS). O uso do Amazon EC2 elimina a necessidade de investir em hardware inicialmente, portanto, você pode desenvolver e implantar aplicativos com mais rapidez.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html
+
+<p>
+S3
+
+<ok>
+O Amazon S3 (Simple Storage Service) é um serviço de armazenamento de objetos que armazena dados como objetos em buckets. Um objeto é um arquivo e quaisquer metadados que descrevam o arquivo. Um bucket é um contêiner de objetos. Você pode controlar o acesso a grupos de objetos que começam com um prefixo ou termine com uma determinada extensão, exemplos de arquivos estáticos: .html, .js, .cs.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html
+
+<p>
+Storage Classes
+
+<ok>
+Opção padrão (default) de armazenamento de objetos com altos níveis de resiliência, disponibilidade e performance para dados acessados com frequência. Tem baixa latência e alto throughput.
+<br/>1 Standard (padrão),
+<br/>2 Intelligent Tiering,
+<br/>3 Standard-IA,
+<br/>4 One Zone-IA,
+<br/>5 Glacier Instant Retrieval,
+<br/>6 Glacier Flexible,
+<br/>7 Glacier Deep Archive,
+<br/>8 Outposts.
+
+<ok>
+https://aws.amazon.com/pt/s3/storage-classes/
+
+<p>
+Frequent Access
+
+<ok>
+A S3 Intelligent-Tiering (camada inteligente) oferece latência de milissegundos e alta performance de taxa de transferência para dados acessados com muita frequência, com pouca frequência e raramente acessados nos níveis Frequent Access, Infrequent Access e o Archive Instant Access.
+
+<ok>
+https://aws.amazon.com/pt/s3/storage-classes/
+
+<p>
+Infrequent Access
+
+<ok>
+Acesso infrequente do S3 Standard-IA é indicado para dados acessados com menos frequência, mas que exigem acesso rápido quando necessários. Oferece os altos níveis de resiliência e throughput e a baixa latência. Combina baixo custo e alta performance.
+
+<ok>
+https://aws.amazon.com/pt/s3/storage-classes/
+
+<p>
+Glacier
+
+<ok>
+É uma classe de armazenamento do Amazon S3 segura, durável e de custo extremamente baixo para arquivamento de dados e backup de longo prazo.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/amazonglacier/latest/dev/introduction.html
+
+<p>
+Intelligent Tiering
+
+<ok>
+Intelligent Tiering (Camada Inteligente) oferece latência de milissegundos e alta performance de taxa de transferência para dados acessados com muita frequência, com pouca frequência e raramente acessados nos níveis Frequent Access, Infrequent Access e o Archive Instant Access.
+
+<ok>
+https://aws.amazon.com/pt/s3/storage-classes/
+
+<p>
+Standard
+
+<ok>
+Standard oferece um armazenamento de objetos com altos níveis de resiliência, disponibilidade e performance para dados acessados com frequência. Como fornece baixa latência e alto throughput, o S3 Standard é adequado para uma grande variedade de casos de uso, como aplicativos na nuvem, sites dinâmicos, distribuição de conteúdo, aplicativos móveis e de jogos e dados analíticos de big data.
+
+<ok>
+https://aws.amazon.com/pt/s3/storage-classes/
+
+<p>
+Princing Calculator
+
+<ok>
+AWS Princing Calculator para estimar o custo para sua solução de arquitetura, antes do uso, antes da implementação. Configure uma estimativa de custo exclusivo que atenda às suas necessidades de negócios ou pessoais com produtos e serviços da AWS.
+
+<ok>
+https://calculator.aws/#/
+
+<p>
+Organizations
+
+<ok>
+AWS Organizations para criar novas contas da AWS e alocar recursos, agrupar contas para organizar seus fluxos de trabalho, aplicar políticas a contas ou grupos para governança e simplificar o faturamento usando um único método de pagamento para todas as suas contas.
+
+<ok>
+https://aws.amazon.com/pt/organizations/?nc2=type_a
+
+<p>
+Billing
+
+<ok>
+AWS Billing é fácil entender facilmente seus gastos com a AWS, visualizar e pagar faturas, gerenciar preferências de faturamento e configurações de impostos e acessar serviços adicionais de Gerenciamento financeiro na nuvem. Avalie rapidamente se os seus gastos mensais estão alinhados a períodos anteriores, previsões ou orçamentos e investigue e tome medidas corretivas em tempo hábil.
+
+<ok>
+https://aws.amazon.com/pt/aws-cost-management/aws-billing/
+
+<p>
+Cost Explorer
+
+<ok>
+AWS Cost Explorer permite visualizar, entender e gerenciar os custos e o uso da AWS ao longo do tempo relacionado ao gasto que já passou.
+
+<ok>
+https://aws.amazon.com/pt/aws-cost-management/aws-cost-explorer/
+
+<p>
+SNS
+
+<ok>
+Amazon SNS (Simple Notification Service) é um serviço gerenciado que fornece entrega de mensagens de editores para assinantes (também conhecido como Produtores e Consumidores). Os clientes podem se inscrever no tópico SNS e receber mensagens publicadas usando um tipo de endpoint compatível, como Amazon Kinesis Data Firehose, Amazon SQS, AWS Lambda, HTTP, e-mail, notificações push móveis e mensagens de texto móveis (SMS).
+
+<ok>
+https://aws.amazon.com/pt/sns/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc
+
+<p>
+SES
+
+<ok>
+Amazon SES (Simple Email Service) é uma plataforma de e-mail que oferece uma forma fácil e econômica para você enviar e receber e-mail usando seus próprios endereços de e-mail e domínios.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/ses/latest/dg/Welcome.html
+
+<p>
+SQS
+
+<ok>
+Amazon SQS (Simple Queue Service) oferece uma fila hospedada segura, durável e disponível que permite integrar e desacoplar sistemas de software e componentes distribuídos. O Amazon SQS oferece construções comuns, como filas de mensagens mortas e tags de alocação de custos.
+
+<ok>
+https://aws.amazon.com/pt/sqs/
+
+<p>
+Modelo de uso
+
+<ok>
+O nível gratuito da AWS oferece aos clientes a capacidade de explorar e testar gratuitamente serviços da AWS até os limites especificados para cada serviço. O nível gratuito é composto por três tipos diferentes de ofertas: um nível gratuito de 12 meses, uma oferta Always Free e testes de curto prazo.
+
+<ok>
+https://aws.amazon.com/pt/free/free-tier-faqs/
+
+<p>
+Open Source
+
+<ok>
+Open Source é um termo que se refere ao software open source (OSS). Ele é um código projetado para ser acessado abertamente pelo público: todas as pessoas podem vê-lo, modificá-lo e distribuí-lo conforme suas necessidades.
+
+<ok>
+https://www.redhat.com/pt-br/topics/open-source/what-is-open-source
+
+<p>
+RDS
+
+<ok>
+O Amazon Relational Database Service (Amazon RDS) é uma coleção de serviços gerenciados que facilita a configuração, operação e escalabilidade de bancos de dados na nuvem. Escolha entre sete opções de mecanismos bastante utilizados: Amazon Aurora compatível com MySQL, Amazon Aurora compatível com PostgreSQL, MySQL, MariaDB, PostgreSQL, Oracle e SQL Server.
+
+<ok>
+https://aws.amazon.com/pt/rds/
+
+<p>
+DynamoDB
+
+<ok>
+AWS DynamoDB é um banco de dados de chave-valor NoSQL, sem servidor e totalmente gerenciado, projetado para executar aplicações de alta performance em qualquer escala.
+
+<ok>
+https://aws.amazon.com/pt/dynamodb/
+
+<p>
+MariaDB
+
+<ok>
+MariaDB é um banco de dados relacional de código aberto conhecido no mercado, que foi criado pelos desenvolvedores originais do MySQL. O Amazon RDS facilita a configuração, a operação e a escalabilidade de implantações do servidor MariaDB na nuvem.
+
+<ok>
+https://aws.amazon.com/pt/rds/mariadb/
+
+<p>
+MySql
+
+<ok>
+MySql é um banco de dados relacional de código aberto mais popular do mundo e o Amazon RDS facilita a configuração, a operação e a escalabilidade de implantações de MySQL na nuvem. Com o Amazon RDS, você pode implantar em minutos servidores MySQL escaláveis com capacidade de hardware econômica e redimensionável.
+
+<ok>
+https://aws.amazon.com/pt/rds/mysql/
+
+<p>
+SQL Server
+
+<ok>
+SQL Server é um sistema de gerenciamento de bancos de dados relacionais desenvolvido pela Microsoft. O Amazon RDS for SQL Server facilita a configuração, a operação e a escalabilidade de implantações do SQL Server na nuvem.
+
+<ok>
+https://aws.amazon.com/pt/rds/sqlserver/
+
+<p>
+STS
+
+<ok>
+AWS STS (Security Token Service) oferece suporte à habilitação do endpoint global do STS para emissão de tokens de sessão compatíveis com todas as regiões da AWS.
+
+<ok>
+https://aws.amazon.com/pt/about-aws/whats-new/2019/04/aws-security-token-service-sts-now-supports-enabling-the-global-sts-endpoint-to-issue-session-tokens-compatible-with-all-aws-regions/
+
+<p>
+SSH
+
+<ok>
+SSH (Secure Socket Shell) é um par de chaves, que consiste em uma chave pública e uma chave privada, trata-se de um conjunto de credenciais de segurança usadas para provar sua identidade ao se conectar a uma instância do Amazon EC2.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/ec2-key-pairs.html
+
+<p>
+Storage Gateway
+
+<ok>
+Storage Gateway é um conjunto de serviços de armazenamento na nuvem híbrida que oferece acesso on-premises para armazenamento virtual na nuvem praticamente ilimitado.
+
+<ok>
+https://aws.amazon.com/pt/storagegateway/
+
+<p>
+VPC
+
+<ok>
+O AWS VPC (Virtual Private Cloud) define e lança recursos da AWS em uma rede virtual isolada logicamente. Oferece controle total sobre seu ambiente de redes virtual, incluindo posicionamento de recursos, conectividade e segurança.
+
+<ok>
+https://aws.amazon.com/pt/vpc/
+
+<p>
+DMS
+
+<ok>
+DMS (Database Migration Service), ajuda você a migrar bancos de dados para a AWS de modo rápido e seguro. O banco de dados de origem permanece totalmente operacional durante a migração, minimizando o tempo de inatividade de aplicações que dependem do banco de dados.
+
+<ok>
+https://aws.amazon.com/pt/dms/
+
+<p>
+KMS
+
+<ok>
+AWS KMS (Key Management Service) é um serviço gerenciado que facilita a criação e o controle de chaves criptográficas usadas para proteger os dados. Para proteger e validar suas AWS KMS keys, o AWS KMS usa módulos de segurança de hardware (HSMs) de acordo com o Programa de validação de módulos criptográficos FIPS 140-2.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/kms/latest/developerguide/overview.html
+
+<p>
+EFS
+
+<ok>
+AWS EFS (Elastic File System) é um sistema de arquivos simples (não objetos, como: html, js, css) e sem servidor para definição única que facilita a configuração, a escalabilidade e a otimização de custos do armazenamento de arquivos na AWS.
+
+<ok>
+https://aws.amazon.com/pt/efs/
+
+<p>
+AWS Audit Manager
+
+<ok>
+O AWS Audit Manager ajuda a auditar continuamente seu uso da AWS para simplificar sua forma de avaliar os riscos e a compatibilidade com os regulamentos e padrões do setor. O Audit Manager automatiza a coleta de evidências para reduzir o esforço manual coletivo que costuma acontecer durante as auditorias e permite escalar sua capacidade de auditoria na nuvem à medida que sua empresa cresce.
+
+<ok>
+https://aws.amazon.com/pt/audit-manager/
+
+<p>
+Config
+
+<ok>
+AWS Config é um serviço que permite acessar, auditar e avaliar as configurações dos recursos da AWS. Você pode analisar alterações feitas nas configurações e relacionamentos entre os recursos da AWS, aprofundar-se de forma detalhada no histórico de configuração de recursos e determinar a conformidade geral em relação às configurações especificadas em suas diretrizes internas.
+
+<ok>
+https://aws.amazon.com/pt/config/
+
+<p>
+Athena
+
+<ok>
+AWS Athena é um serviço de consultas interativas que facilita a análise de dados no Amazon S3 usando SQL padrão. O Athena não precisa de servidor. Portanto, não há infraestrutura para gerenciar e você paga apenas pelas consultas executadas. O Athena é fornecido já integrado ao AWS Glue Data Catalog, o que permite criar um repositório de metadados unificado em vários serviços
+
+<ok>
+https://aws.amazon.com/pt/athena/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc
+
+<p>
+RedShift
+
+<ok>
+AWS RedShift é um serviço de data warehouse em escala de petabytes totalmente gerenciado na nuvem. Permite usar os dados para adquirir novos insights para seus negócios e clientes.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/redshift/latest/mgmt/welcome.html
+
+<p>
+Aurora
+
+<ok>
+O Amazon Aurora é um mecanismo de banco de dados relacional gerenciado compatível com o MySQL e o PostgreSQL. O Aurora pode oferecer até cinco vezes a taxa de processamento do MySQL e até três vezes a taxa de processamento do PostgreSQL, sem exigir alterações na maioria das aplicações existentes.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html
+
+<p>
+EMR
+
+<ok>
+AWS EMR (Amazon Elastic MapReduce) é uma plataforma de big data em nuvem usada para executar trabalhos de processamento de dados distribuídos em grande escala, consultas SQL interativas e aplicações de machine learning (ML) usando frameworks de análise de código aberto como Apache Spark, Apache Hive e Presto.
+
+<ok>
+https://aws.amazon.com/pt/emr/
+
+<p>
+CloudTrail
+
+<ok>
+AWS CloudTrail rastreia atividades dos usuários e uso de APIs. O AWS CloudTrail monitora e registra a atividade da conta por toda a infraestrutura da AWS, oferecendo controle sobre o armazenamento, análise e ações de remediação.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/awscloudtrail/latest/userguide/cloudtrail-user-guide.html
+
+<p>
+CloudSearch
+
+<ok>
+AWS CloudSearch é um serviço gerenciado na nuvem AWS com o qual é possível configurar, gerenciar e dimensionar uma solução de pesquisa para o seu site ou aplicativo de forma simples e econômica.
+
+<ok>
+https://aws.amazon.com/pt/cloudsearch/
+
+<p>
+ElasticSearch
+
+<ok>
+AWS ElasticSearch é um mecanismo distribuído de pesquisa e análise desenvolvido com base no Apache Lucene usado para casos de uso de análises de log. Foi introduzido o projeto OpenSearch que é uma bifurcação do Elasticsearch e Kibana de código aberto.
+
+<ok>
+https://aws.amazon.com/pt/opensearch-service/the-elk-stack/what-is-elasticsearch/
+
+<p>
+Lambda
+
+<ok>
+AWS Lambda é um serviço de computação que permite que você execute o código sem provisionar ou gerenciar servidores. O Lambda executa seu código em uma infraestrutura de computação de alta disponibilidade e executa toda a administração dos recursos computacionais, inclusive a manutenção do servidor e do sistema operacional, o provisionamento e a escalabilidade automática da capacidade e o monitoramento e o registro em log do código.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/lambda/latest/dg/welcome.html
+
+<p>
+Shield
+
+<ok>
+AWS Shield é um serviço gerenciado de proteção contra DDoS (Negação de serviço distribuída) que protege os aplicativos executados na AWS. O AWS Shield oferece de detecção e mitigações em linha automáticas e sempre ativas que minimizam o tempo de inatividade e a latência dos aplicativos, fornecendo proteção contra DDoS sem necessidade de envolver o AWS Support. O AWS Shield tem dois níveis, Standard e Advanced.
+
+<ok>
+https://aws.amazon.com/pt/shield/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc
+
+<p>
+WAF
+
+<ok>
+AWS WAF é um firewall de aplicações Web que ajuda a proteger suas aplicações Web ou APIs contra bots e exploits comuns na Web que podem afetar a disponibilidade, comprometer a segurança ou consumir recursos em excesso. O AWS WAF oferece controle sobre como o tráfego atinge suas aplicações, permitindo que você crie regras de segurança que controlam o tráfego de bots e bloqueiam padrões de ataque comuns, como injeção de SQL ou cross-site scripting.
+
+<ok>
+https://aws.amazon.com/pt/waf/
+
+<p>
+Security Group
+
+<ok>
+Security Group é um grupo de segurança atua como firewall virtual para as instâncias do EC2 visando controlar o tráfego de entrada e de saída.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/ec2-security-groups.html
+
+<p>
+GuardDuty
+
+<ok>
+GuardDuty é um serviço de detecção de ameaças que monitora continuamente suas contas e workloads da AWS para detectar atividade maliciosa e entrega resultados de segurança detalhados para visibilidade e correção.
+
+<ok>
+https://aws.amazon.com/pt/guardduty/
+
+<p>
+Graph
+
+<ok>
+Amazon Graph é um conceito para traçar gráficos de funções matemáticas e outras curvas de natureza similar, em um sistema de coordenadas.
+
+<ok>
+https://www.padowan.dk/doc/portuguese/Introduction.html
+
+<p>
+Neptune
+
+<ok>
+Amazon Neptune é um serviço de banco de dados de grafos rápido, confiável e totalmente gerenciado que facilita a criação e a execução de aplicativos na AWS. O núcleo do Neptune é um mecanismo de banco de dados gráfico com projeto específico e alta performance.
+
+<ok>
+https://aws.amazon.com/pt/neptune/
+
+<p>
+Neo4j
+
+<ok>
+Amazon Neo4j trabalha com a AWS (partner). Capacita desenvolvedores e cientistas de dados a criar rapidamente aplicativos escaláveis ​​e orientados por IA ou analisar big data com algoritmos. Como um banco de dados gráfico nativo criado para armazenar dados e conectar os relacionamentos, o Neo4j permite insights rápidos e profundamente contextuais.
+
+<ok>
+https://neo4j.com/partners/amazon/
+
+<p>
+JanusGraph
+
+<ok>
+Amazon JanusGraph trabalha com a AWS (partner). É um banco de dados (open source) gráfico escalável otimizado para armazenar e consultar gráficos contendo centenas de bilhões de vértices e arestas distribuídos em um cluster de várias máquinas.
+
+<ok>
+https://janusgraph.org/
+
+<p>
+Docker
+
+<ok>
+Docker é uma plataforma de software que permite a criação, o Nível e a implantação de aplicações rapidamente. O Docker permite executar o código de maneira padronizada. O Docker é um sistema operacional para contêineres. Da mesma maneira que uma máquina virtual virtualiza.
+
+<ok>
+https://aws.amazon.com/pt/docker/
+
+<p>
+AMI
+
+<ok>
+AWS AMI (Imagem de Máquina da Amazon) é uma Imagem de Máquina da Amazon (AMI) é uma imagem suportada e mantida pela AWS que fornece as informações necessárias para iniciar uma instância.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html
+
+<p>
+MFA
+
+<ok>
+AWS MFA (Autenticação Multi Fator) agrega mais segurança porque requer dos usuários fornecer autenticação exclusiva de um mecanismo de MFA com suporte da AWS, além das suas credenciais de login regular ao acessarem sites ou serviços da AWS.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_credentials_mfa.html#id_credentials_mfa-what-is-mfa
+
+<p>
+Marketplace
+
+<ok>
+AWS Marketplace é um catálogo digital que facilita encontrar, testar, comprar e implantar software pronto de terceiros que podem ser executados no AWS.
+
+<ok>
+https://aws.amazon.com/pt/mp/marketplace-service/overview/
+
+<p>
+OpsWorks
+
+<ok>
+AWS OpsWorks é um serviço de gerenciamento de configurações que oferece instâncias gerenciadas do Chef e do Puppet. O Chef e o Puppet são plataformas de automação que permitem usar código para automatizar a configuração de servidores. Ele permite usar o Chef e o Puppet para automatizar a forma como os servidores são configurados, implantados e gerenciados em instâncias do Amazon EC2 ou ambientes de computação no local.
+
+<ok>
+https://aws.amazon.com/pt/opsworks/
+
+<p>
+Support
+
+<ok>
+O AWS Support oferece cinco planos de suporte:
+<br/>Basic
+<br/>Desenvolvedor
+<br/>Business
+<br/>Enterprise On-Ramp
+<br/>Enterprise
+<br/>Todos os planos de suporte oferecem acesso 24 horas por dia, 7 dias por semana ao atendimento ao cliente, à documentação da AWS, aos whitepapers e aos fóruns de suporte.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/awssupport/latest/user/getting-started.html
+
+<p>
+Multi Regions
+
+<ok>
+Multi Regions (Distribuir em regiões diferentes), os recursos de computação em nuvem da Amazon são hospedados em vários locais no mundo todo. Esses locais são compostos por regiões da AWS, zonas de disponibilidade e zonas locais. Cada região da AWS é uma área geográfica separada.
+
+<ok>
+https://aws.amazon.com/pt/solutions/implementations/multi-region-application-architecture/
+
+<p>
+Multi-AZ
+
+<ok>
+Em uma implantação Multi-AZ, o Amazon RDS cria automaticamente uma instância de banco de dados (BD) primária e replica de forma síncrona os dados para uma instância em uma AZ diferente. Quando detecta uma falha, o Amazon RDS executa automaticamente o failover para uma instância secundária sem nenhuma intervenção manual.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html
+
+<p>
+Read Replicas
+
+<ok>
+Read Replicas (Cópias de Leitura do Amazon RDS) facilitam a escalabilidade de maneira elástica além dos limites de capacidade de uma única instância de DB para cargas de trabalho de banco de dados com uso intenso de leitura. complementam as implantações Multi-AZ. Embora ambos os recursos mantenham uma segunda cópia dos dados, há diferenças entre os dois.
+
+<ok>
+https://aws.amazon.com/pt/rds/features/read-replicas/
+
+<p>
+ELB
+
+<ok>
+ELB (Elastic Load Balancer) distribui automaticamente o tráfego de aplicações de entrada entre vários destinos e dispositivos virtuais em uma ou mais Zonas de disponibilidade (AZs).
+
+<ok>
+https://aws.amazon.com/pt/elasticloadbalancing/
+
+<p>
+Clusters
+
+<ok>
+Um cluster do Amazon ECS é um agrupamento lógico de tarefas ou serviços.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/AmazonECS/latest/userguide/clusters.html
+
+<p>
+EKS
+
+<ok>
+Amazon EKS (Elastic Kubernetes Service) é um serviço de contêiner gerenciado para executar e escalar aplicações do Kubernetes na nuvem ou on-premises. 
+
+<ok>
+https://aws.amazon.com/pt/eks/
+
+<p>
+ECS
+
+<ok>
+Amazon ECS (Elastic Container Service) é um serviço de gerenciamento de contêineres altamente rápido e escalável. Você pode usá-lo para executar, interromper e gerenciar contêineres em um cluster.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/AmazonECS/latest/developerguide/Welcome.html
+
+<p>
+Refatoração
+
+<ok>
+A refatoração é uma forma disciplinada de reestruturar o código quando pequenas mudanças são feitas nele para melhorar o design. Ao usar o Refactor Spaces, os clientes se concentram na refatoração das suas aplicações, e não na criação e no gerenciamento da infraestrutura subjacente que torna a refatoração possível.
+
+<ok>
+https://aws.amazon.com/pt/getting-started/hands-on/break-monolith-app-microservices-ecs-docker-ec2/module-one/
+
+<p>
+ECR
+
+<ok>
+Amazon ECR (Elastic Container Registry) é um registro de contêiner totalmente gerenciado que oferece hospedagem de alta performance para que você possa implantar imagens e artefatos de aplicações de forma confiável em qualquer lugar.
+
+<ok>
+https://aws.amazon.com/pt/ecr/
+
+<p>
+Fargate
+
+<ok>
+Fargate é uma tecnologia que pode ser usada com o Amazon ECS para executar contêineres sem a necessidade de gerenciar servidores ou clusters de instâncias do Amazon EC2. Com o AWS Fargate, não é mais necessário provisionar, configurar nem dimensionar os clusters de máquinas virtuais para executar contêineres. Isso elimina a necessidade de escolher tipos de servidor, decidir quando dimensionar clusters ou otimizar o agrupamento de clusters.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/AmazonECS/latest/developerguide/AWS_Fargate.html
+
+<p>
+EventSync
+
+<ok>
+O Amazon Cognito Sync é um serviço da AWS e uma biblioteca de clientes que permite a sincronização dos dados de usuários relacionados a aplicações entre dispositivos.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/cognito/latest/developerguide/getting-started-with-cognito-sync.html
+
+<p>
+EventBridge
+
+<ok>
+O Amazon EventBridge é um barramento de eventos sem servidor que torna mais fácil a criação de aplicações orientadas por eventos em escala usando eventos gerados com base em suas aplicações, aplicações integradas de software como serviço (SaaS) e serviços da AWS.
+
+<ok>
+https://aws.amazon.com/pt/eventbridge/?nc2=h_ql_prod_ap_eb
+
+<p>
+Auto Scaling
+
+<ok>
+O Amazon EC2 Auto Scaling ajuda a manter a disponibilidade das aplicações e permite adicionar ou remover instâncias do EC2 automaticamente de acordo com as condições que você definir.
+
+<ok>
+https://aws.amazon.com/pt/ec2/autoscaling/
+
+<p>
+Route53
+
+<ok>
+O Amazon Route 53 é um web service Domain Name System (DNS) na nuvem altamente disponível e escalável. 
+
+<ok>
+https://aws.amazon.com/pt/route53/
+
+<p>
+Dedicted Hosts
+
+<ok>
+AWS Dedicted Hosts é um Host Dedicado do Amazon EC2 é um servidor físico com capacidade de instância do EC2 totalmente dedicado para seu uso. Os hosts dedicados permitem que você use suas licenças de software existentes por soquete, por núcleo ou por VM, incluindo o Windows Server, o Microsoft SQL Server, o SUSE e o Linux Enterprise Server.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html
+
+<p>
+Budgets
+
+<ok>
+Configure orçamentos personalizados e mantenha-se informado sobre o progresso de seu custo e uso e responda rapidamente quando o custo ou uso exceder o limite.
+
+<ok>
+https://aws.amazon.com/pt/aws-cost-management/aws-budgets/
+
+<p>
+Budgets Destinatários por Email
+
+<ok>
+
+<ok>
+https://docs.aws.amazon.com/pt_br/cost-management/latest/userguide/budgets-controls.html
+
+<p>
+Inspector
+
+<ok>
+O Amazon Inspector é um serviço automatizado de gerenciamento de vulnerabilidade que verifica continuamente as workloads da AWS em busca de vulnerabilidades de software e exposição não intencional à rede.
+
+<ok>
+https://aws.amazon.com/pt/inspector/
+
+<p>
+Trusted Advisor
+
+<ok>
+Trusted Advisor avalia a sua conta por meio de verificações. Essas verificações identificam formas de otimizar sua infraestrutura da AWS, aumentar a segurança e o desempenho, reduzir os custos gerais e monitorar as cotas do serviço.
+<br/>Benefícios:
+<br/>Otimização de custos
+<br/>Performance
+<br/>Segurança
+<br/>Tolerância a falhas
+<br/>Cotas de serviço
+
+<ok>
+https://aws.amazon.com/pt/premiumsupport/technology/trusted-advisor/
+
+<p>
+IPV4
+
+<ok>
+Um endereço IPv4 privado é um endereço IP que não é acessível pela Internet. É possível usar endereços IPv4 privados para comunicação entre instâncias na mesma VPC.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/using-instance-addressing.html
+
+<p>
+IP Elástico
+
+<ok>
+Um Endereço IP elástico é um endereço IPv4 estático projetado para computação em nuvem dinâmica. Um endereço IP elástico é alocado para a conta da AWS e será seu até que você o libere.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html
+
+<p>
+IPV6
+
+<ok>
+Se você possuir uma VPC existente que ofereça suporte somente para IPv4 e recursos na sub-rede que sejam configurados para usar somente o IPv4, você pode habilitar o suporte ao IPv6 para a VPC e recursos.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/vpc/latest/userguide/vpc-migrate-ipv6.html
+
+<p>
+Elastic Cache
+
+<ok>
+AWS Elastic Cache é um serviço de cache na memória totalmente gerenciado. Você pode usar para armazenamento em cache, o que acelera a performance de aplicações e bancos de dados, ou como um armazenamento de dados principal para casos de uso que não exigem durabilidade, como armazenamentos de sessões, placares de jogos, streaming e análises. Compatível com o Redis e o Memcached.
+
+<ok>
+https://aws.amazon.com/pt/elasticache/
+
+<p>
+Redis
+
+<ok>
+O Redis (Remote Dictionary Server) é um datastore de chave-valor rápido e de código aberto na memória e é usado como banco de dados, cache, agente de mensagens e fila. A AWS oferece dois serviços totalmente gerenciados para executar o Redis: Amazon MemoryDB for Redis e o  O Amazon ElastiCache for Redis.
+
+<ok>
+https://aws.amazon.com/pt/redis/
+
+<p>
+Pricing
+
+<ok>
+Armazenamento de objetos construído para armazenar e recuperar qualquer volume de dados de qualquer local. É um serviço de armazenamento de objetos que oferece escalabilidade, disponibilidade de dados, segurança e performance.
+
+<ok>
+https://aws.amazon.com/pt/s3/pricing/
+
+<p>
+IAAS
+
+<ok>
+IaaS (Infraestrutura como Serviço) contém os componentes básicos da IT na nuvem. Normalmente, o IaaS oferece acesso a recursos de rede, computadores (virtuais ou em hardware dedicado) e espaço de armazenamento de dados. O IaaS oferece o mais alto nível de flexibilidade e controle de gerenciamento sobre os recursos de TI. Ele é o tipo de computação mais semelhante aos recursos existentes de TI, já conhecidos por vários departamentos e desenvolvedores de TI
+
+<ok>
+https://aws.amazon.com/pt/what-is-cloud-computing/?nc2=h_ql_le_int_cc
+
+<p>
+SAAS
+
+<ok>
+SaaS (Software como serviço) O SaaS oferece um produto completo, executado e gerenciado pelo provedor de serviços. Na maioria dos casos, quando as pessoas mencionam SaaS, estão falando de aplicativos de usuários finais (como e-mail baseado na web). Com uma oferta de SaaS, você não precisa pensar sobre a manutenção do serviço ou o gerenciamento da infraestrutura subjacente. Você só precisa se preocupar sobre como utilizará esse software específico.
+
+<ok>
+https://aws.amazon.com/pt/what-is-cloud-computing/?nc2=h_ql_le_int_cc
+
+<p>
+BAAS
+
+<ok>
+BAAS (Backend As A Service) é um serviço que automatiza o desenvolvimento do backend, por meio da terceirização dessas funções. Pode ser classificado como um middleware, ou seja, um software que fornece serviços para outros aplicativos ou o próprio sistema. O backend é a estrutura que possibilita a operação do sistema.
+
+<ok>
+https://aws.amazon.com/pt/what-is-cloud-computing/?nc2=h_ql_le_int_cc
+
+<p>
+PAAS
+
+<ok>
+PaaS (Plataforma como serviço) você não precisa mais gerenciar a infraestrutura subjacente (geralmente, hardware e sistemas operacionais) e pode manter o foco na implantação e no gerenciamento de aplicativos.
+
+<ok>
+https://aws.amazon.com/pt/what-is-cloud-computing/?nc2=h_ql_le_int_cc
+
+<p>
+Cognito
+
+<ok>
+AWS Cognito permite adicionar cadastramento, login e controle de acesso de usuários a aplicações Web e móveis com rapidez e facilidade para vários dispositivos.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/cognito/latest/developerguide/what-is-amazon-cognito.html
+
+<p>
+IAM
+
+<ok>
+AWS IAM (Identity and Access Management) fornece controle de acesso refinado em toda a AWS. Com o IAM, é possível especificar quem pode acessar quais serviços e recursos e em que condições. Com as políticas do IAM, você gerencia permissões para seu quadro de funcionários e sistemas para garantir permissões com privilégios mínimos.
+
+<ok>
+https://aws.amazon.com/pt/iam/
+
+<p>
+IAM Policies
+
+<ok>
+IAM Policies (Política), é um objeto na AWS que, quando associado a uma identidade ou um recurso, define suas permissões. A AWS avalia essas políticas quando uma entidade de segurança do IAM (usuário ou função) faz uma solicitação. As permissões nas políticas determinam se a solicitação será permitida ou negada.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/access_policies_examples.html
+
+<p>
+IAM Groups
+
+<ok>
+IAM Groups (Grupo de Usuários do IAM) é um conjunto de usuários do IAM. Os grupos de usuários permitem especificar permissões para vários usuários, o que pode facilitar o gerenciamento das permissões para esses usuários. Por exemplo, você pode ter um grupo de usuários chamado Admins e oferecer a esse grupo de usuários os tipos de permissões de que os administradores normalmente precisam.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_groups.html
+
+<p>
+IAM Users
+
+<ok>
+IAM Users (Usuário do AWS) é uma entidade que você cria na AWS para representar a pessoa ou a aplicação que o utilizará para interagir com a AWS. Um usuário na AWS consiste em um nome e credenciais.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_users.html
+
+<p>
+IAM Roles
+
+<ok>
+IAM Roles (Função do IAM) é uma identidade do IAM que você pode criar em sua conta que tem permissões específicas. Você pode usar funções para delegar acesso a usuários, aplicativos ou serviços que normalmente não têm acesso aos seus recursos da AWS. Por exemplo, você pode permitir que um aplicativo móvel use recursos da AWS.
+
+<ok>
+https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html
+
+<p>
+CloudWatch
+
+<ok>
+AWS CloudWatch, é um serviço de monitoramento para recursos em nuvem AWS e os aplicativos que você executa na AWS. Você pode usar para coletar e rastrear métricas, coletar e monitorar arquivos de log, e definir alarmes.
+
+<ok>
+https://aws.amazon.com/pt/cloudwatch/faqs/
+
+<p>
+Macie
+
+<ok>
+AWS Macie é um serviço de segurança e privacidade de dados totalmente gerenciado que usa machine learning e correspondência de padrões para descobrir e proteger seus dados confidenciais na AWS.
+
+<ok>
+https://aws.amazon.com/pt/macie/
+
+<p>
+Glue
+
+<ok>
+O AWS Glue é um serviço de ETL (extração, transformação e carregamento) totalmente gerenciado pela AWS.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/glue/latest/dg/what-is-glue.html
+
+<p>
+DataSync
+
+<ok>
+DataSync é um serviço online seguro que automatiza e acelera a movimentação de dados entre serviços de armazenamento on-premises e da AWS.
+
+<ok>
+https://aws.amazon.com/pt/datasync/
+
+<p>
+Segurança
+
+<ok>
+Segurança se concentra na proteção de informações e sistemas. Os principais tópicos incluem confidencialidade e integridade de dados, gerenciamento de permissões de usuário e estabelecimento de controles para detectar eventos de segurança.
+
+<ok>
+https://aws.amazon.com/pt/architecture/well-architected/?achp_wa1&wa-lens-whitepapers.sort-by=item.additionalFields.sortDate&wa-lens-whitepapers.sort-order=desc
+
+<p>
+Excelência Operacional
+
+<ok>
+Excelência Operacional se concentra na execução e monitoramento sistemas e na melhoria contínua de processos e procedimentos. Os principais tópicos incluem automação de alterações, reação a eventos e definição de padrões para gerenciar as operações diárias.
+
+<ok>
+https://aws.amazon.com/pt/architecture/well-architected/?achp_wa1&wa-lens-whitepapers.sort-by=item.additionalFields.sortDate&wa-lens-whitepapers.sort-order=desc
+
+<p>
+Performance Eficiente
+
+<ok>
+Performance Eficiente se concentra na alocação estruturada e simplificada de recursos de TI e computação. Os principais tópicos incluem seleção dos tipos e tamanhos certos dos recursos otimizados para os requisitos de workload, monitoramento de performance e manutenção da eficiência à medida que as necessidades comerciais evoluem.
+
+<ok>
+https://aws.amazon.com/pt/architecture/well-architected/?achp_wa1&wa-lens-whitepapers.sort-by=item.additionalFields.sortDate&wa-lens-whitepapers.sort-order=desc
+
+<p>
+Confiabilidade
+
+<ok>
+Confiabilidade se concentra nos workloads que executam as funções pretendidas e na recuperação rápida de falhas em atender demandas. Os principais tópicos incluem projeto de sistemas distribuídos, planejamento de recuperação e requisitos adaptação a mudanças.
+
+<ok>
+https://aws.amazon.com/pt/architecture/well-architected/?achp_wa1&wa-lens-whitepapers.sort-by=item.additionalFields.sortDate&wa-lens-whitepapers.sort-order=desc
+
+<p>
+EBS Snapshots
+
+<ok>
+EBS Snapshots são backups incrementais, o que significa que somente os blocos no dispositivo que tiverem mudado depois do snapshot mais recente serão salvos. Isso minimiza o tempo necessário para criar o snapshot e economiza em custos de armazenamento ao não duplicar os dados.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/EBSSnapshots.html
+
+<p>
+EBS
+
+<ok>
+EBS (Amazon Elastic Block Store) é um serviço de armazenamento em blocos fácil de usar, escalável e de alta performance projetado para o Amazon Elastic Compute Cloud (Amazon EC2). É possível criar um sistema de arquivos sobre esses volumes ou utilizá-los da maneira que utilizaria um dispositivo de bloco (como um disco rígido).
+
+<ok>
+https://aws.amazon.com/pt/ebs/
+
+<p>
+Git
+
+<ok>
+Repositório privado do Github.
+
+<ok>
+https://aws.amazon.com/pt/getting-started/hands-on/migrate-git-repository/
+
+<p>
+Glacier Deep Arquive
+
+<ok>
+S3 Glacier Deep Arquive é uma classe de armazenamento do Amazon S3 que oferece armazenamento de objetos seguro e durável para retenção de longo prazo de dados acessados uma ou duas vezes por ano. oferece armazenamento de custo mais baixo na nuvem, a preços significativamente mais baixos do que armazenar e manter dados em bibliotecas de fitas magnéticas on-premises ou arquivar dados externamente.
+
+<ok>
+https://aws.amazon.com/pt/s3/faqs/#Amazon_S3_Glacier_Deep_Archive
+
+<p>
+CodeBuild, CodeCommit, CodeDeploy
+
+<ok>
+Ordem dos serviços AWS em um pipeline de CI/CD é 1, 2, 3.
+<br/>1 - AWS CodeCommit – Um serviço totalmente gerenciado de controle de código-fonte que hospeda repositórios seguros baseados em Git.
+<br/>2 - AWS CodeBuild – Um serviço de integração contínua totalmente gerenciado que compila o código-fonte, executa testes e produz pacotes de software que estão prontos para implantação.
+<br/>3 - AWS CodeDeploy – é um serviço totalmente gerenciado de implantação que automatiza implantações de software em diversos serviços de computação como Amazon EC2, AWS Fargate, AWS Lambda e servidores locais.
+
+<ok>
+https://aws.amazon.com/pt/blogs/aws-brasil/construindo-um-pipeline-de-ci-cd-aws-devsecops-de-ponta-a-ponta-com-ferramentas-de-codigo-aberto-sca-sast-e-dast/#:~:text=Servi%C3%A7os%20de%20CI%2FCD&text=AWS%20CodeDeploy%20%E2%80%93%20%C3%A9%20um%20servi%C3%A7o,AWS%20Lambda%20e%20servidores%20locais
+
+<p>
+CodeDeploy
+
+<ok>
+AWS CodeDeploy é um serviço totalmente gerenciado de implantação que automatiza implantações de software em diversos serviços de computação como Amazon EC2, AWS Fargate, AWS Lambda e servidores locais.
+
+<ok>
+https://aws.amazon.com/pt/codedeploy/
+
+<p>
+CodeBuild
+
+<ok>
+AWS CodeBuild é um serviço de integração contínua totalmente gerenciado que compila o código-fonte, executa testes e produz pacotes de software que estão prontos para implantação.
+
+<ok>
+https://aws.amazon.com/pt/codebuild/
+
+<p>
+CodeCommit
+
+<ok>
+O AWS CodeCommit é um serviço de controle de origem gerenciado seguro e altamente dimensionável que hospeda repositórios privados do Git. Ele torna mais fácil para as equipes colaborarem com segurança no código com contribuições criptografadas em trânsito e em repouso.
+
+<ok>
+https://aws.amazon.com/pt/codecommit/
+
+<p>
+API Gateway
+
+<ok>
+AWS API Gateway é um serviço gerenciado que permite que desenvolvedores criem, publiquem, mantenham, monitorem e protejam APIs em qualquer escala com facilidade.
+
+<ok>
+https://aws.amazon.com/pt/api-gateway/
+
+<p>
+Direct Connect
+
+<ok>
+Direct Connect vincula sua rede interna a um local do AWS Direct Connect usando um cabo de fibra óptica Ethernet padrão. Uma extremidade do cabo é conectada ao roteador, e a outra é conectada a um roteador do AWS Direct Connect.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/directconnect/latest/UserGuide/Welcome.html
+
+<p>
+WorkSpaces
+
+<ok>
+O Amazon Workspaces é um serviço de virtualização de desktop totalmente gerenciado para Windows e Linux que habilita o acesso a recursos a partir de qualquer dispositivo compatível.
+
+<ok>
+https://aws.amazon.com/pt/workspaces/#:~:text=O%20Amazon%20Workspaces%20%C3%A9%20um,partir%20de%20qualquer%20dispositivo%20compat%C3%ADvel
+
+<p>
+CLI
+
+<ok>
+CLI (AWS Command Line Interface) é uma ferramenta de código aberto que permite interagir com os serviços da AWS usando comandos no shell da linha de comando.
+
+<ok>
+https://aws.amazon.com/pt/cli/
+
+<p>
+X-Ray
+
+<ok>
+AWS X-Ray ajuda desenvolvedores a analisar e depurar aplicações distribuídas de produção, como as criadas usando uma arquitetura de microsserviços. Com o X-Ray, é possível entender a performance de aplicativos e de seus serviços subjacentes para identificar e solucionar problemas e erros de performance.
+
+<ok>
+https://aws.amazon.com/pt/xray/
+
+<p>
+Certificate Manager
+
+<ok>
+Certificate Manager é um serviço que permite provisionar, gerenciar e implantar facilmente certificados Secure Sockets Layer (SSL)/Transport Layer Security (TLS) para uso com os serviços da AWS e os recursos internos conectados.
+
+<ok>
+https://aws.amazon.com/pt/certificate-manager/#:~:text=O%20AWS%20Certificate%20Manager%20%C3%A9,e%20os%20recursos%20internos%20conectados
+
+<p>
+Kinesis
+
+<ok>
+Amazon Kinesis Data Streams é um serviço escalável e durável de streaming de dados em tempo real capaz de capturar continuamente gigabytes de dados por segundo de centenas de milhares de fontes. 
+
+<ok>
+https://aws.amazon.com/pt/kinesis/#:~:text=O%20Amazon%20Kinesis%20Data%20Streams,centenas%20de%20milhares%20de%20fontes
+
+<p>
+Batch
+
+<ok>
+AWS Batch planeja, programa e executa suas cargas de trabalho de computação em lote em toda a linha de recursos e produtos de computação da AWS, como AWS Fargate, Amazon EC2 e instâncias spot.
+
+<ok>
+https://aws.amazon.com/pt/batch/?nc2=h_ql_prod_cp_ba
+
+<p>
+Elastic Beanstalk
+
+<ok>
+AWS Elastic Beanstalk é um serviço de fácil utilização para implantação e escalabilidade de aplicações e serviços da web desenvolvidos com Java, .NET, PHP, Node.js, Python, Ruby, Go e Docker em servidores familiares como Apache, Nginx, Passenger e IIS.
+
+<ok>
+https://aws.amazon.com/pt/elasticbeanstalk/
+
+<p>
+Lifecycle
+
+<ok>
+Lifecycle, uma configuração do S3 Lifecycle é um arquivo XML que consiste em um conjunto de regras com ações predefinidas que você deseja que o Amazon S3 execute em objetos durante sua vida útil.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/object-lifecycle-mgmt.html
+
+<p>
+CloudFormation
+
+<ok>
+Permite modelar, provisionar e gerenciar recursos da AWS e de terceiros ao tratar a infraestrutura como código.
+
+<ok>
+https://aws.amazon.com/pt/cloudformation/
+
+<p>
+Shared Responsability
+
+<ok>
+A AWS é responsável por proteger a infraestrutura que executa todos os serviços oferecidos na Nuvem AWS. Essa infraestrutura é composta por hardware, software, redes e instalações que executam os Serviços de nuvem AWS.
+
+<ok>
+https://aws.amazon.com/pt/compliance/shared-responsibility-model/#:~:text=Responsabilidade%20da%20AWS%3A%20%E2%80%9Cseguran%C3%A7a%20da,os%20Servi%C3%A7os%20de%20nuvem%20AWS
+
+<p>
+Tolerância a Falha
+
+<ok>
+A tolerância a falhas é a propriedade que garante a correta e eficiente operação de um sistema apesar da ocorrência de falhas em qualquer um dos seus componentes, ou unidades.
+
+<ok>
+https://inf.unioeste.br/gia/index.php/2020/10/22/tolerancia-a-falhas-em-sistemas-distribuidos-e-suas-aplicacoes/
+
+<p>
+IAC
+
+<ok>
+AWS IAC (Infraestrutura como CódigoC) ajuda as organizações a atingir suas metas de automação e autoatendimento de DevOps, mantendo arquivos de declaração no controle de versão que definem seus ambientes de aplicativos.
+
+<ok>
+https://aws.amazon.com/marketplace/solutions/devops/infrastructure-as-code?aws-marketplace-cards.sort-by=item.additionalFields.headline&aws-marketplace-cards.sort-order=desc&awsf.aws-marketplace-devops-store-use-cases=*all
+
+<p>
+CodePipeline
+
+<ok>
+AWS CodePipeline é um serviço gerenciado de entrega contínua que ajuda a automatizar pipelines de liberação para oferecer atualizações rápidas e confiáveis de aplicativos e infraestruturas. O CodePipeline automatiza as fases de compilação, Nível e implantação do processo de liberação sempre que ocorre uma mudança no código, de acordo com o modelo de liberação que você definiu.
+
+<ok>
+https://aws.amazon.com/pt/codepipeline/#:~:text=O%20AWS%20CodePipeline%20permite%20modelar,um%20aplicativo%20e%20suas%20depend%C3%AAncias
+
+<p>
+Step Functions
+
+<ok>
+Step Functions é um serviço de fluxo de trabalho visual com pouco código utilizado por desenvolvedores para criar aplicações distribuídas, automatizar processos de TI e negócios e criar pipelines de dados e machine learning usando produtos da AWS.
+
+<ok>
+https://aws.amazon.com/step-functions/?c=ser&sec=srv&step-functions.sort-by=item.additionalFields.postDateTime&step-functions.sort-order=desc
+
+<p>
+QuickSight
+
+<ok>
+O Amazon QuickSight permite que todos em sua organização entendam seus dados por meio de perguntas em linguagem natural, do uso de painéis interativos ou procurando automaticamente padrões e discrepâncias com tecnologia de machine learning.
+
+<ok>
+https://aws.amazon.com/pt/quicksight/
+
+<p>
+Instance Purchasing Options
+
+<ok>
+<br/>On-demand (Instâncias sob demanda), paga somente pelo uso
+<br/>Savings Plans (um modelo de preços flexíveis que oferece preços mais baixos em comparação com os preços sob demanda, em troca de um compromisso de uso específico (medido em USD/hora) por um período de um ou três anos.)
+<br/>Reserved Instances (Instâncias reservadas), paga por um contrato pré-estabelecido
+<br/>Spot Instances (Instâncias spot), paga pelo uso dos recursos não utilizados por outros modelos
+<br/>Dedicated Hosts (Hosts dedicados)
+<br/>Dedicated Instances (Instâncias dedicadas)
+<br/>Capacity Reservations (Reservas de Capacidade)
+
+<ok>
+https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/instance-purchasing-options.html
+
+<p>
+On Premises
+
+<ok>
+On premises é a infraestrutura ou Data Center particular, privado, local de uma empresa.
+
+<ok>
+https://docs.aws.amazon.com/codedeploy/latest/userguide/instances-on-premises.html
+
+<p>
+CloudFront
+
+<ok>
+O Amazon CloudFront é um serviço da web que acelera a distribuição do conteúdo estático e dinâmico da web, como arquivos .html, .css, .js e arquivos de imagem, para os usuários. O CloudFront distribui o conteúdo por meio de uma rede global de datacenters denominados pontos de presença.
+
+<ok>
+https://docs.aws.amazon.com/pt_br/AmazonCloudFront/latest/DeveloperGuide/Introduction.html
+
+<p>
+TCO
+
+<ok>
+TCO (Calculadora de Custo Total) ou (Total Cost of Ownership) é uma ferramenta para ajudar você a estimar os gastos dos serviços AWS reduzindo o custo total de propriedade (TCO), diminuindo a necessidade de investimento em grandes despesas de capital e oferecendo um modelo de pagamento conforme o uso. Exemplo: Se você for experimentar o (Amazon EC2), pode ser útil saber por quanto tempo pretende usar os <b><u>servidores</u></b>, o tipo de sistema operacional, quais são os requisitos de memória e quanta E/S precisa, decidir se precisa de armazenamento e se executará um banco de dados.
+
+<ok>
+https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/aws-pricingtco-tools.html
+
+<p>
+Console Manager
+
+<ok>
+AWS Management Console (Console de Gerenciamento da AWS) é um aplicativo da web que compreende e se refere a uma ampla coleção de consoles de serviço para gerenciar recursos da AWS.
+
+<ok>
+https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/learn-whats-new.html
+
+<p>
+Service Catalog
+
+<ok>
+O AWS Service Catalog permite que empresas criem e gerenciem catálogos de serviços de TI que estejam aprovados para uso na AWS. Esses serviços de TI podem incluir tudo, de imagens de máquinas virtuais, servidores, software e bancos de dados a arquiteturas completas de aplicações multicamadas.
+
+<ok>
+https://aws.amazon.com/pt/servicecatalog/?aws-service-catalog.sort-by=item.additionalFields.createdDate&aws-service-catalog.sort-order=desc
+
+<p>
+Infraestrutura Global
+
+<ok>
+https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/global-infrastructure.html
+
+<ok>
+https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/global-infrastructure.html
+
+<p>
+
+</textarea>
+
+		</div>
+
+    <link href="style/main.css " rel="stylesheet " type="text/css " />
+</body>
+
+</html>
+
+<script type="text/javascript">
+//////////////////////////////////
+//////////////////////////////////
+//////////////////////////////////
+//continua na 60. do sim1,html ///
+//////////////////////////////////
+//////////////////////////////////
+//////////////////////////////////
+	onLoadConfig();
+</script>

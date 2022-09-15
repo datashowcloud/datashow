@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Sim</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/bootstrap.css" />
+    <link rel="stylesheet" href="style/font-awesome.min.css" />
+    <script src="scripts/jsstore.js"></script>
+    <script src="scripts/jsstore.worker.js"></script>
+    <script src="index.js"></script>
+	<style>
+#myBody {
+  border: 0px dashed blue;
+  padding: 25px;
+  background-attachment: fixed;
+  background-position: top; 
+  background-repeat: no-repeat;
+} 
+	</style>
+</head>
+
+<body id="myBody" bgcolor="white">
+
+    <div class="row row-centered " style="margin-top:0px;">
+		
+		<table id="tableButtons" border=0 align=center style="display:'none';">
+			<tr>
+				<td>
+					<select id="selectMygroup" name="selectMygroup" class="btn btn-info" style="height:34px; display:'none';">
+						<option value="00">Configurações</option>
+						<option value="10" selected>Nível 1.0</option>
+						<option value="11">Nível 1.1</option>
+						<option value="12">Nível 1.2</option>
+						<option value="13">Nível 1.3</option>
+						<option value="20">Nível 2.0</option>
+						<option value="21">Nível 2.1</option>
+						<option value="22">Nível 2.2</option>
+						<option value="23">Nível 2.3</option>
+						<option value="30">Nível 3.0</option>
+						<option value="31">Nível 3.1</option>
+						<option value="32">Nível 3.2</option>
+						<option value="33">Nível 3.3</option>
+						<option value="40">Nível 4.0</option>
+						<option value="41">Nível 4.1</option>
+						<option value="42">Nível 4.2</option>
+						<option value="43">Nível 4.3</option>
+					</select>
+					<button id="btnPlay" style="height:34px; width:40px; display:'none';" class="btn btn-info"><i class="fa fa-play"></i></button>
+					<!-- button id="btnRefresh" style="height:34px; width:40px; display:'none';" class="btn btn-danger"><i class="fa fa-refresh"></i></button -->
+					<button id="btnGear" class="btn btn-info" style="display:'none';"> <i class="fa fa-cog"></i></button>
+					<l id="bSearch">
+						<input type="text" id="txtSearch" value="" placeholder="Digite aqui na pesquisa" style="width:100px; height:34px; display:none;"><button id="btnSearch" style="height:34px; width:40px; display:none;" class="btn btn-info">
+						<i class="fa fa-search"></i></button>
+					</l>
+				</td>
+			</tr>
+		</table>
+		
+		<div id="divconfig" style="display:none;">
+			<label id="lei13709" class="btn btn-default" style="cursor:default; width:300px; display:'none';">
+			Em conformidade com a Lei 13.709/18
+			<br/>- Lei Geral de Proteção de Dados Pessoais,
+			<br/>concordo, autorizo, reconheço e aceito
+			<br/>a coleta de dados
+			<br/>com a finalidade exclusiva de atualizar
+			<br/>e manter na ferramenta DataShowCloud&#174;
+			<br/>em um prazo inderteminado.
+			<br/>Declaro que não farei cópia da ferramenta,
+			<br/>usarei licença e autorização prévia
+			<br/>e são verdadeiras as informações fornecidas.
+			</label>
+			<br/>
+			<!-- input type="text" name="config_myowner" size="16" id="config_myowner" maxlength="6" style="width:300px;" value="" placeholder="digite sua chave ou licença... (opcional)" -->
+			<!-- br/><br/ -->
+			<button id="btnIndexConfigurar" class="btn btn-info" style="padding:9px 15px 9px 15px; width:300px; display:'none';"> Ok. Pode adicionar o cartão! </button>
+			
+			<!-- br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+			<button id="btnLetsGo" class="btn btn-success" style="padding:9px 15px 9px 15px; width:300px; display:none;"> Tudo pronto! Vamos lá! </button -->
+
+		</div>
+		
+		<table id="tblGrid" style="width:98%" class="table table-hover ">
+			<tbody>
+					<!--
+				<div id="botoes" style="display:none; text-align:center;">
+				</div>
+					-->
+			</tbody>
+		</table>
+
+		<div id="divcontent" style="display:'none';"></div>
+
+		<!-- form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post" -->
+		<!-- /form -->
+		
+		<div class="form-group" id="divFormSim" style="display:none;">
+			<font size=4.9 style=text-align:justify>
+
+				<a id="top"></a>
+				
+				<table border=0 align=center width="100%">
+					<tr><td>
+						<button id="btnPrevious" class="btn btn-info" style="display:'none';"> <i class="fa fa-chevron-left"></i> </button>
+						<button id="btnPause" class="btn btn-info" style="display:'none';"><i class="fa fa-pause"></i> Pausa</button>
+						<button id="btnBackward" class="btn btn-danger" style="display:'none';"> <i class="fa fa-refresh"></i> </button>
+						<button id="btnPoints" class="btn btn-info" style="display:'none';"><i class="fa fa-check-square-o"></i></button>
+						<button id="btnNext" class="btn btn-info" style="display:'none';">Próximo <i class="fa fa-chevron-right"></i></button>
+					</td></tr>
+					<tr><td id="mytextSim" style="display:'none'; text-align:justify;">
+					</td></tr>
+					<tr><td id="mycorrect1Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect1answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect2Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect2answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect3Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect3answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect4Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect4answer"></div>
+					</td></tr>
+
+					<tr><td id="mycorrect5Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect5answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect6Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect6answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect7Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect7answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect8Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect8answer"></div>
+					</td></tr>
+					<tr><td id="help" style="display:none; text-align:justify;">
+						<div id="divlinkhelp"></div>
+					</td></tr>
+					<tr><td>
+						<br/><input type="text" id="mygroupSim" value="" Zhidden="">
+						<br/><input type="text" id="mycodeSim" value="" Zhidden="">
+						<br/><input type="text" id="myorderSim" value="" Zhidden="">
+						<br/><input type="text" id="myidSim" value="" Zhidden="">
+					</td></tr>
+				</table>
+			</font>
+		</div>
+		
+		<div class="form-group" id="divFormAddUpdate" style="display:none;">
+			<table border=0 align=center width="98%"><tr><td>
+				<b id="FormularioEditorPerguntas">Formulário Editor de Perguntas</b>
+				<p/><p/><button id="btnCancel" type="button" class="btn btn-info" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-times"></i> Fechar</button>
+				<p/><button id="btnSubmit" type="button" class="btn btn-success" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-check"></i> Salvar</button>
+				<!-- p/><p/>
+				<button id="btnImportSim" type="button" class="btn btn-danger" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-check"></i> Importar</button -->
+				<p/><p/><select id="mygroup" name="mygroup" style="height:35px; display:'none';">
+					<option value="00">Configurações</option>
+					<option value="10" selected>Nível 1.0</option>
+					<option value="11">Nível 1.1</option>
+					<option value="12">Nível 1.2</option>
+					<option value="13">Nível 1.3</option>
+					<option value="20">Nível 2.0</option>
+					<option value="21">Nível 2.1</option>
+					<option value="22">Nível 2.2</option>
+					<option value="23">Nível 2.3</option>
+					<option value="30">Nível 3.0</option>
+					<option value="31">Nível 3.1</option>
+					<option value="32">Nível 3.2</option>
+					<option value="33">Nível 3.3</option>
+					<option value="40">Nível 4.0</option>
+					<option value="41">Nível 4.1</option>
+					<option value="42">Nível 4.2</option>
+					<option value="43">Nível 4.3</option>
+				</select>
+				<select id="mycode" name="mycode" style="height:35px; display:'none';"></select>
+				<select id="myorder" name="myorder" style="height:35px; display:'none';"></select>
+				<p/>
+				<p/><textarea name="mytext" id="mytext" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui..."></textarea>
+				<font style="color:green;">
+					Corretas:
+					<br/>
+					<textarea name="myoption1" id="myoption1" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey1" id="myoptionkey1" style="width:95%;" rows=1 placeholder="chave explicação 1..."></textarea>
+					<br/><textarea name="myoption2" id="myoption2" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey2" id="myoptionkey2" style="width:95%;" rows=1 placeholder="explicação 2..."></textarea>
+					<br/><textarea name="myoption3" id="myoption3" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey3" id="myoptionkey3" style="width:95%;" rows=1 placeholder="explicação 3..."></textarea>
+					<br/><textarea name="myoption4" id="myoption4" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey4" id="myoptionkey4" style="width:95%;" rows=1 placeholder="explicação 4..."></textarea>
+				</font>
+				
+				<font style="color:red; text-align:left;">
+					<br/>
+					Incorretas:
+					<textarea name="myoption5" id="myoption5" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey5" id="myoptionkey5" style="width:95%;" rows=1 placeholder="explicação 5..."></textarea>
+					<br/><textarea name="myoption6" id="myoption6" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey6" id="myoptionkey6" style="width:95%;" rows=1 placeholder="explicação 6..."></textarea>
+					<br/><textarea name="myoption7" id="myoption7" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey7" id="myoptionkey7" style="width:95%;" rows=1 placeholder="explicação 7..."></textarea>
+					<br/><textarea name="myoption8" id="myoption8" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey8" id="myoptionkey8" style="width:95%;" rows=1 placeholder="explicação 8..."></textarea>
+				</font>
+			</td></tr></table>
+		</div>
+		
+		<div class="form-group" id="divGear" style="display:none;">
+			<table border=0 align=center width="100%"><tr><td>
+				<b id="FormularioEditorConfiguracoes">Formulário Editor de Configurações</b>
+				<p/><p/><button id="btnCancelImport" class="btn btn-info" style="padding:9px 15px 9px 15px; width:220px; display:none;"> <i class="fa fa-times"></i> Fechar</button>
+			<!-- form id="formAdd" ZZZaction="https://formspree.io/f/xrgjojko" method="post" -->
+				<p/><p/><button id="btnDropDb" class="btn btn-danger" style="padding:9px 15px 9px 15px; width:220px;"> <i class="fa fa-remove"></i> Restaurar Padrão de Fábrica</button>
+			<!-- /form -->
+				<p/><p/><button id="btnAddNewManual" class="btn btn-info" style="padding:9px 15px 9px 15px; width:220px; display:none;"><i class="fa fa-plus"></i> Adicionar Nova Pergunta</button>
+				<p/><p/><button id="btnShowHelp" class="btn btn-info" style="padding:9px 15px 9px 15px; width:220px; display:none;"> <i class="fa fa-book"></i> Tutorial</button>
+				<p/><p/>
+				<select id="selTextColor" name="selTextColor" style="padding:9px 15px 9px 15px; width:220px; height:35px; display:'none';" class="btn btn-info">
+					<option value="white" selected>Cor Letra: Padrão</option>
+					<option value="gray">Cor Letra: Cinza</option>
+					<option value="black">Cor Letra: Preta</option>
+					<option value="green">Cor Letra: Verde</option>
+					<option value="yellow">Cor Letra: Amarela</option>
+					<option value="blue">Cor Letra: Azul</option>
+				</select>
+				<p/><p/>
+				<select id="selBackground" name="selBackground" style="padding:9px 15px 9px 15px; width:220px; height:35px; display:'none';" class="btn btn-info">
+					<option value="black" selected>Cor Fundo: Padrão</option>
+					<option value="white">Cor Fundo: Branco</option>
+					<option value="yellow">Cor Fundo: Amarelo</option>
+					<option value="blue">Cor Fundo: Azul</option>
+					<option value="gray">Cor Fundo: Cinza</option>
+				</select>
+				<p/><p/>
+				<select id="selButtonColor" name="selButtonColor" style="padding:9px 15px 9px 15px; width:220px; height:35px; display:'none';" class="btn btn-info">
+					<option value="btn-colors" selected>Cor Botão: Padrão</option>
+					<option value="btn-info">Cor Botão: Azul</option>
+					<option value="btn-default">Cor Botão: Branco</option>
+					<option value="btn-warning">Cor Botão: Laranja</option>
+					<option value="btn-danger">Cor Botão: Vermelho</option>
+					<option value="btn-success">Cor Botão: Verde</option>
+					<option value="btn-primary">Cor Botão: Azul Escuro</option>
+				</select>
+				<div style="display:none;">
+					<br/><button id="btnSelectCountAll" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-asterisk"></i> Count All</button>
+					<br/><button id="btnDeleteLirics" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-minus"></i> Clear Lirycs</button>
+				</div>
+
+				<p/><p/><i id="email">datashowcloud2022@gmail.com</i>
+				<p/><p/><i id="version">versão 15.09.22 memória</i>
+
+			<div style="display:none;">
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-envelope"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-star"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-user"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-film"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-check"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-check-square-o"></i> </button>
+				<br/>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-remove"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-signal"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-cog"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-trash"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-home"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-file"></i> </button>
+				<br/>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-road"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-download"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-inbox"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-play"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-repeat"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-refresh"></i> </button>
+				<br/>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-list"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-lock"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-flag"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-headphones"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-off"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-down"></i> </button>
+				<br/>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-up"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-qrcode"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-barcode"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-tag"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-tags"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-book"></i> </button>
+				<br/>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-bookmark"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-print"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-camera"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-font"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-bold"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-italic"></i> </button>
+				<br/>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-text-height"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-text-width"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-left"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-center"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-right"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-justify"></i> </button>
+				<br/>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-list"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-dedent"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-outdent"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-indent"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-video-camera"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-photo"></i> </button>
+				<br/>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-pencil"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-map-marker"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-adjust"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-tint"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-edit"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-share-square-o"></i> </button>
+				<br/>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-arrows"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-step-backward"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-fast-backward"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-backward"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-play"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-th"></i> </button>
+				<br/>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-pause"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-pencil-square-o"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-forward"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-fast-forward"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-step-forward"></i> </button>
+				<br/>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-eject"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-chevron-left"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-chevron-right"></i> </button>
+				<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
+			</div>
+			</td></tr></table>
+			
+		</div>
+	</div>
+
+
+
+		<form id="formBible" class="form-horizontal" role="form" style="margin-top:50px; display: none;">
+		</form>
+
+    <link href="style/main.css " rel="stylesheet " type="text/css " />
+
+</body>
+
+</html>
