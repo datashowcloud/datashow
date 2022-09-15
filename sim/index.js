@@ -2,7 +2,7 @@
 
 var jsstoreCon = new JsStore.Connection();
 
-var GLOBAL_textcolor = 'gray';
+var GLOBAL_textcolor = 'white';
 var GLOBAL_background = 'black';
 var confirmImportSuccessfull = 'Não feche esta página (X). \nNão atualize esta página (F5). \n\nVolte na página anterior (aba ao lado) e pesquise pela palavra "configuração concluída com sucesso." \n\nQuando a palavra aparecer, a configuração terminou com sucesso.';
 var COL_LOGOTIPO = 5;
@@ -448,13 +448,14 @@ async function initConfigGeneral() {
 
 async function updateConfigGeneral() {
 	GLOBAL_textcolor = document.getElementById('selTextColor').value;
-
+/*
 	document.getElementById('email').style.color = document.getElementById('selTextColor').value;
 	document.getElementById('version').style.color = document.getElementById('selTextColor').value;
 	document.getElementById('FormularioEditorPerguntas').style.color = document.getElementById('selTextColor').value;
 	document.getElementById('FormularioEditorConfiguracoes').style.color = document.getElementById('selTextColor').value;
-	
 	document.getElementById('myBody').style.background = document.getElementById('selBackground').value;
+*/
+	setConfigGeneral(document.getElementById('selTextColor').value, document.getElementById('selBackground').value);
 
 	var noOfDataUpdated = await jsstoreCon.update({
 		in: 'ConfigGeneral',
@@ -497,10 +498,25 @@ async function getConfigGeneral() {
 		}
 	}
 
+	setConfigGeneral(GLOBAL_textcolor, GLOBAL_background);
+/*
 	document.getElementById('email').style.color = GLOBAL_textcolor;
 	document.getElementById('version').style.color = GLOBAL_textcolor;
 	document.getElementById('FormularioEditorPerguntas').style.color = GLOBAL_textcolor;
 	document.getElementById('FormularioEditorConfiguracoes').style.color = GLOBAL_textcolor;
+	document.getElementById('lei13709').style.color = GLOBAL_textcolor;
+	document.getElementById('lei13709').style.backgroundColor = GLOBAL_background;
+*/
+}
+
+async function setConfigGeneral(textcolor, background) {
+	document.getElementById('email').style.color = textcolor;
+	document.getElementById('version').style.color = textcolor;
+	document.getElementById('FormularioEditorPerguntas').style.color = textcolor;
+	document.getElementById('FormularioEditorConfiguracoes').style.color = textcolor;
+	document.getElementById('lei13709').style.color = textcolor;
+	document.getElementById('lei13709').style.backgroundColor = background;
+	document.getElementById('myBody').style.background = background;
 }
 
 function getStudentFromForm(studentId, mygroup, mycode) {
