@@ -559,7 +559,7 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		document.getElementById('btnBackward').classList.add('btn-danger');
 		document.getElementById('btnPoints').classList.add('btn-warning');
 		document.getElementById('btnNext').classList.add('btn-success');
-		document.getElementById('selButtonColor').classList.add('btn-default');
+		document.getElementById('selButtonColor').classList.add('btn-info');
 	} else {
 		document.getElementById('btnPrevious').classList.add(buttoncolor);
 		document.getElementById('btnPause').classList.add(buttoncolor);
