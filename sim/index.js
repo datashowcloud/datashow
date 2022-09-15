@@ -4,7 +4,7 @@ var jsstoreCon = new JsStore.Connection();
 
 var GLOBAL_textcolor = 'white';
 var GLOBAL_background = 'black';
-var GLOBAL_buttoncolor = 'btn-original';
+var GLOBAL_buttoncolor = 'btn-colors';
 var confirmImportSuccessfull = 'Não feche esta página (X). \nNão atualize esta página (F5). \n\nVolte na página anterior (aba ao lado) e pesquise pela palavra "configuração concluída com sucesso." \n\nQuando a palavra aparecer, a configuração terminou com sucesso.';
 var COL_LOGOTIPO = 5;
 
@@ -429,7 +429,7 @@ function registerEvents() {
 async function initConfigGeneral() {
 	document.getElementById('divconfig').style.display = 'block';
 	GLOBAL_textcolor = 'white';
-	GLOBAL_buttoncolor = 'btn-original';
+	GLOBAL_buttoncolor = 'btn-colors';
 	try {
 		var configgeneral = {
 			fontfamily: 'Times New Roman',
@@ -560,13 +560,6 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		document.getElementById('btnPoints').classList.add('btn-warning');
 		document.getElementById('btnNext').classList.add('btn-success');
 		document.getElementById('selButtonColor').classList.add('btn-default');
-	} else if (buttoncolor == 'btn-original') {
-		document.getElementById('btnPrevious').classList.add('btn-info');
-		document.getElementById('btnPause').classList.add('btn-info');
-		document.getElementById('btnBackward').classList.add('btn-info');
-		document.getElementById('btnPoints').classList.add('btn-info');
-		document.getElementById('btnNext').classList.add('btn-info');
-		document.getElementById('selButtonColor').classList.add('btn-info');
 	} else {
 		document.getElementById('btnPrevious').classList.add(buttoncolor);
 		document.getElementById('btnPause').classList.add(buttoncolor);
