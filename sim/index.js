@@ -4,6 +4,7 @@ var jsstoreCon = new JsStore.Connection();
 
 var GLOBAL_textcolor = 'white';
 var GLOBAL_background = 'black';
+var GLOBAL_buttoncolor = 'btn-original';
 var confirmImportSuccessfull = 'Não feche esta página (X). \nNão atualize esta página (F5). \n\nVolte na página anterior (aba ao lado) e pesquise pela palavra "configuração concluída com sucesso." \n\nQuando a palavra aparecer, a configuração terminou com sucesso.';
 var COL_LOGOTIPO = 5;
 
@@ -97,6 +98,7 @@ function getDbSchema() {
             fontsize: { Null: false, dataType: 'string' },
             background: { Null: false, dataType: 'string' }, //cor de fundo, usando imagem png
             textcolor: { Null: false, dataType: 'string' },
+            buttoncolor: { Null: false, dataType: 'string' },
             textalign: { Null: false, dataType: 'string' },
             camporeserva: { Null: false, dataType: 'string' }
         }
@@ -109,6 +111,7 @@ function getDbSchema() {
             fontsize: { Null: false, dataType: 'string' },
             background: { Null: false, dataType: 'string' }, //cor de fundo, usando imagem png
             textcolor: { Null: false, dataType: 'string' },
+            buttoncolor: { Null: false, dataType: 'string' },
             textalign: { Null: false, dataType: 'string' },
             camporeserva: { Null: false, dataType: 'string' }
         }
@@ -415,6 +418,9 @@ function registerEvents() {
 	$('#selBackground').change(function () {
 		updateConfigGeneral();
     })
+	$('#selButtonColor').change(function () {
+		updateConfigGeneral();
+    })
 	$('#btnLetsGo').click(function () {
 		location.reload();
     })
@@ -423,12 +429,14 @@ function registerEvents() {
 async function initConfigGeneral() {
 	document.getElementById('divconfig').style.display = 'block';
 	GLOBAL_textcolor = 'white';
+	GLOBAL_buttoncolor = 'btn-original';
 	try {
 		var configgeneral = {
 			fontfamily: 'Times New Roman',
 			fontsize: '16',
 			background: 'black',
 			textcolor: GLOBAL_textcolor,
+			buttoncolor: GLOBAL_buttoncolor,
 			textalign: 'left'
 		};
 		var noOfDataInserted = await jsstoreCon.insert({
@@ -448,14 +456,8 @@ async function initConfigGeneral() {
 
 async function updateConfigGeneral() {
 	GLOBAL_textcolor = document.getElementById('selTextColor').value;
-/*
-	document.getElementById('email').style.color = document.getElementById('selTextColor').value;
-	document.getElementById('version').style.color = document.getElementById('selTextColor').value;
-	document.getElementById('FormularioEditorPerguntas').style.color = document.getElementById('selTextColor').value;
-	document.getElementById('FormularioEditorConfiguracoes').style.color = document.getElementById('selTextColor').value;
-	document.getElementById('myBody').style.background = document.getElementById('selBackground').value;
-*/
-	setConfigGeneral(document.getElementById('selTextColor').value, document.getElementById('selBackground').value);
+	GLOBAL_buttoncolor = document.getElementById('selButtonColor').value;
+	setConfigGeneral(document.getElementById('selTextColor').value, document.getElementById('selBackground').value, document.getElementById('selButtonColor').value);
 
 	var noOfDataUpdated = await jsstoreCon.update({
 		in: 'ConfigGeneral',
@@ -464,6 +466,7 @@ async function updateConfigGeneral() {
 			fontsize: '16',
 			background: '' + document.getElementById('selBackground').value + '',
 			textcolor: '' + document.getElementById('selTextColor').value + '',
+			buttoncolor: '' + document.getElementById('selButtonColor').value + '',
 			textalign: 'left'
 		}
 	});
@@ -476,6 +479,7 @@ async function getConfigGeneral() {
 	configsgeneral.forEach(function (configgeneral) {
 		GLOBAL_textcolor = configgeneral.textcolor;
 		GLOBAL_background = configgeneral.background;
+		GLOBAL_buttoncolor = configgeneral.buttoncolor;
 	})
 	
 	//carrega cor de fundo
@@ -498,18 +502,20 @@ async function getConfigGeneral() {
 		}
 	}
 
-	setConfigGeneral(GLOBAL_textcolor, GLOBAL_background);
-/*
-	document.getElementById('email').style.color = GLOBAL_textcolor;
-	document.getElementById('version').style.color = GLOBAL_textcolor;
-	document.getElementById('FormularioEditorPerguntas').style.color = GLOBAL_textcolor;
-	document.getElementById('FormularioEditorConfiguracoes').style.color = GLOBAL_textcolor;
-	document.getElementById('lei13709').style.color = GLOBAL_textcolor;
-	document.getElementById('lei13709').style.backgroundColor = GLOBAL_background;
-*/
+	//carrega cor do botão
+	var varItens = document.getElementById('selButtonColor');
+	for(index = 0;index < varItens.length;index++)
+	{
+		if (varItens.options[index].value == GLOBAL_buttoncolor) {
+			varItens.selectedIndex = index;
+			break;
+		}
+	}
+	
+	setConfigGeneral(GLOBAL_textcolor, GLOBAL_background, GLOBAL_buttoncolor);
 }
 
-async function setConfigGeneral(textcolor, background) {
+async function setConfigGeneral(textcolor, background, buttoncolor) {
 	document.getElementById('email').style.color = textcolor;
 	document.getElementById('version').style.color = textcolor;
 	document.getElementById('FormularioEditorPerguntas').style.color = textcolor;
@@ -517,6 +523,58 @@ async function setConfigGeneral(textcolor, background) {
 	document.getElementById('lei13709').style.color = textcolor;
 	document.getElementById('lei13709').style.backgroundColor = background;
 	document.getElementById('myBody').style.background = background;
+
+	document.getElementById('selTextColor').style.color = textcolor;
+	document.getElementById('selBackground').style.color = background;
+
+	var classe = '';
+
+	classe = document.getElementById('btnPrevious').classList.value;
+	classe = classe.substring(4, classe.length);
+	document.getElementById('btnPrevious').classList.remove(classe);
+
+	classe = document.getElementById('btnPause').classList.value;
+	classe = classe.substring(4, classe.length);
+	document.getElementById('btnPause').classList.remove(classe);
+
+	classe = document.getElementById('btnBackward').classList.value;
+	classe = classe.substring(4, classe.length);
+	document.getElementById('btnBackward').classList.remove(classe);
+
+	classe = document.getElementById('btnPoints').classList.value;
+	classe = classe.substring(4, classe.length);
+	document.getElementById('btnPoints').classList.remove(classe);
+
+	classe = document.getElementById('btnNext').classList.value;
+	classe = classe.substring(4, classe.length);
+	document.getElementById('btnNext').classList.remove(classe);
+
+	classe = document.getElementById('selButtonColor').classList.value;
+	classe = classe.substring(4, classe.length);
+	document.getElementById('selButtonColor').classList.remove(classe);
+
+	if (buttoncolor == 'btn-colors') {
+		document.getElementById('btnPrevious').classList.add('btn-success');
+		document.getElementById('btnPause').classList.add('btn-info');
+		document.getElementById('btnBackward').classList.add('btn-danger');
+		document.getElementById('btnPoints').classList.add('btn-warning');
+		document.getElementById('btnNext').classList.add('btn-success');
+		document.getElementById('selButtonColor').classList.add('btn-default');
+	} else if (buttoncolor == 'btn-original') {
+		document.getElementById('btnPrevious').classList.add('btn-info');
+		document.getElementById('btnPause').classList.add('btn-info');
+		document.getElementById('btnBackward').classList.add('btn-info');
+		document.getElementById('btnPoints').classList.add('btn-info');
+		document.getElementById('btnNext').classList.add('btn-info');
+		document.getElementById('selButtonColor').classList.add('btn-info');
+	} else {
+		document.getElementById('btnPrevious').classList.add(buttoncolor);
+		document.getElementById('btnPause').classList.add(buttoncolor);
+		document.getElementById('btnBackward').classList.add(buttoncolor);
+		document.getElementById('btnPoints').classList.add(buttoncolor);
+		document.getElementById('btnNext').classList.add(buttoncolor);
+		document.getElementById('selButtonColor').classList.add(buttoncolor);
+	}
 }
 
 function getStudentFromForm(studentId, mygroup, mycode) {
@@ -614,6 +672,14 @@ async function showPoints(mygroup, mycode) {
 //This function select table play
 async function getFromTablePlay(id, mygroup, mycode) {
 //    try {
+		var totalperguntas = await jsstoreCon.count({
+			from: 'Student'
+			  , where: {
+				  mygroup: mygroup
+			  }
+		});
+		totalperguntas = parseInt(totalperguntas) - 1;
+
 		var students = await jsstoreCon.select({
 			from: 'Student'
 			  , where: { mygroup: '' + mygroup + ''
@@ -641,7 +707,7 @@ async function getFromTablePlay(id, mygroup, mycode) {
 			document.getElementById('mycorrect7Sim').style.display='none';
 			document.getElementById('mycorrect8Sim').style.display='none';
 
-			document.getElementById('mytextSim').innerHTML = '<font color=' + GLOBAL_textcolor + '>' + ' <b>' + student.mycode + '. ' + student.mytext + '</b> </font>';
+			document.getElementById('mytextSim').innerHTML = '<font color=' + GLOBAL_textcolor + '>' + ' <b>' + student.mycode + '/' + totalperguntas + '. ' + student.mytext + '</b> </font>';
 
 			var myorder = student.myorder;
 			myorder = myorder.replaceAll('\,', '');
@@ -659,8 +725,8 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					+ student.mycorrect1answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption1 + ' </font>'
 //					+ ' <a href="#' + student.myoption1 + '" class="btn btn-default"><b>?</b></a>'
 					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
-					+ '<p/>' + textlink + '</zzz>'
-					+ '<br/>(<a href=' + linkhref + ' target="_blank">link internet</a>)';
+					+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
+					+ '<br/><a href=' + linkhref + ' target="_blank">link internet</a>';
 					if (student.myoption1 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
@@ -676,8 +742,8 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					+ student.mycorrect2answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption2 + ' </font>'
 //					+ ' <a href="#' + student.myoption2 + '" class="btn btn-default"><b>?</b></a>'
 					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
-					+ '<p/>' + textlink + '</zzz>'
-					+ '<br/>(<a href=' + linkhref + ' target="_blank">link internet</a>)';
+					+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
+					+ '<br/><a href=' + linkhref + ' target="_blank">link internet</a>';
 					if (student.myoption2 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
@@ -693,8 +759,8 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					+ student.mycorrect3answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption3 + ' </font>'
 //					+ ' <a href="#' + student.myoption3 + '" class="btn btn-default"><b>?</b></a>'
 					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
-					+ '<p/>' + textlink + '</zzz>'
-					+ '<br/>(<a href=' + linkhref + ' target="_blank">link internet</a>)';
+					+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
+					+ '<br/><a href=' + linkhref + ' target="_blank">link internet</a>';
 					if (student.myoption3 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
@@ -710,8 +776,8 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					+ student.mycorrect4answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption4 + ' </font>'
 //					+ ' <a href="#' + student.myoption4 + '" class="btn btn-default"><b>?</b></a>'
 					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
-					+ '<p/>' + textlink + '</zzz>'
-					+ '<br/>(<a href=' + linkhref + ' target="_blank">link internet</a>)';
+					+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
+					+ '<br/><a href=' + linkhref + ' target="_blank">link internet</a>';
 					if (student.myoption4 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
@@ -727,8 +793,8 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					+ student.mycorrect5answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption5 + ' </font>'
 //					+ ' <a href="#' + student.myoption5 + '" class="btn btn-default"><b>?</b></a>'
 					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
-					+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + ' </font>' + '</zzz>'
-					+ '<br/>(<a href=' + linkhref + ' target="_blank">link internet</a>)';
+					+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
+					+ '<br/><a href=' + linkhref + ' target="_blank">link internet</a>';
 					if (student.myoption5 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
@@ -744,8 +810,8 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					+ student.mycorrect6answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption6 + ' </font>'
 //					+ ' <a href="#' + student.myoption6 + '" class="btn btn-default"><b>?</b></a>'
 					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
-					+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + ' </font>' + '</zzz>'
-					+ '<br/>(<a href=' + linkhref + ' target="_blank">link internet</a>)';
+					+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
+					+ '<br/><a href=' + linkhref + ' target="_blank">link internet</a>';
 					if (student.myoption6 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
@@ -761,8 +827,8 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					+ student.mycorrect7answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption7 + ' </font>'
 //					+ ' <a href="#' + student.myoption7 + '" class="btn btn-default"><b>?</b></a>'
 					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
-					+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + ' </font>' + '</zzz>'
-					+ '<br/>(<a href=' + linkhref + ' target="_blank">link internet</a>)';
+					+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
+					+ '<br/><a href=' + linkhref + ' target="_blank">link internet</a>';
 					if (student.myoption7 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
@@ -778,8 +844,8 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					+ student.mycorrect8answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption8 + ' </font>'
 //					+ ' <a href="#' + student.myoption8 + '" class="btn btn-default"><b>?</b></a>'
 					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
-					+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + ' </font>' + '</zzz>'
-					+ '<br/>(<a href=' + linkhref + ' target="_blank">link internet</a>)';
+					+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
+					+ '<br/><a href=' + linkhref + ' target="_blank">link internet</a>';
 					if (student.myoption8 != '') {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 					}
@@ -900,7 +966,7 @@ function getLinkHelp(keylink, hreflink, textlink) {
 	linkhelp = linkhelp + '<p/><a href="#top" class="btn btn-default"><i class="fa fa-arrow-up"></i></a>';
 	linkhelp = linkhelp + '<b> ' + keylink + '</b>';
 	linkhelp = linkhelp + '<br/><i id="' + keylink + '" value="' + hreflink + '"> ' + textlink + '</i>';
-	linkhelp = linkhelp + '<br/>(<a id="link_' + keylink + '" href=' + hreflink + ' target="_blank">link internet</a>)';
+	linkhelp = linkhelp + '<br/><a id="link_' + keylink + '" href=' + hreflink + ' target="_blank">link internet</a>';
 
 	if (keylink == '') {
 		return '';
@@ -1777,7 +1843,7 @@ function showGridAndHideForms() {
 	$('#divFormSim').hide();
 
 	if (document.getElementById('btnPlay') != null) { document.getElementById('btnPlay').style.display=''; }
-	if (document.getElementById('btnAddNewManual') != null) { document.getElementById('btnAddNewManual').style.display=''; }
+//	if (document.getElementById('btnAddNewManual') != null) { document.getElementById('btnAddNewManual').style.display=''; }
 	if (document.getElementById('btnGear') != null) { document.getElementById('btnGear').style.display=''; }
 	if (document.getElementById('tableButtons') != null) { document.getElementById('tableButtons').style.display=''; }
 }
@@ -1836,7 +1902,7 @@ function showIniciarConfiguracao() {
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
 	document.getElementById('btnPlay').style.display='none';
-	document.getElementById('btnAddNewManual').style.display='none';
+//	document.getElementById('btnAddNewManual').style.display='none';
 	document.getElementById('btnGear').style.display='none';
 }
 
