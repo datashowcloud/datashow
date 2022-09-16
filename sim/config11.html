@@ -38,6 +38,7 @@
 					<option value="11">Nível 1.1</option>
 					<option value="12">Nível 1.2</option>
 					<option value="13">Nível 1.3</option>
+					<option value="14">Nível 1.4</option>
 					<option value="20">Nível 2.0</option>
 					<option value="21">Nível 2.1</option>
 					<option value="22">Nível 2.2</option>
@@ -129,6 +130,7 @@
 					<option value="11">Nível 1.1</option>
 					<option value="12">Nível 1.2</option>
 					<option value="13">Nível 1.3</option>
+					<option value="14">Nível 1.4</option>
 					<option value="20">Nível 2.0</option>
 					<option value="21">Nível 2.1</option>
 					<option value="22">Nível 2.2</option>
@@ -185,334 +187,249 @@
 AWS Cloud Practitioner Essentials
 <br/> Versão 1.1
 <br/>
-<br/> Total de 20 perguntas
+<br/> Total de 15 perguntas
 <br/> Aprovação mínima de 70%
 </div>
 
 <p>
-Sua empresa iniciou um processo de transformação digital de todas as suas plataformas e decidiu utilizar uma arquitetura de sistemas orientada a eventos para desacoplar os sistemas. Qual dos serviços abaixo pode ser utilizado como um barramento escalável de eventos para facilitar a criação dessa arquitetura?
-
-Amazon SQS (Simple Queue Service)
-<key>SQS</key>
-
-Amazon EventSync
-<key>EventSync</key>
-
-Amazon Lambda
-<key>Lambda</key>
+Numa estratégia de utilização de nuvem híbrida, onde você deseja manter seu workload on-premises e parte dos arquivos na AWS. Qual opção abaixo oferece uma gama de serviços para realizar essa finalidade de integração e armazenamento para sua arquitetura?
 
 <ok>
-Amazon EventBridge
-<key>EventBridge</key>
+AWS Storage Gateway
+<key>Storage Gateway</key>
 
-<p>
-Qual é o banco de dados relacional que é totalmente gerenciado pela AWS e pode ser 5 x mais rápido que o MySQL?
-
-<ok>
-Aurora
-<key>Aurora</key>
-
-DynamoDB
-<key>DynamoDB</key>
-
-MariaDB
-<key>MariaDB</key>
-
-Neptune
-<key>Neptune</key>
-
-<p>
-Quais itens fazem parte dos pilares do Well-Architected Framework?
-<br/>(Selecione 2)
-
-<ok>
-Segurança
-<key>Well-Architected Framework</key>
-
-<ok>
-Excelência Operacional
-<key>Well-Architected Framework</key>
-
-Desacoplamento
-<key>Well-Architected Framework</key>
-
-Monitoramento
-<key>Well-Architected Framework</key>
-
-Escalabilidade
-<key>Well-Architected Framework</key>
-
-<p>
-Qual é o serviço que garante que você tenha o correto número de instâncias EC2 disponíveis para lidar com a carga da sua aplicação?
-
-<ok>
-EC2 Auto Scaling
-<key>Auto Scaling</key>
-
-Route53
-<key>Route53</key>
-
-ELB
-<key>ELB</key>
-
-VPC
+Amazon Virtual Private Cloud (VPC)
 <key>VPC</key>
 
+AWS Organizations
+<key>Organizations</key>
+
+AWS Database Migration Service
+<key>DMS</key>
+
 <p>
-Qual serviço permite a criação de uma rede virtual totalmente isolada para alocar diversos recursos computacionais na AWS?
+Você está migrando parte de uma aplicação que trabalha com sistema de arquivos para armazenar e manipular alguns dados. Qual das opções abaixo indica o serviço que pode ser utilizado para atender essa parte da aplicação na AWS?
 
-AWS Dedicted Hosts
-<key>Dedicted Hosts</key>
+EC2
+<key>EC2</key>
 
-AWS Reserved
-<key>Não Se Aplica</key>
+KMS
+<key>KMS</key>
 
 <ok>
-AWS VPC
-<key>VPC</key>
+EFS
+<key>EFS</key>
 
-AWS Gateway
-<key>Não Se Aplica</key>
-
-<p>
-Recentemente você implementou uma aplicação piloto na sua empresa que foi um sucesso. Para realizar o rollout do projeto, a direção pediu que você apresente os gastos com infraestrutura AWS durante o período para avaliarem e aprovarem a expansão. Qual é o serviço da AWS que fornece essas informações?
-
-AWS Budgets
-<key>Budgets</key>
-
-<ok>
-AWS Cost Explorer
-<key>Cost Explorer</key>
-
-AWS Inspector
-<key>Inspector</key>
-
-AWS Trusted Advisor
-<key>Trusted Advisor</key>
+AWS Config
+<key>Config</key>
 
 <p>
-Seu time de desenvolvimento identificou que devido ao grande volume de consultas que são realizadas e a concorrência com outras funções de acesso, a performance de um banco de dados relacional está comprometida. Qual é a indicação mais econômica para resolver esse cenário?
+Você trabalha numa agência de viagens online e precisa armazenar, analisar e correlacionar dados de logs de seus aplicativos para identificar e resolver gargalos de desempenho e problemas de disponibilidade para garantir uma experiência de reserva otimizada para os seus clientes. Qual serviço da AWS abaixo é o mais indicado?
 
-Atualizar a role de acesso ao banco
-<key>IAM</key>
+Amazon CloudSearch
+<key>CloudSearch</key>
 
-Criar novas instâncias do RDS em outra zona de disponibilidade.
-<key>Multi-AZ</key>
-
-<ok>
-Fazer o uso de Read Replicas
-<key>Read Replicas</key>
-
-Substituir o RDS pelo Dynamo
-<key>RDS</key>
-
-<p>
-Qual é a forma de permitir que seus serviços sejam expostos sempre no mesmo endereço IP e de possibilitar que os hosts associados a ele sejam substituídos de forma simples na sua infraestrutura?
-
-Utilizando um IPV4
-<key>IPV4</key>
-
-<ok>
-Utilizando um IP Elástico
-<key>IP Elástico</key>
-
-Utilizando um IPV6
-<key>IPV6</key>
-
-Utilizando o Route 53
-<key>Route53</key>
-
-<p>
-Qual dos seguintes serviços de bancos de dados é totalmente gerenciado pela AWS?
-
-MySql
-<key>MySql</key>
-
-SQL Server
-<key>SQL Server</key>
-
-MariaDB
-<key>MariaDB</key>
-
-<ok>
-DynamoDB
-<key>DynamoDB</key>
-
-<p>
-Você está desenvolvendo uma aplicação mobile e precisa implementar o armazenamento e sincronismo de dados para vários dispositivos. Qual é o serviço AWS que pode ser utilizado para esse fim?
-
-AWS Elastic Cache
-<key>Elastic Cache</key>
-
-AWS DynamoDB
-<key>DynamoDB</key>
-
-AWS Redis
-<key>Redis</key>
-
-<ok>
-AWS Cognito
-<key>Cognito</key>
-
-<p>
-Qual é a quantidade de dados que podemos armazenar no S3?
-
-5 Gigabytes
-<key>Pricing</key>
-
-50 Gigabytes
-<key>Pricing</key>
-
-<ok>
-A capacidade é virtualmente ilimitada
-<key>Pricing</key>
-
-1 Terabyte
-<key>Pricing</key>
-
-<p>
-Utilização de recursos de rede, computadores virtuais e armazenamento de dados com alto nível de flexibilidade, gerenciamento e controle sobre os recurso de TI são características de qual tipo de uso de cloud?
-
-<ok>
-IAAS
-<key>IAAS</key>
-
-SAAS
-<key>SAAS</key>
-
-BAAS
-<key>BAAS</key>
-
-PAAS
-<key>PAAS</key>
-
-<p>
-Qual é o serviço utilizado para permitir que aplicações acessem recursos restritos de serviços dentro da AWS?
-
-IAM Policies
-<key>IAM Policies</key>
-
-IAM Groups
-<key>IAM Groups</key>
-
-IAM Users
-<key>IAM Users</key>
-
-<ok>
-IAM Roles
-<key>IAM Roles</key>
-
-<p>
-Você precisa implementar no seu site uma funcionalidade para realizar pesquisas em todas as páginas e arquivos para facilitar a navegação e experiência dos seus usuário. Qual SAAS disponível na AWS fornece ferramentas robustas para cumprir essa finalidade e que pode ser facilmente utilizada na sua aplicação?
-
-Amazon ElasticSearch
-<key>ElasticSearch</key>
-
-Amazon CloudWatch
-<key>CloudWatch</key>
+Amazon EMR
+<key>EMR</key>
 
 Amazon Athena
 <key>Athena</key>
 
 <ok>
-Amazon CloudSearch
-<key>CloudSearch</key>
+Amazon ElasticSearch
+<key>ElasticSearch</key>
 
 <p>
-Você irá disponibilizar uma aplicação crítica e com dados sensíveis na Internet. Qual é o serviço que te ajuda a identificar vulnerabilidades de segurança e risco de exposição de acordo com as melhores práticas e compliance?
+Sua aplicação precisa persistir dados não estruturados de clientes. Qual serviço abaixo é o mais indicado para essa finalidade?
+
+Amazon RedShift
+<key>RedShift</key>
+
+Amazon Aurora
+<key>Aurora</key>
+
+Amazon EMR
+<key>EMR</key>
 
 <ok>
-AWS Inspector
-<key>Inspector</key>
+Amazon DynamoDB
+<key>DynamoDB</key>
+
+<p>
+Você está auditando a infraestrutura da sua empresa na AWS para tentar identificar ações não programadas de desligamentos de recursos. Qual dos itens abaixo pode te auxiliar nesta atividade?
+
+AWS Audit
+<key>Não Se Aplica</key>
+
+<ok>
+AWS CloudTrail
+<key>CloudTrail</key>
+
+AWS CloudSearch
+<key>CloudSearch</key>
+
+AWS ElasticSearch
+<key>ElasticSearch</key>
+
+<p>
+Qual afirmação abaixo NÃO se refere ao AWS Lambda?
+
+Pode ser acionado diretamente pelo AWS SNS
+<key>Lambda</key>
+
+Processa dados sem servidor
+<key>Lambda</key>
+
+Pode ser acionado diretamente pelo AWS S3
+<key>Lambda</key>
+
+<ok>
+Permite o gerenciamento total dos recursos de infraestrutura
+<key>Não Se Aplica</key>
+
+<p>
+Qual é o serviço que você precisa configurar, dentro da sua rede privada na AWS, para controlar o tráfego de dados de entrada e saída em um parque de servidores de bancos de dados?
+
+AWS Shield
+<key>Shield</key>
+
+AWS WAF
+<key>WAF</key>
+
+<ok>
+AWS Security Group
+<key>Security Group</key>
 
 AWS GuardDuty
 <key>GuardDuty</key>
 
-AWS KMS
-<key>KMS</key>
-
-AWS Macie
-<key>Macie</key>
-
 <p>
-Numa migração de sistemas, você percebeu que existem dados na sua aplicação que raramente são usados e que poderiam ser mantidos em arquivos somente para fins de auditoria. Qual é o serviço da AWS que pode ser utilizado para esse objetivo e com o menor custo possível?
+Qual é a solução de banco de dados em Grafo, gerenciado pela AWS, que permite diversos tipos de relacionamentos entre os seus nós e que pode ser utilizado em muitos contextos que representam as conexões que temos em nosso cotidiano, como em rede sociais, cadeias logísticas, empresariais, entre outros?
+
+Amazon Graph
+<key>Graph</key>
 
 <ok>
-S3 Glacier
-<key>Glacier</key>
+Amazon Neptune
+<key>Neptune</key>
 
-S3 Intelligent Tiering
-<key>Intelligent Tiering</key>
+Amazon Neo4j
+<key>Neo4j</key>
 
-S3 Infrequent Access
-<key>Infrequent Access</key>
-
-S3 Standard
-<key>Standard</key>
+Amazon JanusGraph
+<key>JanusGraph</key>
 
 <p>
-Uma aplicação de terceiros irá gerar um arquivo num layout diferente do que o seu sistema espera. Qual é o serviço da AWS que pode ser utilizado para transformar o arquivo e carregá-lo no seu sistema?
+Você trabalha numa agência de publicidade que deseja implantar um site com o conteúdo estático para fazer a primeira divulgação de um produto. Qual é o serviço da AWS mais indicado para esse cenário?
 
-AWS DMS
-<key>DMS</key>
+EC2
+<key>EC2</key>
 
-<ok>
-AWS Glue
-<key>Glue</key>
+Docker
+<key>Docker</key>
 
-AWS DTS
-<key>Não Se Aplica</key>
-
-AWS DataSync
-<key>DataSync</key>
-
-<p>
-Qual pilar do framework de melhores práticas arquitetônicas da AWS se concentra em garantir que uma carga de trabalho execute sua função pretendida corretamente e de modo consistente, e que uma carga de trabalho seja resiliente e que se recupere rapidamente de falhas para atender a demanda do negócio e do cliente?
-
-Segurança
-<key>Segurança</key>
-
-Excelência Operacional
-<key>Excelência Operacional</key>
-
-Performance Eficiente
-<key>Performance Eficiente</key>
+EFS
+<key>EFS</key>
 
 <ok>
-Confiabilidade
-<key>Confiabilidade</key>
-
-<p>
-Uma das formas de garantir a elasticidade e economia no uso do EC2 é mantendo os arquivos de programas e de sistemas em recursos computacionais separados. Qual serviço abaixo pode ser utilizado para isso?
-
-<ok>
-EBS
-<key>EBS</key>
-
-Git
-<key>Git</key>
-
-CodeCommit
-<key>CodeCommit</key>
-
 S3
 <key>S3</key>
 
 <p>
-Você deseja monitorar o percentual de memória que os seus servidores estão utilizando em determinado período do dia. Qual serviço da AWS abaixo pode ser utilizado para essa finalidade?
+Qual serviço da AWS possui um catálogo onde os clientes podem encontrar aplicações desenvolvidas por terceiros e prontas para ser instaladas e executadas, atendendo as mais diversas necessidades de negócio?
 
-AWS DataSync
-<key>DataSync</key>
+AWS AMI
+<key>AMI</key>
 
-AWS Cloud Explore
-<key>Não Se Aplica</key>
+AWS MFA (Autenticação Multi Fator)
+<key>MFA</key>
 
 <ok>
-AWS CloudWatch
-<key>CloudWatch</key>
+AWS Marketplace
+<key>Marketplace</key>
 
-AWS CloudTrail
-<key>CloudTrail</key>
+AWS OpsWorks
+<key>OpsWorks</key>
+
+<p>
+Quais são os cinco planos de suporte ofertados pela AWS?
+
+Bronze, Silver, Gold, Diamond, Ruby
+<key>Support</key>
+
+Basic, Developer, Business, Advanced, Enterprise On-Ramp
+<key>Support</key>
+
+<ok>
+Basic, Developer, Business, Enterprise On-Ramp, Enterprise
+<key>Support</key>
+
+Standard, Developer, Business, Enterprise, Enterprise On-Ramp
+<key>Support</key>
+
+<p>
+Você precisa implementar uma estratégia de DR (Recuperação de Desastre) na sua empresa, qual é a recomendação de melhor uso do AWS RDS?
+
+<ok>
+Multi Regions (Distribuir em regiões diferentes)
+<key>Multi Regions</key>
+
+Multi A-Z (Distribuir em zonas de disponibilidade diferentes)
+<key>Multi-AZ</key>
+
+Read Replicas (Fazer cópias de leitura)
+<key>Read Replicas</key>
+
+Implementar uma cópia do banco numa instância EC2
+<key>EC2</key>
+
+<p>
+Qual é o usuário utilizado para acessar o AWS Console pela primeira vez e que possui acesso a todos os recursos da conta? (Não sendo recomendado o uso no dia a dia.)
+
+AWS IAM
+<key>IAM</key>
+
+AWS Administrator
+<key>IAM</key>
+
+<ok>
+AWS account root user
+<key>IAM</key>
+
+AWS full user
+<key>IAM</key>
+
+<p>
+Qual opção abaixo descreve o serviço Elastic Load Balancer?
+
+Distribui o tráfego de entrada entre instâncias em diferentes regiões
+<key>ELB</key>
+
+Instancia uma nova máquina quando uma das máquinas apresenta falha
+<key>EC2</key>
+
+<ok>
+Distribui o tráfego de entrada entre suas instâncias
+<key>ELB</key>
+
+Cria um cluster de máquinas dentro da mesma zona de disponibilidade
+<key>Clusters</key>
+
+<p>
+Você lidera um time de desenvolvimento pequeno e que não tem tempo de se envolver com muitas questões de infraestrutura AWS, porém você gostaria de fazer o uso de container, pois acredita que esse modelo de arquitetura tem muitas vantagens. Qual serviço da Amazon permite que você crie e use container sem precisar se preocupar com questões de infraestrutura e que usa uma infraestrutura sem servidor (servless)?
+
+EKS
+<key>EKS</key>
+
+ECS
+<key>ECS</key>
+
+ECR
+<key>ECR</key>
+
+<ok>
+Fargate
+<key>Fargate</key>
 
 <p>
 

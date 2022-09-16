@@ -38,6 +38,7 @@
 					<option value="11">Nível 1.1</option>
 					<option value="12">Nível 1.2</option>
 					<option value="13">Nível 1.3</option>
+					<option value="14">Nível 1.4</option>
 					<option value="20">Nível 2.0</option>
 					<option value="21">Nível 2.1</option>
 					<option value="22">Nível 2.2</option>
@@ -129,6 +130,7 @@
 					<option value="11">Nível 1.1</option>
 					<option value="12">Nível 1.2</option>
 					<option value="13">Nível 1.3</option>
+					<option value="14">Nível 1.4</option>
 					<option value="20">Nível 2.0</option>
 					<option value="21">Nível 2.1</option>
 					<option value="22">Nível 2.2</option>
@@ -185,179 +187,249 @@
 AWS Cloud Practitioner Essentials
 <br/> Versão 1.3
 <br/>
-<br/> Total de 10 perguntas
+<br/> Total de 15 perguntas
 <br/> Aprovação mínima de 70%
 </div>
 
 <p>
-Qual opção abaixo melhor descreve o modelo de Responsabilidade Compartilhada da AWS (shared responsability)?
-
-O cliente protege as aplicações, enquanto usuário protege sua senha
-<key>Shared Responsability</key>
-
-O desenvolvedor é responsável por implantar a aplicação, enquanto o gestor faz a aprovação
-<key>Shared Responsability</key>
+Numa migração de sistemas, você percebeu que existem dados na sua aplicação que raramente são usados e que poderiam ser mantidos em arquivos somente para fins de auditoria. Qual é o serviço da AWS que pode ser utilizado para esse objetivo e com o menor custo possível?
 
 <ok>
-A AWS protege o data center, enquanto o cliente protege as aplicações.
-<key>Shared Responsability</key>
+S3 Glacier
+<key>Glacier</key>
 
-A AWS protege o data center, enquanto a Microsoft protege o windows
-<key>Shared Responsability</key>
+S3 Intelligent Tiering
+<key>Intelligent Tiering</key>
+
+S3 Infrequent Access
+<key>Infrequent Access</key>
+
+S3 Standard
+<key>Standard</key>
 
 <p>
-A sua empresa decidiu migrar algumas aplicações monolíticas legadas, sem refatoração, para o ECS. O que pode-se afirmar sobre essa estratégia?
+Uma aplicação de terceiros irá gerar um arquivo num layout diferente do que o seu sistema espera. Qual é o serviço da AWS que pode ser utilizado para transformar o arquivo e carregá-lo no seu sistema?
+
+AWS DMS
+<key>DMS</key>
 
 <ok>
-É possível, porém não trará grandes benefícios de otimização no uso dos recursos
-<key>Refatoração</key>
+AWS Glue
+<key>Glue</key>
 
-É possível e recomendado
-<key>Refatoração</key>
-
-É possível e trará mais velocidade para a migração e implementação de novas funcionalidades
-<key>Refatoração</key>
-
-Não é possível, pois o serviço não aceita aplicações monolíticas
-<key>Refatoração</key>
-
-<p>
-Qual é a melhor descrição para o conceito de tolerância a falha?
-
-A habilidade de um sistema nunca falhar
-<key>Tolerância a Falha</key>
-
-A habilidade de um sistema crescer e provisionar novos recursos para continuar executando
-<key>Tolerância a Falha</key>
-
-A habilidade de um sistema exibir mensagens de falhas para os usuários
-<key>Tolerância a Falha</key>
-
-<ok>
-A habilidade de um sistema permanecer em funcionamento, mesmo se um dos seus componentes falhar
-<key>Tolerância a Falha</key>
-
-<p>
-Sua empresa deseja padronizar e versionar as configurações para a criação de todos os bancos de dados, além disso, deseja que esses serviços sejam implementados e atualizados em toda a infraestrutura de servidores de forma automatizadas e utilizando pipelines de CI/CD. Qual é o serviço recomendado para esse requisito?
-
-AWS RDS
-<key>RDS</key>
-
-AWS IAC
-<key>IAC</key>
-
-AWS CodePipeline
-<key>CodePipeline</key>
-
-<ok>
-AWS CloudFormation
-<key>CloudFormation</key>
-
-<p>
-Uma arquitetura de sistemas, baseada em computação sem servidor, utiliza S3, API Gateway, Lambda, SQS, SNS e precisa de um serviço que orquestre parte destas peças definindo e controlando os possíveis workflows. Qual dos serviços abaixo é utilizado para isso?
-
-AWS Workflow
+AWS DTS
 <key>Não Se Aplica</key>
+
+AWS DataSync
+<key>DataSync</key>
+
+<p>
+Qual pilar do framework de melhores práticas arquitetônicas da AWS se concentra em garantir que uma carga de trabalho execute sua função pretendida corretamente e de modo consistente, e que uma carga de trabalho seja resiliente e que se recupere rapidamente de falhas para atender a demanda do negócio e do cliente?
+
+Segurança
+<key>Segurança</key>
+
+Excelência Operacional
+<key>Excelência Operacional</key>
+
+Performance Eficiente
+<key>Performance Eficiente</key>
+
+<ok>
+Confiabilidade
+<key>Confiabilidade</key>
+
+<p>
+Uma das formas de garantir a elasticidade e economia no uso do EC2 é mantendo os arquivos de programas e de sistemas em recursos computacionais separados. Qual serviço abaixo pode ser utilizado para isso?
+
+<ok>
+EBS
+<key>EBS</key>
+
+Git
+<key>Git</key>
+
+CodeCommit
+<key>CodeCommit</key>
+
+S3
+<key>S3</key>
+
+<p>
+Você deseja monitorar o percentual de memória que os seus servidores estão utilizando em determinado período do dia. Qual serviço da AWS abaixo pode ser utilizado para essa finalidade?
+
+AWS DataSync
+<key>DataSync</key>
+
+AWS Cloud Explore
+<key>Não Se Aplica</key>
+
+<ok>
+AWS CloudWatch
+<key>CloudWatch</key>
+
+AWS CloudTrail
+<key>CloudTrail</key>
+
+<p>
+Qual das opções abaixo é a classe de uso que pode deixar o uso do S3 mais caro?
+
+Glacier Deep Arquive
+<key>Glacier Deep Arquive</key>
+
+Glacier
+<key>Glacier</key>
+
+<ok>
+Standard
+<key>Standard</key>
+
+Standard Infrequent Access
+<key>Infrequent Access</key>
+
+<p>
+Utilizando os serviços da AWS, qual é a sequência esperada numa pipeline de CI/CD?
+
+<ok>
+CodeCommit, CodeBuild, CodeDeploy
+<key>CodeBuild, CodeCommit, CodeDeploy</key>
+
+CodeBuild, CodeCommit, CodeDeploy
+<key>CodeBuild, CodeCommit, CodeDeploy</key>
+
+CodeCommit, CodeDeploy, CodeBuild
+<key>CodeBuild, CodeCommit, CodeDeploy</key>
+
+CodeBuild, CodeDeploy, CodeCommit
+<key>CodeBuild, CodeCommit, CodeDeploy</key>
+
+<p>
+Sua aplicação fornece dados através de APIs REST para diversas aplicações diferentes. Pensando num cenário de futuras manutenções e evoluções dos seus serviços, qual opção abaixo pode melhor auxiliar a sua arquitetura a manter várias versões da mesma API sendo executadas simultaneamente e não exigir que todos os consumidores realizem adequações nas chamadas ao seu serviço?
+
+AWS Zuul
+<key>Não Se Aplica</key>
+
+AWS Route53
+<key>Route53</key>
 
 AWS EventBridge
 <key>EventBridge</key>
 
-AWS Service Mesh
-<key>Não Se Aplica</key>
-
 <ok>
-AWS Step Functions
-<key>Step Functions</key>
+API Gateway
+<key>API Gateway</key>
 
 <p>
-O que é possível fazer com o Amazon QuickSight?
-
-Executar Map reduce em dados distribuídos
-<key>EMR</key>
+Qual é o serviço que permite estabelecer uma conexão dedicada entre a sua infraestrutura on-premise e a AWS melhorando as conexões e aumentando a taxa de transferência?
 
 <ok>
-Criar DashBoards de BI com uso de Aprendizado de Máquina (Machine Learning)
-<key>QuickSight</key>
+AWS Direct Connect
+<key>Direct Connect</key>
 
-Capturar dados de diversos dispositivos através e streaming de dados de forma rápida
+AWS DataSync
+<key>DataSync</key>
+
+AWS Link
+<key>Não Se Aplica</key>
+
+AWS API Gateway
+<key>API Gateway</key>
+
+<p>
+Qual é o serviço utilizado para provisionar Desktops utilizando Windows ou Linux?
+
+<ok>
+Amazon WorkSpaces
+<key>WorkSpaces</key>
+
+Amazon Desktops
+<key>Não Se Aplica</key>
+
+Amazon CLI
+<key>CLI</key>
+
+EC2
+<key>EC2</key>
+
+<p>
+Você implementou um sistema com arquitetura de microserviços e precisa depurar cada um deles, partindo desde a requisição do usuário para entender a performance e identificando oportunidades de melhorias. Qual serviço da AWS é o mais indicado para essa finalidade (tanto em ambiente de desenvolvimento quanto em ambiente de produção)?
+
+AWS ElasticSearch
+<key>ElasticSearch</key>
+
+AWS CloudSearch
+<key>CloudSearch</key>
+
+<ok>
+AWS X-Ray
+<key>X-Ray</key>
+
+AWS CloudWatch
+<key>CloudWatch</key>
+
+<p>
+As mensagens trafegadas entre o seu site e os usuários não estão sendo criptografadas porque a arquitetura atual não utiliza certificados digitais que permitam essa criptografia. Qual é o serviço da AWS que pode ser utilizado para esse tipo de implementação?
+
+AWS KMS
+<key>KMS</key>
+
+AWS Cognito
+<key>Cognito</key>
+
+<ok>
+AWS Certificate Manager
+<key>Certificate Manager</key>
+
+AWS IAM
+<key>IAM</key>
+
+<p>
+Você precisa automatizar um processo que executa diversas tarefas de forma sequencial em seu sistema. Qual é o serviço mais indicado para essa necessidade?
+
+AWS EventBridge
+<key>EventBridge</key>
+
+AWS Kinesis
 <key>Kinesis</key>
 
-Realizar consultas em objetos armazenados no S3
-<key>Athena</key>
-
-<p>
-Quais das opções abaixo são formas de pagamento de instâncias EC2? (Selecione 3)
-
-On premise
-<key>On Premises</key>
-
-<ok>
-Spot
-<key>Instance Purchasing Options</key>
-
-<ok>
-Reserved
-<key>Instance Purchasing Options</key>
-
-<ok>
-On-demand
-<key>Instance Purchasing Options</key>
-
-Tailor Made
-<key>Não Se Aplica</key>
-
-<p>
-Quais afirmações abaixo referem-se ao Amazon S3 (Selecione 2)
-
-<ok>
-Objeto é um arquivo ou meta dado que descreve o arquivo
-<key>S3</key>
-
-<ok>
-Bucket é um conteiner de objetos
-<key>S3</key>
-
-Elastic Load Balancer são balanceadores de carga
-<key>ELB</key>
-
-Lambdas são funções sem servidores
-<key>Lambda</key>
-
-<p>
-O AWS Trusted Advisor é um serviço de monitoramento e recomendação que auxilia o cliente a utilizar os recursos de sua conta de maneira alinhada com as melhores práticas para trazer muitos benefícios. Quais itens abaixo representam tais benefícios?
-<br/>(Selecione 3)
-
-<ok>
-Otimização de Custos
-<key>Trusted Advisor</key>
-
-<ok>
-Segurança
-<key>Trusted Advisor</key>
-
-<ok>
-Performance
-<key>Trusted Advisor</key>
-
-Proteção de Hardware
-<key>Não Se Aplica</key>
-
-<p>
-Quais dos seguintes planos de suporte oferecem acesso ao atendimento ao cliente, whitepapers, documentações e fóruns de suporte 24x7?
-
-Reserved
-<key>Instance Purchasing Options</key>
-
-<ok>
-Basic
-<key>Support</key>
-
-Full
+AWS Workflow
 <key>Não Se Aplica</key>
 
 <ok>
-Enterprise
-<key>Support</key>
+AWS Batch
+<key>Batch</key>
+
+<p>
+Sua empresa precisa lançar um novo produto e para isso deseja criar um novo domínio público para associar a um novo site. Qual é a maneira mais rápida de fazer isso?
+
+Desenvolver o novo site no AWS BeanStalk, que provisiona toda a infra para o desenvolvedor  apenas programar.
+<key>Elastic Beanstalk</key>
+
+<ok>
+Criar um novo domínio no AWS Route53
+<key>Route53</key>
+
+Criar um servidor de domínio numa instância AWS EC2 e incluir o novo domínio
+<key>EC2</key>
+
+Criar um novo domínio no RegistroCom
+<key>Não Se Aplica</key>
+
+<p>
+Você implantou uma aplicação em produção que não está funcionando e na log existe uma mensagem de acesso negado ao DynamoDB. Qual serviço abaixo você precisa checar e configurar corretamente para validar esse acesso?
+
+AWS Config
+<key>Config</key>
+
+<ok>
+AWS IAM Roles
+<key>IAM Roles</key>
+
+AWS Cognito
+<key>Cognito</key>
+
+AWS IAM Policy
+<key>IAM Policies</key>
 
 <p>
 

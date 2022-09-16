@@ -185,339 +185,261 @@
 <p>
 <div align=center>
 AWS Cloud Practitioner Essentials
-<br/> Versão 2.1
+<br/> Versão 1.3
 <br/>
-<br/> Total de 20 perguntas
+<br/> Total de 15 perguntas
 <br/> Aprovação mínima de 70%
 </div>
 
 <p>
-Qual serviço que é totalmente gerenciado pela AWS e que faz parte da arquitetura da esteira de integração contínua que compila, testa e cria pacotes para a implantação?
+Qual é o serviço de alta performance desenvolvido para fornecer block-storage para instâncias EC2?
 
-AWS CodeCommit
-<key>CodeCommit</key>
+S3
+<key>S3</key>
 
-AWS CodeDeploy
-<key>CodeDeploy</key>
-
-AWS Pipeline
-<key>Não Se Aplica</key>
+ELB
+<key>ELB</key>
 
 <ok>
-AWS CodeBuild
-<key>CodeBuild</key>
+EBS
+<key>EBS</key>
+
+KMS
+<key>KMS</key>
 
 <p>
-Como você pode proteger sua conta da AWS contra acessos não autorizados?
-
-Configurando uma segunda senha
-<key>MFA</key>
+Qual é o serviço serverless que permite a execução de queries utilizando padrão SQL para analisar dados no Amazon S3?
 
 <ok>
-Habilitando a Autenticação Multifator - Multi-Facto Authentication (MFA)
-<key>MFA</key>
+Athena
+<key>Athena</key>
 
-Desabilitando o acesso pela AWS Console
+EMR
+<key>EMR</key>
+
+Amazon Elastic Search
+<key>ElasticSearch</key>
+
+Amazon Query Analyzer
 <key>Não Se Aplica</key>
-
-Implementando o serviço AWS Cognito
-<key>Cognito</key>
 
 <p>
-A Amazon oferece várias classes de armazenamento no S3 específicas para cada tipo de uso. Qual das opções abaixo são classes existentes no serviço? (selecione 3)
+Sua empresa deseja otimizar o custo com a utilização do S3 e você percebeu que existem muitas logs de sistemas que estão armazenadas, mas que poderiam ser deletadas após 30 dias da criação. O que você precisa fazer para atender a necessidade de sua empresa?
 
-S3 Business
-<key>Support</key>
-
-S3 Enterprise
-<key>Support</key>
+Criar uma cópia destes objetos em outra região.
+<key>Não Se Aplica</key>
 
 <ok>
-S3 Intelligent-Tiering
-<key>Storage Classes</key>
+Configurar no S3 Lifecycle para que os objetos expirem em 30 dias para serem automaticamente excluídos.
+<key>Lifecycle</key>
 
-<ok>
-S3 Standard
-<key>Storage Classes</key>
+Configurar o CloudWatch para monitorar o S3 e enviar um email solicitando a exclusão dos arquivos.
+<key>CloudWatch</key>
 
-<ok>
-S3 Standard Infrequent Access
-<key>Storage Classes</key>
+Criar uma cópia destes objetos em outra zona de disponibilidade.
+<key>Multi-AZ</key>
 
 <p>
-Sua empresa possui diversas áreas que devem construir suas aplicações dentro da AWS usando templates de infraestrutura pré-definidos pelo time de arquitetos. As soluções deverão ser implementadas como código IAC (Infra as Code). Qual serviço pode ser utilizado para essa finalidade?
+Sua empresa tem um sistema que suporta em média 2000 usuários por dia, porém em dias com o aumento de vendas, o sistema chega a 3000 usuários apresentando lentidão e indisponibilidade. Como você automatizaria o processo para o provisionamento automático de máquinas adicionais para suportar essas cargas em dias de pico?
 
-Cloud Templates
+Migrando a aplicação para uma máquina melhor
+<key>Auto Scaling</key>
+
+<ok>
+Usando o Auto Scalling
+<key>Auto Scaling</key>
+
+Implementando EBS Snapshots
+<key>EBS Snapshots</key>
+
+Incluindo mais uma máquina física e alterando o ELB
+<key>ELB</key>
+
+<p>
+Baseado nos pilares de excelência operacional, segurança, confiança, performance eficiente, sustentabilidade e otimização de custos, qual é o Framework que ajuda os arquitetos cloud a construirem aplicações seguras, com alta performance, resilientes e eficientes?
+
+AWS Pillar
 <key>Não Se Aplica</key>
 
-Cloud Stacks
+Framework .Net
 <key>Não Se Aplica</key>
+
+<ok>
+AWS Well-Architected
+<key>Well-Architected Framework</key>
+
+AWS CloudFormation
+<key>CloudFormation</key>
+
+<p>
+Qual opção abaixo melhor descreve o modelo de Responsabilidade Compartilhada da AWS (shared responsability)?
+
+O cliente protege as aplicações, enquanto usuário protege sua senha
+<key>Shared Responsability</key>
+
+O desenvolvedor é responsável por implantar a aplicação, enquanto o gestor faz a aprovação
+<key>Shared Responsability</key>
+
+<ok>
+A AWS protege o data center, enquanto o cliente protege as aplicações.
+<key>Shared Responsability</key>
+
+A AWS protege o data center, enquanto a Microsoft protege o windows
+<key>Shared Responsability</key>
+
+<p>
+A sua empresa decidiu migrar algumas aplicações monolíticas legadas, sem refatoração, para o ECS. O que pode-se afirmar sobre essa estratégia?
+
+<ok>
+É possível, porém não trará grandes benefícios de otimização no uso dos recursos
+<key>Refatoração</key>
+
+É possível e recomendado
+<key>Refatoração</key>
+
+É possível e trará mais velocidade para a migração e implementação de novas funcionalidades
+<key>Refatoração</key>
+
+Não é possível, pois o serviço não aceita aplicações monolíticas
+<key>Refatoração</key>
+
+<p>
+Qual é a melhor descrição para o conceito de tolerância a falha?
+
+A habilidade de um sistema nunca falhar
+<key>Tolerância a Falha</key>
+
+A habilidade de um sistema crescer e provisionar novos recursos para continuar executando
+<key>Tolerância a Falha</key>
+
+A habilidade de um sistema exibir mensagens de falhas para os usuários
+<key>Tolerância a Falha</key>
+
+<ok>
+A habilidade de um sistema permanecer em funcionamento, mesmo se um dos seus componentes falhar
+<key>Tolerância a Falha</key>
+
+<p>
+Sua empresa deseja padronizar e versionar as configurações para a criação de todos os bancos de dados, além disso, deseja que esses serviços sejam implementados e atualizados em toda a infraestrutura de servidores de forma automatizadas e utilizando pipelines de CI/CD. Qual é o serviço recomendado para esse requisito?
+
+AWS RDS
+<key>RDS</key>
+
+AWS IAC
+<key>IAC</key>
+
+AWS CodePipeline
+<key>CodePipeline</key>
 
 <ok>
 AWS CloudFormation
 <key>CloudFormation</key>
 
-AWS Config
-<key>Config</key>
-
 <p>
-Você está implementando um microsserviço para realizar análise de crédito solicitada pelos seus clientes. A resposta desta análise deverá ser enviada para um sistema de vendas, um sistema de empréstimos, e também para, um serviço de log do próprio microsserviço. Qual serviço da AWS é o mais indicado para implementar essas e futuras integrações de uma forma rápida?
+Uma arquitetura de sistemas, baseada em computação sem servidor, utiliza S3, API Gateway, Lambda, SQS, SNS e precisa de um serviço que orquestre parte destas peças definindo e controlando os possíveis workflows. Qual dos serviços abaixo é utilizado para isso?
+
+AWS Workflow
+<key>Não Se Aplica</key>
+
+AWS EventBridge
+<key>EventBridge</key>
+
+AWS Service Mesh
+<key>Não Se Aplica</key>
 
 <ok>
-AWS SNS
-<key>SNS</key>
+AWS Step Functions
+<key>Step Functions</key>
 
-AWS Docker
-<key>Docker</key>
+<p>
+O que é possível fazer com o Amazon QuickSight?
 
-AWS Lambda
+Executar Map reduce em dados distribuídos
+<key>EMR</key>
+
+<ok>
+Criar DashBoards de BI com uso de Aprendizado de Máquina (Machine Learning)
+<key>QuickSight</key>
+
+Capturar dados de diversos dispositivos através e streaming de dados de forma rápida
+<key>Kinesis</key>
+
+Realizar consultas em objetos armazenados no S3
+<key>Athena</key>
+
+<p>
+Quais das opções abaixo são formas de pagamento de instâncias EC2? (Selecione 3)
+
+On premise
+<key>On Premises</key>
+
+<ok>
+Spot
+<key>Instance Purchasing Options</key>
+
+<ok>
+Reserved
+<key>Instance Purchasing Options</key>
+
+<ok>
+On-demand
+<key>Instance Purchasing Options</key>
+
+Tailor Made
+<key>Não Se Aplica</key>
+
+<p>
+Quais afirmações abaixo referem-se ao Amazon S3 (Selecione 2)
+
+<ok>
+Objeto é um arquivo ou meta dado que descreve o arquivo
+<key>S3</key>
+
+<ok>
+Bucket é um conteiner de objetos
+<key>S3</key>
+
+Elastic Load Balancer são balanceadores de carga
+<key>ELB</key>
+
+Lambdas são funções sem servidores
 <key>Lambda</key>
 
-AWS ECS
-<key>ECS</key>
-
 <p>
-Algumas aplicações críticas da sua empresa começaram a apresentar erros e, por falta de logs, a equipe de suporte está tendo dificuldade na resolução dos problemas. Qual serviço da AWS você recomendaria para monitorar o ambiente e coletar as logs?
+O AWS Trusted Advisor é um serviço de monitoramento e recomendação que auxilia o cliente a utilizar os recursos de sua conta de maneira alinhada com as melhores práticas para trazer muitos benefícios. Quais itens abaixo representam tais benefícios?
+<br/>(Selecione 3)
 
 <ok>
-AWS CloudWatch
-<key>CloudWatch</key>
+Otimização de Custos
+<key>Trusted Advisor</key>
 
-AWS Monitor
+<ok>
+Segurança
+<key>Trusted Advisor</key>
+
+<ok>
+Performance
+<key>Trusted Advisor</key>
+
+Proteção de Hardware
 <key>Não Se Aplica</key>
 
-AWS CloudTrail
-<key>CloudTrail</key>
+<p>
+Quais dos seguintes planos de suporte oferecem acesso ao atendimento ao cliente, whitepapers, documentações e fóruns de suporte 24x7?
 
-AWS Log
+Reserved
+<key>Instance Purchasing Options</key>
+
+<ok>
+Basic
+<key>Support</key>
+
+Full
 <key>Não Se Aplica</key>
 
-<p>
-Qual dos seguintes ítens é de responsabilidade exclusiva da AWS no modelo de responsabilidade compartilhada (shared responsability model)?
-
-Gerenciar imagens customizadas das instâncias do AMI
-<key>Shared Responsability</key>
-
-Atualizar patch de segurança em instâncias do clientes
-<key>Shared Responsability</key>
-
 <ok>
-Proteger a infraestrutura global
-<key>Shared Responsability</key>
-
-Proteger os dados das aplicações dos usuários
-<key>Shared Responsability</key>
-
-<p>
-Qual é a quantidade atual de regiões disponíveis na infraestrutura global da AWS?
-
-262
-<key>Infraestrutura Global</key>
-
-<ok>
-26
-<key>Infraestrutura Global</key>
-
-6
-<key>Infraestrutura Global</key>
-
-81
-<key>Infraestrutura Global</key>
-
-<p>
-A AWS obtém regularmente, a validação de terceiros para milhares de requisitos globais de conformidade para ajudá-la a atender aos padrões de segurança e conformidade. Com o seu uso, você herda os controles de segurança mais recentes, fortalecendo seus próprios programas de conformidade e certificação. Para quais padrões de segurança e certificações a AWS oferece suporte? (selecione 2 alternativas)
-
-GDPR, FIPS 140-2 e NTFS-BB1
-<key></key>
-
-<ok>
-GDPR, FIPS 140-2 e NIST 800-171
-<key></key>
-
-PCI-DSS, HIPAA/HITECH, CFL01
-<key></key>
-
-<ok>
-PCI-DSS, HIPAA/HITECH, FedRAMP
-<key></key>
-
-<p>
-Quais são os 6 pilares do Well-Architected Framework?
-
-<ok>
-Excelência Operacional, Segurança, Confiabilidade, Desempenho Eficiente, Otimização de Custos, Sustentabilidade
-<key></key>
-
-Excelência Operacional, Escalabilidade, Confiabilidade, Desempenho Eficiente, Otimização de Custos, Disciplina
-<key></key>
-
-Excelência Operacional, Segurança, Confiabilidade, Desempenho Eficiente, Escalabilidade, Disciplina
-<key></key>
-
-Excelência Operacional, Segurança, Escalabilidade, Desempenho Eficiente, Otimização de Custos, Sustentabilidade
-<key></key>
-
-<p>
-Se você deseja fazer um gerenciamento total do seu banco de dados, qual é o serviço mais indicado para implementá-lo?
-
-<ok>
-EC2
-<key></key>
-
-RDS
-<key></key>
-
-DynamoDB
-<key></key>
-
-DocumentDB
-<key></key>
-
-<p>
-No modelo de Responsabilidade Compartilhada, qual é o papel da AWS?
-
-<ok>
-Proteger o data center
-<key></key>
-
-Proteger o acesso aos dados das aplicações dos usuários
-<key></key>
-
-Atualizar o Sistema Operacional das Instâncias EC2
-<key></key>
-
-<ok>
-Fazer a manutenção dos hardware
-<key></key>
-
-<p>
-Qual é a maior diferença entre os serviços AWS RDS e DynamoDB?
-
-<ok>
-RDS é SQL, DynamoDB é NoSQL
-<key></key>
-
-RDS é totalmente gerenciado, DynamoDB não é gerenciado
-<key></key>
-
-RDS é NoSQL, DynamoDB é SQL
-<key></key>
-
-Nenhuma das opções
-<key></key>
-
-<p>
-Sua equipe de desenvolvimento backend começou a utilizar o API Gateway para o desenvolvimento das novas apis de um projeto. Quais itens abaixo representam funcionalidades deste serviço que você irá compartilhar com o time? (Selecione 2)
-
-Não possui suporte a conteinirização
-<key></key>
-
-<ok>
-Criar, publicar, manter, monitorar APIs
-<key></key>
-
-<ok>
-Criação de APIs RESTfull e WebSocket
-<key></key>
-
-Não possui suporte a funções sem servidor
-<key></key>
-
-<p>
-Se você quer desenvolver uma aplicação em Java ou C#, qual das seguintes ferramentas você pode usar?
-
-AWS IDE
-<key></key>
-
-AWS CLI
-<key></key>
-
-AWS Console
-<key></key>
-
-<ok>
-AWS SDK
-<key></key>
-
-<p>
-Sua empresa recentemente foi auditada e autuada, pois mantinha arquivos com dados sensíveis do cliente expostos na sua rede interna, colocando em risco a imagem do cliente e da empresa. Qual serviço da AWS pode ser utilizado para monitorar os dados e evitar esse tipo de ocorrência?
-
-AWS Sensitive
-<key></key>
-
-<ok>
-AWS Macie
-<key></key>
-
-AWS GuardDuty
-<key></key>
-
-AWS KMS
-<key></key>
-
-<p>
-Qual é o banco de dados sem servidor (serverless) ofertado pela AWS?
-
-<ok>
-DynamoDB
-<key></key>
-
-MySql
-<key></key>
-
-MariaDB
-<key></key>
-
-Aurora
-<key></key>
-
-<p>
-Sua empresa está analisando o banco de dados DynamoDB para conhecer oportunidades em seu uso. Qual opção abaixo não é uma característica do serviço?
-
-É um banco de dados sem servidor
-<key></key>
-
-É um banco de dados de valores-chave e documentos
-<key></key>
-
-<ok>
-É um banco de dados cobrado por MB na solicitação de gravação e leitura
-<key></key>
-
-É um banco de dados totalmente gerenciado
-<key></key>
-
-<p>
-Qual plano de suporte oferece o AWS Trusted Advisor, serviço que fornece recomendações para ajudar na utilização das melhores práticas de uso?
-
-Developer
-<key></key>
-
 Enterprise
-<key></key>
-
-<ok>
-Todos
-<key></key>
-
-Business
-<key></key>
-
-<p>
-Qual é o banco de dados NoSql do tipo chave e valor gerenciado pela AWS?
-
-<ok>
-DynamoDB
-<key></key>
-
-Aurora
-<key></key>
-
-MySql
-<key></key>
-
-Cassandra
-<key></key>
+<key>Support</key>
 
 <p>
 
