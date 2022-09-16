@@ -5,7 +5,6 @@ var jsstoreCon = new JsStore.Connection();
 var GLOBAL_textcolor = 'white';
 var GLOBAL_background = 'black';
 var GLOBAL_buttoncolor = 'btn-colors';
-var confirmImportSuccessfull = 'Não feche esta página (X). \nNão atualize esta página (F5). \n\nVolte na página anterior (aba ao lado) e pesquise pela palavra "configuração concluída com sucesso." \n\nQuando a palavra aparecer, a configuração terminou com sucesso.';
 var COL_LOGOTIPO = 5;
 
 window.onload = function () {
@@ -20,6 +19,7 @@ window.onload = function () {
 	
     registerEvents();
     initDb();
+//	initDbDashboard();
 	getConfigGeneral();	
 	document.getElementById('myBody').style.background = GLOBAL_background;
 
@@ -117,22 +117,24 @@ function getDbSchema() {
         }
     }
 
-	var tableHistory = {
-        name: 'History',
+	var tableDashboard = {
+        name: 'Dashboard',
         columns: {
-			id: { primaryKey: true, autoIncrement: true },
-			mycodeHistory: { notNull: true, dataType: 'string' }, //código único
-			mytry: { notNull: true, dataType: 'string' }, //número da tentatica, exemplo: 1, 2, 3...; tentativa 1, tentativa 2, tentativa 3...
+			id: { primaryKey: true, autoIncrement: true }, //identificação única
+			mygroup: { notNull: true, dataType: 'string' }, //valor idêntico à tabela Student
+			mycode: { notNull: true, dataType: 'string' }, //valor único idêntico à tabela Student
+			mytry: { notNull: true, dataType: 'string' }, //quantidade de tentativas, exemplo: 1, 2, 3...; tentativa 1, tentativa 2, tentativa 3...
 			mypercent: { notNull: true, dataType: 'string' }, //porcentagem que conseguiu
-			mycorrects: { notNull: true, dataType: 'string' }, //pquantidade de perguntas corretas
-			myincorrects: { notNull: true, dataType: 'string' }, //quantidade de perguntas erradas
+			mycorrects: { notNull: true, dataType: 'string' }, //quantidade de perguntas com respostas corretas
+			myincorrects: { notNull: true, dataType: 'string' }, //quantidade de perguntas com respostas erradas
+			myanswers: { notNull: true, dataType: 'string' }, //todas respostas separadas por vírgula, exemplo: "01a,02bc,03d,05a...". Exemplo com a resposta 04 não foi respondida.
 			mytotal: { notNull: true, dataType: 'string' } //quantidade de perguntas
         }
     }
 
     var db = {
         name: 'mydbsim',
-        tables: [table, tableConfigGeneral, tableHistory]
+        tables: [table, tableConfigGeneral, tableDashboard]
     }
     return db;
 }
@@ -178,11 +180,9 @@ function registerEvents() {
     $('#btnIndexConfigurar').click(function () {
 //		window.close();
 		document.getElementById('btnIndexConfigurar').style.display = 'none';
-//		document.getElementById('btnLetsGo').style.display = '';
 		document.getElementById('lei13709').style.display = 'none';
 		var DataShow_Config = window.open("config" + document.getElementById('selectMygroup').value + ".html?sim=" + document.getElementById('selectMygroup').value, "datashowconfig", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
 		location.reload(); //recarrega página importando também o teste 01
-
 //		var DataShow_ConfigResult = window.open("configresult.html", "datashowconfigresult");
 //		datashowconfigresult.focus();
 	})
@@ -268,7 +268,6 @@ function registerEvents() {
 			confirmImport('contents3', '2'); //artes
 			document.getElementById('selectMygroup').selectedIndex = 0;
 			confirmImport('contents1', '0'); //a última frase é testada na pesquisa de letras
-//			console.log(confirmImportSuccessfull);
 		} else {
 			console.log('Configuração cancelada.');
 		}
@@ -322,11 +321,6 @@ function registerEvents() {
 			showGridAndHideForms();
 		}
     });	
-    $('#btnPlay').click(function () {
-		var mygroup = document.getElementById('selectMygroup').value;
-		getFromTablePlay('', mygroup, '1');
-		showFormSim();
-    });	
     $('#tblGrid tbody').on('click', '.edit', function () {
 		var row = $(this).parents().eq(1);
         var child = row.children();
@@ -351,7 +345,7 @@ function registerEvents() {
 			var id = row.attr('itemid');
 			var mygroup = child.eq(0).text();
 			var mycode = child.eq(1).text();
-			getFromTablePlay(id, mygroup, mycode);
+			refreshTableQuestion(id, mygroup, mycode);
 			showFormSim();
 //        }
     });		
@@ -383,19 +377,24 @@ function registerEvents() {
 		}
 		console.log(array);
     });
+    $('#btnPlay').click(function () {
+		var mygroup = document.getElementById('selectMygroup').value;
+		refreshTableQuestion('', mygroup, '1');
+		showFormSim();
+    });	
     $('#btnPrevious').click(function () {
 		var myid = document.getElementById('myidSim').value;
 		var mygroup = document.getElementById('mygroupSim').value;
 		var mycode = parseInt(document.getElementById('mycodeSim').value) - 1;
-//		updateStudentPlay(myid, mygroup, mycode);
-		getFromTablePlay(myid, mygroup, mycode);
+		refreshTableQuestion(myid, mygroup, mycode);
+		showPoints(mygroup, mycode, 'false');
     })
     $('#btnNext').click(function () {
 		var myid = document.getElementById('myidSim').value;
 		var mygroup = document.getElementById('mygroupSim').value;
 		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
-//		updateStudentPlay(myid, mygroup, mycode);
-		getFromTablePlay(myid, mygroup, mycode);
+		refreshTableQuestion(myid, mygroup, mycode);
+		showPoints(mygroup, mycode, 'false');
     })
 	$('#btnPause').click(function () {
 		showGridAndHideForms();
@@ -403,8 +402,8 @@ function registerEvents() {
 	$('#btnPoints').click(function () {
 		var mygroup = document.getElementById('mygroupSim').value;
 		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
-		showPoints(mygroup, mycode);
-    });	
+		showPoints(mygroup, mycode, 'true');
+    });
 	$('#btnGear').click(function () {
 		if (document.getElementById('divGear').style.display == 'none') {
 			showFormGear();
@@ -421,9 +420,11 @@ function registerEvents() {
 	$('#selButtonColor').change(function () {
 		updateConfigGeneral();
     })
-//	$('#btnLetsGo').click(function () {
-//		location.reload();
- //   })
+	$('#btnReview').change(function () {
+		var mygroup = document.getElementById('selectMygroup').value;
+		refreshTableQuestion('', mygroup, '1');
+		showFormSim();
+	})
 }
 
 async function initConfigGeneral() {
@@ -583,13 +584,13 @@ function getStudentFromForm(studentId, mygroup, mycode) {
     return student;
 }
 
-async function showPoints(mygroup, mycode) {
+async function showPoints(mygroup, mycode, showalert) {
 	var students = await jsstoreCon.select({
 		from: 'Student'
 		  , where: { mygroup: mygroup 
 		  }
 	});
-	
+
 	var totalCorretas = 0;
 	var totalIncorretas = 0;
 	var totalNaoRespondidas = 0;
@@ -642,6 +643,7 @@ async function showPoints(mygroup, mycode) {
 			  mygroup: mygroup
 		  }
 	});
+
 	var calculo = (totalCorretas*100) / (parseInt(totalperguntas)-1); //tira a pergunta zero que é o título da lista de perguntas
 	calculo = calculo.toFixed(0);
 	var resultado = '';
@@ -649,21 +651,53 @@ async function showPoints(mygroup, mycode) {
 	resultado = resultado + '\n\n' + totalCorretas + ' corretas';
 	resultado = resultado + '\n\n' + totalNaoRespondidas + ' não respondidas ';// + responder;
 //	resultado = resultado + '\n\nResponda: '  + responder;
-	
+	var aprovacao = '';
 	if (calculo >= 70) {
-		resultado = resultado + '\n\n' + 'JÁ ESTÁ APROVADO \n' + calculo + '% de acerto é >= que 70%';
+		aprovacao = '\n\n' + 'JÁ ESTÁ APROVADO \n' + calculo + '% de acerto é >= que 70%';
 	} else {
-		resultado = resultado + '\n\n' + 'AINDA ESTÁ REPROVADO \n' + calculo + '% de acerto é < que 70%';
+		aprovacao = '\n\n' + 'AINDA ESTÁ REPROVADO \n' + calculo + '% de acerto é < que 70%';
 	}
+	resultado = resultado + aprovacao;
 	resultado = resultado + '\n\n' + 'Licença: v' + mygroup;
 
 //	resultado = resultado + '\nDuração: ' + document.getElementById('tempoduracao').value + 'h';
 
-	alert(resultado);
+	setDivDashboard(mygroup, mycode, totalperguntas, calculo, totalIncorretas, totalCorretas, totalNaoRespondidas);
+	
+	if (showalert == 'true') {
+		alert(resultado);
+	}
+}
+
+function setDivDashboard(mygroup, mycode, totalperguntas, calculo, totalIncorretas, totalCorretas, totalNaoRespondidas) {
+	var aprovacao = '';
+	var dashboard = '';
+	dashboard = dashboard + '<button id="btnReview" onclick="showFormSim();" class="btn btn-success"> <i class="fa fa-chevron-left"></i> Revisar</button>';
+	dashboard = dashboard + ' <button id="btnPause" onclick="showGridAndHideForms();" class="btn btn-info"><i class="fa fa-pause"></i></button>';
+	dashboard = dashboard + ' <button id="btnBackward" class="btn btn-danger" disabled> <i class="fa fa-refresh"></i></button>';
+	dashboard = dashboard + ' <button id="btnPoints" class="btn btn-warning" disabled><i class="fa fa-check-square-o"></i></button>';
+	dashboard = dashboard + ' <button id="btnFinish" onclick="showGridAndHideForms();" class="btn btn-success"><i class="fa fa-envelope"></i> Concluir</button>';
+	dashboard = dashboard + '<br/><br/>';
+	dashboard = dashboard + '<label class="btn btn-info" style="padding:9px 15px 9px 15px;"><b>Perguntas: ' + totalperguntas + '</b>';
+	dashboard = dashboard + '<br/><br/>';
+	dashboard = dashboard + '<label class="btn btn-danger" style="padding:9px 15px 9px 15px;">Incorretas: ' + totalIncorretas;
+	dashboard = dashboard + '<br/><br/>';
+	dashboard = dashboard + '<label class="btn btn-success" style="padding:9px 15px 9px 15px;">Corretas: ' + totalCorretas;
+	dashboard = dashboard + '<br/><br/>';
+	dashboard = dashboard + '<label class="btn btn-warning" style="padding:9px 15px 9px 15px;">Não Respondidas: ' + totalNaoRespondidas;
+	if (calculo >= 70) {
+		aprovacao = 'APROVADO <br/>' + calculo + '% de acerto é >= que 70%';
+	} else {
+		aprovacao = 'REPROVADO <br/>' + calculo + '% de acerto é < que 70%';
+	}
+	dashboard = dashboard + '<br/><br/>';
+	dashboard = dashboard + '<label class="btn btn-default" style="padding:9px 15px 9px 15px; cursor:default;">' + aprovacao;
+	dashboard = dashboard + '</label></label></label></label></label>';
+	document.getElementById('divdashboard').innerHTML = dashboard;
 }
 
 //This function select table play
-async function getFromTablePlay(id, mygroup, mycode) {
+async function refreshTableQuestion(id, mygroup, mycode) {
 //    try {
 		var totalperguntas = await jsstoreCon.count({
 			from: 'Student'
@@ -679,172 +713,177 @@ async function getFromTablePlay(id, mygroup, mycode) {
 					   , mycode: '' + mycode + ''
 			  }
 		});
+		
+		if (students == '') {
+			showFormDashboard();
+		} else {
+			students.forEach(function (student) {
+				document.getElementById('myorderSim').style.display='none';
+				document.getElementById('myidSim').style.display='none';
+				document.getElementById('mygroupSim').style.display='none';
+				document.getElementById('mycodeSim').style.display='none';
 
-		students.forEach(function (student) {
-			document.getElementById('myorderSim').style.display='none';
-			document.getElementById('myidSim').style.display='none';
-			document.getElementById('mygroupSim').style.display='none';
-			document.getElementById('mycodeSim').style.display='none';
+				$('#myidSim').val(student.id);
+				$('#mygroupSim').val(student.mygroup);
+				$('#mycodeSim').val(student.mycode);
+				$('#myorderSim').val(student.myorder);
+				
+				document.getElementById('mycorrect1Sim').style.display='none';
+				document.getElementById('mycorrect2Sim').style.display='none';
+				document.getElementById('mycorrect3Sim').style.display='none';
+				document.getElementById('mycorrect4Sim').style.display='none';
+				document.getElementById('mycorrect5Sim').style.display='none';
+				document.getElementById('mycorrect6Sim').style.display='none';
+				document.getElementById('mycorrect7Sim').style.display='none';
+				document.getElementById('mycorrect8Sim').style.display='none';
 
-			$('#myidSim').val(student.id);
-			$('#mygroupSim').val(student.mygroup);
-			$('#mycodeSim').val(student.mycode);
-			$('#myorderSim').val(student.myorder);
-			
-			document.getElementById('mycorrect1Sim').style.display='none';
-			document.getElementById('mycorrect2Sim').style.display='none';
-			document.getElementById('mycorrect3Sim').style.display='none';
-			document.getElementById('mycorrect4Sim').style.display='none';
-			document.getElementById('mycorrect5Sim').style.display='none';
-			document.getElementById('mycorrect6Sim').style.display='none';
-			document.getElementById('mycorrect7Sim').style.display='none';
-			document.getElementById('mycorrect8Sim').style.display='none';
+				document.getElementById('mytextSim').innerHTML = '<font color=' + GLOBAL_textcolor + '>' + ' <b>' + student.mycode + '/' + totalperguntas + '. ' + student.mytext + '</b> </font>';
 
-			document.getElementById('mytextSim').innerHTML = '<font color=' + GLOBAL_textcolor + '>' + ' <b>' + student.mycode + '/' + totalperguntas + '. ' + student.mytext + '</b> </font>';
-
-			var myorder = student.myorder;
-			myorder = myorder.replaceAll('\,', '');
-			for (var index=0; index<=8; index++) {
-				valorIndice = myorder.substring(index,index+1);
-				if (valorIndice == '1') {
-					var textlink = ''; var linkhref = '';
-					if (document.getElementById(student.myoptionkey1) != null) {
-						textlink = document.getElementById(student.myoptionkey1).innerHTML;
-						linkhref = document.getElementById('link_' + student.myoptionkey1);
-					}
-					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-//					valorIndice +
-					' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
-					+ student.mycorrect1answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption1 + ' </font>'
-//					+ ' <a href="#' + student.myoption1 + '" class="btn btn-default"><b>?</b></a>'
-					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
-					+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
-					+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
-					if (student.myoption1 != '') {
-						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
-					}
-				} else if (valorIndice == '2') {
-					var textlink = ''; var linkhref = '';
-					if (document.getElementById(student.myoptionkey2) != null) {
-						textlink = document.getElementById(student.myoptionkey2).innerHTML;
-						linkhref = document.getElementById('link_' + student.myoptionkey2);
-					}
-					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-//					valorIndice +
-					' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
-					+ student.mycorrect2answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption2 + ' </font>'
-//					+ ' <a href="#' + student.myoption2 + '" class="btn btn-default"><b>?</b></a>'
-					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
-					+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
-					+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
-					if (student.myoption2 != '') {
-						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
-					}
-				} else if (valorIndice == '3') {
-					var textlink = ''; var linkhref = '';
-					if (document.getElementById(student.myoptionkey3) != null) {
-						textlink = document.getElementById(student.myoptionkey3).innerHTML;
-						linkhref = document.getElementById('link_' + student.myoptionkey3);
-					}
-					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-//					valorIndice +
-					' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
-					+ student.mycorrect3answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption3 + ' </font>'
-//					+ ' <a href="#' + student.myoption3 + '" class="btn btn-default"><b>?</b></a>'
-					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
-					+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
-					+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
-					if (student.myoption3 != '') {
-						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
-					}
-				} else if (valorIndice == '4') {
-					var textlink = ''; var linkhref = '';
-					if (document.getElementById(student.myoptionkey4) != null) {
-						textlink = document.getElementById(student.myoptionkey4).innerHTML;
-						linkhref = document.getElementById('link_' + student.myoptionkey4);
-					}
-					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-//					valorIndice +
-					' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
-					+ student.mycorrect4answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption4 + ' </font>'
-//					+ ' <a href="#' + student.myoption4 + '" class="btn btn-default"><b>?</b></a>'
-					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
-					+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
-					+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
-					if (student.myoption4 != '') {
-						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
-					}
-				} else if (valorIndice == '5') {
-					var textlink = ''; var linkhref = '';
-					if (document.getElementById(student.myoptionkey5) != null) {
-						textlink = document.getElementById(student.myoptionkey5).innerHTML;
-						linkhref = document.getElementById('link_' + student.myoptionkey5);
-					}
-					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-//					valorIndice +
-					' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
-					+ student.mycorrect5answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption5 + ' </font>'
-//					+ ' <a href="#' + student.myoption5 + '" class="btn btn-default"><b>?</b></a>'
-					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
-					+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
-					+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
-					if (student.myoption5 != '') {
-						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
-					}
-				} else if (valorIndice == '6') {
-					var textlink = ''; var linkhref = '';
-					if (document.getElementById(student.myoptionkey6) != null) {
-						textlink = document.getElementById(student.myoptionkey6).innerHTML;
-						linkhref = document.getElementById('link_' + student.myoptionkey6);
-					}
-					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-//					valorIndice +
-					' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
-					+ student.mycorrect6answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption6 + ' </font>'
-//					+ ' <a href="#' + student.myoption6 + '" class="btn btn-default"><b>?</b></a>'
-					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
-					+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
-					+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
-					if (student.myoption6 != '') {
-						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
-					}
-				} else if (valorIndice == '7') {
-					var textlink = ''; var linkhref = '';
-					if (document.getElementById(student.myoptionkey7) != null) {
-						textlink = document.getElementById(student.myoptionkey7).innerHTML;
-						linkhref = document.getElementById('link_' + student.myoptionkey7);
-					}
-					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-//					valorIndice +
-					' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
-					+ student.mycorrect7answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption7 + ' </font>'
-//					+ ' <a href="#' + student.myoption7 + '" class="btn btn-default"><b>?</b></a>'
-					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
-					+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
-					+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
-					if (student.myoption7 != '') {
-						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
-					}
-				} else if (valorIndice == '8') {
-					var textlink = ''; var linkhref = '';
-					if (document.getElementById(student.myoptionkey8) != null) {
-						textlink = document.getElementById(student.myoptionkey8).innerHTML;
-						linkhref = document.getElementById('link_' + student.myoptionkey8);
-					}
-					document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-//					valorIndice +
-					' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
-					+ student.mycorrect8answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption8 + ' </font>'
-//					+ ' <a href="#' + student.myoption8 + '" class="btn btn-default"><b>?</b></a>'
-					+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
-					+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
-					+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
-					if (student.myoption8 != '') {
-						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
+				var myorder = student.myorder;
+				myorder = myorder.replaceAll('\,', '');
+				for (var index=0; index<=8; index++) {
+					valorIndice = myorder.substring(index,index+1);
+					if (valorIndice == '1') {
+						var textlink = ''; var linkhref = '';
+						if (document.getElementById(student.myoptionkey1) != null) {
+							textlink = document.getElementById(student.myoptionkey1).innerHTML;
+							linkhref = document.getElementById('link_' + student.myoptionkey1);
+						}
+						document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
+	//					valorIndice +
+						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+						+ student.mycorrect1answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption1 + ' </font>'
+	//					+ ' <a href="#' + student.myoption1 + '" class="btn btn-default"><b>?</b></a>'
+						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
+						+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
+						+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
+						if (student.myoption1 != '') {
+							document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
+						}
+					} else if (valorIndice == '2') {
+						var textlink = ''; var linkhref = '';
+						if (document.getElementById(student.myoptionkey2) != null) {
+							textlink = document.getElementById(student.myoptionkey2).innerHTML;
+							linkhref = document.getElementById('link_' + student.myoptionkey2);
+						}
+						document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
+	//					valorIndice +
+						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+						+ student.mycorrect2answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption2 + ' </font>'
+	//					+ ' <a href="#' + student.myoption2 + '" class="btn btn-default"><b>?</b></a>'
+						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
+						+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
+						+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
+						if (student.myoption2 != '') {
+							document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
+						}
+					} else if (valorIndice == '3') {
+						var textlink = ''; var linkhref = '';
+						if (document.getElementById(student.myoptionkey3) != null) {
+							textlink = document.getElementById(student.myoptionkey3).innerHTML;
+							linkhref = document.getElementById('link_' + student.myoptionkey3);
+						}
+						document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
+	//					valorIndice +
+						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+						+ student.mycorrect3answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption3 + ' </font>'
+	//					+ ' <a href="#' + student.myoption3 + '" class="btn btn-default"><b>?</b></a>'
+						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
+						+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
+						+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
+						if (student.myoption3 != '') {
+							document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
+						}
+					} else if (valorIndice == '4') {
+						var textlink = ''; var linkhref = '';
+						if (document.getElementById(student.myoptionkey4) != null) {
+							textlink = document.getElementById(student.myoptionkey4).innerHTML;
+							linkhref = document.getElementById('link_' + student.myoptionkey4);
+						}
+						document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
+	//					valorIndice +
+						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+						+ student.mycorrect4answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption4 + ' </font>'
+	//					+ ' <a href="#' + student.myoption4 + '" class="btn btn-default"><b>?</b></a>'
+						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
+						+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
+						+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
+						if (student.myoption4 != '') {
+							document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
+						}
+					} else if (valorIndice == '5') {
+						var textlink = ''; var linkhref = '';
+						if (document.getElementById(student.myoptionkey5) != null) {
+							textlink = document.getElementById(student.myoptionkey5).innerHTML;
+							linkhref = document.getElementById('link_' + student.myoptionkey5);
+						}
+						document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
+	//					valorIndice +
+						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+						+ student.mycorrect5answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption5 + ' </font>'
+	//					+ ' <a href="#' + student.myoption5 + '" class="btn btn-default"><b>?</b></a>'
+						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
+						+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
+						+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
+						if (student.myoption5 != '') {
+							document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
+						}
+					} else if (valorIndice == '6') {
+						var textlink = ''; var linkhref = '';
+						if (document.getElementById(student.myoptionkey6) != null) {
+							textlink = document.getElementById(student.myoptionkey6).innerHTML;
+							linkhref = document.getElementById('link_' + student.myoptionkey6);
+						}
+						document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
+	//					valorIndice +
+						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+						+ student.mycorrect6answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption6 + ' </font>'
+	//					+ ' <a href="#' + student.myoption6 + '" class="btn btn-default"><b>?</b></a>'
+						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
+						+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
+						+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
+						if (student.myoption6 != '') {
+							document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
+						}
+					} else if (valorIndice == '7') {
+						var textlink = ''; var linkhref = '';
+						if (document.getElementById(student.myoptionkey7) != null) {
+							textlink = document.getElementById(student.myoptionkey7).innerHTML;
+							linkhref = document.getElementById('link_' + student.myoptionkey7);
+						}
+						document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
+	//					valorIndice +
+						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+						+ student.mycorrect7answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption7 + ' </font>'
+	//					+ ' <a href="#' + student.myoption7 + '" class="btn btn-default"><b>?</b></a>'
+						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
+						+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
+						+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
+						if (student.myoption7 != '') {
+							document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
+						}
+					} else if (valorIndice == '8') {
+						var textlink = ''; var linkhref = '';
+						if (document.getElementById(student.myoptionkey8) != null) {
+							textlink = document.getElementById(student.myoptionkey8).innerHTML;
+							linkhref = document.getElementById('link_' + student.myoptionkey8);
+						}
+						document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
+	//					valorIndice +
+						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+						+ student.mycorrect8answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption8 + ' </font>'
+	//					+ ' <a href="#' + student.myoption8 + '" class="btn btn-default"><b>?</b></a>'
+						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
+						+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
+						+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
+						if (student.myoption8 != '') {
+							document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
+						}
 					}
 				}
-			}
-		})
+			})
+		}
+
 
 //		refreshLinkHelp();
 		
@@ -1080,10 +1119,8 @@ async function dropdb() {
 			var mygroup = document.getElementById('mygroup').value;
 			var mytext = document.getElementById('mytext').value.trim();
 			refreshTableData(mycode, myorder, mygroup, mytext);
-
 			location.reload();
 //			showIniciarConfiguracao();
-
 //			console.log('successfull');
 		}).catch(function(error) {
 			console.log(error);
@@ -1811,6 +1848,7 @@ function showFormSim() {
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').show();
+	$('#divdashboard').hide();
 	document.getElementById('tableButtons').style.display='none';
 }
 
@@ -1823,6 +1861,7 @@ function showFormAddUpdate() {
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
+	$('#divdashboard').hide();
 }
 
 function showGridAndHideForms() {
@@ -1834,6 +1873,7 @@ function showGridAndHideForms() {
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
+	$('#divdashboard').hide();
 
 	if (document.getElementById('btnPlay') != null) { document.getElementById('btnPlay').style.display=''; }
 //	if (document.getElementById('btnAddNewManual') != null) { document.getElementById('btnAddNewManual').style.display=''; }
@@ -1850,6 +1890,7 @@ function showAddNewManual() {
 	$('#formBible').hide();
 	$('#divconfig').hide();
 	$('#divFormSim').hide();
+	$('#divdashboard').hide();
 }
 
 function showFormGear() {
@@ -1861,6 +1902,7 @@ function showFormGear() {
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
+	$('#divdashboard').hide();
 }
 
 function showFormImport() {
@@ -1872,6 +1914,19 @@ function showFormImport() {
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
+	$('#divdashboard').hide();
+}
+
+function showFormDashboard() {
+    $('#tblGrid').hide();
+    $('#divFormAddUpdate').hide();
+	$('#divGear').hide();
+	$('#divcontent').hide();
+	$('#formBible').hide();
+	$('#divconfig').hide();
+	$('#divGearAddNewLiryc').hide();
+	$('#divFormSim').hide();
+	$('#divdashboard').show();
 }
 
 function showBible() {
@@ -1883,6 +1938,7 @@ function showBible() {
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
+	$('#divdashboard').hide();
 }
 
 function showIniciarConfiguracao() {
@@ -1894,6 +1950,7 @@ function showIniciarConfiguracao() {
 	$('#divconfig').show();
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
+	$('#divdashboard').hide();
 	document.getElementById('btnPlay').style.display='none';
 //	document.getElementById('btnAddNewManual').style.display='none';
 	document.getElementById('btnGear').style.display='none';
