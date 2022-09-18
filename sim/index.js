@@ -849,7 +849,7 @@ function setDivDashboard(myid, mygroup, mycode, totalperguntas, calculo, totalIn
 	dashboard = dashboard + '<br/><br/>';
 	dashboard = dashboard + '<label class="btn btn-default" style="padding:9px 15px 9px 15px; cursor:default;">' + calculo;
 	dashboard = dashboard + '</label></label></label></label></label>';
-	dashboard = dashboard + '<p/><p/><button id="btnFinish" onclick="showBackward(); location.reload();" class="btn btn-success"><i class="fa fa-envelope"></i> Concluir</button>';
+	dashboard = dashboard + '<p/><p/><button id="btnFinish" onclick="location.reload();" class="btn btn-success"><i class="fa fa-envelope"></i> Concluir</button>';
 	document.getElementById('divdashboard').innerHTML = dashboard;
 }
 
