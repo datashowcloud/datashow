@@ -3,19 +3,20 @@
 var jsstoreCon = new JsStore.Connection();
 
 var CONST_FASE_NIVEL_MAX = 4;
-var GLOBAL_textcolor = 'white';
-var GLOBAL_background = 'black';
+var GLOBAL_textcolor = 'black';
+var GLOBAL_background = 'white';
 var GLOBAL_buttoncolor = 'btn-colors';
 var COL_LOGOTIPO = 5;
 
 window.onload = function () {
-	var mygroup = selectMygroup.value.trim();
-	var mycode = '';
+	var mycode = '0';
 	var mytext = '';
 	var myorder = '';
-	if (mygroup != '00') {
-		mycode = '0';
-	}
+//	var mygroup = selectMygroup.value.trim();
+//	if (mygroup != '00') {
+//		mycode = '0';
+//	}
+	mygroup = '';
 	refreshTableData(mycode, myorder, mygroup, mytext);
 	
     registerEvents();
@@ -430,13 +431,13 @@ function registerEvents() {
 
 async function initConfigGeneral() {
 	document.getElementById('divconfig').style.display = 'block';
-	GLOBAL_textcolor = 'white';
+	GLOBAL_textcolor = 'black';
 	GLOBAL_buttoncolor = 'btn-colors';
 	try {
 		var configgeneral = {
 			fontfamily: 'Times New Roman',
 			fontsize: '16',
-			background: 'black',
+			background: 'white',
 			textcolor: GLOBAL_textcolor,
 			buttoncolor: GLOBAL_buttoncolor,
 			textalign: 'left'
@@ -829,7 +830,7 @@ function setDivDashboard(mygroup, mycode, totalperguntas, calculo, totalIncorret
 	dashboard = dashboard + ' <button id="btnPause" onclick="showGridAndHideForms();" class="btn btn-info"><i class="fa fa-pause"></i></button>';
 	dashboard = dashboard + ' <button id="btnBackward" class="btn btn-danger" disabled> <i class="fa fa-refresh"></i></button>';
 	dashboard = dashboard + ' <button id="btnPoints" class="btn btn-warning" disabled><i class="fa fa-check-square-o"></i></button>';
-	dashboard = dashboard + ' <button id="btnFinish" onclick="showGridAndHideForms();" class="btn btn-success"><i class="fa fa-envelope"></i> Concluir</button>';
+	dashboard = dashboard + ' <button id="btnFinish" onclick="showGridAndHideForms(); location.reload();" class="btn btn-success"><i class="fa fa-envelope"></i> Concluir</button>';
 	dashboard = dashboard + '<br/><br/>';
 	dashboard = dashboard + '<label class="btn btn-info" style="padding:9px 15px 9px 15px;">Perguntas: ' + totalperguntas;
 	dashboard = dashboard + '<br/><br/>';
@@ -1064,7 +1065,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 					, where: { mycode: mycode
 					, mygroup: mygroup
 				}
-				, order: [ {by: 'mygroup'}, {by: 'mycode'} ]
+				, order: [ {by: 'mygroup', type: 'desc'}, {by: 'mycode'} ]
 			});
 		}
 
@@ -1073,7 +1074,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				from: 'Student'
 					, where: { mygroup: '' + mygroup + ''
 				}
-				, order: [ {by: 'mygroup'}, {by: 'mycode'} ]
+				, order: [ {by: 'mygroup', type: 'desc'}, {by: 'mycode'} ]
 			});
 		}
 
@@ -1082,7 +1083,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				from: 'Student'
 					, where: { mycode: '' + mycode + ''
 				}
-				, order: [ {by: 'mygroup'}, {by: 'mycode'} ]
+				, order: [ {by: 'mygroup', type: 'desc'}, {by: 'mycode'} ]
 			});
 		}
 
@@ -1114,8 +1115,8 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 			}
 			
 			htmlString += "<tr ItemId=" + student.id + ">"
-				+ "<td style=\"color:#777777; font-size:12px; \">" + student.mygroup + "</td>"
-                + "<td style=\"color:#777777; font-size:12px;\">" + student.mycode + "</td>"
+				+ "<td style=\"color:#000000; font-size:1px; \">" + student.mygroup + "</td>"
+                + "<td style=\"color:#000000; font-size:1px;\">" + student.mycode + "</td>"
 				+ "<" + varTdTh + " id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " ZZZonClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
 				+ varText + "</" + varTdTh + ">"
 //				+ student.mytext + "</" + varTdTh + ">"
@@ -1128,9 +1129,10 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 */				
 				+ "<" + varTdTh + " nowrap id=datashow" + student.id+"6" + " tabIndex=" + student.id+"6" + " ZZZonClick=\"datashow('" + student.id+"6" + "', 6, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 6, event, " + "" + (student.id+"6") + ");\" data-show='" + student.id+"6" + "'>"
 //				+ varPlay + ' '
-				+ varEdit + ' '
-				+ '<p/>'
-				+ varDel + "</" + varTdTh + ">"
+//				+ varEdit + ' '
+//				+ '<p/>'
+//				+ varDel
+				+ "</" + varTdTh + ">"
 				;
 		})
 
