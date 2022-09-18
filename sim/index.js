@@ -168,13 +168,7 @@ function registerEvents() {
 		}
     })
 	$('#btnBackward').click(function () {
-        var result = confirm('Vou limpar e reorganizar todas respostas, ok?');
-        if (result) {
-			var mygroup = document.getElementById('mygroupSim').value;
-			updateStudentPlayOrder(mygroup);
-			updateStudentPlayClear(mygroup);
-			showGridAndHideForms();
-        }
+        showBackward();
     });
     $('#btnImportSim').click(function () {
 		showIniciarConfiguracao();
@@ -573,6 +567,16 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 	}
 }
 
+function showBackward() {
+	var result = confirm('Vou limpar e reorganizar todas respostas, ok?');
+	if (result) {
+		var mygroup = document.getElementById('mygroupSim').value;
+		updateStudentPlayOrder(mygroup);
+		updateStudentPlayClear(mygroup);
+		showGridAndHideForms();
+	}
+}
+
 function getStudentFromForm(studentId, mygroup, mycode) {
 	var mygroup = document.getElementById('mygroupSim').value;
 	setTimeout(() => { updateStudentPlayOrder(mygroup) }, 1000); // Executa após 5 segundos para esperar o processo de insert terminar
@@ -587,7 +591,6 @@ function getStudentFromForm(studentId, mygroup, mycode) {
 }
 
 function calculaPercentualAcerto(mygroup, mycode, totalCorretas, totalperguntas) {
-	totalperguntas = parseInt(totalperguntas) - 1; //tira a pergunta zero que é o título da lista de perguntas
 	var calculo = (totalCorretas*100) / (parseInt(totalperguntas));
 	calculo = calculo.toFixed(0); //remove decimais
 	return calculo;
@@ -817,22 +820,21 @@ async function showPoints(mygroup, mycode) {
 	resultado = resultado + aprovacao;
 	resultado = resultado + '\n\n' + 'Licença: v' + mygroup;
 //	resultado = resultado + '\nDuração: ' + document.getElementById('tempoduracao').value + 'h';
-
-//	setDivDashboard(mygroup, mycode, totalperguntas, calculo, totalIncorretas, totalCorretas, totalNaoRespondidas);
 	
 	alert(resultado);
 }
 
-function setDivDashboard(mygroup, mycode, totalperguntas, calculo, totalIncorretas, totalCorretas, totalNaoRespondidas) {
+function setDivDashboard(myid, mygroup, mycode, totalperguntas, calculo, totalIncorretas, totalCorretas, totalNaoRespondidas) {
 	var aprovacao = '';
 	var dashboard = '';
-	dashboard = dashboard + '<button id="btnReview" onclick="showFormSim();" class="btn btn-success"> <i class="fa fa-chevron-left"></i> Revisar</button>';
-	dashboard = dashboard + ' <button id="btnPause" onclick="showGridAndHideForms();" class="btn btn-info"><i class="fa fa-pause"></i></button>';
+/*	dashboard = dashboard + '<button id="btnReview" onclick="refreshTableQuestion('+myid+', '+mygroup+', '+mycode+'); changeFaseNivel('+myid+', '+mygroup+', '+mycode+'); location.reload();" class="btn btn-success"><i class="fa fa-chevron-left"></i></button>';
+	dashboard = dashboard + ' <button id="btnPause" class="btn btn-info" disabled><i class="fa fa-pause"></i></button>';
 	dashboard = dashboard + ' <button id="btnBackward" class="btn btn-danger" disabled> <i class="fa fa-refresh"></i></button>';
 	dashboard = dashboard + ' <button id="btnPoints" class="btn btn-warning" disabled><i class="fa fa-check-square-o"></i></button>';
-	dashboard = dashboard + ' <button id="btnFinish" onclick="showGridAndHideForms(); location.reload();" class="btn btn-success"><i class="fa fa-envelope"></i> Concluir</button>';
+	dashboard = dashboard + ' <button id="btnFinish" onclick="refreshTableQuestion('+myid+', '+mygroup+', '+mycode+'); changeFaseNivel('+myid+', '+mygroup+', '+mycode+'); location.reload();" class="btn btn-success"><i class="fa fa-chevron-right"></i> Próximo</button>';
 	dashboard = dashboard + '<br/><br/>';
-	dashboard = dashboard + '<label class="btn btn-info" style="padding:9px 15px 9px 15px;">Perguntas: ' + totalperguntas;
+*/	dashboard = dashboard + '<p/><p/>';
+	dashboard = dashboard + '<label class="btn btn-default" style="padding:9px 15px 9px 15px;">Total: ' + totalperguntas;
 	dashboard = dashboard + '<br/><br/>';
 	dashboard = dashboard + '<label class="btn btn-danger" style="padding:9px 15px 9px 15px;">Incorretas: ' + totalIncorretas;
 	dashboard = dashboard + '<br/><br/>';
@@ -840,18 +842,19 @@ function setDivDashboard(mygroup, mycode, totalperguntas, calculo, totalIncorret
 	dashboard = dashboard + '<br/><br/>';
 	dashboard = dashboard + '<label class="btn btn-warning" style="padding:9px 15px 9px 15px;">Não Respondidas: ' + totalNaoRespondidas;
 	if (calculo >= 70) {
-		aprovacao = 'APROVADO <br/>' + calculo + '% de acerto é >= 70%';
+		calculo = 'APROVADO <br/>' + calculo + '% de acerto é >= 70%';
 	} else {
-		aprovacao = 'REPROVADO <br/>' + calculo + '% de acerto é < 70%';
+		calculo = 'REPROVADO <br/>' + calculo + '% de acerto é < 70%';
 	}
 	dashboard = dashboard + '<br/><br/>';
-	dashboard = dashboard + '<label class="btn btn-default" style="padding:9px 15px 9px 15px; cursor:default;">' + aprovacao;
+	dashboard = dashboard + '<label class="btn btn-default" style="padding:9px 15px 9px 15px; cursor:default;">' + calculo;
 	dashboard = dashboard + '</label></label></label></label></label>';
+	dashboard = dashboard + '<p/><p/><button id="btnFinish" onclick="showBackward(); location.reload();" class="btn btn-success"><i class="fa fa-envelope"></i> Concluir</button>';
 	document.getElementById('divdashboard').innerHTML = dashboard;
 }
 
 //This function select table play
-async function refreshTableQuestion(id, mygroup, mycode) {
+async function refreshTableQuestion(myid, mygroup, mycode) {
 //    try {
 		var totalperguntas = await jsstoreCon.count({
 			from: 'Student'
@@ -878,7 +881,7 @@ async function refreshTableQuestion(id, mygroup, mycode) {
 			var totalIncorretas = getTotalIncorretas(mygroup, mycode, students);
 			var totalNaoRespondidas = getTotalNaoRespondidas(mygroup, mycode, students);
 			var calculo = calculaPercentualAcerto(mygroup, mycode, totalCorretas, totalperguntas);
-			setDivDashboard(mygroup, mycode, totalperguntas, calculo, totalIncorretas, totalCorretas, totalNaoRespondidas);
+			setDivDashboard(myid, mygroup, mycode, totalperguntas, calculo, totalIncorretas, totalCorretas, totalNaoRespondidas);
 			showFormDashboard();
 		} else {
 			students.forEach(function (student) {
@@ -2116,9 +2119,9 @@ function showIniciarConfiguracao() {
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
 	$('#divdashboard').hide();
-	document.getElementById('btnPlay').style.display='none';
+//	document.getElementById('btnPlay').style.display='none';
 //	document.getElementById('btnAddNewManual').style.display='none';
-	document.getElementById('btnGear').style.display='none';
+//	document.getElementById('btnGear').style.display='none';
 }
 
 function showForm1Form2() {
