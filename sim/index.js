@@ -2,6 +2,7 @@
 
 var jsstoreCon = new JsStore.Connection();
 
+var CONST_FASE_NIVEL_MAX = 4;
 var GLOBAL_textcolor = 'white';
 var GLOBAL_background = 'black';
 var GLOBAL_buttoncolor = 'btn-colors';
@@ -387,14 +388,14 @@ function registerEvents() {
 		var mygroup = document.getElementById('mygroupSim').value;
 		var mycode = parseInt(document.getElementById('mycodeSim').value) - 1;
 		refreshTableQuestion(myid, mygroup, mycode);
-		showPoints(mygroup, mycode, 'false');
+		changeFaseNivel(myid, mygroup, mycode);
     })
     $('#btnNext').click(function () {
 		var myid = document.getElementById('myidSim').value;
 		var mygroup = document.getElementById('mygroupSim').value;
 		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
 		refreshTableQuestion(myid, mygroup, mycode);
-		showPoints(mygroup, mycode, 'false');
+		changeFaseNivel(myid, mygroup, mycode);
     })
 	$('#btnPause').click(function () {
 		showGridAndHideForms();
@@ -402,7 +403,7 @@ function registerEvents() {
 	$('#btnPoints').click(function () {
 		var mygroup = document.getElementById('mygroupSim').value;
 		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
-		showPoints(mygroup, mycode, 'true');
+		showPoints(mygroup, mycode);
     });
 	$('#btnGear').click(function () {
 		if (document.getElementById('divGear').style.display == 'none') {
@@ -584,13 +585,14 @@ function getStudentFromForm(studentId, mygroup, mycode) {
     return student;
 }
 
-async function showPoints(mygroup, mycode, showalert) {
-	var students = await jsstoreCon.select({
-		from: 'Student'
-		  , where: { mygroup: mygroup 
-		  }
-	});
+function calculaPercentualAcerto(mygroup, mycode, totalCorretas, totalperguntas) {
+	totalperguntas = parseInt(totalperguntas) - 1; //tira a pergunta zero que é o título da lista de perguntas
+	var calculo = (totalCorretas*100) / (parseInt(totalperguntas));
+	calculo = calculo.toFixed(0); //remove decimais
+	return calculo;
+}
 
+function getTotalCorretas(mygroup, mycode, students) {
 	var totalCorretas = 0;
 	var totalIncorretas = 0;
 	var totalNaoRespondidas = 0;
@@ -636,6 +638,159 @@ async function showPoints(mygroup, mycode, showalert) {
 			}
 		}
 	})
+	return totalCorretas;
+}
+
+function getTotalIncorretas(mygroup, mycode, students) {
+	var totalCorretas = 0;
+	var totalIncorretas = 0;
+	var totalNaoRespondidas = 0;
+
+	students.forEach(function (student) {
+		if (student.mycode != '0') {
+			var ok = '';
+			if (student.mycorrect1answer == '' && student.mycorrect2answer == '' && student.mycorrect3answer == '' && student.mycorrect4answer == ''
+			 && student.mycorrect5answer == '' && student.mycorrect6answer == '' && student.mycorrect7answer == '' && student.mycorrect8answer == '') {
+				ok = '';
+			} else {
+				for (var index=1; index<=4; index++) {
+					if (student.myoption1 != '') {
+						if (student.mycorrect1answer != '') { ok = 'true'; }
+						if (student.mycorrect1answer == '') { ok = 'false'; break; }
+					}
+					if (student.myoption2 != '') {
+						if (student.mycorrect2answer != '') { ok = 'true'; }
+						if (student.mycorrect2answer == '') { ok = 'false'; break; }
+					}
+					if (student.myoption3 != '') {
+						if (student.mycorrect3answer != '') { ok = 'true'; }
+						if (student.mycorrect3answer == '') { ok = 'false'; break; }
+					}
+					if (student.myoption4 != '') {
+						if (student.mycorrect4answer != '') { ok = 'true'; }
+						if (student.mycorrect4answer == '') { ok = 'false'; break; }
+					}
+				}
+				//resposta incorreta para opções 5, 6, 7 e 8.
+				if (student.mycorrect5answer != '') { ok = 'false'; }
+				if (student.mycorrect6answer != '') { ok = 'false'; }
+				if (student.mycorrect7answer != '') { ok = 'false'; }
+				if (student.mycorrect8answer != '') { ok = 'false'; }
+			}
+
+			if (ok == 'true') {
+				totalCorretas = parseInt(totalCorretas) + 1;
+			} else if (ok == 'false') {
+				totalIncorretas = parseInt(totalIncorretas) + 1;
+			} else if (ok == '') {
+				totalNaoRespondidas = parseInt(totalNaoRespondidas) + 1;
+			}
+		}
+	})
+	return totalIncorretas;
+}
+
+function getTotalNaoRespondidas(mygroup, mycode, students) {
+	var totalCorretas = 0;
+	var totalIncorretas = 0;
+	var totalNaoRespondidas = 0;
+
+	students.forEach(function (student) {
+		if (student.mycode != '0') {
+			var ok = '';
+			if (student.mycorrect1answer == '' && student.mycorrect2answer == '' && student.mycorrect3answer == '' && student.mycorrect4answer == ''
+			 && student.mycorrect5answer == '' && student.mycorrect6answer == '' && student.mycorrect7answer == '' && student.mycorrect8answer == '') {
+				ok = '';
+			} else {
+				for (var index=1; index<=4; index++) {
+					if (student.myoption1 != '') {
+						if (student.mycorrect1answer != '') { ok = 'true'; }
+						if (student.mycorrect1answer == '') { ok = 'false'; break; }
+					}
+					if (student.myoption2 != '') {
+						if (student.mycorrect2answer != '') { ok = 'true'; }
+						if (student.mycorrect2answer == '') { ok = 'false'; break; }
+					}
+					if (student.myoption3 != '') {
+						if (student.mycorrect3answer != '') { ok = 'true'; }
+						if (student.mycorrect3answer == '') { ok = 'false'; break; }
+					}
+					if (student.myoption4 != '') {
+						if (student.mycorrect4answer != '') { ok = 'true'; }
+						if (student.mycorrect4answer == '') { ok = 'false'; break; }
+					}
+				}
+				//resposta incorreta para opções 5, 6, 7 e 8.
+				if (student.mycorrect5answer != '') { ok = 'false'; }
+				if (student.mycorrect6answer != '') { ok = 'false'; }
+				if (student.mycorrect7answer != '') { ok = 'false'; }
+				if (student.mycorrect8answer != '') { ok = 'false'; }
+			}
+
+			if (ok == 'true') {
+				totalCorretas = parseInt(totalCorretas) + 1;
+			} else if (ok == 'false') {
+				totalIncorretas = parseInt(totalIncorretas) + 1;
+			} else if (ok == '') {
+				totalNaoRespondidas = parseInt(totalNaoRespondidas) + 1;
+			}
+		}
+	})
+	return totalNaoRespondidas;
+}
+
+async function changeFaseNivel(id, mygroup, mycode) {
+	var totalperguntas = await jsstoreCon.count({
+		from: 'Student'
+		  , where: {
+			  mygroup: mygroup
+		  }
+	});
+	totalperguntas = totalperguntas - 1; //tira a pergunta zero que é o título da lista de perguntas
+	var students = await jsstoreCon.select({
+		from: 'Student'
+		  , where: { mygroup: mygroup 
+		  }
+	});
+	var totalCorretas = getTotalCorretas(mygroup, mycode, students);
+	var calculo = calculaPercentualAcerto(mygroup, mycode, totalCorretas, totalperguntas);
+	if (calculo >= 70) {
+		var mygroupNext = getProximaFaseNivel(id, mygroup, mycode);
+		if (mygroupNext != 'false') {
+			var students = await jsstoreCon.select({
+				from: 'Student'
+				  , where: { mygroup: '' + mygroupNext + ''
+				}
+			});
+			if (students == '') {
+				var DataShow_Config = window.open("config" + mygroupNext + ".html?sim=" + mygroupNext, "datashowconfig", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
+			}
+		}
+	}
+}
+
+function getProximaFaseNivel(id, mygroup, mycode) {
+	var unidade = parseInt(mygroup.substring(mygroup.length-1, mygroup.length));
+	var dezena = parseInt(mygroup.substring(0, mygroup.substring(mygroup.length-1, mygroup.length)));
+	if (unidade < CONST_FASE_NIVEL_MAX) {
+		mygroup = parseInt(mygroup) + 1; //próxima fase
+	} else {
+		mygroup = parseInt(mygroup) + 10; //próximo nível
+	}
+	return mygroup;
+}
+
+async function showPoints(mygroup, mycode) {
+	var students = await jsstoreCon.select({
+		from: 'Student'
+		  , where: { mygroup: mygroup 
+		  }
+	});
+	var totalCorretas = getTotalCorretas(mygroup, mycode, students);
+	var totalIncorretas = getTotalIncorretas(mygroup, mycode, students);
+	var totalNaoRespondidas = getTotalNaoRespondidas(mygroup, mycode, students);
+
+//alert('totalCorretas='+totalCorretas + ' totalIncorretas='+totalIncorretas + ' totalNaoRespondidas='+totalNaoRespondidas);
 
 	var totalperguntas = await jsstoreCon.count({
 		from: 'Student'
@@ -643,30 +798,28 @@ async function showPoints(mygroup, mycode, showalert) {
 			  mygroup: mygroup
 		  }
 	});
-
-	var calculo = (totalCorretas*100) / (parseInt(totalperguntas)-1); //tira a pergunta zero que é o título da lista de perguntas
-	calculo = calculo.toFixed(0);
+	totalperguntas = totalperguntas - 1; //tira a pergunta zero que é o título da lista de perguntas
+	
 	var resultado = '';
 	resultado = resultado + totalIncorretas + ' erradas ';//+ erradas;
 	resultado = resultado + '\n\n' + totalCorretas + ' corretas';
 	resultado = resultado + '\n\n' + totalNaoRespondidas + ' não respondidas ';// + responder;
 //	resultado = resultado + '\n\nResponda: '  + responder;
 	var aprovacao = '';
+
+	var calculo = calculaPercentualAcerto(mygroup, mycode, totalCorretas, totalperguntas);
 	if (calculo >= 70) {
-		aprovacao = '\n\n' + 'JÁ ESTÁ APROVADO \n' + calculo + '% de acerto é >= que 70%';
+		aprovacao = '\n\n' + 'JÁ ESTÁ APROVADO \n' + calculo + '% de acerto é >= 70%';
 	} else {
-		aprovacao = '\n\n' + 'AINDA ESTÁ REPROVADO \n' + calculo + '% de acerto é < que 70%';
+		aprovacao = '\n\n' + 'AINDA ESTÁ REPROVADO \n' + calculo + '% de acerto é < 70%';
 	}
 	resultado = resultado + aprovacao;
 	resultado = resultado + '\n\n' + 'Licença: v' + mygroup;
-
 //	resultado = resultado + '\nDuração: ' + document.getElementById('tempoduracao').value + 'h';
 
-	setDivDashboard(mygroup, mycode, totalperguntas, calculo, totalIncorretas, totalCorretas, totalNaoRespondidas);
+//	setDivDashboard(mygroup, mycode, totalperguntas, calculo, totalIncorretas, totalCorretas, totalNaoRespondidas);
 	
-	if (showalert == 'true') {
-		alert(resultado);
-	}
+	alert(resultado);
 }
 
 function setDivDashboard(mygroup, mycode, totalperguntas, calculo, totalIncorretas, totalCorretas, totalNaoRespondidas) {
@@ -678,7 +831,7 @@ function setDivDashboard(mygroup, mycode, totalperguntas, calculo, totalIncorret
 	dashboard = dashboard + ' <button id="btnPoints" class="btn btn-warning" disabled><i class="fa fa-check-square-o"></i></button>';
 	dashboard = dashboard + ' <button id="btnFinish" onclick="showGridAndHideForms();" class="btn btn-success"><i class="fa fa-envelope"></i> Concluir</button>';
 	dashboard = dashboard + '<br/><br/>';
-	dashboard = dashboard + '<label class="btn btn-info" style="padding:9px 15px 9px 15px;"><b>Perguntas: ' + totalperguntas + '</b>';
+	dashboard = dashboard + '<label class="btn btn-info" style="padding:9px 15px 9px 15px;">Perguntas: ' + totalperguntas;
 	dashboard = dashboard + '<br/><br/>';
 	dashboard = dashboard + '<label class="btn btn-danger" style="padding:9px 15px 9px 15px;">Incorretas: ' + totalIncorretas;
 	dashboard = dashboard + '<br/><br/>';
@@ -686,9 +839,9 @@ function setDivDashboard(mygroup, mycode, totalperguntas, calculo, totalIncorret
 	dashboard = dashboard + '<br/><br/>';
 	dashboard = dashboard + '<label class="btn btn-warning" style="padding:9px 15px 9px 15px;">Não Respondidas: ' + totalNaoRespondidas;
 	if (calculo >= 70) {
-		aprovacao = 'APROVADO <br/>' + calculo + '% de acerto é >= que 70%';
+		aprovacao = 'APROVADO <br/>' + calculo + '% de acerto é >= 70%';
 	} else {
-		aprovacao = 'REPROVADO <br/>' + calculo + '% de acerto é < que 70%';
+		aprovacao = 'REPROVADO <br/>' + calculo + '% de acerto é < 70%';
 	}
 	dashboard = dashboard + '<br/><br/>';
 	dashboard = dashboard + '<label class="btn btn-default" style="padding:9px 15px 9px 15px; cursor:default;">' + aprovacao;
@@ -715,6 +868,16 @@ async function refreshTableQuestion(id, mygroup, mycode) {
 		});
 		
 		if (students == '') {
+			var students = await jsstoreCon.select({
+				from: 'Student'
+				  , where: { mygroup: mygroup 
+				  }
+			});
+			var totalCorretas = getTotalCorretas(mygroup, mycode, students);
+			var totalIncorretas = getTotalIncorretas(mygroup, mycode, students);
+			var totalNaoRespondidas = getTotalNaoRespondidas(mygroup, mycode, students);
+			var calculo = calculaPercentualAcerto(mygroup, mycode, totalCorretas, totalperguntas);
+			setDivDashboard(mygroup, mycode, totalperguntas, calculo, totalIncorretas, totalCorretas, totalNaoRespondidas);
 			showFormDashboard();
 		} else {
 			students.forEach(function (student) {
