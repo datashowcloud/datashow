@@ -105,11 +105,11 @@
 				
 				<table id="tableFormSimButtons" border=0 align=center width="100%" style="display:'none';">
 					<tr><td>
-						<button id="btnPrevious" class="btn btn-info" style="display:'none';"> <i class="fa fa-chevron-left"></i> </button>
+						<button id="btnPrevious" class="btn btn-info" style="display:'none';"> <i class="fa fa-chevron-left"></i> Anterior</button>
 						<button id="btnPause" class="btn btn-info" style="display:'none';"><i class="fa fa-pause"></i> Sair</button>
 						<button id="btnBackward" class="btn btn-danger" style="display:none;"> <i class="fa fa-refresh"></i> </button>
 						<button id="btnPoints" class="btn btn-info" style="display:'none';"><i class="fa fa-check-square-o"></i></button>
-						<button id="btnNext" class="btn btn-info" style="display:'none';"> <i class="fa fa-chevron-right"></i> Próximo</button>
+						<button id="btnNext" class="btn btn-info" style="display:'none';">Próximo <i class="fa fa-chevron-right"></i></button>
 					</td></tr>
 				</table>
 				<table id="tableFormSimQuestions" border=0 align=center width="100%" style="display:'none';">
@@ -151,14 +151,12 @@
 						<input type="text" id="myidSim" value="" style="display:none;">
 					</td></tr>
 				</table>
-				<table id="tableFormSimDashboard" border=0 align=center width="100%" style="display:'none';">
-					<tr><td>
-						<input type="text" id="txtTotal" value="Total" class="btn btn-default" style="padding:9px 15px 9px 15px;">
-						<br/><input type="text" id="txtIncorretas" value="Incorretas" class="btn btn-default" style="padding:9px 15px 9px 15px;">
-						<br/><input type="text" id="txtCorretas" value="Corretas" class="btn btn-default" style="padding:9px 15px 9px 15px;">
-						<br/><input type="text" id="txtNaoRespondidas" value="Não Respondidas" class="btn btn-default" style="padding:9px 15px 9px 15px;">
-						<br/><input type="text" id="txtCalculo" value="Resultado" class="btn btn-default" style="padding:9px 15px 9px 15px;">
-					</td></tr>
+				<table id="tableFormSimDashboard" border=0 align=center width="60%" style="display:'none';">
+					<tr><td nowrap id="txtCalculo"></td></tr>
+					<tr><td nowrap><input type="text" id="txtIncorretas" value="Incorretas" class="btn btn-default" style="padding:9px 15px 9px 15px;" readonly /></td></tr>
+					<tr><td nowrap><input type="text" id="txtCorretas" value="Corretas" class="btn btn-default" style="padding:9px 15px 9px 15px;" readonly /></td></tr>
+					<tr><td nowrap><input type="text" id="txtNaoRespondidas" value="Não Respondidas" class="btn btn-default" style="padding:9px 15px 9px 15px;" readonly /></td></tr>
+					<tr><td nowrap><br/><input type="text" id="txtTotal" value="Total" class="btn btn-default" style="padding:9px 15px 9px 15px; display:none;" hidden=""></td></tr>
 				</table>
 			</font>
 		</div>
@@ -264,7 +262,7 @@
 				</div>
 
 				<p/><p/><i id="email">datashowcloud2022@gmail.com</i>
-				<p/><p/><i id="version">versão 19.09.22 estrutura</i>
+				<p/><p/><i id="version">versão 19.09.22 estrutura 2</i>
 
 			<div style="display:none;">
 				<button id="btnTest" class="btn btn-default" > <i class="fa fa-envelope"></i> </button>

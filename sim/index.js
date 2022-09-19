@@ -390,15 +390,24 @@ function registerEvents() {
 		var myid = document.getElementById('myidSim').value;
 		var mygroup = document.getElementById('mygroupSim').value;
 		var mycode = parseInt(document.getElementById('mycodeSim').value) - 1;
-		refreshTableQuestion(myid, mygroup, mycode);
-		changeFaseNivel(myid, mygroup, mycode);
+		if (mycode != 0) {
+			refreshTableQuestion(myid, mygroup, mycode);
+			changeFaseNivel(myid, mygroup, mycode);
+		}
     })
     $('#btnNext').click(function () {
 		var myid = document.getElementById('myidSim').value;
 		var mygroup = document.getElementById('mygroupSim').value;
 		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
-		refreshTableQuestion(myid, mygroup, mycode);
 		changeFaseNivel(myid, mygroup, mycode);
+		if (mycode <= parseInt(document.getElementById('txtTotal').value)) {
+			refreshTableQuestion(myid, mygroup, mycode);
+		} else {
+			var result = confirm('Vou encerrar, ok?\n');
+			if (result) {
+				showGridAndHideForms();
+			}
+		}
     })
 	$('#btnPause').click(function () {
 		showGridAndHideForms();
@@ -576,7 +585,7 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 }
 
 function restartFase(myid, mygroup, mycode) {
-	var result = confirm('Vou limpar e reiniciar essa fase, ok?');
+	var result = confirm('Vou limpar e reiniciar as respostas dessa fase, ok?');
 	if (result) {
 		updateStudentPlayOrder(mygroup);
 		updateStudentPlayClear(mygroup);
@@ -831,9 +840,7 @@ async function showPoints(mygroup, mycode) {
 	alert(resultado);
 }
 
-//This function select table play
-async function refreshTableQuestion(myid, mygroup, mycode) {
-//    try {
+async function setDashboard(myid, mygroup, mycode) {
 		var totalperguntas = await jsstoreCon.count({
 			from: 'Student'
 			  , where: {
@@ -841,13 +848,6 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 			  }
 		});
 		totalperguntas = parseInt(totalperguntas) - 1;
-
-		var students = await jsstoreCon.select({
-			from: 'Student'
-			  , where: { mygroup: '' + mygroup + ''
-					   , mycode: '' + mycode + ''
-			  }
-		});
 		
 		var studentsDashboard = await jsstoreCon.select({
 			from: 'Student'
@@ -858,12 +858,61 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 		var totalIncorretas = getTotalIncorretas(mygroup, mycode, studentsDashboard);
 		var totalNaoRespondidas = getTotalNaoRespondidas(mygroup, mycode, studentsDashboard);
 		var calculo = calculaPercentualAcerto(mygroup, mycode, totalCorretas, totalperguntas);
-		document.getElementById('txtTotal').value = 'Total: ' + totalperguntas;
+
+//	alert('totalperguntas='+totalperguntas + ' totalCorretas='+totalCorretas + ' totalIncorretas='+totalIncorretas);
+
+		document.getElementById('txtTotal').value = totalperguntas;
 		document.getElementById('txtIncorretas').value = 'Incorretas: ' + totalIncorretas;
 		document.getElementById('txtCorretas').value = 'Corretas: ' + totalCorretas;
 		document.getElementById('txtNaoRespondidas').value = 'Não Respondidas: ' + totalNaoRespondidas;
-		document.getElementById('txtCalculo').value = 'Índice de acerto: ' + calculo + '%';
+		if (calculo >= 70) {
+			document.getElementById('txtCalculo').innerHTML = 'JÁ ESTÁ APROVADO <br/>' + calculo + '% de acerto é >= 70%';
+		} else {
+			document.getElementById('txtCalculo').innerHTML = 'AINDA ESTÁ REPROVADO <br/>' + calculo + '% de acerto é < 70%';
+		}
 		
+
+}
+//This function select table play
+async function refreshTableQuestion(myid, mygroup, mycode) {
+//    try {
+		var totalperguntas = await jsstoreCon.count({
+			from: 'Student'
+			  , where: {
+				  mygroup: mygroup
+			  }
+		});
+		totalperguntas = parseInt(totalperguntas) - 1;
+/*		
+		var studentsDashboard = await jsstoreCon.select({
+			from: 'Student'
+			  , where: { mygroup: mygroup 
+			  }
+		});
+		var totalCorretas = getTotalCorretas(mygroup, mycode, studentsDashboard);
+		var totalIncorretas = getTotalIncorretas(mygroup, mycode, studentsDashboard);
+		var totalNaoRespondidas = getTotalNaoRespondidas(mygroup, mycode, studentsDashboard);
+		var calculo = calculaPercentualAcerto(mygroup, mycode, totalCorretas, totalperguntas);
+		document.getElementById('txtTotal').value = totalperguntas;
+		document.getElementById('txtIncorretas').value = 'Incorretas: ' + totalIncorretas;
+		document.getElementById('txtCorretas').value = 'Corretas: ' + totalCorretas;
+		document.getElementById('txtNaoRespondidas').value = 'Não Respondidas: ' + totalNaoRespondidas;
+		if (calculo >= 70) {
+			document.getElementById('txtCalculo').innerHTML = 'JÁ ESTÁ APROVADO <br/>' + calculo + '% de acerto é >= 70%';
+		} else {
+			document.getElementById('txtCalculo').innerHTML = 'AINDA ESTÁ REPROVADO <br/>' + calculo + '% de acerto é < 70%';
+		}
+*/		
+		setDashboard(myid, mygroup, mycode);
+		
+		
+		
+		var students = await jsstoreCon.select({
+			from: 'Student'
+			  , where: { mygroup: '' + mygroup + ''
+					   , mycode: '' + mycode + ''
+			  }
+		});
 		if (students == '') {
 			showFormDashboard();
 		} else {
@@ -1075,6 +1124,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 
 		var htmlString = "";
 		var varTdTh = '';
+		var varButtonPlay = '<br/><i class=\"fa fa-play\" style="color:green;"></i></a>';
 //		var varText = '';
 //		var varPlay = '';
 		var varRestart = '';
@@ -1086,27 +1136,22 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 			if (student.mycode == '0') {
 				varTdTh = 'th';
 //				varPlay = "<a href=\"#\" class=\"playsim\" style=\"color:#00FF00;\">Start</a>";
-				varEdit = "&nbsp;<a href=\"#\" class=\"edit\" style=\"color:#0000FF;\">Edit</a>";
-				varRestart = "&nbsp;<i class=\"fa fa-refresh\"></i> <a href=\"#\" class=\"restart\" style=\"color:#0000FF;\">reiniciar fase</a>";
-                varDel = "&nbsp;<a href=\"#\" class=\"delete\" style=\"color:#FF0000;\">Del</a>";
+//				varEdit = "&nbsp;<a href=\"#\" class=\"edit\" style=\"color:#0000FF;\">Edit</a>";
+				varRestart = "&nbsp;<i class=\"fa fa-refresh\"></i> <a href=\"#\" class=\"restart\" style=\"color:#0000FF;\">reiniciar</a>";
+//				varDel = "&nbsp;<a href=\"#\" class=\"delete\" style=\"color:#FF0000;\">Del</a>";
 			} else {
 				varTdTh = 'td';
-//				varPlay = "<button class=\"playsim\" style=\"color:#00FF00;\"><i class=\"fa fa-play\"></i></button>";
-				varEdit = "<button class=\"edit\" style=\"color:#0000FF;\" ><i class=\"fa fa-pencil\"></i></button>";
-				varDel = "<button class=\"delete\" style=\"color:#FF0000;\" ><i class=\"fa fa-times\"></i></button>";
-
 //				varPlay = "<a href=\"#\" class=\"playsim\"><i class=\"fa fa-play\" style=\"color:#00FF00; height:25px; Xwidth:25px; \"></i></a>";
-				varRestart = "<a href=\"#\" class=\"restart\"><i class=\"fa fa-refresh\" style=\"color:#0000FF; height:25px; Xwidth:25px; \"></i></a>";
 //				varEdit = "<a href=\"#\" class=\"edit\"><i class=\"fa fa-pencil\" style=\"color:#0000FF; height:25px; Xwidth:25px; \"></i></a>";
+				varRestart = "<a href=\"#\" class=\"restart\"><i class=\"fa fa-refresh\" style=\"color:#0000FF; height:25px; Xwidth:25px; \"></i></a>";
 //				varDel = "<a href=\"#\" class=\"delete\"><i class=\"fa fa-times\" style=\"color:#FF0000; height:25px; Xwidth:25px;\"></i></a>";
-
 			}
 			
 			htmlString += "<tr ItemId=" + student.id + ">"
 				+ "<td style=\"color:#000000; font-size:1px; \">" + student.mygroup + "</td>"
- //               + "<td style=\"color:#000000; font-size:1px;\">" + student.mycode + "</td>"
+//              + "<td style=\"color:#000000; font-size:1px;\">" + student.mycode + "</td>"
 				+ "<" + varTdTh + " id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " ZZZonClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
-				+ "<a href=\"#\" class=\"playsim\">" + student.mytext + " <br/><i class=\"fa fa-play\"></i></a>" + "</" + varTdTh + ">"
+				+ "<a href=\"#\" class=\"playsim\">" + student.mytext + varButtonPlay + "</" + varTdTh + ">"
 //				+ student.mytext + "</" + varTdTh + ">"
 /*				
 				+ "<" + varTdTh + " id=datashow" + student.id+"4" + " tabIndex=" + student.id+"4" + " ZZZonClick=\"datashow('" + student.id+"4" + "', 4, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 4, event, " + "" + (student.id+"4") + ");\" data-show='" + student.id+"4" + "'>"
@@ -1123,6 +1168,8 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 //				+ varDel
 				+ "</" + varTdTh + ">"
 				;
+				
+				varButtonPlay = '<br/><i class=\"fa fa-check\" style="color:gray;"></i></a>';
 		})
 
 		if (htmlString.length > 0) {
