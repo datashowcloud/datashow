@@ -2,52 +2,52 @@
 
 var jsstoreCon = new JsStore.Connection();
 
-var confirmImportSuccessfull = 'Não feche esta página (X). \nNão atualize esta página (F5). \n\nVolte na página anterior (aba ao lado) e pesquise pela palavra "configuração concluída com sucesso." \n\nQuando a palavra aparecer, a configuração terminou com sucesso.';
+var CONST_FASE_NIVEL_MAX = 4;
+var GLOBAL_textcolor = 'black';
+var GLOBAL_background = 'white';
+var GLOBAL_buttoncolor = 'btn-colors';
 var COL_LOGOTIPO = 5;
 
 window.onload = function () {
-	refreshTableData();
+	var mycode = '0';
+	var mytext = '';
+	var myorder = '';
+//	var mygroup = selectMygroup.value.trim();
+//	if (mygroup != '00') {
+//		mycode = '0';
+//	}
+	mygroup = '';
+	refreshTableData(mycode, myorder, mygroup, mytext);
+	
     registerEvents();
     initDb();
-	showForm1Form2();
-	$('#txtSearch').focus();
-	$('#txtSearch').select();
-	localStorage.setItem('valueArt', document.getElementById('selMycodeTextGroup').selectedIndex);
-	localStorage.setItem('valueComplete', 'true');
-	localStorage.setItem('valueVideoPlay', 'true');
-	localStorage.setItem('valueLogoBig', 'false');
-	localStorage.setItem('valueText', '');
-	setCookie('valueText', '', '1');
-/*	localStorage.setItem('valueMyowner', 'hope');
-	localStorage.setItem('valueLogoHeightBig', '40%');
-	localStorage.setItem('valueLogoHeightMini', '15%');
-	localStorage.setItem('valueLogoLeftBigTela1', '15%');
-	localStorage.setItem('valueLogoLeftBigTela2', '30%');
-	localStorage.setItem('valueLogoLeftMini', '0px');
-	localStorage.setItem('valueLogoTopBig', '30%');
-	localStorage.setItem('valueLogoTopMini', '75%');
-*/
-	localStorage.setItem('valueMyowner', 'iirf');
-	localStorage.setItem('valueLogoHeightBig', '60%');
-	localStorage.setItem('valueLogoHeightMini', '25%');
-	localStorage.setItem('valueLogoLeftBigTela1', '30%');
-	localStorage.setItem('valueLogoLeftBigTela2', '30%');
-	localStorage.setItem('valueLogoLeftMini', '0px');
-	localStorage.setItem('valueLogoTopBig', '20%');
-	localStorage.setItem('valueLogoTopMini', '75%');
+//	initDbDashboard();
+	getConfigGeneral();	
+	document.getElementById('myBody').style.background = GLOBAL_background;
+
+	loadCombobox('mygroup', '0', '100', 'Teste');
+	loadCombobox('mycode', '0', '100', 'Número');
+	loadCombobox('myorder', '0', '100', 'Ordem');
+
+	refreshLinkHelp();
+
+//	showForm1Form2();
+	$('#selectMygroup').focus();
+	$('#selectMygroup').select();
+//	localStorage.setItem('valueText1', document.getElementById('selectMygroup').selectedIndex);
+//	localStorage.setItem('valueText2', '');
+//	setCookie('valueText3', '', '1');
+
 };
 
 async function initDb() {
     var isDbCreated = await jsstoreCon.initDb(getDbSchema());
     if (isDbCreated) {
+		initConfigGeneral();
         console.log('db created');
-		document.getElementById('txtSearch').value = 'sucesso';
-		//$('#tblGrid tbody').html('clique no botão iniciar configuração');
-		document.getElementById('divconfig').style.display = 'block';
     }
     else {
         console.log('db opened');
-//		document.getElementById('txtSearch').value = 'opened';
      }
 }
 
@@ -56,175 +56,90 @@ function getDbSchema() {
         name: 'Student',
         columns: {
 			id: { primaryKey: true, autoIncrement: true },
-			mycode: { notNull: true, dataType: 'string' }, //capítulo ou código único
-			myorder: { notNull: true, dataType: 'string' }, //versículo ou ordem da estrofe
-			mytext: { notNull: true, dataType: 'string' }, //um texto da letra
-			mysearch: { notNull: false, dataType: 'string' }, //texto sem os caracteres especiais para fazer o search com maior precisão
-            myrepeated: { notNull: false, dataType: 'string' }, //indica texto repetido na letra, onde 0=não=exibição obrigatória, >0=sim=exibição opcional, default = 1
-            myowner: { notNull: false, dataType: 'string' }, //dono do texto ou responsável por inserir na tabela
-			myversion: { notNull: false, dataType: 'string' }, //0=padrão erudita, 1=moderna
-			mycodeTextGroup: { notNull: false, dataType: 'string' }, //0=bible, 1=lirics, 2=art
-			myfix: { notNull: false, dataType: 'string' }, //fixa para sempre ser exibido no final do resultado da pesquisa ou apresentação
-			myfavorite: { notNull: false, dataType: 'string' }, //indica texto favorito que pode ser filtrado na pesquisa
-            mytype: { notNull: false, dataType: 'string' }, //r=refrão, nulo=texto normal
-			mystatus: { notNull: false, dataType: 'string' }, //0=inativo, 1=ativo, 
-			myfavorite: { notNull: false, dataType: 'string' }, //1=favorito, 0=não favorito
-            mymodified: { notNull: false, dataType: 'string' }, //aaaammdd hhmmss, momento que o texto foi alterado
-            mycreated: { notNull: false, dataType: 'string' }, //aaaammdd hhmmss, momento que o texto foi criado
-            mytimer: { notNull: false, dataType: 'string' }, //cronômetro numérico em segundos para mudar o texto automaticamente, exemplo: 4s
-			mycomment: { notNull: false, dataType: 'string' }, //comentário sobre a letra
-            fontfamily: { notNull: false, dataType: 'string' },
-            fontsize: { notNull: false, dataType: 'string' },
-            color: { notNull: false, dataType: 'string' },
-            textalign: { notNull: false, dataType: 'string' },
-            backgroundcolor: { notNull: false, dataType: 'string' },
-            camporeserva1: { notNull: false, dataType: 'string' },
-            camporeserva2: { notNull: false, dataType: 'string' },
-            camporeserva3: { notNull: false, dataType: 'string' }
-//			mycodeMyorder:{keyPath:['mycode','myorder']}
-        }
-    }
-	
-	var tableBible = { //idêntico à Student
-        name: 'Bible',
-        columns: {
-			id: { primaryKey: true, autoIncrement: true },
-			mycode: { notNull: true, dataType: 'string' },
-			myorder: { notNull: true, dataType: 'string' },
-			mytext: { notNull: true, dataType: 'string' },
-			mysearch: { notNull: false, dataType: 'string' },
-            myrepeated: { notNull: false, dataType: 'string' },
-            myowner: { notNull: false, dataType: 'string' },
-			myversion: { notNull: false, dataType: 'string' },
-			mycodeTextGroup: { notNull: false, dataType: 'string' },
-			myfix: { notNull: false, dataType: 'string' },
-			myfavorite: { notNull: false, dataType: 'string' },
-            mytype: { notNull: false, dataType: 'string' },
-			mystatus: { notNull: false, dataType: 'string' },
-			myfavorite: { notNull: false, dataType: 'string' },
-            mymodified: { notNull: false, dataType: 'string' },
-            mycreated: { notNull: false, dataType: 'string' },
-            mytimer: { notNull: false, dataType: 'string' },
-			mycomment: { notNull: false, dataType: 'string' },
-            fontfamily: { notNull: false, dataType: 'string' },
-            fontsize: { notNull: false, dataType: 'string' },
-            color: { notNull: false, dataType: 'string' },
-            textalign: { notNull: false, dataType: 'string' },
-            backgroundcolor: { notNull: false, dataType: 'string' },
-            camporeserva1: { notNull: false, dataType: 'string' },
-            camporeserva2: { notNull: false, dataType: 'string' },
-            camporeserva3: { notNull: false, dataType: 'string' }
-//			mycodeMyorder:{keyPath:['mycode','myorder']}
+			mygroup: { notNull: true, dataType: 'string' }, //qual grupo a pergunta pertence, exempçlo: domínio 1, domínio 2, domínio 3...
+			mycode: { notNull: true, dataType: 'string' }, //código único numérico da pergunta
+			mytext: { notNull: true, dataType: 'string' }, //uma pergunta
+			mysearch: { Null: false, dataType: 'string' }, //pergunta ou texto sem os caracteres especiais para fazer o search com maior precisão
+			myoption1: { Null: false, dataType: 'string' }, //texto da resposta correta 1
+			myoption2: { Null: false, dataType: 'string' }, //texto da resposta correta 2
+			myoption3: { Null: false, dataType: 'string' }, //texto da resposta correta 3
+			myoption4: { Null: false, dataType: 'string' }, //texto da resposta correta 4
+			myoption5: { Null: false, dataType: 'string' }, //texto da resposta errada 1
+			myoption6: { Null: false, dataType: 'string' }, //texto da resposta errada 2
+			myoption7: { Null: false, dataType: 'string' }, //texto da resposta errada 3
+			myoption8: { Null: false, dataType: 'string' }, //texto da resposta errada 4
+			myorder: { Null: true, dataType: 'string' }, //ordem de exibição das respostas para uma determinada pergunta
+			mycorrect1answer1: { Null: false, dataType: 'string' }, //resposta selecionada pelo usuário
+			mycorrect2answer: { Null: false, dataType: 'string' }, //idem
+			mycorrect3answer: { Null: false, dataType: 'string' }, //idem
+			mycorrect4answer: { Null: false, dataType: 'string' }, //idem
+			mycorrect5answer: { Null: false, dataType: 'string' }, //idem
+			mycorrect6answer: { Null: false, dataType: 'string' }, //idem
+			mycorrect7answer: { Null: false, dataType: 'string' }, //idem
+			mycorrect8answer: { Null: false, dataType: 'string' }, //idem
+			myoptionkey1: { Null: false, dataType: 'string' }, //chave da resposta correta para pesquisar na tabela de respostas com join
+			myoptionkey2: { Null: false, dataType: 'string' }, //idem
+			myoptionkey3: { Null: false, dataType: 'string' }, //idem
+			myoptionkey4: { Null: false, dataType: 'string' }, //idem
+			myoptionkey5: { Null: false, dataType: 'string' }, //idem
+			myoptionkey6: { Null: false, dataType: 'string' }, //idem
+			myoptionkey7: { Null: false, dataType: 'string' }, //idem
+			myoptionkey8: { Null: false, dataType: 'string' }, //idem
+			mycomment: { Null: false, dataType: 'string' }, //comentário ou resposta sobre a letra
+			myfix: { Null: false, dataType: 'string' }, //fixa para revisão
+            mytimer: { Null: false, dataType: 'string' }, //cronômetro numérico em segundos para mudar o texto automaticamente, exemplo: 4s
+            mytimermax: { Null: false, dataType: 'string' }, //cronômetro numérico em segundos para mudar o texto automaticamente, exemplo: 4s
+			mycodeTry: { Null: true, dataType: 'string' }, //código único
+			mystatus: { Null: false, dataType: 'string' }, //0=inativo, 1=ativo, padrão é ativo
+			myqtde: { Null: false, dataType: 'string' }, //quantidade de respostas a serem exibidas, o padrão é totalizar 4
+            myowner: { Null: false, dataType: 'string' }, //dono do texto ou responsável por inserir na tabela
+			myversion: { Null: false, dataType: 'string' }, // versão da pergunda para indicar que houve alteração
+            mymodified: { Null: false, dataType: 'string' }, //aaaammdd hhmmss, momento que o texto foi alterado
+            mycreated: { Null: false, dataType: 'string' }, //aaaammdd hhmmss, momento que o texto foi criado
+            fontfamily: { Null: false, dataType: 'string' },
+            fontsize: { Null: false, dataType: 'string' },
+            background: { Null: false, dataType: 'string' }, //cor de fundo, usando imagem png
+            textcolor: { Null: false, dataType: 'string' },
+            buttoncolor: { Null: false, dataType: 'string' },
+            textalign: { Null: false, dataType: 'string' },
+            camporeserva: { Null: false, dataType: 'string' }
         }
     }
 
-	var tableArt = { //idêntico à Student
-        name: 'Art',
+	var tableConfigGeneral = {
+        name: 'ConfigGeneral',
         columns: {
-			id: { primaryKey: true, autoIncrement: true },
-			mycode: { notNull: true, dataType: 'string' },
-			myorder: { notNull: true, dataType: 'string' },
-			mytext: { notNull: true, dataType: 'string' },
-			mysearch: { notNull: false, dataType: 'string' },
-            myrepeated: { notNull: false, dataType: 'string' },
-            myowner: { notNull: false, dataType: 'string' },
-			myversion: { notNull: false, dataType: 'string' },
-			mycodeTextGroup: { notNull: false, dataType: 'string' },
-			myfix: { notNull: false, dataType: 'string' },
-			myfavorite: { notNull: false, dataType: 'string' },
-            mytype: { notNull: false, dataType: 'string' },
-			mystatus: { notNull: false, dataType: 'string' },
-			myfavorite: { notNull: false, dataType: 'string' },
-            mymodified: { notNull: false, dataType: 'string' },
-            mycreated: { notNull: false, dataType: 'string' },
-            mytimer: { notNull: false, dataType: 'string' },
-			mycomment: { notNull: false, dataType: 'string' },
-            fontfamily: { notNull: false, dataType: 'string' },
-            fontsize: { notNull: false, dataType: 'string' },
-            color: { notNull: false, dataType: 'string' },
-            textalign: { notNull: false, dataType: 'string' },
-            backgroundcolor: { notNull: false, dataType: 'string' },
-            camporeserva1: { notNull: false, dataType: 'string' },
-            camporeserva2: { notNull: false, dataType: 'string' },
-            camporeserva3: { notNull: false, dataType: 'string' }
-//			mycodeMyorder:{keyPath:['mycode','myorder']}
-		}
+            fontfamily: { Null: false, dataType: 'string' },
+            fontsize: { Null: false, dataType: 'string' },
+            background: { Null: false, dataType: 'string' }, //cor de fundo, usando imagem png
+            textcolor: { Null: false, dataType: 'string' },
+            buttoncolor: { Null: false, dataType: 'string' },
+            textalign: { Null: false, dataType: 'string' },
+            camporeserva: { Null: false, dataType: 'string' }
+        }
     }
 
-	var tableMessage = { //idêntico à Student
-        name: 'Message',
+	var tableDashboard = {
+        name: 'Dashboard',
         columns: {
-			id: { primaryKey: true, autoIncrement: true },
-			mycode: { notNull: true, dataType: 'string' },
-			myorder: { notNull: true, dataType: 'string' },
-			mytext: { notNull: true, dataType: 'string' },
-			mysearch: { notNull: false, dataType: 'string' },
-            myrepeated: { notNull: false, dataType: 'string' },
-            myowner: { notNull: false, dataType: 'string' },
-			myversion: { notNull: false, dataType: 'string' },
-			mycodeTextGroup: { notNull: false, dataType: 'string' },
-			myfix: { notNull: false, dataType: 'string' },
-			myfavorite: { notNull: false, dataType: 'string' },
-            mytype: { notNull: false, dataType: 'string' },
-			mystatus: { notNull: false, dataType: 'string' },
-			myfavorite: { notNull: false, dataType: 'string' },
-            mymodified: { notNull: false, dataType: 'string' },
-            mycreated: { notNull: false, dataType: 'string' },
-            mytimer: { notNull: false, dataType: 'string' },
-			mycomment: { notNull: false, dataType: 'string' },
-            fontfamily: { notNull: false, dataType: 'string' },
-            fontsize: { notNull: false, dataType: 'string' },
-            color: { notNull: false, dataType: 'string' },
-            textalign: { notNull: false, dataType: 'string' },
-            backgroundcolor: { notNull: false, dataType: 'string' },
-            camporeserva1: { notNull: false, dataType: 'string' },
-            camporeserva2: { notNull: false, dataType: 'string' },
-            camporeserva3: { notNull: false, dataType: 'string' }
-//			mycodeMyorder:{keyPath:['mycode','myorder']}
-		}
-    }
-
-	var tableTypeData = {
-        name: 'TypeData',
-        columns: {
-			id: { primaryKey: true, autoIncrement: true },
-			mycode: { notNull: true, dataType: 'string' },
-			myorder: { notNull: true, dataType: 'string' },
-			mytext: { notNull: true, dataType: 'string' },
-			mysearch: { notNull: false, dataType: 'string' },
-            myrepeated: { notNull: false, dataType: 'string' },
-            myowner: { notNull: false, dataType: 'string' },
-			myversion: { notNull: false, dataType: 'string' },
-			mycodeTextGroup: { notNull: false, dataType: 'string' },
-			myfix: { notNull: false, dataType: 'string' },
-			myfavorite: { notNull: false, dataType: 'string' },
-            mytype: { notNull: false, dataType: 'string' },
-			mystatus: { notNull: false, dataType: 'string' },
-			myfavorite: { notNull: false, dataType: 'string' },
-            mymodified: { notNull: false, dataType: 'string' },
-            mycreated: { notNull: false, dataType: 'string' },
-            mytimer: { notNull: false, dataType: 'string' },
-			mycomment: { notNull: false, dataType: 'string' },
-            fontfamily: { notNull: false, dataType: 'string' },
-            fontsize: { notNull: false, dataType: 'string' },
-            color: { notNull: false, dataType: 'string' },
-            textalign: { notNull: false, dataType: 'string' },
-            backgroundcolor: { notNull: false, dataType: 'string' },
-            camporeserva1: { notNull: false, dataType: 'string' },
-            camporeserva2: { notNull: false, dataType: 'string' },
-            camporeserva3: { notNull: false, dataType: 'string' }
-//			mycodeMyorder:{keyPath:['mycode','myorder']}
+			id: { primaryKey: true, autoIncrement: true }, //identificação única
+			mygroup: { notNull: true, dataType: 'string' }, //valor idêntico à tabela Student
+			mycode: { notNull: true, dataType: 'string' }, //valor único idêntico à tabela Student
+			mytry: { notNull: true, dataType: 'string' }, //quantidade de tentativas, exemplo: 1, 2, 3...; tentativa 1, tentativa 2, tentativa 3...
+			mypercent: { notNull: true, dataType: 'string' }, //porcentagem que conseguiu
+			mycorrects: { notNull: true, dataType: 'string' }, //quantidade de perguntas com respostas corretas
+			myincorrects: { notNull: true, dataType: 'string' }, //quantidade de perguntas com respostas erradas
+			myanswers: { notNull: true, dataType: 'string' }, //todas respostas separadas por vírgula, exemplo: "01a,02bc,03d,05a...". Exemplo com a resposta 04 não foi respondida.
+			mytotal: { notNull: true, dataType: 'string' } //quantidade de perguntas
         }
     }
 
     var db = {
-        name: 'mydb1',
-        tables: [table, tableBible, tableArt, tableMessage, tableTypeData]
+        name: 'mydbsim',
+        tables: [table, tableConfigGeneral, tableDashboard]
     }
     return db;
 }
-
-
 
 function registerEvents() {
     $('#btnSelectCountAll').click(function () {
@@ -232,119 +147,125 @@ function registerEvents() {
     })	
     $('#txtSearch').keyup(function () {
 		if (event.keyCode == 13 || event.which == 13) { //13=tecla ENTER
-			refreshTableData();
+			var mycode = document.getElementById('mycode').value;
+			var myorder = document.getElementById('myorder').value;
+			var mygroup = document.getElementById('mygroup').value;
+			var mytext = document.getElementById('mytext').value.trim();
+			refreshTableData(mycode, myorder, mygroup, mytext);
 			if (document.getElementById('txtSearch').value.length <= 1) { // pesquisa somente com mais de 1 caracter preenchido no campo search
-				if (document.getElementById('selMycodeTextGroup').selectedIndex == '1') {
+				if (document.getElementById('selectMygroup').selectedIndex == '1') {
 					showBible();
 				}
 			} else {
 				showGridAndHideForms();
 			}
-			$('#txtSearch').focus();
-			$('#txtSearch').select();
+			$('#selectMygroup').focus();
+			$('#selectMygroup').select();
 		} else if (event.keyCode == 27 || event.which == 27) { //ESC
-			$('#txtSearch').focus();
-			$('#txtSearch').select();
+			$('#selectMygroup').focus();
+			$('#selectMygroup').select();
 			freezeDataShow('true');
 		}
     })
-    $('#btnSearch').click(function () {
-		refreshTableData();
-		if (document.getElementById('txtSearch').value.length <= 1) { // pesquisa somente com mais de 1 caracter preenchido no campo search
-			if (document.getElementById('selMycodeTextGroup').selectedIndex == '1') {
-				showBible();
-			}
-		} else {
-			showGridAndHideForms();
-		}
-//		freezeDataShow(true);
-		$('#txtSearch').focus();
-		$('#txtSearch').select();
-		document.getElementById('btnIndexConfigurar').style.display='none';
+	$('#btnBackward').click(function () {
+        restartFase();
+    });
+    $('#btnImportSim').click(function () {
+		showIniciarConfiguracao();
     })
     $('#btnIndexConfigurar').click(function () {
-		window.close();
-		var DataShow_Config = window.open("config.html", "datashowconfig", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
-		var DataShow_ConfigResult = window.open("configresult.html", "datashowconfigresult");
-		datashowconfigresult.focus();
+//		window.close();
+		document.getElementById('btnIndexConfigurar').style.display = 'none';
+		document.getElementById('lei13709').style.display = 'none';
+		var DataShow_Config = window.open("config" + document.getElementById('selectMygroup').value + ".html?sim=" + document.getElementById('selectMygroup').value, "datashowconfig", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
+		location.reload(); //recarrega página importando também o teste 01
+//		var DataShow_ConfigResult = window.open("configresult.html", "datashowconfigresult");
+//		datashowconfigresult.focus();
 	})
+    $('#btnSearch').click(function () {
+		var mygroup = document.getElementById('mygroup').value;
+		var mycode = document.getElementById('mycode').value;
+		var myorder = document.getElementById('myorder').value;
+		var mytext = document.getElementById('mytext').value.trim();
+		refreshTableData(mycode, myorder, mygroup, mytext);
+		showGridAndHideForms();
+//		$('#txtSearch').focus();
+//		$('#txtSearch').select();
+    })
     $('#btnCertifications').click(function () {
 		window.close();
 		var DataShow_Tests = window.open("certifications.html", "datashowcertifications");
 		datashowconfigresult.focus();
 	})
-    $('#selMycodeTextGroup').change(function () {
-		freezeDataShow(true);
-		var selectedIndex = document.getElementById('selMycodeTextGroup').selectedIndex;
-		localStorage.setItem('valueArt', selectedIndex);
-		if (selectedIndex == '1') { //bíblia
-			showBible();
-		} else if (selectedIndex == '2') { //imagem e vídeo
-			document.getElementById('txtSearch').value = 'favoritos datashow';
-			refreshTableData();
-			showGridAndHideForms();
-		} else {
-			refreshTableData();
-			showGridAndHideForms();
+    $('#selectMygroup').change(function () {
+		var mygroup = selectMygroup.value.trim();
+		var mycode = '';
+		var mytext = '';
+		var myorder = '';
+		if (mygroup != '00') {
+			mycode = '0';
 		}
-		$('#txtSearch').focus();
-		$('#txtSearch').select();
+		refreshTableData(mycode, myorder, mygroup, mytext);
+		showGridAndHideForms();
+		$('#selectMygroup').focus();
+		$('#selectMygroup').select();
     })
     $('#btnDeleteLirics').click(function () {
-		deleteLirycs();
-    })
-    $('#btnDeleteBible').click(function () {
-		deleteBible();
-    })
-    $('#btnDeleteArt').click(function () {
-		deleteArt();
+		deleteTable();
     })
     $('#btnDropDb').click(function () {
 		dropdb();
     })
     $('#btnImportArt').click(function () {
-		document.getElementById('selMycodeTextGroup').selectedIndex = 2;
+		document.getElementById('selectMygroup').selectedIndex = 2;
 		openFile(dispFile);
     })
     $('#btnImport').click(function () {
-		document.getElementById('selMycodeTextGroup').selectedIndex = 0;
+		document.getElementById('selectMygroup').selectedIndex = 0;
 		openFile(dispFile);
     })
     $('#btnImportBible').click(function () {
-		document.getElementById('selMycodeTextGroup').selectedIndex = 1;
+		document.getElementById('selectMygroup').selectedIndex = 1;
 		openFile(dispFile);
     })
     $('#btnConfirmImportManual').click(function () {
 //		var result = confirm('Confirma?');
 //		if (result) {
 			try {
-				var group = document.getElementById('selMycodeTextGroup').value.trim();
-				var nomemusicaAddNewManual = document.getElementById('nomemusicaAddNewManual').value;
-				var nomeautorAddNewManual = document.getElementById('nomeautorAddNewManual').value;
-				confirmImportManual('contentAddNewManual', group, nomemusicaAddNewManual, nomeautorAddNewManual); //letras
-				return;
-//				localStorage.setItem('valueLogo', document.getElementById('config_mylogo').value);
-//				localStorage.setItem('valuePlanoFundoMestre', document.getElementById('config_myfundo').value);
-				alert('Clique em "Go back". \nClique em "Go back".');
-				document.getElementById("formAdd").submit();
+				var mycode = document.getElementById('mycode').value;
+				var myorder = document.getElementById('myorder').value;
+				var mygroup = document.getElementById('mygroup').value;
+				var mytext = document.getElementById('mytext').value.trim();
+				var myoption1 = document.getElementById('myoption1').value.trim();
+				var myoption2 = document.getElementById('myoption2').value.trim();
+				var myoption3 = document.getElementById('myoption3').value.trim();
+				var myoption4 = document.getElementById('myoption4').value.trim();
+				var myoption5 = document.getElementById('myoption5').value.trim();
+				var myoption6 = document.getElementById('myoption6').value.trim();
+				var myoption7 = document.getElementById('myoption7').value.trim();
+				var myoption8 = document.getElementById('myoption8').value.trim();
+				
+//console.log('mycode='+mycode + ' myorder='+myorder + ' mygroup='+mygroup + ' mytext='+mytext + ' myoption1='+myoption1 + ' myoption5='+myoption5);
+				
+				confirmImportManual(mycode, myorder, mygroup, mytext, myoption1, myoption2, myoption3, myoption4, myoption5, myoption6, myoption7, myoption8);
+//				console.log('Clique em "Go back". \nClique em "Go back".');
+//				document.getElementById("formAdd").submit();
 			} catch (ex) {
-				alert(ex.message);
+				console.log(ex.message);
 			}
 //		}
     })
-	
     $('#btnConfigForward').click(function () {
 		var result = confirm('Confirma configuração automática? \n\nNão faça nada. Aguarde alguns segundos...');
 		if (result) {
-			document.getElementById('selMycodeTextGroup').selectedIndex = 1;
+			document.getElementById('selectMygroup').selectedIndex = 1;
 			confirmImport('contents2', '1'); //bíblia
-			document.getElementById('selMycodeTextGroup').selectedIndex = 2;
+			document.getElementById('selectMygroup').selectedIndex = 2;
 			confirmImport('contents3', '2'); //artes
-			document.getElementById('selMycodeTextGroup').selectedIndex = 0;
+			document.getElementById('selectMygroup').selectedIndex = 0;
 			confirmImport('contents1', '0'); //a última frase é testada na pesquisa de letras
-//			alert(confirmImportSuccessfull);
 		} else {
-			alert('Configuração cancelada.');
+			console.log('Configuração cancelada.');
 		}
     })
     $('#btnCancelImport').click(function () {
@@ -372,9 +293,6 @@ function registerEvents() {
         showForm1Form2();
 		showGridAndHideForms();
     })
-    $('#btnAddNewManual').click(function () {
-        showAddNewManual();
-    })
     $('#btnShowHelp').click(function () {
 		var DataShow_Help = window.open("help/help.pdf", "datashowhelp", "top=100, width=1100, height=10000, left=0, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
     })
@@ -382,32 +300,59 @@ function registerEvents() {
 		var DataShow_Help = window.open("help/helpconfig.pdf", "datashowhelp", "top=100, width=1100, height=10000, left=0, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
     })
     $('#btnSubmit').click(function () {
-        var group = document.getElementById('selMycodeTextGroup').value;
 		var studentId = $('form').attr('data-student-id');
-        if (studentId) {
-			updateStudent(group);
-        } else {
-            addStudentImport(group);
-        }
+		var mygroup = document.getElementById('mygroupSim').value;
+		var mycode = parseInt(document.getElementById('mycodeSim').value) - 1;
+		if (studentId) {
+			updateStudent(studentId, mygroup, mycode);
+		} else {
+			addStudentImport(studentId, mygroup, mycode);
+		}
     });
+    $('#btnAddNewManual').click(function () {
+		if (document.getElementById('divFormAddUpdate').style.display == 'none') {
+			clearForm();
+			showFormAddUpdate();
+		} else {
+			showGridAndHideForms();
+		}
+    });	
     $('#tblGrid tbody').on('click', '.edit', function () {
 		var row = $(this).parents().eq(1);
         var child = row.children();
 		var id = row.attr('itemid');
-		var mycode = child.eq(0).text();
-		var myorder = child.eq(1).text();
-		getFromTable(id, mycode, myorder);
+		var mygroup = child.eq(0).text();
+		var mycode = child.eq(1).text();
+		getFromTable(id, mygroup, mycode);
 		showFormAddUpdate();
-		freezeDataShow('true');
+    });
+    $('#tblGrid tbody').on('click', '.restart', function () {
+		var row = $(this).parents().eq(1);
+        var child = row.children();
+		var myid = row.attr('itemid');
+		var mygroup = child.eq(0).text();
+		var mycode = child.eq(1).text();
+		restartFase(myid, mygroup, mycode);
     });
     $('#tblGrid tbody').on('click', '.delete', function () {
-        var result = confirm('Are you sure, do you want to delete?');
+        var result = confirm('Excluir, ok?');
         if (result) {
-			var group = document.getElementById('selMycodeTextGroup').value;
             var studentId = $(this).parents().eq(1).attr('itemid');
-            deleteStudent(Number(studentId), group);
+            deleteStudent(Number(studentId));
         }
     });
+    $('#tblGrid tbody').on('click', '.playsim', function () {
+//        var result = confirm('Começar, ok?');
+//        if (result) {			
+			var row = $(this).parents().eq(1);
+			var child = row.children();
+			var id = row.attr('itemid');
+			var mygroup = child.eq(0).text();
+			var mycode = child.eq(1).text();
+			refreshTableQuestion(id, mygroup, '1');
+			showFormSim();
+//        }
+    });		
     $('#tblGrid tbody').on('click', '.freeze', function () {
 		freezeDataShow(localStorage.getItem('valueAoVivo'));
     });
@@ -421,13 +366,12 @@ function registerEvents() {
     $('#tblGrid tbody').on('click', '.videoplaypause', function () {
 		videoPlayPause();
     });
-	
     $('#tblGrid tbody').on('click', '.simulator', function () {
 		var row = $(this).parents().eq(1);
         var child = row.children();
 		var id = row.attr('itemid');
 		var mysim = child.eq(2).text();
-		alert(mysim);
+		console.log(mysim);
     });
 	$('#btnSimulator').click(function () {
 		var array = [];
@@ -435,9 +379,44 @@ function registerEvents() {
 		for (var i = 0; i < checkboxes.length; i++) {
 		  array.push(checkboxes[i].value);
 		}
-		alert(array);
+		console.log(array);
     });
-	
+    $('#btnPlay').click(function () {
+		var mygroup = document.getElementById('selectMygroup').value;
+		refreshTableQuestion('', mygroup, '1');
+		showFormSim();
+    });	
+    $('#btnPrevious').click(function () {
+		var myid = document.getElementById('myidSim').value;
+		var mygroup = document.getElementById('mygroupSim').value;
+		var mycode = parseInt(document.getElementById('mycodeSim').value) - 1;
+		if (mycode != 0) {
+			refreshTableQuestion(myid, mygroup, mycode);
+			changeFaseNivel(myid, mygroup, mycode);
+		}
+    })
+    $('#btnNext').click(function () {
+		var myid = document.getElementById('myidSim').value;
+		var mygroup = document.getElementById('mygroupSim').value;
+		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
+		changeFaseNivel(myid, mygroup, mycode);
+		if (mycode <= parseInt(document.getElementById('txtTotal').value)) {
+			refreshTableQuestion(myid, mygroup, mycode);
+		} else {
+			var result = confirm('Vou encerrar, ok?\n');
+			if (result) {
+				showGridAndHideForms();
+			}
+		}
+    })
+	$('#btnPause').click(function () {
+		showGridAndHideForms();
+    });	
+	$('#btnPoints').click(function () {
+		var mygroup = document.getElementById('mygroupSim').value;
+		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
+		showPoints(mygroup, mycode);
+    });
 	$('#btnGear').click(function () {
 		if (document.getElementById('divGear').style.display == 'none') {
 			showFormGear();
@@ -445,147 +424,915 @@ function registerEvents() {
 			showGridAndHideForms();
 		}
     })
-}
-
-
-
-//This function select liryc
-async function getFromTable(id, code, order) {
-	var group = document.getElementById('selMycodeTextGroup').value;
-	
-	//select groupby mycode
-	if (group == 1) { //bible
-		var students = await jsstoreCon.select({
-			from: 'Bible'
-			  , where: { mycode: {like: '' + code + ''} 
-					   , myorder: '' + order + ''
-					   , id: {like: '' + id + ''} 
-			  }
-		});
-	} else if (group == 2) { //art
-		var students = await jsstoreCon.select({
-			from: 'Art'
-			  , where: { mycode: {like: '' + code + ''} 
-					   , myorder: '' + order + ''
-					   , id: {like: '' + id + ''} 
-			  }
-		});
-	} else { //group == 0 e group == 3
-		var students = await jsstoreCon.select({
-			from: 'Student'
-			  , where: { mycode: {like: '' + code + ''} 
-					   , myorder: '' + order + ''
-					   , id: {like: '' + id + ''} 
-			  }
-		});
-	}
-
-	students.forEach(function (student) {
-		$('form').attr('data-student-id', student.id);
-		$('#mycode').val(student.mycode);
-		$('#myorder').val(student.myorder);
-		$('#mytext').val(student.mytext);
-		$('#mycodeTextGroup').val(student.mycodeTextGroup);
-		$('#myrepeated').val(student.myrepeated);
-		if (student.myowner.toLowerCase() == '') {
-//			$('#myowner').val('iirf');
-			$('#myowner').val('hopé');
-		} else {
-			$('#myowner').val(student.myowner);
-		}
+	$('#selTextColor').change(function () {
+		updateConfigGeneral();
+    })
+	$('#selBackground').change(function () {
+		updateConfigGeneral();
+    })
+	$('#selButtonColor').change(function () {
+		updateConfigGeneral();
+    })
+	$('#btnReview').change(function () {
+		var mygroup = document.getElementById('selectMygroup').value;
+		refreshTableQuestion('', mygroup, '1');
+		showFormSim();
 	})
 }
 
+async function initConfigGeneral() {
+	document.getElementById('divconfig').style.display = 'block';
+	GLOBAL_textcolor = 'black';
+	GLOBAL_buttoncolor = 'btn-colors';
+	try {
+		var configgeneral = {
+			fontfamily: 'Times New Roman',
+			fontsize: '16',
+			background: 'white',
+			textcolor: GLOBAL_textcolor,
+			buttoncolor: GLOBAL_buttoncolor,
+			textalign: 'left'
+		};
+		var noOfDataInserted = await jsstoreCon.insert({
+			into: 'ConfigGeneral',
+			values: [configgeneral]
+		});
+//		console.log('Sucesso na configuração geral');
+		if (noOfDataInserted === 1) {
+		}
+		
+		var DataShow_Config = window.open("config00.html?sim=00", "datashowconfig", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
+
+    } catch (ex) {
+        console.log(ex.message + ' error ');
+    }
+}
+
+async function updateConfigGeneral() {
+	GLOBAL_textcolor = document.getElementById('selTextColor').value;
+	GLOBAL_buttoncolor = document.getElementById('selButtonColor').value;
+	setConfigGeneral(document.getElementById('selTextColor').value, document.getElementById('selBackground').value, document.getElementById('selButtonColor').value);
+
+	var noOfDataUpdated = await jsstoreCon.update({
+		in: 'ConfigGeneral',
+		set: {
+			fontfamily: 'Times New Roman',
+			fontsize: '16',
+			background: '' + document.getElementById('selBackground').value + '',
+			textcolor: '' + document.getElementById('selTextColor').value + '',
+			buttoncolor: '' + document.getElementById('selButtonColor').value + '',
+			textalign: 'left'
+		}
+	});
+}
+
+async function getConfigGeneral() {
+	var configsgeneral = await jsstoreCon.select({
+		from: 'ConfigGeneral'
+	});
+	configsgeneral.forEach(function (configgeneral) {
+		GLOBAL_textcolor = configgeneral.textcolor;
+		GLOBAL_background = configgeneral.background;
+		GLOBAL_buttoncolor = configgeneral.buttoncolor;
+	})
+	
+	//carrega cor de fundo
+	var varItens = document.getElementById('selTextColor');
+	for(index = 0;index < varItens.length;index++)
+	{
+		if (varItens.options[index].value == GLOBAL_textcolor) {
+			varItens.selectedIndex = index;
+			break;
+		}
+	}
+	
+	//carrega cor do texto
+	var varItensFundo = document.getElementById('selBackground');
+	for(index = 0;index < varItensFundo.length;index++)
+	{
+		if (varItensFundo.options[index].value == GLOBAL_background) {
+			varItensFundo.selectedIndex = index;
+			break;
+		}
+	}
+
+	//carrega cor do botão
+	var varItens = document.getElementById('selButtonColor');
+	for(index = 0;index < varItens.length;index++)
+	{
+		if (varItens.options[index].value == GLOBAL_buttoncolor) {
+			varItens.selectedIndex = index;
+			break;
+		}
+	}
+	
+	setConfigGeneral(GLOBAL_textcolor, GLOBAL_background, GLOBAL_buttoncolor);
+}
+
+async function setConfigGeneral(textcolor, background, buttoncolor) {
+	document.getElementById('email').style.color = textcolor;
+	document.getElementById('version').style.color = textcolor;
+	document.getElementById('FormularioEditorPerguntas').style.color = textcolor;
+	document.getElementById('FormularioEditorConfiguracoes').style.color = textcolor;
+	document.getElementById('lei13709').style.color = textcolor;
+	document.getElementById('lei13709').style.backgroundColor = background;
+	document.getElementById('myBody').style.background = background;
+
+	document.getElementById('selTextColor').style.color = textcolor;
+	document.getElementById('selBackground').style.color = background;
+
+	var classe = '';
+
+	classe = document.getElementById('btnPrevious').classList.value;
+	classe = classe.substring(4, classe.length);
+	document.getElementById('btnPrevious').classList.remove(classe);
+
+	classe = document.getElementById('btnPause').classList.value;
+	classe = classe.substring(4, classe.length);
+	document.getElementById('btnPause').classList.remove(classe);
+
+	classe = document.getElementById('btnBackward').classList.value;
+	classe = classe.substring(4, classe.length);
+	document.getElementById('btnBackward').classList.remove(classe);
+
+	classe = document.getElementById('btnPoints').classList.value;
+	classe = classe.substring(4, classe.length);
+	document.getElementById('btnPoints').classList.remove(classe);
+
+	classe = document.getElementById('btnNext').classList.value;
+	classe = classe.substring(4, classe.length);
+	document.getElementById('btnNext').classList.remove(classe);
+
+	classe = document.getElementById('selButtonColor').classList.value;
+	classe = classe.substring(4, classe.length);
+	document.getElementById('selButtonColor').classList.remove(classe);
+
+	if (buttoncolor == 'btn-colors') {
+		document.getElementById('btnPrevious').classList.add('btn-success');
+		document.getElementById('btnPause').classList.add('btn-info');
+		document.getElementById('btnBackward').classList.add('btn-danger');
+		document.getElementById('btnPoints').classList.add('btn-warning');
+		document.getElementById('btnNext').classList.add('btn-success');
+		document.getElementById('selButtonColor').classList.add('btn-info');
+	} else {
+		document.getElementById('btnPrevious').classList.add(buttoncolor);
+		document.getElementById('btnPause').classList.add(buttoncolor);
+		document.getElementById('btnBackward').classList.add(buttoncolor);
+		document.getElementById('btnPoints').classList.add(buttoncolor);
+		document.getElementById('btnNext').classList.add(buttoncolor);
+		document.getElementById('selButtonColor').classList.add(buttoncolor);
+	}
+}
+
+function restartFase(myid, mygroup, mycode) {
+	var result = confirm('Vou limpar e reiniciar as respostas dessa fase, ok?');
+	if (result) {
+		updateStudentPlayOrder(mygroup);
+		updateStudentPlayClear(mygroup);
+		showGridAndHideForms();
+	}
+}
+
+function getStudentFromForm(studentId, mygroup, mycode) {
+	var mygroup = document.getElementById('mygroupSim').value;
+	setTimeout(() => { updateStudentPlayOrder(mygroup) }, 1000); // Executa após 5 segundos para esperar o processo de insert terminar
+	var student = {
+        id: Number(studentId),
+        mycode: $('#mycode').val(),
+		mygroup: $('#mygroup').val(),
+        mytext: $('#mytext').val(),
+		mysearch: removeSpecials($('#mytext').val())
+    };
+    return student;
+}
+
+function calculaPercentualAcerto(mygroup, mycode, totalCorretas, totalperguntas) {
+	var calculo = (totalCorretas*100) / (parseInt(totalperguntas));
+	calculo = calculo.toFixed(0); //remove decimais
+	return calculo;
+}
+
+function getTotalCorretas(mygroup, mycode, students) {
+	var totalCorretas = 0;
+	var totalIncorretas = 0;
+	var totalNaoRespondidas = 0;
+
+	students.forEach(function (student) {
+		if (student.mycode != '0') {
+			var ok = '';
+			if (student.mycorrect1answer == '' && student.mycorrect2answer == '' && student.mycorrect3answer == '' && student.mycorrect4answer == ''
+			 && student.mycorrect5answer == '' && student.mycorrect6answer == '' && student.mycorrect7answer == '' && student.mycorrect8answer == '') {
+				ok = '';
+			} else {
+				for (var index=1; index<=4; index++) {
+					if (student.myoption1 != '') {
+						if (student.mycorrect1answer != '') { ok = 'true'; }
+						if (student.mycorrect1answer == '') { ok = 'false'; break; }
+					}
+					if (student.myoption2 != '') {
+						if (student.mycorrect2answer != '') { ok = 'true'; }
+						if (student.mycorrect2answer == '') { ok = 'false'; break; }
+					}
+					if (student.myoption3 != '') {
+						if (student.mycorrect3answer != '') { ok = 'true'; }
+						if (student.mycorrect3answer == '') { ok = 'false'; break; }
+					}
+					if (student.myoption4 != '') {
+						if (student.mycorrect4answer != '') { ok = 'true'; }
+						if (student.mycorrect4answer == '') { ok = 'false'; break; }
+					}
+				}
+				//resposta incorreta para opções 5, 6, 7 e 8.
+				if (student.mycorrect5answer != '') { ok = 'false'; }
+				if (student.mycorrect6answer != '') { ok = 'false'; }
+				if (student.mycorrect7answer != '') { ok = 'false'; }
+				if (student.mycorrect8answer != '') { ok = 'false'; }
+			}
+
+			if (ok == 'true') {
+				totalCorretas = parseInt(totalCorretas) + 1;
+			} else if (ok == 'false') {
+				totalIncorretas = parseInt(totalIncorretas) + 1;
+			} else if (ok == '') {
+				totalNaoRespondidas = parseInt(totalNaoRespondidas) + 1;
+			}
+		}
+	})
+	return totalCorretas;
+}
+
+function getTotalIncorretas(mygroup, mycode, students) {
+	var totalCorretas = 0;
+	var totalIncorretas = 0;
+	var totalNaoRespondidas = 0;
+
+	students.forEach(function (student) {
+		if (student.mycode != '0') {
+			var ok = '';
+			if (student.mycorrect1answer == '' && student.mycorrect2answer == '' && student.mycorrect3answer == '' && student.mycorrect4answer == ''
+			 && student.mycorrect5answer == '' && student.mycorrect6answer == '' && student.mycorrect7answer == '' && student.mycorrect8answer == '') {
+				ok = '';
+			} else {
+				for (var index=1; index<=4; index++) {
+					if (student.myoption1 != '') {
+						if (student.mycorrect1answer != '') { ok = 'true'; }
+						if (student.mycorrect1answer == '') { ok = 'false'; break; }
+					}
+					if (student.myoption2 != '') {
+						if (student.mycorrect2answer != '') { ok = 'true'; }
+						if (student.mycorrect2answer == '') { ok = 'false'; break; }
+					}
+					if (student.myoption3 != '') {
+						if (student.mycorrect3answer != '') { ok = 'true'; }
+						if (student.mycorrect3answer == '') { ok = 'false'; break; }
+					}
+					if (student.myoption4 != '') {
+						if (student.mycorrect4answer != '') { ok = 'true'; }
+						if (student.mycorrect4answer == '') { ok = 'false'; break; }
+					}
+				}
+				//resposta incorreta para opções 5, 6, 7 e 8.
+				if (student.mycorrect5answer != '') { ok = 'false'; }
+				if (student.mycorrect6answer != '') { ok = 'false'; }
+				if (student.mycorrect7answer != '') { ok = 'false'; }
+				if (student.mycorrect8answer != '') { ok = 'false'; }
+			}
+
+			if (ok == 'true') {
+				totalCorretas = parseInt(totalCorretas) + 1;
+			} else if (ok == 'false') {
+				totalIncorretas = parseInt(totalIncorretas) + 1;
+			} else if (ok == '') {
+				totalNaoRespondidas = parseInt(totalNaoRespondidas) + 1;
+			}
+		}
+	})
+	return totalIncorretas;
+}
+
+function getTotalNaoRespondidas(mygroup, mycode, students) {
+	var totalCorretas = 0;
+	var totalIncorretas = 0;
+	var totalNaoRespondidas = 0;
+
+	students.forEach(function (student) {
+		if (student.mycode != '0') {
+			var ok = '';
+			if (student.mycorrect1answer == '' && student.mycorrect2answer == '' && student.mycorrect3answer == '' && student.mycorrect4answer == ''
+			 && student.mycorrect5answer == '' && student.mycorrect6answer == '' && student.mycorrect7answer == '' && student.mycorrect8answer == '') {
+				ok = '';
+			} else {
+				for (var index=1; index<=4; index++) {
+					if (student.myoption1 != '') {
+						if (student.mycorrect1answer != '') { ok = 'true'; }
+						if (student.mycorrect1answer == '') { ok = 'false'; break; }
+					}
+					if (student.myoption2 != '') {
+						if (student.mycorrect2answer != '') { ok = 'true'; }
+						if (student.mycorrect2answer == '') { ok = 'false'; break; }
+					}
+					if (student.myoption3 != '') {
+						if (student.mycorrect3answer != '') { ok = 'true'; }
+						if (student.mycorrect3answer == '') { ok = 'false'; break; }
+					}
+					if (student.myoption4 != '') {
+						if (student.mycorrect4answer != '') { ok = 'true'; }
+						if (student.mycorrect4answer == '') { ok = 'false'; break; }
+					}
+				}
+				//resposta incorreta para opções 5, 6, 7 e 8.
+				if (student.mycorrect5answer != '') { ok = 'false'; }
+				if (student.mycorrect6answer != '') { ok = 'false'; }
+				if (student.mycorrect7answer != '') { ok = 'false'; }
+				if (student.mycorrect8answer != '') { ok = 'false'; }
+			}
+
+			if (ok == 'true') {
+				totalCorretas = parseInt(totalCorretas) + 1;
+			} else if (ok == 'false') {
+				totalIncorretas = parseInt(totalIncorretas) + 1;
+			} else if (ok == '') {
+				totalNaoRespondidas = parseInt(totalNaoRespondidas) + 1;
+			}
+		}
+	})
+	return totalNaoRespondidas;
+}
+
+async function changeFaseNivel(id, mygroup, mycode) {
+	var totalperguntas = await jsstoreCon.count({
+		from: 'Student'
+		  , where: {
+			  mygroup: mygroup
+		  }
+	});
+	totalperguntas = totalperguntas - 1; //tira a pergunta zero que é o título da lista de perguntas
+	var students = await jsstoreCon.select({
+		from: 'Student'
+		  , where: { mygroup: mygroup 
+		  }
+	});
+	var totalCorretas = getTotalCorretas(mygroup, mycode, students);
+	var calculo = calculaPercentualAcerto(mygroup, mycode, totalCorretas, totalperguntas);
+	if (calculo >= 70) {
+		var mygroupNext = getProximaFaseNivel(id, mygroup, mycode);
+		if (mygroupNext != 'false') {
+			var students = await jsstoreCon.select({
+				from: 'Student'
+				  , where: { mygroup: '' + mygroupNext + ''
+				}
+			});
+			if (students == '') {
+				var DataShow_Config = window.open("config" + mygroupNext + ".html?sim=" + mygroupNext, "datashowconfig", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
+			}
+		}
+	}
+}
+
+function getProximaFaseNivel(id, mygroup, mycode) {
+	var unidade = parseInt(mygroup.substring(mygroup.length-1, mygroup.length));
+	var dezena = parseInt(mygroup.substring(0, mygroup.substring(mygroup.length-1, mygroup.length)));
+	if (unidade < CONST_FASE_NIVEL_MAX) {
+		mygroup = parseInt(mygroup) + 1; //próxima fase
+	} else {
+		mygroup = parseInt(mygroup) + 10; //próximo nível
+	}
+	return mygroup;
+}
+
+async function showPoints(mygroup, mycode) {
+	var students = await jsstoreCon.select({
+		from: 'Student'
+		  , where: { mygroup: mygroup 
+		  }
+	});
+	var totalCorretas = getTotalCorretas(mygroup, mycode, students);
+	var totalIncorretas = getTotalIncorretas(mygroup, mycode, students);
+	var totalNaoRespondidas = getTotalNaoRespondidas(mygroup, mycode, students);
+
+//alert('totalCorretas='+totalCorretas + ' totalIncorretas='+totalIncorretas + ' totalNaoRespondidas='+totalNaoRespondidas);
+
+	var totalperguntas = await jsstoreCon.count({
+		from: 'Student'
+		  , where: {
+			  mygroup: mygroup
+		  }
+	});
+	totalperguntas = totalperguntas - 1; //tira a pergunta zero que é o título da lista de perguntas
+	
+	var resultado = '';
+	resultado = resultado + totalIncorretas + ' erradas ';//+ erradas;
+	resultado = resultado + '\n\n' + totalCorretas + ' corretas';
+	resultado = resultado + '\n\n' + totalNaoRespondidas + ' não respondidas ';// + responder;
+//	resultado = resultado + '\n\nResponda: '  + responder;
+	var aprovacao = '';
+
+	var calculo = calculaPercentualAcerto(mygroup, mycode, totalCorretas, totalperguntas);
+	if (calculo >= 70) {
+		aprovacao = '\n\n' + 'JÁ ESTÁ APROVADO \n' + calculo + '% de acerto é >= 70%';
+	} else {
+		aprovacao = '\n\n' + 'AINDA ESTÁ REPROVADO \n' + calculo + '% de acerto é < 70%';
+	}
+	resultado = resultado + aprovacao;
+	resultado = resultado + '\n\n' + 'Licença: v' + mygroup;
+//	resultado = resultado + '\nDuração: ' + document.getElementById('tempoduracao').value + 'h';
+	
+	alert(resultado);
+}
+
+async function setDashboard(myid, mygroup, mycode) {
+		var totalperguntas = await jsstoreCon.count({
+			from: 'Student'
+			  , where: {
+				  mygroup: mygroup
+			  }
+		});
+		totalperguntas = parseInt(totalperguntas) - 1;
+		
+		var studentsDashboard = await jsstoreCon.select({
+			from: 'Student'
+			  , where: { mygroup: mygroup 
+			  }
+		});
+		var totalCorretas = getTotalCorretas(mygroup, mycode, studentsDashboard);
+		var totalIncorretas = getTotalIncorretas(mygroup, mycode, studentsDashboard);
+		var totalNaoRespondidas = getTotalNaoRespondidas(mygroup, mycode, studentsDashboard);
+		var calculo = calculaPercentualAcerto(mygroup, mycode, totalCorretas, totalperguntas);
+
+//	alert('totalperguntas='+totalperguntas + ' totalCorretas='+totalCorretas + ' totalIncorretas='+totalIncorretas);
+
+		document.getElementById('txtTotal').value = totalperguntas;
+		document.getElementById('txtIncorretas').value = 'Incorretas: ' + totalIncorretas;
+		document.getElementById('txtCorretas').value = 'Corretas: ' + totalCorretas;
+		document.getElementById('txtNaoRespondidas').value = 'Não Respondidas: ' + totalNaoRespondidas;
+		if (calculo >= 70) {
+			document.getElementById('txtCalculo').innerHTML = 'JÁ ESTÁ APROVADO <br/>' + calculo + '% de acerto é >= 70%';
+		} else {
+			document.getElementById('txtCalculo').innerHTML = 'AINDA ESTÁ REPROVADO <br/>' + calculo + '% de acerto é < 70%';
+		}
+		
+
+}
+//This function select table play
+async function refreshTableQuestion(myid, mygroup, mycode) {
+//    try {
+		var totalperguntas = await jsstoreCon.count({
+			from: 'Student'
+			  , where: {
+				  mygroup: mygroup
+			  }
+		});
+		totalperguntas = parseInt(totalperguntas) - 1;
+/*		
+		var studentsDashboard = await jsstoreCon.select({
+			from: 'Student'
+			  , where: { mygroup: mygroup 
+			  }
+		});
+		var totalCorretas = getTotalCorretas(mygroup, mycode, studentsDashboard);
+		var totalIncorretas = getTotalIncorretas(mygroup, mycode, studentsDashboard);
+		var totalNaoRespondidas = getTotalNaoRespondidas(mygroup, mycode, studentsDashboard);
+		var calculo = calculaPercentualAcerto(mygroup, mycode, totalCorretas, totalperguntas);
+		document.getElementById('txtTotal').value = totalperguntas;
+		document.getElementById('txtIncorretas').value = 'Incorretas: ' + totalIncorretas;
+		document.getElementById('txtCorretas').value = 'Corretas: ' + totalCorretas;
+		document.getElementById('txtNaoRespondidas').value = 'Não Respondidas: ' + totalNaoRespondidas;
+		if (calculo >= 70) {
+			document.getElementById('txtCalculo').innerHTML = 'JÁ ESTÁ APROVADO <br/>' + calculo + '% de acerto é >= 70%';
+		} else {
+			document.getElementById('txtCalculo').innerHTML = 'AINDA ESTÁ REPROVADO <br/>' + calculo + '% de acerto é < 70%';
+		}
+*/		
+		setDashboard(myid, mygroup, mycode);
+		
+		
+		
+		var students = await jsstoreCon.select({
+			from: 'Student'
+			  , where: { mygroup: '' + mygroup + ''
+					   , mycode: '' + mycode + ''
+			  }
+		});
+		if (students == '') {
+			showFormDashboard();
+		} else {
+			students.forEach(function (student) {
+				document.getElementById('myorderSim').style.display='none';
+				document.getElementById('myidSim').style.display='none';
+				document.getElementById('mygroupSim').style.display='none';
+				document.getElementById('mycodeSim').style.display='none';
+
+				$('#myidSim').val(student.id);
+				$('#mygroupSim').val(student.mygroup);
+				$('#mycodeSim').val(student.mycode);
+				$('#myorderSim').val(student.myorder);
+				
+				document.getElementById('mycorrect1Sim').style.display='none';
+				document.getElementById('mycorrect2Sim').style.display='none';
+				document.getElementById('mycorrect3Sim').style.display='none';
+				document.getElementById('mycorrect4Sim').style.display='none';
+				document.getElementById('mycorrect5Sim').style.display='none';
+				document.getElementById('mycorrect6Sim').style.display='none';
+				document.getElementById('mycorrect7Sim').style.display='none';
+				document.getElementById('mycorrect8Sim').style.display='none';
+
+				document.getElementById('mytextSim').innerHTML = '<font color=' + GLOBAL_textcolor + '>' + ' <b>' + student.mycode + '/' + totalperguntas + '. ' + student.mytext + '</b> </font>';
+
+				var myorder = student.myorder;
+				myorder = myorder.replaceAll('\,', '');
+				for (var index=0; index<=8; index++) {
+					valorIndice = myorder.substring(index,index+1);
+					if (valorIndice == '1') {
+						var textlink = ''; var linkhref = '';
+						if (document.getElementById(student.myoptionkey1) != null) {
+							textlink = document.getElementById(student.myoptionkey1).innerHTML;
+							linkhref = document.getElementById('link_' + student.myoptionkey1);
+						}
+						document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
+	//					valorIndice +
+						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+						+ student.mycorrect1answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption1 + ' </font>'
+	//					+ ' <a href="#' + student.myoption1 + '" class="btn btn-default"><b>?</b></a>'
+						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
+						+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
+						+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
+						if (student.myoption1 != '') {
+							document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
+						}
+					} else if (valorIndice == '2') {
+						var textlink = ''; var linkhref = '';
+						if (document.getElementById(student.myoptionkey2) != null) {
+							textlink = document.getElementById(student.myoptionkey2).innerHTML;
+							linkhref = document.getElementById('link_' + student.myoptionkey2);
+						}
+						document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
+	//					valorIndice +
+						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+						+ student.mycorrect2answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption2 + ' </font>'
+	//					+ ' <a href="#' + student.myoption2 + '" class="btn btn-default"><b>?</b></a>'
+						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
+						+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
+						+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
+						if (student.myoption2 != '') {
+							document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
+						}
+					} else if (valorIndice == '3') {
+						var textlink = ''; var linkhref = '';
+						if (document.getElementById(student.myoptionkey3) != null) {
+							textlink = document.getElementById(student.myoptionkey3).innerHTML;
+							linkhref = document.getElementById('link_' + student.myoptionkey3);
+						}
+						document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
+	//					valorIndice +
+						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+						+ student.mycorrect3answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption3 + ' </font>'
+	//					+ ' <a href="#' + student.myoption3 + '" class="btn btn-default"><b>?</b></a>'
+						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
+						+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
+						+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
+						if (student.myoption3 != '') {
+							document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
+						}
+					} else if (valorIndice == '4') {
+						var textlink = ''; var linkhref = '';
+						if (document.getElementById(student.myoptionkey4) != null) {
+							textlink = document.getElementById(student.myoptionkey4).innerHTML;
+							linkhref = document.getElementById('link_' + student.myoptionkey4);
+						}
+						document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
+	//					valorIndice +
+						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+						+ student.mycorrect4answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption4 + ' </font>'
+	//					+ ' <a href="#' + student.myoption4 + '" class="btn btn-default"><b>?</b></a>'
+						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
+						+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
+						+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
+						if (student.myoption4 != '') {
+							document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
+						}
+					} else if (valorIndice == '5') {
+						var textlink = ''; var linkhref = '';
+						if (document.getElementById(student.myoptionkey5) != null) {
+							textlink = document.getElementById(student.myoptionkey5).innerHTML;
+							linkhref = document.getElementById('link_' + student.myoptionkey5);
+						}
+						document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
+	//					valorIndice +
+						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+						+ student.mycorrect5answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption5 + ' </font>'
+	//					+ ' <a href="#' + student.myoption5 + '" class="btn btn-default"><b>?</b></a>'
+						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
+						+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
+						+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
+						if (student.myoption5 != '') {
+							document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
+						}
+					} else if (valorIndice == '6') {
+						var textlink = ''; var linkhref = '';
+						if (document.getElementById(student.myoptionkey6) != null) {
+							textlink = document.getElementById(student.myoptionkey6).innerHTML;
+							linkhref = document.getElementById('link_' + student.myoptionkey6);
+						}
+						document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
+	//					valorIndice +
+						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+						+ student.mycorrect6answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption6 + ' </font>'
+	//					+ ' <a href="#' + student.myoption6 + '" class="btn btn-default"><b>?</b></a>'
+						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
+						+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
+						+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
+						if (student.myoption6 != '') {
+							document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
+						}
+					} else if (valorIndice == '7') {
+						var textlink = ''; var linkhref = '';
+						if (document.getElementById(student.myoptionkey7) != null) {
+							textlink = document.getElementById(student.myoptionkey7).innerHTML;
+							linkhref = document.getElementById('link_' + student.myoptionkey7);
+						}
+						document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
+	//					valorIndice +
+						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+						+ student.mycorrect7answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption7 + ' </font>'
+	//					+ ' <a href="#' + student.myoption7 + '" class="btn btn-default"><b>?</b></a>'
+						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
+						+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
+						+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
+						if (student.myoption7 != '') {
+							document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
+						}
+					} else if (valorIndice == '8') {
+						var textlink = ''; var linkhref = '';
+						if (document.getElementById(student.myoptionkey8) != null) {
+							textlink = document.getElementById(student.myoptionkey8).innerHTML;
+							linkhref = document.getElementById('link_' + student.myoptionkey8);
+						}
+						document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
+	//					valorIndice +
+						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+						+ student.mycorrect8answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption8 + ' </font>'
+	//					+ ' <a href="#' + student.myoption8 + '" class="btn btn-default"><b>?</b></a>'
+						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
+						+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
+						+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
+						if (student.myoption8 != '') {
+							document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
+						}
+					}
+				}
+			})
+		}
+
+
+//		refreshLinkHelp();
+		
+//    } catch (ex) {
+//        console.log(ex.message)
+//    }	
+}
+
+//This function refreshes the table
+async function refreshTableData(mycode, myorder, mygroup, mytext) {
+//    try {
+		if (mygroup != '' && mycode != '') {
+			var students = await jsstoreCon.select({
+				from: 'Student'
+					, where: { mycode: mycode
+					, mygroup: mygroup
+				}
+				, order: [ {by: 'mygroup', type: 'desc'}, {by: 'mycode'} ]
+			});
+		}
+
+		if (mygroup != '' && mycode == '') {
+			var students = await jsstoreCon.select({
+				from: 'Student'
+					, where: { mygroup: '' + mygroup + ''
+				}
+				, order: [ {by: 'mygroup', type: 'desc'}, {by: 'mycode'} ]
+			});
+		}
+
+		if (mygroup == '' && mycode != '') {
+			var students = await jsstoreCon.select({
+				from: 'Student'
+					, where: { mycode: '' + mycode + ''
+				}
+				, order: [ {by: 'mygroup', type: 'desc'}, {by: 'mycode'} ]
+			});
+		}
+
+		var htmlString = "";
+		var varTdTh = '';
+		var varButtonPlay = '<br/><i class=\"fa fa-play\" style="color:green;"></i></a>';
+//		var varText = '';
+//		var varPlay = '';
+		var varRestart = '';
+		var varEdit = '';
+		var varDel = '';
+		var htmlStringButtons = ""; //getButtonsBar();
+
+		students.forEach(function (student) {
+			if (student.mycode == '0') {
+				varTdTh = 'th';
+//				varPlay = "<a href=\"#\" class=\"playsim\" style=\"color:#00FF00;\">Start</a>";
+//				varEdit = "&nbsp;<a href=\"#\" class=\"edit\" style=\"color:#0000FF;\">Edit</a>";
+				varRestart = "&nbsp;<i class=\"fa fa-refresh\"></i> <a href=\"#\" class=\"restart\" style=\"color:#0000FF;\">reiniciar</a>";
+//				varDel = "&nbsp;<a href=\"#\" class=\"delete\" style=\"color:#FF0000;\">Del</a>";
+			} else {
+				varTdTh = 'td';
+//				varPlay = "<a href=\"#\" class=\"playsim\"><i class=\"fa fa-play\" style=\"color:#00FF00; height:25px; Xwidth:25px; \"></i></a>";
+//				varEdit = "<a href=\"#\" class=\"edit\"><i class=\"fa fa-pencil\" style=\"color:#0000FF; height:25px; Xwidth:25px; \"></i></a>";
+				varRestart = "<a href=\"#\" class=\"restart\"><i class=\"fa fa-refresh\" style=\"color:#0000FF; height:25px; Xwidth:25px; \"></i></a>";
+//				varDel = "<a href=\"#\" class=\"delete\"><i class=\"fa fa-times\" style=\"color:#FF0000; height:25px; Xwidth:25px;\"></i></a>";
+			}
+			
+			htmlString += "<tr ItemId=" + student.id + ">"
+				+ "<td style=\"color:#000000; font-size:1px; \">" + student.mygroup + "</td>"
+//              + "<td style=\"color:#000000; font-size:1px;\">" + student.mycode + "</td>"
+				+ "<" + varTdTh + " id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " ZZZonClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
+				+ "<a href=\"#\" class=\"playsim\">" + student.mytext + varButtonPlay + "</" + varTdTh + ">"
+//				+ student.mytext + "</" + varTdTh + ">"
+/*				
+				+ "<" + varTdTh + " id=datashow" + student.id+"4" + " tabIndex=" + student.id+"4" + " ZZZonClick=\"datashow('" + student.id+"4" + "', 4, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 4, event, " + "" + (student.id+"4") + ");\" data-show='" + student.id+"4" + "'>"
+//				+ varPlay + "</" + varTdTh + ">"
+				
+				+ "<" + varTdTh + " id=datashow" + student.id+"5" + " tabIndex=" + student.id+"5" + " ZZZonClick=\"datashow('" + student.id+"5" + "', 5, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 5, event, " + "" + (student.id+"5") + ");\" data-show='" + student.id+"5" + "'>"
+				+ varEdit + "</" + varTdTh + ">"
+*/				
+				+ "<" + varTdTh + " nowrap id=datashow" + student.id+"6" + " tabIndex=" + student.id+"6" + " ZZZonClick=\"datashow('" + student.id+"6" + "', 6, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 6, event, " + "" + (student.id+"6") + ");\" data-show='" + student.id+"6" + "'>"
+//				+ varPlay + ' '
+				+ varRestart + ' '
+//				+ varEdit + ' '
+//				+ '<p/>'
+//				+ varDel
+				+ "</" + varTdTh + ">"
+				;
+				
+				varButtonPlay = '<br/><i class=\"fa fa-check\" style="color:gray;"></i></a>';
+		})
+
+		if (htmlString.length > 0) {
+			htmlString += "</tr>"
+			showGridAndHideForms();
+		} else {
+/*			htmlString += htmlStringButtons
+			const d = new Date();
+			htmlString += "<b>"
+			htmlString += "Não Encontrado"
+			htmlString += "<br><br>Pesquise Novamente"
+			htmlString += "<br><br>"
+			htmlString += d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ":" + d.getMilliseconds();
+			htmlString += "</b>"
+*/
+			showIniciarConfiguracao();
+//			document.getElementById('btnPlay').style.display='none';
+		}
+        $('#tblGrid tbody').html(htmlString);
+//    } catch (ex) {
+//        console.log(ex.message)
+//    }
+}
+
+function getLinkHelp(keylink, hreflink, textlink) {
+	var linkhelp = '';
+	linkhelp = linkhelp + '<p/><a href="#top" class="btn btn-default"><i class="fa fa-arrow-up"></i></a>';
+	linkhelp = linkhelp + '<b> ' + keylink + '</b>';
+	linkhelp = linkhelp + '<br/><i id="' + keylink + '" value="' + hreflink + '"> ' + textlink + '</i>';
+	linkhelp = linkhelp + '<br/><a id="link_' + keylink + '" href=' + hreflink + ' target="_blank">veja mais na internet</a>';
+
+	if (keylink == '') {
+		return '';
+	} else {
+		return linkhelp;
+	}
+}
+
+async function refreshLinkHelp() {
+	var students = await jsstoreCon.select({
+		from: 'Student'
+		  , where: { mygroup: {like: '00' + ''} 
+		  }
+	});
+
+	var linkhelp = '<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/> <b>MINHA AJUDA</b> <br/><br/>';
+	students.forEach(function (student) {
+		linkhelp = linkhelp + getLinkHelp(student.mytext, student.myoption2, student.myoption1); //mytext=key, myoption2=href, myoption1=texto
+	})
+	linkhelp = linkhelp + '<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>';
+	
+	document.getElementById('divlinkhelp').innerHTML = linkhelp;
+}
+
+//This function select table
+async function getFromTable(id, mygroup, mycode) {
+	var students = await jsstoreCon.select({
+		from: 'Student'
+		  , where: { mygroup: {like: '' + mygroup + ''} 
+				   , mycode: '' + mycode + ''
+				   , id: {like: '' + id + ''} 
+		  }
+	});
+
+	students.forEach(function (student) {
+		$('form').attr('data-student-id', student.id);
+		$('#mygroup').val(student.mygroup);
+		$('#mycode').val(student.mycode);
+		$('#myorder').val(student.myorder);
+		$('#mytext').val(student.mytext);
+		$('#myoption1').val(student.myoption1);
+		$('#myoption2').val(student.myoption2);
+		$('#myoption3').val(student.myoption3);
+		$('#myoption4').val(student.myoption4);
+		$('#myoption5').val(student.myoption5);
+		$('#myoption6').val(student.myoption6);
+		$('#myoption7').val(student.myoption7);
+		$('#myoption8').val(student.myoption8);
+	})
+}
+
+//This function load combobox
+async function loadCombobox(name, min, max, text) {
+	for (var item=min; item<=max; item++) {
+		var option = new Option(text + ' ' + item, item);
+		document.getElementById(name).add(option);
+	}
+}
+
+//This function load combobox
+async function loadMygroup(name) {
+	var option = new Option('Teste 1.0', '10');
+	document.getElementById(name).add(option);
+	var option = new Option('Teste 1.1', '11');
+	document.getElementById(name).add(option);
+	var option = new Option('Teste 1.2', '12');
+	document.getElementById(name).add(option);
+	var option = new Option('Teste 2.0', '20');
+	document.getElementById(name).add(option);
+	var option = new Option('Teste 2.1', '21');
+	document.getElementById(name).add(option);
+	var option = new Option('Teste 2.2', '22');
+	document.getElementById(name).add(option);
+}
+
+async function clearForm() {
+	$('form').attr('data-student-id', null);
+	$('#mytext').val('');
+	$('#myoption1').val('');
+	$('#myoption2').val('');
+	$('#myoption3').val('');
+	$('#myoption4').val('');
+	$('#myoption5').val('');
+	$('#myoption6').val('');
+	$('#myoption7').val('');
+	$('#myoption8').val('');
+}
+
 //This function delete the table
-async function deleteLirycs() {
+async function deleteTable() {
     try {
-        var result = confirm('delete all Lirycs?');
+        var result = confirm('delete all Table?');
         if (result) {
 			var noOfStudentRemoved = await jsstoreCon.remove({
 				from: 'Student'
 			});
 			console.log(`${noOfStudentRemoved} students removed`);
-			refreshTableData();
-			alert('successfull');
+			var mycode = document.getElementById('mycode').value;
+			var myorder = document.getElementById('myorder').value;
+			var mygroup = document.getElementById('mygroup').value;
+			var mytext = document.getElementById('mytext').value.trim();
+			refreshTableData(mycode, myorder, mygroup, mytext);
+			console.log('successfull');
 		}
     } catch (ex) {
-        alert(ex.message);
-    }
-}
-
-//This function delete the table
-async function deleteBible() {
-    try {
-        var result = confirm('delete all Bible?');
-        if (result) {
-			var noOfStudentRemoved = await jsstoreCon.remove({
-				from: 'Bible'
-			});
-			console.log(`${noOfStudentRemoved} students removed`);
-			refreshTableData();
-			alert('successfull');
-		}
-    } catch (ex) {
-        alert(ex.message);
-    }
-}
-
-//This function delete the table
-async function deleteArt() {
-    try {
-        var result = confirm('delete all Arts?');
-        if (result) {
-			var noOfStudentRemoved = await jsstoreCon.remove({
-				from: 'Art'
-			});
-			console.log(`${noOfStudentRemoved} students removed`);
-			refreshTableData();
-			alert('successfull');
-		}
-    } catch (ex) {
-        alert(ex.message);
+        console.log(ex.message);
     }
 }
 
 //This function drop database
 async function dropdb() {
-	var result = confirm('Reiniciar?');
+	var result = confirm('Vou restaurar e limpar tudo, ok?');
 	if (result) {
-//		localStorage.setItem('valueLogo', 'logo/logo.png');
-//		localStorage.setItem('valuePlanoFundoMestre', 'gallery/fundo.jpeg');
 		jsstoreCon.dropDb().then(function() {
 			console.log('Db deleted successfully');
-			refreshTableData();
-			alert('successfull');
+			var mycode = document.getElementById('mycode').value;
+			var myorder = document.getElementById('myorder').value;
+			var mygroup = document.getElementById('mygroup').value;
+			var mytext = document.getElementById('mytext').value.trim();
+			refreshTableData(mycode, myorder, mygroup, mytext);
+			location.reload();
+//			showIniciarConfiguracao();
+//			console.log('successfull');
 		}).catch(function(error) {
 			console.log(error);
-		});;
-		showIniciarConfiguracao();
+		});
 	}
-}
-
-function onLoadConfig() {
-	confirmImport('contents3', '2'); //artes
-	confirmImport('contents1', '0'); //letras
-	confirmImport('contents2', '1'); //bíblia
-	confirmImport('contents4', '3'); //licença
 }
 
 //This function refreshes the table
 async function refreshTableResult() {
     try {
-		//Arte
-		var arts = await jsstoreCon.count({
-			from: 'Art'
-		});
-		if (arts == '0') {
-			var labelArts = "<label class=\"btn btn-default\" style=\"width:200px; \"> Artes: " + arts + "</label>";
-		} else if (arts > '0' && arts < '14') {
-			var labelArts = "<label class=\"btn btn-default\" style=\"width:200px; \"> Artes: " + arts + " de ~14 </label>";
-		} else {
-			var labelArts = "<label class=\"btn btn-info\" style=\"width:200px; \"> Artes: " + arts + " <i class=\"fa fa-check\"></i></label>";
-		}
-		//Letras
+		//Perguntas
 		var students = await jsstoreCon.count({
 			from: 'Student'
 		});
@@ -596,42 +1343,19 @@ async function refreshTableResult() {
 		} else {
 			var labelStudents = "<label class=\"btn btn-info\" style=\"width:200px; \"> Letras: " + students + " <i class=\"fa fa-check\"></i></label>";
 		}
-		//Bíblia
-		var bibles = await jsstoreCon.count({
-			from: 'Bible'
-		});
-		if (bibles == '0') {
-			var labelBibles = "<label class=\"btn btn-default\" style=\"width:200px; \"> Livros: " + bibles + "</label>";
-		} else if (bibles > '0' && bibles < '32221') {
-			var labelBibles = "<label class=\"btn btn-default\" style=\"width:200px; \"> Livros: " + bibles + " de ~32221 </label>";
-		} else {
-			var labelBibles = "<label class=\"btn btn-info\" style=\"width:200px; \"> Livros: " + bibles + " <i class=\"fa fa-check\"></i></label>";
-		}
-		//TypeData
-		var typedata = await jsstoreCon.count({
-			from: 'TypeData'
-		});
-		if (typedata == '0') {
-			var labelTypeData = "<label class=\"btn btn-default\" style=\"width:200px; \"> Licenças: " + typedata + "</label>";
-		} else if (typedata > '0' && typedata < '2') {
-			var labelTypeData = "<label class=\"btn btn-default\" style=\"width:200px; \"> Licenças: " + typedata + " de ~2 </label>";
-		} else {
-			var labelTypeData = "<label class=\"btn btn-info\" style=\"width:200px; \"> Licenças: " + typedata + " <i class=\"fa fa-check\"></i></label>";
-		}
 		
 		var buttonFechar = "";
-		if (typedata == '0') {
+		if (students == '0') {
 			buttonFechar = '<button class="btn btn-default" style="padding:9px 15px 9px 15px; width:200px;"> Aguarde o botão continuar...</button>';
 		} else {
 			buttonFechar = '<button class="btn btn-danger" onclick="showIndex();" style="padding:9px 15px 9px 15px; width:200px;"> Continuar <i class="fa fa-forward"></i> </button>';
 			showIndex();
-			alert('Pronto! Fim da configuração.');
+//			console.log('Pronto! Fim da configuração.');
 		}
 		//Resultado
-		$('#tblGrid tbody').html(labelArts + '<br/>' + labelStudents + '<br/>' + labelBibles + '<br/>' + labelTypeData + '<br/>' + buttonFechar);
-//		$('#tblGrid tbody').html(buttonFechar);
+		$('#tblGrid tbody').html(labelStudents + '<br/>' + '<br/>' + buttonFechar);
 	} catch (ex) {
-        alert(ex.message)
+        console.log(ex.message)
     }
 }
 
@@ -685,28 +1409,32 @@ async function freezeDataShow(aovivo) {
 			}
 		}
     } catch (ex) {
-        alert(ex.message);
+        console.log(ex.message);
     }
 }
 
 //This function text repeated = myrepeated>0
 async function searchComplete() {
     try {
+		var mycode = document.getElementById('mycode').value;
+		var myorder = document.getElementById('myorder').value;
+		var mygroup = document.getElementById('mygroup').value;
+		var mytext = document.getElementById('mytext').value.trim();
 		if (localStorage.getItem('valueComplete') == 'true') {
 			localStorage.setItem('valueComplete', 'false');
 			document.getElementById('btnCompleteTop').innerHTML = '<i class=\"fa fa-minus\"></i>';
-			refreshTableData();
+			refreshTableData(mycode, myorder, mygroup, mytext);
 //			document.getElementById('btnCompleteTop').classList.remove('btn-warning');
 //			document.getElementById('btnCompleteTop').classList.add('btn-default');
 		} else {
 			localStorage.setItem('valueComplete', 'true');
 			document.getElementById('btnCompleteTop').innerHTML = '<i class=\"fa fa-list\"></i>';
-			refreshTableData();
+			refreshTableData(mycode, myorder, mygroup, mytext);
 //			document.getElementById('btnCompleteTop').classList.remove('btn-default');
 //			document.getElementById('btnCompleteTop').classList.add('btn-warning');
 		}
     } catch (ex) {
-        alert(ex.message);
+        console.log(ex.message);
     }
 }
 
@@ -728,347 +1456,209 @@ async function videoPlayPause() {
 			document.getElementById('btnVideoPlayTop').classList.add('btn-default');
 		}
     } catch (ex) {
-        alert(ex.message);
+        console.log(ex.message);
     }
 }
 
 //This function text repeated = myrepeated=0
 async function searchSimples() {
     try {
-//		document.getElementById('selMycodeTextGroup').value = '3';
-		refreshTableData();
+		var mycode = document.getElementById('mycode').value;
+		var myorder = document.getElementById('myorder').value;
+		var mygroup = document.getElementById('mygroup').value;
+		var mytext = document.getElementById('mytext').value.trim();
+		refreshTableData(mycode, myorder, mygroup, mytext);
     } catch (ex) {
-        alert(ex.message);
+        console.log(ex.message);
     }
+}
+
+function onLoadConfig() {
+	loadCombobox('mygroup', '0', '200', 'Teste');
+	loadCombobox('mycode', '0', '200', 'Número');
+	loadCombobox('myorder', '0', '200', 'Ordem');
+	confirmImport('contents1', '0');
+}
+
+function buscaValorTag(valor, key) {	
+	var posini = valor.indexOf('<' + key + '>', 0);
+	var posfim = valor.indexOf('</' + key + '>', 0);
+	var result = valor.substring(posini, posfim).trim();
+	result = result.replaceAll('<' + key + '>', '');
+	result = result.replaceAll('</' + key + '>', '');
+//	alert('posini: '+posini + ' posfim: '+posfim + ' result: ['+result+']');
+	return result;
+}
+
+function removeTags(valor, key) {
+	var posini = valor.indexOf('<' + key + '>', 0);
+	var posfim = valor.indexOf('</' + key + '>', 0);
+	if (posini == -1 || posfim == -1) {
+//		alert('posini: '+posini + ' posfim: '+posfim + ' vazio: ' + valor);
+		return valor;
+	} else {
+		var result = valor.substring(0, posini).trim() + '' + valor.substring(posfim+key.length+3, valor.length).trim();
+//		alert('posini: '+posini + ' posfim: '+posfim + ' result: [' + result + ']');
+		return result;
+	}
+}
+
+function getArrayAnswers(valor) {
+	var arrayok = []; var arrayKO = [];
+	var valorok = ''; var valorKO = '';
+	var posicao = 0;
+	var index = 0;
+	var fim = '';
+	nextpos = valor.indexOf('\n\n', posicao);
+//	console.log(valor);
+	for (index=0; index<=4; index++) {
+		var valorkey = '';
+		var valorsemkey = '';
+		
+		var ok = valor.substring(posicao, posicao+5).trim();
+//		console.log('ok=' + ok + ' posicao='+posicao + ' nextpos=' + nextpos + ' index=' + index + ' \n\n' + valor.substring(posicao, nextpos).trim());
+		
+		//ok
+		if (ok == '<ok>' ) {
+			valorok = valor.substring(posicao, nextpos).replaceAll('<ok>', '');
+
+			valorsemkey = removeTags(valorok, 'key');
+			arrayok.push(valorsemkey.trim());
+//			alert('valorok_semtag: [' + valorsemkey.trim() + ']');
+
+			valorkey = buscaValorTag(valorok, 'key');
+			arrayok.push(valorkey.trim());
+//			alert('arrayok: [' + arrayok + ']');
+		//KO
+		} else {
+			valorKO = valor.substring(posicao, nextpos).replaceAll('<ok>', '');
+
+			valorsemkey = removeTags(valorKO, 'key');
+			arrayKO.push(valorsemkey.trim());
+//			alert('valorKO_semkey: [' + valorsemkey.trim() + ']');
+
+			valorkey = buscaValorTag(valorKO, 'key');
+			arrayKO.push(valorkey.trim());
+//			alert('array_KO: [' + arrayKO + ']');
+		}
+		//limpa variáveis
+		posicao = nextpos+1;
+		nextpos = valor.indexOf('\n\n', posicao);		
+		if (fim == 'break') {
+//			console.log('fim=break');
+			break;
+		}
+		if (nextpos == -1) {
+			fim = 'break';
+			//força gravar última e sai
+			nextpos = valor.length;
+//			console.log('break: posicao='+posicao + ' nextpos=' + nextpos + ' index=' + index + ' \n' + valor.substring(posicao, nextpos).replaceAll('<ok>', ''));
+		}
+//		console.log(' posicao='+posicao + ' nextpos=' + nextpos + ' index=' + index + ' \n\n' + valor.substring(posicao, nextpos).trim());
+//		console.log(valor.substring(posicao, posicao+5).trim());
+
+		valorok = '';
+		valorKO = '';
+	}
+	var array = [];
+	//ok
+	for (index=0; index<8; index++) {
+		if (arrayok[index] == null) {
+			array.push(null); //'\'' + '' + '\''
+		} else {
+			array.push(arrayok[index]);
+		}
+	}
+	//KO
+	for (index=0; index<8; index++) {
+		if (arrayKO[index] == null) {
+			array.push(null); //'\'' + '' + '\''
+		} else {
+			array.push(arrayKO[index]);
+		}
+	}
+//	alert('array: '+array);
+	return array;
+}
+
+async function salvarRegistro(mygroup, mycode, myorder, mytext) {
+	var posicao=0;
+	var nextpos = 0;
+	nextpos = mytext.indexOf('\n\n', posicao);
+	var question = mytext.substring(posicao, nextpos).replaceAll('<p>', ''); //remove separador <p>
+	question = question.substring(posicao, nextpos).trim(); //remove espaços
+//	console.log('question='+question);
+	var aswers = mytext.substring(nextpos, mytext.length).trim();
+//	console.log('aswers= \n'+aswers);
+	var array = getArrayAnswers(aswers);
+
+//	alert('setStudentFromImport:\n'+array[0]+', '+array[1] + '\n '+array[2]+', '+array[3] + '\n '+array[4]+', '+array[5] + '\n '+array[6]+', '+array[7] + '\n '+array[8]+', '+array[9] + '\n '+array[10]+', '+array[11] + '\n '+array[12]+', '+array[13] + '\n '+array[14]+', '+array[15]);
+//	setStudentFromImport(mygroup, mycode, myorder, question, array[0], array[1], array[2], array[3], array[4], array[5], array[6], array[7]);
+	setStudentFromImport(mygroup, mycode, myorder, question, array[0], array[1], array[2], array[3], array[4], array[5], array[6], array[7], array[8], array[9], array[10], array[11], array[12], array[13], array[14], array[15]);
+	var studentId = $('form').attr('data-student-id');
+	addStudentImportConfig(studentId, mygroup, mycode);
+//	setTimeout(() => { updateStudentPlayOrder(mygroup) }, 1000); // Executa após 5 segundos para esperar o processo de insert terminar
 }
 
 //This function confirm import
 async function confirmImport(contents, group) {
-//	var result = confirm('Não feche esta página. \nNão atualize esta página.');
-//	if (result) {
-		try {
-			valor = document.getElementById(contents).value;
-			var nextpos = 0; var myorder = 0; var mycode = ''; var myrepeated = '0'; var contador = 0; var posicao = 0; repeated = 0;
-			for (posicao=0; posicao<=valor.length; posicao++) {
-				nextpos = valor.indexOf('\n\n', posicao); //próximo separador do texto correspondente a duas quebras de linhas juntas
-				if (nextpos <= 0) {
-					nextpos = valor.length; //força última gravação e encerra
-				}
-				if (valor.substring(posicao, posicao+3) == '<p>' || valor.substring(posicao, posicao+4) == '<br>' || valor.substring(posicao, posicao+4) == '<hr>') {
-					posicao = posicao+4; //pula <p>\n
-					mycode = removeSpecials(valor.substring(posicao, nextpos).trim());
-					myorder = 0;
-					contador = parseInt(contador) + 1;
-					console.log('Importar: \n' + mycode);
-					document.getElementById('txtSearch').value = parseInt(contador) + ' importados';
-				} else if (posicao == 0) { //primeiro registro sem separador <p>... executa somente 1 vez.
-					mycode = removeSpecials(valor.substring(posicao, nextpos).trim());
-				}
-/*
-				myrepeated = valor.substring(posicao, nextpos).indexOf('<repeat>', 0); //próximo separador do texto correspondente a duas quebras de linhas juntas
-				alert(myrepeated);
-				if (myrepeated > 0) {
-					valor = valor.replaceAll('<repeat>', '');
-					myrepeated = '1';
-				} else {
-					myrepeated = '1';
-				}
-*/
-				var mytext = valor.substring(posicao, nextpos).trim();
-				mytext = mytext.replaceAll('<br>', ''); //altera o <br> para ENTER (quebra de linha no mersmo texto)
-//				var group = document.getElementById('selMycodeTextGroup').value.trim();
-	
-//	alert('mycode='+mycode + '\n myorder='+myorder + '\n group='+group + '\n myrepeated='+myrepeated + '\n mytext='+mytext);
-				setStudentFromImport(mycode, myorder, mytext, group, myrepeated);
-				addStudentImport(group);
-				
-				setTimeout(() => { refreshTableData() }, 500); // Executa novamente a cada 500 milisegundos
-				
-				showGridAndHideForms();
-				myorder = myorder+1;
-				if (nextpos <= 0) {
-					//alert('BREAK, nextpos<=0 =' + nextpos);
-					posicao = valor.length +1; //força gravar último registro e encerrar
-				}
-				posicao = nextpos+1;
+	try {
+		var params = new URLSearchParams(window.location.search);
+		
+//		console.log('params.get(sim) = ' + params.get('sim'));
+		var mygroup = params.get('sim');
+		var mytext = document.getElementById(contents).value;
+		var mycode = 0;
+		var myorder = 1;
+		var index=0;
+		var posicao=0;
+		var nextp = 0;
+		for (index=0; index<=mytext.length; index++) {
+			nextp = mytext.indexOf('<p>', posicao + '<p>'.length);
+			if (nextp == -1) {
+//				console.log('index break='+index);
+				break;
 			}
-			document.getElementById('divcontent').style.display='none';
-			$('#txtSearch').focus();
-			$('#txtSearch').select();
-		} catch (ex) {
-			alert('erro \n\n\n' + ex.message + '\n\n\n' + mytext);
+//			console.log(' posicao='+posicao + ' nextp='+nextp + '\n [' + mytext.substring(posicao, nextp) + ']');
+			
+			var valor = mytext.substring(posicao, nextp);
+//			console.log('salvarRegistro: \n [' + '\n mygroup='+mygroup + '\n mycode='+mycode + '\n myorder='+myorder + '\n [' + valor + ']');
+			salvarRegistro(mygroup, mycode, myorder, valor);
+			
+			posicao = nextp;
+			mycode = parseInt(mycode) + parseInt(1);
+			myorder = parseInt(mycode);
+			index = mytext.substring(posicao, nextp).length;
 		}
-//	}
+	} catch (ex) {
+		console.log('erro \n\n\n' + ex.message + '\n\n\n' + valor);
+	}
 }
 
 //This function confirm import
-async function confirmImportManual(contents, group, nomemusica, nomeautor) {
+async function confirmImportManual(mycode, myorder, mygroup, mytext, myoption1, myoption2, myoption3, myoption4, myoption5, myoption6, myoption7, myoption8) {
 		try {
-			valor = document.getElementById(contents).value;
-			valor = nomemusica + '\n' + nomeautor  + '\n\n' + valor; //adiciona o autor e nome da música no início da letra para o search funcionar
-			var nextpos = 0; var myorder = 0; var mycode = ''; var myrepeated = '0'; var contador = 0; var posicao = 0; repeated = 0;
-			for (posicao=0; posicao<=valor.length; posicao++) {
-				nextpos = valor.indexOf('\n\n', posicao); //próximo separador do texto correspondente a duas quebras de linhas juntas
-				if (nextpos <= 0) {
-					nextpos = valor.length; //força última gravação e encerra
-				}
-				if (valor.substring(posicao, posicao+3) == '<p>' || valor.substring(posicao, posicao+4) == '<br>' || valor.substring(posicao, posicao+4) == '<hr>') {
-					posicao = posicao+4; //pula <p>\n
-					mycode = removeSpecials(valor.substring(posicao, nextpos).trim());
-					myorder = 0;
-					contador = parseInt(contador) + 1;
-					console.log('Importar: \n' + mycode);
-					document.getElementById('txtSearch').value = parseInt(contador) + ' importados';
-				} else if (posicao == 0) { //primeiro registro sem separador <p>... executa somente 1 vez.
-					mycode = removeSpecials(valor.substring(posicao, nextpos).trim());
-				}
-				var mytext = valor.substring(posicao, nextpos).trim();
-				mytext = mytext.replaceAll('<br>', ''); //altera o <br> para ENTER (quebra de linha no mersmo texto)
-	
-//	alert('mycode='+mycode + '\n myorder='+myorder + '\n group='+group + '\n myrepeated='+myrepeated + '\n mytext='+mytext);
-				setStudentFromImport(mycode, myorder, mytext, group, myrepeated);
-				addStudentImport(group);
+			
+//console.log(' mygroup='+mygroup + ' mycode='+mycode + ' myorder='+myorder + ' mytext='+mytext + ' myoption1='+myoption1 + ' myoption5='+myoption5);
 				
-				setTimeout(() => { refreshTableData() }, 500); // Executa novamente a cada 500 milisegundos
+				setStudentFromImport(mygroup, mycode, myorder, mytext, myoption1, '', myoption2, '', myoption3, '', myoption4, '', myoption5, '', myoption6, '', myoption7, '', myoption8, '');
+
+				var studentId = $('form').attr('data-student-id');
+				addStudentImport(studentId, mygroup, mycode);
+				
+				var mycode = document.getElementById('mycode').value;
+				var myorder = document.getElementById('myorder').value;
+				var mygroup = document.getElementById('mygroup').value;
+				var mytext = document.getElementById('mytext').value.trim();
+				setTimeout(() => { refreshTableData(mycode, myorder, mygroup, mytext) }, 500); // Executa novamente a cada 500 milisegundos
 				
 				showGridAndHideForms();
-				myorder = myorder+1;
-				if (nextpos <= 0) {
-					//alert('BREAK, nextpos<=0 =' + nextpos);
-					posicao = valor.length +1; //força gravar último registro e encerra
-				}
-				posicao = nextpos+1;
-			}
 			document.getElementById('divcontent').style.display='none';
 			$('#txtSearch').focus();
 			$('#txtSearch').select();
 		} catch (ex) {
-			alert('erro \n\n\n' + ex.message + '\n\n\n' + mytext);
+			console.log('erro \n\n\n' + ex.message + '\n\n\n' + mytext);
 		}
-}
-
-//This function refreshes the table
-async function refreshTableData() {
-    try {
-		if (document.getElementById('txtSearch').value.length <= 1) { // pesquisa somente com mais de 1 caracter preenchido no campo search
-			$('#tblGrid tbody').html('');
-			return;
-		}
-		
-		var group = document.getElementById('selMycodeTextGroup').value;
-		var search = removeSpecials(document.getElementById('txtSearch').value);
-		var complete = localStorage.getItem('valueComplete');
-		
-		//select groupby mycode
-		if (group == 0) { //lirycs
-			if (complete == 'true') { //letra completa
-				var students = await jsstoreCon.select({
-					from: 'Student'
-				  , where: { mysearch: {like: '%' + search + '%'} 
-						   , mycodeTextGroup: '' + group + ''
-				  }
-				  , groupBy: "mycode"
-				});
-			} else { //Letra Sem Repetição
-				var students = await jsstoreCon.select({
-					from: 'Student'
-				  , where: { mysearch: {like: '%' + search + '%'} 
-						   , mycodeTextGroup: '' + '0' + ''
-						   , myrepeated: '0'
-				  }
-				  , groupBy: "mycode"
-				});
-			}
-		} else if (group == 1) { //bible
-			var students = await jsstoreCon.select({
-				from: 'Bible'
-			  , where: { mysearch: {like: '%' + search + '%'} 
-					   , mycodeTextGroup: '' + group + ''
-			  }
-			  , groupBy: "mycode"
-			});
-		} else if (group == 2) { //arts
-			var students = await jsstoreCon.select({
-				from: 'Art'
-			  , where: { mysearch: {like: '%' + search + '%'} 
-					   , mycodeTextGroup: '' + group + ''
-			  }
-			  , groupBy: "mycode"
-			});
-		}
-		
-		var array = [];
-		students.forEach(function (student) {
-            var resultado = array.push(student.mycode);
-        })
-		for (i=0; i<=20; i++) {
-			if (array[i] == undefined) {
-				array[i] = '';
-			}
-		}
-		
-		//select where mycode
-		if (group == 0) { //lirycs
-			if (complete == 'true') { //letra completa
-				var students = await jsstoreCon.select({
-					from: 'Student'
-					, where: {
-						mycode:{in:[ 
-							array[0], array[1], array[2], array[3], array[4],
-							array[5], array[6], array[7], array[8], array[9],
-							array[10], array[11], array[12], array[13], array[14],
-							array[15], array[16], array[17], array[18], array[19],
-							array[20]
-						]}
-						, mycodeTextGroup: '' + group + ''
-					}
-					, order: [{
-						by: 'mycode',
-					}, {
-						by: 'myorder'
-					}]
-				});
-			} else { //Letra Sem Repetição
-				var students = await jsstoreCon.select({
-					from: 'Student'
-					, where: {
-						mycode:{in:[ 
-							array[0], array[1], array[2], array[3], array[4],
-							array[5], array[6], array[7], array[8], array[9],
-							array[10], array[11], array[12], array[13], array[14],
-							array[15], array[16], array[17], array[18], array[19],
-							array[20]
-						]}
-						, mycodeTextGroup: '' + group + ''
-						, mycodeTextGroup: '' + '0' + ''
-						, myrepeated: '0'
-					}
-					, order: [{
-						by: 'mycode',
-					}, {
-						by: 'myorder'
-					}]
-				});
-			}
-		} else if (group == 1) { //bible
-			var students = await jsstoreCon.select({
-				from: 'Bible'
-				, where: {
-					mycode:{in:[ 
-						array[0], array[1], array[2], array[3], array[4],
-						array[5], array[6], array[7], array[8], array[9],
-						array[10], array[11], array[12], array[13], array[14],
-						array[15], array[16], array[17], array[18], array[19],
-						array[20]
-					]}
-					, mycodeTextGroup: '' + group + ''
-				}
-				, order: [{
-					by: 'mycode',
-				}, {
-					by: 'myorder'
-				}]
-			});
-		} else if (group == 2) { //arts
-			var students = await jsstoreCon.select({
-				from: 'Art'
-				, where: {
-					mycode:{in:[ 
-						array[0], array[1], array[2], array[3], array[4],
-						array[5], array[6], array[7], array[8], array[9],
-						array[10], array[11], array[12], array[13], array[14],
-						array[15], array[16], array[17], array[18], array[19],
-						array[20]
-					]}
-					, mycodeTextGroup: '' + group + ''
-				}
-				, order: [{
-					by: 'mycode',
-				}, {
-					by: 'myorder'
-				}]
-			});
-		}
-
-        var htmlString = "";
-        var varTdTh = '';
-		var varOff = '';
-		var varLogo = '';
-		var varFav = '';
-		var varEdit = '';
-		var varDel = '';
-//		var htmlStringButtons = getButtonsBar();
-		var htmlStringButtons = ""; //getButtonsBar();
-
-		students.forEach(function (student) {
-			if (student.myorder == '000') {
-//				htmlString += "<tr><td colspan=99>&nbsp;</td></tr>"
-				varTdTh = 'th';
-				varLogo = "<a href=\"#\" class=\"favorite\" style=\"color:#000000;\"><img src=\"logo/logo.png\" style=\"width:35px; cursor:hand;\"></img></a>";
-				varOff = "<a href=\"#\" class=\"off\"> <i class=\"fa fa-stop\" style=\"color:#000000;\"></i></a>&nbsp;";
-				varFav = "<td> <!--i class=\"fa fa-heart\" style=\"color:#3333AA;\"></i --> </td>";
-				varEdit = "<i class=\"fa fa-edit\"></i>";
-				varDel = "<td><a href=\"#\" class=\"delete\" style=\"color:#777777;\"> <i class=\"fa fa-times\" style=\"color:red;\"></i> </a></td>";
-			} else {
-				varTdTh = 'td';
-				varLogo = "<a href=\"#\" class=\"favorite\" style=\"color:#000000;\"><img src=\"logo/logo.png\" style=\"width:15px; cursor:hand;\"></img>";
-				varOff = "<a href=\"#\" class=\"off\"> <i class=\"fa fa-stop\" style=\"color:#000000;\"></i></a>&nbsp;";
-				varFav = "<td><a href='#' class=\"favorite\" style=\"color:blue;\"> </a></td>";
-				varEdit = "<a href=\"#\" class=\"edit\"> <i class=\"fa fa-edit\"></i> </a>";
-                varDel = "<td><a href=\"#\" class=\"delete\" style=\"color:#777777;\">Del</a></td>";
-			}
-			
-			var mytext = student.mytext;
-			var txtsearch = removeSpecials(document.getElementById('txtSearch').value);
-			
-			//destaca palavra pesquisada com negrito
-			var auxiliar = removeSpecials(mytext);
-			var posIni = auxiliar.toLowerCase().indexOf(txtsearch.toLowerCase(), 0);
-			var mytextBold = '';
-			if (posIni >= 0) {
-				var diff = parseInt(mytext.substring(0, posIni+txtsearch.length).length) - parseInt(removeSpecials(mytext.substring(0, posIni+txtsearch.length)).length);
-				posIni = posIni + parseInt(diff);
-				mytextBold = mytext.substring(0, posIni)
-				+ '<b style="background-color:#EEEEEE; color:black;">'
-				+ mytext.substring(posIni, posIni+txtsearch.length)
-				+ '</b>'
-				+ mytext.substring(posIni+txtsearch.length);
-			} else {
-				mytextBold = mytext;
-			}
-
-			htmlString += "<tr ItemId=" + student.id + ">"
-                + "<td style=\"color:white; font-size:1px;\">" + student.mycode + "</td>"
-				+ "<td style=\"color:white; font-size:1px;\">" + student.myorder + "</td>"
-				+ "<" + varTdTh + " id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " onClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
-				+ mytextBold + "</" + varTdTh + ">"
-//				+ "<td>" + student.mysearch + "</td>"
-				+ "<" + varTdTh + " id=datashow" + student.id+"4" + " tabIndex=" + student.id+"4" + " onClick=\"datashow('" + student.id+"4" + "', 4, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 4, event, " + "" + (student.id+"4") + ");\" data-show='" + student.id+"4" + "'>"
-				+ varOff + "</" + varTdTh + ">"
-				+ "<td id=datashow" + (student.id+"5") + " tabIndex=" + (student.id+"5") + " onClick=\"showLogo();\" onkeyup=\"moveCursor('" + student.mycode + "', 5, event, " + "" + (student.id+"5") + ");\" data-show='" + (student.id+"5") + "'>" 
-				+ varLogo + "</td>"
-//				+ "<td id=datashow" + (student.id+"6") + " tabIndex=" + (student.id+"6") + " onClick=\"datashow('" + (student.id+"6") + "', 6, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 6, event, " + "" + (student.id+"6") + ");\" data-show='" + (student.id+"6") + "'>"
-				+ "<td>" + varEdit + "</td>";
-		})
-
-		if (htmlString.length > 0) {
-			htmlString += "</tr>"
-		} else {
-			htmlString += htmlStringButtons
-
-			const d = new Date();
-			htmlString += "<b>"
-			htmlString += "Não Encontrado"
-			htmlString += "<br><br>Pesquise Novamente"
-			htmlString += "<br><br>"
-			htmlString += d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ":" + d.getMilliseconds();
-			htmlString += "</b>"
-
-		}
-        $('#tblGrid tbody').html(htmlString);
-    } catch (ex) {
-        alert(ex.message)
-    }
 }
 
 //This function refreshes the table
@@ -1093,137 +1683,251 @@ async function selectCountAll() {
         $('#tblGrid tbody').html(htmlString);
 		document.getElementById('txtSearch').value = aux + " itens";
     } catch (ex) {
-        alert(ex.message)
+        console.log(ex.message)
     }
 }
 
-async function addStudentImport(group) {
-    var student = getStudentFromForm();
+async function addStudentImportConfig(studentId, mygroup, mycode) {
+    var student = getStudentFromForm(studentId, mygroup, mycode);
     try {
-		if (group == '0') { //liryc
-			var noOfDataInserted = await jsstoreCon.insert({
-				into: 'Student',
-				values: [student]
-			});
-		} else if (group == '1') { //bible
-			var noOfDataInserted = await jsstoreCon.insert({
-				into: 'Bible',
-				values: [student]
-			});
-		} else if (group == '2') { //art
-			var noOfDataInserted = await jsstoreCon.insert({
-				into: 'Art',
-				values: [student]
-			});
-		} else if (group == '3') { //TypeData
-			var noOfDataInserted = await jsstoreCon.insert({
-				into: 'TypeData',
-				values: [student]
-			});
-		}
+		var noOfDataInserted = await jsstoreCon.insert({
+			into: 'Student',
+			values: [student]
+		});
+//		alert('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext + '\n '+student.myoption1 + ', '+student.myoptionkey1 + '\n '+student.myoption2 + ', '+student.myoptionkey2 + '\n '+student.myoption3 + ', '+student.myoptionkey3 + '\n '+student.myoption4 + ', '+student.myoptionkey4 + '\n '+student.myoption5 + ', '+student.myoptionkey5 + '\n '+student.myoption6 + ', '+student.myoptionkey6 + '\n '+student.myoption7 + ', '+student.myoptionkey7 + '\n '+student.myoption8 + ', '+student.myoptionkey8 + '\n '+student.myoption9 + ', '+student.myoptionkey9 + '\n '+student.myoption10 + ', '+student.myoptionkey10 + '\n '+student.myoption11 + ', '+student.myoptionkey11 + '\n '+student.myoption12 + ', '+student.myoptionkey12 + '\n '+student.myoption13 + ', '+student.myoptionkey13 + '\n '+student.myoption14 + ', '+student.myoptionkey14 + '\n '+student.myoption15 + ', '+student.myoptionkey15);
+//		console.log('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext);
 		if (noOfDataInserted === 1) {
-			refreshTableData();
-			if (document.getElementById('txtSearch').value.length <= 1) { // pesquisa somente com mais de 1 caracter preenchido no campo search
-				if (document.getElementById('selMycodeTextGroup').selectedIndex == '1') {
-					showBible();
-				}
-			} else {
-				showGridAndHideForms();
-			}
-//			showGridAndHideForms();
 		}
     } catch (ex) {
-        alert(ex.message + ' error ' + student.text);
+        console.log(ex.message + ' error ' + student.text);
     }
 }
 
-async function updateStudent(group) {
-    var student = getStudentFromForm();
-	try {
-        if (group == '0') { //somente letras
-			var noOfDataUpdated = await jsstoreCon.update({
-				in: 'Student',
-				set: {
-					mycode: student.mycode,
-					myorder: student.myorder,
-					mytext: student.mytext,
-					mysearch: student.mysearch,
-					myrepeated: student.myrepeated,
-					myowner: student.myowner
-				},
-				where: {
-					id: student.id
-				}
-			});
-		} else if (group == '1') { //bible
-			var noOfDataUpdated = await jsstoreCon.update({
-				in: 'Bible',
-				set: {
-					mycode: student.mycode,
-					myorder: student.myorder,
-					mytext: student.mytext,
-					mysearch: student.mysearch,
-					myrepeated: student.myrepeated,
-					myowner: student.myowner
-				},
-				where: {
-					id: student.id
-				}
-			});
-		} else if (group == '2') { //art
-			var noOfDataUpdated = await jsstoreCon.update({
-				in: 'Art',
-				set: {
-					mycode: student.mycode,
-					myorder: student.myorder,
-					mytext: student.mytext,
-					mysearch: student.mysearch,
-					myrepeated: student.myrepeated,
-					myowner: student.myowner
-				},
-				where: {
-					id: student.id
-				}
-			});
+async function addStudentImport(studentId, mygroup, mycode) {
+    var student = getStudentFromForm(studentId, mygroup, mycode);
+    try {
+		var noOfDataInserted = await jsstoreCon.insert({
+			into: 'Student',
+			values: [student]
+		});
+//		console.log('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext + '\n '+student.myoption1 + '\n '+student.myoption2 + '\n '+student.myoption3 + '\n '+student.myoption4);
+//		console.log('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext);
+		if (noOfDataInserted === 1) {
+			var mycode = document.getElementById('mycode').value;
+			var myorder = document.getElementById('myorder').value;
+			var mygroup = document.getElementById('mygroup').value;
+			var mytext = document.getElementById('mytext').value.trim();
+			refreshTableData(mycode, myorder, mygroup, mytext);
+			showGridAndHideForms();
 		}
+		setTimeout(() => { updateStudentPlayOrder(mygroup) }, 1000); // Executa após 5 segundos para esperar o processo de update/insert terminar
+    } catch (ex) {
+        console.log(ex.message + ' error ' + student.text);
+    }
+}
+
+async function updateStudentPlay(studentId, mygroup, mycode) {
+    var student = getStudentFromFormPlay(studentId, mygroup, mycode);
+//	try {
+/*
+	alert('student.mycorrect1answer='+student.mycorrect1answer);
+	alert('student.mycorrect2answer='+student.mycorrect2answer);
+	alert('student.mycorrect3answer='+student.mycorrect3answer);
+	alert('student.mycorrect4answer='+student.mycorrect4answer);
+	alert('student.mycorrect5answer='+student.mycorrect5answer);
+	alert('student.mycorrect6answer='+student.mycorrect6answer);
+	alert('student.mycorrect7answer='+student.mycorrect7answer);
+	alert('student.mycorrect8answer='+student.mycorrect8answer);
+*/
+		var noOfDataUpdated = await jsstoreCon.update({
+			in: 'Student',
+			set: {
+				mycorrect1answer: student.mycorrect1answer,
+				mycorrect2answer: student.mycorrect2answer,
+				mycorrect3answer: student.mycorrect3answer,
+				mycorrect4answer: student.mycorrect4answer,
+				mycorrect5answer: student.mycorrect5answer,
+				mycorrect6answer: student.mycorrect6answer,
+				mycorrect7answer: student.mycorrect7answer,
+				mycorrect8answer: student.mycorrect8answer
+			},
+			where: {
+				id: student.id
+			}
+		});
+//    } catch (ex) {
+//        console.log(ex.message);
+//    }
+}
+
+async function updateStudentPlayClear(mygroup) {
+//	try {
+		var noOfDataUpdated = await jsstoreCon.update({
+			in: 'Student',
+			set: {
+				mycorrect1answer: '',
+				mycorrect2answer: '',
+				mycorrect3answer: '',
+				mycorrect4answer: '',
+				mycorrect5answer: '',
+				mycorrect6answer: '',
+				mycorrect7answer: '',
+				mycorrect8answer: ''
+			},
+			where: {
+				mygroup: mygroup
+			}
+		});
+//    } catch (ex) {
+//        console.log(ex.message);
+//    }
+}
+
+function getStudentFromFormPlay(studentId, mygroup, mycode) {
+	var chkMycorrect1answer = '';
+	if (document.getElementById('chkMycorrect1answer').checked == true) { chkMycorrect1answer = 'checked'; }
+	var chkMycorrect2answer = '';
+	if (document.getElementById('chkMycorrect2answer').checked == true) { chkMycorrect2answer = 'checked'; }
+	var chkMycorrect3answer = '';
+	if (document.getElementById('chkMycorrect3answer').checked == true) { chkMycorrect3answer = 'checked'; }
+	var chkMycorrect4answer = '';
+	if (document.getElementById('chkMycorrect4answer').checked == true) { chkMycorrect4answer = 'checked'; }
+	var chkMycorrect5answer = '';
+	if (document.getElementById('chkMycorrect5answer').checked == true) { chkMycorrect5answer = 'checked'; }
+	var chkMycorrect6answer = '';
+	if (document.getElementById('chkMycorrect6answer').checked == true) { chkMycorrect6answer = 'checked'; }
+	var chkMycorrect7answer = '';
+	if (document.getElementById('chkMycorrect7answer').checked == true) { chkMycorrect7answer = 'checked'; }
+	var chkMycorrect8answer = '';
+	if (document.getElementById('chkMycorrect8answer').checked == true) { chkMycorrect8answer = 'checked'; }
+/*
+console.log('mygroup='+mygroup + ' mycode='+mycode + ' chkMycorrect1answer=' + chkMycorrect1answer);
+console.log('mygroup='+mygroup + ' mycode='+mycode + ' chkMycorrect2answer=' + chkMycorrect2answer);
+console.log('mygroup='+mygroup + ' mycode='+mycode + ' chkMycorrect3answer=' + chkMycorrect3answer);
+console.log('mygroup='+mygroup + ' mycode='+mycode + ' chkMycorrect4answer=' + chkMycorrect4answer);
+console.log('mygroup='+mygroup + ' mycode='+mycode + ' chkMycorrect5answer=' + chkMycorrect5answer);
+console.log('mygroup='+mygroup + ' mycode='+mycode + ' chkMycorrect6answer=' + chkMycorrect6answer);
+console.log('mygroup='+mygroup + ' mycode='+mycode + ' chkMycorrect7answer=' + chkMycorrect7answer);
+console.log('mygroup='+mygroup + ' mycode='+mycode + ' chkMycorrect8answer=' + chkMycorrect8answer);
+*/
+	var student = {
+        id: Number(studentId),
+		mygroup: $('#mygroup').val(),
+        mycode: $('#mycode').val(),
+		mycorrect1answer: chkMycorrect1answer,
+		mycorrect2answer: chkMycorrect2answer,
+		mycorrect3answer: chkMycorrect3answer,
+		mycorrect4answer: chkMycorrect4answer,
+		mycorrect5answer: chkMycorrect5answer,
+		mycorrect6answer: chkMycorrect6answer,
+		mycorrect7answer: chkMycorrect7answer,
+		mycorrect8answer: chkMycorrect8answer
+    };
+	return student;
+}
+
+function shuffle(o) {
+    for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
+};
+
+function getRandomArray(min, max) {
+	var numeros = [1, 2, 3, 4, 5, 6, 7, 8];
+	var numeros_gerados = shuffle(numeros);
+	return numeros_gerados;
+}
+
+async function updateOrder(id, min, max) {
+	try {
+		var myorder = String(getRandomArray(min, max));
+		var noOfDataUpdated = await jsstoreCon.update({
+			in: 'Student',
+			set: {
+				myorder: myorder
+			},
+			where: {
+				id: id
+			}
+		});
+		//console.log('id='+id + ' myorder='+myorder);
         console.log(`data updated ${noOfDataUpdated}`);
-        showGridAndHideForms();
+    } catch (ex) {
+        console.log(ex.message);
+    }
+}
+
+async function updateStudentPlayOrder(mygroup) {
+    try {
+		var students = await jsstoreCon.select({
+			from: 'Student'
+			  , where: { mygroup: mygroup
+			  }
+		});
+		students.forEach(function (student) {
+//			alert('mygroup='+mygroup + ' mycode='+mycode + ' student.id='+student.id);
+			var min = 1; var max = 8;
+			updateOrder(student.id, min, max);
+		})
+    } catch (ex) {
+        console.log(ex.message)
+    }	
+}
+
+async function updateStudent(studentId, mygroup, mycode) {
+    var student = getStudentFromForm(studentId, mygroup, mycode);
+	try {
+		var noOfDataUpdated = await jsstoreCon.update({
+			in: 'Student',
+			set: {
+				mygroup: student.mygroup,
+				mycode: student.mycode,
+				mytext: student.mytext,
+//				myorder: student.myorder,
+				mysearch: student.mysearch,
+				myoption1: student.myoption1,
+				myoption2: student.myoption2,
+				myoption3: student.myoption3,
+				myoption4: student.myoption4,
+				myoption5: student.myoption5,
+				myoption6: student.myoption6,
+				myoption7: student.myoption7,
+				myoption8: student.myoption8
+			},
+			where: {
+				id: student.id
+			}
+		});
+        console.log(`data updated ${noOfDataUpdated}`);
+		setTimeout(() => { updateStudentPlayOrder(mygroup) }, 1000); // Executa após 5 segundos para esperar o processo de update/insert terminar
+		showGridAndHideForms();
         $('form').attr('data-student-id', null);
-        refreshTableData();
+		var mygroup = document.getElementById('mygroup').value;
+		var mycode = '';
+		var mytext = '';
+		var myorder = '';
+		refreshTableData(mycode, myorder, mygroup, mytext);
         refreshFormData({});
     } catch (ex) {
-        alert(ex.message);
+        console.log(ex.message);
     }
 }
 
-async function deleteStudent(id, group) {
+async function deleteStudent(id) {
     try {
-        if (group == '0') { //liryc
-			var noOfStudentRemoved = await jsstoreCon.remove({
-				from: 'Student',
-				where: {
-					id: id
-				}
-			});
-		} else if (group == '1') { //bible
-			var noOfStudentRemoved = await jsstoreCon.remove({
-				from: 'Bible',
-				where: {
-					id: id
-				}
-			});
-		} else if (group == '2') { //art
-			var noOfStudentRemoved = await jsstoreCon.remove({
-				from: 'Art',
-				where: {
-					id: id
-				}
-			});
-		}
+		var noOfStudentRemoved = await jsstoreCon.remove({
+			from: 'Student',
+			where: {
+				id: id
+			}
+		});
         console.log(`${noOfStudentRemoved} students removed`);
-        refreshTableData();
+		var mycode = document.getElementById('mycode').value;
+		var myorder = document.getElementById('myorder').value;
+		var mygroup = document.getElementById('mygroup').value;
+		var mytext = document.getElementById('mytext').value.trim();
+		refreshTableData(mycode, myorder, mygroup, mytext);
     } catch (ex) {
-        alert(ex.message);
+        console.log(ex.message);
     }
 }
 
@@ -1254,115 +1958,210 @@ function getButtonsBar() {
 	return htmlStringButtons;
 }
 
-function getStudentFromForm() {
+function getStudentFromForm(studentId, mygroup, mycode) {
 	var myorderFormated = '';
 	myorderFormated = '000' + $('#myorder').val();
 	myorderFormated = myorderFormated.substring(myorderFormated.length-3, myorderFormated.length);
+
+	var mycodeFormated = '';
+	mycodeFormated = '000' + $('#mycode').val();
+	mycodeFormated = mycodeFormated.substring(mycodeFormated.length-3, mycodeFormated.length);
+
+	var mygroup = document.getElementById('mygroupSim').value;
+	
+	setTimeout(() => { updateStudentPlayOrder($('#mygroup').val()) }, 1000); // Executa após 5 segundos para esperar o processo de insert terminar
 	var student = {
-        id: Number($('form').attr('data-student-id')),
+        id: Number(studentId),
         mycode: $('#mycode').val(),
-		myorder: myorderFormated,
+//		myorder: myorderFormated,
+		mygroup: $('#mygroup').val(),
         mytext: $('#mytext').val(),
-        mysearch: removeSpecials($('#mytext').val()),
-        mycodeTextGroup: $('#selMycodeTextGroup').val(),
-        myrepeated: $('#myrepeated').val(),
-		myowner: 'iirf'
-//		myowner: 'hope'
+		mysearch: removeSpecials($('#mytext').val()),
+		myoption1: $('#myoption1').val(),
+		myoption2: $('#myoption2').val(),
+		myoption3: $('#myoption3').val(),
+		myoption4: $('#myoption4').val(),
+		myoption5: $('#myoption5').val(),
+		myoption6: $('#myoption6').val(),
+		myoption7: $('#myoption7').val(),
+		myoption8: $('#myoption8').val(),
+		mycorrect1answer: '',
+		mycorrect2answer: '',
+		mycorrect3answer: '',
+		mycorrect4answer: '',
+		mycorrect5answer: '',
+		mycorrect6answer: '',
+		mycorrect7answer: '',
+		mycorrect8answer: '',
+		myoptionkey1: $('#myoptionkey1').val(),
+		myoptionkey2: $('#myoptionkey2').val(),
+		myoptionkey3: $('#myoptionkey3').val(),
+		myoptionkey4: $('#myoptionkey4').val(),
+		myoptionkey5: $('#myoptionkey5').val(),
+		myoptionkey6: $('#myoptionkey6').val(),
+		myoptionkey7: $('#myoptionkey7').val(),
+		myoptionkey8: $('#myoptionkey8').val()
     };
     return student;
 }
 
-function setStudentFromImport(mycode, myorder, mytext, mycodeTextGroup, myrepeated) {
+function setStudentFromImport(mygroup, mycode, myorder, mytext, myoption1, myoptionkey1, myoption2, myoptionkey2, myoption3, myoptionkey3, myoption4, myoptionkey4, myoption5, myoptionkey5, myoption6, myoptionkey6, myoption7, myoptionkey7, myoption8, myoptionkey8) {
+	document.getElementById('mygroup').value = mygroup;
 	document.getElementById('mycode').value = mycode;
 	document.getElementById('myorder').value = myorder;
-	if (mytext == '') {
-		document.getElementById('mytext').value = ' ';
+	document.getElementById('mytext').value = mytext;
+	document.getElementById('myoption1').value = myoption1;
+	document.getElementById('myoption2').value = myoption2;
+	document.getElementById('myoption3').value = myoption3;
+	document.getElementById('myoption4').value = myoption4;
+	document.getElementById('myoption5').value = myoption5;
+	document.getElementById('myoption6').value = myoption6;
+	document.getElementById('myoption7').value = myoption7;
+	document.getElementById('myoption8').value = myoption8;
+	document.getElementById('myoptionkey1').value = myoptionkey1;
+	document.getElementById('myoptionkey2').value = myoptionkey2;
+	document.getElementById('myoptionkey3').value = myoptionkey3;
+	document.getElementById('myoptionkey4').value = myoptionkey4;
+	document.getElementById('myoptionkey5').value = myoptionkey5;
+	document.getElementById('myoptionkey6').value = myoptionkey6;
+	document.getElementById('myoptionkey7').value = myoptionkey7;
+	document.getElementById('myoptionkey8').value = myoptionkey8;
+//	alert(' mygroup='+document.getElementById('mygroup').value + '\n mycode='+document.getElementById('mycode').value + '\n myorder='+myorder + '\n mytext=[' +mytext+']\n' + '\n '+myoption1 + ', '+myoptionkey1 + '\n '+myoption2 + ', '+myoptionkey2 + '\n '+myoption3 + ', '+myoptionkey3 + '\n '+myoption4 + ', '+myoptionkey4 + '\n '+myoption5 + ', '+myoptionkey5 + '\n '+myoption6 + ', '+myoptionkey6 + '\n '+myoption7 + ', '+myoptionkey7 + '\n '+myoption8 + ', '+myoptionkey8);
+    $('#divFormAddUpdate').show();
+}
+
+function showCorrect(valorindice, myid, mygroup, mycode) {
+	if (document.getElementById('chkMycorrect'+valorindice+'answer').checked == true) {
+		document.getElementById('lblcorrect' + valorindice).style.display='block';
 	} else {
-		document.getElementById('mytext').value = mytext;
+		document.getElementById('lblcorrect' + valorindice).style.display='none';
 	}
-	document.getElementById('selMycodeTextGroup').selectedIndex = mycodeTextGroup;
-	document.getElementById('myrepeated').selectedIndex = myrepeated;
-	document.getElementById('myowner').value = 'iirf';
-//	document.getElementById('myowner').value = 'hope';
-    $('#formAddUpdate').show();
+	updateStudentPlay(myid, mygroup, mycode);
+//	alert('id='+id + ' mygroup='+mygroup + ' mycode='+mycode);
+}
+
+function showFormSim() {
+    $('#tblGrid').hide();
+    $('#divFormAddUpdate').hide();
+	$('#divGear').hide();
+	$('#divcontent').hide();
+	$('#formBible').hide();
+	$('#divconfig').hide();
+	$('#divGearAddNewLiryc').hide();
+	$('#divFormSim').show();
+	$('#divdashboard').hide();
+	$('#divbuttons').hide();
+	document.getElementById('tableButtons').style.display='none';
 }
 
 function showFormAddUpdate() {
     $('#tblGrid').hide();
-    $('#formAddUpdate').show();
+    $('#divFormAddUpdate').show();
 	$('#divGear').hide();
 	$('#divcontent').hide();
 	$('#formBible').hide();
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
+	$('#divFormSim').hide();
+	$('#divdashboard').hide();
 }
 
 function showGridAndHideForms() {
     $('#tblGrid').show();
-    $('#formAddUpdate').hide();
+    $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
 	$('#divcontent').hide();
 	$('#formBible').hide();
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
+	$('#divFormSim').hide();
+	$('#divdashboard').hide();
+
+//	if (document.getElementById('btnPlay') != null) { document.getElementById('btnPlay').style.display=''; }
+//	if (document.getElementById('btnAddNewManual') != null) { document.getElementById('btnAddNewManual').style.display=''; }
+//	if (document.getElementById('btnGear') != null) { document.getElementById('btnGear').style.display=''; }
+	if (document.getElementById('tableButtons') != null) { document.getElementById('tableButtons').style.display=''; }
 }
 
 function showAddNewManual() {
 	$('#divGearAddNewLiryc').show();
     $('#tblGrid').hide();
-    $('#formAddUpdate').hide();
+    $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
 	$('#divcontent').hide();
 	$('#formBible').hide();
 	$('#divconfig').hide();
+	$('#divFormSim').hide();
+	$('#divdashboard').hide();
 }
 
 function showFormGear() {
     $('#tblGrid').hide();
-//    $('#formAddUpdate').hide();
+    $('#divFormAddUpdate').hide();
 	$('#divGear').show();
 	$('#divcontent').hide();
 	$('#formBible').hide();
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
+	$('#divFormSim').hide();
+	$('#divdashboard').hide();
 }
 
 function showFormImport() {
     $('#tblGrid').hide();
-    $('#formAddUpdate').hide();
+    $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
 	$('#divcontent').show();
 	$('#formBible').hide();
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
+	$('#divFormSim').hide();
+	$('#divdashboard').hide();
+}
+
+function showFormDashboard() {
+    $('#tblGrid').hide();
+    $('#divFormAddUpdate').hide();
+	$('#divGear').hide();
+	$('#divcontent').hide();
+	$('#formBible').hide();
+	$('#divconfig').hide();
+	$('#divGearAddNewLiryc').hide();
+	$('#divFormSim').hide();
+	$('#divdashboard').show();
 }
 
 function showBible() {
     $('#tblGrid').hide();
-    $('#formAddUpdate').hide();
+    $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
 	$('#divcontent').hide();
 	$('#formBible').show();
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
+	$('#divFormSim').hide();
+	$('#divdashboard').hide();
 }
 
 function showIniciarConfiguracao() {
     $('#tblGrid').hide();
-    $('#formAddUpdate').hide();
+    $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
 	$('#divcontent').hide();
 	$('#formBible').hide();
 	$('#divconfig').show();
 	$('#divGearAddNewLiryc').hide();
+	$('#divFormSim').hide();
+	$('#divdashboard').hide();
+//	document.getElementById('btnPlay').style.display='none';
+//	document.getElementById('btnAddNewManual').style.display='none';
+//	document.getElementById('btnGear').style.display='none';
 }
 
 function showForm1Form2() {
-	openOwner(document.getElementById('config_myowner').value);
-	openLogo('logo/logo.png');
-	openImagemFundo(localStorage.getItem('valuePlanoFundoMestre'));
-	var DataShow_Tela2 = window.open("datashowtela2.html", "datashowtela2", "top=1200, width=600, height=500, left=1200, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
-	var DataShow_Tela1 = window.open("datashowtela1.html", "datashowtela1", "top=0, width=350, height=260, left=1200, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
+//	openOwner(document.getElementById('config_myowner').value);
+//	openLogo('logo/logo.png');
+//	openImagemFundo(localStorage.getItem('valuePlanoFundoMestre'));
 }
 
 function openOwner(owner) {
@@ -1378,17 +2177,25 @@ function openImagemFundo(filename) {
 		//var extensao = filename.toLowerCase().substring((filename.length-3), filename.length);
 		localStorage.setItem('valuePlanoFundoMestre', filename);
     } catch (ex) {
-        alert(ex.message);
+        console.log(ex.message);
     }
 }
 
 function refreshFormData(student) {
     $('form').attr('data-student-id', student.id);
+    $('#mygroup').val(student.mygroup);
     $('#mycode').val(student.mycode);
     $('#myorder').val(student.myorder);
     $('#mytext').val(student.mytext);
     $('#mysearch').val(student.mysearch);
-    $('#myrepeated').val(student.myrepeated);
+    $('#myoption1').val(student.myoption1);
+    $('#myoption2').val(student.myoption2);
+    $('#myoption3').val(student.myoption3);
+    $('#myoption4').val(student.myoption4);
+    $('#myoption5').val(student.myoption5);
+    $('#myoption6').val(student.myoption6);
+    $('#myoption7').val(student.myoption7);
+    $('#myoption8').val(student.myoption8);
 }
 
 function scrollOverflow(overflow) {
@@ -1515,7 +2322,7 @@ function clickElem(elem) {
 function openFile(func, content) {
 	readFile = function(e) {
 		var file = e.target.files[0];
-		//alert(file.name);
+		//console.log(file.name);
 		if (!file) {
 			document.getElementById(content).style.display='none';
 			return;
@@ -1554,7 +2361,11 @@ function moveCursor(mycode, col, evento, index) {
 				setColor(index, localStorage.getItem('valueAoVivo'));
 			}
 			document.getElementById('txtSearch').value = removeSpecials(index.trim());
-			refreshTableData();
+			var mycode = document.getElementById('mycode').value;
+			var myorder = document.getElementById('myorder').value;
+			var mygroup = document.getElementById('mygroup').value;
+			var mytext = document.getElementById('mytext').value.trim();
+			refreshTableData(mycode, myorder, mygroup, mytext);
 		}
     } else if (evento.keyCode == 27 || event.which == 27) { //ESC
 		if (localStorage.getItem('valueAoVivo') == 'false') {
@@ -1588,7 +2399,7 @@ function moveCursor(mycode, col, evento, index) {
 
 //https://www.ti-enxame.com/pt/jquery/use-setas-para-navegar-em-uma-tabela-html/1046534083/
 function datashow(index, col, code) {
-//alert(document.getElementById('datashow' + index).innerHTML);
+//console.log(document.getElementById('datashow' + index).innerHTML);
 	if (document.getElementById('datashow' + index) == null) { //não permite mover o foco para fora da tabela e dar erro de código
 		return;
 	}
@@ -1600,7 +2411,11 @@ function datashow(index, col, code) {
 		//Com o click, seleciona apenas uma letra da lista de pesquida
 		if (document.getElementById('txtSearch').value != removeSpecials(code.trim())) {
 			document.getElementById('txtSearch').value = removeSpecials(code.trim());
-			refreshTableData();
+			var mycode = document.getElementById('mycode').value;
+			var myorder = document.getElementById('myorder').value;
+			var mygroup = document.getElementById('mygroup').value;
+			var mytext = document.getElementById('mytext').value.trim();
+			refreshTableData(mycode, myorder, mygroup, mytext);
 		}
 		localStorage.setItem('valueAutor', ' ');
 		if (localStorage.getItem('valueArt') == '2') {
@@ -1649,9 +2464,13 @@ function chooseChapter(content) {
 	if (document.getElementById('txtSearch').value.length = 2) {
 		var sizeSearch = document.getElementById('txtSearch').value.length;
 		document.getElementById('txtSearch').value = document.getElementById('txtSearch').value.substring(0, sizeSearch) + content + ';';
-		refreshTableData();
+		var mycode = document.getElementById('mycode').value;
+		var myorder = document.getElementById('myorder').value;
+		var mygroup = document.getElementById('mygroup').value;
+		var mytext = document.getElementById('mytext').value.trim();
+		refreshTableData(mycode, myorder, mygroup, mytext);
 		if (document.getElementById('txtSearch').value.length <= 1) { // pesquisa somente com mais de 1 caracter preenchido no campo search
-			if (document.getElementById('selMycodeTextGroup').selectedIndex == '1') {
+			if (document.getElementById('selectMygroup').selectedIndex == '1') {
 				showBible();
 			}
 		} else {
@@ -1696,3 +2515,15 @@ function getCookie(cname) {
   }
   return "";
 }
+
+//COMMANDS window.location
+//hash	parte (#) de uma URL
+//host	nome de host e número de porta de uma URL
+//hostname	hostname de um URL
+//href	URL inteira
+//origin	protocolo, hostname e número de porta de uma URL
+//pathname	caminho de um URL
+//port	número de porta de um URL
+//protocol	protocolo de um URL
+//search	consulta parte de um URL
+//https://jsstore.net/tutorial/get-started/

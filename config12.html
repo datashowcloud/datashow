@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Configuração Sim</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/bootstrap.css" />
+    <link rel="stylesheet" href="style/font-awesome.min.css" />
+    <script src="scripts/jsstore.js"></script>
+    <script src="scripts/jsstore.worker.js"></script>
+    <script src="index.js"></script>
+	<style>
+#myBody {
+  border: 0px dashed blue;
+  padding: 25px;
+  background-attachment: fixed;
+  background-position: top; 
+  background-repeat: no-repeat;
+} 
+	</style>
+</head>
+
+<body id="myBody" ZZZbackground="gallery/paper.jpeg">
+
+        
+		
+		<div class="col-xs-12 col-sm-10 col-centered ">
+			<div style="display:'none'; text-align:center; ">
+				<!-- br/>Aguarde o resultado na janela da configuração -->
+				<button class="btn btn-info" onclick="window.close();" style="padding:9px 15px 9px 15px;"><i class="fa fa-lock"></i> Parabéns! Você liberou uma fase. <i class="fa fa-unlock"></i></button>
+				
+				<select id="selectMygroup" name="selectMygroup" style="height:34px; display:none;">
+					<option value="00" selected>Configurações</option>
+					<option value="10">Nível 1.0</option>
+					<option value="11">Nível 1.1</option>
+					<option value="12">Nível 1.2</option>
+					<option value="13">Nível 1.3</option>
+					<option value="14">Nível 1.4</option>
+					<option value="20">Nível 2.0</option>
+					<option value="21">Nível 2.1</option>
+					<option value="22">Nível 2.2</option>
+					<option value="23">Nível 2.3</option>
+					<option value="30">Nível 3.0</option>
+					<option value="31">Nível 3.1</option>
+					<option value="32">Nível 3.2</option>
+					<option value="33">Nível 3.3</option>
+					<option value="40">Nível 4.0</option>
+					<option value="41">Nível 4.1</option>
+					<option value="42">Nível 4.2</option>
+					<option value="43">Nível 4.3</option>
+				</select>
+				<label id="bSearch" style="display:none;">
+					<input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:200px; height:34px;">
+				</label>
+			</div>
+		</div>
+		
+		<table id="tblGrid" style="width:98%" class="table table-hover ">
+			<tbody>
+					<!--
+				<div id="botoes" style="display:none; text-align:center;">
+				</div>
+					-->
+			</tbody>
+		</table>
+
+		<div id="divcontent" style="display:none;"></div>
+
+		<!-- form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post" -->
+		<!-- /form -->
+		
+		<div class="form-group" id="divFormSim" style="display:none;">
+			<font size=4.9 style=text-align:justify>
+				<table border=0 align=center width="100%">
+					<tr><td>
+						<button id="btnBackward" class="btn btn-danger" style="display:none;"> <i class="fa fa-remove"></i> </button>
+						<button id="btnPrevious" class="btn btn-default" style="display:none;"> <i class="fa fa-chevron-left"></i></button>
+						<button id="btnNext" class="btn btn-success" style="display:none;">Próximo <i class="fa fa-chevron-right"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-signal"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-pause"></i></button>
+						<button class="btn btn-warning" style="display:none;"><i class="fa fa-check"></i> Fim</button>
+					</td></tr>
+					<tr><td id="mytextSim" style="display:none; text-align:justify;">
+					</td></tr>
+					<tr><td id="mycorrect1Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect1answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect2Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect2answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect3Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect3answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect4Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect4answer"></div>
+					</td></tr>
+
+					<tr><td id="myincorrect1Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect1answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect2Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect2answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect3Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect3answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect4Sim" style="display:none; text-align:justify;">
+						<div id="myincorrecta4answer"></div>
+					</td></tr>
+					<tr><td>
+						<br/><input type="text" id="mygroupSim" value="" Zhidden="">
+						<br/><input type="text" id="mycodeSim" value="" Zhidden="">
+						<br/><input type="text" id="myorderSim" value="" Zhidden="">
+						<br/><input type="text" id="myidSim" value="" Zhidden="">
+					</td></tr>
+				</table>
+			</font>
+		</div>
+
+		<div class="form-group" id="divFormAddUpdate" style="display:none;">
+			<table border=0 align=center width="98%"><tr><td>
+				<b>Formulário Editor de Perguntas</b>
+				<p/><p/>
+				<select id="mygroup" name="mygroup" style="height:35px; display:none;">
+					<option value="00" selected>Configurações</option>
+					<option value="10">Nível 1.0</option>
+					<option value="11">Nível 1.1</option>
+					<option value="12">Nível 1.2</option>
+					<option value="13">Nível 1.3</option>
+					<option value="14">Nível 1.4</option>
+					<option value="20">Nível 2.0</option>
+					<option value="21">Nível 2.1</option>
+					<option value="22">Nível 2.2</option>
+					<option value="23">Nível 2.3</option>
+					<option value="30">Nível 3.0</option>
+					<option value="31">Nível 3.1</option>
+					<option value="32">Nível 3.2</option>
+					<option value="33">Nível 3.3</option>
+					<option value="40">Nível 4.0</option>
+					<option value="41">Nível 4.1</option>
+					<option value="42">Nível 4.2</option>
+					<option value="43">Nível 4.3</option>
+				</select>
+				<select id="mycode" name="mycode" style="height:35px; display:none;"></select>
+				<select id="myorder" name="myorder" style="height:35px; display:none;"></select>
+				<p/>
+				<p/><textarea name="mytext" id="mytext" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui..."></textarea>
+				<font style="color:green;">
+					Corretas:
+					<textarea name="myoption1" id="myoption1" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey1" id="myoptionkey1" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption2" id="myoption2" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey2" id="myoptionkey2" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption3" id="myoption3" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey3" id="myoptionkey3" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption4" id="myoption4" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey4" id="myoptionkey4" rows=1 placeholder="explicação..."></textarea>
+				</font>
+				
+				<font style="color:red; text-align:left;">
+					Incorretas:
+					<textarea name="myoption5" id="myoption5" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey5" id="myoptionkey5" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption6" id="myoption6" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey6" id="myoptionkey6" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption7" id="myoption7" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey7" id="myoptionkey7" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption8" id="myoption8" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey8" id="myoptionkey8" rows=1 placeholder="explicação..."></textarea>
+				</font>
+				<p/><p/>
+				<button id="btnSubmit" type="button" class="btn btn-primary" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-check"></i> Salvar</button>
+				<p/><p/>
+				<button id="btnCancel" type="button" class="btn btn-default" style="padding:9px 15px 9px 15px;margin-left:10px; width:110px;"> <i class="fa fa-times"></i> Não Salvar</button>
+			</td></tr></table>
+		</div>
+		
+		<div id="divcontent" style="display:none;">
+
+<!-- Configuração: 1 -->
+<br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
+<p>
+FASE 1.2
+
+<p>
+Sua empresa iniciou um processo de transformação digital de todas as suas plataformas e decidiu utilizar uma arquitetura de sistemas orientada a eventos para desacoplar os sistemas. Qual dos serviços abaixo pode ser utilizado como um barramento escalável de eventos para facilitar a criação dessa arquitetura?
+
+Amazon SQS (Simple Queue Service)
+<key>SQS</key>
+
+Amazon EventSync
+<key>EventSync</key>
+
+Amazon Lambda
+<key>Lambda</key>
+
+<ok>
+Amazon EventBridge
+<key>EventBridge</key>
+
+<p>
+Qual é o banco de dados relacional que é totalmente gerenciado pela AWS e pode ser 5 x mais rápido que o MySQL?
+
+<ok>
+Aurora
+<key>Aurora</key>
+
+DynamoDB
+<key>DynamoDB</key>
+
+MariaDB
+<key>MariaDB</key>
+
+Neptune
+<key>Neptune</key>
+
+<p>
+Quais itens fazem parte dos pilares do Well-Architected Framework?
+<br/>(Selecione 2)
+
+<ok>
+Segurança
+<key>Well-Architected Framework</key>
+
+<ok>
+Excelência Operacional
+<key>Well-Architected Framework</key>
+
+Desacoplamento
+<key>Well-Architected Framework</key>
+
+Monitoramento
+<key>Well-Architected Framework</key>
+
+Escalabilidade
+<key>Well-Architected Framework</key>
+
+<p>
+Qual é o serviço que garante que você tenha o correto número de instâncias EC2 disponíveis para lidar com a carga da sua aplicação?
+
+<ok>
+EC2 Auto Scaling
+<key>Auto Scaling</key>
+
+Route53
+<key>Route53</key>
+
+ELB
+<key>ELB</key>
+
+VPC
+<key>VPC</key>
+
+<p>
+Qual serviço permite a criação de uma rede virtual totalmente isolada para alocar diversos recursos computacionais na AWS?
+
+AWS Dedicted Hosts
+<key>Dedicted Hosts</key>
+
+AWS Reserved
+<key>Não Se Aplica</key>
+
+<ok>
+AWS VPC
+<key>VPC</key>
+
+AWS Gateway
+<key>Não Se Aplica</key>
+
+<p>
+Recentemente você implementou uma aplicação piloto na sua empresa que foi um sucesso. Para realizar o rollout do projeto, a direção pediu que você apresente os gastos com infraestrutura AWS durante o período para avaliarem e aprovarem a expansão. Qual é o serviço da AWS que fornece essas informações?
+
+AWS Budgets
+<key>Budgets</key>
+
+<ok>
+AWS Cost Explorer
+<key>Cost Explorer</key>
+
+AWS Inspector
+<key>Inspector</key>
+
+AWS Trusted Advisor
+<key>Trusted Advisor</key>
+
+<p>
+Seu time de desenvolvimento identificou que devido ao grande volume de consultas que são realizadas e a concorrência com outras funções de acesso, a performance de um banco de dados relacional está comprometida. Qual é a indicação mais econômica para resolver esse cenário?
+
+Atualizar a role de acesso ao banco
+<key>IAM</key>
+
+Criar novas instâncias do RDS em outra zona de disponibilidade.
+<key>Multi-AZ</key>
+
+<ok>
+Fazer o uso de Read Replicas
+<key>Read Replicas</key>
+
+Substituir o RDS pelo Dynamo
+<key>RDS</key>
+
+<p>
+Qual é a forma de permitir que seus serviços sejam expostos sempre no mesmo endereço IP e de possibilitar que os hosts associados a ele sejam substituídos de forma simples na sua infraestrutura?
+
+Utilizando um IPV4
+<key>IPV4</key>
+
+<ok>
+Utilizando um IP Elástico
+<key>IP Elástico</key>
+
+Utilizando um IPV6
+<key>IPV6</key>
+
+Utilizando o Route 53
+<key>Route53</key>
+
+<p>
+Qual dos seguintes serviços de bancos de dados é totalmente gerenciado pela AWS?
+
+MySql
+<key>MySql</key>
+
+SQL Server
+<key>SQL Server</key>
+
+MariaDB
+<key>MariaDB</key>
+
+<ok>
+DynamoDB
+<key>DynamoDB</key>
+
+<p>
+Você está desenvolvendo uma aplicação mobile e precisa implementar o armazenamento e sincronismo de dados para vários dispositivos. Qual é o serviço AWS que pode ser utilizado para esse fim?
+
+AWS Elastic Cache
+<key>Elastic Cache</key>
+
+AWS DynamoDB
+<key>DynamoDB</key>
+
+AWS Redis
+<key>Redis</key>
+
+<ok>
+AWS Cognito
+<key>Cognito</key>
+
+<p>
+Qual é a quantidade de dados que podemos armazenar no S3?
+
+5 Gigabytes
+<key>Pricing</key>
+
+50 Gigabytes
+<key>Pricing</key>
+
+<ok>
+A capacidade é virtualmente ilimitada
+<key>Pricing</key>
+
+1 Terabyte
+<key>Pricing</key>
+
+<p>
+Utilização de recursos de rede, computadores virtuais e armazenamento de dados com alto nível de flexibilidade, gerenciamento e controle sobre os recurso de TI são características de qual tipo de uso de cloud?
+
+<ok>
+IAAS
+<key>IAAS</key>
+
+SAAS
+<key>SAAS</key>
+
+BAAS
+<key>BAAS</key>
+
+PAAS
+<key>PAAS</key>
+
+<p>
+Qual é o serviço utilizado para permitir que aplicações acessem recursos restritos de serviços dentro da AWS?
+
+IAM Policies
+<key>IAM Policies</key>
+
+IAM Groups
+<key>IAM Groups</key>
+
+IAM Users
+<key>IAM Users</key>
+
+<ok>
+IAM Roles
+<key>IAM Roles</key>
+
+<p>
+Você precisa implementar no seu site uma funcionalidade para realizar pesquisas em todas as páginas e arquivos para facilitar a navegação e experiência dos seus usuário. Qual SAAS disponível na AWS fornece ferramentas robustas para cumprir essa finalidade e que pode ser facilmente utilizada na sua aplicação?
+
+Amazon ElasticSearch
+<key>ElasticSearch</key>
+
+Amazon CloudWatch
+<key>CloudWatch</key>
+
+Amazon Athena
+<key>Athena</key>
+
+<ok>
+Amazon CloudSearch
+<key>CloudSearch</key>
+
+<p>
+Você irá disponibilizar uma aplicação crítica e com dados sensíveis na Internet. Qual é o serviço que te ajuda a identificar vulnerabilidades de segurança e risco de exposição de acordo com as melhores práticas e compliance?
+
+<ok>
+AWS Inspector
+<key>Inspector</key>
+
+AWS GuardDuty
+<key>GuardDuty</key>
+
+AWS KMS
+<key>KMS</key>
+
+AWS Macie
+<key>Macie</key>
+
+<p>
+
+</textarea>
+
+		</div>
+
+    <link href="style/main.css " rel="stylesheet " type="text/css " />
+</body>
+
+</html>
+
+<script type="text/javascript">
+	onLoadConfig();
+</script>
