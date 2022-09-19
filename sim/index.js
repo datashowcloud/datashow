@@ -168,7 +168,7 @@ function registerEvents() {
 		}
     })
 	$('#btnBackward').click(function () {
-        showBackward();
+        restartFase();
     });
     $('#btnImportSim').click(function () {
 		showIniciarConfiguracao();
@@ -326,6 +326,14 @@ function registerEvents() {
 		getFromTable(id, mygroup, mycode);
 		showFormAddUpdate();
     });
+    $('#tblGrid tbody').on('click', '.restart', function () {
+		var row = $(this).parents().eq(1);
+        var child = row.children();
+		var myid = row.attr('itemid');
+		var mygroup = child.eq(0).text();
+		var mycode = child.eq(1).text();
+		restartFase(myid, mygroup, mycode);
+    });
     $('#tblGrid tbody').on('click', '.delete', function () {
         var result = confirm('Excluir, ok?');
         if (result) {
@@ -341,7 +349,7 @@ function registerEvents() {
 			var id = row.attr('itemid');
 			var mygroup = child.eq(0).text();
 			var mycode = child.eq(1).text();
-			refreshTableQuestion(id, mygroup, mycode);
+			refreshTableQuestion(id, mygroup, '1');
 			showFormSim();
 //        }
     });		
@@ -567,10 +575,9 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 	}
 }
 
-function showBackward() {
-	var result = confirm('Vou limpar e reorganizar todas respostas, ok?');
+function restartFase(myid, mygroup, mycode) {
+	var result = confirm('Vou limpar e reiniciar essa fase, ok?');
 	if (result) {
-		var mygroup = document.getElementById('mygroupSim').value;
 		updateStudentPlayOrder(mygroup);
 		updateStudentPlayClear(mygroup);
 		showGridAndHideForms();
@@ -824,35 +831,6 @@ async function showPoints(mygroup, mycode) {
 	alert(resultado);
 }
 
-function setDivDashboard(myid, mygroup, mycode, totalperguntas, calculo, totalIncorretas, totalCorretas, totalNaoRespondidas) {
-	var aprovacao = '';
-	var dashboard = '';
-/*	dashboard = dashboard + '<button id="btnReview" onclick="refreshTableQuestion('+myid+', '+mygroup+', '+mycode+'); changeFaseNivel('+myid+', '+mygroup+', '+mycode+'); location.reload();" class="btn btn-success"><i class="fa fa-chevron-left"></i></button>';
-	dashboard = dashboard + ' <button id="btnPause" class="btn btn-info" disabled><i class="fa fa-pause"></i></button>';
-	dashboard = dashboard + ' <button id="btnBackward" class="btn btn-danger" disabled> <i class="fa fa-refresh"></i></button>';
-	dashboard = dashboard + ' <button id="btnPoints" class="btn btn-warning" disabled><i class="fa fa-check-square-o"></i></button>';
-	dashboard = dashboard + ' <button id="btnFinish" onclick="refreshTableQuestion('+myid+', '+mygroup+', '+mycode+'); changeFaseNivel('+myid+', '+mygroup+', '+mycode+'); location.reload();" class="btn btn-success"><i class="fa fa-chevron-right"></i> Próximo</button>';
-	dashboard = dashboard + '<br/><br/>';
-*/	dashboard = dashboard + '<p/><p/>';
-	dashboard = dashboard + '<label class="btn btn-default" style="padding:9px 15px 9px 15px;">Total: ' + totalperguntas;
-	dashboard = dashboard + '<br/><br/>';
-	dashboard = dashboard + '<label class="btn btn-danger" style="padding:9px 15px 9px 15px;">Incorretas: ' + totalIncorretas;
-	dashboard = dashboard + '<br/><br/>';
-	dashboard = dashboard + '<label class="btn btn-success" style="padding:9px 15px 9px 15px;">Corretas: ' + totalCorretas;
-	dashboard = dashboard + '<br/><br/>';
-	dashboard = dashboard + '<label class="btn btn-warning" style="padding:9px 15px 9px 15px;">Não Respondidas: ' + totalNaoRespondidas;
-	if (calculo >= 70) {
-		calculo = 'APROVADO <br/>' + calculo + '% de acerto é >= 70%';
-	} else {
-		calculo = 'REPROVADO <br/>' + calculo + '% de acerto é < 70%';
-	}
-	dashboard = dashboard + '<br/><br/>';
-	dashboard = dashboard + '<label class="btn btn-default" style="padding:9px 15px 9px 15px; cursor:default;">' + calculo;
-	dashboard = dashboard + '</label></label></label></label></label>';
-	dashboard = dashboard + '<p/><p/><button id="btnFinish" onclick="location.reload();" class="btn btn-success"><i class="fa fa-envelope"></i> Concluir</button>';
-	document.getElementById('divdashboard').innerHTML = dashboard;
-}
-
 //This function select table play
 async function refreshTableQuestion(myid, mygroup, mycode) {
 //    try {
@@ -871,17 +849,22 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 			  }
 		});
 		
+		var studentsDashboard = await jsstoreCon.select({
+			from: 'Student'
+			  , where: { mygroup: mygroup 
+			  }
+		});
+		var totalCorretas = getTotalCorretas(mygroup, mycode, studentsDashboard);
+		var totalIncorretas = getTotalIncorretas(mygroup, mycode, studentsDashboard);
+		var totalNaoRespondidas = getTotalNaoRespondidas(mygroup, mycode, studentsDashboard);
+		var calculo = calculaPercentualAcerto(mygroup, mycode, totalCorretas, totalperguntas);
+		document.getElementById('txtTotal').value = 'Total: ' + totalperguntas;
+		document.getElementById('txtIncorretas').value = 'Incorretas: ' + totalIncorretas;
+		document.getElementById('txtCorretas').value = 'Corretas: ' + totalCorretas;
+		document.getElementById('txtNaoRespondidas').value = 'Não Respondidas: ' + totalNaoRespondidas;
+		document.getElementById('txtCalculo').value = 'Índice de acerto: ' + calculo + '%';
+		
 		if (students == '') {
-			var students = await jsstoreCon.select({
-				from: 'Student'
-				  , where: { mygroup: mygroup 
-				  }
-			});
-			var totalCorretas = getTotalCorretas(mygroup, mycode, students);
-			var totalIncorretas = getTotalIncorretas(mygroup, mycode, students);
-			var totalNaoRespondidas = getTotalNaoRespondidas(mygroup, mycode, students);
-			var calculo = calculaPercentualAcerto(mygroup, mycode, totalCorretas, totalperguntas);
-			setDivDashboard(myid, mygroup, mycode, totalperguntas, calculo, totalIncorretas, totalCorretas, totalNaoRespondidas);
 			showFormDashboard();
 		} else {
 			students.forEach(function (student) {
@@ -1092,36 +1075,38 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 
 		var htmlString = "";
 		var varTdTh = '';
-		var varText = '';
+//		var varText = '';
 //		var varPlay = '';
+		var varRestart = '';
 		var varEdit = '';
 		var varDel = '';
 		var htmlStringButtons = ""; //getButtonsBar();
 
 		students.forEach(function (student) {
-			varText = "<a href=\"#\" class=\"playsim\">" + student.mytext + "</a>";
 			if (student.mycode == '0') {
 				varTdTh = 'th';
 //				varPlay = "<a href=\"#\" class=\"playsim\" style=\"color:#00FF00;\">Start</a>";
 				varEdit = "&nbsp;<a href=\"#\" class=\"edit\" style=\"color:#0000FF;\">Edit</a>";
+				varRestart = "&nbsp;<i class=\"fa fa-refresh\"></i> <a href=\"#\" class=\"restart\" style=\"color:#0000FF;\">reiniciar fase</a>";
                 varDel = "&nbsp;<a href=\"#\" class=\"delete\" style=\"color:#FF0000;\">Del</a>";
 			} else {
 				varTdTh = 'td';
 //				varPlay = "<button class=\"playsim\" style=\"color:#00FF00;\"><i class=\"fa fa-play\"></i></button>";
 				varEdit = "<button class=\"edit\" style=\"color:#0000FF;\" ><i class=\"fa fa-pencil\"></i></button>";
 				varDel = "<button class=\"delete\" style=\"color:#FF0000;\" ><i class=\"fa fa-times\"></i></button>";
-/*
+
 //				varPlay = "<a href=\"#\" class=\"playsim\"><i class=\"fa fa-play\" style=\"color:#00FF00; height:25px; Xwidth:25px; \"></i></a>";
-				varEdit = "<a href=\"#\" class=\"edit\"><i class=\"fa fa-pencil\" style=\"color:#0000FF; height:25px; Xwidth:25px; \"></i></a>";
-				varDel = "<a href=\"#\" class=\"delete\"><i class=\"fa fa-times\" style=\"color:#FF0000; height:25px; Xwidth:25px;\"></i></a>";
-*/
+				varRestart = "<a href=\"#\" class=\"restart\"><i class=\"fa fa-refresh\" style=\"color:#0000FF; height:25px; Xwidth:25px; \"></i></a>";
+//				varEdit = "<a href=\"#\" class=\"edit\"><i class=\"fa fa-pencil\" style=\"color:#0000FF; height:25px; Xwidth:25px; \"></i></a>";
+//				varDel = "<a href=\"#\" class=\"delete\"><i class=\"fa fa-times\" style=\"color:#FF0000; height:25px; Xwidth:25px;\"></i></a>";
+
 			}
 			
 			htmlString += "<tr ItemId=" + student.id + ">"
 				+ "<td style=\"color:#000000; font-size:1px; \">" + student.mygroup + "</td>"
-                + "<td style=\"color:#000000; font-size:1px;\">" + student.mycode + "</td>"
+ //               + "<td style=\"color:#000000; font-size:1px;\">" + student.mycode + "</td>"
 				+ "<" + varTdTh + " id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " ZZZonClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
-				+ varText + "</" + varTdTh + ">"
+				+ "<a href=\"#\" class=\"playsim\">" + student.mytext + " <br/><i class=\"fa fa-play\"></i></a>" + "</" + varTdTh + ">"
 //				+ student.mytext + "</" + varTdTh + ">"
 /*				
 				+ "<" + varTdTh + " id=datashow" + student.id+"4" + " tabIndex=" + student.id+"4" + " ZZZonClick=\"datashow('" + student.id+"4" + "', 4, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 4, event, " + "" + (student.id+"4") + ");\" data-show='" + student.id+"4" + "'>"
@@ -1132,6 +1117,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 */				
 				+ "<" + varTdTh + " nowrap id=datashow" + student.id+"6" + " tabIndex=" + student.id+"6" + " ZZZonClick=\"datashow('" + student.id+"6" + "', 6, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 6, event, " + "" + (student.id+"6") + ");\" data-show='" + student.id+"6" + "'>"
 //				+ varPlay + ' '
+				+ varRestart + ' '
 //				+ varEdit + ' '
 //				+ '<p/>'
 //				+ varDel
@@ -2017,6 +2003,7 @@ function showFormSim() {
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').show();
 	$('#divdashboard').hide();
+	$('#divbuttons').hide();
 	document.getElementById('tableButtons').style.display='none';
 }
 
@@ -2043,9 +2030,9 @@ function showGridAndHideForms() {
 	$('#divFormSim').hide();
 	$('#divdashboard').hide();
 
-	if (document.getElementById('btnPlay') != null) { document.getElementById('btnPlay').style.display=''; }
+//	if (document.getElementById('btnPlay') != null) { document.getElementById('btnPlay').style.display=''; }
 //	if (document.getElementById('btnAddNewManual') != null) { document.getElementById('btnAddNewManual').style.display=''; }
-	if (document.getElementById('btnGear') != null) { document.getElementById('btnGear').style.display=''; }
+//	if (document.getElementById('btnGear') != null) { document.getElementById('btnGear').style.display=''; }
 	if (document.getElementById('tableButtons') != null) { document.getElementById('tableButtons').style.display=''; }
 }
 
