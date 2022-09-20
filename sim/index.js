@@ -12,25 +12,27 @@ window.onload = function () {
 	var mycode = '0';
 	var mytext = '';
 	var myorder = '';
+	var mygroup = '';
 //	var mygroup = selectMygroup.value.trim();
 //	if (mygroup != '00') {
 //		mycode = '0';
 //	}
-	mygroup = '';
+
 	refreshTableData(mycode, myorder, mygroup, mytext);
 	
     registerEvents();
     initDb();
 //	initDbDashboard();
 	getConfigGeneral();	
+	initLinkHelp();
+	
 	document.getElementById('myBody').style.background = GLOBAL_background;
+//	refreshLinkHelp();
 
 	loadCombobox('mygroup', '0', '100', 'Teste');
 	loadCombobox('mycode', '0', '100', 'Número');
 	loadCombobox('myorder', '0', '100', 'Ordem');
-
-	refreshLinkHelp();
-
+	
 //	showForm1Form2();
 	$('#selectMygroup').focus();
 	$('#selectMygroup').select();
@@ -39,6 +41,104 @@ window.onload = function () {
 //	setCookie('valueText3', '', '1');
 
 };
+
+function initLinkHelp() {
+	var linkhelp = ' <b>MINHA AJUDA</b> <br/><br/>';
+	
+	linkhelp = linkhelp + getLinkHelp('Well-Architected Framework', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', 'Os pilares são: <br/>Excelência operacional, <br/>Segurança, <br/>Confiabilidade, <br/>Eficiência de desempenho, <br/>Otimização de custos, <br/>Sustentabilidade');
+	linkhelp = linkhelp + getLinkHelp('Não Se Aplica', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', 'Não Se Aplica na AWS');
+	linkhelp = linkhelp + getLinkHelp('EC2', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', 'O Amazon EC2 (Elastic Compute Cloud) oferece uma capacidade de computação escalável na Nuvem da Amazon Web Services (AWS). O uso do Amazon EC2 elimina a necessidade de investir em hardware inicialmente, portanto, você pode desenvolver e implantar aplicativos com mais rapidez.');
+	linkhelp = linkhelp + getLinkHelp('S3', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', 'O Amazon S3 (Simple Storage Service) é um serviço de armazenamento de objetos que armazena dados como objetos em buckets. Um objeto é um arquivo e quaisquer metadados que descrevam o arquivo. Um bucket é um contêiner de objetos. Você pode controlar o acesso a grupos de objetos que começam com um prefixo ou termine com uma determinada extensão, exemplos de arquivos estáticos: .html, .js, .cs.');
+	linkhelp = linkhelp + getLinkHelp('Storage Classes', 'https://aws.amazon.com/pt/s3/storage-classes/', 'Opção padrão (default) de armazenamento de objetos com altos níveis de resiliência, disponibilidade e performance para dados acessados com frequência. Tem baixa latência e alto throughput.<br/>1 Standard (padrão),<br/>2 Intelligent Tiering,<br/>3 Standard-IA,<br/>4 One Zone-IA,<br/>5 Glacier Instant Retrieval,<br/>6 Glacier Flexible,<br/>7 Glacier Deep Archive,<br/>8 Outposts.');
+	linkhelp = linkhelp + getLinkHelp('Frequent Access', 'https://aws.amazon.com/pt/s3/storage-classes/', 'A S3 Intelligent-Tiering (camada inteligente) oferece latência de milissegundos e alta performance de taxa de transferência para dados acessados com muita frequência, com pouca frequência e raramente acessados nos níveis Frequent Access, Infrequent Access e o Archive Instant Access.');
+	linkhelp = linkhelp + getLinkHelp('Infrequent Access', 'https://aws.amazon.com/pt/s3/storage-classes/', 'Acesso infrequente do S3 Standard-IA é indicado para dados acessados com menos frequência, mas que exigem acesso rápido quando necessários. Oferece os altos níveis de resiliência e throughput e a baixa latência. Combina baixo custo e alta performance.');
+	linkhelp = linkhelp + getLinkHelp('Glacier', 'https://docs.aws.amazon.com/pt_br/amazonglacier/latest/dev/introduction.html', 'É uma classe de armazenamento do Amazon S3 segura, durável e de custo extremamente baixo para arquivamento de dados e backup de longo prazo.');
+	linkhelp = linkhelp + getLinkHelp('Intelligent Tiering', 'https://aws.amazon.com/pt/s3/storage-classes/', 'Intelligent Tiering (Camada Inteligente) oferece latência de milissegundos e alta performance de taxa de transferência para dados acessados com muita frequência, com pouca frequência e raramente acessados nos níveis Frequent Access, Infrequent Access e o Archive Instant Access.');
+	linkhelp = linkhelp + getLinkHelp('Standard', 'https://aws.amazon.com/pt/s3/storage-classes/', 'Standard oferece um armazenamento de objetos com altos níveis de resiliência, disponibilidade e performance para dados acessados com frequência. Como fornece baixa latência e alto throughput, o S3 Standard é adequado para uma grande variedade de casos de uso, como aplicativos na nuvem, sites dinâmicos, distribuição de conteúdo, aplicativos móveis e de jogos e dados analíticos de big data.');
+	linkhelp = linkhelp + getLinkHelp('Princing Calculator', 'https://calculator.aws/#/', 'AWS Princing Calculator para estimar o custo para sua solução de arquitetura, antes do uso, antes da implementação. Configure uma estimativa de custo exclusivo que atenda às suas necessidades de negócios ou pessoais com produtos e serviços da AWS.');
+	linkhelp = linkhelp + getLinkHelp('Organizations', 'https://aws.amazon.com/pt/organizations/?nc2=type_a', 'AWS Organizations para criar novas contas da AWS e alocar recursos, agrupar contas para organizar seus fluxos de trabalho, aplicar políticas a contas ou grupos para governança e simplificar o faturamento usando um único método de pagamento para todas as suas contas.');
+	linkhelp = linkhelp + getLinkHelp('Billing', 'https://aws.amazon.com/pt/aws-cost-management/aws-billing/', 'AWS Billing é fácil entender facilmente seus gastos com a AWS, visualizar e pagar faturas, gerenciar preferências de faturamento e configurações de impostos e acessar serviços adicionais de Gerenciamento financeiro na nuvem. Avalie rapidamente se os seus gastos mensais estão alinhados a períodos anteriores, previsões ou orçamentos e investigue e tome medidas corretivas em tempo hábil.');
+	linkhelp = linkhelp + getLinkHelp('Cost Explorer', 'https://aws.amazon.com/pt/aws-cost-management/aws-cost-explorer/', 'AWS Cost Explorer permite visualizar, entender e gerenciar os custos e o uso da AWS ao longo do tempo relacionado ao gasto que já passou.');
+	linkhelp = linkhelp + getLinkHelp('SNS', 'https://aws.amazon.com/pt/sns/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc', 'Amazon SNS (Simple Notification Service) é um serviço gerenciado que fornece entrega de mensagens de editores para assinantes (também conhecido como Produtores e Consumidores). Os clientes podem se inscrever no tópico SNS e receber mensagens publicadas usando um tipo de endpoint compatível, como Amazon Kinesis Data Firehose, Amazon SQS, AWS Lambda, HTTP, e-mail, notificações push móveis e mensagens de texto móveis (SMS).');
+	linkhelp = linkhelp + getLinkHelp('SES', 'https://docs.aws.amazon.com/pt_br/ses/latest/dg/Welcome.html', 'Amazon SES (Simple Email Service) é uma plataforma de e-mail que oferece uma forma fácil e econômica para você enviar e receber e-mail usando seus próprios endereços de e-mail e domínios.');
+	linkhelp = linkhelp + getLinkHelp('SQS', 'https://aws.amazon.com/pt/sqs/', 'Amazon SQS (Simple Queue Service) oferece uma fila hospedada segura, durável e disponível que permite integrar e desacoplar sistemas de software e componentes distribuídos. O Amazon SQS oferece construções comuns, como filas de mensagens mortas e tags de alocação de custos.');
+	linkhelp = linkhelp + getLinkHelp('Modelo de uso', 'https://aws.amazon.com/pt/free/free-tier-faqs/', 'O nível gratuito da AWS oferece aos clientes a capacidade de explorar e testar gratuitamente serviços da AWS até os limites especificados para cada serviço. O nível gratuito é composto por três tipos diferentes de ofertas: um nível gratuito de 12 meses, uma oferta Always Free e testes de curto prazo.');
+	linkhelp = linkhelp + getLinkHelp('Open Source', 'https://www.redhat.com/pt-br/topics/open-source/what-is-open-source', 'Open Source é um termo que se refere ao software open source (OSS). Ele é um código projetado para ser acessado abertamente pelo público: todas as pessoas podem vê-lo, modificá-lo e distribuí-lo conforme suas necessidades.');
+	linkhelp = linkhelp + getLinkHelp('RDS', 'https://aws.amazon.com/pt/rds/', 'O Amazon Relational Database Service (Amazon RDS) é uma coleção de serviços gerenciados que facilita a configuração, operação e escalabilidade de bancos de dados na nuvem. Escolha entre sete opções de mecanismos bastante utilizados: Amazon Aurora compatível com MySQL, Amazon Aurora compatível com PostgreSQL, MySQL, MariaDB, PostgreSQL, Oracle e SQL Server.');
+	linkhelp = linkhelp + getLinkHelp('DynamoDB', 'https://aws.amazon.com/pt/dynamodb/', 'AWS DynamoDB é um banco de dados de chave-valor NoSQL, sem servidor e totalmente gerenciado, projetado para executar aplicações de alta performance em qualquer escala.');
+	linkhelp = linkhelp + getLinkHelp('MariaDB', 'https://aws.amazon.com/pt/rds/mariadb/', 'MariaDB é um banco de dados relacional de código aberto conhecido no mercado, que foi criado pelos desenvolvedores originais do MySQL. O Amazon RDS facilita a configuração, a operação e a escalabilidade de implantações do servidor MariaDB na nuvem.');
+	linkhelp = linkhelp + getLinkHelp('MySql', 'https://aws.amazon.com/pt/rds/mysql/', 'MySql é um banco de dados relacional de código aberto mais popular do mundo e o Amazon RDS facilita a configuração, a operação e a escalabilidade de implantações de MySQL na nuvem. Com o Amazon RDS, você pode implantar em minutos servidores MySQL escaláveis com capacidade de hardware econômica e redimensionável.');
+	linkhelp = linkhelp + getLinkHelp('SQL Server', 'https://aws.amazon.com/pt/rds/sqlserver/', 'SQL Server é um sistema de gerenciamento de bancos de dados relacionais desenvolvido pela Microsoft. O Amazon RDS for SQL Server facilita a configuração, a operação e a escalabilidade de implantações do SQL Server na nuvem.');
+	linkhelp = linkhelp + getLinkHelp('STS', 'https://aws.amazon.com/pt/about-aws/whats-new/2019/04/aws-security-token-service-sts-now-supports-enabling-the-global-sts-endpoint-to-issue-session-tokens-compatible-with-all-aws-regions/', 'AWS STS (Security Token Service) oferece suporte à habilitação do endpoint global do STS para emissão de tokens de sessão compatíveis com todas as regiões da AWS.');
+	linkhelp = linkhelp + getLinkHelp('SSH', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/ec2-key-pairs.html', 'SSH (Secure Socket Shell) é um par de chaves, que consiste em uma chave pública e uma chave privada, trata-se de um conjunto de credenciais de segurança usadas para provar sua identidade ao se conectar a uma instância do Amazon EC2.');
+	linkhelp = linkhelp + getLinkHelp('Storage Gateway', 'https://aws.amazon.com/pt/storagegateway/', 'Storage Gateway é um conjunto de serviços de armazenamento na nuvem híbrida que oferece acesso on-premises para armazenamento virtual na nuvem praticamente ilimitado.');
+	linkhelp = linkhelp + getLinkHelp('VPC', 'https://aws.amazon.com/pt/vpc/', 'O AWS VPC (Virtual Private Cloud) define e lança recursos da AWS em uma rede virtual isolada logicamente. Oferece controle total sobre seu ambiente de redes virtual, incluindo posicionamento de recursos, conectividade e segurança.');
+	linkhelp = linkhelp + getLinkHelp('DMS', 'https://aws.amazon.com/pt/dms/', 'DMS (Database Migration Service), ajuda você a migrar bancos de dados para a AWS de modo rápido e seguro. O banco de dados de origem permanece totalmente operacional durante a migração, minimizando o tempo de inatividade de aplicações que dependem do banco de dados.');
+	linkhelp = linkhelp + getLinkHelp('KMS', 'https://docs.aws.amazon.com/pt_br/kms/latest/developerguide/overview.html', 'AWS KMS (Key Management Service) é um serviço gerenciado que facilita a criação e o controle de chaves criptográficas usadas para proteger os dados. Para proteger e validar suas AWS KMS keys, o AWS KMS usa módulos de segurança de hardware (HSMs) de acordo com o Programa de validação de módulos criptográficos FIPS 140-2.');
+	linkhelp = linkhelp + getLinkHelp('EFS', 'https://aws.amazon.com/pt/efs/', 'AWS EFS (Elastic File System) é um sistema de arquivos simples (não objetos, como: html, js, css) e sem servidor para definição única que facilita a configuração, a escalabilidade e a otimização de custos do armazenamento de arquivos na AWS.');
+	linkhelp = linkhelp + getLinkHelp('AWS Audit Manager', 'https://aws.amazon.com/pt/audit-manager/', 'O AWS Audit Manager ajuda a auditar continuamente seu uso da AWS para simplificar sua forma de avaliar os riscos e a compatibilidade com os regulamentos e padrões do setor. O Audit Manager automatiza a coleta de evidências para reduzir o esforço manual coletivo que costuma acontecer durante as auditorias e permite escalar sua capacidade de auditoria na nuvem à medida que sua empresa cresce.');
+	linkhelp = linkhelp + getLinkHelp('Config', 'https://aws.amazon.com/pt/config/', 'AWS Config é um serviço que permite acessar, auditar e avaliar as configurações dos recursos da AWS. Você pode analisar alterações feitas nas configurações e relacionamentos entre os recursos da AWS, aprofundar-se de forma detalhada no histórico de configuração de recursos e determinar a conformidade geral em relação às configurações especificadas em suas diretrizes internas.');
+	linkhelp = linkhelp + getLinkHelp('Athena', 'https://aws.amazon.com/pt/athena/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc', 'AWS Athena é um serviço de consultas interativas que facilita a análise de dados no Amazon S3 usando SQL padrão. O Athena não precisa de servidor. Portanto, não há infraestrutura para gerenciar e você paga apenas pelas consultas executadas. O Athena é fornecido já integrado ao AWS Glue Data Catalog, o que permite criar um repositório de metadados unificado em vários serviços');
+	linkhelp = linkhelp + getLinkHelp('RedShift', 'https://docs.aws.amazon.com/pt_br/redshift/latest/mgmt/welcome.html', 'AWS RedShift é um serviço de data warehouse em escala de petabytes totalmente gerenciado na nuvem. Permite usar os dados para adquirir novos insights para seus negócios e clientes.');
+	linkhelp = linkhelp + getLinkHelp('Aurora', 'https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html', 'O Amazon Aurora é um mecanismo de banco de dados relacional gerenciado compatível com o MySQL e o PostgreSQL. O Aurora pode oferecer até cinco vezes a taxa de processamento do MySQL e até três vezes a taxa de processamento do PostgreSQL. Oferecer disponibilidade superior a 99,99% replicando seis cópias dos seus dados em três zonas diferentes.');
+	linkhelp = linkhelp + getLinkHelp('EMR', 'https://aws.amazon.com/pt/emr/', 'AWS EMR (Amazon Elastic MapReduce) é uma plataforma de big data em nuvem usada para executar trabalhos de processamento de dados distribuídos em grande escala, consultas SQL interativas e aplicações de machine learning (ML) usando frameworks de análise de código aberto como Apache Spark, Apache Hive e Presto.');
+	linkhelp = linkhelp + getLinkHelp('CloudTrail', 'https://docs.aws.amazon.com/pt_br/awscloudtrail/latest/userguide/cloudtrail-user-guide.html', 'AWS CloudTrail rastreia atividades dos usuários e uso de APIs. O AWS CloudTrail monitora e registra a atividade da conta por toda a infraestrutura da AWS, oferecendo controle sobre o armazenamento, análise e ações de remediação.');
+	linkhelp = linkhelp + getLinkHelp('CloudSearch', 'https://aws.amazon.com/pt/cloudsearch/', 'AWS CloudSearch é um serviço gerenciado na nuvem AWS com o qual é possível configurar, gerenciar e dimensionar uma solução de pesquisa para o seu site ou aplicativo de forma simples e econômica.');
+	linkhelp = linkhelp + getLinkHelp('ElasticSearch', 'https://aws.amazon.com/pt/opensearch-service/the-elk-stack/what-is-elasticsearch/', 'AWS ElasticSearch é um mecanismo distribuído de pesquisa e análise desenvolvido com base no Apache Lucene usado para casos de uso de análises de log. Foi introduzido o projeto OpenSearch que é uma bifurcação do Elasticsearch e Kibana de código aberto.');
+	linkhelp = linkhelp + getLinkHelp('Lambda', 'https://docs.aws.amazon.com/pt_br/lambda/latest/dg/welcome.html', 'AWS Lambda é um serviço de computação que permite que você execute o código sem provisionar ou gerenciar servidores. O Lambda executa seu código em uma infraestrutura de computação de alta disponibilidade e executa toda a administração dos recursos computacionais, inclusive a manutenção do servidor e do sistema operacional, o provisionamento e a escalabilidade automática da capacidade e o monitoramento e o registro em log do código.');
+	linkhelp = linkhelp + getLinkHelp('Shield', 'https://aws.amazon.com/pt/shield/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc', 'AWS Shield é um serviço gerenciado de proteção contra DDoS (Negação de serviço distribuída) que protege os aplicativos executados na AWS. O AWS Shield oferece de detecção e mitigações em linha automáticas e sempre ativas que minimizam o tempo de inatividade e a latência dos aplicativos, fornecendo proteção contra DDoS sem necessidade de envolver o AWS Support. O AWS Shield tem dois níveis, Standard e Advanced.');
+	linkhelp = linkhelp + getLinkHelp('WAF', 'https://aws.amazon.com/pt/waf/', 'AWS WAF é um firewall de aplicações Web que ajuda a proteger suas aplicações Web ou APIs contra bots e exploits comuns na Web que podem afetar a disponibilidade, comprometer a segurança ou consumir recursos em excesso. O AWS WAF oferece controle sobre como o tráfego atinge suas aplicações, permitindo que você crie regras de segurança que controlam o tráfego de bots e bloqueiam padrões de ataque comuns, como injeção de SQL ou cross-site scripting.');
+	linkhelp = linkhelp + getLinkHelp('Security Group', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/ec2-security-groups.html', 'Security Group é um grupo de segurança atua como firewall virtual para as instâncias do EC2 visando controlar o tráfego de entrada e de saída.');
+	linkhelp = linkhelp + getLinkHelp('GuardDuty', 'https://aws.amazon.com/pt/guardduty/', 'GuardDuty é um serviço de detecção de ameaças que monitora continuamente suas contas e workloads da AWS para detectar atividade maliciosa e entrega resultados de segurança detalhados para visibilidade e correção.');
+	linkhelp = linkhelp + getLinkHelp('Graph', 'https://www.padowan.dk/doc/portuguese/Introduction.html', 'Amazon Graph é um conceito para traçar gráficos de funções matemáticas e outras curvas de natureza similar, em um sistema de coordenadas.');
+	linkhelp = linkhelp + getLinkHelp('Neptune', 'https://aws.amazon.com/pt/neptune/', 'Amazon Neptune é um serviço de banco de dados de grafos rápido, confiável e totalmente gerenciado que facilita a criação e a execução de aplicativos na AWS. O núcleo do Neptune é um mecanismo de banco de dados gráfico com projeto específico e alta performance.');
+	linkhelp = linkhelp + getLinkHelp('Neo4j', 'https://neo4j.com/partners/amazon/', 'Amazon Neo4j trabalha com a AWS (partner). Capacita desenvolvedores e cientistas de dados a criar rapidamente aplicativos escaláveis ​​e orientados por IA ou analisar big data com algoritmos. Como um banco de dados gráfico nativo criado para armazenar dados e conectar os relacionamentos, o Neo4j permite insights rápidos e profundamente contextuais.');
+	linkhelp = linkhelp + getLinkHelp('JanusGraph', 'https://janusgraph.org/', 'Amazon JanusGraph trabalha com a AWS (partner). É um banco de dados (open source) gráfico escalável otimizado para armazenar e consultar gráficos contendo centenas de bilhões de vértices e arestas distribuídos em um cluster de várias máquinas.');
+	linkhelp = linkhelp + getLinkHelp('Docker', 'https://aws.amazon.com/pt/docker/', 'Docker é uma plataforma de software que permite a criação, o Nível e a implantação de aplicações rapidamente. O Docker permite executar o código de maneira padronizada. O Docker é um sistema operacional para contêineres. Da mesma maneira que uma máquina virtual virtualiza.');
+	linkhelp = linkhelp + getLinkHelp('AMI', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html', 'AWS AMI (Imagem de Máquina da Amazon) é uma Imagem de Máquina da Amazon (AMI) é uma imagem suportada e mantida pela AWS que fornece as informações necessárias para iniciar uma instância.');
+	linkhelp = linkhelp + getLinkHelp('MFA', 'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_credentials_mfa.html#id_credentials_mfa-what-is-mfa', 'AWS MFA (Autenticação Multi Fator) agrega mais segurança porque requer dos usuários fornecer autenticação exclusiva de um mecanismo de MFA com suporte da AWS, além das suas credenciais de login regular ao acessarem sites ou serviços da AWS.');
+	linkhelp = linkhelp + getLinkHelp('Marketplace', 'https://aws.amazon.com/pt/mp/marketplace-service/overview/', 'AWS Marketplace é um catálogo digital que facilita encontrar, testar, comprar e implantar software pronto de terceiros que podem ser executados no AWS.');
+	linkhelp = linkhelp + getLinkHelp('OpsWorks', 'https://aws.amazon.com/pt/opsworks/', 'AWS OpsWorks é um serviço de gerenciamento de configurações que oferece instâncias gerenciadas do Chef e do Puppet. O Chef e o Puppet são plataformas de automação que permitem usar código para automatizar a configuração de servidores. Ele permite usar o Chef e o Puppet para automatizar a forma como os servidores são configurados, implantados e gerenciados em instâncias do Amazon EC2 ou ambientes de computação no local.');
+	linkhelp = linkhelp + getLinkHelp('Support', 'https://docs.aws.amazon.com/pt_br/awssupport/latest/user/getting-started.html', 'O AWS Support oferece cinco planos de suporte:<br/>Basic<br/>Desenvolvedor<br/>Business<br/>Enterprise On-Ramp<br/>Enterprise<br/>Todos os planos de suporte oferecem acesso 24 horas por dia, 7 dias por semana ao atendimento ao cliente, à documentação da AWS, aos whitepapers e aos fóruns de suporte.');
+	linkhelp = linkhelp + getLinkHelp('Multi Regions', 'https://aws.amazon.com/pt/solutions/implementations/multi-region-application-architecture/', 'Multi Regions (Distribuir em regiões diferentes), os recursos de computação em nuvem da Amazon são hospedados em vários locais no mundo todo. Esses locais são compostos por regiões da AWS, zonas de disponibilidade e zonas locais. Cada região da AWS é uma área geográfica separada.');
+	linkhelp = linkhelp + getLinkHelp('Multi-AZ', 'https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html', 'Em uma implantação Multi-AZ, o Amazon RDS cria automaticamente uma instância de banco de dados (BD) primária e replica de forma síncrona os dados para uma instância em uma AZ diferente. Quando detecta uma falha, o Amazon RDS executa automaticamente o failover para uma instância secundária sem nenhuma intervenção manual.');
+	linkhelp = linkhelp + getLinkHelp('Read Replicas', 'https://aws.amazon.com/pt/rds/features/read-replicas/', 'Read Replicas (Cópias de Leitura do Amazon RDS) facilitam a escalabilidade de maneira elástica além dos limites de capacidade de uma única instância de DB para cargas de trabalho de banco de dados com uso intenso de leitura. complementam as implantações Multi-AZ. Embora ambos os recursos mantenham uma segunda cópia dos dados, há diferenças entre os dois.');
+	linkhelp = linkhelp + getLinkHelp('ELB', 'https://aws.amazon.com/pt/elasticloadbalancing/', 'ELB (Elastic Load Balancer) distribui automaticamente o tráfego de aplicações de entrada entre vários destinos e dispositivos virtuais em uma ou mais Zonas de disponibilidade (AZs).');
+	linkhelp = linkhelp + getLinkHelp('Clusters', 'https://docs.aws.amazon.com/pt_br/AmazonECS/latest/userguide/clusters.html', 'Um cluster do Amazon ECS é um agrupamento lógico de tarefas ou serviços.');
+	linkhelp = linkhelp + getLinkHelp('EKS', 'https://aws.amazon.com/pt/eks/', 'Amazon EKS (Elastic Kubernetes Service) é um serviço de contêiner gerenciado para executar e escalar aplicações do Kubernetes na nuvem ou on-premises.');
+	linkhelp = linkhelp + getLinkHelp('ECS', 'https://docs.aws.amazon.com/pt_br/AmazonECS/latest/developerguide/Welcome.html', 'Amazon ECS (Elastic Container Service) é um serviço de gerenciamento de contêineres altamente rápido e escalável. Você pode usá-lo para executar, interromper e gerenciar contêineres em um cluster.');
+	linkhelp = linkhelp + getLinkHelp('', '', '');
+	linkhelp = linkhelp + getLinkHelp('', '', '');
+	linkhelp = linkhelp + getLinkHelp('', '', '');
+	linkhelp = linkhelp + getLinkHelp('', '', '');
+	linkhelp = linkhelp + getLinkHelp('', '', '');
+	linkhelp = linkhelp + getLinkHelp('', '', '');
+	linkhelp = linkhelp + getLinkHelp('', '', '');
+	linkhelp = linkhelp + getLinkHelp('', '', '');
+	linkhelp = linkhelp + getLinkHelp('', '', '');
+	linkhelp = linkhelp + getLinkHelp('', '', '');
+	linkhelp = linkhelp + getLinkHelp('', '', '');
+	linkhelp = linkhelp + getLinkHelp('', '', '');
+	linkhelp = linkhelp + getLinkHelp('', '', '');
+	linkhelp = linkhelp + getLinkHelp('', '', '');
+	linkhelp = linkhelp + getLinkHelp('', '', '');
+	linkhelp = linkhelp + getLinkHelp('', '', '');
+	linkhelp = linkhelp + getLinkHelp('', '', '');
+	linkhelp = linkhelp + getLinkHelp('', '', '');
+	linkhelp = linkhelp + getLinkHelp('', '', '');
+	linkhelp = linkhelp + getLinkHelp('', '', '');
+	linkhelp = linkhelp + getLinkHelp('', '', '');
+	linkhelp = linkhelp + getLinkHelp('', '', '');
+	linkhelp = linkhelp + getLinkHelp('', '', '');
+	linkhelp = linkhelp + getLinkHelp('', '', '');
+	linkhelp = linkhelp + getLinkHelp('', '', '');
+	linkhelp = linkhelp + getLinkHelp('', '', '');
+	linkhelp = linkhelp + getLinkHelp('', '', '');
+
+	document.getElementById('divlinkhelp').innerHTML = linkhelp;
+//	alert('linkhelp='+document.getElementById('divlinkhelp').innerHTML);
+//	var DataShow_Config = window.open("config00.html?sim=00", "datashowconfig", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
+}
 
 async function initDb() {
     var isDbCreated = await jsstoreCon.initDb(getDbSchema());
@@ -403,8 +503,9 @@ function registerEvents() {
 		if (mycode <= parseInt(document.getElementById('txtTotal').value)) {
 			refreshTableQuestion(myid, mygroup, mycode);
 		} else {
-			var result = confirm('Vou encerrar, ok?\n');
+			var result = confirm('Vou encerrar e registrar no histórico, ok?\n');
 			if (result) {
+				location.reload();
 				showGridAndHideForms();
 			}
 		}
@@ -460,9 +561,6 @@ async function initConfigGeneral() {
 //		console.log('Sucesso na configuração geral');
 		if (noOfDataInserted === 1) {
 		}
-		
-		var DataShow_Config = window.open("config00.html?sim=00", "datashowconfig", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
-
     } catch (ex) {
         console.log(ex.message + ' error ');
     }
@@ -1082,9 +1180,6 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 				}
 			})
 		}
-
-
-//		refreshLinkHelp();
 		
 //    } catch (ex) {
 //        console.log(ex.message)
@@ -1220,7 +1315,6 @@ async function refreshLinkHelp() {
 		linkhelp = linkhelp + getLinkHelp(student.mytext, student.myoption2, student.myoption1); //mytext=key, myoption2=href, myoption1=texto
 	})
 	linkhelp = linkhelp + '<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>';
-	
 	document.getElementById('divlinkhelp').innerHTML = linkhelp;
 }
 
