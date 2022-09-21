@@ -162,248 +162,176 @@
 FASE 2.2
 
 <p>
-Selecione as opções verdadeiras que ser referem ao AWS IAM? (selecione 3 alternativas)
+Qual banco de dados foi projetado para oferecer disponibilidade superior a 99,99% replicando seis cópias dos seus dados em três zonas diferentes e fazendo o backup continuo de seus dados no Amazon S3?
+
+MySql
+<key>MySql</key>
+
+DynamoDB
+<key>DynamoDB</key>
+
+MariaDB
+<key>MariaDB</key>
 
 <ok>
-A maioria das Policies são armazenadas em documentos JSON
-<key></key>
-
-<ok>
-Permissões determinam se a requisição é permitida ou negada
-<key></key>
-
-Policy é um documento que todos os usuários devem assinar digitalmente quando acessam a AWS pela primeira vez
-<key></key>
-
-Policy é um objeto da AWS que quando associado a um usuário ou recurso define suas permissões
-<key></key>
+Aurora
+<key>Aurora</key>
 
 <p>
-Quais são as regras para a criação de nome de Bucket do S3?
-<br/>(Selecione 3)
+Quais dos itens abaixo <u>não</u> fazem parte dos pilares do Well-Architected Framework?
+<br/>(Selecione 2)
+
+Segurança
+<key>Well-Architected Framework</key>
 
 <ok>
-Devem consistir apenas em letras minúsculas, números, pontos (.) e hífens (-)
-<key></key>
-
-<ok>
-Devem começar e terminar com uma letra ou um número
-<key></key>
-
-Devem ser formatados como um endereço IP sempre que possível
-<key></key>
-
-<ok>
-Devem possuir de 3 a 63 caracteres
-<key></key>
-
-<p>
-Você está dando consultoria para uma pequena empresa que deseja disponibilizar um site dinâmico em WordPress e com custo mínimo. Qual dos serviços abaixo oferece um servidor privado virtual simples (VPS) de baixo custo e que pode atender essa necessidade?
-
-Amazon ECS
-<key></key>
-
-<ok>
-Amazon LightSail
-<key></key>
-
-Amazon S3
-<key></key>
-
-Amazon EC2
-<key></key>
-
-<p>
-Sua empresa começou a utilizar o ECS e conteinerizou 2 microsserviços de uma aplicação que possuem cargas de trabalho diferentes ao longo dia. O primeiro tem mais acessos durante a manhã e o segundo tem mais acesso à tarde, invertendo o cenário no consumo de recursos. Qual solução você deve adotar para que esses serviços escalem de forma automática para otimizar o uso dos recursos da sua infraestrutura?
-
-ECR
-<key></key>
-
-EC2
-<key></key>
-
-<ok>
-EKS
-<key></key>
-
-Lambda
-<key></key>
-
-<p>
-Qual é o serviço utilizado para executar containers sem servidores e diminuir a necessidade dos desenvolvedores se preocuparem com questões relacionadas ao gerenciamento de instâncias e infraestrutura?
-
-ECS
-<key></key>
-
-<ok>
-Fargate
-<key></key>
-
-Lambda
-<key></key>
-
-EKS
-<key></key>
-
-<p>
-No modelo de responsabilidade compartilhada, a AWS deve proteger todos os dados trafegados na sua infraestrutura global. Sobre a criptografia realizada neste processo, podemos afirmar que:
-
-A AWS criptografa automaticamente os dados na camada lógica antes de sair de suas instalações protegidas
-<key></key>
-
-<ok>
-A AWS criptografa automaticamente os dados na camada física antes de sair de suas instalações protegidas
-<key></key>
-
-A AWS não criptografa os dados, entretanto fornece o KMS para o usuário fazê-la
-<key></key>
-
-A AWS não criptografa os dados, entretanto fornece o AWS Certificate Manager para o usuário fazê-la
-<key></key>
-
-<p>
-Qual é o modelo de planos flexíveis que oferece preços mais baixos em comparação com os preços sob demanda, em troca de um compromisso de uso específico (medido em USD/hora) por um período de um ou três anos?
-
-AWS Efficient Cost
-<key></key>
-
-Low Cost
-<key></key>
-
-<ok>
-Savings Plans
-<key></key>
-
-AWS Billing
-<key></key>
-
-<p>
-Seu time de desenvolvimento está planejando modernizar um sistema e redesenhá-lo dentro da AWS. Um dos requisitos não funcionais é  a redução de interdependência para minimizar falhas que acontecem e impactam outros componentes. Qual dos seguintes conceitos se refere a esse requisito?
-
-Segregação
-<key></key>
-
-Integração
-<key></key>
-
-Agregação
-<key></key>
+Elasticidade
+<key>Well-Architected Framework</key>
 
 <ok>
 Desacoplamento
-<key></key>
+<key>Well-Architected Framework</key>
+
+Excelência Operacional
+<key>Well-Architected Framework</key>
 
 <p>
-Na implementação de uma estratégia de backups, qual é número máximo de snapshots manuais de RDS permitidas por região?
+Por que é necessário associar um EBS a uma instância EC2?
 
-256 por região
-<key></key>
+Para deixar o fluxo de transmissão de dados mais rápido
+<key>EBS</key>
 
 <ok>
-100 por região
-<key></key>
+Para garantir a persistência dos dados quando a instância é desligada
+<key>EBS</key>
 
-o número de cópia é virtualmente ilimitado
-<key></key>
+Para que os dados sejam criptografados
+<key>EBS</key>
 
-128 por região
-<key></key>
+Para permitir o armazenamento de uma quantidade maior de dados
+<key>EBS</key>
 
 <p>
-Qual é o formato de arquivo utilizado na maioria das configurações de serviços da AWS?
+Qual é o modelo de utilização de cloud onde não é necessário se preocupar com o gerenciamento dos recursos de infraestrutura de tecnologia, permitindo que o foco do cliente seja, principalmente, no desenvolvimento das aplicações que vão ser executados sobre os recursos?
+
+IaaS
+<key>IAAS</key>
+
+BaaS
+<key>BAAS</key>
 
 <ok>
-JSON
-<key></key>
+PaaS
+<key>PAAS</key>
 
-TXT
-<key></key>
-
-XML
-<key></key>
-
-Config
-<key></key>
+SaaS
+<key>SAAS</key>
 
 <p>
-Você trabalha numa multinacional que opera em todos os continentes e com clientes em quase todos os países. Qual é o maior benefício no uso da AWS para esse contexto?
+Quais dos seguintes serviços ajudam a sua aplicação a escalar baseado em demanda?
+<br/>(Escolha 2)
 
-Suporte em mais de 50 idiomas
-<key></key>
-
-Suporte ao usuário final
-<key></key>
-
-Documentações bem traduzidas
-<key></key>
+CloudFormation
+<key>CloudFormation</key>
 
 <ok>
-Presença Global
-<key></key>
+ELB
+<key>ELB</key>
+
+<ok>
+Auto Scaling
+<key>Auto Scaling</key>
+
+Route53
+<key>Route53</key>
+
+CloudFront
+<key>CloudFront</key>
 
 <p>
-Qual é o serviço da AWS que oferece diversos tipos de máquinas com capacidades computacionais para atender a diversas necessidades de cargas de trabalho (workloads)?
+Qual serviço que é totalmente gerenciado pela AWS e que faz parte da arquitetura da esteira de integração contínua que compila, testa e cria pacotes para a implantação?
+
+AWS CodeCommit
+<key>CodeCommit</key>
+
+AWS CodeDeploy
+<key>CodeDeploy</key>
+
+AWS Pipeline
+<key>Não Se Aplica</key>
 
 <ok>
-EC2
-<key></key>
-
-S3
-<key></key>
-
-EBS
-<key></key>
-
-EFS
-<key></key>
+AWS CodeBuild
+<key>CodeBuild</key>
 
 <p>
-Você construiu uma aplicação no EC2 que se conecta aos dados no RDS. Qual serviço você deve utilizar para que as devidas configurações de acesso entre a aplicação e o banco de dados sejam realizadas?
+Como você pode proteger sua conta da AWS contra acessos não autorizados?
+
+Configurando uma segunda senha
+<key>MFA</key>
 
 <ok>
-IAM Roles
-<key></key>
+Habilitando a Autenticação Multifator - Multi-Facto Authentication (MFA)
+<key>MFA</key>
 
-IAM Grant
-<key></key>
+Desabilitando o acesso pela AWS Console
+<key>Não Se Aplica</key>
 
-IAM Users
-<key></key>
-
-IAM Groups
-<key></key>
+Implementando o serviço AWS Cognito
+<key>Cognito</key>
 
 <p>
-Qual é a plataforma da AWS para Big Data em Cloud que permite integração com várias ferramentas de código livre como Apache Spark, Apache Hive, Apache HBase, Apache Flink, Apache Hudi?
+A Amazon oferece várias classes de armazenamento no S3 específicas para cada tipo de uso. Qual das opções abaixo são classes existentes no serviço? (selecione 3)
+
+S3 Business
+<key>Support</key>
+
+S3 Enterprise
+<key>Support</key>
 
 <ok>
-Amazon EMR
-<key></key>
+S3 Intelligent-Tiering
+<key>Storage Classes</key>
 
-Amazon Hadoop
-<key></key>
+<ok>
+S3 Standard
+<key>Storage Classes</key>
 
-Amazon Kinesis
-<key></key>
-
-Amazon RedShift
-<key></key>
+<ok>
+S3 Standard Infrequent Access
+<key>Storage Classes</key>
 
 <p>
-Qual é o serviço, que através da infraestrutura global da AWS, pode ser utilizado quando as suas aplicações apresentarem problemas de tráfego devido ao congestionamento da Internet?
+Sua empresa possui diversas áreas que devem construir suas aplicações dentro da AWS usando templates de infraestrutura pré-definidos pelo time de arquitetos. As soluções deverão ser implementadas como código IAC (Infra as Code). Qual serviço pode ser utilizado para essa finalidade?
+
+Cloud Templates
+<key>Não Se Aplica</key>
+
+Cloud Stacks
+<key>Não Se Aplica</key>
 
 <ok>
-AWS Global Accelerator
-<key></key>
+AWS CloudFormation
+<key>CloudFormation</key>
 
-AWS CloudFront
-<key></key>
+AWS Config
+<key>Config</key>
 
-AWS DataSync
-<key></key>
+<p>
+Você está implementando um microsserviço para realizar análise de crédito solicitada pelos seus clientes. A resposta desta análise deverá ser enviada para um sistema de vendas, um sistema de empréstimos, e também para, um serviço de log do próprio microsserviço. Qual serviço da AWS é o mais indicado para implementar essas e futuras integrações de uma forma rápida?
 
-AWS Snowball
-<key></key>
+<ok>
+AWS SNS
+<key>SNS</key>
+
+AWS Docker
+<key>Docker</key>
+
+AWS Lambda
+<key>Lambda</key>
+
+AWS ECS
+<key>ECS</key>
 
 <p>
 

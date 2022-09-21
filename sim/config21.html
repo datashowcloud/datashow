@@ -162,332 +162,167 @@
 FASE 2.1
 
 <p>
-Qual serviço que é totalmente gerenciado pela AWS e que faz parte da arquitetura da esteira de integração contínua que compila, testa e cria pacotes para a implantação?
+Qual é o serviço capaz de coletar e processar, em tempo real, um grande volume de streams de dados oriundos de diversos dispositivos, gerando novas informações para rápidas reações e direções?
+
+<ok>
+Kinesis
+<key>Kinesis</key>
+
+SQS
+<key>SQS</key>
+
+SNS
+<key>SNS</key>
+
+EventBridge
+<key>EventBridge</key>
+
+<p>
+Sua equipe de desenvolvimento está montando uma pipeline de CI/CD para uma nova aplicação na AWS, qual serviço eles precisam incluir no final da esteira para implantar a aplicação nos servidores de forma automatizada?
+
+AWS Deploy
+<key>Não Se Aplica</key>
+
+<ok>
+AWS CodeDeploy
+<key>CodeDeploy</key>
 
 AWS CodeCommit
 <key>CodeCommit</key>
 
-AWS CodeDeploy
+AWS Git
+<key>Git</key>
+
+<p>
+Qual serviço da AWS que, além de ajudar na visualização dos cinco serviços que mais aumentam os custos de uma conta, disponibiliza um detalhamento minucioso sobre todos os recursos utilizados?
+
+<ok>
+AWS Cost Explorer
+<key>Cost Explorer</key>
+
+AWS Billing
+<key>Billing</key>
+
+AWS Pricing
+<key>Pricing</key>
+
+AWS Budget
+<key>Budgets</key>
+
+<p>
+Sua empresa precisa executar centenas de batch para atualizar diversas informações dos seus clientes sem ter a dimensão dos recursos tecnológicos que precisará utilizar, qual é a melhor solução a ser utilizada?
+
+AWS EC2 Reserved
+<key>Instance Purchasing Options</key>
+
+AWS Step Functions
+<key>Step Functions</key>
+
+<ok>
+AWS Batch
+<key>Batch</key>
+
+AWS OnDemand
+<key>Instance Purchasing Options</key>
+
+<p>
+Sobre o AWS Budget e suas finalidades podemos afirmar que:
+<br/>(Selecione 3 alternativas)
+
+<ok>
+Podem ser utilizados para enviar alertas para te ajudar no controle do uso dos serviços da sua conta
+<key>Budgets</key>
+
+Podem enviar notificações para até 5 destinatários por email
+<key>Budgets Destinatários por Email</key>
+
+<ok>
+Podem ser usados para criar e gerenciar orçamentos
+<key>Budgets</key>
+
+<ok>
+Podem ser usados para refinar e filtrar orçamentos
+<key>Budgets</key>
+
+<p>
+Qual é a melhor prática para atender o princípio: "desenvolver para falhar e nada vai falhar"?
+
+Implantar a aplicação sempre com o CodeDeploy
 <key>CodeDeploy</key>
 
-AWS Pipeline
-<key>Não Se Aplica</key>
-
-<ok>
-AWS CodeBuild
-<key>CodeBuild</key>
-
-<p>
-Como você pode proteger sua conta da AWS contra acessos não autorizados?
-
-Configurando uma segunda senha
-<key>MFA</key>
-
-<ok>
-Habilitando a Autenticação Multifator - Multi-Facto Authentication (MFA)
-<key>MFA</key>
-
-Desabilitando o acesso pela AWS Console
-<key>Não Se Aplica</key>
-
-Implementando o serviço AWS Cognito
-<key>Cognito</key>
-
-<p>
-A Amazon oferece várias classes de armazenamento no S3 específicas para cada tipo de uso. Qual das opções abaixo são classes existentes no serviço? (selecione 3)
-
-S3 Business
-<key>Support</key>
-
-S3 Enterprise
-<key>Support</key>
-
-<ok>
-S3 Intelligent-Tiering
-<key>Storage Classes</key>
-
-<ok>
-S3 Standard
-<key>Storage Classes</key>
-
-<ok>
-S3 Standard Infrequent Access
-<key>Storage Classes</key>
-
-<p>
-Sua empresa possui diversas áreas que devem construir suas aplicações dentro da AWS usando templates de infraestrutura pré-definidos pelo time de arquitetos. As soluções deverão ser implementadas como código IAC (Infra as Code). Qual serviço pode ser utilizado para essa finalidade?
-
-Cloud Templates
-<key>Não Se Aplica</key>
-
-Cloud Stacks
-<key>Não Se Aplica</key>
-
-<ok>
-AWS CloudFormation
-<key>CloudFormation</key>
-
-AWS Config
-<key>Config</key>
-
-<p>
-Você está implementando um microsserviço para realizar análise de crédito solicitada pelos seus clientes. A resposta desta análise deverá ser enviada para um sistema de vendas, um sistema de empréstimos, e também para, um serviço de log do próprio microsserviço. Qual serviço da AWS é o mais indicado para implementar essas e futuras integrações de uma forma rápida?
-
-<ok>
-AWS SNS
-<key>SNS</key>
-
-AWS Docker
-<key>Docker</key>
-
-AWS Lambda
-<key>Lambda</key>
-
-AWS ECS
-<key>ECS</key>
-
-<p>
-Algumas aplicações críticas da sua empresa começaram a apresentar erros e, por falta de logs, a equipe de suporte está tendo dificuldade na resolução dos problemas. Qual serviço da AWS você recomendaria para monitorar o ambiente e coletar as logs?
-
-<ok>
-AWS CloudWatch
+Monitorar o ambiente pare enviar alertas com o CloudWatch
 <key>CloudWatch</key>
 
-AWS Monitor
+Utilizar CloudFront para fazer o cache do conteúdo
+<key>CloudFront</key>
+
+<ok>
+Implantar a aplicação em múltiplas zonas de disponibilidade
+<key>Multi-AZ</key>
+
+<p>
+Qual serviço da AWS pode ser utilizado para gerenciar todos os custos dos recursos utilizados na AWS?
+
+AWS Price
 <key>Não Se Aplica</key>
 
-AWS CloudTrail
-<key>CloudTrail</key>
+AWS Budget
+<key>Budgets</key>
 
-AWS Log
+<ok>
+AWS Cost Explorer
+<key>Cost Explorer</key>
+
+AWS Pricing Calculator
+<key>Pricing</key>
+
+<p>
+Você trabalha num escritório jurídico que lida com um volume muito grande de contratos. Esses documentos são alterados muitas vezes e requerem um processo de gerenciamento de versões. Qual serviço da AWS é indicado para armazenar esses documentos e atender tal requisito?
+
+<ok>
+S3
+<key>S3</key>
+
+EBS
+<key>EBS</key>
+
+Git
+<key>Git</key>
+
+CodeCommit
+<key>CodeCommit</key>
+
+<p>
+Você está criando uma rede virtual isolada para os seus recursos dentro da AWS e deseja separar a camada de servidores de dados da camada de servidores de aplicação. A solução é criar duas sub-redes (subnets), uma para dados e uma para a aplicação. Qual é o serviço que permite esse tipo de organização?
+
+AWS Organizations
+<key>Organizations</key>
+
+ELB
+<key>ELB</key>
+
+AWS Budget
+<key>Budgets</key>
+
+<ok>
+VPC
+<key>VPC</key>
+
+<p>
+Sua empresa deseja implementar governança nos serviços de TI que estejam aprovados para uso na AWS acompanhando o custo, desempenho, segurança e status operacional dos mesmos. Qual é o serviço que permite a criação de catálogos de serviços de TI para essa finalidade?
+
+AWS Catalog
 <key>Não Se Aplica</key>
 
-<p>
-Qual dos seguintes ítens é de responsabilidade exclusiva da AWS no modelo de responsabilidade compartilhada (shared responsability model)?
+AWS Console Manager
+<key>Console Manager</key>
 
-Gerenciar imagens customizadas das instâncias do AMI
-<key>Shared Responsability</key>
-
-Atualizar patch de segurança em instâncias do clientes
-<key>Shared Responsability</key>
+AWS IT Service
+<key>Não Se Aplica</key>
 
 <ok>
-Proteger a infraestrutura global
-<key>Shared Responsability</key>
-
-Proteger os dados das aplicações dos usuários
-<key>Shared Responsability</key>
-
-<p>
-Qual é a quantidade atual de regiões disponíveis na infraestrutura global da AWS?
-
-262
-<key>Infraestrutura Global</key>
-
-<ok>
-26
-<key>Infraestrutura Global</key>
-
-6
-<key>Infraestrutura Global</key>
-
-81
-<key>Infraestrutura Global</key>
-
-<p>
-A AWS obtém regularmente, a validação de terceiros para milhares de requisitos globais de conformidade para ajudá-la a atender aos padrões de segurança e conformidade. Com o seu uso, você herda os controles de segurança mais recentes, fortalecendo seus próprios programas de conformidade e certificação. Para quais padrões de segurança e certificações a AWS oferece suporte? (selecione 2 alternativas)
-
-GDPR, FIPS 140-2 e NTFS-BB1
-<key></key>
-
-<ok>
-GDPR, FIPS 140-2 e NIST 800-171
-<key></key>
-
-PCI-DSS, HIPAA/HITECH, CFL01
-<key></key>
-
-<ok>
-PCI-DSS, HIPAA/HITECH, FedRAMP
-<key></key>
-
-<p>
-Quais são os 6 pilares do Well-Architected Framework?
-
-<ok>
-Excelência Operacional, Segurança, Confiabilidade, Desempenho Eficiente, Otimização de Custos, Sustentabilidade
-<key></key>
-
-Excelência Operacional, Escalabilidade, Confiabilidade, Desempenho Eficiente, Otimização de Custos, Disciplina
-<key></key>
-
-Excelência Operacional, Segurança, Confiabilidade, Desempenho Eficiente, Escalabilidade, Disciplina
-<key></key>
-
-Excelência Operacional, Segurança, Escalabilidade, Desempenho Eficiente, Otimização de Custos, Sustentabilidade
-<key></key>
-
-<p>
-Se você deseja fazer um gerenciamento total do seu banco de dados, qual é o serviço mais indicado para implementá-lo?
-
-<ok>
-EC2
-<key></key>
-
-RDS
-<key></key>
-
-DynamoDB
-<key></key>
-
-DocumentDB
-<key></key>
-
-<p>
-No modelo de Responsabilidade Compartilhada, qual é o papel da AWS?
-
-<ok>
-Proteger o data center
-<key></key>
-
-Proteger o acesso aos dados das aplicações dos usuários
-<key></key>
-
-Atualizar o Sistema Operacional das Instâncias EC2
-<key></key>
-
-<ok>
-Fazer a manutenção dos hardware
-<key></key>
-
-<p>
-Qual é a maior diferença entre os serviços AWS RDS e DynamoDB?
-
-<ok>
-RDS é SQL, DynamoDB é NoSQL
-<key></key>
-
-RDS é totalmente gerenciado, DynamoDB não é gerenciado
-<key></key>
-
-RDS é NoSQL, DynamoDB é SQL
-<key></key>
-
-Nenhuma das opções
-<key></key>
-
-<p>
-Sua equipe de desenvolvimento backend começou a utilizar o API Gateway para o desenvolvimento das novas apis de um projeto. Quais itens abaixo representam funcionalidades deste serviço que você irá compartilhar com o time? (Selecione 2)
-
-Não possui suporte a conteinirização
-<key></key>
-
-<ok>
-Criar, publicar, manter, monitorar APIs
-<key></key>
-
-<ok>
-Criação de APIs RESTfull e WebSocket
-<key></key>
-
-Não possui suporte a funções sem servidor
-<key></key>
-
-<p>
-Se você quer desenvolver uma aplicação em Java ou C#, qual das seguintes ferramentas você pode usar?
-
-AWS IDE
-<key></key>
-
-AWS CLI
-<key></key>
-
-AWS Console
-<key></key>
-
-<ok>
-AWS SDK
-<key></key>
-
-<p>
-Sua empresa recentemente foi auditada e autuada, pois mantinha arquivos com dados sensíveis do cliente expostos na sua rede interna, colocando em risco a imagem do cliente e da empresa. Qual serviço da AWS pode ser utilizado para monitorar os dados e evitar esse tipo de ocorrência?
-
-AWS Sensitive
-<key></key>
-
-<ok>
-AWS Macie
-<key></key>
-
-AWS GuardDuty
-<key></key>
-
-AWS KMS
-<key></key>
-
-<p>
-Qual é o banco de dados sem servidor (serverless) ofertado pela AWS?
-
-<ok>
-DynamoDB
-<key></key>
-
-MySql
-<key></key>
-
-MariaDB
-<key></key>
-
-Aurora
-<key></key>
-
-<p>
-Sua empresa está analisando o banco de dados DynamoDB para conhecer oportunidades em seu uso. Qual opção abaixo não é uma característica do serviço?
-
-É um banco de dados sem servidor
-<key></key>
-
-É um banco de dados de valores-chave e documentos
-<key></key>
-
-<ok>
-É um banco de dados cobrado por MB na solicitação de gravação e leitura
-<key></key>
-
-É um banco de dados totalmente gerenciado
-<key></key>
-
-<p>
-Qual plano de suporte oferece o AWS Trusted Advisor, serviço que fornece recomendações para ajudar na utilização das melhores práticas de uso?
-
-Developer
-<key></key>
-
-Enterprise
-<key></key>
-
-<ok>
-Todos
-<key></key>
-
-Business
-<key></key>
-
-<p>
-Qual é o banco de dados NoSql do tipo chave e valor gerenciado pela AWS?
-
-<ok>
-DynamoDB
-<key></key>
-
-Aurora
-<key></key>
-
-MySql
-<key></key>
-
-Cassandra
-<key></key>
+AWS Service Catalog
+<key>Service Catalog</key>
 
 <p>
 

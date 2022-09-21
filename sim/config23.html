@@ -162,163 +162,166 @@
 FASE 2.3
 
 <p>
-Qual serviço é utilizado para logar as ações dos seus usuários dentro da AWS?
+Algumas aplicações críticas da sua empresa começaram a apresentar erros e, por falta de logs, a equipe de suporte está tendo dificuldade na resolução dos problemas. Qual serviço da AWS você recomendaria para monitorar o ambiente e coletar as logs?
 
-IAM
-<key></key>
+<ok>
+AWS CloudWatch
+<key>CloudWatch</key>
 
-S3
-<key></key>
+AWS Monitor
+<key>Não Se Aplica</key>
 
-CloudWatch logs
+AWS CloudTrail
+<key>CloudTrail</key>
+
+AWS Log
+<key>Não Se Aplica</key>
+
+<p>
+Qual dos seguintes ítens é de responsabilidade exclusiva da AWS no modelo de responsabilidade compartilhada (shared responsability model)?
+
+Gerenciar imagens customizadas das instâncias do AMI
+<key>Shared Responsability</key>
+
+Atualizar patch de segurança em instâncias do clientes
+<key>Shared Responsability</key>
+
+<ok>
+Proteger a infraestrutura global
+<key>Shared Responsability</key>
+
+Proteger os dados das aplicações dos usuários
+<key>Shared Responsability</key>
+
+<p>
+Qual é a quantidade atual de regiões disponíveis na infraestrutura global da AWS?
+
+262
+<key>Infraestrutura Global</key>
+
+<ok>
+26
+<key>Infraestrutura Global</key>
+
+6
+<key>Infraestrutura Global</key>
+
+81
+<key>Infraestrutura Global</key>
+
+<p>
+A AWS obtém regularmente, a validação de terceiros para milhares de requisitos globais de conformidade para ajudá-la a atender aos padrões de segurança e conformidade. Com o seu uso, você herda os controles de segurança mais recentes, fortalecendo seus próprios programas de conformidade e certificação. Para quais padrões de segurança e certificações a AWS oferece suporte? (selecione 2 alternativas)
+
+GDPR, FIPS 140-2 e NTFS-BB1
 <key></key>
 
 <ok>
-CloudTrail
+GDPR, FIPS 140-2 e NIST 800-171
+<key></key>
+
+PCI-DSS, HIPAA/HITECH, CFL01
+<key></key>
+
+<ok>
+PCI-DSS, HIPAA/HITECH, FedRAMP
 <key></key>
 
 <p>
-Sua empresa precisa implementar a integração rápida entre escritórios em São Paulo, Moscow e 2 mil funcionários ao redor do mundo. Qual é o serviço da AWS que permite realizar essa integração de forma ágil e escalável?
-
-AWS VPC
-<key></key>
-
-AWS DataSync
-<key></key>
-
-AWS Link
-<key></key>
+Quais são os 6 pilares do Well-Architected Framework?
 
 <ok>
-AWS VPN
+Excelência Operacional, Segurança, Confiabilidade, Desempenho Eficiente, Otimização de Custos, Sustentabilidade
+<key></key>
+
+Excelência Operacional, Escalabilidade, Confiabilidade, Desempenho Eficiente, Otimização de Custos, Disciplina
+<key></key>
+
+Excelência Operacional, Segurança, Confiabilidade, Desempenho Eficiente, Escalabilidade, Disciplina
+<key></key>
+
+Excelência Operacional, Segurança, Escalabilidade, Desempenho Eficiente, Otimização de Custos, Sustentabilidade
 <key></key>
 
 <p>
-Você precisa garantir a alta disponibilidade de uma aplicação que será lançada na sua empresa no Brasil. Qual é a melhor estratégia de uso do AWS RDS para esse requisito?
-
-Criar um Security Group para isolar apenas os bancos de dados e aumentar a performance
-<key></key>
-
-Read Replicas (Utilizar cópias de leitura)
-<key></key>
+Se você deseja fazer um gerenciamento total do seu banco de dados, qual é o serviço mais indicado para implementá-lo?
 
 <ok>
-Multi A-Z  (Distribuir os bancos em mais de uma zona de disponibilidade)
+EC2
 <key></key>
 
-Multi Regions (Distribuir os banco em mais de uma região)
+RDS
+<key></key>
+
+DynamoDB
+<key></key>
+
+DocumentDB
 <key></key>
 
 <p>
-Uma das grandes vantagens no uso da AWS está nas formas de pagamentos dos seus serviços. Qual é forma de pagamentos padrão utilizada na maior parte dos seus serviços?
+No modelo de Responsabilidade Compartilhada, qual é o papel da AWS?
 
-Pagamento conforme a compra
+<ok>
+Proteger o data center
 <key></key>
 
-Pagamento conforme o contrato
+Proteger o acesso aos dados das aplicações dos usuários
 <key></key>
 
-Pagamento conforme o licenciamento
+Atualizar o Sistema Operacional das Instâncias EC2
 <key></key>
 
 <ok>
-Pagamento conforme o uso
+Fazer a manutenção dos hardware
 <key></key>
 
 <p>
-Sua empresa fez um contrato para obter um pacote com 50 licenças do Microsoft SQL Server. Os softwares serão instalados em novos servidores à medida que a empresa expandir seus negócios ao redor do mundo. A empresa passa por auditorias frequentes e precisa garantir que só existem softwares licenciados na sua rede. Qual serviço da AWS facilita essa conformidade?
-
-CloudFormation
-<key></key>
-
-Config
-<key></key>
-
-Certificate Manager
-<key></key>
+Qual é a maior diferença entre os serviços AWS RDS e DynamoDB?
 
 <ok>
-License Manager
+RDS é SQL, DynamoDB é NoSQL
+<key></key>
+
+RDS é totalmente gerenciado, DynamoDB não é gerenciado
+<key></key>
+
+RDS é NoSQL, DynamoDB é SQL
+<key></key>
+
+Nenhuma das opções
 <key></key>
 
 <p>
-Sua empresa está desenhando uma nova plataforma para distribuição de vídeos em nível global. Qual é o serviço que pode diminuir a latência entre a requisição e entrega do serviço?
+Sua equipe de desenvolvimento backend começou a utilizar o API Gateway para o desenvolvimento das novas apis de um projeto. Quais itens abaixo representam funcionalidades deste serviço que você irá compartilhar com o time? (Selecione 2)
+
+Não possui suporte a conteinirização
+<key></key>
 
 <ok>
-Amazon CloudFront
+Criar, publicar, manter, monitorar APIs
 <key></key>
 
-Amazon ElasticCache
+<ok>
+Criação de APIs RESTfull e WebSocket
 <key></key>
 
-Amazon Redis
-<key></key>
-
-Amazon S3
+Não possui suporte a funções sem servidor
 <key></key>
 
 <p>
-Qual é o serviço da AWS utilizado para migrar banco de dados de forma rápida e segura?
+Se você quer desenvolver uma aplicação em Java ou C#, qual das seguintes ferramentas você pode usar?
 
-AWS Glue
+AWS IDE
 <key></key>
 
-AWS Snow
+AWS CLI
 <key></key>
 
-AWS Connect
-<key></key>
-
-<ok>
-AWS DMS
-<key></key>
-
-<p>
-Com a AWS você pode obter descontos baseados em volume e obter economias substanciais à medida que o seu uso aumenta. Em qual serviço abaixo a definição de preço é feita em camadas e quanto mais você usar, menor será o preço por GB?
-
-Lambda
-<key></key>
-
-EKS
-<key></key>
-
-ECS
+AWS Console
 <key></key>
 
 <ok>
-S3
-<key></key>
-
-<p>
-Qual serviço da AWS deve ser usado se você deseja configurar alarme de cobrança? (AWS billing alarm)
-
-CloudTrail
-<key></key>
-
-CloudMonitor
-<key></key>
-
-<ok>
-CloudWatch
-<key></key>
-
-CloudBilling
-<key></key>
-
-<p>
-Qual é o serviço de mensagens desenvolvido para Apache Active MQ e Rabbit MQ que torna a migração mais fácil e permite arquiteturas híbridas?
-
-SNS
-<key></key>
-
-<ok>
-Amazon MQ
-<key></key>
-
-SQS
-<key></key>
-
-Kafka
+AWS SDK
 <key></key>
 
 <p>

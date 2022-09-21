@@ -24,7 +24,7 @@
 </head>
 
 <body id="myBody" ZZZbackground="gallery/paper.jpeg">
-
+		
 			<div style="display:'none'; text-align:center; ">
 				<!-- br/>Aguarde o resultado na janela da configuração -->
 				<button class="btn btn-info" onclick="window.close();" style="padding:9px 15px 9px 15px;"><i class="fa fa-lock"></i> Parabéns! Você liberou uma fase. <i class="fa fa-unlock"></i></button>
@@ -159,167 +159,167 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1.5
+FASE 3.6
 
 <p>
-Qual é o serviço utilizado para provisionar Desktops utilizando Windows ou Linux?
+Qual é o serviço de DNS da AWS que entre outras coisas transforma nomes de urls em código IP para acessar os recursos da Cloud.
+
+AWS Auto Scaling
+<key></key>
 
 <ok>
-Amazon WorkSpaces
-<key>WorkSpaces</key>
+Route53
+<key></key>
 
-Amazon Desktops
-<key>Não Se Aplica</key>
+ACL
+<key></key>
 
-Amazon CLI
-<key>CLI</key>
-
-EC2
-<key>EC2</key>
+ELB
+<key></key>
 
 <p>
-Você implementou um sistema com arquitetura de microserviços e precisa depurar cada um deles, partindo desde a requisição do usuário para entender a performance e identificando oportunidades de melhorias. Qual serviço da AWS é o mais indicado para essa finalidade (tanto em ambiente de desenvolvimento quanto em ambiente de produção)?
+A área de marketing da sua empresa está planejando fazer uma campanha que durará 12 meses, em vista disso, você foi avisado que haverá um aumento no número de clientes no site e viu que será necessário subir mais 3  instâncias EC2 para atender a demanda durante esse período. Qual tipo de instância terá um melhor custo nesse cenário?
 
-AWS ElasticSearch
-<key>ElasticSearch</key>
+Dedicated Hosts
+<key></key>
 
-AWS CloudSearch
-<key>CloudSearch</key>
+On Demand
+<key></key>
 
 <ok>
-AWS X-Ray
-<key>X-Ray</key>
+Reserved
+<key></key>
 
-AWS CloudWatch
-<key>CloudWatch</key>
+Spot
+<key></key>
 
 <p>
-As mensagens trafegadas entre o seu site e os usuários não estão sendo criptografadas porque a arquitetura atual não utiliza certificados digitais que permitam essa criptografia. Qual é o serviço da AWS que pode ser utilizado para esse tipo de implementação?
-
-AWS KMS
-<key>KMS</key>
-
-AWS Cognito
-<key>Cognito</key>
+Sua empresa precisa implementar mais segurança em seus recursos na AWS. Qual é o serviço que permite provisionar, gerenciar e implantar facilmente certificados Secure Sockets Layer (SSL)/Transport Layer Security (TLS) para que sejam usados com os serviços da AWS e os recursos internos conectados?
 
 <ok>
 AWS Certificate Manager
-<key>Certificate Manager</key>
+<key></key>
 
-AWS IAM
-<key>IAM</key>
+AWS Protocols
+<key></key>
+
+AWS Security
+<key></key>
+
+AWS KMS
+<key></key>
 
 <p>
-Você precisa automatizar um processo que executa diversas tarefas de forma sequencial em seu sistema. Qual é o serviço mais indicado para essa necessidade?
-
-AWS EventBridge
-<key>EventBridge</key>
-
-AWS Kinesis
-<key>Kinesis</key>
-
-AWS Workflow
-<key>Não Se Aplica</key>
+Para atender uma área de auditoria e compliance, você precisa garantir que as configurações iniciais dos serviços e sistemas sejam mantidas e monitoradas. Qual serviço da AWS você pode utilizar para esse tipo de gerenciamento?
 
 <ok>
-AWS Batch
-<key>Batch</key>
-
-<p>
-Sua empresa precisa lançar um novo produto e para isso deseja criar um novo domínio público para associar a um novo site. Qual é a maneira mais rápida de fazer isso?
-
-Desenvolver o novo site no AWS BeanStalk, que provisiona toda a infra para o desenvolvedor  apenas programar.
-<key>Elastic Beanstalk</key>
-
-<ok>
-Criar um novo domínio no AWS Route53
-<key>Route53</key>
-
-Criar um servidor de domínio numa instância AWS EC2 e incluir o novo domínio
-<key>EC2</key>
-
-Criar um novo domínio no RegistroCom
-<key>Não Se Aplica</key>
-
-<p>
-Você implantou uma aplicação em produção que não está funcionando e na log existe uma mensagem de acesso negado ao DynamoDB. Qual serviço abaixo você precisa checar e configurar corretamente para validar esse acesso?
-
 AWS Config
-<key>Config</key>
+<key></key>
 
-<ok>
-AWS IAM Roles
-<key>IAM Roles</key>
+AWS Setup
+<key></key>
 
-AWS Cognito
-<key>Cognito</key>
+AWS Audit
+<key></key>
 
-AWS IAM Policy
-<key>IAM Policies</key>
-
-<p>
-Qual é o serviço de alta performance desenvolvido para fornecer block-storage para instâncias EC2?
-
-S3
-<key>S3</key>
-
-ELB
-<key>ELB</key>
-
-<ok>
-EBS
-<key>EBS</key>
-
-KMS
-<key>KMS</key>
+AWS Compliance
+<key></key>
 
 <p>
-Qual é o serviço serverless que permite a execução de queries utilizando padrão SQL para analisar dados no Amazon S3?
-
-<ok>
-Athena
-<key>Athena</key>
+Qual é o serviço de data warehouse da Amazon utilizado pelas áreas de BI, que permite o cruzamento de vários dados estruturado e semi estruturados para gerar conhecimento para o negócio?
 
 EMR
-<key>EMR</key>
-
-Amazon Elastic Search
-<key>ElasticSearch</key>
-
-Amazon Query Analyzer
-<key>Não Se Aplica</key>
-
-<p>
-Sua empresa deseja otimizar o custo com a utilização do S3 e você percebeu que existem muitas logs de sistemas que estão armazenadas, mas que poderiam ser deletadas após 30 dias da criação. O que você precisa fazer para atender a necessidade de sua empresa?
-
-Criar uma cópia destes objetos em outra região.
-<key>Não Se Aplica</key>
+<key></key>
 
 <ok>
-Configurar no S3 Lifecycle para que os objetos expirem em 30 dias para serem automaticamente excluídos.
-<key>Lifecycle</key>
+Amazon RedShift
+<key></key>
 
-Configurar o CloudWatch para monitorar o S3 e enviar um email solicitando a exclusão dos arquivos.
-<key>CloudWatch</key>
+Kinesis
+<key></key>
 
-Criar uma cópia destes objetos em outra zona de disponibilidade.
-<key>Multi-AZ</key>
+Power BI
+<key></key>
 
 <p>
-Sua empresa tem um sistema que suporta em média 2000 usuários por dia, porém em dias com o aumento de vendas, o sistema chega a 3000 usuários apresentando lentidão e indisponibilidade. Como você automatizaria o processo para o provisionamento automático de máquinas adicionais para suportar essas cargas em dias de pico?
-
-Migrando a aplicação para uma máquina melhor
-<key>Auto Scaling</key>
+Qual item abaixo é de responsabilidade dos clientes quando é preciso garantir que dados em volumes EBS  estejam seguros e com seus backups realizados?
 
 <ok>
-Usando o Auto Scalling
-<key>Auto Scaling</key>
+Criar a EBS snapshot
+<key></key>
 
-Implementando EBS Snapshots
-<key>EBS Snapshots</key>
+Criar copias dos EBS Volumes
+<key></key>
 
-Incluindo mais uma máquina física e alterando o ELB
-<key>ELB</key>
+Anexar volumes em instâncias EC2
+<key></key>
+
+Deletar o dado quando o dispositivo é destruído
+<key></key>
+
+<p>
+Sua empresa criou diversas funções Lambdas para consultar informações e compor processos de avaliação de crédito. Qual serviço da AWS, orientado a eventos, pode ser utilizado com pouca codificação para expressar lógicas de negócios complexas na forma de fluxos de trabalho para construir esses processos?
+
+AWS SQS
+<key></key>
+
+<ok>
+AWS Step Functions
+<key></key>
+
+AWS BPM
+<key></key>
+
+AWS SNS
+<key></key>
+
+<p>
+Você deseja disponibilizar sua aplicação no endereço www.simuladoudemy.com. Qual serviço pode ser utilizada para essa finalidade?
+
+S3
+<key></key>
+
+API Gateway
+<key></key>
+
+AutoScalling
+<key></key>
+
+<ok>
+Route 53
+<key></key>
+
+<p>
+Qual serviço da AWS abaixo deve ser utilizado para liberar acesso na conta para 3 desenvolvedores novos que chegaram no seu time?
+
+CloudFront
+<key></key>
+
+S3
+<key></key>
+
+<ok>
+IAM
+<key></key>
+
+EC2
+<key></key>
+
+<p>
+Sua aplicação precisa que os dados estejam estruturados e distribuídos em tabelas, relacionadas por chaves, para atender um requisito de uma funcionalidade. Qual banco de dados abaixo não é indicado para esse fim?
+
+MariaDB
+<key></key>
+
+Aurora
+<key></key>
+
+<ok>
+DynamoDB
+<key></key>
+
+MySql
+<key></key>
 
 <p>
 

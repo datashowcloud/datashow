@@ -162,325 +162,163 @@
 FASE 3.2
 
 <p>
-O desenho dos dados da sua aplicação inclui uma base de dados relacional, que será usada pontualmente e de forma imprevisível uma vez que você utilizará também o AWS Elastic Cache para reduzir o acesso aos dados. Qual é o tipo de Instância de banco de dados recomendado pra você ter mais economia neste contexto?
+Qual é a melhor definição para Region(Região)?
+
+Uma region(região) é um data center dentro de uma avalibility zone(zonas de disponibilidade)
+<key></key>
+
+Uma region(região) é a mesma coisa que uma edge location(rede de borda)
+<key></key>
+
+Uma region(região) é um continente que aloca todos os data centers da AWS.
+<key></key>
 
 <ok>
-On Demand
-<key></key>
-
-Spot
-<key></key>
-
-Dedicated Hosts
-<key></key>
-
-Reserved
+Uma localização geográfica no mundo que agrupa algumas availability zones(zonas de disponibilidade) e edge locations(rede de borda).
 <key></key>
 
 <p>
-Usuários que fazem uso final de aplicações em cloud sem se preocuparem em como foram construídas e implementadas fazem uso de qual tipo de cloud?
+Tráfego de dados é um item bastante relevante quando falamos de custos na AWS. Qual das opções abaixo apresenta o cenário onde o tráfego é livre de custos?
 
-BaaS
+Todo tráfego é cobrado.
 <key></key>
 
-IaaS
-<key></key>
-
-PaaS
+Transferência de dados de saída entre serviços do mesmo continente.
 <key></key>
 
 <ok>
-SaaS
+Transferência de dados de saída entre serviços dentro da mesma Região (Region).
+<key></key>
+
+Transferência de dados de saída entre serviços entre todas as Regiões (Regions)
 <key></key>
 
 <p>
-Sua empresa iniciou um piloto de uma aplicação e ainda não tem a dimensão de quantos clientes irão utilizá-la. Essa aplicação precisa ter alta disponibilidade e o piloto tem previsão de duração de três meses. Qual plano de pagamento é o mais indicado para esse contexto?
+Qual recurso da AWS habilita  o usuário a gerenciar os serviços através de interface web?
 
-Reserved
+AWS CloudWatch
+<key></key>
+
+AWS Mobile First
+<key></key>
+
+AWS Software Development Kit (SDK)
 <key></key>
 
 <ok>
-On-Demand
-<key></key>
-
-Dedicated Hosts
-<key></key>
-
-Spot
+AWS Mangement Console
 <key></key>
 
 <p>
-Qual plano de suporte oferece um gerente técnico de conta para monitorar o ambiente proativamente e sugerir melhorias para otimização dos serviços?
+Qual é o serviço da AWS que permite selecionar uma imagem de uma máquina pré-configurada para lançar uma instâncias EC2?
 
-Basic
-<key></key>
-
-Business
-<key></key>
-
-Developer
+IAM
 <key></key>
 
 <ok>
-Enterprise
+AMI
+<key></key>
+
+AWS IMG
+<key></key>
+
+Amazon Image
 <key></key>
 
 <p>
-Um objeto de um Bucket do AWS S3 é composto por quais itens abaixo?
-<br/>(Selecione 2)
+Você está desenvolvendo um serviço para enviar diariamente e-mails de aniversário para mais de 1000 clientes. Qual é o serviço ofertado pela a AWS que pode se integrar a qualquer aplicação para atender a esse requisito?
 
 <ok>
-Arquivo
+AWS SES
 <key></key>
 
-<ok>
-Metadados
+AWS SNS
 <key></key>
 
-Policy
+AWS CloudWatch
 <key></key>
 
-Role
+AWS EventBridge
 <key></key>
 
 <p>
-Qual é a melhor maneira de manter aplicações resilientes na infraestrutura AWS?
+Qual é a melhor opção para salvar arquivos com pouca necessidade de uso?
 
 <ok>
-Distribuir as instâncias em mais de uma zona de disponibilidade
+S3 Glacier
 <key></key>
 
-Distribuir as instâncias em duas VPCs diferentes e dentro da mesma zona de disponibilidade
+S3 Standard
 <key></key>
 
-Fazer uso do CloudFront
+EC2
 <key></key>
 
-Utilizar o Auto Scaling para subir uma máquina sempre que a outra cair
+DynamoDb
 <key></key>
 
 <p>
-Qual dos itens abaixo não faz parte dos tipos de uso Free Tier (nível gratuito)?
-
-Testes - Experimentação (Trial)
-<key></key>
-
-<ok>
-Reserved
-<key></key>
-
-Sempre gratuito
-<key></key>
-
-12 Meses gratuitos
-<key></key>
-
-<p>
-Qual é o serviço da AWS que permite que os desenvolvedores foquem apenas na codificação, enquanto realiza automaticamente o provisionamento de toda a infraestrutura para a aplicação ser executada, o balanceamento das cargas,  a implementação de monitoramento e a implantação. Além disso, esse serviço permite a codificação em .Net, Java, PHP, Node.js, Python, Ruby e Go entre outras.
-
-AWS ECS
-<key></key>
-
-Fargate
-<key></key>
-
-<ok>
-AWS ElasticBeanStalk
-<key></key>
-
-AWS CodeDeploy
-<key></key>
-
-<p>
-Qual plano de suporte abaixo oferece acesso aos engenheiros do Cloud Support por telefone, e-mail e chat 24 horas por dia, 7 dias por semana?
-
-Standard
-<key></key>
-
-Basic
-<key></key>
-
-Developer
-<key></key>
-
-<ok>
-Business
-<key></key>
-
-<p>
-Após validar alguns cenários, sua empresa não autorizou o uso de computação compartilhada, mas gostaria de encontrar uma solução da AWS que apresente as mesmas características de simplicidade, agilidade e elasticidade e que faça uso de servidores físicos dedicados. Qual é o serviço que pode atender essa necessidade?
-
-EC2 dedicados
-<key></key>
-
-Hosts reservados
-<key></key>
-
-<ok>
-Hosts dedicados
-<key></key>
-
-EC2 reservados
-<key></key>
-
-<p>
-A migração dos serviços da sua empresa para a AWS vai precisar movimentar uma quantidade muito grande de dados e a localização da sua infraestrutura atual não permite que essa migração seja feita virtualmente devido a conectividade de rede muito instável. Qual serviço da AWS oferece uma família de produtos para sua empresa conseguir realizar essa migração de forma física?
+Qual é a opção abaixo que faz uso da infraestrutura das Redes de Borda (EdgeLocations) e Pontos de Presença  para transferir em alta velocidade arquivos entre S3 Buckets?
 
 AWS DataSync
 <key></key>
 
-<ok>
-AWS Snowball
+AWS VPN
 <key></key>
 
-AWS DMS
-<key></key>
-
-AWS DirectConnect
-<key></key>
-
-<p>
-Qual serviço utiliza Inteligência Artificial e analisa dados gerados por eventos de diversos serviços e armazenados no S3, evitando que atividades maliciosas sejam realizadas?
-
-<ok>
-AWS GuardDuty
-<key></key>
-
-AWS Macie
-<key></key>
-
-AWS Shield
-<key></key>
-
-AWS Malicious
-<key></key>
-
-<p>
-Qual é o serviço utilizado para integrar contas AWS?
-
-AWS Cost Explorer
-<key></key>
-
-AWS CloudFormation
+CloudFront
 <key></key>
 
 <ok>
-AWS Organizations
-<key></key>
-
-AWS MFA
+S3 Transfer Accelerations
 <key></key>
 
 <p>
-Qual conhecimento o seu time precisa para criar aplicações que façam uso do banco de dados DynamoDB?
-
-Athena
-<key></key>
+Seu time de desenvolvimento percebeu que 30%  das consultas feitas por uma aplicação no banco de dados trazem sempre o mesmo resultado. Qual é o serviço da AWS que pode ser implementado para manter esses resultados em cache reduzindo os acessos aos bancos de dados?
 
 <ok>
-API do serviço e o Json com atributos e comandos
+Amazon ElasticCache
 <key></key>
 
-GraphQl
+Amazon EC2
 <key></key>
 
-Comandos SQL
+Amazon Cache
 <key></key>
 
-<p>
-Você desenvolveu um sistema de workflow orientado a eventos e gostaria que uma função sem servidor gravasse uma log num banco de dados ao término do processo. Qual serviço abaixo é o mais indicado para essa finalidade?
-
-<ok>
-Lambda
-<key></key>
-
-SQS
-<key></key>
-
-SQS
-<key></key>
-
-SES
+Amazon EBS
 <key></key>
 
 <p>
-Qual é o serviço de DNS da AWS que entre outras coisas transforma nomes de urls em código IP para acessar os recursos da Cloud.
+Qual dos seguintes serviços permite registros de novos domínios?
 
-AWS Auto Scaling
+ELB
+<key></key>
+
+AWS DNS
 <key></key>
 
 <ok>
 Route53
 <key></key>
 
-ACL
-<key></key>
-
-ELB
+IAM
 <key></key>
 
 <p>
-A área de marketing da sua empresa está planejando fazer uma campanha que durará 12 meses, em vista disso, você foi avisado que haverá um aumento no número de clientes no site e viu que será necessário subir mais 3  instâncias EC2 para atender a demanda durante esse período. Qual tipo de instância terá um melhor custo nesse cenário?
+Qual é o serviço que permite coletar e armazenar logs de recursos, aplicativos e serviços, praticamente em tempo real, para diversas finalidades de processos e negócio?
 
-Dedicated Hosts
-<key></key>
-
-On Demand
+CloudTrail
 <key></key>
 
 <ok>
-Reserved
+CloudWatch Logs
 <key></key>
 
-Spot
+Logs
 <key></key>
 
-<p>
-Sua empresa precisa implementar mais segurança em seus recursos na AWS. Qual é o serviço que permite provisionar, gerenciar e implantar facilmente certificados Secure Sockets Layer (SSL)/Transport Layer Security (TLS) para que sejam usados com os serviços da AWS e os recursos internos conectados?
-
-<ok>
-AWS Certificate Manager
-<key></key>
-
-AWS Protocols
-<key></key>
-
-AWS Security
-<key></key>
-
-AWS KMS
-<key></key>
-
-<p>
-Para atender uma área de auditoria e compliance, você precisa garantir que as configurações iniciais dos serviços e sistemas sejam mantidas e monitoradas. Qual serviço da AWS você pode utilizar para esse tipo de gerenciamento?
-
-<ok>
-AWS Config
-<key></key>
-
-AWS Setup
-<key></key>
-
-AWS Audit
-<key></key>
-
-AWS Compliance
-<key></key>
-
-<p>
-Qual é o serviço de data warehouse da Amazon utilizado pelas áreas de BI, que permite o cruzamento de vários dados estruturado e semi estruturados para gerar conhecimento para o negócio?
-
-EMR
-<key></key>
-
-<ok>
-Amazon RedShift
-<key></key>
-
-Kinesis
-<key></key>
-
-Power BI
+CloudLogs
 <key></key>
 
 <p>

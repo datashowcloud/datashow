@@ -2,7 +2,7 @@
 
 var jsstoreCon = new JsStore.Connection();
 
-var CONST_FASE_NIVEL_MAX = 1;
+var CONST_NIVEL_MAX = 6;
 var GLOBAL_textcolor = 'black';
 var GLOBAL_background = 'white';
 var GLOBAL_buttoncolor = 'btn-colors';
@@ -541,15 +541,14 @@ function registerEvents() {
 		var mygroup = document.getElementById('mygroupSim').value;
 		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
 		changeFaseNivel(myid, mygroup, mycode);
-		if (mycode <= parseInt(document.getElementById('txtTotal').value)) {
-			refreshTableQuestion(myid, mygroup, mycode);
-		} else {
-			var result = confirm('Você chegou na última pergunta. Vou encerrar esta fase, ok?\n');
+		if (mycode > parseInt(document.getElementById('txtTotal').value)) {
+			var result = confirm('Você chegou na última pergunta. Vou salvar esta fase, ok?\n');
 			if (result) {
 				showGridAndHideForms();
 				location.reload();
 			}
 		}
+		refreshTableQuestion(myid, mygroup, mycode);
     })
 	$('#btnPause').click(function () {
 		showGridAndHideForms();
@@ -932,7 +931,7 @@ async function changeFaseNivel(id, mygroup, mycode) {
 function getProximaFaseNivel(id, mygroup, mycode) {
 	var unidade = parseInt(mygroup.substring(mygroup.length-1, mygroup.length));
 	var dezena = parseInt(mygroup.substring(0, mygroup.substring(mygroup.length-1, mygroup.length)));
-	if (unidade < CONST_FASE_NIVEL_MAX) {
+	if (unidade < CONST_NIVEL_MAX) {
 		mygroup = parseInt(mygroup) + 1; //próxima fase
 	} else {
 		mygroup = String(parseInt(mygroup) + 10); //próximo nível
@@ -1025,30 +1024,7 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 			  }
 		});
 		totalperguntas = parseInt(totalperguntas) - 1;
-/*		
-		var studentsDashboard = await jsstoreCon.select({
-			from: 'Student'
-			  , where: { mygroup: mygroup 
-			  }
-		});
-		var totalCorretas = getTotalCorretas(mygroup, mycode, studentsDashboard);
-		var totalIncorretas = getTotalIncorretas(mygroup, mycode, studentsDashboard);
-		var totalNaoRespondidas = getTotalNaoRespondidas(mygroup, mycode, studentsDashboard);
-		var calculo = calculaPercentualAcerto(mygroup, mycode, totalCorretas, totalperguntas);
-		document.getElementById('txtTotal').value = totalperguntas;
-		document.getElementById('txtIncorretas').value = 'Incorretas: ' + totalIncorretas;
-		document.getElementById('txtCorretas').value = 'Corretas: ' + totalCorretas;
-		document.getElementById('txtNaoRespondidas').value = 'Não Respondidas: ' + totalNaoRespondidas;
-		if (calculo >= 70) {
-			document.getElementById('txtCalculo').innerHTML = 'JÁ ESTÁ APROVADO <br/>' + calculo + '% de acerto é >= 70%';
-		} else {
-			document.getElementById('txtCalculo').innerHTML = 'AINDA ESTÁ REPROVADO <br/>' + calculo + '% de acerto é < 70%';
-		}
-*/		
 		setDashboard(myid, mygroup, mycode);
-		
-		
-		
 		var students = await jsstoreCon.select({
 			from: 'Student'
 			  , where: { mygroup: '' + mygroup + ''
@@ -1056,7 +1032,7 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 			  }
 		});
 		if (students == '') {
-			showFormDashboard();
+			
 		} else {
 			students.forEach(function (student) {
 				document.getElementById('myorderSim').style.display='none';
@@ -1292,6 +1268,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 //              + "<td style=\"color:#000000; font-size:1px;\">" + student.mycode + "</td>"
 				+ "<" + varTdTh + " id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " ZZZonClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
 				+ "<a href=\"#\" class=\"playsim\"><i class=\"fa fa-unlock\" style=\""+ varButtonPlayStyle +"\"></i> " + student.mytext + varButtonPlay + "</" + varTdTh + ">"
+//				+ "<a href=\"#\" class=\"playsim\">" + student.mytext + varButtonPlay + "</" + varTdTh + ">"
 //				+ student.mytext + "</" + varTdTh + ">"
 /*				
 				+ "<" + varTdTh + " id=datashow" + student.id+"4" + " tabIndex=" + student.id+"4" + " ZZZonClick=\"datashow('" + student.id+"4" + "', 4, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 4, event, " + "" + (student.id+"4") + ");\" data-show='" + student.id+"4" + "'>"
@@ -1309,7 +1286,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				+ "</" + varTdTh + ">"
 				;
 				
-				varButtonPlayStyle = 'color:gray; font-size:14px;';
+				varButtonPlayStyle = 'color:gray; font-size:16px;';
 				varButtonPlay = ' <i class=\"fa fa-check\" style="'+ varButtonPlayStyle +'"></i></a>';
 		})
 
@@ -2189,7 +2166,6 @@ function showFormSim() {
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').show();
-	$('#divdashboard').hide();
 	$('#divbuttons').hide();
 	document.getElementById('tableButtons').style.display='none';
 }
@@ -2203,7 +2179,6 @@ function showFormAddUpdate() {
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
-	$('#divdashboard').hide();
 }
 
 function showGridAndHideForms() {
@@ -2215,7 +2190,6 @@ function showGridAndHideForms() {
 //	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
-	$('#divdashboard').hide();
 
 //	if (document.getElementById('btnPlay') != null) { document.getElementById('btnPlay').style.display=''; }
 //	if (document.getElementById('btnAddNewManual') != null) { document.getElementById('btnAddNewManual').style.display=''; }
@@ -2232,7 +2206,6 @@ function showAddNewManual() {
 	$('#formBible').hide();
 	$('#divconfig').hide();
 	$('#divFormSim').hide();
-	$('#divdashboard').hide();
 }
 
 function showFormGear() {
@@ -2244,7 +2217,6 @@ function showFormGear() {
 //	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
-	$('#divdashboard').hide();
 }
 
 function showFormImport() {
@@ -2256,19 +2228,6 @@ function showFormImport() {
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
-	$('#divdashboard').hide();
-}
-
-function showFormDashboard() {
-    $('#tblGrid').hide();
-    $('#divFormAddUpdate').hide();
-	$('#divGear').hide();
-	$('#divcontent').hide();
-	$('#formBible').hide();
-	$('#divconfig').hide();
-	$('#divGearAddNewLiryc').hide();
-	$('#divFormSim').hide();
-	$('#divdashboard').show();
 }
 
 function showBible() {
@@ -2280,7 +2239,6 @@ function showBible() {
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
-	$('#divdashboard').hide();
 }
 
 function showIniciarConfiguracao() {
@@ -2292,7 +2250,6 @@ function showIniciarConfiguracao() {
 	$('#divconfig').show();
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
-	$('#divdashboard').hide();
 //	document.getElementById('btnPlay').style.display='none';
 //	document.getElementById('btnAddNewManual').style.display='none';
 //	document.getElementById('btnGear').style.display='none';

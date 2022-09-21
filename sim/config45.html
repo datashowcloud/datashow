@@ -159,167 +159,170 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1.5
+FASE 4.5
 
 <p>
-Qual é o serviço utilizado para provisionar Desktops utilizando Windows ou Linux?
+Qual serviço oferece uma forma fácil de modelar uma coleção de recursos, relacionados da AWS e de terceiros, provisioná-los com rapidez e consistência e gerenciar todo o seu ciclo de vida mediante o tratamento da infraestrutura como código?
 
 <ok>
-Amazon WorkSpaces
-<key>WorkSpaces</key>
+AWS CloudFormation
+<key></key>
 
-Amazon Desktops
-<key>Não Se Aplica</key>
+AWS IAC
+<key></key>
 
-Amazon CLI
-<key>CLI</key>
+AWS YAML
+<key></key>
+
+AWS Stack
+<key></key>
+
+<p>
+Amazon DocumentDB é um serviço que pode ser utilizado em qual dos cenários abaixo?
+
+Armazenamento de dados em grafos para redes sociais
+<key></key>
+
+<ok>
+Armazenamento de dados baseado em documentos JSON.
+<key></key>
+
+Armazenamento de dados em documentos e execução de Map Reduce
+<key></key>
+
+Armazenamento de dados relacionais com forte consistência de dados.
+<key></key>
+
+<p>
+Você é o responsável por criar os microsserviços do seu time e escolheu utilizar o ECS para conteneirizar o ambiente e a aplicação. Agora você deseja criar uma imagem e compartilhar com o seu time e com a organização. Qual é o serviço da AWS recomendado para registrar e compartilhar essa imagem?
 
 EC2
-<key>EC2</key>
-
-<p>
-Você implementou um sistema com arquitetura de microserviços e precisa depurar cada um deles, partindo desde a requisição do usuário para entender a performance e identificando oportunidades de melhorias. Qual serviço da AWS é o mais indicado para essa finalidade (tanto em ambiente de desenvolvimento quanto em ambiente de produção)?
-
-AWS ElasticSearch
-<key>ElasticSearch</key>
-
-AWS CloudSearch
-<key>CloudSearch</key>
-
-<ok>
-AWS X-Ray
-<key>X-Ray</key>
-
-AWS CloudWatch
-<key>CloudWatch</key>
-
-<p>
-As mensagens trafegadas entre o seu site e os usuários não estão sendo criptografadas porque a arquitetura atual não utiliza certificados digitais que permitam essa criptografia. Qual é o serviço da AWS que pode ser utilizado para esse tipo de implementação?
-
-AWS KMS
-<key>KMS</key>
-
-AWS Cognito
-<key>Cognito</key>
-
-<ok>
-AWS Certificate Manager
-<key>Certificate Manager</key>
-
-AWS IAM
-<key>IAM</key>
-
-<p>
-Você precisa automatizar um processo que executa diversas tarefas de forma sequencial em seu sistema. Qual é o serviço mais indicado para essa necessidade?
-
-AWS EventBridge
-<key>EventBridge</key>
-
-AWS Kinesis
-<key>Kinesis</key>
-
-AWS Workflow
-<key>Não Se Aplica</key>
-
-<ok>
-AWS Batch
-<key>Batch</key>
-
-<p>
-Sua empresa precisa lançar um novo produto e para isso deseja criar um novo domínio público para associar a um novo site. Qual é a maneira mais rápida de fazer isso?
-
-Desenvolver o novo site no AWS BeanStalk, que provisiona toda a infra para o desenvolvedor  apenas programar.
-<key>Elastic Beanstalk</key>
-
-<ok>
-Criar um novo domínio no AWS Route53
-<key>Route53</key>
-
-Criar um servidor de domínio numa instância AWS EC2 e incluir o novo domínio
-<key>EC2</key>
-
-Criar um novo domínio no RegistroCom
-<key>Não Se Aplica</key>
-
-<p>
-Você implantou uma aplicação em produção que não está funcionando e na log existe uma mensagem de acesso negado ao DynamoDB. Qual serviço abaixo você precisa checar e configurar corretamente para validar esse acesso?
-
-AWS Config
-<key>Config</key>
-
-<ok>
-AWS IAM Roles
-<key>IAM Roles</key>
-
-AWS Cognito
-<key>Cognito</key>
-
-AWS IAM Policy
-<key>IAM Policies</key>
-
-<p>
-Qual é o serviço de alta performance desenvolvido para fornecer block-storage para instâncias EC2?
-
-S3
-<key>S3</key>
-
-ELB
-<key>ELB</key>
-
-<ok>
-EBS
-<key>EBS</key>
-
-KMS
-<key>KMS</key>
-
-<p>
-Qual é o serviço serverless que permite a execução de queries utilizando padrão SQL para analisar dados no Amazon S3?
-
-<ok>
-Athena
-<key>Athena</key>
+<key></key>
 
 EMR
-<key>EMR</key>
+<key></key>
 
-Amazon Elastic Search
-<key>ElasticSearch</key>
-
-Amazon Query Analyzer
-<key>Não Se Aplica</key>
-
-<p>
-Sua empresa deseja otimizar o custo com a utilização do S3 e você percebeu que existem muitas logs de sistemas que estão armazenadas, mas que poderiam ser deletadas após 30 dias da criação. O que você precisa fazer para atender a necessidade de sua empresa?
-
-Criar uma cópia destes objetos em outra região.
-<key>Não Se Aplica</key>
+EKS
+<key></key>
 
 <ok>
-Configurar no S3 Lifecycle para que os objetos expirem em 30 dias para serem automaticamente excluídos.
-<key>Lifecycle</key>
-
-Configurar o CloudWatch para monitorar o S3 e enviar um email solicitando a exclusão dos arquivos.
-<key>CloudWatch</key>
-
-Criar uma cópia destes objetos em outra zona de disponibilidade.
-<key>Multi-AZ</key>
+ECR
+<key></key>
 
 <p>
-Sua empresa tem um sistema que suporta em média 2000 usuários por dia, porém em dias com o aumento de vendas, o sistema chega a 3000 usuários apresentando lentidão e indisponibilidade. Como você automatizaria o processo para o provisionamento automático de máquinas adicionais para suportar essas cargas em dias de pico?
-
-Migrando a aplicação para uma máquina melhor
-<key>Auto Scaling</key>
+Quais são os três principais tipos de cloud computing?
+<br>(Selecione 3)
 
 <ok>
-Usando o Auto Scalling
-<key>Auto Scaling</key>
+IaaS - Infraestrutura como serviço
+<key></key>
 
-Implementando EBS Snapshots
-<key>EBS Snapshots</key>
+<ok>
+SaaS - Software como serviço
+<key></key>
 
-Incluindo mais uma máquina física e alterando o ELB
-<key>ELB</key>
+<ok>
+PaaS - Plataforma como serviço
+<key></key>
+
+BaaS - Backend como serviço
+<key></key>
+
+<p>
+O Amazon EC2 é o principal serviço que permite computação em nuvem. Qual é a menor instância, em relação ao processamento, ofertada pela AWS e que só tem 1 vCPU?
+
+<ok>
+nano
+<key></key>
+
+pequena
+<key></key>
+
+fit
+<key></key>
+
+micro
+<key></key>
+
+<p>
+Você precisa publicar um site estático com custo mínimo. Qual serviço da AWS você usaria para hospedá-lo?
+
+EC2 rodando Windows
+<key></key>
+
+EFS
+<key></key>
+
+<ok>
+S3
+<key></key>
+
+EC2 rodando Linux
+<key></key>
+
+<p>
+Você está hospedando 10 instâncias EC2. Qual é o serviço que pode te ajudar a monitorar a utilização da CPU que elas utilizam?
+
+Amazon CloudTrail
+<key></key>
+
+Amazon AMI
+<key></key>
+
+<ok>
+Amazon CloudWatch
+<key></key>
+
+Amazon Log
+<key></key>
+
+<p>
+O que estende as orientações oferecidas pelo AWS Well-Architected a domínios específicos da indústria e da tecnologia tais como: machine learning (ML), análise de dados, tecnologia sem servidor, computação de alta performance (HPC), Internet das Coisas (IoT) SAP, mídia de streaming, indústria de jogos, rede híbrida e serviços financeiros?
+
+<ok>
+As perspectivas do AWS Well-Architected
+<key></key>
+
+Os modelos do AWS Well-Architected
+<key></key>
+
+Os planos do AWS Well-Architected
+<key></key>
+
+As rotas do AWS Well-Architected
+<key></key>
+
+<p>
+Qual é o serviço de Pub/Sub utilizado para desacoplar sistemas, filtrar e enviar mensagens para diversos serviços como SQS, E-mail, Kinesis, entre outros?
+
+<ok>
+SNS
+<key></key>
+
+RDS
+<key></key>
+
+EC2
+<key></key>
+
+AWS Topic
+<key></key>
+
+<p>
+Sua empresa estimou um gasto de US$ 12.000,00 por mês com infraestrutura AWS. Qual é o serviço que te auxilia, enviando mensagem, quando o consumo estiver atingindo um percentual pré-configurado deste valor?
+
+AWS Pricing Calculator
+<key></key>
+
+<ok>
+AWS Budgets
+<key></key>
+
+AWS Organizations
+<key></key>
+
+AWS Cost Explorer
+<key></key>
 
 <p>
 

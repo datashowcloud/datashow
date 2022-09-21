@@ -162,337 +162,163 @@
 FASE 4.1
 
 <p>
-Qual dos itens abaixo fazem parte do Well-Architected-Framework ?
-<br>(Selecione 2)
+Qual é o serviço que realiza a transferência de dados, em dispositivo físico, conduzidos por meios de transportes pertinentes para a infraestrutura da AWS?
+
+AWS Transport
+<key></key>
+
+AWS DataSync
+<key></key>
+
+AWS DMS
+<key></key>
+
+<ok>
+AWS Snowball
+<key></key>
+
+<p>
+Qual é o serviço que monitora os aplicativos e que ajusta automaticamente a capacidade de instâncias para manter um desempenho constante e previsível pelo menor custo possível?
+
+AWS Fargate
+<key></key>
+
+AWS ELB
+<key></key>
+
+<ok>
+AWS Auto Scalling
+<key></key>
+
+AWS ECS
+<key></key>
+
+<p>
+Qual das opções abaixo é um serviço Amazon para gerenciar pacotes de softwares e suas dependências?
+
+<ok>
+AWS CodeArtifact
+<key></key>
+
+AWS CodeBuild
+<key></key>
+
+AWS CodeDeploy
+<key></key>
+
+AWS CodeCommit
+<key></key>
+
+<p>
+Qual é o serviço gerenciado na nuvem AWS com o qual é possível configurar, gerenciar e dimensionar uma solução de pesquisa, de forma simples e econômica, para o seu site ou aplicativo ?
+
+Amazon ElasticSearchService
+<key></key>
+
+Amazon ElasticCache
+<key></key>
+
+Amazon Athena
+<key></key>
+
+<ok>
+Amazon CloudSearch
+<key></key>
+
+<p>
+Qual componente da infraestrutura global da AWS o Amazon CloudFront utiliza para garantir a baixa latência na distribuição de conteúdo?
+
+Regiões (Regions)
+<key></key>
+
+Amazon ECS
+<key></key>
+
+Amazon VPC
+<key></key>
+
+<ok>
+Redes de Borda (Edge Locations)
+<key></key>
+
+<p>
+A utilização de 750h por mês do EC2 faz parte de qual tipo de uso do nível gratuito (Free Tier)?
+
+Spot
+<key></key>
+
+Always free (sempre livre)
+<key></key>
+
+<ok>
+12 months free (12 meses livre)
+<key></key>
+
+Trial (Experimentação Livre)
+<key></key>
+
+<p>
+A inclusão e retirada de máquinas de forma automática para executar as aplicações de acordo com a demanda é denominada por?
 
 Desacoplamento
 <key></key>
 
 <ok>
-Segurança
+Elasticidade
 <key></key>
 
-<ok>
-Performance Eficiente
+Performance
 <key></key>
 
-Resiliência
-<key></key>
-
-<p>
-Qual é o serviço que permite a execução de funções sem servidor na AWS?
-
-ECS
-<key></key>
-
-<ok>
-Lambda
-<key></key>
-
-EC2
-<key></key>
-
-Athena
+Disponibilidade
 <key></key>
 
 <p>
-Qual é o serviço da AWS utilizado para fazer a gestão de acessos de usuários e recursos?
+O que o Amazon EKS adiciona ao Amazon ECS?
 
-AWS Gognito
+Computação sem servidor
+<key></key>
+
+Distribuição de Carga
+<key></key>
+
+Registro de imagem
 <key></key>
 
 <ok>
-AWS IAM
-<key></key>
-
-AWS Security Group
-<key></key>
-
-AWS User Group
+Orquestração
 <key></key>
 
 <p>
-Quais são as principais características do Amazon Kinesis?
+Sua equipe desenvolveu uma aplicação para enviar um e-mail para os seus clientes avisando que a assinatura de um serviço anual irá vencer nos próximos 2 meses. Essa aplicação não precisa de alta disponibilidade e pode ser executada em qualquer horário do dia. Qual é a forma de uso de instâncias EC2 mais indicada para economizar custos?
 
 <ok>
-coletar, processar e analisar streaming de dados em tempo real
-<key></key>
-
-<ok>
-gerar insights rápidos de acordo com os dados obtidos
-<key></key>
-
-arquivar dados
-<key></key>
-
-executar consultas no S3
-<key></key>
-
-<p>
-Sua equipe de desenvolvimento está montando um pipeline de integração contínua e deseja implementar algum serviço para gerenciamento de código. Por questões jurídicas, as opções mais usuais do mercado foram descartadas. Qual é o serviço da AWS que fornece repositórios gits privados para o gerenciamento de código?
-
-AWS CodeBuild
-<key></key>
-
-AWS Git
-<key></key>
-
-<ok>
-AWS CodeCommit
-<key></key>
-
-AWS Checkout
-<key></key>
-
-<p>
-Qual é o plano recomendado se você está experimentado ou testando na AWS?
-
-Enterprise
-<key></key>
-
-Business
-<key></key>
-
-<ok>
-Developer
-<key></key>
-
-Basic
-<key></key>
-
-<p>
-Qual é a ferramenta feita para desenvolvedores e cientistas de dados prepararem, construirem, treinarem e implantarem seus modelos de aprendizado de máquina na AWS (ML-Machine Learning)?
-
-Amazon Step Function
-<key></key>
-
-Amazon RedShift
-<key></key>
-
-EMR
-<key></key>
-
-<ok>
-Amazon SageMaker
-<key></key>
-
-<p>
-Qual das opções abaixo é uma ferramenta para proteger instâncias EC2?
-
-AWS User Groups
-<key></key>
-
-AWS IAM
-<key></key>
-
-<ok>
-AWS Security Groups
-<key></key>
-
-AWS CloudWatch
-<key></key>
-
-<p>
-Todos os objetos do S3 são privados por default. Qual das opções abaixo é uma forma de permitir que pessoas ou aplicações consigam acessar esses objetos durante um período pré-determinado de tempo?
-
-Alterando a propriedade do objeto para público
-<key></key>
-
-Migrando o objeto para a classe Glacier do S3
-<key></key>
-
-<ok>
-Gerando URLs pré assinadas
-<key></key>
-
-Utilizando o Transfer Accelerator do S3
-<key></key>
-
-<p>
-Sobre o gerenciamento de Grupos no AWS IAM, podemos afirmar que:
-<br>(Selecione 3)
-
-<ok>
-Um usuário pode pertencer a vários grupos
-<key></key>
-
-<ok>
-Um Grupo pode conter diversos usuários
-<key></key>
-
-Você pode criar grupos de usuário padrão e incluir todos os usuários da conta da AWS
-<key></key>
-
-O número e o tamanho dos grupos do AWS IAM são virtualmente ilimitados.
-<key></key>
-
-<ok>
-Os grupos não pode ser aninhados, eles só podem conter usuários
-<key></key>
-
-<p>
-Qual é o serviço que coleta dados de monitoramento e operações na forma de logs, métricas e eventos e os exibe usando painéis automatizados para que você tenha uma visão unificada dos recursos, aplicativos e serviços executados na AWS e em servidores locais?
-
-<ok>
-AWS CloudWatch
-<key></key>
-
-AWS GuardDuty
-<key></key>
-
-AWS Macie
-<key></key>
-
-AWS Inspector
-<key></key>
-
-<p>
-Você descobriu que o seu website vem apresentando muita indisponibilidade devido a ataques DDoS. Quais serviços listados abaixo podem ser utilizados para evitá-los?
-<br>(Selecione 2)
-
-AWS GuardDuty
-<key></key>
-
-<ok>
-AWS Shield
-<key></key>
-
-<ok>
-AWS CloudFront
-<key></key>
-
-AWS CLI
-<key></key>
-
-<p>
-Quais mecanismos de bancos de dados são suportados no RDS?
-
-<ok>
-Amazon Aurora, PostgreSQL, MySQL, MariaDB, Oracle Database e SQL Server
-<key></key>
-
-Dynamo, Cassandra, Neptune
-<key></key>
-
-JanusGraph, MongoDB
-<key></key>
-
-DB2
-<key></key>
-
-<p>
-No modelo de responsabilidade compartilhada, qual dos itens abaixo não é papel das duas partes (AWS e cliente)?
-
-Gerenciamento de configuração
-<key></key>
-
-Gerenciamento de patches
-<key></key>
-
-Conhecimentos e treinamento
-<key></key>
-
-<ok>
-Gerenciamento de permissão de acesso a dados de aplicativos dos clientes.
-<key></key>
-
-<p>
-Sua empresa precisa realizar backups de diversos serviços de sua infraestrutura virtual e do seu ambiente on premises. Qual é o serviço que, através da CLI, APIs e Console, permite automatizar e consolidar tarefas de backup e remove a necessidade de criar scripts personalizados e processos manuais?
-
-AWS Storage Gateway
-<key></key>
-
-Amazon S3
-<key></key>
-
-<ok>
-AWS Backups
-<key></key>
-
-Amazon EBS
-<key></key>
-
-<p>
-Quando é dado o acesso a um usuário pelo IAM, qual dos seguintes princípios deve ser aplicado na concessão de acessos?
-
-Princípio do maior privilégio
-<key></key>
-
-<ok>
-Princípio do menor privilégio
-<key></key>
-
-Princípio de baixo privilégio
-<key></key>
-
-Princípio do alto privilégio
-<key></key>
-
-<p>
-Qual serviço da AWS permite criar uma esteira de CI/CD englobando demais serviço para controlar todo o worklow de integração e entrega?
-
-AWS Workflow
-<key></key>
-
-AWS Step Functions
-<key></key>
-
-<ok>
-AWS CodePipeline
-<key></key>
-
-AWS CodeCommit
-<key></key>
-
-<p>
-Com qual serviço da AWS você pode identificar e refinar facilmente suas políticas para permitir o acesso de usuários e aplicações, apenas aos serviços que estão sendo usados te ajudando a adotar da melhor forma o princípio do menor privilégio?
-
-AWS Cognito
-<key></key>
-
-IAM Roles
-<key></key>
-
-<ok>
-AWS IAM
-<key></key>
-
-AWS MFA
-<key></key>
-
-<p>
-Quais dos seguintes bancos de dados são totalmente gerenciados pela AWS?
-<br>(Escolha 3)
-
-MySql
-<key></key>
-
-<ok>
-Aurora
-<key></key>
-
-<ok>
-DynamoDB
-<key></key>
-
-<ok>
-Redshift
-<key></key>
-
-<p>
-Qual é a forma de pagamento de instâncias EC2 que pode ser utilizada quando estima-se a utilização das instâncias por mais de 1 ano e que pode gerar uma economia de mais de 72% comparada ao on-demand (sob demanda)?
-
 Spot
 <key></key>
 
-Dedicated Host
+On-Demand
 <key></key>
 
-On Demand
+Reserved
+<key></key>
+
+Dedicated Hosts
+<key></key>
+
+<p>
+O que o AWS Fargate adiciona ao Amazon ECS?
+
+Orquestração
+<key></key>
+
+Balanceamento de Carga
 <key></key>
 
 <ok>
-Reserved
+Execução de conteiner sem servidor
+<key></key>
+
+Registro de Imagem
 <key></key>
 
 <p>

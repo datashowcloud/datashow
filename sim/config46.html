@@ -159,167 +159,167 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1.5
+FASE 4.6
 
 <p>
-Qual é o serviço utilizado para provisionar Desktops utilizando Windows ou Linux?
+Qual categoria abaixo não faz parte das ofertadas para instâncias EC2?
+
+Computação Acelerada
+<key></key>
 
 <ok>
-Amazon WorkSpaces
-<key>WorkSpaces</key>
+Propósitos Específicos
+<key></key>
 
-Amazon Desktops
-<key>Não Se Aplica</key>
+Propósitos Gerais
+<key></key>
 
-Amazon CLI
-<key>CLI</key>
+Computação Otimizada
+<key></key>
+
+<p>
+Qual é o serviço da AWS recomendado para armazenar arquivos de dados, filmes e  música como objetos?
+
+DynamoDb
+<key></key>
 
 EC2
-<key>EC2</key>
+<key></key>
 
-<p>
-Você implementou um sistema com arquitetura de microserviços e precisa depurar cada um deles, partindo desde a requisição do usuário para entender a performance e identificando oportunidades de melhorias. Qual serviço da AWS é o mais indicado para essa finalidade (tanto em ambiente de desenvolvimento quanto em ambiente de produção)?
-
-AWS ElasticSearch
-<key>ElasticSearch</key>
-
-AWS CloudSearch
-<key>CloudSearch</key>
+Amazon Elastic Cache
+<key></key>
 
 <ok>
-AWS X-Ray
-<key>X-Ray</key>
-
-AWS CloudWatch
-<key>CloudWatch</key>
-
-<p>
-As mensagens trafegadas entre o seu site e os usuários não estão sendo criptografadas porque a arquitetura atual não utiliza certificados digitais que permitam essa criptografia. Qual é o serviço da AWS que pode ser utilizado para esse tipo de implementação?
-
-AWS KMS
-<key>KMS</key>
-
-AWS Cognito
-<key>Cognito</key>
-
-<ok>
-AWS Certificate Manager
-<key>Certificate Manager</key>
-
-AWS IAM
-<key>IAM</key>
-
-<p>
-Você precisa automatizar um processo que executa diversas tarefas de forma sequencial em seu sistema. Qual é o serviço mais indicado para essa necessidade?
-
-AWS EventBridge
-<key>EventBridge</key>
-
-AWS Kinesis
-<key>Kinesis</key>
-
-AWS Workflow
-<key>Não Se Aplica</key>
-
-<ok>
-AWS Batch
-<key>Batch</key>
-
-<p>
-Sua empresa precisa lançar um novo produto e para isso deseja criar um novo domínio público para associar a um novo site. Qual é a maneira mais rápida de fazer isso?
-
-Desenvolver o novo site no AWS BeanStalk, que provisiona toda a infra para o desenvolvedor  apenas programar.
-<key>Elastic Beanstalk</key>
-
-<ok>
-Criar um novo domínio no AWS Route53
-<key>Route53</key>
-
-Criar um servidor de domínio numa instância AWS EC2 e incluir o novo domínio
-<key>EC2</key>
-
-Criar um novo domínio no RegistroCom
-<key>Não Se Aplica</key>
-
-<p>
-Você implantou uma aplicação em produção que não está funcionando e na log existe uma mensagem de acesso negado ao DynamoDB. Qual serviço abaixo você precisa checar e configurar corretamente para validar esse acesso?
-
-AWS Config
-<key>Config</key>
-
-<ok>
-AWS IAM Roles
-<key>IAM Roles</key>
-
-AWS Cognito
-<key>Cognito</key>
-
-AWS IAM Policy
-<key>IAM Policies</key>
-
-<p>
-Qual é o serviço de alta performance desenvolvido para fornecer block-storage para instâncias EC2?
-
 S3
-<key>S3</key>
+<key></key>
 
-ELB
-<key>ELB</key>
+<p>
+Qual plano de suporte é recomendado se você tem cargas de trabalho empresariais e/ou de missão crítica na AWS?
+
+<ok>
+Enterprise
+<key></key>
+
+Basic
+<key></key>
+
+Business
+<key></key>
+
+Developer
+<key></key>
+
+<p>
+Decidi implementar na minha arquitetura um banco de dados totalmente gerenciado pelo meu time rodando numa instância EC2. Qual é o serviço que será utilizado para armazenar os dados deste banco?
+
+DynamoDb
+<key></key>
+
+RDS
+<key></key>
 
 <ok>
 EBS
-<key>EBS</key>
+<key></key>
 
-KMS
-<key>KMS</key>
-
-<p>
-Qual é o serviço serverless que permite a execução de queries utilizando padrão SQL para analisar dados no Amazon S3?
-
-<ok>
-Athena
-<key>Athena</key>
-
-EMR
-<key>EMR</key>
-
-Amazon Elastic Search
-<key>ElasticSearch</key>
-
-Amazon Query Analyzer
-<key>Não Se Aplica</key>
+Aurora
+<key></key>
 
 <p>
-Sua empresa deseja otimizar o custo com a utilização do S3 e você percebeu que existem muitas logs de sistemas que estão armazenadas, mas que poderiam ser deletadas após 30 dias da criação. O que você precisa fazer para atender a necessidade de sua empresa?
+Qual serviço da AWS pode ser utilizado se você deseja hospedar aplicações web de várias camadas e estabelecer o acesso e as restrições de segurança entre seus servidores web, aplicações e bancos de dados?
 
-Criar uma cópia destes objetos em outra região.
-<key>Não Se Aplica</key>
+Security Group
+<key></key>
 
 <ok>
-Configurar no S3 Lifecycle para que os objetos expirem em 30 dias para serem automaticamente excluídos.
-<key>Lifecycle</key>
+VPC
+<key></key>
 
-Configurar o CloudWatch para monitorar o S3 e enviar um email solicitando a exclusão dos arquivos.
-<key>CloudWatch</key>
+NACL
+<key></key>
 
-Criar uma cópia destes objetos em outra zona de disponibilidade.
-<key>Multi-AZ</key>
+VPN
+<key></key>
 
 <p>
-Sua empresa tem um sistema que suporta em média 2000 usuários por dia, porém em dias com o aumento de vendas, o sistema chega a 3000 usuários apresentando lentidão e indisponibilidade. Como você automatizaria o processo para o provisionamento automático de máquinas adicionais para suportar essas cargas em dias de pico?
+Qual é o firewall da AWS que protege suas aplicações web de bots e outras ameaças comuns que podem afetar a disponibilidade e a performance dos seus serviços?
 
-Migrando a aplicação para uma máquina melhor
-<key>Auto Scaling</key>
+AWS Certificate Manager
+<key></key>
 
 <ok>
-Usando o Auto Scalling
-<key>Auto Scaling</key>
+AWS WAF
+<key></key>
 
-Implementando EBS Snapshots
-<key>EBS Snapshots</key>
+AWS CloudFront
+<key></key>
 
-Incluindo mais uma máquina física e alterando o ELB
-<key>ELB</key>
+AWS Shield
+<key></key>
+
+<p>
+Qual é o serviço da AWS que permite criar uma imagem a partir de uma EC2 configurada para ser utilizada em serviços como Auto Scaling, DR, entre outros ?
+
+AWS Workspaces
+<key></key>
+
+<ok>
+AMI
+<key></key>
+
+AWS Image
+<key></key>
+
+AWS Config
+<key></key>
+
+<p>
+No modelo de responsabilidade compartilhada, qual é o papel do cliente?
+
+<ok>
+proteger e configurar instâncias EC2 contra invasões
+<key></key>
+
+proteger os hardwares que executam os serviços da nuvem
+<key></key>
+
+proteger os data centers físicos
+<key></key>
+
+proteger os softwares que executam os serviços da nuvem
+<key></key>
+
+<p>
+Sua empresa implementou alguns serviços que identificam problemas de segurança na sua infraestrutura da AWS. Qual é o serviço que, através de visualização interativa e unificada de seus recursos, usuários e interações,  facilita a investigação e a identificação rápidas da causa raiz dos problemas de segurança ou atividades suspeitas na sua rede?
+
+Amazon Macie
+<key></key>
+
+AWS Security Hub
+<key></key>
+
+Amazon GuardDuty
+<key></key>
+
+<ok>
+Amazon Detective
+<key></key>
+
+<p>
+Você precisa migrar uma grande quantidade de dados do seu ambiente on-premise para armazenamento no S3 de forma automática e periódica, liberando a capacidade da sua infraestrutra particular. Qual serviço que pode ser utilizado pra essa finalidade?
+
+AWS DMS
+<key></key>
+
+AWS VPN
+<key></key>
+
+<ok>
+AWS DataSync
+<key></key>
+
+AWS DirectConnect
+<key></key>
 
 <p>
 

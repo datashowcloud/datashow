@@ -162,83 +162,163 @@
 FASE 3.3
 
 <p>
-Qual item abaixo é de responsabilidade dos clientes quando é preciso garantir que dados em volumes EBS  estejam seguros e com seus backups realizados?
+Você tem uma aplicação hospedada no EC2 que precisa enviar notificações para outras aplicações e serviços baseadas em eventos. Qual dos serviços abaixo é o mais indicado para essa necessidade?
+
+SES
+<key></key>
+
+CloudWatch
+<key></key>
+
+SQS
+<key></key>
 
 <ok>
-Criar a EBS snapshot
-<key></key>
-
-Criar copias dos EBS Volumes
-<key></key>
-
-Anexar volumes em instâncias EC2
-<key></key>
-
-Deletar o dado quando o dispositivo é destruído
+SNS
 <key></key>
 
 <p>
-Sua empresa criou diversas funções Lambdas para consultar informações e compor processos de avaliação de crédito. Qual serviço da AWS, orientado a eventos, pode ser utilizado com pouca codificação para expressar lógicas de negócios complexas na forma de fluxos de trabalho para construir esses processos?
+Qual é a principal função do Security Group?
 
-AWS SQS
+É servir apenas para agrupar recursos dentro de uma rede privada
 <key></key>
 
 <ok>
-AWS Step Functions
+É servir como uma espécie de firewall para controlar a autorização do tráfego de entrada e saída de máquinas EC2 que estejam associados a ele.
 <key></key>
 
-AWS BPM
+É proteger a infraestrutura global da AWS de ataques de hackers
 <key></key>
 
-AWS SNS
+É proteger os data centers físicos da AWS
 <key></key>
 
 <p>
-Você deseja disponibilizar sua aplicação no endereço www.simuladoudemy.com. Qual serviço pode ser utilizada para essa finalidade?
+A AWS é uma infraestrutura cloud global segura, extensível e confiável e que oferece mais de 200 serviços em diversos países ao redor do mundo. Sobre sua distribuição no mundo, podemos afirmar que?
 
-S3
-<key></key>
-
-API Gateway
-<key></key>
-
-AutoScalling
+É atualmente composta por 6 regiões, que estão divididas em mínimo em 200 zonas de disponibilidade
 <key></key>
 
 <ok>
-Route 53
+É atualmente composta por 26 regiões, que estão divididas no mínimo em 81 zonas de disponibilidade(az)
+<key></key>
+
+É atualmente composta por 6 zonas de disponibilidades(az) que estão divididas em mínimo em 200 regiões
+<key></key>
+
+É atualmente composta por 26 zonas de disponibilidades(az), que estão divididas no mínimo em 81 regiões de disponibilidade
 <key></key>
 
 <p>
-Qual serviço da AWS abaixo deve ser utilizado para liberar acesso na conta para 3 desenvolvedores novos que chegaram no seu time?
+Qual serviço da AWS faz recomendações para a otimização de segurança dos seus recursos?
 
-CloudFront
-<key></key>
-
-S3
-<key></key>
-
-<ok>
 IAM
 <key></key>
 
-EC2
+<ok>
+Trusted Advisor
+<key></key>
+
+Security Group
+<key></key>
+
+MFA
 <key></key>
 
 <p>
-Sua aplicação precisa que os dados estejam estruturados e distribuídos em tabelas, relacionadas por chaves, para atender um requisito de uma funcionalidade. Qual banco de dados abaixo não é indicado para esse fim?
+Qual é o serviço da AWS que pode ser utilizado para sua equipe desenvolver, compilar e implantar, rapidamente, aplicativos na AWS a partir de modelos, além de disponibilizar uma interface de usuário que permite o gerenciamento das atividades de desenvolvimento de projeto e de problemas com base no Jira Atlassian?
 
-MariaDB
+AWS CodeDeploy
 <key></key>
 
-Aurora
+AWS CodeBuild
+<key></key>
+
+AWS CodeCommit
 <key></key>
 
 <ok>
-DynamoDB
+AWS CodeStar
 <key></key>
 
-MySql
+<p>
+Você é uma pessoa desenvolvedora e gostaria de acessar os serviços da AWS diretamente da sua IDE(IntelliJ, Visual Code, Eclipse, etc..). Qual serviço oferece uma ferramenta (toolkit) para ser baixada e instalada na sua estação de trabalho e que permita tal integração?
+
+<ok>
+AWS SDKs
+<key></key>
+
+AWS Console Manager
+<key></key>
+
+AWS Workspaces
+<key></key>
+
+AWS CLI
+<key></key>
+
+<p>
+Qual dos pilares do Well-Architected Framework foca em como podemos continuamente melhorar processos e procedimentos?
+
+<ok>
+Excelência Operacional
+<key></key>
+
+Performance Eficiente
+<key></key>
+
+Confiabilidade
+<key></key>
+
+Segurança
+<key></key>
+
+<p>
+Sua empresa deseja implementar testes automatizados na sua esteira de desenvolvimento, qual é o serviço da AWS que pode ser adotado para essa finalidade?
+
+AWS CodePipeline
+<key></key>
+
+AWS CodeTest
+<key></key>
+
+<ok>
+AWS CodeBuild
+<key></key>
+
+AWS CodeDeploy
+<key></key>
+
+<p>
+Uma aplicação crítica utiliza de 5 a 10 instâncias EC2 para suportar a grande volumetria de requisição e processamento. Pelos seus estudos, essa infraestrutura atenderá a necessidade pelos próximos 3 anos sem grandes alterações. Qual seria a melhor estratégia para garantir a escalabilidade e otimizar os custos?
+
+10 instâncias Reserved
+<key></key>
+
+<ok>
+5 instâncias Reserved e 5 instâncias OnDemand
+<key></key>
+
+5 instâncias Reserved e 5 instâncias Spot
+<key></key>
+
+10 instâncias OnDemand
+<key></key>
+
+<p>
+Qual dos seguintes componentes de rede pode ser usado para hospedar recursos EC2 na AWS?
+
+AWS Autoscaling
+<key></key>
+
+AWS Elastic Load Balancer
+<key></key>
+
+AWS Trusted Advisor
+<key></key>
+
+<ok>
+AWS VPC
 <key></key>
 
 <p>

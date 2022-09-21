@@ -24,7 +24,7 @@
 </head>
 
 <body id="myBody" ZZZbackground="gallery/paper.jpeg">
-
+		
 			<div style="display:'none'; text-align:center; ">
 				<!-- br/>Aguarde o resultado na janela da configuração -->
 				<button class="btn btn-info" onclick="window.close();" style="padding:9px 15px 9px 15px;"><i class="fa fa-lock"></i> Parabéns! Você liberou uma fase. <i class="fa fa-unlock"></i></button>
@@ -159,167 +159,171 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1.5
+FASE 2.4
 
 <p>
-Qual é o serviço utilizado para provisionar Desktops utilizando Windows ou Linux?
+Sua empresa recentemente foi auditada e autuada, pois mantinha arquivos com dados sensíveis do cliente expostos na sua rede interna, colocando em risco a imagem do cliente e da empresa. Qual serviço da AWS pode ser utilizado para monitorar os dados e evitar esse tipo de ocorrência?
+
+AWS Sensitive
+<key></key>
 
 <ok>
-Amazon WorkSpaces
-<key>WorkSpaces</key>
+AWS Macie
+<key></key>
 
-Amazon Desktops
-<key>Não Se Aplica</key>
-
-Amazon CLI
-<key>CLI</key>
-
-EC2
-<key>EC2</key>
-
-<p>
-Você implementou um sistema com arquitetura de microserviços e precisa depurar cada um deles, partindo desde a requisição do usuário para entender a performance e identificando oportunidades de melhorias. Qual serviço da AWS é o mais indicado para essa finalidade (tanto em ambiente de desenvolvimento quanto em ambiente de produção)?
-
-AWS ElasticSearch
-<key>ElasticSearch</key>
-
-AWS CloudSearch
-<key>CloudSearch</key>
-
-<ok>
-AWS X-Ray
-<key>X-Ray</key>
-
-AWS CloudWatch
-<key>CloudWatch</key>
-
-<p>
-As mensagens trafegadas entre o seu site e os usuários não estão sendo criptografadas porque a arquitetura atual não utiliza certificados digitais que permitam essa criptografia. Qual é o serviço da AWS que pode ser utilizado para esse tipo de implementação?
+AWS GuardDuty
+<key></key>
 
 AWS KMS
-<key>KMS</key>
-
-AWS Cognito
-<key>Cognito</key>
-
-<ok>
-AWS Certificate Manager
-<key>Certificate Manager</key>
-
-AWS IAM
-<key>IAM</key>
+<key></key>
 
 <p>
-Você precisa automatizar um processo que executa diversas tarefas de forma sequencial em seu sistema. Qual é o serviço mais indicado para essa necessidade?
-
-AWS EventBridge
-<key>EventBridge</key>
-
-AWS Kinesis
-<key>Kinesis</key>
-
-AWS Workflow
-<key>Não Se Aplica</key>
+Qual é o banco de dados sem servidor (serverless) ofertado pela AWS?
 
 <ok>
-AWS Batch
-<key>Batch</key>
+DynamoDB
+<key></key>
+
+MySql
+<key></key>
+
+MariaDB
+<key></key>
+
+Aurora
+<key></key>
 
 <p>
-Sua empresa precisa lançar um novo produto e para isso deseja criar um novo domínio público para associar a um novo site. Qual é a maneira mais rápida de fazer isso?
+Sua empresa está analisando o banco de dados DynamoDB para conhecer oportunidades em seu uso. Qual opção abaixo não é uma característica do serviço?
 
-Desenvolver o novo site no AWS BeanStalk, que provisiona toda a infra para o desenvolvedor  apenas programar.
-<key>Elastic Beanstalk</key>
+É um banco de dados sem servidor
+<key></key>
+
+É um banco de dados de valores-chave e documentos
+<key></key>
 
 <ok>
-Criar um novo domínio no AWS Route53
-<key>Route53</key>
+É um banco de dados cobrado por MB na solicitação de gravação e leitura
+<key></key>
 
-Criar um servidor de domínio numa instância AWS EC2 e incluir o novo domínio
-<key>EC2</key>
-
-Criar um novo domínio no RegistroCom
-<key>Não Se Aplica</key>
+É um banco de dados totalmente gerenciado
+<key></key>
 
 <p>
-Você implantou uma aplicação em produção que não está funcionando e na log existe uma mensagem de acesso negado ao DynamoDB. Qual serviço abaixo você precisa checar e configurar corretamente para validar esse acesso?
+Qual plano de suporte oferece o AWS Trusted Advisor, serviço que fornece recomendações para ajudar na utilização das melhores práticas de uso?
 
-AWS Config
-<key>Config</key>
+Developer
+<key></key>
+
+Enterprise
+<key></key>
 
 <ok>
-AWS IAM Roles
-<key>IAM Roles</key>
+Todos
+<key></key>
 
-AWS Cognito
-<key>Cognito</key>
-
-AWS IAM Policy
-<key>IAM Policies</key>
+Business
+<key></key>
 
 <p>
-Qual é o serviço de alta performance desenvolvido para fornecer block-storage para instâncias EC2?
-
-S3
-<key>S3</key>
-
-ELB
-<key>ELB</key>
+Qual é o banco de dados NoSql do tipo chave e valor gerenciado pela AWS?
 
 <ok>
-EBS
-<key>EBS</key>
+DynamoDB
+<key></key>
 
-KMS
-<key>KMS</key>
+Aurora
+<key></key>
+
+MySql
+<key></key>
+
+Cassandra
+<key></key>
 
 <p>
-Qual é o serviço serverless que permite a execução de queries utilizando padrão SQL para analisar dados no Amazon S3?
+Selecione as opções verdadeiras que ser referem ao AWS IAM? (selecione 3 alternativas)
 
 <ok>
-Athena
-<key>Athena</key>
+A maioria das Policies são armazenadas em documentos JSON
+<key></key>
 
-EMR
-<key>EMR</key>
+<ok>
+Permissões determinam se a requisição é permitida ou negada
+<key></key>
 
-Amazon Elastic Search
-<key>ElasticSearch</key>
+Policy é um documento que todos os usuários devem assinar digitalmente quando acessam a AWS pela primeira vez
+<key></key>
 
-Amazon Query Analyzer
-<key>Não Se Aplica</key>
+Policy é um objeto da AWS que quando associado a um usuário ou recurso define suas permissões
+<key></key>
 
 <p>
-Sua empresa deseja otimizar o custo com a utilização do S3 e você percebeu que existem muitas logs de sistemas que estão armazenadas, mas que poderiam ser deletadas após 30 dias da criação. O que você precisa fazer para atender a necessidade de sua empresa?
-
-Criar uma cópia destes objetos em outra região.
-<key>Não Se Aplica</key>
+Quais são as regras para a criação de nome de Bucket do S3?
+<br/>(Selecione 3)
 
 <ok>
-Configurar no S3 Lifecycle para que os objetos expirem em 30 dias para serem automaticamente excluídos.
-<key>Lifecycle</key>
+Devem consistir apenas em letras minúsculas, números, pontos (.) e hífens (-)
+<key></key>
 
-Configurar o CloudWatch para monitorar o S3 e enviar um email solicitando a exclusão dos arquivos.
-<key>CloudWatch</key>
+<ok>
+Devem começar e terminar com uma letra ou um número
+<key></key>
 
-Criar uma cópia destes objetos em outra zona de disponibilidade.
-<key>Multi-AZ</key>
+Devem ser formatados como um endereço IP sempre que possível
+<key></key>
+
+<ok>
+Devem possuir de 3 a 63 caracteres
+<key></key>
 
 <p>
-Sua empresa tem um sistema que suporta em média 2000 usuários por dia, porém em dias com o aumento de vendas, o sistema chega a 3000 usuários apresentando lentidão e indisponibilidade. Como você automatizaria o processo para o provisionamento automático de máquinas adicionais para suportar essas cargas em dias de pico?
+Você está dando consultoria para uma pequena empresa que deseja disponibilizar um site dinâmico em WordPress e com custo mínimo. Qual dos serviços abaixo oferece um servidor privado virtual simples (VPS) de baixo custo e que pode atender essa necessidade?
 
-Migrando a aplicação para uma máquina melhor
-<key>Auto Scaling</key>
+Amazon ECS
+<key></key>
 
 <ok>
-Usando o Auto Scalling
-<key>Auto Scaling</key>
+Amazon LightSail
+<key></key>
 
-Implementando EBS Snapshots
-<key>EBS Snapshots</key>
+Amazon S3
+<key></key>
 
-Incluindo mais uma máquina física e alterando o ELB
-<key>ELB</key>
+Amazon EC2
+<key></key>
+
+<p>
+Sua empresa começou a utilizar o ECS e conteinerizou 2 microsserviços de uma aplicação que possuem cargas de trabalho diferentes ao longo dia. O primeiro tem mais acessos durante a manhã e o segundo tem mais acesso à tarde, invertendo o cenário no consumo de recursos. Qual solução você deve adotar para que esses serviços escalem de forma automática para otimizar o uso dos recursos da sua infraestrutura?
+
+ECR
+<key></key>
+
+EC2
+<key></key>
+
+<ok>
+EKS
+<key></key>
+
+Lambda
+<key></key>
+
+<p>
+Qual é o serviço utilizado para executar containers sem servidores e diminuir a necessidade dos desenvolvedores se preocuparem com questões relacionadas ao gerenciamento de instâncias e infraestrutura?
+
+ECS
+<key></key>
+
+<ok>
+Fargate
+<key></key>
+
+Lambda
+<key></key>
+
+EKS
+<key></key>
 
 <p>
 

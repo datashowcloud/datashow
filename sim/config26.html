@@ -24,7 +24,7 @@
 </head>
 
 <body id="myBody" ZZZbackground="gallery/paper.jpeg">
-
+		
 			<div style="display:'none'; text-align:center; ">
 				<!-- br/>Aguarde o resultado na janela da configuração -->
 				<button class="btn btn-info" onclick="window.close();" style="padding:9px 15px 9px 15px;"><i class="fa fa-lock"></i> Parabéns! Você liberou uma fase. <i class="fa fa-unlock"></i></button>
@@ -159,167 +159,167 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1.5
+FASE 2.6
 
 <p>
-Qual é o serviço utilizado para provisionar Desktops utilizando Windows ou Linux?
+Qual serviço é utilizado para logar as ações dos seus usuários dentro da AWS?
 
-<ok>
-Amazon WorkSpaces
-<key>WorkSpaces</key>
-
-Amazon Desktops
-<key>Não Se Aplica</key>
-
-Amazon CLI
-<key>CLI</key>
-
-EC2
-<key>EC2</key>
-
-<p>
-Você implementou um sistema com arquitetura de microserviços e precisa depurar cada um deles, partindo desde a requisição do usuário para entender a performance e identificando oportunidades de melhorias. Qual serviço da AWS é o mais indicado para essa finalidade (tanto em ambiente de desenvolvimento quanto em ambiente de produção)?
-
-AWS ElasticSearch
-<key>ElasticSearch</key>
-
-AWS CloudSearch
-<key>CloudSearch</key>
-
-<ok>
-AWS X-Ray
-<key>X-Ray</key>
-
-AWS CloudWatch
-<key>CloudWatch</key>
-
-<p>
-As mensagens trafegadas entre o seu site e os usuários não estão sendo criptografadas porque a arquitetura atual não utiliza certificados digitais que permitam essa criptografia. Qual é o serviço da AWS que pode ser utilizado para esse tipo de implementação?
-
-AWS KMS
-<key>KMS</key>
-
-AWS Cognito
-<key>Cognito</key>
-
-<ok>
-AWS Certificate Manager
-<key>Certificate Manager</key>
-
-AWS IAM
-<key>IAM</key>
-
-<p>
-Você precisa automatizar um processo que executa diversas tarefas de forma sequencial em seu sistema. Qual é o serviço mais indicado para essa necessidade?
-
-AWS EventBridge
-<key>EventBridge</key>
-
-AWS Kinesis
-<key>Kinesis</key>
-
-AWS Workflow
-<key>Não Se Aplica</key>
-
-<ok>
-AWS Batch
-<key>Batch</key>
-
-<p>
-Sua empresa precisa lançar um novo produto e para isso deseja criar um novo domínio público para associar a um novo site. Qual é a maneira mais rápida de fazer isso?
-
-Desenvolver o novo site no AWS BeanStalk, que provisiona toda a infra para o desenvolvedor  apenas programar.
-<key>Elastic Beanstalk</key>
-
-<ok>
-Criar um novo domínio no AWS Route53
-<key>Route53</key>
-
-Criar um servidor de domínio numa instância AWS EC2 e incluir o novo domínio
-<key>EC2</key>
-
-Criar um novo domínio no RegistroCom
-<key>Não Se Aplica</key>
-
-<p>
-Você implantou uma aplicação em produção que não está funcionando e na log existe uma mensagem de acesso negado ao DynamoDB. Qual serviço abaixo você precisa checar e configurar corretamente para validar esse acesso?
-
-AWS Config
-<key>Config</key>
-
-<ok>
-AWS IAM Roles
-<key>IAM Roles</key>
-
-AWS Cognito
-<key>Cognito</key>
-
-AWS IAM Policy
-<key>IAM Policies</key>
-
-<p>
-Qual é o serviço de alta performance desenvolvido para fornecer block-storage para instâncias EC2?
+IAM
+<key></key>
 
 S3
-<key>S3</key>
+<key></key>
 
-ELB
-<key>ELB</key>
+CloudWatch logs
+<key></key>
 
 <ok>
-EBS
-<key>EBS</key>
-
-KMS
-<key>KMS</key>
+CloudTrail
+<key></key>
 
 <p>
-Qual é o serviço serverless que permite a execução de queries utilizando padrão SQL para analisar dados no Amazon S3?
+Sua empresa precisa implementar a integração rápida entre escritórios em São Paulo, Moscow e 2 mil funcionários ao redor do mundo. Qual é o serviço da AWS que permite realizar essa integração de forma ágil e escalável?
+
+AWS VPC
+<key></key>
+
+AWS DataSync
+<key></key>
+
+AWS Link
+<key></key>
 
 <ok>
-Athena
-<key>Athena</key>
-
-EMR
-<key>EMR</key>
-
-Amazon Elastic Search
-<key>ElasticSearch</key>
-
-Amazon Query Analyzer
-<key>Não Se Aplica</key>
+AWS VPN
+<key></key>
 
 <p>
-Sua empresa deseja otimizar o custo com a utilização do S3 e você percebeu que existem muitas logs de sistemas que estão armazenadas, mas que poderiam ser deletadas após 30 dias da criação. O que você precisa fazer para atender a necessidade de sua empresa?
+Você precisa garantir a alta disponibilidade de uma aplicação que será lançada na sua empresa no Brasil. Qual é a melhor estratégia de uso do AWS RDS para esse requisito?
 
-Criar uma cópia destes objetos em outra região.
-<key>Não Se Aplica</key>
+Criar um Security Group para isolar apenas os bancos de dados e aumentar a performance
+<key></key>
+
+Read Replicas (Utilizar cópias de leitura)
+<key></key>
 
 <ok>
-Configurar no S3 Lifecycle para que os objetos expirem em 30 dias para serem automaticamente excluídos.
-<key>Lifecycle</key>
+Multi A-Z  (Distribuir os bancos em mais de uma zona de disponibilidade)
+<key></key>
 
-Configurar o CloudWatch para monitorar o S3 e enviar um email solicitando a exclusão dos arquivos.
-<key>CloudWatch</key>
-
-Criar uma cópia destes objetos em outra zona de disponibilidade.
-<key>Multi-AZ</key>
+Multi Regions (Distribuir os banco em mais de uma região)
+<key></key>
 
 <p>
-Sua empresa tem um sistema que suporta em média 2000 usuários por dia, porém em dias com o aumento de vendas, o sistema chega a 3000 usuários apresentando lentidão e indisponibilidade. Como você automatizaria o processo para o provisionamento automático de máquinas adicionais para suportar essas cargas em dias de pico?
+Uma das grandes vantagens no uso da AWS está nas formas de pagamentos dos seus serviços. Qual é forma de pagamentos padrão utilizada na maior parte dos seus serviços?
 
-Migrando a aplicação para uma máquina melhor
-<key>Auto Scaling</key>
+Pagamento conforme a compra
+<key></key>
+
+Pagamento conforme o contrato
+<key></key>
+
+Pagamento conforme o licenciamento
+<key></key>
 
 <ok>
-Usando o Auto Scalling
-<key>Auto Scaling</key>
+Pagamento conforme o uso
+<key></key>
 
-Implementando EBS Snapshots
-<key>EBS Snapshots</key>
+<p>
+Sua empresa fez um contrato para obter um pacote com 50 licenças do Microsoft SQL Server. Os softwares serão instalados em novos servidores à medida que a empresa expandir seus negócios ao redor do mundo. A empresa passa por auditorias frequentes e precisa garantir que só existem softwares licenciados na sua rede. Qual serviço da AWS facilita essa conformidade?
 
-Incluindo mais uma máquina física e alterando o ELB
-<key>ELB</key>
+CloudFormation
+<key></key>
+
+Config
+<key></key>
+
+Certificate Manager
+<key></key>
+
+<ok>
+License Manager
+<key></key>
+
+<p>
+Sua empresa está desenhando uma nova plataforma para distribuição de vídeos em nível global. Qual é o serviço que pode diminuir a latência entre a requisição e entrega do serviço?
+
+<ok>
+Amazon CloudFront
+<key></key>
+
+Amazon ElasticCache
+<key></key>
+
+Amazon Redis
+<key></key>
+
+Amazon S3
+<key></key>
+
+<p>
+Qual é o serviço da AWS utilizado para migrar banco de dados de forma rápida e segura?
+
+AWS Glue
+<key></key>
+
+AWS Snow
+<key></key>
+
+AWS Connect
+<key></key>
+
+<ok>
+AWS DMS
+<key></key>
+
+<p>
+Com a AWS você pode obter descontos baseados em volume e obter economias substanciais à medida que o seu uso aumenta. Em qual serviço abaixo a definição de preço é feita em camadas e quanto mais você usar, menor será o preço por GB?
+
+Lambda
+<key></key>
+
+EKS
+<key></key>
+
+ECS
+<key></key>
+
+<ok>
+S3
+<key></key>
+
+<p>
+Qual serviço da AWS deve ser usado se você deseja configurar alarme de cobrança? (AWS billing alarm)
+
+CloudTrail
+<key></key>
+
+CloudMonitor
+<key></key>
+
+<ok>
+CloudWatch
+<key></key>
+
+CloudBilling
+<key></key>
+
+<p>
+Qual é o serviço de mensagens desenvolvido para Apache Active MQ e Rabbit MQ que torna a migração mais fácil e permite arquiteturas híbridas?
+
+SNS
+<key></key>
+
+<ok>
+Amazon MQ
+<key></key>
+
+SQS
+<key></key>
+
+Kafka
+<key></key>
 
 <p>
 
