@@ -159,7 +159,177 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1.4
+FASE 1.6
+
+<p>
+Qual opção abaixo melhor descreve o modelo de Responsabilidade Compartilhada da AWS (shared responsability)?
+
+O cliente protege as aplicações, enquanto usuário protege sua senha
+<key>Shared Responsability</key>
+
+O desenvolvedor é responsável por implantar a aplicação, enquanto o gestor faz a aprovação
+<key>Shared Responsability</key>
+
+<ok>
+A AWS protege o data center, enquanto o cliente protege as aplicações.
+<key>Shared Responsability</key>
+
+A AWS protege o data center, enquanto a Microsoft protege o windows
+<key>Shared Responsability</key>
+
+<p>
+A sua empresa decidiu migrar algumas aplicações monolíticas legadas, sem refatoração, para o ECS. O que pode-se afirmar sobre essa estratégia?
+
+<ok>
+É possível, porém não trará grandes benefícios de otimização no uso dos recursos
+<key>Refatoração</key>
+
+É possível e recomendado
+<key>Refatoração</key>
+
+É possível e trará mais velocidade para a migração e implementação de novas funcionalidades
+<key>Refatoração</key>
+
+Não é possível, pois o serviço não aceita aplicações monolíticas
+<key>Refatoração</key>
+
+<p>
+Qual é a melhor descrição para o conceito de tolerância a falha?
+
+A habilidade de um sistema nunca falhar
+<key>Tolerância a Falha</key>
+
+A habilidade de um sistema crescer e provisionar novos recursos para continuar executando
+<key>Tolerância a Falha</key>
+
+A habilidade de um sistema exibir mensagens de falhas para os usuários
+<key>Tolerância a Falha</key>
+
+<ok>
+A habilidade de um sistema permanecer em funcionamento, mesmo se um dos seus componentes falhar
+<key>Tolerância a Falha</key>
+
+<p>
+Sua empresa deseja padronizar e versionar as configurações para a criação de todos os bancos de dados, além disso, deseja que esses serviços sejam implementados e atualizados em toda a infraestrutura de servidores de forma automatizadas e utilizando pipelines de CI/CD. Qual é o serviço recomendado para esse requisito?
+
+AWS RDS
+<key>RDS</key>
+
+AWS IAC
+<key>IAC</key>
+
+AWS CodePipeline
+<key>CodePipeline</key>
+
+<ok>
+AWS CloudFormation
+<key>CloudFormation</key>
+
+<p>
+Uma arquitetura de sistemas, baseada em computação sem servidor, utiliza S3, API Gateway, Lambda, SQS, SNS e precisa de um serviço que orquestre parte destas peças definindo e controlando os possíveis workflows. Qual dos serviços abaixo é utilizado para isso?
+
+AWS Workflow
+<key>Não Se Aplica</key>
+
+AWS EventBridge
+<key>EventBridge</key>
+
+AWS Service Mesh
+<key>Não Se Aplica</key>
+
+<ok>
+AWS Step Functions
+<key>Step Functions</key>
+
+<p>
+O que é possível fazer com o Amazon QuickSight?
+
+Executar Map reduce em dados distribuídos
+<key>EMR</key>
+
+<ok>
+Criar DashBoards de BI com uso de Aprendizado de Máquina (Machine Learning)
+<key>QuickSight</key>
+
+Capturar dados de diversos dispositivos através e streaming de dados de forma rápida
+<key>Kinesis</key>
+
+Realizar consultas em objetos armazenados no S3
+<key>Athena</key>
+
+<p>
+Quais das opções abaixo são formas de pagamento de instâncias EC2? (Selecione 3)
+
+On premise
+<key>On Premises</key>
+
+<ok>
+Spot
+<key>Instance Purchasing Options</key>
+
+<ok>
+Reserved
+<key>Instance Purchasing Options</key>
+
+<ok>
+On-demand
+<key>Instance Purchasing Options</key>
+
+Tailor Made
+<key>Não Se Aplica</key>
+
+<p>
+Quais afirmações abaixo referem-se ao Amazon S3 (Selecione 2)
+
+<ok>
+Objeto é um arquivo ou meta dado que descreve o arquivo
+<key>S3</key>
+
+<ok>
+Bucket é um conteiner de objetos
+<key>S3</key>
+
+Elastic Load Balancer são balanceadores de carga
+<key>ELB</key>
+
+Lambdas são funções sem servidores
+<key>Lambda</key>
+
+<p>
+O AWS Trusted Advisor é um serviço de monitoramento e recomendação que auxilia o cliente a utilizar os recursos de sua conta de maneira alinhada com as melhores práticas para trazer muitos benefícios. Quais itens abaixo representam tais benefícios?
+<br/>(Selecione 3)
+
+<ok>
+Otimização de Custos
+<key>Trusted Advisor</key>
+
+<ok>
+Segurança
+<key>Trusted Advisor</key>
+
+<ok>
+Performance
+<key>Trusted Advisor</key>
+
+Proteção de Hardware
+<key>Não Se Aplica</key>
+
+<p>
+Quais dos seguintes planos de suporte oferecem acesso ao atendimento ao cliente, whitepapers, documentações e fóruns de suporte 24x7?
+
+Reserved
+<key>Instance Purchasing Options</key>
+
+<ok>
+Basic
+<key>Support</key>
+
+Full
+<key>Não Se Aplica</key>
+
+<ok>
+Enterprise
+<key>Support</key>
 
 <p>
 Numa migração de sistemas, você percebeu que existem dados na sua aplicação que raramente são usados e que poderiam ser mantidos em arquivos somente para fins de auditoria. Qual é o serviço da AWS que pode ser utilizado para esse objetivo e com o menor custo possível?
@@ -240,86 +410,6 @@ AWS CloudWatch
 
 AWS CloudTrail
 <key>CloudTrail</key>
-
-<p>
-Qual das opções abaixo é a classe de uso que pode deixar o uso do S3 mais caro?
-
-Glacier Deep Arquive
-<key>Glacier Deep Arquive</key>
-
-Glacier
-<key>Glacier</key>
-
-<ok>
-Standard
-<key>Standard</key>
-
-Standard Infrequent Access
-<key>Infrequent Access</key>
-
-<p>
-Utilizando os serviços da AWS, qual é a sequência esperada numa pipeline de CI/CD?
-
-<ok>
-CodeCommit, CodeBuild, CodeDeploy
-<key>CodeBuild, CodeCommit, CodeDeploy</key>
-
-CodeBuild, CodeCommit, CodeDeploy
-<key>CodeBuild, CodeCommit, CodeDeploy</key>
-
-CodeCommit, CodeDeploy, CodeBuild
-<key>CodeBuild, CodeCommit, CodeDeploy</key>
-
-CodeBuild, CodeDeploy, CodeCommit
-<key>CodeBuild, CodeCommit, CodeDeploy</key>
-
-<p>
-Sua aplicação fornece dados através de APIs REST para diversas aplicações diferentes. Pensando num cenário de futuras manutenções e evoluções dos seus serviços, qual opção abaixo pode melhor auxiliar a sua arquitetura a manter várias versões da mesma API sendo executadas simultaneamente e não exigir que todos os consumidores realizem adequações nas chamadas ao seu serviço?
-
-AWS Zuul
-<key>Não Se Aplica</key>
-
-AWS Route53
-<key>Route53</key>
-
-AWS EventBridge
-<key>EventBridge</key>
-
-<ok>
-API Gateway
-<key>API Gateway</key>
-
-<p>
-Qual é o serviço que permite estabelecer uma conexão dedicada entre a sua infraestrutura on-premise e a AWS melhorando as conexões e aumentando a taxa de transferência?
-
-<ok>
-AWS Direct Connect
-<key>Direct Connect</key>
-
-AWS DataSync
-<key>DataSync</key>
-
-AWS Link
-<key>Não Se Aplica</key>
-
-AWS API Gateway
-<key>API Gateway</key>
-
-<p>
-Qual é o serviço utilizado para provisionar Desktops utilizando Windows ou Linux?
-
-<ok>
-Amazon WorkSpaces
-<key>WorkSpaces</key>
-
-Amazon Desktops
-<key>Não Se Aplica</key>
-
-Amazon CLI
-<key>CLI</key>
-
-EC2
-<key>EC2</key>
 
 <p>
 

@@ -159,167 +159,167 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1.4
+FASE 1.5
 
 <p>
-Numa migração de sistemas, você percebeu que existem dados na sua aplicação que raramente são usados e que poderiam ser mantidos em arquivos somente para fins de auditoria. Qual é o serviço da AWS que pode ser utilizado para esse objetivo e com o menor custo possível?
+Você implementou um sistema com arquitetura de microserviços e precisa depurar cada um deles, partindo desde a requisição do usuário para entender a performance e identificando oportunidades de melhorias. Qual serviço da AWS é o mais indicado para essa finalidade (tanto em ambiente de desenvolvimento quanto em ambiente de produção)?
+
+AWS ElasticSearch
+<key>ElasticSearch</key>
+
+AWS CloudSearch
+<key>CloudSearch</key>
 
 <ok>
-S3 Glacier
-<key>Glacier</key>
+AWS X-Ray
+<key>X-Ray</key>
 
-S3 Intelligent Tiering
-<key>Intelligent Tiering</key>
-
-S3 Infrequent Access
-<key>Infrequent Access</key>
-
-S3 Standard
-<key>Standard</key>
+AWS CloudWatch
+<key>CloudWatch</key>
 
 <p>
-Uma aplicação de terceiros irá gerar um arquivo num layout diferente do que o seu sistema espera. Qual é o serviço da AWS que pode ser utilizado para transformar o arquivo e carregá-lo no seu sistema?
+As mensagens trafegadas entre o seu site e os usuários não estão sendo criptografadas porque a arquitetura atual não utiliza certificados digitais que permitam essa criptografia. Qual é o serviço da AWS que pode ser utilizado para esse tipo de implementação?
 
-AWS DMS
-<key>DMS</key>
+AWS KMS
+<key>KMS</key>
+
+AWS Cognito
+<key>Cognito</key>
 
 <ok>
-AWS Glue
-<key>Glue</key>
+AWS Certificate Manager
+<key>Certificate Manager</key>
 
-AWS DTS
+AWS IAM
+<key>IAM</key>
+
+<p>
+Você precisa automatizar um processo que executa diversas tarefas de forma sequencial em seu sistema. Qual é o serviço mais indicado para essa necessidade?
+
+AWS EventBridge
+<key>EventBridge</key>
+
+AWS Kinesis
+<key>Kinesis</key>
+
+AWS Workflow
 <key>Não Se Aplica</key>
 
-AWS DataSync
-<key>DataSync</key>
+<ok>
+AWS Batch
+<key>Batch</key>
 
 <p>
-Qual pilar do framework de melhores práticas arquitetônicas da AWS se concentra em garantir que uma carga de trabalho execute sua função pretendida corretamente e de modo consistente, e que uma carga de trabalho seja resiliente e que se recupere rapidamente de falhas para atender a demanda do negócio e do cliente?
+Sua empresa precisa lançar um novo produto e para isso deseja criar um novo domínio público para associar a um novo site. Qual é a maneira mais rápida de fazer isso?
 
-Segurança
-<key>Segurança</key>
-
-Excelência Operacional
-<key>Excelência Operacional</key>
-
-Performance Eficiente
-<key>Performance Eficiente</key>
+Desenvolver o novo site no AWS BeanStalk, que provisiona toda a infra para o desenvolvedor  apenas programar.
+<key>Elastic Beanstalk</key>
 
 <ok>
-Confiabilidade
-<key>Confiabilidade</key>
+Criar um novo domínio no AWS Route53
+<key>Route53</key>
+
+Criar um servidor de domínio numa instância AWS EC2 e incluir o novo domínio
+<key>EC2</key>
+
+Criar um novo domínio no RegistroCom
+<key>Não Se Aplica</key>
 
 <p>
-Uma das formas de garantir a elasticidade e economia no uso do EC2 é mantendo os arquivos de programas e de sistemas em recursos computacionais separados. Qual serviço abaixo pode ser utilizado para isso?
+Você implantou uma aplicação em produção que não está funcionando e na log existe uma mensagem de acesso negado ao DynamoDB. Qual serviço abaixo você precisa checar e configurar corretamente para validar esse acesso?
+
+AWS Config
+<key>Config</key>
+
+<ok>
+AWS IAM Roles
+<key>IAM Roles</key>
+
+AWS Cognito
+<key>Cognito</key>
+
+AWS IAM Policy
+<key>IAM Policies</key>
+
+<p>
+Qual é o serviço de alta performance desenvolvido para fornecer block-storage para instâncias EC2?
+
+S3
+<key>S3</key>
+
+ELB
+<key>ELB</key>
 
 <ok>
 EBS
 <key>EBS</key>
 
-Git
-<key>Git</key>
-
-CodeCommit
-<key>CodeCommit</key>
-
-S3
-<key>S3</key>
+KMS
+<key>KMS</key>
 
 <p>
-Você deseja monitorar o percentual de memória que os seus servidores estão utilizando em determinado período do dia. Qual serviço da AWS abaixo pode ser utilizado para essa finalidade?
+Qual é o serviço serverless que permite a execução de queries utilizando padrão SQL para analisar dados no Amazon S3?
 
-AWS DataSync
-<key>DataSync</key>
+<ok>
+Athena
+<key>Athena</key>
 
-AWS Cloud Explore
+EMR
+<key>EMR</key>
+
+Amazon Elastic Search
+<key>ElasticSearch</key>
+
+Amazon Query Analyzer
+<key>Não Se Aplica</key>
+
+<p>
+Sua empresa deseja otimizar o custo com a utilização do S3 e você percebeu que existem muitas logs de sistemas que estão armazenadas, mas que poderiam ser deletadas após 30 dias da criação. O que você precisa fazer para atender a necessidade de sua empresa?
+
+Criar uma cópia destes objetos em outra região.
 <key>Não Se Aplica</key>
 
 <ok>
-AWS CloudWatch
+Configurar no S3 Lifecycle para que os objetos expirem em 30 dias para serem automaticamente excluídos.
+<key>Lifecycle</key>
+
+Configurar o CloudWatch para monitorar o S3 e enviar um email solicitando a exclusão dos arquivos.
 <key>CloudWatch</key>
 
-AWS CloudTrail
-<key>CloudTrail</key>
+Criar uma cópia destes objetos em outra zona de disponibilidade.
+<key>Multi-AZ</key>
 
 <p>
-Qual das opções abaixo é a classe de uso que pode deixar o uso do S3 mais caro?
+Sua empresa tem um sistema que suporta em média 2000 usuários por dia, porém em dias com o aumento de vendas, o sistema chega a 3000 usuários apresentando lentidão e indisponibilidade. Como você automatizaria o processo para o provisionamento automático de máquinas adicionais para suportar essas cargas em dias de pico?
 
-Glacier Deep Arquive
-<key>Glacier Deep Arquive</key>
-
-Glacier
-<key>Glacier</key>
+Migrando a aplicação para uma máquina melhor
+<key>Auto Scaling</key>
 
 <ok>
-Standard
-<key>Standard</key>
+Usando o Auto Scalling
+<key>Auto Scaling</key>
 
-Standard Infrequent Access
-<key>Infrequent Access</key>
+Implementando EBS Snapshots
+<key>EBS Snapshots</key>
 
-<p>
-Utilizando os serviços da AWS, qual é a sequência esperada numa pipeline de CI/CD?
-
-<ok>
-CodeCommit, CodeBuild, CodeDeploy
-<key>CodeBuild, CodeCommit, CodeDeploy</key>
-
-CodeBuild, CodeCommit, CodeDeploy
-<key>CodeBuild, CodeCommit, CodeDeploy</key>
-
-CodeCommit, CodeDeploy, CodeBuild
-<key>CodeBuild, CodeCommit, CodeDeploy</key>
-
-CodeBuild, CodeDeploy, CodeCommit
-<key>CodeBuild, CodeCommit, CodeDeploy</key>
+Incluindo mais uma máquina física e alterando o ELB
+<key>ELB</key>
 
 <p>
-Sua aplicação fornece dados através de APIs REST para diversas aplicações diferentes. Pensando num cenário de futuras manutenções e evoluções dos seus serviços, qual opção abaixo pode melhor auxiliar a sua arquitetura a manter várias versões da mesma API sendo executadas simultaneamente e não exigir que todos os consumidores realizem adequações nas chamadas ao seu serviço?
+Baseado nos pilares de excelência operacional, segurança, confiança, performance eficiente, sustentabilidade e otimização de custos, qual é o Framework que ajuda os arquitetos cloud a construirem aplicações seguras, com alta performance, resilientes e eficientes?
 
-AWS Zuul
+AWS Pillar
 <key>Não Se Aplica</key>
 
-AWS Route53
-<key>Route53</key>
-
-AWS EventBridge
-<key>EventBridge</key>
-
-<ok>
-API Gateway
-<key>API Gateway</key>
-
-<p>
-Qual é o serviço que permite estabelecer uma conexão dedicada entre a sua infraestrutura on-premise e a AWS melhorando as conexões e aumentando a taxa de transferência?
-
-<ok>
-AWS Direct Connect
-<key>Direct Connect</key>
-
-AWS DataSync
-<key>DataSync</key>
-
-AWS Link
+Framework .Net
 <key>Não Se Aplica</key>
 
-AWS API Gateway
-<key>API Gateway</key>
-
-<p>
-Qual é o serviço utilizado para provisionar Desktops utilizando Windows ou Linux?
-
 <ok>
-Amazon WorkSpaces
-<key>WorkSpaces</key>
+AWS Well-Architected
+<key>Well-Architected Framework</key>
 
-Amazon Desktops
-<key>Não Se Aplica</key>
-
-Amazon CLI
-<key>CLI</key>
-
-EC2
-<key>EC2</key>
+AWS CloudFormation
+<key>CloudFormation</key>
 
 <p>
 

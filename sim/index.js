@@ -2,7 +2,7 @@
 
 var jsstoreCon = new JsStore.Connection();
 
-var CONST_FASE_NIVEL_MAX = 4;
+var CONST_FASE_NIVEL_MAX = 1;
 var GLOBAL_textcolor = 'black';
 var GLOBAL_background = 'white';
 var GLOBAL_buttoncolor = 'btn-colors';
@@ -935,7 +935,8 @@ function getProximaFaseNivel(id, mygroup, mycode) {
 	if (unidade < CONST_FASE_NIVEL_MAX) {
 		mygroup = parseInt(mygroup) + 1; //próxima fase
 	} else {
-		mygroup = parseInt(mygroup) + 10; //próximo nível
+		mygroup = String(parseInt(mygroup) + 10); //próximo nível
+		mygroup = mygroup.substring(0, 1) + '0';
 	}
 	return mygroup;
 }
