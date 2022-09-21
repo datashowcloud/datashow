@@ -24,40 +24,16 @@
 </head>
 
 <body id="myBody" ZZZbackground="gallery/paper.jpeg">
-
-        
 		
-		<div class="col-xs-12 col-sm-10 col-centered ">
 			<div style="display:'none'; text-align:center; ">
 				<!-- br/>Aguarde o resultado na janela da configuração -->
 				<button class="btn btn-info" onclick="window.close();" style="padding:9px 15px 9px 15px;"><i class="fa fa-lock"></i> Parabéns! Você liberou uma fase. <i class="fa fa-unlock"></i></button>
 				
-				<select id="selectMygroup" name="selectMygroup" style="height:34px; display:none;">
-					<option value="00" selected>Configurações</option>
-					<option value="10">Nível 1.0</option>
-					<option value="11">Nível 1.1</option>
-					<option value="12">Nível 1.2</option>
-					<option value="13">Nível 1.3</option>
-					<option value="14">Nível 1.4</option>
-					<option value="20">Nível 2.0</option>
-					<option value="21">Nível 2.1</option>
-					<option value="22">Nível 2.2</option>
-					<option value="23">Nível 2.3</option>
-					<option value="30">Nível 3.0</option>
-					<option value="31">Nível 3.1</option>
-					<option value="32">Nível 3.2</option>
-					<option value="33">Nível 3.3</option>
-					<option value="40">Nível 4.0</option>
-					<option value="41">Nível 4.1</option>
-					<option value="42">Nível 4.2</option>
-					<option value="43">Nível 4.3</option>
-				</select>
 				<label id="bSearch" style="display:none;">
 					<input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:200px; height:34px;">
 				</label>
 			</div>
-		</div>
-		
+
 		<table id="tblGrid" style="width:98%" class="table table-hover ">
 			<tbody>
 					<!--
@@ -66,8 +42,6 @@
 					-->
 			</tbody>
 		</table>
-
-		<div id="divcontent" style="display:none;"></div>
 
 		<!-- form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post" -->
 		<!-- /form -->
@@ -125,7 +99,7 @@
 				<b>Formulário Editor de Perguntas</b>
 				<p/><p/>
 				<select id="mygroup" name="mygroup" style="height:35px; display:none;">
-					<option value="00" selected>Configurações</option>
+					<!-- option value="00">Configurações</option -->
 					<option value="10">Nível 1.0</option>
 					<option value="11">Nível 1.1</option>
 					<option value="12">Nível 1.2</option>

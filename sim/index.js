@@ -107,20 +107,20 @@ function initLinkHelp() {
 	linkhelp = linkhelp + getLinkHelp('Clusters', 'https://docs.aws.amazon.com/pt_br/AmazonECS/latest/userguide/clusters.html', 'Um cluster do Amazon ECS é um agrupamento lógico de tarefas ou serviços.');
 	linkhelp = linkhelp + getLinkHelp('EKS', 'https://aws.amazon.com/pt/eks/', 'Amazon EKS (Elastic Kubernetes Service) é um serviço de contêiner gerenciado para executar e escalar aplicações do Kubernetes na nuvem ou on-premises.');
 	linkhelp = linkhelp + getLinkHelp('ECS', 'https://docs.aws.amazon.com/pt_br/AmazonECS/latest/developerguide/Welcome.html', 'Amazon ECS (Elastic Container Service) é um serviço de gerenciamento de contêineres altamente rápido e escalável. Você pode usá-lo para executar, interromper e gerenciar contêineres em um cluster.');
-	linkhelp = linkhelp + getLinkHelp('', '', '');
-	linkhelp = linkhelp + getLinkHelp('', '', '');
-	linkhelp = linkhelp + getLinkHelp('', '', '');
-	linkhelp = linkhelp + getLinkHelp('', '', '');
-	linkhelp = linkhelp + getLinkHelp('', '', '');
-	linkhelp = linkhelp + getLinkHelp('', '', '');
-	linkhelp = linkhelp + getLinkHelp('', '', '');
-	linkhelp = linkhelp + getLinkHelp('', '', '');
-	linkhelp = linkhelp + getLinkHelp('', '', '');
-	linkhelp = linkhelp + getLinkHelp('', '', '');
-	linkhelp = linkhelp + getLinkHelp('', '', '');
-	linkhelp = linkhelp + getLinkHelp('', '', '');
-	linkhelp = linkhelp + getLinkHelp('', '', '');
-	linkhelp = linkhelp + getLinkHelp('', '', '');
+	linkhelp = linkhelp + getLinkHelp('Refatoração', 'https://aws.amazon.com/pt/getting-started/hands-on/break-monolith-app-microservices-ecs-docker-ec2/module-one/', 'A refatoração é uma forma disciplinada de reestruturar o código quando pequenas mudanças são feitas nele para melhorar o design. Ao usar o Refactor Spaces, os clientes se concentram na refatoração das suas aplicações, e não na criação e no gerenciamento da infraestrutura subjacente que torna a refatoração possível.');
+	linkhelp = linkhelp + getLinkHelp('ECR', 'https://aws.amazon.com/pt/ecr/', 'Amazon ECR (Elastic Container Registry) é um registro de contêiner totalmente gerenciado que oferece hospedagem de alta performance para que você possa implantar imagens e artefatos de aplicações de forma confiável em qualquer lugar.');
+	linkhelp = linkhelp + getLinkHelp('Fargate', 'https://docs.aws.amazon.com/pt_br/AmazonECS/latest/developerguide/AWS_Fargate.html', 'Fargate é uma tecnologia que pode ser usada com o Amazon ECS para executar contêineres sem a necessidade de gerenciar servidores ou clusters de instâncias do Amazon EC2. Com o AWS Fargate, não é mais necessário provisionar, configurar nem dimensionar os clusters de máquinas virtuais para executar contêineres. Isso elimina a necessidade de escolher tipos de servidor, decidir quando dimensionar clusters ou otimizar o agrupamento de clusters.');
+	linkhelp = linkhelp + getLinkHelp('EventSync', 'https://docs.aws.amazon.com/pt_br/cognito/latest/developerguide/getting-started-with-cognito-sync.html', 'O Amazon Cognito Sync é um serviço da AWS e uma biblioteca de clientes que permite a sincronização dos dados de usuários relacionados a aplicações entre dispositivos.');
+	linkhelp = linkhelp + getLinkHelp('Auto Scaling', 'https://aws.amazon.com/pt/ec2/autoscaling/', 'O Amazon EC2 Auto Scaling ajuda a manter a disponibilidade das aplicações e permite adicionar ou remover instâncias do EC2 automaticamente de acordo com as condições que você definir (escalar baseado em demanda).');
+	linkhelp = linkhelp + getLinkHelp('Route53', 'https://aws.amazon.com/pt/route53/', 'O Amazon Route 53 é um web service Domain Name System (DNS) na nuvem altamente disponível e escalável.');
+	linkhelp = linkhelp + getLinkHelp('Dedicted Hosts', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html', 'AWS Dedicted Hosts é um Host Dedicado do Amazon EC2 é um servidor físico com capacidade de instância do EC2 totalmente dedicado para seu uso. Os hosts dedicados permitem que você use suas licenças de software existentes por soquete, por núcleo ou por VM, incluindo o Windows Server, o Microsoft SQL Server, o SUSE e o Linux Enterprise Server.');
+	linkhelp = linkhelp + getLinkHelp('Budgets', 'https://docs.aws.amazon.com/pt_br/cost-management/latest/userguide/budgets-managing-costs.html', 'AWS Budgets é para rastreamento de uso e custo da AWS. Monitorar métricas agregadas de utilização e cobertura para suas Instâncias Reservadas (RIs) ou Savings Plans.');
+	linkhelp = linkhelp + getLinkHelp('Budgets Destinatários por Email', 'https://docs.aws.amazon.com/pt_br/cost-management/latest/userguide/budgets-controls.html', 'Em Notification preferences - Opional (Preferências de notificação - Opcional), em Email recipients (Destinatários de e-mail), insira os endereços de e-mail que você que o alerta notifique. Separe múltiplos endereços de e-mail com vírgulas. Uma notificação <b><u>pode ter até 10 endereços de e-mail</u></b>.');
+	linkhelp = linkhelp + getLinkHelp('Inspector', 'https://aws.amazon.com/pt/inspector/', 'O Amazon Inspector é um serviço automatizado de gerenciamento de vulnerabilidade que verifica continuamente as workloads da AWS em busca de vulnerabilidades de software e exposição não intencional à rede.');
+	linkhelp = linkhelp + getLinkHelp('Trusted Advisor', 'https://aws.amazon.com/pt/premiumsupport/technology/trusted-advisor/', 'Trusted Advisor avalia a sua conta por meio de verificações. Essas verificações identificam formas de otimizar sua infraestrutura da AWS, aumentar a segurança e o desempenho, reduzir os custos gerais e monitorar as cotas do serviço.<br/>Benefícios:<br/>Otimização de custos<br/>Performance<br/>Segurança<br/>Tolerância a falhas<br/>Cotas de serviço');
+	linkhelp = linkhelp + getLinkHelp('IPV4', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/using-instance-addressing.html', 'Um endereço IPv4 privado é um endereço IP que não é acessível pela Internet. É possível usar endereços IPv4 privados para comunicação entre instâncias na mesma VPC.');
+	linkhelp = linkhelp + getLinkHelp('IP Elástico', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html', 'Um Endereço IP elástico é um endereço IPv4 estático projetado para computação em nuvem dinâmica. Um endereço IP elástico é alocado para a conta da AWS e será seu até que você o libere.');
+	linkhelp = linkhelp + getLinkHelp('IPV6', 'https://docs.aws.amazon.com/pt_br/vpc/latest/userguide/vpc-migrate-ipv6.html', 'Se você possuir uma VPC existente que ofereça suporte somente para IPv4 e recursos na sub-rede que sejam configurados para usar somente o IPv4, você pode habilitar o suporte ao IPv6 para a VPC e recursos.');
 	linkhelp = linkhelp + getLinkHelp('', '', '');
 	linkhelp = linkhelp + getLinkHelp('', '', '');
 	linkhelp = linkhelp + getLinkHelp('', '', '');
@@ -602,8 +602,7 @@ async function getConfigGeneral() {
 			varItens.selectedIndex = index;
 			break;
 		}
-	}
-	
+	}	
 	//carrega cor do texto
 	var varItensFundo = document.getElementById('selBackground');
 	for(index = 0;index < varItensFundo.length;index++)
@@ -671,7 +670,7 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		document.getElementById('btnBackward').classList.add('btn-danger');
 		document.getElementById('btnPoints').classList.add('btn-warning');
 		document.getElementById('btnNext').classList.add('btn-success');
-		document.getElementById('selButtonColor').classList.add('btn-info');
+		document.getElementById('selButtonColor').classList.add('btn-default');
 	} else {
 		document.getElementById('btnPrevious').classList.add(buttoncolor);
 		document.getElementById('btnPause').classList.add(buttoncolor);
@@ -971,6 +970,7 @@ async function setDashboard(myid, mygroup, mycode) {
 		
 
 }
+
 //This function select table play
 async function refreshTableQuestion(myid, mygroup, mycode) {
 //    try {
@@ -1219,7 +1219,8 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 
 		var htmlString = "";
 		var varTdTh = '';
-		var varButtonPlay = '<br/><i class=\"fa fa-play\" style="color:green;"></i></a>';
+		var varButtonPlayStyle = 'color:green; font-size:16px;';
+		var varButtonPlay = ' <i class=\"fa fa-play\" style="'+ varButtonPlayStyle +'"></i></a>';
 //		var varText = '';
 //		var varPlay = '';
 		var varRestart = '';
@@ -1246,7 +1247,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				+ "<td style=\"color:#000000; font-size:1px; \">" + student.mygroup + "</td>"
 //              + "<td style=\"color:#000000; font-size:1px;\">" + student.mycode + "</td>"
 				+ "<" + varTdTh + " id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " ZZZonClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
-				+ "<a href=\"#\" class=\"playsim\">" + student.mytext + varButtonPlay + "</" + varTdTh + ">"
+				+ "<a href=\"#\" class=\"playsim\"><i class=\"fa fa-unlock\" style=\""+ varButtonPlayStyle +"\"></i> " + student.mytext + varButtonPlay + "</" + varTdTh + ">"
 //				+ student.mytext + "</" + varTdTh + ">"
 /*				
 				+ "<" + varTdTh + " id=datashow" + student.id+"4" + " tabIndex=" + student.id+"4" + " ZZZonClick=\"datashow('" + student.id+"4" + "', 4, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 4, event, " + "" + (student.id+"4") + ");\" data-show='" + student.id+"4" + "'>"
@@ -1264,7 +1265,8 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				+ "</" + varTdTh + ">"
 				;
 				
-				varButtonPlay = '<br/><i class=\"fa fa-check\" style="color:gray;"></i></a>';
+				varButtonPlayStyle = 'color:gray; font-size:14px;';
+				varButtonPlay = ' <i class=\"fa fa-check\" style="'+ varButtonPlayStyle +'"></i></a>';
 		})
 
 		if (htmlString.length > 0) {
@@ -1405,7 +1407,7 @@ async function deleteTable() {
 
 //This function drop database
 async function dropdb() {
-	var result = confirm('Vou restaurar e limpar tudo, ok?');
+	var result = confirm('Todas informações serão perdidas e reiniciadas, ok?');
 	if (result) {
 		jsstoreCon.dropDb().then(function() {
 			console.log('Db deleted successfully');
@@ -2166,7 +2168,7 @@ function showGridAndHideForms() {
 	$('#divGear').hide();
 	$('#divcontent').hide();
 	$('#formBible').hide();
-	$('#divconfig').hide();
+//	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
 	$('#divdashboard').hide();
@@ -2195,7 +2197,7 @@ function showFormGear() {
 	$('#divGear').show();
 	$('#divcontent').hide();
 	$('#formBible').hide();
-	$('#divconfig').hide();
+//	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
 	$('#divdashboard').hide();
