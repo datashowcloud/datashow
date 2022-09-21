@@ -28,6 +28,8 @@
 			<div style="display:'none'; text-align:center; ">
 				<!-- br/>Aguarde o resultado na janela da configuração -->
 				<button class="btn btn-info" onclick="window.close();" style="padding:9px 15px 9px 15px;"><i class="fa fa-lock"></i> Parabéns! Você liberou uma fase. <i class="fa fa-unlock"></i></button>
+				<br/><br/>
+				<button class="btn btn-info" onclick="window.close();" style="padding:9px 15px 9px 15px;">Continuar <i class="fa fa-chevron-right"></i></button>
 				
 				<label id="bSearch" style="display:none;">
 					<input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:200px; height:34px;">
@@ -160,6 +162,86 @@
 FASE 1.3
 
 <p>
+Qual é a quantidade de dados que podemos armazenar no S3?
+
+5 Gigabytes
+<key>Pricing</key>
+
+50 Gigabytes
+<key>Pricing</key>
+
+<ok>
+A capacidade é virtualmente ilimitada
+<key>Pricing</key>
+
+1 Terabyte
+<key>Pricing</key>
+
+<p>
+Utilização de recursos de rede, computadores virtuais e armazenamento de dados com alto nível de flexibilidade, gerenciamento e controle sobre os recurso de TI são características de qual tipo de uso de cloud?
+
+<ok>
+IAAS
+<key>IAAS</key>
+
+SAAS
+<key>SAAS</key>
+
+BAAS
+<key>BAAS</key>
+
+PAAS
+<key>PAAS</key>
+
+<p>
+Qual é o serviço utilizado para permitir que aplicações acessem recursos restritos de serviços dentro da AWS?
+
+IAM Policies
+<key>IAM Policies</key>
+
+IAM Groups
+<key>IAM Groups</key>
+
+IAM Users
+<key>IAM Users</key>
+
+<ok>
+IAM Roles
+<key>IAM Roles</key>
+
+<p>
+Você precisa implementar no seu site uma funcionalidade para realizar pesquisas em todas as páginas e arquivos para facilitar a navegação e experiência dos seus usuário. Qual SAAS disponível na AWS fornece ferramentas robustas para cumprir essa finalidade e que pode ser facilmente utilizada na sua aplicação?
+
+Amazon ElasticSearch
+<key>ElasticSearch</key>
+
+Amazon CloudWatch
+<key>CloudWatch</key>
+
+Amazon Athena
+<key>Athena</key>
+
+<ok>
+Amazon CloudSearch
+<key>CloudSearch</key>
+
+<p>
+Você irá disponibilizar uma aplicação crítica e com dados sensíveis na Internet. Qual é o serviço que te ajuda a identificar vulnerabilidades de segurança e risco de exposição de acordo com as melhores práticas e compliance?
+
+<ok>
+AWS Inspector
+<key>Inspector</key>
+
+AWS GuardDuty
+<key>GuardDuty</key>
+
+AWS KMS
+<key>KMS</key>
+
+AWS Macie
+<key>Macie</key>
+
+<p>
 Numa migração de sistemas, você percebeu que existem dados na sua aplicação que raramente são usados e que poderiam ser mantidos em arquivos somente para fins de auditoria. Qual é o serviço da AWS que pode ser utilizado para esse objetivo e com o menor custo possível?
 
 <ok>
@@ -238,166 +320,6 @@ AWS CloudWatch
 
 AWS CloudTrail
 <key>CloudTrail</key>
-
-<p>
-Qual das opções abaixo é a classe de uso que pode deixar o uso do S3 mais caro?
-
-Glacier Deep Arquive
-<key>Glacier Deep Arquive</key>
-
-Glacier
-<key>Glacier</key>
-
-<ok>
-Standard
-<key>Standard</key>
-
-Standard Infrequent Access
-<key>Infrequent Access</key>
-
-<p>
-Utilizando os serviços da AWS, qual é a sequência esperada numa pipeline de CI/CD?
-
-<ok>
-CodeCommit, CodeBuild, CodeDeploy
-<key>CodeBuild, CodeCommit, CodeDeploy</key>
-
-CodeBuild, CodeCommit, CodeDeploy
-<key>CodeBuild, CodeCommit, CodeDeploy</key>
-
-CodeCommit, CodeDeploy, CodeBuild
-<key>CodeBuild, CodeCommit, CodeDeploy</key>
-
-CodeBuild, CodeDeploy, CodeCommit
-<key>CodeBuild, CodeCommit, CodeDeploy</key>
-
-<p>
-Sua aplicação fornece dados através de APIs REST para diversas aplicações diferentes. Pensando num cenário de futuras manutenções e evoluções dos seus serviços, qual opção abaixo pode melhor auxiliar a sua arquitetura a manter várias versões da mesma API sendo executadas simultaneamente e não exigir que todos os consumidores realizem adequações nas chamadas ao seu serviço?
-
-AWS Zuul
-<key>Não Se Aplica</key>
-
-AWS Route53
-<key>Route53</key>
-
-AWS EventBridge
-<key>EventBridge</key>
-
-<ok>
-API Gateway
-<key>API Gateway</key>
-
-<p>
-Qual é o serviço que permite estabelecer uma conexão dedicada entre a sua infraestrutura on-premise e a AWS melhorando as conexões e aumentando a taxa de transferência?
-
-<ok>
-AWS Direct Connect
-<key>Direct Connect</key>
-
-AWS DataSync
-<key>DataSync</key>
-
-AWS Link
-<key>Não Se Aplica</key>
-
-AWS API Gateway
-<key>API Gateway</key>
-
-<p>
-Qual é o serviço utilizado para provisionar Desktops utilizando Windows ou Linux?
-
-<ok>
-Amazon WorkSpaces
-<key>WorkSpaces</key>
-
-Amazon Desktops
-<key>Não Se Aplica</key>
-
-Amazon CLI
-<key>CLI</key>
-
-EC2
-<key>EC2</key>
-
-<p>
-Você implementou um sistema com arquitetura de microserviços e precisa depurar cada um deles, partindo desde a requisição do usuário para entender a performance e identificando oportunidades de melhorias. Qual serviço da AWS é o mais indicado para essa finalidade (tanto em ambiente de desenvolvimento quanto em ambiente de produção)?
-
-AWS ElasticSearch
-<key>ElasticSearch</key>
-
-AWS CloudSearch
-<key>CloudSearch</key>
-
-<ok>
-AWS X-Ray
-<key>X-Ray</key>
-
-AWS CloudWatch
-<key>CloudWatch</key>
-
-<p>
-As mensagens trafegadas entre o seu site e os usuários não estão sendo criptografadas porque a arquitetura atual não utiliza certificados digitais que permitam essa criptografia. Qual é o serviço da AWS que pode ser utilizado para esse tipo de implementação?
-
-AWS KMS
-<key>KMS</key>
-
-AWS Cognito
-<key>Cognito</key>
-
-<ok>
-AWS Certificate Manager
-<key>Certificate Manager</key>
-
-AWS IAM
-<key>IAM</key>
-
-<p>
-Você precisa automatizar um processo que executa diversas tarefas de forma sequencial em seu sistema. Qual é o serviço mais indicado para essa necessidade?
-
-AWS EventBridge
-<key>EventBridge</key>
-
-AWS Kinesis
-<key>Kinesis</key>
-
-AWS Workflow
-<key>Não Se Aplica</key>
-
-<ok>
-AWS Batch
-<key>Batch</key>
-
-<p>
-Sua empresa precisa lançar um novo produto e para isso deseja criar um novo domínio público para associar a um novo site. Qual é a maneira mais rápida de fazer isso?
-
-Desenvolver o novo site no AWS BeanStalk, que provisiona toda a infra para o desenvolvedor  apenas programar.
-<key>Elastic Beanstalk</key>
-
-<ok>
-Criar um novo domínio no AWS Route53
-<key>Route53</key>
-
-Criar um servidor de domínio numa instância AWS EC2 e incluir o novo domínio
-<key>EC2</key>
-
-Criar um novo domínio no RegistroCom
-<key>Não Se Aplica</key>
-
-<p>
-Você implantou uma aplicação em produção que não está funcionando e na log existe uma mensagem de acesso negado ao DynamoDB. Qual serviço abaixo você precisa checar e configurar corretamente para validar esse acesso?
-
-AWS Config
-<key>Config</key>
-
-<ok>
-AWS IAM Roles
-<key>IAM Roles</key>
-
-AWS Cognito
-<key>Cognito</key>
-
-AWS IAM Policy
-<key>IAM Policies</key>
 
 <p>
 

@@ -28,6 +28,8 @@
 			<div style="display:'none'; text-align:center; ">
 				<!-- br/>Aguarde o resultado na janela da configuração -->
 				<button class="btn btn-info" onclick="window.close();" style="padding:9px 15px 9px 15px;"><i class="fa fa-lock"></i> Parabéns! Você liberou uma fase. <i class="fa fa-unlock"></i></button>
+				<br/><br/>
+				<button class="btn btn-info" onclick="window.close();" style="padding:9px 15px 9px 15px;">Continuar <i class="fa fa-chevron-right"></i></button>
 				
 				<label id="bSearch" style="display:none;">
 					<input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:200px; height:34px;">
@@ -158,6 +160,86 @@
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
 FASE 1.2
+
+<p>
+Quais são os cinco planos de suporte ofertados pela AWS?
+
+Bronze, Silver, Gold, Diamond, Ruby
+<key>Support</key>
+
+Basic, Developer, Business, Advanced, Enterprise On-Ramp
+<key>Support</key>
+
+<ok>
+Basic, Developer, Business, Enterprise On-Ramp, Enterprise
+<key>Support</key>
+
+Standard, Developer, Business, Enterprise, Enterprise On-Ramp
+<key>Support</key>
+
+<p>
+Você precisa implementar uma estratégia de DR (Recuperação de Desastre) na sua empresa, qual é a recomendação de melhor uso do AWS RDS?
+
+<ok>
+Multi Regions (Distribuir em regiões diferentes)
+<key>Multi Regions</key>
+
+Multi A-Z (Distribuir em zonas de disponibilidade diferentes)
+<key>Multi-AZ</key>
+
+Read Replicas (Fazer cópias de leitura)
+<key>Read Replicas</key>
+
+Implementar uma cópia do banco numa instância EC2
+<key>EC2</key>
+
+<p>
+Qual é o usuário utilizado para acessar o AWS Console pela primeira vez e que possui acesso a todos os recursos da conta? (Não sendo recomendado o uso no dia a dia.)
+
+AWS IAM
+<key>IAM</key>
+
+AWS Administrator
+<key>IAM</key>
+
+<ok>
+AWS account root user
+<key>IAM</key>
+
+AWS full user
+<key>IAM</key>
+
+<p>
+Qual opção abaixo descreve o serviço Elastic Load Balancer?
+
+Distribui o tráfego de entrada entre instâncias em diferentes regiões
+<key>ELB</key>
+
+Instancia uma nova máquina quando uma das máquinas apresenta falha
+<key>EC2</key>
+
+<ok>
+Distribui o tráfego de entrada entre suas instâncias
+<key>ELB</key>
+
+Cria um cluster de máquinas dentro da mesma zona de disponibilidade
+<key>Clusters</key>
+
+<p>
+Você lidera um time de desenvolvimento pequeno e que não tem tempo de se envolver com muitas questões de infraestrutura AWS, porém você gostaria de fazer o uso de container, pois acredita que esse modelo de arquitetura tem muitas vantagens. Qual serviço da Amazon permite que você crie e use container sem precisar se preocupar com questões de infraestrutura e que usa uma infraestrutura sem servidor (servless)?
+
+EKS
+<key>EKS</key>
+
+ECS
+<key>ECS</key>
+
+ECR
+<key>ECR</key>
+
+<ok>
+Fargate
+<key>Fargate</key>
 
 <p>
 Sua empresa iniciou um processo de transformação digital de todas as suas plataformas e decidiu utilizar uma arquitetura de sistemas orientada a eventos para desacoplar os sistemas. Qual dos serviços abaixo pode ser utilizado como um barramento escalável de eventos para facilitar a criação dessa arquitetura?
@@ -323,86 +405,6 @@ AWS Redis
 <ok>
 AWS Cognito
 <key>Cognito</key>
-
-<p>
-Qual é a quantidade de dados que podemos armazenar no S3?
-
-5 Gigabytes
-<key>Pricing</key>
-
-50 Gigabytes
-<key>Pricing</key>
-
-<ok>
-A capacidade é virtualmente ilimitada
-<key>Pricing</key>
-
-1 Terabyte
-<key>Pricing</key>
-
-<p>
-Utilização de recursos de rede, computadores virtuais e armazenamento de dados com alto nível de flexibilidade, gerenciamento e controle sobre os recurso de TI são características de qual tipo de uso de cloud?
-
-<ok>
-IAAS
-<key>IAAS</key>
-
-SAAS
-<key>SAAS</key>
-
-BAAS
-<key>BAAS</key>
-
-PAAS
-<key>PAAS</key>
-
-<p>
-Qual é o serviço utilizado para permitir que aplicações acessem recursos restritos de serviços dentro da AWS?
-
-IAM Policies
-<key>IAM Policies</key>
-
-IAM Groups
-<key>IAM Groups</key>
-
-IAM Users
-<key>IAM Users</key>
-
-<ok>
-IAM Roles
-<key>IAM Roles</key>
-
-<p>
-Você precisa implementar no seu site uma funcionalidade para realizar pesquisas em todas as páginas e arquivos para facilitar a navegação e experiência dos seus usuário. Qual SAAS disponível na AWS fornece ferramentas robustas para cumprir essa finalidade e que pode ser facilmente utilizada na sua aplicação?
-
-Amazon ElasticSearch
-<key>ElasticSearch</key>
-
-Amazon CloudWatch
-<key>CloudWatch</key>
-
-Amazon Athena
-<key>Athena</key>
-
-<ok>
-Amazon CloudSearch
-<key>CloudSearch</key>
-
-<p>
-Você irá disponibilizar uma aplicação crítica e com dados sensíveis na Internet. Qual é o serviço que te ajuda a identificar vulnerabilidades de segurança e risco de exposição de acordo com as melhores práticas e compliance?
-
-<ok>
-AWS Inspector
-<key>Inspector</key>
-
-AWS GuardDuty
-<key>GuardDuty</key>
-
-AWS KMS
-<key>KMS</key>
-
-AWS Macie
-<key>Macie</key>
 
 <p>
 

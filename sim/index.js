@@ -319,8 +319,7 @@ function registerEvents() {
 		document.getElementById('btnIndexConfigurar').style.display = 'none';
 		document.getElementById('lei13709').style.display = 'none';
 		location.reload(); //recarrega página importando também o teste 01
-		var DataShow_Config = window.open("config" + document.getElementById('selectMygroup').value + ".html?sim=" + document.getElementById('selectMygroup').value, "datashowconfig", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
-		location.reload(); //recarrega página importando também o teste 01
+		var DataShow_Config = window.open("config" + document.getElementById('selectMygroup').value + ".html?sim=" + document.getElementById('selectMygroup').value, "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
 //		var DataShow_ConfigResult = window.open("configresult.html", "datashowconfigresult");
 //		datashowconfigresult.focus();
 	})
@@ -545,15 +544,16 @@ function registerEvents() {
 		if (mycode <= parseInt(document.getElementById('txtTotal').value)) {
 			refreshTableQuestion(myid, mygroup, mycode);
 		} else {
-			var result = confirm('Vou encerrar e registrar no histórico, ok?\n');
+			var result = confirm('Você chegou na última pergunta. Vou encerrar esta fase, ok?\n');
 			if (result) {
-				location.reload();
 				showGridAndHideForms();
+				location.reload();
 			}
 		}
     })
 	$('#btnPause').click(function () {
 		showGridAndHideForms();
+		location.reload();
     });	
 	$('#btnPoints').click(function () {
 		var mygroup = document.getElementById('mygroupSim').value;
@@ -922,7 +922,8 @@ async function changeFaseNivel(id, mygroup, mycode) {
 				}
 			});
 			if (students == '') {
-				var DataShow_Config = window.open("config" + mygroupNext + ".html?sim=" + mygroupNext, "datashowconfig", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
+				var DataShow_Config = window.open("config" + mygroupNext + ".html?sim=" + mygroupNext);
+//				var DataShow_Config = window.open("config" + mygroupNext + ".html?sim=" + mygroupNext, "datashowconfig", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
 			}
 		}
 	}
