@@ -1239,8 +1239,9 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 
 		var htmlString = "";
 		var varTdTh = '';
-		var varButtonPlayStyle = 'color:green; font-size:16px;';
-		var varButtonPlay = ' <i class=\"fa fa-play\" style="'+ varButtonPlayStyle +'"></i></a>';
+		var varButtonPlayStyle = 'color:green; font-size:20px;';
+		var varButtonPlay = '<i class=\"fa fa-play\" style="' + varButtonPlayStyle + '"></i></a>';
+		var varButtonUnlock = '<i class=\"fa fa-unlock\" style="' + varButtonPlayStyle + '"></i>';
 //		var varText = '';
 //		var varPlay = '';
 		var varRestart = '';
@@ -1267,7 +1268,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				+ "<td style=\"color:#000000; font-size:1px; \">" + student.mygroup + "</td>"
 //              + "<td style=\"color:#000000; font-size:1px;\">" + student.mycode + "</td>"
 				+ "<" + varTdTh + " id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " ZZZonClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
-				+ "<a href=\"#\" class=\"playsim\"><i class=\"fa fa-unlock\" style=\""+ varButtonPlayStyle +"\"></i> " + student.mytext + varButtonPlay + "</" + varTdTh + ">"
+				+ "<a href=\"#\" class=\"playsim\">" + varButtonUnlock + ' ' + student.mytext + ' ' + varButtonPlay + "</a></" + varTdTh + ">"
 //				+ "<a href=\"#\" class=\"playsim\">" + student.mytext + varButtonPlay + "</" + varTdTh + ">"
 //				+ student.mytext + "</" + varTdTh + ">"
 /*				
@@ -1286,8 +1287,9 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				+ "</" + varTdTh + ">"
 				;
 				
-				varButtonPlayStyle = 'color:gray; font-size:16px;';
-				varButtonPlay = ' <i class=\"fa fa-check\" style="'+ varButtonPlayStyle +'"></i></a>';
+				varButtonPlayStyle = 'color:gray; font-size:15px;';
+				varButtonPlay = '<i class=\"fa fa-check\" style="' + varButtonPlayStyle + '"></i>';
+				varButtonUnlock = '<i class=\"fa fa-unlock\" style="' + varButtonPlayStyle + '"></i>';
 		})
 
 		if (htmlString.length > 0) {
