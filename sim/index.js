@@ -1115,7 +1115,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				varTdTh = 'th';
 //				varPlay = "<a href=\"#\" class=\"playsim\" style=\"color:#00FF00;\">Start</a>";
 //				varEdit = "&nbsp;<a href=\"#\" class=\"edit\" style=\"color:#0000FF;\">Edit</a>";
-				varRestart = "&nbsp;<i class=\"fa fa-refresh\"></i> <a href=\"#\" class=\"restart\" style=\"color:#0000FF;\">reiniciar</a>";
+				varRestart = "&nbsp;<i class=\"fa fa-refresh\"></i> <a href=\"#\" class=\"restart\" style=\"color:#0000FF;\">refazer</a>";
 //				varDel = "&nbsp;<a href=\"#\" class=\"delete\" style=\"color:#FF0000;\">Del</a>";
 			} else {
 				varTdTh = 'td';
