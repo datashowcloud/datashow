@@ -27,7 +27,7 @@
 
 			<div style="display:'none'; text-align:center; ">
 				<!-- br/>Aguarde o resultado na janela da configuração -->
-				<button class="btn btn-default" onclick="window.close();" style="padding:9px 15px 9px 15px;"><i class="fa fa-lock"></i> Parabéns! Você liberou uma fase. <i class="fa fa-unlock"></i></button>
+				<label class="btn btn-default" style="padding:9px 15px 9px 15px; cursor:default;">Parabéns! Você liberou uma fase. <i class="fa fa-unlock"></i></label>
 				<br/><br/>
 				<button class="btn btn-info" onclick="window.close(); window.open('index.html', '_self');" style="padding:9px 15px 9px 15px;">Continuar <i class="fa fa-chevron-right"></i></button>
 				
@@ -87,10 +87,23 @@
 						<div id="myincorrecta4answer"></div>
 					</td></tr>
 					<tr><td>
+						<input type="text" id="loading" value="CARREGANDO..." hidden=""> <!-- essa mensgem aparecerá toda vez que estiver carregando uma página com lentidão -->
 						<br/><input type="text" id="mygroupSim" value="" Zhidden="">
 						<br/><input type="text" id="mycodeSim" value="" Zhidden="">
 						<br/><input type="text" id="myorderSim" value="" Zhidden="">
 						<br/><input type="text" id="myidSim" value="" Zhidden="">
+					</td></tr>
+				</table>
+				<table id="tableFormSimDashboard" border=0 align=center width="60%" style="display:'none';">
+					<tr><td nowrap id="txtCalculo"></td></tr>
+					<tr><td nowrap><input type="text" id="txtIncorretas" value="Incorretas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:red;" readonly /></td></tr>
+					<tr><td nowrap><input type="text" id="txtCorretas" value="Corretas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:green;" readonly /></td></tr>
+					<tr><td nowrap><input type="text" id="txtNaoRespondidas" value="Não Respondidas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:blue;" readonly /></td></tr>
+					<tr><td nowrap><br/><input type="text" id="txtTotal" value="Total" class="btn btn-default" style="padding:9px 15px 9px 15px; display:'none';" hidden=""></td></tr>
+				</table>
+				<table id="tableLinkhelp" border=0 align=center style="display:'none';">
+					<tr><td id="help" style="display:none; text-align:justify;">
+						<div id="divlinkhelp"></div>
 					</td></tr>
 				</table>
 			</font>

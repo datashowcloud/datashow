@@ -87,6 +87,7 @@ function getDbSchema() {
 			myoptionkey6: { Null: false, dataType: 'string' }, //idem
 			myoptionkey7: { Null: false, dataType: 'string' }, //idem
 			myoptionkey8: { Null: false, dataType: 'string' }, //idem
+			mypoints: { Null: false, dataType: 'string' }, //índice de acerto na tentativa 4, 5, 6, 7... exemplo: 85,50,10,100 (todas separadas por vírgula)
 			mycomment: { Null: false, dataType: 'string' }, //comentário ou resposta sobre a letra
 			myfix: { Null: false, dataType: 'string' }, //fixa para revisão
             mytimer: { Null: false, dataType: 'string' }, //cronômetro numérico em segundos para mudar o texto automaticamente, exemplo: 4s
@@ -127,6 +128,7 @@ function getDbSchema() {
 			id: { primaryKey: true, autoIncrement: true }, //identificação única
 			mygroup: { notNull: true, dataType: 'string' }, //valor idêntico à tabela Student
 			mycode: { notNull: true, dataType: 'string' }, //valor único idêntico à tabela Student
+			mypoints: { Null: false, dataType: 'string' }, //índice de acerto na tentativa 4, 5, 6, 7... exemplo: 85,50,10,100 (todas separadas por vírgula)
 			mytry: { notNull: true, dataType: 'string' }, //quantidade de tentativas, exemplo: 1, 2, 3...; tentativa 1, tentativa 2, tentativa 3...
 			mypercent: { notNull: true, dataType: 'string' }, //porcentagem que conseguiu
 			mycorrects: { notNull: true, dataType: 'string' }, //quantidade de perguntas com respostas corretas
@@ -403,10 +405,11 @@ function registerEvents() {
 		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
 		changeFaseNivel(myid, mygroup, mycode);
 		if (mycode > parseInt(document.getElementById('txtTotal').value)) {
-			var result = confirm('Você chegou na última pergunta. Vou salvar esta fase, ok?\n');
+			var result = confirm('Vou salvar a pontuação, ok?\n');
 			if (result) {
+				savePoints(myid, mygroup, mycode);
 				showGridAndHideForms();
-				location.reload();
+				setTimeout(() => { location.reload() }, 1000); // Executa após 2 segundos para esperar o processo de insert terminar
 			}
 		}
 		refreshTableQuestion(myid, mygroup, mycode);
@@ -529,12 +532,22 @@ async function getConfigGeneral() {
 }
 
 async function setConfigGeneral(textcolor, background, buttoncolor) {
-	document.getElementById('email').style.color = textcolor;
-	document.getElementById('version').style.color = textcolor;
-	document.getElementById('FormularioEditorPerguntas').style.color = textcolor;
-	document.getElementById('FormularioEditorConfiguracoes').style.color = textcolor;
-	document.getElementById('lei13709').style.color = textcolor;
-	document.getElementById('lei13709').style.backgroundColor = background;
+	if(document.getElementById('email') != null) {
+		document.getElementById('email').style.color = textcolor;
+	}
+	if(document.getElementById('version') != null) {
+		document.getElementById('version').style.color = textcolor;
+	}
+	if(document.getElementById('FormularioEditorPerguntas') != null) {
+		document.getElementById('FormularioEditorPerguntas').style.color = textcolor;
+	}
+	if(document.getElementById('FormularioEditorConfiguracoes') != null) {
+		document.getElementById('FormularioEditorConfiguracoes').style.color = textcolor;
+	}
+	if(document.getElementById('lei13709') != null) {
+		document.getElementById('lei13709').style.color = textcolor;
+		document.getElementById('lei13709').style.backgroundColor = background;
+	}
 	document.getElementById('myBody').style.background = background;
 
 	document.getElementById('selTextColor').style.color = textcolor;
@@ -546,17 +559,21 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 	classe = classe.substring(4, classe.length);
 	document.getElementById('btnPrevious').classList.remove(classe);
 
-	classe = document.getElementById('btnPause').classList.value;
-	classe = classe.substring(4, classe.length);
-	document.getElementById('btnPause').classList.remove(classe);
+	if(document.getElementById('btnPause') != null) {
+		classe = document.getElementById('btnPause').classList.value;
+		classe = classe.substring(4, classe.length);
+		document.getElementById('btnPause').classList.remove(classe);
+	}
 
 	classe = document.getElementById('btnBackward').classList.value;
 	classe = classe.substring(4, classe.length);
 	document.getElementById('btnBackward').classList.remove(classe);
 
-	classe = document.getElementById('btnPoints').classList.value;
-	classe = classe.substring(4, classe.length);
-	document.getElementById('btnPoints').classList.remove(classe);
+	if(document.getElementById('btnPoints') != null) {
+		classe = document.getElementById('btnPoints').classList.value;
+		classe = classe.substring(4, classe.length);
+		document.getElementById('btnPoints').classList.remove(classe);
+	}
 
 	classe = document.getElementById('btnNext').classList.value;
 	classe = classe.substring(4, classe.length);
@@ -568,9 +585,13 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 
 	if (buttoncolor == 'btn-colors') {
 		document.getElementById('btnPrevious').classList.add('btn-success');
-		document.getElementById('btnPause').classList.add('btn-info');
+		if(document.getElementById('btnPause') != null) {
+			document.getElementById('btnPause').classList.add('btn-info');
+		}
 		document.getElementById('btnBackward').classList.add('btn-danger');
-		document.getElementById('btnPoints').classList.add('btn-warning');
+		if(document.getElementById('btnPoints') != null) {
+			document.getElementById('btnPoints').classList.add('btn-info');
+		}
 		document.getElementById('btnNext').classList.add('btn-success');
 		document.getElementById('selButtonColor').classList.add('btn-default');
 	} else {
@@ -799,6 +820,33 @@ function getProximaFaseNivel(id, mygroup, mycode) {
 		mygroup = mygroup.substring(0, 1) + '0';
 	}
 	return mygroup;
+}
+
+async function savePoints(myid, mygroup, mycode) {
+	var totalperguntas = await jsstoreCon.count({
+		from: 'Student'
+		  , where: {
+			  mygroup: mygroup
+		  }
+	});
+	totalperguntas = totalperguntas - 1; //tira a pergunta zero que é o título da lista de perguntas
+	var students = await jsstoreCon.select({
+		from: 'Student'
+		  , where: { mygroup: mygroup 
+		  }
+	});
+	var totalCorretas = getTotalCorretas(mygroup, mycode, students);
+	var calculo = calculaPercentualAcerto(mygroup, mycode, totalCorretas, totalperguntas);
+
+	var noOfDataUpdated = await jsstoreCon.update({
+		in: 'Student',
+		set: {
+			mypoints: calculo
+		},
+		where: {
+			mygroup: mygroup
+		}
+	});
 }
 
 async function showPoints(mygroup, mycode) {
@@ -1130,6 +1178,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 //              + "<td style=\"color:#000000; font-size:1px;\">" + student.mycode + "</td>"
 				+ "<" + varTdTh + " id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " ZZZonClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
 				+ "<a href=\"#\" class=\"playsim\">" + varButtonUnlock + ' ' + student.mytext + ' ' + varButtonPlay + "</a></" + varTdTh + ">"
+				+ "<" + varTdTh + ">" + student.mypoints + "% " + getAprovacao(student.mypoints) + "</" + varTdTh + ">"
 //				+ "<a href=\"#\" class=\"playsim\">" + student.mytext + varButtonPlay + "</" + varTdTh + ">"
 //				+ student.mytext + "</" + varTdTh + ">"
 /*				
@@ -1173,6 +1222,14 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 //    } catch (ex) {
 //        console.log(ex.message)
 //    }
+}
+
+function getAprovacao(calculo) {
+	if (calculo >= 70) {
+		return 'Aprovado';
+	} else {
+		return 'Reprovado';
+	}
 }
 
 //This function select table
@@ -1951,7 +2008,8 @@ function getStudentFromForm(studentId, mygroup, mycode) {
 		myoptionkey5: $('#myoptionkey5').val(),
 		myoptionkey6: $('#myoptionkey6').val(),
 		myoptionkey7: $('#myoptionkey7').val(),
-		myoptionkey8: $('#myoptionkey8').val()
+		myoptionkey8: $('#myoptionkey8').val(),
+		mypoints: '0'
     };
     return student;
 }
@@ -2013,7 +2071,7 @@ function getLinkHelp(keylink, hreflink, boldlink, textlink) {
 
 function initLinkHelp() {
 	var linkhelp = ' <b>MINHA AJUDA</b> <br/><br/>';
-	
+
 	linkhelp = linkhelp + getLinkHelp('Princing Calculator', 'https://calculator.aws/#/', 'estimar o custo antes do uso, antes da implementação', 'AWS Princing Calculator para estimar o custo antes do uso, antes da implementação para sua solução de arquitetura. Configure uma estimativa de custo exclusivo que atenda às suas necessidades de negócios ou pessoais com produtos e serviços da AWS.');
 	linkhelp = linkhelp + getLinkHelp('Organizations', 'https://aws.amazon.com/pt/organizations/?nc2=type_a', 'alocar recursos, agrupar contas', 'AWS Organizations para criar novas contas da AWS e alocar recursos, agrupar contas para organizar seus fluxos de trabalho, aplicar políticas a contas ou grupos para governança e simplificar o faturamento usando um único método de pagamento para todas as suas contas.');
 	linkhelp = linkhelp + getLinkHelp('Billing', 'https://aws.amazon.com/pt/aws-cost-management/aws-billing/', 'visualizar e pagar faturas', 'AWS Billing é para entender seus gastos com a AWS, visualizar e pagar faturas, gerenciar preferências de faturamento e configurações de impostos e acessar serviços adicionais de Gerenciamento financeiro na nuvem. Avalie rapidamente se os seus gastos mensais estão alinhados a períodos anteriores, previsões ou orçamentos e investigue e tome medidas corretivas em tempo hábil.');
