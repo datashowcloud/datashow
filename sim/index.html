@@ -114,7 +114,7 @@
 				<table id="tableFormSimButtons" border=0 align=center width="100%" style="display:'none';">
 					<tr><td>
 						<button id="btnPrevious" class="btn btn-info" style="display:'none';"> <i class="fa fa-chevron-left"></i> Anterior</button>
-						<button id="btnPause" class="btn btn-info" style="display:'none';"><i class="fa fa-pause"></i> Sair</button>
+						<button id="btnPause" class="btn btn-danger" style="display:'none';"> <i class="fa fa-times"></i> Sair</button>
 						<button id="btnBackward" class="btn btn-danger" style="display:none;"> <i class="fa fa-refresh"></i> </button>
 						<button id="btnPoints" class="btn btn-info" style="display:none;"><i class="fa fa-check-square-o"></i></button>
 						<button id="btnNext" class="btn btn-info" style="display:'none';">Próximo <i class="fa fa-chevron-right"></i></button>
@@ -173,8 +173,9 @@
 		
 		<div class="form-group" id="divFormAddUpdate" style="display:none;">
 			<table border=0 align=center width="98%"><tr><td>
-				<b id="FormularioEditorPerguntas">Formulário Editor de Perguntas</b>
-				<p/><p/><button id="btnCancel" type="button" class="btn btn-info" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-times"></i> Fechar</button>
+				<b id="FormularioEditorPerguntas">Formulário Editor de Perguntas</b> <button id="btnCancel" class="btn btn-danger" style="display:'none';"> <i class="fa fa-times"></i> </button>
+				<hr/>
+				<!-- p/><p/><button id="btnCancel" type="button" class="btn btn-info" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-times"></i> Fechar</button -->
 				<p/><button id="btnSubmit" type="button" class="btn btn-success" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-check"></i> Salvar</button>
 				<!-- p/><p/>
 				<button id="btnImportSim" type="button" class="btn btn-danger" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-check"></i> Importar</button -->
@@ -231,15 +232,13 @@
 		</div>
 		
 		<div class="form-group" id="divGear" style="display:none;">
-			<table border=0 align=center width="100%"><tr><td>
+			<table border=1 align=center width="60%"><tr><td>
 				<b id="FormularioEditorConfiguracoes">Formulário Editor de Configurações</b>
-				<p><button id="btnCancelImport" class="btn btn-default" style="padding:9px 15px 9px 15px; width:220px; display:'none';"> <i class="fa fa-times"></i> Fechar</button>
+				<button id="btnCancelImport" class="btn btn-danger" style="display:'none';"> <i class="fa fa-times"></i> </button>
+				<p/><p/>
 			<!-- form id="formAdd" ZZZaction="https://formspree.io/f/xrgjojko" method="post" -->
 			<!-- /form -->
-				<p/><p/><button id="btnAddNewManual" class="btn btn-default" style="padding:9px 15px 9px 15px; width:220px; display:none;"><i class="fa fa-plus"></i> Adicionar Nova Pergunta</button>
-				<p/><p/><button id="btnShowHelp" class="btn btn-default" style="padding:9px 15px 9px 15px; width:220px; display:none;"> <i class="fa fa-book"></i> Tutorial</button>
-				<p/><p/>
-				<select id="selTextColor" name="selTextColor" class="btn btn-info" style="padding:9px 15px 9px 15px; width:220px; height:35px; display:'none';">
+				<select id="selTextColor" name="selTextColor" class="btn btn-info" style="padding:9px 15px 9px 15px; width:250px; height:35px; display:'none';">
 					<option value="white" selected>Cor Letra: Padrão</option>
 					<option value="gray">Cor Letra: Cinza</option>
 					<option value="black">Cor Letra: Preta</option>
@@ -248,7 +247,7 @@
 					<option value="blue">Cor Letra: Azul</option>
 				</select>
 				<p/><p/>
-				<select id="selBackground" name="selBackground" class="btn btn-info" style="padding:9px 15px 9px 15px; width:220px; height:35px; display:'none';">
+				<select id="selBackground" name="selBackground" class="btn btn-info" style="padding:9px 15px 9px 15px; width:250px; height:35px; display:'none';">
 					<option value="black" selected>Cor Fundo: Padrão</option>
 					<option value="white">Cor Fundo: Branco</option>
 					<option value="yellow">Cor Fundo: Amarelo</option>
@@ -256,7 +255,7 @@
 					<option value="gray">Cor Fundo: Cinza</option>
 				</select>
 				<p/><p/>
-				<select id="selButtonColor" name="selButtonColor" class="btn btn-default" style="padding:9px 15px 9px 15px; width:220px; height:35px; display:'none';">
+				<select id="selButtonColor" name="selButtonColor" class="btn btn-default" style="padding:9px 15px 9px 15px; width:250px; height:35px; display:'none';">
 					<option value="btn-colors" selected>Cor Botão: Padrão</option>
 					<option value="btn-info">Cor Botão: Azul</option>
 					<option value="btn-default">Cor Botão: Branco</option>
@@ -265,14 +264,13 @@
 					<option value="btn-success">Cor Botão: Verde</option>
 					<option value="btn-primary">Cor Botão: Azul Escuro</option>
 				</select>
-				<p/><p/><button id="btnDropDb" class="btn btn-default" style="padding:9px 15px 9px 15px; width:220px;"> <i class="fa fa-trash"></i> Restaurar Padrão de Fábrica</button>
-				<div style="display:none;">
-					<br/><button id="btnSelectCountAll" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-asterisk"></i> Count All</button>
-					<br/><button id="btnDeleteLirics" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-minus"></i> Clear Lirycs</button>
-				</div>
-
-				<p/><p/><i id="email">datashowcloud2022@gmail.com</i>
-				<p/><p/><i id="version">versão 25.09.22 coluna%</i>
+				<p/><p/><button id="btnDropDb" class="btn btn-default" style="padding:9px 15px 9px 15px; width:250px;"> <font color=red><i class="fa fa-trash"></i></font> Restaurar Padrão de Fábrica</button>
+				<p/><p/><i id="btnVersions" class="btn btn-default" style="padding:9px 15px 9px 15px; width:250px;"> <font color=blue><i class="fa fa-info"></i></font> versão 25.09.22 janela fechar</i>
+				<p/><p/><i id="btnEmail" class="btn btn-default" style="padding:9px 15px 9px 15px; width:250px;"> <font color=gray><i class="fa fa-envelope"></i></font> datashowcloud2022@gmail.com</i>
+				<p/><p/><button id="btnAddNewManual" class="btn btn-default" style="padding:9px 15px 9px 15px; width:250px; display:none;"><i class="fa fa-plus"></i> Adicionar Nova Pergunta</button>
+				<p/><p/><button id="btnShowHelp" class="btn btn-default" style="padding:9px 15px 9px 15px; width:250px; display:none;"> <i class="fa fa-book"></i> Tutorial</button>
+				<p/><p/><button id="btnSelectCountAll" class="btn btn-default" style="display:none; width:250px;"> <i class="fa fa-asterisk"></i> Count All</button>
+				<p/><p/><button id="btnDeleteLirics" class="btn btn-default" style="display:none; width:250px;"> <i class="fa fa-minus"></i> Clear Lirycs</button>
 
 			<div style="display:none;">
 				<button id="btnTest" class="btn btn-default" > <i class="fa fa-envelope"></i> </button>

@@ -444,6 +444,12 @@ function registerEvents() {
 		refreshTableQuestion('', mygroup, '1');
 		showFormSim();
 	})
+	$('#btnVersions').click(function () {
+		var versions = 'Atualizações:';
+		versions = versions + '\n' + '25.09.22 botão fechar x vermelho';
+		versions = versions + '\n' + '25.09.22 coluna com porcentagem';
+		alert(versions);
+	})
 }
 
 async function initConfigGeneral() {
@@ -586,7 +592,7 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 	if (buttoncolor == 'btn-colors') {
 		document.getElementById('btnPrevious').classList.add('btn-success');
 		if(document.getElementById('btnPause') != null) {
-			document.getElementById('btnPause').classList.add('btn-info');
+			document.getElementById('btnPause').classList.add('btn-danger');
 		}
 		document.getElementById('btnBackward').classList.add('btn-danger');
 		if(document.getElementById('btnPoints') != null) {
