@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Preparo Certificação</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/bootstrap.css" />
+    <link rel="stylesheet" href="style/font-awesome.min.css" />
+    <script src="scripts/jsstore.js"></script>
+    <script src="scripts/jsstore.worker.js"></script>
+	<style>
+#myBody {
+  border: 0px dashed blue;
+  padding: 25px;
+  background-attachment: fixed;
+  background-position: top; 
+  background-repeat: no-repeat;
+} 
+	</style>
+</head>
+
+<body id="myBody" background="gallery/paper.jpeg">
+
+<form id="formAdd" ZZZaction="https://formspree.io/f/xrgjojko" method="post">
+	<input type="text" hidden="" name="resultado" value="" />
+	<input type="text" hidden="" name="config_myowner" value="IIRF" />
+</form>
+
+<table id="mytable" border=0 width=95% align=center>
+
+	<tr> <th style="text-align:center;"> <label class="btn btn-default" onclick="inicio()">Preparo para Certificação<br/>AWS Certified Cloud Practitioner<br/>Em Inglês</label> </th> </tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 01. Which AWS services can be used to store files? </b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> 01. Quais serviços AWS podem ser usados para armazenar arquivos? </b> </td> </tr>
+	<tr> <td> <input type=checkbox value="01a"> a) Amazon CloudWatch (<a href="https://aws.amazon.com/cloudwatch/" target="_blank">link</a>)</td> </tr>
+	<tr> <td> <input type=checkbox value="01b"> b) Amazon Simple Storage Service - S3 (<a href="https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/Welcome.html" target="_blank">link</a>)</td> </tr>
+	<tr> <td> <input type=checkbox value="01c"> c) Amazon Elastic Block Store - EBS (<a href="https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/AmazonEBS.html" target="_blank">link</a>)</td> </tr>
+	<tr> <td> <input type=checkbox value="01d"> d) AWS Config (<a href="https://docs.aws.amazon.com/pt_br/config/latest/developerguide/WhatIsConfig.html" target="_blank">link</a>)</td> </tr>
+	<tr> <td> <input type=checkbox value="01e"> e) Amazon Athena (<a href="https://aws.amazon.com/pt/athena/" target="_blank">link</a>)</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('01', 'bc');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 02. Which of the following services uses AWS Edge Locations? </b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> 02. Qual dos seguintes serviços usa AWS Edge Locations? </b> </td> </tr>
+	<tr> <td> <input type=checkbox value="02a"> a) Amazon Virtual Private Cloud - VPC </td> </tr>
+	<tr> <td> <input type=checkbox value="02b"> b) Amazon CloudFront (<a href="https://blog.estabil.is/aws-na-pratica-pontos-de-presenca/" target="_blank">link</a>)</td> </tr>
+	<tr> <td> <input type=checkbox value="02c"> c) Amazon Elastic Compute Cloud - EC2 </td> </tr>
+	<tr> <td> <input type=checkbox value="02d"> d) AWS Storage Gateway </td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('02', 'b');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 03. Which of the following is a benefit of Amazon Elastic Compute Cloud (EC2) over on-premise physical servers? </b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> 03. Qual dos seguintes é um benefício da Amazon Elastic Compute Cloud (EC2) sobre servidores físicos on-premise? </b> </td> </tr>
+	<tr> <td> <input type=checkbox value="03a"> a) Automated backup </td> </tr>
+	<tr> <td> <input type=checkbox value="03b"> b) Paying only for what you used </td> </tr>
+	<tr> <td> <input type=checkbox value="03c"> c) The ability to choose hardware vendors </td> </tr>
+	<tr> <td> <input type=checkbox value="03d"> d) Root / Administrator Access </td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('03', 'b');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 04. Which AWS service provides infrastructure security optimization recommendation? </b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> 04. Qual serviço da AWS fornece recomendação de otimização de segurança de infraestrutura? </b> </td> </tr>
+	<tr> <td> <input type=checkbox value="04a"> a) AWS Application Programming Interface </td> </tr>
+	<tr> <td> <input type=checkbox value="04b"> b) Reserved Instances </td> </tr>
+	<tr> <td> <input type=checkbox value="04c"> c) AWS Trusted Advisor (<a href="https://aws.amazon.com/pt/about-aws/whats-new/2020/05/aws-trusted-advisor-adds-5-cost-optimization-checks/" target="_blank">link</a>) </td> </tr>
+	<tr> <td> <input type=checkbox value="04d"> d) Amazon Elastic Compute Cloud - Spot Fleet </td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('04', 'c');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 05. Which service allows for the collection and tracking of performance metrics for AWS services? </b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> 05. Qual serviço permite a coleta e o rastreamento de métricas de desempenho para serviços AWS? </b> </td> </tr>
+	<tr> <td> <input type=checkbox value="05a"> a) Amazon CloudFront (<a href="https://blog.estabil.is/aws-na-pratica-pontos-de-presenca/" target="_blank">link</a>) </td> </tr>
+	<tr> <td> <input type=checkbox value="05b"> b) Amazon CloudSearch </td> </tr>
+	<tr> <td> <input type=checkbox value="05c"> c) Amazon CloudWatch (<a href="https://aws.amazon.com/cloudwatch/" target="_blank">link</a>) </td> </tr>
+	<tr> <td> <input type=checkbox value="05d"> d) Amazon Machine Learning </td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('05', 'c');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 06. A company needs to know which user was responsible for terminating several critical Amazon Elastic Compute Cloud EC2 Instances. Where can the customer find this information? </b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> 06. Uma empresa precisa saber qual usuário foi responsável por encerrar várias instâncias críticas do Amazon Elastic Compute Cloud EC2. Onde o cliente pode encontrar essas informações? </b> </td> </tr>
+	<tr> <td> <input type=checkbox value="06a"> a) AWS Trusted Advisor (<a href="https://aws.amazon.com/pt/about-aws/whats-new/2020/05/aws-trusted-advisor-adds-5-cost-optimization-checks/" target="_blank">link</a>) </td> </tr>
+	<tr> <td> <input type=checkbox value="06b"> b) Amazon EC2 instance usage report </td> </tr>
+	<tr> <td> <input type=checkbox value="06c"> c) Amazon CloudWatch (<a href="https://aws.amazon.com/cloudwatch/" target="_blank">link</a>) </td> </tr>
+	<tr> <td> <input type=checkbox value="06d"> d) Amazon Cloud Trail logs (<a href="https://aws.amazon.com/pt/cloudtrail/faqs/" target="_blank">link</a>) </td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('06', 'd');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 07. Which services should an administrator use to register a new domain name with AWS?</b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> 07. Quais serviços um administrador deve usar para registrar um novo nome de domínio com a AWS? </b> </td> </tr>
+	<tr> <td> <input type=checkbox value="07a"> a) Amazon Route 53 (<a href="https://docs.aws.amazon.com/pt_br/Route53/latest/DeveloperGuide/Welcome.html" target="_blank">link</a>) </td> </tr>
+	<tr> <td> <input type=checkbox value="07b"> b) Amazon CloudFront (<a href="https://blog.estabil.is/aws-na-pratica-pontos-de-presenca/" target="_blank">link</a>) </td> </tr>
+	<tr> <td> <input type=checkbox value="07c"> c) Elastic Load Balancing (<a href="https://docs.aws.amazon.com/pt_br/elasticloadbalancing/latest/userguide/what-is-load-balancing.html" target="_blank">link</a>) </td> </tr>
+	<tr> <td> <input type=checkbox value="07d"> d) Amazon Private Cloud - VPC </td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('07', 'a');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 08. What is the value of having AWS Cloud services accessible through an API?</b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> 08. Qual é o valor de ter serviços AWS Cloud acessíveis através de uma API? </b> </td> </tr>
+	<tr> <td> <input type=checkbox value="08a"> a) It allows developers to work with AWS resources programmatically </td> </tr>
+	<tr> <td> <input type=checkbox value="08b"> b) AWS resources will always be cost-optimized </td> </tr>
+	<tr> <td> <input type=checkbox value="08c"> c) All application testing can be managed by AWS </td> </tr>
+	<tr> <td> <input type=checkbox value="08d"> d) Customer-owner, on-premise infraestructure becomes programmable </td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('08', 'a');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 09. Which of the following examples supports AWS Architecting for Cloud Best Practice "Design for failure and nothing will fail"?</b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> 09. Qual dos exemplos a seguir suporta o AWS Architecting for Cloud Best Practice "Design for failure and nothing will fail"? </b> </td> </tr>
+	<tr> <td> <input type=checkbox value="09a"> a) Adding an elastic load balancer in front of a single Amazon Elastic Compute Cloud-EC2 instance </td> </tr>
+	<tr> <td> <input type=checkbox value="09b"> b) Creating and deploying the most cost-effective solution </td> </tr>
+	<tr> <td> <input type=checkbox value="09c"> c) Deploying an application in multiple Availability Zone </td> </tr>
+	<tr> <td> <input type=checkbox value="09d"> d) Using Amazon CloudWatch alerts to monitor performance </td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('09', 'c');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 10. Which service allows an administrator to create and modify AWS user permissions? </b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> 10. Qual serviço permite que um administrador crie e modifique as permissões do usuário AWS? </b> </td> </tr>
+	<tr> <td> <input type=checkbox value="10a"> a) AWS Config (<a href="https://docs.aws.amazon.com/pt_br/config/latest/developerguide/WhatIsConfig.html" target="_blank">link</a>)</td> </tr>
+	<tr> <td> <input type=checkbox value="10b"> b) AWS Cloud Trail </td> </tr>
+	<tr> <td> <input type=checkbox value="10c"> c) AWS Key Management Service (<a href="https://docs.aws.amazon.com/pt_br/kms/latest/developerguide/overview.html" target="_blank">link</a>)</td> </tr>
+	<tr> <td> <input type=checkbox value="10d"> d) AWS Identity and Access Management (<a href="https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/introduction.html" target="_blank">link</a>)</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('10', 'd');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 11. Which AWS service automates infrastructure provisioning and administrative tasks for an analytical data warehouse? </b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> 11. Qual serviço da AWS automatiza o fornecimento de infraestruturas e tarefas administrativas para um data warehouse analítico? </b> </td> </tr>
+	<tr> <td> <input type=checkbox value="11a"> a) Amazon Redshift </td> </tr>
+	<tr> <td> <input type=checkbox value="11b"> b) Amazon DynamoDB </td> </tr>
+	<tr> <td> <input type=checkbox value="11c"> c) Amazon Elastic Cache</td> </tr>
+	<tr> <td> <input type=checkbox value="11d"> d) Amazon Aurora </td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('11', 'a');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 12. Which of the following is the responsability of the AWS customer according to the Shared Security Model? </b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> 12. Qual dos seguintes é responsabilidade do cliente AWS de acordo com o Modelo de Segurança Compartilhada? </b> </td> </tr>
+	<tr> <td> <input type=checkbox value="12a"> a) Managing AWS Identity and Access Management IAM (<a href="https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/introduction.html" target="_blank">link</a>)</td> </tr>
+	<tr> <td> <input type=checkbox value="12b"> b) Securing Edge Locations</td> </tr>
+	<tr> <td> <input type=checkbox value="12c"> c) Monitoring physical device security</td> </tr>
+	<tr> <td> <input type=checkbox value="12d"> d) Implementing service organization control (SOC) standards</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('12', 'a');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 13. Where can a customer go to get more detail about Amazon EC2 billing activity that took place 3 months ago?</b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> 13. Onde um cliente pode ir para obter mais detalhes sobre a atividade de faturamento Amazon EC2 que ocorreu há 3 meses? </b> </td> </tr>
+	<tr> <td> <input type=checkbox value="13a"> a) Amazon EC2 Dashboard</td> </tr>
+	<tr> <td> <input type=checkbox value="13b"> b) AWS Cost and Usage Reports (<a href="https://aws.amazon.com/pt/aws-cost-management/aws-cost-and-usage-reporting/" target="_blank">link</a>)</td> </tr>
+	<tr> <td> <input type=checkbox value="13c"> c) AWS Trusted Advisor (<a href="https://aws.amazon.com/pt/about-aws/whats-new/2020/05/aws-trusted-advisor-adds-5-cost-optimization-checks/" target="_blank">link</a>)</td> </tr>
+	<tr> <td> <input type=checkbox value="13d"> d) AWS Cloud Trail logs stored in Amazon S3 (<a href="https://aws.amazon.com/pt/cloudtrail/faqs/" target="_blank">link</a>)</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('13', 'b');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 14. Who has control of the data security in an AWS account?</b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> 14. Quem tem o controle da segurança de dados em uma conta AWS? </b> </td> </tr>
+	<tr> <td> <input type=checkbox value="14a"> a) AWS Support Teeam</td> </tr>
+	<tr> <td> <input type=checkbox value="14b"> b) AWS Account Owner (<a href="https://docs.aws.amazon.com/general/latest/gr/root-vs-iam.html" target="_blank">link</a>)</td> </tr>
+	<tr> <td> <input type=checkbox value="14c"> c) AWS Security Team</td> </tr>
+	<tr> <td> <input type=checkbox value="14d"> d) AWS Technical Account Manager - TAM</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('14', 'b');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 15. The main benefit of decoupling an application is to?</b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> 15. O principal benefício da desacoplamento de um aplicativo é? </b> </td> </tr>
+	<tr> <td> <input type=checkbox value="15a"> a) Create a tightly integrated application</td> </tr>
+	<tr> <td> <input type=checkbox value="15b"> b) Reduce inter-dependencies so failures do not impact other components</td> </tr>
+	<tr> <td> <input type=checkbox value="15c"> c) Enable data synchronization across the web application layer</td> </tr>
+	<tr> <td> <input type=checkbox value="15d"> d) Have the ability to execute automated bootstrapping actions</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('15', 'b');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 16. Which of the following is a benefit of running an application across two Availability Zones?</b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> 16. Qual dos seguintes é o benefício de executar um aplicativo em duas Zonas de Disponibilidade? </b> </td> </tr>
+	<tr> <td> <input type=checkbox value="16a"> a) Performance is improved over running in a single AZ</td> </tr>
+	<tr> <td> <input type=checkbox value="16b"> b) It is more secure than running in a single AZ</td> </tr>
+	<tr> <td> <input type=checkbox value="16c"> c) It significantly reduces total cost of ownership versus running in a single AZ</td> </tr>
+	<tr> <td> <input type=checkbox value="16d"> d) It increases the availability of an application compared to running in a single AZ</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('16', 'd');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 17. Which of the following security requirements are managed by AWS customer? Select 2</b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> 17. Quais dos seguintes requisitos de segurança são gerenciados pelo cliente AWS? Selecione 2 </b> </td> </tr>
+	<tr> <td> <input type=checkbox value="17a"> a) Password policies</td> </tr>
+	<tr> <td> <input type=checkbox value="17b"> b) User permissions</td> </tr>
+	<tr> <td> <input type=checkbox value="17c"> c) Physical Security</td> </tr>
+	<tr> <td> <input type=checkbox value="17d"> d) Disk disposal</td> </tr>
+	<tr> <td> <input type=checkbox value="17e"> e) Hardware Patching</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('17', 'ab');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 18. According the AWS the benefit of Elasticity is. Systems applying the cloud architecture principle of elasticity will...</b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> 18. De acordo com a AWS o benefício da Elasticidade é</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="18a"> a) Minimize storage requirements by reducing logging and auditing activities</td> </tr>
+	<tr> <td> <input type=checkbox value="18b"> b) Creat system that scale to the required capacity based on changes in demand</td> </tr>
+	<tr> <td> <input type=checkbox value="18c"> c) Enable AWS to automatically select the most cost-effective services</td> </tr>
+	<tr> <td> <input type=checkbox value="18d"> d) Accelerate the design process because recovery from failure is automated, reducing the need for testing</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('18', 'b');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 19. Amazon EC2 Spot instances would be most appropriate for which of the following scenarios (<a href="https://aws.amazon.com/pt/ec2/spot/" target="_blank">link</a>)</b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> 19. As instâncias do Amazon EC2 Spot seriam as mais apropriadas para quais dos seguintes cenários (<a href="https://aws.amazon.com/pt/ec2/spot/" target="_blank">link</a>)</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="19a"> a) Workloads that are only run in the month</td> </tr>
+	<tr> <td> <input type=checkbox value="19b"> b) Workloads where the availability of the Amazon EC2 instances can be flexible</td> </tr>
+	<tr> <td> <input type=checkbox value="19c"> c) Workloads that need to run for long periods of time without interruption</td> </tr>
+	<tr> <td> <input type=checkbox value="19d"> d) Workloads that are critical and need Amazon EC2 instances with termination protection</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('19', 'b');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 20. What AWS feature enables a user to manage services through a web-based user interface?</b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> 20. O recurso AWS permite que um usuário gerencie serviços através de uma interface de usuário baseada na Web? </b> </td> </tr>
+	<tr> <td> <input type=checkbox value="20a"> a) AWS Management Console</td> </tr>
+	<tr> <td> <input type=checkbox value="20b"> b) AWS Application Programming Interface (API)</td> </tr>
+	<tr> <td> <input type=checkbox value="20c"> c) AWS Software Development Kit (SDK)</td> </tr>
+	<tr> <td> <input type=checkbox value="20d"> d) Amazon CloudWatch (<a href="https://aws.amazon.com/cloudwatch/" target="_blank">link</a>)</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('20', 'a');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 21. Which tool can use to forecast your AWS spending?</b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> 21. Qual ferramenta pode ser usada para prever seus gastos com AWS? </b> </td> </tr>
+	<tr> <td> <input type=checkbox value="21a"> a) AWS Organizations (<a href="https://aws.amazon.com/pt/organizations/" target="_blank">link</a>)</td> </tr>
+	<tr> <td> <input type=checkbox value="21b"> b) Amazon Dev Pay (<a href="https://aws.amazon.com/pt/devpay/" target="_blank">link</a>)</td> </tr>
+	<tr> <td> <input type=checkbox value="21c"> c) AWS Trusted Advisor (<a href="https://aws.amazon.com/pt/about-aws/whats-new/2020/05/aws-trusted-advisor-adds-5-cost-optimization-checks/" target="_blank">link</a>)</td> </tr>
+	<tr> <td> <input type=checkbox value="21d"> d) AWS Cost Explorer (<a href="https://docs.aws.amazon.com/pt_br/cost-management/latest/userguide/ce-what-is.html" target="_blank">link</a>)</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('21', 'd');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 22. How can you protect your AWS account aganinst unauthorized access?</b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> 22. Como você pode proteger sua conta AWS após acesso não autorizado? </b> </td> </tr>
+	<tr> <td> <input type=checkbox value="22a"> a) Apply Multi-Factor Authentication (MFA) (<a href="https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_credentials_mfa.html#id_credentials_mfa-what-is-mfa" target="_blank">link</a>)</td> </tr>
+	<tr> <td> <input type=checkbox value="22b"> b) Set up a secondary password</td> </tr>
+	<tr> <td> <input type=checkbox value="22c"> c) Request root access privilegies</td> </tr>
+	<tr> <td> <input type=checkbox value="22d"> d) Disable AWS console access (<a href="https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/console.html" target="_blank">link</a>)</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('22', 'a');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 23. Which AWS Cloud service is used to run on Multi-Factor Authentication (MFA)?</b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> 23. Qual serviço de nuvem AWS é usado para ser executado em MFA (Multi-Factor Authentication, autenticação multifatorial)? </b> </td> </tr>
+	<tr> <td> <input type=checkbox value="23a"> a) AWS Identity and Access Management (IAM) (<a href="https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/introduction.html" target="_blank">link</a>)</td> </tr>
+	<tr> <td> <input type=checkbox value="23b"> b) Amazon Elastic Compute Cloud (Amazon EC2) (<a href="https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html" target="_blank">link</a>)</td> </tr>
+	<tr> <td> <input type=checkbox value="23c"> c) AWS Config (<a href="https://docs.aws.amazon.com/pt_br/config/latest/developerguide/WhatIsConfig.html" target="_blank">link</a>)</td> </tr>
+	<tr> <td> <input type=checkbox value="23d"> d) Amazon Inspector (<a href="https://aws.amazon.com/pt/inspector/faqs/" target="_blank">link</a>)</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('23', 'a');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 24. A Disaster Recovery Strategy on AWS should be based launching resources in a separate:</b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> 24. Uma estratégia de recuperação de desastres na AWS deve ser baseada em recursos de lançamento separados: </b> </td> </tr>
+	<tr> <td> <input type=checkbox value="24a"> a) Subnet (<a href="https://docs.aws.amazon.com/pt_br/vpc/latest/userguide/VPC_Scenario2.html" target="_blank">link</a>)</td> </tr>
+	<tr> <td> <input type=checkbox value="24b"> b) AWS Region (<a href="https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html" target="_blank">link</a>)</td> </tr>
+	<tr> <td> <input type=checkbox value="24c"> c) Security Group </td> </tr>
+	<tr> <td> <input type=checkbox value="24d"> d) Amazon Virtual Private Cloud (Amazon VPC) (<a href="https://aws.amazon.com/pt/vpc/" target="_blank">link</a>)</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('24', 'b');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 25. Which of the following is a factor when calculating Total Cost of Ownership (TCO) for the AWS Cloud? (<a href="https://aws.amazon.com/pt/blogs/apn-latam/conheca-as-funcionalidades-da-calculadora-de-custo-total-tco-da-aws/" target="_blank">link</a>)</b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> 25. Qual dos seguintes é um fator no cálculo do Custo Total de Propriedade (TCO) para a Nuvem AWS? (<a href="https://aws.amazon.com/pt/blogs/apn-latam/conheca-as-funcionalidades-da-calculadora-de-custo-total-tco-da-aws/" target="_blank">link</a>)</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="25a"> a) The number of servers migrated to AWS</td> </tr>
+	<tr> <td> <input type=checkbox value="25b"> b) The number of passwords migrated to AWS</td> </tr>
+	<tr> <td> <input type=checkbox value="25c"> c) The number of keys migrated to AWS</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('25', 'a');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 26. Which AWS services is used to as a global content delivery network (CDN) service in AWS?</b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> 26. Quais serviços AWS são usados como um serviço de rede global de entrega de conteúdo (CDN) na AWS?</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="26a"> a) Amazon SES (<a href="https://docs.aws.amazon.com/pt_br/ses/latest/dg/Welcome.html" target="_blank">link</a>)</td> </tr>
+	<tr> <td> <input type=checkbox value="26b"> b) Amazon CloudTrail (<a href="https://docs.aws.amazon.com/pt_br/awscloudtrail/latest/userguide/cloudtrail-user-guide.html" target="_blank">link</a>)</td> </tr>
+	<tr> <td> <input type=checkbox value="26c"> c) Amazon CloudFront (<a href="https://docs.aws.amazon.com/pt_br/AmazonCloudFront/latest/DeveloperGuide/Introduction.html" target="_blank">link</a>)</td> </tr>
+	<tr> <td> <input type=checkbox value="26d"> d) Amazon S3 (<a href="https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/Welcome.html" target="_blank">link</a>)</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('26', 'c');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 27. Which of the following is a fully managed NoSQL database service available with AWS?</b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> 27. Qual dos seguintes é um serviço de banco de dados NoSQL totalmente gerenciado disponível com AWS?</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="27a"> a) AWS RDS (<a href="https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/UserGuide/Welcome.html" target="_blank">link</a>)</td> </tr>
+	<tr> <td> <input type=checkbox value="27b"> b) AWS DynamoDB (<a href="https://docs.aws.amazon.com/pt_br/amazondynamodb/latest/developerguide/Introduction.html" target="_blank">link</a>)</td> </tr>
+	<tr> <td> <input type=checkbox value="27c"> c) AWS Redshift (<a href="https://docs.aws.amazon.com/pt_br/redshift/latest/mgmt/welcome.html" target="_blank">link</a>)</td> </tr>
+	<tr> <td> <input type=checkbox value="27d"> d) AWS MongoDB (<a href="https://docs.aws.amazon.com/pt_br/quickstart/latest/mongodb/overview.html" target="_blank">link</a>)</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('27', 'b');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 28. A company wants to store files that are not frequently accessed. What is the most cost-efficient solution that sould be considered?</b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> 28. Uma empresa quer armazenar arquivos que não são acessados com frequência. Qual é a solução mais econômica que se considera?</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="28a"> a) Amazon Storage Gateway</td> </tr>
+	<tr> <td> <input type=checkbox value="28b"> b) Amazon Glacier (<a href="https://docs.aws.amazon.com/pt_br/amazonglacier/latest/dev/introduction.html" target="_blank">link</a>)</td> </tr>
+	<tr> <td> <input type=checkbox value="28c"> c) Amazon EBS (<a href="https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/AmazonEBS.html" target="_blank">link</a>)</td> </tr>
+	<tr> <td> <input type=checkbox value="28d"> d) Amazon S3 (<a href="https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/Welcome.html" target="_blank">link</a>)</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('28', 'b');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 29. You are currently hosting an infrastructure and most of the EC2 instances are near 90 - 100% utilized and you expected this to continue for at least a year. What is the type of EC2 instances you would utilize to ensure costs are minimized?</b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> 29. Você está atualmente hospedando uma infraestrutura e a maioria das instâncias EC2 estão perto de 90 - 100% utilizadas e você espera que isso continue por pelo menos um ano. Qual é o tipo de instâncias EC2 que você utilizaria para garantir que os custos sejam minimizados?</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="29a"> a) Reserved Instances</td> </tr>
+	<tr> <td> <input type=checkbox value="29b"> b) On-Demand Instances</td> </tr>
+	<tr> <td> <input type=checkbox value="29c"> c) Spot Instances</td> </tr>
+	<tr> <td> <input type=checkbox value="29d"> d) Dedicated Host Instances</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('29', 'a');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 30. What is the AWS feature that enables fast, easy, and secure transfers of files over long distances between your client and your Amazon S3 bucket?</b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> 30. Qual é o recurso AWS que permite transferências rápidas, fáceis e seguras de arquivos a longas distâncias entre seu cliente e seu balde Amazon S3?</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="30a"> a) File Transfer</td> </tr>
+	<tr> <td> <input type=checkbox value="30b"> b) HTTP Transfer</td> </tr>
+	<tr> <td> <input type=checkbox value="30c"> c) Transfer Acceleration (<a href="https://aws.amazon.com/pt/s3/transfer-acceleration/" target="_blank">link</a>)</td> </tr>
+	<tr> <td> <input type=checkbox value="30d"> d) S3 Acceleration (<a href="https://aws.amazon.com/pt/s3/transfer-acceleration/" target="_blank">link</a>)</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('30', 'c');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 31. As per the AWS Acceptable Use Policy, penetration testing of EC2 instances</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="31a"> a) May be performed by AWS and will be performed by AWS upon customer request</td> </tr>
+	<tr> <td> <input type=checkbox value="31b"> b) May be performed by AWS, and is periodically performed by AWS</td> </tr>
+	<tr> <td> <input type=checkbox value="31c"> c) Are expressly prohibited under all circumstances.</td> </tr>
+	<tr> <td> <input type=checkbox value="31d"> d) May be performed by the customer on their own instances with prior authorization from AWS</td> </tr>
+	<tr> <td> <input type=checkbox value="31e"> e) May be performed by the customer on their own instances, only if performed from EC2 instances</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('31', 'd');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 32. The trusted Advisor service provides insigh regarding which four categories of an AWS account</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="32a"> a) Security, fault tolerance, high availability, connectivity and Service Limits</td> </tr>
+	<tr> <td> <input type=checkbox value="32b"> b) Security, access control, high availability, performance and Service Limits</td> </tr>
+	<tr> <td> <input type=checkbox value="32c"> c) Performance, cost optimization, security, fault tolerance and Service Limits</td> </tr>
+	<tr> <td> <input type=checkbox value="32d"> d) Performance, cost optimization, access control, connectivity and Service Limits</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('32', 'c');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 33. A company is deploying a threetier, highly available web application to AWS. Which service provides durable storage for static content while utilizing lower Overall CPU resources for the Business layer?</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="33a"> a) Amazon EBS volume</td> </tr>
+	<tr> <td> <input type=checkbox value="33b"> b) Amazon S3</td> </tr>
+	<tr> <td> <input type=checkbox value="33c"> c) Amazon EC2 Instance Store</td> </tr>
+	<tr> <td> <input type=checkbox value="33d"> d) Amazon RDS Instance</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('33', 'b');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 34. What best describes the "Principle of Least Privilege"?</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="34a"> a) All users should have same baseline permissions granted to them to use basic AWS services.</td> </tr>
+	<tr> <td> <input type=checkbox value="34b"> b) Users should be granted permission to access only resources they need to do their assigned job.</td> </tr>
+	<tr> <td> <input type=checkbox value="34c"> c) Users should submit all access requests in written form so that there is a paper trail of who needs access to different AWS resources.</td> </tr>
+	<tr> <td> <input type=checkbox value="34d"> d) Users should submit all access requests in written form so that there is a paper trail of who needs access to different AWS resources.</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('34', 'b');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 35. Which of the below mentioned services can be used to host virtual servers on AWS?</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="35a"> a) AWS IAM</td> </tr>
+	<tr> <td> <input type=checkbox value="35b"> b) AWS Servers</td> </tr>
+	<tr> <td> <input type=checkbox value="35c"> c) AWS EC2</td> </tr>
+	<tr> <td> <input type=checkbox value="35d"> d) AWS Regions</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('35', 'c');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 36. Which of the following can be used to secure EC2 Instances hosted in AWS? Choose 2 answers from the options given below:</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="36a"> a) Usage os Security Groups</td> </tr>
+	<tr> <td> <input type=checkbox value="36b"> b) Usage of AMI's</td> </tr>
+	<tr> <td> <input type=checkbox value="36c"> c) Usage of Network Access Control Lists</td> </tr>
+	<tr> <td> <input type=checkbox value="36d"> d) Usage of the Internet gateway</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('36', 'ac');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 37. You work for a company that plans to use AWS EC2 service. Currently, the company creates golden images of their production Operating System. Which of the following corresponds to a golden image in AWS?</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="37a"> a) EBS Volumes</td> </tr>
+	<tr> <td> <input type=checkbox value="37b"> b) EBS Snapshots</td> </tr>
+	<tr> <td> <input type=checkbox value="37c"> c) Amazon Machines Images</td> </tr>
+	<tr> <td> <input type=checkbox value="37d"> d) EC2 Copies</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('37', 'c');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 38. You plant to deploy an application on the AWS. This application needs to be PCI Compliant. Which of the below steps are needed to ensure the compliance? Choose 2 answers from the below:</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="38a"> a) Choose AWS services which are PCI Compliant</td> </tr>
+	<tr> <td> <input type=checkbox value="38b"> b) Ensure the right steps are taken during application development for PCI Compliance</td> </tr>
+	<tr> <td> <input type=checkbox value="38c"> c) Ensure the AWS Services are made PCI Compliant</td> </tr>
+	<tr> <td> <input type=checkbox value="38d"> d) Do an audit after the deployment of the application for PCI Compliance</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('38', 'ab');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 39. Which of the below can be used to import data into Amazon Glacier? Choose 3 answers from the options given below:</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="39a"> a) AWS Glacier API</td> </tr>
+	<tr> <td> <input type=checkbox value="39b"> b) AWS Console</td> </tr>
+	<tr> <td> <input type=checkbox value="39c"> c) AWS Glacier SDK</td> </tr>
+	<tr> <td> <input type=checkbox value="39d"> d) AWS S3 Lifecycle policies</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('39', 'acd');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 40. Which of the following in the AWS Support plans gives access to a Support Concierge?</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="40a"> a) Basic</td> </tr>
+	<tr> <td> <input type=checkbox value="40b"> b) Developer</td> </tr>
+	<tr> <td> <input type=checkbox value="40c"> c) Business</td> </tr>
+	<tr> <td> <input type=checkbox value="40d"> d) Enterprise</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('40', 'd');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 41. A company is planning to use AWS to host critical applications. Most of their systems are business critical and need to have response times less than 15 minutes. Which of the following support plans should they consider?</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="41a"> a) Basic</td> </tr>
+	<tr> <td> <input type=checkbox value="41b"> b) Developer</td> </tr>
+	<tr> <td> <input type=checkbox value="41c"> c) Business</td> </tr>
+	<tr> <td> <input type=checkbox value="41d"> d) Enterprise</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('41', 'd');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 42. Which of the following is NOT a feature of an Edge Location?</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="42a"> a) Distribute content to users</td> </tr>
+	<tr> <td> <input type=checkbox value="42b"> b) Cache common responses</td> </tr>
+	<tr> <td> <input type=checkbox value="42c"> c) Distribute load across multiple resources</td> </tr>
+	<tr> <td> <input type=checkbox value="42d"> d) Used in conjunction with the Cloud-Front service</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('42', 'c');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 43. There is a requirement to store objects. The objects are downloaded via a URL. Which storage option would you choose?</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="43a"> a) Amazon S3</td> </tr>
+	<tr> <td> <input type=checkbox value="43b"> b) Amazon Glacier</td> </tr>
+	<tr> <td> <input type=checkbox value="43c"> c) Amazon Storage Gateway</td> </tr>
+	<tr> <td> <input type=checkbox value="43d"> d) Amazon EBS</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('43', 'a');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 44. There is a requirement to host a database server for a minimum period of one year. Which of the following would result in the least cost?</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="44a"> a) Spot Instances</td> </tr>
+	<tr> <td> <input type=checkbox value="44b"> b) On-Demand</td> </tr>
+	<tr> <td> <input type=checkbox value="44c"> c) No Upfront costs Reserved</td> </tr>
+	<tr> <td> <input type=checkbox value="44d"> d) Partial Upfront costs Reserved</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('44', 'd');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 45. There is a requirement for a development and test environment for 3 months. Which would you use?</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="45a"> a) Spot Instances</td> </tr>
+	<tr> <td> <input type=checkbox value="45b"> b) On-Demand</td> </tr>
+	<tr> <td> <input type=checkbox value="45c"> c) No Upfront costs Reserved</td> </tr>
+	<tr> <td> <input type=checkbox value="45d"> d) Partial Upfront costs Reserved</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('45', 'b');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 46. When creating security groups, which of the following is a responsability of the customer. Choose 2 answers from the options gven below.</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="46a"> a) Giving a name and description for the security group</td> </tr>
+	<tr> <td> <input type=checkbox value="46b"> b) Defining the rules as per the customer requirements</td> </tr>
+	<tr> <td> <input type=checkbox value="46c"> c) Ensure the rules are applied immediately</td> </tr>
+	<tr> <td> <input type=checkbox value="46d"> d) Ensure the security groups are linked to the Elastic Network interface</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('46', 'ab');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 47. Which of the following are advantages of having infrastructure hosted on the AWS Cloud?</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="47a"> a) Having complete control over the physical infrastructure</td> </tr>
+	<tr> <td> <input type=checkbox value="47b"> b) Having the pay as you go model</td> </tr>
+	<tr> <td> <input type=checkbox value="47c"> c) No Upfront costs</td> </tr>
+	<tr> <td> <input type=checkbox value="47d"> d) Having no need to worry about security</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('47', 'bc');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 48. There is an external audit being carried out on your company. The IT auditor needs to have a log of all access to the AWS resources in the company´s account. Which of the below services can assist in providing these details?</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="48a"> a) AWS CloudWatch</td> </tr>
+	<tr> <td> <input type=checkbox value="48b"> b) AWS CloudTrail</td> </tr>
+	<tr> <td> <input type=checkbox value="48c"> c) AWS EC2</td> </tr>
+	<tr> <td> <input type=checkbox value="48d"> d) AWS SNS</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('48', 'b');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 49. Which of the following features of RDS allows for data redundancy across regions?</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="49a"> a) Cross region replication</td> </tr>
+	<tr> <td> <input type=checkbox value="49b"> b) Creating Read Replica´s</td> </tr>
+	<tr> <td> <input type=checkbox value="49c"> c) Using snapshots</td> </tr>
+	<tr> <td> <input type=checkbox value="49d"> d) Using Multi-AZ feature</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('49', 'b');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 50. Your company has a set of EC2 instances hosted in AWS. There is a requirement to create snapshots from the EBS volumes attached to these EC2 Instances in another geographical location.</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="50a"> a) In another Availability Zone</td> </tr>
+	<tr> <td> <input type=checkbox value="50b"> b) In another data center</td> </tr>
+	<tr> <td> <input type=checkbox value="50c"> c) In another Region</td> </tr>
+	<tr> <td> <input type=checkbox value="50d"> d) In another Edge location</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('50', 'c');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 51. A company wants to host a self-managed database in AWS. How would you ideally implement this solution?</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="51a"> a) Using the AWS DynamoDB service</td> </tr>
+	<tr> <td> <input type=checkbox value="51b"> b) Using the AWS RDS service</td> </tr>
+	<tr> <td> <input type=checkbox value="51c"> c) Hosting a database on an EC2 Instance</td> </tr>
+	<tr> <td> <input type=checkbox value="51d"> d) Using the Amazon Aurora service</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('51', 'c');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 52. Which of the following is a compatible MySQL database which also has the ability to grow in storage size on its own.</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="52a"> a) Aurora</td> </tr>
+	<tr> <td> <input type=checkbox value="52b"> b) DynamoDB</td> </tr>
+	<tr> <td> <input type=checkbox value="52c"> c) RDS Microsoft SQL Server</td> </tr>
+	<tr> <td> <input type=checkbox value="52d"> d) RDS MySQL</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('52', 'a');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 53. Which of the following statements are TRUE when it comes to elasticity. Choose2 answers from the options given below.</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="53a"> a) Diverting traffic to instances based on the demand</td> </tr>
+	<tr> <td> <input type=checkbox value="53b"> b) Diverting traffic to instances with the least load</td> </tr>
+	<tr> <td> <input type=checkbox value="53c"> c) Diverting traffic across multiple regions</td> </tr>
+	<tr> <td> <input type=checkbox value="53d"> d) Diverting traffic to instances with higher capacity</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('53', 'ab');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 54. Which of the following is the concept the Elastic load balancer?</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="54a"> a) To distribute traffic to multiple EC2 Instances</td> </tr>
+	<tr> <td> <input type=checkbox value="54b"> b) To scale up EC2 Instances</td> </tr>
+	<tr> <td> <input type=checkbox value="54c"> c) To distribute traffic to AWS resources across multiple regions</td> </tr>
+	<tr> <td> <input type=checkbox value="54d"> d) To increase the size of the EC2 Instance based on demand</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('54', 'a');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 55. Which of the following is the concept of autoscalling?</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="55a"> a) To scale up resources based on demand</td> </tr>
+	<tr> <td> <input type=checkbox value="55b"> b) To distribute traffic to multiple EC2 Instance</td> </tr>
+	<tr> <td> <input type=checkbox value="55c"> c) To distribute traffic to AWS resources across multiple regions</td> </tr>
+	<tr> <td> <input type=checkbox value="55d"> d) To increase the size of the EC2 Instance based on demand</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('55', 'a');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 56. Which of the following is used to derive the costs for moving artifacts from on-premise to AWS?</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="56a"> a) AWS TCO calculator</td> </tr>
+	<tr> <td> <input type=checkbox value="56b"> b) AWS Config</td> </tr>
+	<tr> <td> <input type=checkbox value="56c"> c) AWS Cost Explorer</td> </tr>
+	<tr> <td> <input type=checkbox value="56d"> d) AWS Consolidating billing</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('56', 'a');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 57. Which of the following is the responsability of the customer when ensuring that data on EBS volumes is left safe?</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="57a"> a) Deleting the data when the device is destroyed</td> </tr>
+	<tr> <td> <input type=checkbox value="57b"> b) Creating EBS snapshots</td> </tr>
+	<tr> <td> <input type=checkbox value="57c"> c) Attaching volumes to EC2 Instances</td> </tr>
+	<tr> <td> <input type=checkbox value="57d"> d) Creating copies of EBS Volumes</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('57', 'b');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 58. Which of the following can be used to call AWS services from programing languages?</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="58a"> a) AWS SDK</td> </tr>
+	<tr> <td> <input type=checkbox value="58b"> b) AWS Console</td> </tr>
+	<tr> <td> <input type=checkbox value="58c"> c) AWS CLI</td> </tr>
+	<tr> <td> <input type=checkbox value="58d"> d) AWS IAM</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('58', 'a');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 59. Which of the following is the secure way of using AWS API to call AWS services from EC2 Instances?</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="59a"> a) IAM Users</td> </tr>
+	<tr> <td> <input type=checkbox value="59b"> b) IAM Roles</td> </tr>
+	<tr> <td> <input type=checkbox value="59c"> c) IAM Groups</td> </tr>
+	<tr> <td> <input type=checkbox value="59d"> d) IAM policies</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('59', 'b');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 60. Which of the following are 2 ways that AWS allows to link accounts?</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="60a"> a) Consolidating billing</td> </tr>
+	<tr> <td> <input type=checkbox value="60b"> b) AWS Organizations</td> </tr>
+	<tr> <td> <input type=checkbox value="60c"> c) Cost Explorer</td> </tr>
+	<tr> <td> <input type=checkbox value="60d"> d) IAM</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('60', 'ab');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 61. Which of the following helps in DDoS protection? Choose 2 answers from the options given below</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="61a"> a) CloudFront</td> </tr>
+	<tr> <td> <input type=checkbox value="61b"> b) AWS Shield</td> </tr>
+	<tr> <td> <input type=checkbox value="61c"> c) AWS EC2</td> </tr>
+	<tr> <td> <input type=checkbox value="61d"> d) AWS Config</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('61', 'ab');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 62. Which of the following services can be used as a web application firewall in AWS?</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="62a"> a) AWS EC2</td> </tr>
+	<tr> <td> <input type=checkbox value="62b"> b) AWS WAF</td> </tr>
+	<tr> <td> <input type=checkbox value="62c"> c) AWS Firewall</td> </tr>
+	<tr> <td> <input type=checkbox value="62d"> d) AWS Protection</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('62', 'b');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 63. You want to add an extra layer of protection to the currnt authentication mechanism of user names and passwords for AWS. Which of the following can help in this regard?</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="63a"> a) Using Password Policies</td> </tr>
+	<tr> <td> <input type=checkbox value="63b"> b) Using a mix of user names</td> </tr>
+	<tr> <td> <input type=checkbox value="63c"> c) Using AWS WAF</td> </tr>
+	<tr> <td> <input type=checkbox value="63d"> d) Using MFA</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('63', 'd');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 64. Which of the following disaster recovery deployment mechanisms that has the lowest downtime?</b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b>‎ 64. Qual dos seguintes mecanismos de implantação de recuperação de desastres que tem o menor tempo de inatividade?‎</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="64a"> a) Pilot light</td> </tr>
+	<tr> <td> <input type=checkbox value="64b"> b) Warm standby</td> </tr>
+	<tr> <td> <input type=checkbox value="64c"> c) Backup Restore</td> </tr>
+	<tr> <td> <input type=checkbox value="64d"> d) DevOps</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('64', 'b');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 65. Which of the following services allows for object level storage on AWS?</b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> ‎65. Qual dos seguintes serviços permite o armazenamento em nível de objeto no AWS?‎</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="65a"> a) Amazon EBS</td> </tr>
+	<tr> <td> <input type=checkbox value="65b"> b) Amazon SES</td> </tr>
+	<tr> <td> <input type=checkbox value="65c"> c) Amazon S3</td> </tr>
+	<tr> <td> <input type=checkbox value="65d"> d) Amazon SQS</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('65', 'c');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 66. Which of the following services relates the concept of “Scaling up resources based on demand”?</b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> ‎66. ‎</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="66a"> a) AutoScaling</td> </tr>
+	<tr> <td> <input type=checkbox value="66b"> b) Elastic Load Balancer</td> </tr>
+	<tr> <td> <input type=checkbox value="66c"> c) VPC</td> </tr>
+	<tr> <td> <input type=checkbox value="66d"> d) Subnet</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('66', 'a');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 67. Which one of the following features is normally present in all of AWS Support plans?</b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> ‎67. ‎</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="67a"> a) 24*7 access to customer support</td> </tr>
+	<tr> <td> <input type=checkbox value="67b"> b) Access to all features in the Trusted Advisor</td> </tr>
+	<tr> <td> <input type=checkbox value="67c"> c) A technical Account Manager</td> </tr>
+	<tr> <td> <input type=checkbox value="67d"> d) A dedicated support person​</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('67', 'a');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr> <td style="text-align:center;"> <b> 68. You have 2 accounts in your AWS account. One for the Dev and the other for QA. All are part of consolidated billing. The master account has purchase 3 reserved instances. The Dev department is currently using 2 reserved instances. The QA team is planning on using 3 instances which of the same instance type. What is the pricing tier of the instances that can be used by the QA Team?</b> </td> </tr>
+	<tr> <td style="text-align:center;"> <b> ‎68. ‎</b> </td> </tr>
+	<tr> <td> <input type=checkbox value="68a"> a) No Reserved and 3 on-demand</td> </tr>
+	<tr> <td> <input type=checkbox value="68b"> b) One Reserved and 2 on-demand</td> </tr>
+	<tr> <td> <input type=checkbox value="68c"> c) Two Reserved and 1 on-demand</td> </tr>
+	<tr> <td> <input type=checkbox value="68d"> d) Three Reserved and no on-demand​</td> </tr>
+	<tr><td><button class="btn btn-info" onclick="verResultadoSimulator('68', 'd');"> <i class="fa fa-check-square-o"></i> Ver Resultado</button></td></tr>
+
+	<tr><td> <hr> </td></tr>
+	<tr><td><button class="btn btn-success" onclick="verGabaritoSimulator();"> <i class="fa fa-check-square-o"></i> Ver Gabarito</button></td></tr>
+	<tr><td> <hr> </td></tr>
+	<tr><td> <i>enio.francisco@gmail.com &#174; +55(11)95239-2000; v23.05.22.13.00 <br/>(-1 v20.05.22.15.55)</i> </td></tr>
+	<tr><td> <hr> </td></tr>
+</table>
+
+    <link href="style/main.css " rel="stylesheet " type="text/css " />
+</body>
+
+</html>
+
+<script type="text/javascript">
+function inicio() {
+	var mensagem = '';
+	mensagem = mensagem + 'Cada pergunta pode ter mais de uma resposta.';
+	mensagem = mensagem + '\nObserve os links explicando cada resposta.';
+	alert(mensagem);
+}
+function verGabaritoSimulator() {
+	var licenca = prompt('Insira a licença...', 'licença...');
+	if (licenca != 'licença...') {
+		return;
+	}
+	var gabarito = '';
+	gabarito += '\n';
+	gabarito = ' 01b,c 02b 03b 04c 05c 06d 07a 08a 09c 10d ';
+	gabarito += '\n';
+	gabarito += ' 11a 12a 13b 14b 15b 16d 17a,b 18b 19b 20a ';
+	gabarito += '\n';
+	gabarito += ' 21d 22a 23a 24b 25a 26c 27b 28b 29a 30c ';
+	gabarito += '\n';
+	gabarito += ' 31d 32c 33b 34b 35c 36a,c 37c 38a,b 39a,c,d 40d ';
+	gabarito += '\n';
+	gabarito += ' 41d 42c 43a 44d 45b 46a,b 47b,c 48b 49b 50c ';
+	gabarito += '\n';
+	gabarito += ' 51c 52a 53a,b 54a 55a 56a 57b 58a 59b 60a,b ';
+	gabarito += '\n';
+	gabarito += ' 61a,b 62b 63d 64b 65c ';
+	alert(gabarito);
+}
+
+function verResultadoSimulator(numeroPergunta, opcoesCorretas) {
+	var array = [];
+	var checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+	for (var i = 0; i < checkboxes.length; i++) {
+	  array.push(checkboxes[i].value);
+	}
+	array = '[' + array + ']';
+
+	var resp01a = '01a'; var resp01b = '01b'; var resp01c = '01c'; var resp01d = '01d'; var resp01e = '01e';
+	var resp02a = '02a'; var resp02b = '02b'; var resp02c = '02c'; var resp02d = '02d'; var resp02e = '02e';
+	var resp03a = '03a'; var resp03b = '03b'; var resp03c = '03c'; var resp03d = '03d'; var resp03e = '03e';
+	var resp04a = '04a'; var resp04b = '04b'; var resp04c = '04c'; var resp04d = '04d'; var resp04e = '04e';
+	var resp05a = '05a'; var resp05b = '05b'; var resp05c = '05c'; var resp05d = '05d'; var resp05e = '05e';
+	var resp06a = '06a'; var resp06b = '06b'; var resp06c = '06c'; var resp06d = '06d'; var resp06e = '06e';
+	var resp07a = '07a'; var resp07b = '07b'; var resp07c = '07c'; var resp07d = '07d'; var resp07e = '07e';
+	var resp08a = '08a'; var resp08b = '08b'; var resp08c = '08c'; var resp08d = '08d'; var resp08e = '08e';
+	var resp09a = '09a'; var resp09b = '09b'; var resp09c = '09c'; var resp09d = '09d'; var resp09e = '09e';
+	var resp10a = '10a'; var resp10b = '10b'; var resp10c = '10c'; var resp10d = '10d'; var resp10e = '10e';
+	var resp11a = '11a'; var resp11b = '11b'; var resp11c = '11c'; var resp11d = '11d'; var resp11e = '11e';
+	var resp12a = '12a'; var resp12b = '12b'; var resp12c = '12c'; var resp12d = '12d'; var resp12e = '12e';
+	var resp13a = '13a'; var resp13b = '13b'; var resp13c = '13c'; var resp13d = '13d'; var resp13e = '13e';
+	var resp14a = '14a'; var resp14b = '14b'; var resp14c = '14c'; var resp14d = '14d'; var resp14e = '14e';
+	var resp15a = '15a'; var resp15b = '15b'; var resp15c = '15c'; var resp15d = '15d'; var resp15e = '15e';
+	var resp16a = '16a'; var resp16b = '16b'; var resp16c = '16c'; var resp16d = '16d'; var resp16e = '16e';
+	var resp17a = '17a'; var resp17b = '17b'; var resp17c = '17c'; var resp17d = '17d'; var resp17e = '17e';
+	var resp18a = '18a'; var resp18b = '18b'; var resp18c = '18c'; var resp18d = '18d'; var resp18e = '18e';
+	var resp19a = '19a'; var resp19b = '19b'; var resp19c = '19c'; var resp19d = '19d'; var resp19e = '19e';
+	var resp20a = '20a'; var resp20b = '20b'; var resp20c = '20c'; var resp20d = '20d'; var resp20e = '20e';
+	var resp21a = '21a'; var resp21b = '21b'; var resp21c = '21c'; var resp21d = '21d'; var resp21e = '21e';
+	var resp22a = '22a'; var resp22b = '22b'; var resp22c = '22c'; var resp22d = '22d'; var resp22e = '22e';
+	var resp23a = '23a'; var resp23b = '23b'; var resp23c = '23c'; var resp23d = '23d'; var resp23e = '23e';
+	var resp24a = '24a'; var resp24b = '24b'; var resp24c = '24c'; var resp24d = '24d'; var resp24e = '24e';
+	var resp25a = '25a'; var resp25b = '25b'; var resp25c = '25c'; var resp25d = '25d'; var resp25e = '25e';
+	var resp26a = '26a'; var resp26b = '26b'; var resp26c = '26c'; var resp26d = '26d'; var resp26e = '26e';
+	var resp27a = '27a'; var resp27b = '27b'; var resp27c = '27c'; var resp27d = '27d'; var resp27e = '27e';
+	var resp28a = '28a'; var resp28b = '28b'; var resp28c = '28c'; var resp28d = '28d'; var resp28e = '28e';
+	var resp29a = '29a'; var resp29b = '29b'; var resp29c = '29c'; var resp29d = '29d'; var resp29e = '29e';
+	var resp30a = '30a'; var resp30b = '30b'; var resp30c = '30c'; var resp30d = '30d'; var resp30e = '30e';
+	var resp31a = '31a'; var resp31b = '31b'; var resp31c = '31c'; var resp31d = '31d'; var resp31e = '31e';
+	var resp32a = '32a'; var resp32b = '32b'; var resp32c = '32c'; var resp32d = '32d'; var resp32e = '32e';
+	var resp33a = '33a'; var resp33b = '33b'; var resp33c = '33c'; var resp33d = '33d'; var resp33e = '33e';
+	var resp34a = '34a'; var resp34b = '34b'; var resp34c = '34c'; var resp34d = '34d'; var resp34e = '34e';
+	var resp35a = '35a'; var resp35b = '35b'; var resp35c = '35c'; var resp35d = '35d'; var resp35e = '35e';
+	var resp36a = '36a'; var resp36b = '36b'; var resp36c = '36c'; var resp36d = '36d'; var resp36e = '36e';
+	var resp37a = '37a'; var resp37b = '37b'; var resp37c = '37c'; var resp37d = '37d'; var resp37e = '37e';
+	var resp38a = '38a'; var resp38b = '38b'; var resp38c = '38c'; var resp38d = '38d'; var resp38e = '38e';
+	var resp39a = '39a'; var resp39b = '39b'; var resp39c = '39c'; var resp39d = '39d'; var resp39e = '39e';
+	var resp40a = '40a'; var resp40b = '40b'; var resp40c = '40c'; var resp40d = '40d'; var resp40e = '40e';
+	var resp41a = '41a'; var resp41b = '41b'; var resp41c = '41c'; var resp41d = '41d'; var resp41e = '41e';
+	var resp42a = '42a'; var resp42b = '42b'; var resp42c = '42c'; var resp42d = '42d'; var resp42e = '42e';
+	var resp43a = '43a'; var resp43b = '43b'; var resp43c = '43c'; var resp43d = '43d'; var resp43e = '43e';
+	var resp44a = '44a'; var resp44b = '44b'; var resp44c = '44c'; var resp44d = '44d'; var resp44e = '44e';
+	var resp45a = '45a'; var resp45b = '45b'; var resp45c = '45c'; var resp45d = '45d'; var resp45e = '45e';
+	var resp46a = '46a'; var resp46b = '46b'; var resp46c = '46c'; var resp46d = '46d'; var resp46e = '46e';
+	var resp47a = '47a'; var resp47b = '47b'; var resp47c = '47c'; var resp47d = '47d'; var resp47e = '47e';
+	var resp48a = '48a'; var resp48b = '48b'; var resp48c = '48c'; var resp48d = '48d'; var resp48e = '48e';
+	var resp49a = '49a'; var resp49b = '49b'; var resp49c = '49c'; var resp49d = '49d'; var resp49e = '49e';
+	var resp50a = '50a'; var resp50b = '50b'; var resp50c = '50c'; var resp50d = '50d'; var resp50e = '50e';
+	var resp51a = '51a'; var resp51b = '51b'; var resp51c = '51c'; var resp51d = '51d'; var resp51e = '51e';
+	var resp52a = '52a'; var resp52b = '52b'; var resp52c = '52c'; var resp52d = '52d'; var resp52e = '52e';
+	var resp53a = '53a'; var resp53b = '53b'; var resp53c = '53c'; var resp53d = '53d'; var resp53e = '53e';
+	var resp54a = '54a'; var resp54b = '54b'; var resp54c = '54c'; var resp54d = '54d'; var resp54e = '54e';
+	var resp55a = '55a'; var resp55b = '55b'; var resp55c = '55c'; var resp55d = '55d'; var resp55e = '55e';
+	var resp56a = '56a'; var resp56b = '56b'; var resp56c = '56c'; var resp56d = '56d'; var resp56e = '56e';
+	var resp57a = '57a'; var resp57b = '57b'; var resp57c = '57c'; var resp57d = '57d'; var resp57e = '57e';
+	var resp58a = '58a'; var resp58b = '58b'; var resp58c = '58c'; var resp58d = '58d'; var resp58e = '58e';
+	var resp59a = '59a'; var resp59b = '59b'; var resp59c = '59c'; var resp59d = '59d'; var resp59e = '59e';
+	var resp60a = '60a'; var resp60b = '60b'; var resp60c = '60c'; var resp60d = '60d'; var resp60e = '60e';
+	var resp61a = '61a'; var resp61b = '61b'; var resp61c = '61c'; var resp61d = '61d'; var resp61e = '61e';
+	var resp62a = '62a'; var resp62b = '62b'; var resp62c = '62c'; var resp62d = '62d'; var resp62e = '62e';
+	var resp63a = '63a'; var resp63b = '63b'; var resp63c = '63c'; var resp63d = '63d'; var resp63e = '63e';
+	var resp64a = '64a'; var resp64b = '64b'; var resp64c = '64c'; var resp64d = '64d'; var resp64e = '64e';
+	var resp65a = '65a'; var resp65b = '65b'; var resp65c = '65c'; var resp65d = '65d'; var resp65e = '65e';
+
+	var qtdeCorretas = 0;
+	var qtdeErradas = 0;
+	var naorespondidas = 0;
+	var totalperguntas = 0;
+	var erradas = '';
+	var separador = '';
+	
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp01b, 0) > '0' && array.indexOf(resp01c, 0) > '0'
+	 && array.indexOf(resp01a, 0) < '0' && array.indexOf(resp01d, 0) < '0' && array.indexOf(resp01e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp01a, 0) < '0' && array.indexOf(resp01b, 0) < '0' && array.indexOf(resp01c, 0) < '0' && array.indexOf(resp01d, 0) < '0' && array.indexOf(resp01e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp02b, 0) > '0'
+	 && array.indexOf(resp02a, 0) < '0' && array.indexOf(resp02c, 0) < '0' && array.indexOf(resp02d, 0) < '0' && array.indexOf(resp02e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp02a, 0) < '0' && array.indexOf(resp02b, 0) < '0' && array.indexOf(resp02c, 0) < '0' && array.indexOf(resp02d, 0) < '0' && array.indexOf(resp02e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp03b, 0) > '0'
+	 && array.indexOf(resp03a, 0) < '0' && array.indexOf(resp03c, 0) < '0' && array.indexOf(resp03d, 0) < '0' && array.indexOf(resp03e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp03a, 0) < '0' && array.indexOf(resp03b, 0) < '0' && array.indexOf(resp03c, 0) < '0' && array.indexOf(resp03d, 0) < '0' && array.indexOf(resp03e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp04c, 0) > '0'
+	 && array.indexOf(resp04a, 0) < '0' && array.indexOf(resp04b, 0) < '0' && array.indexOf(resp04d, 0) < '0' && array.indexOf(resp04e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp04a, 0) < '0' && array.indexOf(resp04b, 0) < '0' && array.indexOf(resp04c, 0) < '0' && array.indexOf(resp04d, 0) < '0' && array.indexOf(resp04e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp05c, 0) > '0'
+	 && array.indexOf(resp05a, 0) < '0' && array.indexOf(resp05b, 0) < '0' && array.indexOf(resp05d, 0) < '0' && array.indexOf(resp05e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp05a, 0) < '0' && array.indexOf(resp05b, 0) < '0' && array.indexOf(resp05c, 0) < '0' && array.indexOf(resp05d, 0) < '0' && array.indexOf(resp05e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp06d, 0) > '0'
+	 && array.indexOf(resp06a, 0) < '0' && array.indexOf(resp06b, 0) < '0' && array.indexOf(resp06c, 0) < '0' && array.indexOf(resp06e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp06a, 0) < '0' && array.indexOf(resp06b, 0) < '0' && array.indexOf(resp06c, 0) < '0' && array.indexOf(resp06d, 0) < '0' && array.indexOf(resp06e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp07a, 0) > '0'
+	 && array.indexOf(resp07b, 0) < '0' && array.indexOf(resp07c, 0) < '0' && array.indexOf(resp07d, 0) < '0' && array.indexOf(resp07e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp07a, 0) < '0' && array.indexOf(resp07b, 0) < '0' && array.indexOf(resp07c, 0) < '0' && array.indexOf(resp07d, 0) < '0' && array.indexOf(resp07e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp08a, 0) > '0'
+	 && array.indexOf(resp08b, 0) < '0' && array.indexOf(resp08c, 0) < '0' && array.indexOf(resp08d, 0) < '0' && array.indexOf(resp08e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp08a, 0) < '0' && array.indexOf(resp08b, 0) < '0' && array.indexOf(resp08c, 0) < '0' && array.indexOf(resp08d, 0) < '0' && array.indexOf(resp08e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp09c, 0) > '0'
+	 && array.indexOf(resp09a, 0) < '0' && array.indexOf(resp09b, 0) < '0' && array.indexOf(resp09d, 0) < '0' && array.indexOf(resp09e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp09a, 0) < '0' && array.indexOf(resp09b, 0) < '0' && array.indexOf(resp09c, 0) < '0' && array.indexOf(resp09d, 0) < '0' && array.indexOf(resp09e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp10d, 0) > '0'
+	 && array.indexOf(resp10a, 0) < '0' && array.indexOf(resp10b, 0) < '0' && array.indexOf(resp10c, 0) < '0' && array.indexOf(resp10e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp10a, 0) < '0' && array.indexOf(resp10b, 0) < '0' && array.indexOf(resp10c, 0) < '0' && array.indexOf(resp10d, 0) < '0' && array.indexOf(resp10e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	
+	
+	
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp11a, 0) > '0'
+	 && array.indexOf(resp11b, 0) < '0' && array.indexOf(resp11c, 0) < '0' && array.indexOf(resp11d, 0) < '0' && array.indexOf(resp11e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp11a, 0) < '0' && array.indexOf(resp11b, 0) < '0' && array.indexOf(resp11c, 0) < '0' && array.indexOf(resp11d, 0) < '0' && array.indexOf(resp11e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp12a, 0) > '0'
+	 && array.indexOf(resp12b, 0) < '0' && array.indexOf(resp12c, 0) < '0' && array.indexOf(resp12d, 0) < '0' && array.indexOf(resp12e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp12a, 0) < '0' && array.indexOf(resp12b, 0) < '0' && array.indexOf(resp12c, 0) < '0' && array.indexOf(resp12d, 0) < '0' && array.indexOf(resp12e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp13b, 0) > '0'
+	 && array.indexOf(resp13a, 0) < '0' && array.indexOf(resp13c, 0) < '0' && array.indexOf(resp13d, 0) < '0' && array.indexOf(resp13e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp13a, 0) < '0' && array.indexOf(resp13b, 0) < '0' && array.indexOf(resp13c, 0) < '0' && array.indexOf(resp13d, 0) < '0' && array.indexOf(resp13e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp14b, 0) > '0'
+	 && array.indexOf(resp14a, 0) < '0' && array.indexOf(resp14c, 0) < '0' && array.indexOf(resp14d, 0) < '0' && array.indexOf(resp14e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp14a, 0) < '0' && array.indexOf(resp14b, 0) < '0' && array.indexOf(resp14c, 0) < '0' && array.indexOf(resp14d, 0) < '0' && array.indexOf(resp14e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp15b, 0) > '0'
+	 && array.indexOf(resp15a, 0) < '0' && array.indexOf(resp15c, 0) < '0' && array.indexOf(resp15d, 0) < '0' && array.indexOf(resp15e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp15a, 0) < '0' && array.indexOf(resp15b, 0) < '0' && array.indexOf(resp15c, 0) < '0' && array.indexOf(resp15d, 0) < '0' && array.indexOf(resp15e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp16d, 0) > '0'
+	 && array.indexOf(resp16a, 0) < '0' && array.indexOf(resp16b, 0) < '0' && array.indexOf(resp16c, 0) < '0' && array.indexOf(resp16e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp16a, 0) < '0' && array.indexOf(resp16b, 0) < '0' && array.indexOf(resp16c, 0) < '0' && array.indexOf(resp16d, 0) < '0' && array.indexOf(resp16e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp17a, 0) > '0' && array.indexOf(resp17b, 0) > '0'
+	 && array.indexOf(resp17c, 0) < '0' && array.indexOf(resp17d, 0) < '0' && array.indexOf(resp17e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp17a, 0) < '0' && array.indexOf(resp17b, 0) < '0' && array.indexOf(resp17c, 0) < '0' && array.indexOf(resp17d, 0) < '0' && array.indexOf(resp17e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp18b, 0) > '0'
+	 && array.indexOf(resp18a, 0) < '0' && array.indexOf(resp18c, 0) < '0' && array.indexOf(resp18d, 0) < '0' && array.indexOf(resp18e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp18a, 0) < '0' && array.indexOf(resp18b, 0) < '0' && array.indexOf(resp18c, 0) < '0' && array.indexOf(resp18d, 0) < '0' && array.indexOf(resp18e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp19b, 0) > '0'
+	 && array.indexOf(resp19a, 0) < '0' && array.indexOf(resp19c, 0) < '0' && array.indexOf(resp19d, 0) < '0' && array.indexOf(resp19e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp19a, 0) < '0' && array.indexOf(resp19b, 0) < '0' && array.indexOf(resp19c, 0) < '0' && array.indexOf(resp19d, 0) < '0' && array.indexOf(resp19e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	
+	
+	
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp20a, 0) > '0'
+	 && array.indexOf(resp20b, 0) < '0' && array.indexOf(resp20c, 0) < '0' && array.indexOf(resp20d, 0) < '0' && array.indexOf(resp20e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp20a, 0) < '0' && array.indexOf(resp20b, 0) < '0' && array.indexOf(resp20c, 0) < '0' && array.indexOf(resp20d, 0) < '0' && array.indexOf(resp20e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp21d, 0) > '0'
+	 && array.indexOf(resp21a, 0) < '0' && array.indexOf(resp21b, 0) < '0' && array.indexOf(resp21c, 0) < '0' && array.indexOf(resp21e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp21a, 0) < '0' && array.indexOf(resp21b, 0) < '0' && array.indexOf(resp21c, 0) < '0' && array.indexOf(resp21d, 0) < '0' && array.indexOf(resp21e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp22a, 0) > '0'
+	 && array.indexOf(resp22b, 0) < '0' && array.indexOf(resp22c, 0) < '0' && array.indexOf(resp22d, 0) < '0' && array.indexOf(resp22e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp22a, 0) < '0' && array.indexOf(resp22b, 0) < '0' && array.indexOf(resp22c, 0) < '0' && array.indexOf(resp22d, 0) < '0' && array.indexOf(resp22e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp23a, 0) > '0'
+	 && array.indexOf(resp23b, 0) < '0' && array.indexOf(resp23c, 0) < '0' && array.indexOf(resp23d, 0) < '0' && array.indexOf(resp23e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp23a, 0) < '0' && array.indexOf(resp23b, 0) < '0' && array.indexOf(resp23c, 0) < '0' && array.indexOf(resp23d, 0) < '0' && array.indexOf(resp23e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp24b, 0) > '0'
+	 && array.indexOf(resp24a, 0) < '0' && array.indexOf(resp24c, 0) < '0' && array.indexOf(resp24d, 0) < '0' && array.indexOf(resp24e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp24a, 0) < '0' && array.indexOf(resp24b, 0) < '0' && array.indexOf(resp24c, 0) < '0' && array.indexOf(resp24d, 0) < '0' && array.indexOf(resp24e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp25a, 0) > '0'
+	 && array.indexOf(resp25b, 0) < '0' && array.indexOf(resp25c, 0) < '0' && array.indexOf(resp25d, 0) < '0' && array.indexOf(resp25e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp25a, 0) < '0' && array.indexOf(resp25b, 0) < '0' && array.indexOf(resp25c, 0) < '0' && array.indexOf(resp25d, 0) < '0' && array.indexOf(resp25e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp26c, 0) > '0'
+	 && array.indexOf(resp26a, 0) < '0' && array.indexOf(resp26b, 0) < '0' && array.indexOf(resp26d, 0) < '0' && array.indexOf(resp26e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp26a, 0) < '0' && array.indexOf(resp26b, 0) < '0' && array.indexOf(resp26c, 0) < '0' && array.indexOf(resp26d, 0) < '0' && array.indexOf(resp26e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp27b, 0) > '0'
+	 && array.indexOf(resp27a, 0) < '0' && array.indexOf(resp27c, 0) < '0' && array.indexOf(resp27d, 0) < '0' && array.indexOf(resp27e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp27a, 0) < '0' && array.indexOf(resp27b, 0) < '0' && array.indexOf(resp27c, 0) < '0' && array.indexOf(resp27d, 0) < '0' && array.indexOf(resp27e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp28b, 0) > '0'
+	 && array.indexOf(resp28a, 0) < '0' && array.indexOf(resp28c, 0) < '0' && array.indexOf(resp28d, 0) < '0' && array.indexOf(resp28e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp28a, 0) < '0' && array.indexOf(resp28b, 0) < '0' && array.indexOf(resp28c, 0) < '0' && array.indexOf(resp28d, 0) < '0' && array.indexOf(resp28e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp29a, 0) > '0'
+	 && array.indexOf(resp29b, 0) < '0' && array.indexOf(resp29c, 0) < '0' && array.indexOf(resp29d, 0) < '0' && array.indexOf(resp29e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp29a, 0) < '0' && array.indexOf(resp29b, 0) < '0' && array.indexOf(resp29c, 0) < '0' && array.indexOf(resp29d, 0) < '0' && array.indexOf(resp29e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	
+	
+	
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp30c, 0) > '0'
+	 && array.indexOf(resp30a, 0) < '0' && array.indexOf(resp30b, 0) < '0' && array.indexOf(resp30d, 0) < '0' && array.indexOf(resp30e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp30a, 0) < '0' && array.indexOf(resp30b, 0) < '0' && array.indexOf(resp30c, 0) < '0' && array.indexOf(resp30d, 0) < '0' && array.indexOf(resp30e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp31d, 0) > '0'
+	 && array.indexOf(resp31a, 0) < '0' && array.indexOf(resp31b, 0) < '0' && array.indexOf(resp31c, 0) < '0' && array.indexOf(resp31e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp31a, 0) < '0' && array.indexOf(resp31b, 0) < '0' && array.indexOf(resp31c, 0) < '0' && array.indexOf(resp31d, 0) < '0' && array.indexOf(resp31e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp32c, 0) > '0'
+	 && array.indexOf(resp32a, 0) < '0' && array.indexOf(resp32b, 0) < '0' && array.indexOf(resp32d, 0) < '0' && array.indexOf(resp32e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp32a, 0) < '0' && array.indexOf(resp32b, 0) < '0' && array.indexOf(resp32c, 0) < '0' && array.indexOf(resp32d, 0) < '0' && array.indexOf(resp32e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp33b, 0) > '0'
+	 && array.indexOf(resp33a, 0) < '0' && array.indexOf(resp33c, 0) < '0' && array.indexOf(resp33d, 0) < '0' && array.indexOf(resp33e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp33a, 0) < '0' && array.indexOf(resp33b, 0) < '0' && array.indexOf(resp33c, 0) < '0' && array.indexOf(resp33d, 0) < '0' && array.indexOf(resp33e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp34b, 0) > '0'
+	 && array.indexOf(resp34a, 0) < '0' && array.indexOf(resp34c, 0) < '0' && array.indexOf(resp34d, 0) < '0' && array.indexOf(resp34e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp34a, 0) < '0' && array.indexOf(resp34b, 0) < '0' && array.indexOf(resp34c, 0) < '0' && array.indexOf(resp34d, 0) < '0' && array.indexOf(resp34e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp35c, 0) > '0'
+	 && array.indexOf(resp35a, 0) < '0' && array.indexOf(resp35b, 0) < '0' && array.indexOf(resp35d, 0) < '0' && array.indexOf(resp35e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp35a, 0) < '0' && array.indexOf(resp35b, 0) < '0' && array.indexOf(resp35c, 0) < '0' && array.indexOf(resp35d, 0) < '0' && array.indexOf(resp35e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp36a, 0) > '0' && array.indexOf(resp36c, 0) > '0'
+	 && array.indexOf(resp36b, 0) < '0' && array.indexOf(resp36d, 0) < '0' && array.indexOf(resp36e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp36a, 0) < '0' && array.indexOf(resp36b, 0) < '0' && array.indexOf(resp36c, 0) < '0' && array.indexOf(resp36d, 0) < '0' && array.indexOf(resp36e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp37c, 0) > '0'
+	 && array.indexOf(resp37a, 0) < '0' && array.indexOf(resp37b, 0) < '0' && array.indexOf(resp37d, 0) < '0' && array.indexOf(resp37e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp37a, 0) < '0' && array.indexOf(resp37b, 0) < '0' && array.indexOf(resp37c, 0) < '0' && array.indexOf(resp37d, 0) < '0' && array.indexOf(resp37e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp38a, 0) > '0' && array.indexOf(resp38b, 0) > '0'
+	 && array.indexOf(resp38c, 0) < '0' && array.indexOf(resp38d, 0) < '0' && array.indexOf(resp38e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp38a, 0) < '0' && array.indexOf(resp38b, 0) < '0' && array.indexOf(resp38c, 0) < '0' && array.indexOf(resp38d, 0) < '0' && array.indexOf(resp38e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp39a, 0) > '0' && array.indexOf(resp39c, 0) > '0' && array.indexOf(resp39d, 0) < '0'
+	 && array.indexOf(resp39b, 0) < '0' && array.indexOf(resp39e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp39a, 0) < '0' && array.indexOf(resp39b, 0) < '0' && array.indexOf(resp39c, 0) < '0' && array.indexOf(resp39d, 0) < '0' && array.indexOf(resp39e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	
+	
+	
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp40d, 0) > '0'
+	 && array.indexOf(resp40a, 0) < '0' && array.indexOf(resp40b, 0) < '0' && array.indexOf(resp40c, 0) < '0' && array.indexOf(resp40e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp40a, 0) < '0' && array.indexOf(resp40b, 0) < '0' && array.indexOf(resp40c, 0) < '0' && array.indexOf(resp40d, 0) < '0' && array.indexOf(resp40e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp41d, 0) > '0'
+	 && array.indexOf(resp41a, 0) < '0' && array.indexOf(resp41b, 0) < '0' && array.indexOf(resp41c, 0) < '0' && array.indexOf(resp41e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp41a, 0) < '0' && array.indexOf(resp41b, 0) < '0' && array.indexOf(resp41c, 0) < '0' && array.indexOf(resp41d, 0) < '0' && array.indexOf(resp41e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp42c, 0) > '0'
+	 && array.indexOf(resp42a, 0) < '0' && array.indexOf(resp42b, 0) < '0' && array.indexOf(resp42d, 0) < '0' && array.indexOf(resp42e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp42a, 0) < '0' && array.indexOf(resp42b, 0) < '0' && array.indexOf(resp42c, 0) < '0' && array.indexOf(resp42d, 0) < '0' && array.indexOf(resp42e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp43a, 0) > '0'
+	 && array.indexOf(resp43b, 0) < '0' && array.indexOf(resp43c, 0) < '0' && array.indexOf(resp43d, 0) < '0' && array.indexOf(resp43e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp43a, 0) < '0' && array.indexOf(resp43b, 0) < '0' && array.indexOf(resp43c, 0) < '0' && array.indexOf(resp43d, 0) < '0' && array.indexOf(resp43e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp44d, 0) > '0'
+	 && array.indexOf(resp44a, 0) < '0' && array.indexOf(resp44b, 0) < '0' && array.indexOf(resp44c, 0) < '0' && array.indexOf(resp44e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp44a, 0) < '0' && array.indexOf(resp44b, 0) < '0' && array.indexOf(resp44c, 0) < '0' && array.indexOf(resp44d, 0) < '0' && array.indexOf(resp44e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp45b, 0) > '0'
+	 && array.indexOf(resp45a, 0) < '0' && array.indexOf(resp45c, 0) < '0' && array.indexOf(resp45d, 0) < '0' && array.indexOf(resp45e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp45a, 0) < '0' && array.indexOf(resp45b, 0) < '0' && array.indexOf(resp45c, 0) < '0' && array.indexOf(resp45d, 0) < '0' && array.indexOf(resp45e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp46a, 0) > '0' && array.indexOf(resp43b, 0) > '0'
+	 && array.indexOf(resp46c, 0) < '0' && array.indexOf(resp46d, 0) < '0' && array.indexOf(resp46e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp46a, 0) < '0' && array.indexOf(resp46b, 0) < '0' && array.indexOf(resp46c, 0) < '0' && array.indexOf(resp46d, 0) < '0' && array.indexOf(resp46e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp47b, 0) > '0' && array.indexOf(resp47c, 0) > '0'
+	 && array.indexOf(resp47a, 0) < '0' && array.indexOf(resp47d, 0) < '0' && array.indexOf(resp47e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp47a, 0) < '0' && array.indexOf(resp47b, 0) < '0' && array.indexOf(resp47c, 0) < '0' && array.indexOf(resp47d, 0) < '0' && array.indexOf(resp47e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp48b, 0) > '0'
+	 && array.indexOf(resp48a, 0) < '0' && array.indexOf(resp48c, 0) < '0' && array.indexOf(resp48d, 0) < '0' && array.indexOf(resp48e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp48a, 0) < '0' && array.indexOf(resp48b, 0) < '0' && array.indexOf(resp48c, 0) < '0' && array.indexOf(resp48d, 0) < '0' && array.indexOf(resp48e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp49b, 0) > '0'
+	 && array.indexOf(resp49a, 0) < '0' && array.indexOf(resp49c, 0) < '0' && array.indexOf(resp49d, 0) < '0' && array.indexOf(resp49e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp49a, 0) < '0' && array.indexOf(resp49b, 0) < '0' && array.indexOf(resp49c, 0) < '0' && array.indexOf(resp49d, 0) < '0' && array.indexOf(resp49e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	
+	
+	
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp50c, 0) > '0'
+	 && array.indexOf(resp50a, 0) < '0' && array.indexOf(resp50b, 0) < '0' && array.indexOf(resp50d, 0) < '0' && array.indexOf(resp50e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp50a, 0) < '0' && array.indexOf(resp50b, 0) < '0' && array.indexOf(resp50c, 0) < '0' && array.indexOf(resp50d, 0) < '0' && array.indexOf(resp50e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp51c, 0) > '0'
+	 && array.indexOf(resp51a, 0) < '0' && array.indexOf(resp51b, 0) < '0' && array.indexOf(resp51d, 0) < '0' && array.indexOf(resp51e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp51a, 0) < '0' && array.indexOf(resp51b, 0) < '0' && array.indexOf(resp51c, 0) < '0' && array.indexOf(resp51d, 0) < '0' && array.indexOf(resp51e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp52a, 0) > '0'
+	 && array.indexOf(resp52b, 0) < '0' && array.indexOf(resp52c, 0) < '0' && array.indexOf(resp52d, 0) < '0' && array.indexOf(resp52e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp52a, 0) < '0' && array.indexOf(resp52b, 0) < '0' && array.indexOf(resp52c, 0) < '0' && array.indexOf(resp52d, 0) < '0' && array.indexOf(resp52e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp53a, 0) > '0' && array.indexOf(resp53b, 0) > '0'
+	 && array.indexOf(resp53c, 0) < '0' && array.indexOf(resp53d, 0) < '0' && array.indexOf(resp53e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp53a, 0) < '0' && array.indexOf(resp53b, 0) < '0' && array.indexOf(resp53c, 0) < '0' && array.indexOf(resp53d, 0) < '0' && array.indexOf(resp53e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp54a, 0) > '0'
+	 && array.indexOf(resp54b, 0) < '0' && array.indexOf(resp54c, 0) < '0' && array.indexOf(resp54d, 0) < '0' && array.indexOf(resp54e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp54a, 0) < '0' && array.indexOf(resp54b, 0) < '0' && array.indexOf(resp54c, 0) < '0' && array.indexOf(resp54d, 0) < '0' && array.indexOf(resp54e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp55a, 0) > '0'
+	 && array.indexOf(resp55b, 0) < '0' && array.indexOf(resp55c, 0) < '0' && array.indexOf(resp55d, 0) < '0' && array.indexOf(resp55e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp55a, 0) < '0' && array.indexOf(resp55b, 0) < '0' && array.indexOf(resp55c, 0) < '0' && array.indexOf(resp55d, 0) < '0' && array.indexOf(resp55e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp56a, 0) > '0'
+	 && array.indexOf(resp56b, 0) < '0' && array.indexOf(resp56c, 0) < '0' && array.indexOf(resp56d, 0) < '0' && array.indexOf(resp56e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp56a, 0) < '0' && array.indexOf(resp56b, 0) < '0' && array.indexOf(resp56c, 0) < '0' && array.indexOf(resp56d, 0) < '0' && array.indexOf(resp56e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp57b, 0) > '0'
+	 && array.indexOf(resp57a, 0) < '0' && array.indexOf(resp57c, 0) < '0' && array.indexOf(resp57d, 0) < '0' && array.indexOf(resp57e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp57a, 0) < '0' && array.indexOf(resp57b, 0) < '0' && array.indexOf(resp57c, 0) < '0' && array.indexOf(resp57d, 0) < '0' && array.indexOf(resp57e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp58a, 0) > '0'
+	 && array.indexOf(resp58b, 0) < '0' && array.indexOf(resp58c, 0) < '0' && array.indexOf(resp58d, 0) < '0' && array.indexOf(resp58e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp58a, 0) < '0' && array.indexOf(resp58b, 0) < '0' && array.indexOf(resp58c, 0) < '0' && array.indexOf(resp58d, 0) < '0' && array.indexOf(resp58e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp59b, 0) > '0'
+	 && array.indexOf(resp59a, 0) < '0' && array.indexOf(resp59c, 0) < '0' && array.indexOf(resp59d, 0) < '0' && array.indexOf(resp59e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp59a, 0) < '0' && array.indexOf(resp59b, 0) < '0' && array.indexOf(resp59c, 0) < '0' && array.indexOf(resp59d, 0) < '0' && array.indexOf(resp59e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	
+	
+	
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp60a, 0) > '0' && array.indexOf(resp60b, 0) > '0'
+	 && array.indexOf(resp60c, 0) < '0' && array.indexOf(resp60d, 0) < '0' && array.indexOf(resp60e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp60a, 0) < '0' && array.indexOf(resp60b, 0) < '0' && array.indexOf(resp60c, 0) < '0' && array.indexOf(resp60d, 0) < '0' && array.indexOf(resp60e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp61a, 0) > '0' && array.indexOf(resp61b, 0) > '0'
+	 && array.indexOf(resp61c, 0) < '0' && array.indexOf(resp61d, 0) < '0' && array.indexOf(resp61e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp61a, 0) < '0' && array.indexOf(resp61b, 0) < '0' && array.indexOf(resp61c, 0) < '0' && array.indexOf(resp61d, 0) < '0' && array.indexOf(resp61e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp62b, 0) > '0'
+	 && array.indexOf(resp62b, 0) < '0' && array.indexOf(resp62c, 0) < '0' && array.indexOf(resp62d, 0) < '0' && array.indexOf(resp62e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp62a, 0) < '0' && array.indexOf(resp62b, 0) < '0' && array.indexOf(resp62c, 0) < '0' && array.indexOf(resp62d, 0) < '0' && array.indexOf(resp62e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp63d, 0) > '0'
+	 && array.indexOf(resp63a, 0) < '0' && array.indexOf(resp63b, 0) < '0' && array.indexOf(resp63c, 0) < '0' && array.indexOf(resp63e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp63a, 0) < '0' && array.indexOf(resp63b, 0) < '0' && array.indexOf(resp63c, 0) < '0' && array.indexOf(resp63d, 0) < '0' && array.indexOf(resp63e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp64b, 0) > '0'
+	 && array.indexOf(resp64a, 0) < '0' && array.indexOf(resp64c, 0) < '0' && array.indexOf(resp64d, 0) < '0' && array.indexOf(resp64e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp64a, 0) < '0' && array.indexOf(resp64b, 0) < '0' && array.indexOf(resp64c, 0) < '0' && array.indexOf(resp64d, 0) < '0' && array.indexOf(resp64e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+	totalperguntas = totalperguntas + 1;
+	if (array.indexOf(resp65c, 0) > '0'
+	 && array.indexOf(resp65a, 0) < '0' && array.indexOf(resp65b, 0) < '0' && array.indexOf(resp65d, 0) < '0' && array.indexOf(resp65e, 0) < '0') {
+		qtdeCorretas = parseInt(qtdeCorretas) + 1;
+	} else if (array.indexOf(resp65a, 0) < '0' && array.indexOf(resp65b, 0) < '0' && array.indexOf(resp65c, 0) < '0' && array.indexOf(resp65d, 0) < '0' && array.indexOf(resp65e, 0) < '0') {
+		naorespondidas = parseInt(naorespondidas) + 1;
+	} else {
+		qtdeErradas = parseInt(qtdeErradas) + 1;
+		erradas = erradas + separador + totalperguntas; separador = '; ';
+	}
+
+	var valor = '';
+	var responder = '';
+	var separador = '';
+	for (index=1; index<=totalperguntas; index++) {
+		valor = '' + index;
+		valor = valor.substring(0, 3)
+		if (array.indexOf(valor, 0) <= '0') {
+			responder = responder + separador + valor;
+			separador = '; ';
+		}
+	}
+
+	calculo = (qtdeCorretas*100) / totalperguntas;
+	var resultado = '';
+	if (calculo >= 70) {
+		resultado = resultado + 'APROVADO'
+	} else {
+		resultado = resultado + 'REPROVADO'
+	}
+	resultado = resultado + '\n' + calculo + '% de acerto' + ', nota mínima é 70%'
+	resultado = resultado + '\n\n' + qtdeCorretas + ' corretas';
+	resultado = resultado + '\n' + qtdeErradas + ' erradas ' + erradas;
+	resultado = resultado + '\n' + naorespondidas + ' não respondidas '  + responder;
+	resultado = resultado + '\n--------';
+	resultado = resultado + '\n' + totalperguntas + ' total';
+	alert(resultado);
+	
+//	document.getElementById("formAdd").submit();
+	
+}
+</script>
