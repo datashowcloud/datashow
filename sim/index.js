@@ -467,6 +467,7 @@ function registerEvents() {
 		var versions = 'Atualizações:';
 		versions = versions + '\n' + '25.09.22 botão fechar x vermelho';
 		versions = versions + '\n' + '25.09.22 coluna com porcentagem';
+		versions = versions + '\n' + '26.09.22 navegação botões';
 		alert(versions);
 	})
 }
