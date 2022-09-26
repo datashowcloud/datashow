@@ -338,6 +338,8 @@ function registerEvents() {
 		var mygroup = child.eq(0).text();
 		var mycode = child.eq(1).text();
 		restartFase(myid, mygroup, mycode);
+		savePoints(myid, mygroup, mycode);
+		setTimeout(() => { location.reload() }, 500); // Executa após meio segundo para esperar o processo
     });
     $('#tblGrid tbody').on('click', '.delete', function () {
         var result = confirm('Excluir, ok?');
