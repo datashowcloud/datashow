@@ -610,7 +610,7 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 	document.getElementById('selButtonColor').classList.remove(classe);
 
 	if (buttoncolor == 'btn-colors') {
-		document.getElementById('btnPrevious').classList.add('btn-success');
+		document.getElementById('btnPrevious').classList.add('btn-info');
 		if(document.getElementById('btnPause') != null) {
 			document.getElementById('btnPause').classList.add('btn-danger');
 		}
@@ -618,7 +618,7 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		if(document.getElementById('btnPoints') != null) {
 			document.getElementById('btnPoints').classList.add('btn-info');
 		}
-		document.getElementById('btnNext').classList.add('btn-success');
+		document.getElementById('btnNext').classList.add('btn-info');
 		document.getElementById('selButtonColor').classList.add('btn-default');
 	} else {
 		document.getElementById('btnPrevious').classList.add(buttoncolor);
@@ -1174,7 +1174,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 
 		var htmlString = "";
 		var varTdTh = '';
-		var varButtonPlayStyle = 'color:green; font-size:26px;';
+		var varButtonPlayStyle = 'color:blue; font-size:26px;';
 		var varButtonPlay = '<br/><i class=\"fa fa-play\" style="' + varButtonPlayStyle + '"></i></a>';
 		var varButtonUnlock = ''; //'<i class=\"fa fa-unlock\" style="' + varButtonPlayStyle + '"></i>';
 //		var varText = '';
