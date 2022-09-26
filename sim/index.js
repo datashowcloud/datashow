@@ -88,6 +88,7 @@ function getDbSchema() {
 			myoptionkey7: { Null: false, dataType: 'string' }, //idem
 			myoptionkey8: { Null: false, dataType: 'string' }, //idem
 			mypoints: { Null: false, dataType: 'string' }, //índice de acerto na tentativa 4, 5, 6, 7... exemplo: 85,50,10,100 (todas separadas por vírgula)
+			mycurrentcode: { notNull: true, dataType: 'string' }, //posição atual do mycode, onde parou, antes de sair ou antes de pausar.
 			mycomment: { Null: false, dataType: 'string' }, //comentário ou resposta sobre a letra
 			myfix: { Null: false, dataType: 'string' }, //fixa para revisão
             mytimer: { Null: false, dataType: 'string' }, //cronômetro numérico em segundos para mudar o texto automaticamente, exemplo: 4s
@@ -395,28 +396,46 @@ function registerEvents() {
 		var mygroup = document.getElementById('mygroupSim').value;
 		var mycode = parseInt(document.getElementById('mycodeSim').value) - 1;
 		if (mycode != 0) {
+			refreshTableQuestion(myid, mygroup, document.getElementById('txtTotal').value);
+		} else {
 			refreshTableQuestion(myid, mygroup, mycode);
-			changeFaseNivel(myid, mygroup, mycode);
 		}
+		changeFaseNivel(myid, mygroup, mycode);
     })
     $('#btnNext').click(function () {
 		var myid = document.getElementById('myidSim').value;
 		var mygroup = document.getElementById('mygroupSim').value;
 		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
-		changeFaseNivel(myid, mygroup, mycode);
-		if (mycode > parseInt(document.getElementById('txtTotal').value)) {
-			var result = confirm('Vou salvar a pontuação, ok?\n');
-			if (result) {
-				savePoints(myid, mygroup, mycode);
-				showGridAndHideForms();
-				setTimeout(() => { location.reload() }, 1000); // Executa após 2 segundos para esperar o processo de insert terminar
-			}
-		}
 		refreshTableQuestion(myid, mygroup, mycode);
+		changeFaseNivel(myid, mygroup, mycode);
+		savePoints(myid, mygroup, mycode);
+		if (mycode > parseInt(document.getElementById('txtTotal').value)) {
+			refreshTableQuestion(myid, mygroup, '0');
+/*			var result = confirm('Vou salvar a pontuação, ok?\n');
+			if (result) {
+				showGridAndHideForms();
+				setTimeout(() => { location.reload() }, 2000); // Executa após 2 segundos para esperar o processo de insert terminar
+			}
+*/
+		}
     })
 	$('#btnPause').click(function () {
+		var myid = document.getElementById('myidSim').value;
+		var mygroup = document.getElementById('mygroupSim').value;
+		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
+		changeFaseNivel(myid, mygroup, mycode);
+		savePoints(myid, mygroup, mycode);
 		showGridAndHideForms();
-		location.reload();
+		setTimeout(() => { location.reload() }, 1000); // Executa após 1 segundo para esperar o processo
+    });	
+	$('#btnEnd').click(function () {
+		var myid = document.getElementById('myidSim').value;
+		var mygroup = document.getElementById('mygroupSim').value;
+		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
+		changeFaseNivel(myid, mygroup, mycode);
+		savePoints(myid, mygroup, mycode);
+		showGridAndHideForms();
+		setTimeout(() => { location.reload() }, 1000); // Executa após 1 segundo para esperar o processo
     });	
 	$('#btnPoints').click(function () {
 		var mygroup = document.getElementById('mygroupSim').value;
@@ -1169,7 +1188,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				varTdTh = 'th';
 //				varPlay = "<a href=\"#\" class=\"playsim\" style=\"color:#00FF00;\">Start</a>";
 //				varEdit = "&nbsp;<a href=\"#\" class=\"edit\" style=\"color:#0000FF;\">Edit</a>";
-				varRestart = "&nbsp;<i class=\"fa fa-refresh\"></i> <a href=\"#\" class=\"restart\" style=\"color:#0000FF;\">refazer</a>";
+				varRestart = "&nbsp;<i class=\"fa fa-refresh\"></i> <a href=\"#\" class=\"restart\" style=\"color:#0000FF;\">reiniciar</a>";
 //				varDel = "&nbsp;<a href=\"#\" class=\"delete\" style=\"color:#FF0000;\">Del</a>";
 			} else {
 				varTdTh = 'td';
@@ -1184,7 +1203,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 //              + "<td style=\"color:#000000; font-size:1px;\">" + student.mycode + "</td>"
 				+ "<" + varTdTh + " id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " ZZZonClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
 				+ "<a href=\"#\" class=\"playsim\">" + varButtonUnlock + ' ' + student.mytext + ' ' + varButtonPlay + "</a></" + varTdTh + ">"
-				+ "<" + varTdTh + ">" + student.mypoints + "% " + getAprovacao(student.mypoints) + "</" + varTdTh + ">"
+				+ "<" + varTdTh + ">" + student.mypoints + "% de acerto" + "</" + varTdTh + ">"
 //				+ "<a href=\"#\" class=\"playsim\">" + student.mytext + varButtonPlay + "</" + varTdTh + ">"
 //				+ student.mytext + "</" + varTdTh + ">"
 /*				
@@ -1228,14 +1247,6 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 //    } catch (ex) {
 //        console.log(ex.message)
 //    }
-}
-
-function getAprovacao(calculo) {
-	if (calculo >= 70) {
-		return 'Aprovado';
-	} else {
-		return 'Reprovado';
-	}
 }
 
 //This function select table
