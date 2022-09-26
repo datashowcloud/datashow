@@ -88,7 +88,7 @@ function getDbSchema() {
 			myoptionkey7: { Null: false, dataType: 'string' }, //idem
 			myoptionkey8: { Null: false, dataType: 'string' }, //idem
 			mypoints: { Null: false, dataType: 'string' }, //índice de acerto na tentativa 4, 5, 6, 7... exemplo: 85,50,10,100 (todas separadas por vírgula)
-			mycurrentcode: { notNull: true, dataType: 'string' }, //posição atual do mycode, onde parou, antes de sair ou antes de pausar.
+			mycurrentcode: { Null: true, dataType: 'string' }, //posição atual do mycode, onde parou, antes de sair ou antes de pausar.
 			mycomment: { Null: false, dataType: 'string' }, //comentário ou resposta sobre a letra
 			myfix: { Null: false, dataType: 'string' }, //fixa para revisão
             mytimer: { Null: false, dataType: 'string' }, //cronômetro numérico em segundos para mudar o texto automaticamente, exemplo: 4s
@@ -1506,6 +1506,7 @@ function onLoadConfig() {
 	loadCombobox('mycode', '0', '200', 'Número');
 	loadCombobox('myorder', '0', '200', 'Ordem');
 	confirmImport('contents1', '0');
+	setTimeout(() => { document.getElementById('tblGrid').style.display='none'; }, 1000); // Executa após 1 segundo para esperar o processo terminar
 }
 
 function buscaValorTag(valor, key) {	
