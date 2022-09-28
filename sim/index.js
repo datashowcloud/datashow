@@ -9,13 +9,7 @@ var GLOBAL_buttoncolor = 'btn-colors';
 var COL_LOGOTIPO = 5;
 
 window.onload = function () {
-	refreshTableData('0', '', '', ''); // botão btnCategory1 carrega essa opção
-/*	var mycode = '0';
-	var mytext = '';
-	var myorder = '';
-	var mygroup = '';
-	refreshTableData(mycode, myorder, mygroup, mytext);
-*/
+	refreshTableData('0', '', '', '');
     registerEvents();
     initDb();
 	getConfigGeneral();	
@@ -24,7 +18,6 @@ window.onload = function () {
 	loadCombobox('mygroup', '0', '100', 'Teste');
 	loadCombobox('mycode', '0', '100', 'Número');
 	loadCombobox('myorder', '0', '100', 'Ordem');
-//	showForm1Form2();
 	$('#selectMygroup').focus();
 	$('#selectMygroup').select();
 //	localStorage.setItem('valueText1', document.getElementById('selectMygroup').selectedIndex);
@@ -1004,6 +997,8 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 	//					valorIndice +
 						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 						+ student.mycorrect1answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption1 + ' </font>'
+						+ '<a href="#"><i class="fa fa-tag" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
+
 	//					+ ' <a href="#' + student.myoption1 + '" class="btn btn-default"><b>?</b></a>'
 						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
 						+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
@@ -1021,6 +1016,8 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 	//					valorIndice +
 						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 						+ student.mycorrect2answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption2 + ' </font>'
+						+ '<a href="#"><i class="fa fa-tag" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
+
 	//					+ ' <a href="#' + student.myoption2 + '" class="btn btn-default"><b>?</b></a>'
 						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
 						+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
@@ -1038,6 +1035,8 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 	//					valorIndice +
 						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 						+ student.mycorrect3answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption3 + ' </font>'
+						+ '<a href="#"><i class="fa fa-tag" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
+
 	//					+ ' <a href="#' + student.myoption3 + '" class="btn btn-default"><b>?</b></a>'
 						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
 						+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
@@ -1055,6 +1054,8 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 	//					valorIndice +
 						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 						+ student.mycorrect4answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption4 + ' </font>'
+						+ '<a href="#"><i class="fa fa-tag" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
+
 	//					+ ' <a href="#' + student.myoption4 + '" class="btn btn-default"><b>?</b></a>'
 						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
 						+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
@@ -1072,6 +1073,8 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 	//					valorIndice +
 						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 						+ student.mycorrect5answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption5 + ' </font>'
+						+ '<a href="#"><i class="fa fa-tag" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
+
 	//					+ ' <a href="#' + student.myoption5 + '" class="btn btn-default"><b>?</b></a>'
 						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
 						+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
@@ -1089,6 +1092,8 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 	//					valorIndice +
 						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 						+ student.mycorrect6answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption6 + ' </font>'
+						+ '<a href="#"><i class="fa fa-tag" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
+
 	//					+ ' <a href="#' + student.myoption6 + '" class="btn btn-default"><b>?</b></a>'
 						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
 						+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
@@ -1106,6 +1111,8 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 	//					valorIndice +
 						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 						+ student.mycorrect7answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption7 + ' </font>'
+						+ '<a href="#"><i class="fa fa-tag" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
+
 	//					+ ' <a href="#' + student.myoption7 + '" class="btn btn-default"><b>?</b></a>'
 						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
 						+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
@@ -1123,6 +1130,8 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 	//					valorIndice +
 						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 						+ student.mycorrect8answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption8 + ' </font>'
+						+ '<a href="#"><i class="fa fa-tag" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
+
 	//					+ ' <a href="#' + student.myoption8 + '" class="btn btn-default"><b>?</b></a>'
 						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
 						+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
@@ -2229,11 +2238,11 @@ function initLinkHelp() {
 function showCorrect(valorindice, myid, mygroup, mycode) {
 	if (document.getElementById('chkMycorrect'+valorindice+'answer').checked == true) {
 		document.getElementById('lblcorrect' + valorindice).style.display='block';
+		document.getElementById('chkMycorrect'+valorindice+'answer').disabled = true;
 	} else {
 		document.getElementById('lblcorrect' + valorindice).style.display='none';
 	}
 	updateStudentPlay(myid, mygroup, mycode);
-//	alert('id='+id + ' mygroup='+mygroup + ' mycode='+mycode);
 }
 
 function showFormSim() {
