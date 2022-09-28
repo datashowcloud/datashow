@@ -9,37 +9,27 @@ var GLOBAL_buttoncolor = 'btn-colors';
 var COL_LOGOTIPO = 5;
 
 window.onload = function () {
-	var mycode = '0';
+	refreshTableData('0', '', '', ''); // botão btnCategory1 carrega essa opção
+/*	var mycode = '0';
 	var mytext = '';
 	var myorder = '';
 	var mygroup = '';
-//	var mygroup = selectMygroup.value.trim();
-//	if (mygroup != '00') {
-//		mycode = '0';
-//	}
-
 	refreshTableData(mycode, myorder, mygroup, mytext);
-	
+*/
     registerEvents();
     initDb();
-//	initDbDashboard();
 	getConfigGeneral();	
 	initLinkHelp();
-	
 	document.getElementById('myBody').style.background = GLOBAL_background;
-//	refreshLinkHelp();
-
 	loadCombobox('mygroup', '0', '100', 'Teste');
 	loadCombobox('mycode', '0', '100', 'Número');
 	loadCombobox('myorder', '0', '100', 'Ordem');
-	
 //	showForm1Form2();
 	$('#selectMygroup').focus();
 	$('#selectMygroup').select();
 //	localStorage.setItem('valueText1', document.getElementById('selectMygroup').selectedIndex);
 //	localStorage.setItem('valueText2', '');
 //	setCookie('valueText3', '', '1');
-
 };
 
 async function initDb() {
@@ -58,7 +48,10 @@ function getDbSchema() {
         name: 'Student',
         columns: {
 			id: { primaryKey: true, autoIncrement: true },
-			mygroup: { notNull: true, dataType: 'string' }, //qual grupo a pergunta pertence, exempçlo: domínio 1, domínio 2, domínio 3...
+//			mycategory: { notNull: true, dataType: 'string' }, //nível de agrupamento, exemplo: Tecnologia, Igreja, Conhecimentos Gerais...
+//			mysubcategory: { notNull: true, dataType: 'string' }, //sub nível de agrupamento, exemplo: domínio 1, domínio 2, domínio 3...
+//			myfase: { notNull: true, dataType: 'string' }, //fase, exemplo: fase 1, fase 2, fase 3 e fase 4
+			mygroup: { notNull: true, dataType: 'string' }, //qual grupo a pergunta pertence, exemplo: domínio 1, domínio 2, domínio 3...
 			mycode: { notNull: true, dataType: 'string' }, //código único numérico da pergunta
 			mytext: { notNull: true, dataType: 'string' }, //uma pergunta
 			mysearch: { Null: false, dataType: 'string' }, //pergunta ou texto sem os caracteres especiais para fazer o search com maior precisão
@@ -175,9 +168,6 @@ function registerEvents() {
 	$('#btnBackward').click(function () {
         restartFase();
     });
-    $('#btnImportSim').click(function () {
-		showIniciarConfiguracao();
-    })
     $('#btnIndexConfigurar').click(function () {
 //		window.close();
 		document.getElementById('btnIndexConfigurar').style.display = 'none';
@@ -397,47 +387,48 @@ function registerEvents() {
 		var myid = document.getElementById('myidSim').value;
 		var mygroup = document.getElementById('mygroupSim').value;
 		var mycode = parseInt(document.getElementById('mycodeSim').value) - 1;
-		if (mycode != 0) {
-			refreshTableQuestion(myid, mygroup, document.getElementById('txtTotal').value);
-		} else {
+		if (mycode > 0) {
 			refreshTableQuestion(myid, mygroup, mycode);
 		}
-		changeFaseNivel(myid, mygroup, mycode);
+//		changeFaseNivel(myid, mygroup, mycode);
     })
     $('#btnNext').click(function () {
 		var myid = document.getElementById('myidSim').value;
 		var mygroup = document.getElementById('mygroupSim').value;
 		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
 		refreshTableQuestion(myid, mygroup, mycode);
-		changeFaseNivel(myid, mygroup, mycode);
+//		changeFaseNivel(myid, mygroup, mycode);
 		savePoints(myid, mygroup, mycode);
-		if (mycode > parseInt(document.getElementById('txtTotal').value)) {
-			refreshTableQuestion(myid, mygroup, '0');
-/*			var result = confirm('Vou salvar a pontuação, ok?\n');
+/*		if (mycode >= parseInt(document.getElementById('txtTotal').value)) {
+			var result = confirm('Vou salvar a pontuação, ok?\n');
 			if (result) {
 				showGridAndHideForms();
-				setTimeout(() => { location.reload() }, 2000); // Executa após 2 segundos para esperar o processo de insert terminar
+				changeFaseNivel(myid, mygroup, mycode);
+				setTimeout(() => { location.reload() }, 500); // Executa após 2 segundos para esperar o processo de insert terminar
 			}
-*/
 		}
+*/
     })
 	$('#btnPause').click(function () {
 		var myid = document.getElementById('myidSim').value;
 		var mygroup = document.getElementById('mygroupSim').value;
 		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
-		changeFaseNivel(myid, mygroup, mycode);
+//		changeFaseNivel(myid, mygroup, mycode);
 		savePoints(myid, mygroup, mycode);
 		showGridAndHideForms();
-		setTimeout(() => { location.reload() }, 1000); // Executa após 1 segundo para esperar o processo
+		setTimeout(() => { location.reload() }, 500); // Executa após 1 segundo para esperar o processo
     });	
 	$('#btnEnd').click(function () {
-		var myid = document.getElementById('myidSim').value;
-		var mygroup = document.getElementById('mygroupSim').value;
-		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
-		changeFaseNivel(myid, mygroup, mycode);
-		savePoints(myid, mygroup, mycode);
-		showGridAndHideForms();
-		setTimeout(() => { location.reload() }, 1000); // Executa após 1 segundo para esperar o processo
+		var result = confirm('Vou salvar a pontuação e concluir, ok?\n');
+		if (result) {
+			var myid = document.getElementById('myidSim').value;
+			var mygroup = document.getElementById('mygroupSim').value;
+			var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
+			changeFaseNivel(myid, mygroup, mycode);
+			savePoints(myid, mygroup, mycode);
+			showGridAndHideForms();
+			setTimeout(() => { location.reload() }, 500); // Executa após 1 segundo para esperar o processo
+		}
     });	
 	$('#btnPoints').click(function () {
 		var mygroup = document.getElementById('mygroupSim').value;
@@ -465,6 +456,12 @@ function registerEvents() {
 		refreshTableQuestion('', mygroup, '1');
 		showFormSim();
 	})
+	$('#btnCategory1Fase1').click(function () {
+		refreshTableData('0', '', '', ''); // botão btnCategory1 carrega essa opção
+		showGridAndHideForms();
+		document.getElementById('txtControleNavegacao').value = '11';
+		//var DataShow_Nivel = window.open("index.html?cat=1&fase=1", "_self");
+	})
 	$('#btnVersions').click(function () {
 		var versions = 'Atualizações:';
 		versions = versions + '\n' + '25.09.22 botão fechar x vermelho';
@@ -475,7 +472,7 @@ function registerEvents() {
 }
 
 async function initConfigGeneral() {
-	document.getElementById('divconfig').style.display = 'block';
+//	document.getElementById('divconfig').style.display = 'block';
 	GLOBAL_textcolor = 'black';
 	GLOBAL_buttoncolor = 'btn-colors';
 	try {
@@ -1349,7 +1346,6 @@ async function dropdb() {
 			var mytext = document.getElementById('mytext').value.trim();
 			refreshTableData(mycode, myorder, mygroup, mytext);
 			location.reload();
-//			showIniciarConfiguracao();
 //			console.log('successfull');
 		}).catch(function(error) {
 			console.log(error);
@@ -2273,10 +2269,7 @@ function showGridAndHideForms() {
 //	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
-
-//	if (document.getElementById('btnPlay') != null) { document.getElementById('btnPlay').style.display=''; }
-//	if (document.getElementById('btnAddNewManual') != null) { document.getElementById('btnAddNewManual').style.display=''; }
-//	if (document.getElementById('btnGear') != null) { document.getElementById('btnGear').style.display=''; }
+	if (document.getElementById('btnGear') != null) { document.getElementById('btnGear').style.display=''; }
 	if (document.getElementById('tableButtons') != null) { document.getElementById('tableButtons').style.display=''; }
 }
 
