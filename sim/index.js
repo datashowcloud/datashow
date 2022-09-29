@@ -322,7 +322,7 @@ function registerEvents() {
 		var mycode = child.eq(1).text();
 		restartFase(myid, mygroup, mycode);
 		savePoints(myid, mygroup, mycode);
-		setTimeout(() => { location.reload() }, 500); // Executa após meio segundo para esperar o processo
+		setTimeout(() => { location.reload() }, 1000); // Executa após meio segundo para esperar o processo
     });
     $('#tblGrid tbody').on('click', '.delete', function () {
         var result = confirm('Excluir, ok?');
@@ -397,7 +397,7 @@ function registerEvents() {
 			if (result) {
 				showGridAndHideForms();
 				changeFaseNivel(myid, mygroup, mycode);
-				setTimeout(() => { location.reload() }, 500); // Executa após 2 segundos para esperar o processo de insert terminar
+				setTimeout(() => { location.reload() }, 1000); // Executa após 2 segundos para esperar o processo de insert terminar
 			}
 		}
 */
@@ -409,7 +409,7 @@ function registerEvents() {
 //		changeFaseNivel(myid, mygroup, mycode);
 		savePoints(myid, mygroup, mycode);
 		showGridAndHideForms();
-		setTimeout(() => { location.reload() }, 500); // Executa após 1 segundo para esperar o processo
+		setTimeout(() => { location.reload() }, 1000); // Executa após 1 segundo para esperar o processo
     });	
 	$('#btnEnd').click(function () {
 		var result = confirm('Vou salvar a pontuação e concluir, ok?\n');
@@ -420,7 +420,7 @@ function registerEvents() {
 			changeFaseNivel(myid, mygroup, mycode);
 			savePoints(myid, mygroup, mycode);
 			showGridAndHideForms();
-			setTimeout(() => { location.reload() }, 500); // Executa após 1 segundo para esperar o processo
+			setTimeout(() => { location.reload() }, 1000); // Executa após 1 segundo para esperar o processo
 		}
     });	
 	$('#btnPoints').click(function () {
@@ -461,6 +461,9 @@ function registerEvents() {
 		versions = versions + '\n' + '25.09.22 coluna com porcentagem';
 		versions = versions + '\n' + '26.09.22 navegação botões';
 		alert(versions);
+	})
+	$('#btnRefresh').click(function () {
+		location.reload();
 	})
 }
 
@@ -1684,7 +1687,7 @@ async function confirmImportManual(mycode, myorder, mygroup, mytext, myoption1, 
 				var myorder = document.getElementById('myorder').value;
 				var mygroup = document.getElementById('mygroup').value;
 				var mytext = document.getElementById('mytext').value.trim();
-				setTimeout(() => { refreshTableData(mycode, myorder, mygroup, mytext) }, 500); // Executa novamente a cada 500 milisegundos
+				setTimeout(() => { refreshTableData(mycode, myorder, mygroup, mytext) }, 1000); // Executa novamente a cada 500 milisegundos
 				
 				showGridAndHideForms();
 			document.getElementById('divcontent').style.display='none';
