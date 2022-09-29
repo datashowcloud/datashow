@@ -167,7 +167,7 @@ function registerEvents() {
 		document.getElementById('lei13709').style.display = 'none';
 		location.reload(); //recarrega página importando também o teste 01
 		var DataShow_Config = window.open("config" + document.getElementById('selectMygroup').value + ".html?sim=" + document.getElementById('selectMygroup').value, "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
-//		var DataShow_ConfigResult = window.open("configresult.html", "datashowconfigresult");
+//		var DataShow_ConfigResult = window.open("configresult.html", "_self");
 //		datashowconfigresult.focus();
 	})
     $('#btnSearch').click(function () {
@@ -182,7 +182,7 @@ function registerEvents() {
     })
     $('#btnCertifications').click(function () {
 		window.close();
-		var DataShow_Tests = window.open("certifications.html", "datashowcertifications");
+		var DataShow_Tests = window.open("certifications.html", "_self");
 		datashowconfigresult.focus();
 	})
     $('#selectMygroup').change(function () {
@@ -282,10 +282,10 @@ function registerEvents() {
 		showGridAndHideForms();
     })
     $('#btnShowHelp').click(function () {
-		var DataShow_Help = window.open("help/help.pdf", "datashowhelp", "top=100, width=1100, height=10000, left=0, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
+		var DataShow_Help = window.open("help/help.pdf", "_self", "top=100, width=1100, height=10000, left=0, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
     })
     $('#btnShowHelpConfig').click(function () {
-		var DataShow_Help = window.open("help/helpconfig.pdf", "datashowhelp", "top=100, width=1100, height=10000, left=0, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
+		var DataShow_Help = window.open("help/helpconfig.pdf", "_self", "top=100, width=1100, height=10000, left=0, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
     })
     $('#btnSubmit').click(function () {
 		var studentId = $('form').attr('data-student-id');
@@ -322,7 +322,7 @@ function registerEvents() {
 		var mycode = child.eq(1).text();
 		restartFase(myid, mygroup, mycode);
 		savePoints(myid, mygroup, mycode);
-		setTimeout(() => { location.reload() }, 1000); // Executa após meio segundo para esperar o processo
+		setTimeout(() => { location.reload() }, 500); // Executa após meio segundo para esperar o processo
     });
     $('#tblGrid tbody').on('click', '.delete', function () {
         var result = confirm('Excluir, ok?');
@@ -397,7 +397,7 @@ function registerEvents() {
 			if (result) {
 				showGridAndHideForms();
 				changeFaseNivel(myid, mygroup, mycode);
-				setTimeout(() => { location.reload() }, 1000); // Executa após 2 segundos para esperar o processo de insert terminar
+				setTimeout(() => { location.reload() }, 500); // Executa após 2 segundos para esperar o processo de insert terminar
 			}
 		}
 */
@@ -409,7 +409,7 @@ function registerEvents() {
 		changeFaseNivel(myid, mygroup, mycode);
 		savePoints(myid, mygroup, mycode);
 		showGridAndHideForms();
-		setTimeout(() => { location.reload() }, 1000); // Executa após 1 segundo para esperar o processo
+		setTimeout(() => { location.reload() }, 500); // Executa após 1 segundo para esperar o processo
     });	
 	$('#btnEnd').click(function () {
 		var result = confirm('Vou salvar a pontuação e concluir, ok?\n');
@@ -420,7 +420,7 @@ function registerEvents() {
 			changeFaseNivel(myid, mygroup, mycode);
 			savePoints(myid, mygroup, mycode);
 			showGridAndHideForms();
-			setTimeout(() => { location.reload() }, 1000); // Executa após 1 segundo para esperar o processo
+			setTimeout(() => { location.reload() }, 500); // Executa após 1 segundo para esperar o processo
 		}
     });	
 	$('#btnPoints').click(function () {
@@ -463,7 +463,7 @@ function registerEvents() {
 		alert(versions);
 	})
 	$('#btnRefresh').click(function () {
-		location.reload();
+		refreshTableData('0', '', '', '');
 	})
 }
 
@@ -521,31 +521,37 @@ async function getConfigGeneral() {
 	})
 	
 	//carrega cor de fundo
-	var varItens = document.getElementById('selTextColor');
-	for(index = 0;index < varItens.length;index++)
-	{
-		if (varItens.options[index].value == GLOBAL_textcolor) {
-			varItens.selectedIndex = index;
-			break;
+	if (document.getElementById('selTextColor') != null) {
+		var varItens = document.getElementById('selTextColor');
+		for(index = 0;index < varItens.length;index++)
+		{
+			if (varItens.options[index].value == GLOBAL_textcolor) {
+				varItens.selectedIndex = index;
+				break;
+			}
 		}
-	}	
+	}
 	//carrega cor do texto
-	var varItensFundo = document.getElementById('selBackground');
-	for(index = 0;index < varItensFundo.length;index++)
-	{
-		if (varItensFundo.options[index].value == GLOBAL_background) {
-			varItensFundo.selectedIndex = index;
-			break;
+	if (document.getElementById('selBackground') != null) {
+		var varItensFundo = document.getElementById('selBackground');
+		for(index = 0;index < varItensFundo.length;index++)
+		{
+			if (varItensFundo.options[index].value == GLOBAL_background) {
+				varItensFundo.selectedIndex = index;
+				break;
+			}
 		}
 	}
 
 	//carrega cor do botão
-	var varItens = document.getElementById('selButtonColor');
-	for(index = 0;index < varItens.length;index++)
-	{
-		if (varItens.options[index].value == GLOBAL_buttoncolor) {
-			varItens.selectedIndex = index;
-			break;
+	if (document.getElementById('selButtonColor') != null) {
+		var varItens = document.getElementById('selButtonColor');
+		for(index = 0;index < varItens.length;index++)
+		{
+			if (varItens.options[index].value == GLOBAL_buttoncolor) {
+				varItens.selectedIndex = index;
+				break;
+			}
 		}
 	}
 	
@@ -571,8 +577,12 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 	}
 	document.getElementById('myBody').style.background = background;
 
-	document.getElementById('selTextColor').style.color = textcolor;
-	document.getElementById('selBackground').style.color = background;
+	if(document.getElementById('selTextColor') != null) {
+		document.getElementById('selTextColor').style.color = textcolor;
+	}
+	if(document.getElementById('selBackground') != null) {
+		document.getElementById('selBackground').style.color = background;
+	}
 
 	var classe = '';
 
@@ -596,13 +606,17 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		document.getElementById('btnPoints').classList.remove(classe);
 	}
 
-	classe = document.getElementById('btnNext').classList.value;
-	classe = classe.substring(4, classe.length);
-	document.getElementById('btnNext').classList.remove(classe);
+	if(document.getElementById('btnNext') != null) {
+		classe = document.getElementById('btnNext').classList.value;
+		classe = classe.substring(4, classe.length);
+		document.getElementById('btnNext').classList.remove(classe);
+	}
 
-	classe = document.getElementById('selButtonColor').classList.value;
-	classe = classe.substring(4, classe.length);
-	document.getElementById('selButtonColor').classList.remove(classe);
+	if(document.getElementById('selButtonColor') != null) {
+		classe = document.getElementById('selButtonColor').classList.value;
+		classe = classe.substring(4, classe.length);
+		document.getElementById('selButtonColor').classList.remove(classe);
+	}
 
 	if (buttoncolor == 'btn-colors') {
 		document.getElementById('btnPrevious').classList.add('btn-info');
@@ -614,7 +628,9 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 			document.getElementById('btnPoints').classList.add('btn-info');
 		}
 		document.getElementById('btnNext').classList.add('btn-info');
-		document.getElementById('selButtonColor').classList.add('btn-default');
+		if(document.getElementById('selButtonColor') != null) {
+			document.getElementById('selButtonColor').classList.add('btn-default');
+		}
 	} else {
 		document.getElementById('btnPrevious').classList.add(buttoncolor);
 		document.getElementById('btnPause').classList.add(buttoncolor);
@@ -824,8 +840,8 @@ async function changeFaseNivel(id, mygroup, mycode) {
 				}
 			});
 			if (students == '') {
-				var DataShow_Config = window.open("config" + mygroupNext + ".html?sim=" + mygroupNext);
-//				var DataShow_Config = window.open("config" + mygroupNext + ".html?sim=" + mygroupNext, "datashowconfig", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
+				var DataShow_Config = window.open("config" + mygroupNext + ".html?sim=" + mygroupNext, "_self");
+//				var DataShow_Config = window.open("config" + mygroupNext + ".html?sim=" + mygroupNext, "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
 			}
 		}
 	}
@@ -2235,7 +2251,7 @@ function initLinkHelp() {
 
 	document.getElementById('divlinkhelp').innerHTML = linkhelp;
 
-//	var DataShow_Config = window.open("config00.html?sim=00", "datashowconfig", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
+//	var DataShow_Config = window.open("config00.html?sim=00", "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
 }
 
 function showCorrect(valorindice, myid, mygroup, mycode) {
@@ -2672,7 +2688,7 @@ function setPlanoFundo() {
 }
 
 function aoClicar(endereco) {
-	var DataShow_Link = window.open(endereco, "datashowlink");
+	var DataShow_Link = window.open(endereco, "_self");
 }
 
 function desceJanela() {
