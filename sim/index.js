@@ -392,25 +392,16 @@ function registerEvents() {
 		refreshTableQuestion(myid, mygroup, mycode);
 //		changeFaseNivel(myid, mygroup, mycode);
 		savePoints(myid, mygroup, mycode);
-/*		if (mycode >= parseInt(document.getElementById('txtTotal').value)) {
-			var result = confirm('Vou salvar a pontuação, ok?\n');
-			if (result) {
-				showGridAndHideForms();
-				changeFaseNivel(myid, mygroup, mycode);
-				setTimeout(() => { location.reload() }, 500); // Executa após 2 segundos para esperar o processo de insert terminar
-			}
-		}
-*/
     })
 	$('#btnPause').click(function () {
 		var myid = document.getElementById('myidSim').value;
 		var mygroup = document.getElementById('mygroupSim').value;
 		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
+		changeFaseNivel(myid, mygroup, mycode);
 		savePoints(myid, mygroup, mycode);
 		showGridAndHideForms();
 		refreshTableData('0', '', '', ''); // botão btnCategory1 carrega essa opção
-		changeFaseNivel(myid, mygroup, mycode);
-		setTimeout(() => { location.reload() }, 1000); // Executa após 1 segundo para esperar o processo
+		setTimeout(() => { location.reload() }, 3000); // Executa após 1 segundo para esperar o processo
     });	
 	$('#btnEnd').click(function () {
 		var result = confirm('Vou salvar a pontuação e concluir, ok?\n');
@@ -418,11 +409,11 @@ function registerEvents() {
 			var myid = document.getElementById('myidSim').value;
 			var mygroup = document.getElementById('mygroupSim').value;
 			var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
+			changeFaseNivel(myid, mygroup, mycode);
 			savePoints(myid, mygroup, mycode);
 			showGridAndHideForms();
 			refreshTableData('0', '', '', ''); // botão btnCategory1 carrega essa opção
-			changeFaseNivel(myid, mygroup, mycode);
-			setTimeout(() => { location.reload() }, 1000); // Executa após 1 segundo para esperar o processo
+			setTimeout(() => { location.reload() }, 3000); // Executa após 1 segundo para esperar o processo
 		}
     });	
 	$('#btnPoints').click(function () {
@@ -833,6 +824,9 @@ async function changeFaseNivel(id, mygroup, mycode) {
 	});
 	var totalCorretas = getTotalCorretas(mygroup, mycode, students);
 	var calculo = calculaPercentualAcerto(mygroup, mycode, totalCorretas, totalperguntas);
+	
+	alert('calculo='+calculo + ' calculo >= 70 = ' + calculo >= 70);
+	
 	if (calculo >= 70) {
 		var mygroupNext = getProximaFaseNivel(id, mygroup, mycode);
 		if (mygroupNext != 'false') {
@@ -842,6 +836,8 @@ async function changeFaseNivel(id, mygroup, mycode) {
 				}
 			});
 			if (students == '') {
+				alert('config' + mygroupNext + '.html?sim=' + mygroupNext);
+				
 				var DataShow_Config = window.open("config" + mygroupNext + ".html?sim=" + mygroupNext, "_self");
 //				var DataShow_Config = window.open("config" + mygroupNext + ".html?sim=" + mygroupNext, "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
 			}
