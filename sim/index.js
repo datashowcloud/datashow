@@ -409,7 +409,8 @@ function registerEvents() {
 		changeFaseNivel(myid, mygroup, mycode);
 		savePoints(myid, mygroup, mycode);
 		showGridAndHideForms();
-		setTimeout(() => { location.reload() }, 500); // Executa após 1 segundo para esperar o processo
+		refreshTableData('0', '', '', ''); // botão btnCategory1 carrega essa opção
+//		setTimeout(() => { location.reload() }, 500); // Executa após 1 segundo para esperar o processo
     });	
 	$('#btnEnd').click(function () {
 		var result = confirm('Vou salvar a pontuação e concluir, ok?\n');
@@ -420,7 +421,8 @@ function registerEvents() {
 			changeFaseNivel(myid, mygroup, mycode);
 			savePoints(myid, mygroup, mycode);
 			showGridAndHideForms();
-			setTimeout(() => { location.reload() }, 500); // Executa após 1 segundo para esperar o processo
+			refreshTableData('0', '', '', ''); // botão btnCategory1 carrega essa opção
+//			setTimeout(() => { location.reload() }, 1000); // Executa após 1 segundo para esperar o processo
 		}
     });	
 	$('#btnPoints').click(function () {
