@@ -1200,7 +1200,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				varTdTh = 'th';
 //				varPlay = "<a href=\"#\" class=\"playsim\" style=\"color:#00FF00;\">Start</a>";
 //				varEdit = "&nbsp;<a href=\"#\" class=\"edit\" style=\"color:#0000FF;\">Edit</a>";
-				varRestart = "&nbsp;<i class=\"fa fa-refresh\"></i> <a href=\"#\" class=\"restart\" style=\"color:#0000FF;\">reiniciar</a>";
+				varRestart = "&nbsp;<i class=\"fa fa-refresh\"></i> <a href=\"#\" class=\"restart\" style=\"color:#0000FF;\">refazer</a>";
 //				varDel = "&nbsp;<a href=\"#\" class=\"delete\" style=\"color:#FF0000;\">Del</a>";
 			} else {
 				varTdTh = 'td';
@@ -1215,7 +1215,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 //              + "<td style=\"color:#000000; font-size:1px;\">" + student.mycode + "</td>"
 				+ "<" + varTdTh + " id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " ZZZonClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
 				+ "<a href=\"#\" class=\"playsim\">" + varButtonUnlock + ' ' + student.mytext + ' ' + varButtonPlay + "</a></" + varTdTh + ">"
-				+ "<" + varTdTh + ">" + student.mypoints + "% de acerto" + "</" + varTdTh + ">"
+				+ "<" + varTdTh + ">" + student.mypoints + "%" + "</" + varTdTh + ">"
 //				+ "<a href=\"#\" class=\"playsim\">" + student.mytext + varButtonPlay + "</" + varTdTh + ">"
 //				+ student.mytext + "</" + varTdTh + ">"
 /*				
