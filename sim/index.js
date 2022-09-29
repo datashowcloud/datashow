@@ -825,7 +825,7 @@ async function changeFaseNivel(id, mygroup, mycode) {
 	var totalCorretas = getTotalCorretas(mygroup, mycode, students);
 	var calculo = calculaPercentualAcerto(mygroup, mycode, totalCorretas, totalperguntas);
 	
-	alert('calculo='+calculo + ' calculo >= 70 = ' + calculo >= 70);
+//	alert('calculo='+calculo + ' calculo >= 70 = ' + calculo >= 70);
 	
 	if (calculo >= 70) {
 		var mygroupNext = getProximaFaseNivel(id, mygroup, mycode);
@@ -836,7 +836,7 @@ async function changeFaseNivel(id, mygroup, mycode) {
 				}
 			});
 			if (students == '') {
-				alert('config' + mygroupNext + '.html?sim=' + mygroupNext);
+//				alert('config' + mygroupNext + '.html?sim=' + mygroupNext);
 				
 				var DataShow_Config = window.open("config" + mygroupNext + ".html?sim=" + mygroupNext, "_self");
 //				var DataShow_Config = window.open("config" + mygroupNext + ".html?sim=" + mygroupNext, "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
