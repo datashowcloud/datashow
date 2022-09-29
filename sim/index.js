@@ -406,11 +406,11 @@ function registerEvents() {
 		var myid = document.getElementById('myidSim').value;
 		var mygroup = document.getElementById('mygroupSim').value;
 		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
-		changeFaseNivel(myid, mygroup, mycode);
 		savePoints(myid, mygroup, mycode);
 		showGridAndHideForms();
 		refreshTableData('0', '', '', ''); // botão btnCategory1 carrega essa opção
-//		setTimeout(() => { location.reload() }, 500); // Executa após 1 segundo para esperar o processo
+		changeFaseNivel(myid, mygroup, mycode);
+		setTimeout(() => { location.reload() }, 1000); // Executa após 1 segundo para esperar o processo
     });	
 	$('#btnEnd').click(function () {
 		var result = confirm('Vou salvar a pontuação e concluir, ok?\n');
@@ -418,11 +418,11 @@ function registerEvents() {
 			var myid = document.getElementById('myidSim').value;
 			var mygroup = document.getElementById('mygroupSim').value;
 			var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
-			changeFaseNivel(myid, mygroup, mycode);
 			savePoints(myid, mygroup, mycode);
 			showGridAndHideForms();
 			refreshTableData('0', '', '', ''); // botão btnCategory1 carrega essa opção
-//			setTimeout(() => { location.reload() }, 1000); // Executa após 1 segundo para esperar o processo
+			changeFaseNivel(myid, mygroup, mycode);
+			setTimeout(() => { location.reload() }, 1000); // Executa após 1 segundo para esperar o processo
 		}
     });	
 	$('#btnPoints').click(function () {
