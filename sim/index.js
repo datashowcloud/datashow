@@ -1200,9 +1200,9 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 
 		var htmlString = "";
 		var varTdTh = '';
-		var varButtonPlayStyle = 'color:blue; font-size:26px;';
-		var varButtonPlay = '<br/><i class=\"fa fa-play\" style="' + varButtonPlayStyle + '"></i></a>';
-		var varButtonUnlock = ''; //'<i class=\"fa fa-unlock\" style="' + varButtonPlayStyle + '"></i>';
+		var varButtonPlayStyle = 'color:blue; font-size:25px;';
+		var varButtonPlay = '<i class=\"fa fa-play\" style="' + varButtonPlayStyle + '"></i></a>';
+		var varButtonUnlock = '<i class=\"fa fa-unlock\" style="' + varButtonPlayStyle + '"></i>';
 		var varRestart = '';
 		var htmlStringButtons = ""; //getButtonsBar();
 		var varNivel = '<tr><td>FASE</td></tr>';
@@ -1232,7 +1232,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 			htmlString += "<tr ItemId=" + student.id + ">"
 				+ "<td style=\"color:#000000; font-size:1px; \">" + student.mygroup + "</td>"
 				+ "<" + varTdTh + " id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " ZZZonClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
-				+ "<a href=\"#\" class=\"playsim\">" + varButtonUnlock + ' ' + student.mytext + ' ' + varButtonPlay + "</a></" + varTdTh + ">"
+				+ "<a href=\"#\" class=\"playsim\">" + ' ' + student.mytext + ' ' + varButtonPlay + "</a></" + varTdTh + ">"
 				+ "<" + varTdTh + ">" + student.mypoints + "%" + "</" + varTdTh + ">"
 				+ "<" + varTdTh + " nowrap id=datashow" + student.id+"6" + " tabIndex=" + student.id+"6" + " ZZZonClick=\"datashow('" + student.id+"6" + "', 6, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 6, event, " + "" + (student.id+"6") + ");\" data-show='" + student.id+"6" + "'>"
 				+ varRestart + ' '
@@ -1240,13 +1240,11 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				;
 				varButtonPlayStyle = 'color:gray; font-size:15px;';
 				varButtonPlay = '<i class=\"fa fa-check\" style="' + varButtonPlayStyle + '"></i>';
-				varButtonUnlock = '<i class=\"fa fa-unlock\" style="' + varButtonPlayStyle + '"></i>';
+				//varButtonUnlock = '<i class=\"fa fa-unlock\" style="' + varButtonPlayStyle + '"></i>';
 		})
 
-//alert('varNivelMax='+varNivelMax + ' mycode='+mycode + ' myorder='+myorder + ' mygroup='+mygroup);
 		varNivelLinha = '';
 		for (var item=CONST_NIVEL_MAX; item>=parseInt(varNivelMax)+1; item--) {
-//			alert('item='+item + ' mycode='+mycode + ' myorder='+myorder + ' mygroup='+mygroup);
 			varNivelLinha = varNivelLinha + '<tr><td colspan=99><font color="gray" style="font-size:15px;"><i class=\"fa fa-lock\"></i> NÍVEL ' + item + '</font></td></tr>';
 		}
 		htmlString = varNivelLinha + htmlString;
