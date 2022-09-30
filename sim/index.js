@@ -1220,7 +1220,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 			
 			if (varNivel != student.mygroup.substring(0, 1)) {
 				varNivel = student.mygroup.substring(0, 1);
-				varNivelLinha = '<tr><td colspan=99><h4>NÍVEL ' + student.mygroup.substring(0, 1) + '</h4></td></tr>';
+				varNivelLinha = '<tr><td colspan=99 nowrap><font color="green" style="font-size:20px;"><i class=\"fa fa-unlock\"></i> NÍVEL ' + student.mygroup.substring(0, 1) + '</font></td></tr>';
 			} else {
 				varNivelLinha = '';
 			}
@@ -1247,7 +1247,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 		varNivelLinha = '';
 		for (var item=CONST_NIVEL_MAX; item>=parseInt(varNivelMax)+1; item--) {
 //			alert('item='+item + ' mycode='+mycode + ' myorder='+myorder + ' mygroup='+mygroup);
-			varNivelLinha = varNivelLinha + '<tr><td colspan=99><font size=3>NÍVEL ' + item + '</font></td></tr>';
+			varNivelLinha = varNivelLinha + '<tr><td colspan=99><font color="gray" style="font-size:15px;"><i class=\"fa fa-lock\"></i> NÍVEL ' + item + '</font></td></tr>';
 		}
 		htmlString = varNivelLinha + htmlString;
 
