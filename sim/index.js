@@ -3,7 +3,7 @@
 var jsstoreCon = new JsStore.Connection();
 
 var CONST_NIVEL_MAX = 6;
-var CONST_FASE_MAX = 1;
+var CONST_FASE_MAX = 6;
 var GLOBAL_textcolor = 'black';
 var GLOBAL_background = 'white';
 var GLOBAL_buttoncolor = 'btn-colors';
