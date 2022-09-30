@@ -3,6 +3,7 @@
 var jsstoreCon = new JsStore.Connection();
 
 var CONST_NIVEL_MAX = 6;
+var CONST_FASE_MAX = 1;
 var GLOBAL_textcolor = 'black';
 var GLOBAL_background = 'white';
 var GLOBAL_buttoncolor = 'btn-colors';
@@ -848,7 +849,7 @@ async function changeFaseNivel(id, mygroup, mycode) {
 function getProximaFaseNivel(id, mygroup, mycode) {
 	var unidade = parseInt(mygroup.substring(mygroup.length-1, mygroup.length));
 	var dezena = parseInt(mygroup.substring(0, mygroup.substring(mygroup.length-1, mygroup.length)));
-	if (unidade < CONST_NIVEL_MAX) {
+	if (unidade < CONST_FASE_MAX) {
 		mygroup = parseInt(mygroup) + 1; //próxima fase
 	} else {
 		mygroup = String(parseInt(mygroup) + 10); //próximo nível
@@ -1202,56 +1203,53 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 		var varButtonPlayStyle = 'color:blue; font-size:26px;';
 		var varButtonPlay = '<br/><i class=\"fa fa-play\" style="' + varButtonPlayStyle + '"></i></a>';
 		var varButtonUnlock = ''; //'<i class=\"fa fa-unlock\" style="' + varButtonPlayStyle + '"></i>';
-//		var varText = '';
-//		var varPlay = '';
 		var varRestart = '';
-		var varEdit = '';
-		var varDel = '';
 		var htmlStringButtons = ""; //getButtonsBar();
-
+		var varNivel = '<tr><td>FASE</td></tr>';
+		var varNivelLinha = '';
+		var varNivelMax = '';
+		
 		students.forEach(function (student) {
 			if (student.mycode == '0') {
 				varTdTh = 'th';
-//				varPlay = "<a href=\"#\" class=\"playsim\" style=\"color:#00FF00;\">Start</a>";
-//				varEdit = "&nbsp;<a href=\"#\" class=\"edit\" style=\"color:#0000FF;\">Edit</a>";
 				varRestart = "&nbsp;<i class=\"fa fa-refresh\"></i> <a href=\"#\" class=\"restart\" style=\"color:#0000FF;\">refazer</a>";
-//				varDel = "&nbsp;<a href=\"#\" class=\"delete\" style=\"color:#FF0000;\">Del</a>";
 			} else {
 				varTdTh = 'td';
-//				varPlay = "<a href=\"#\" class=\"playsim\"><i class=\"fa fa-play\" style=\"color:#00FF00; height:25px; Xwidth:25px; \"></i></a>";
-//				varEdit = "<a href=\"#\" class=\"edit\"><i class=\"fa fa-pencil\" style=\"color:#0000FF; height:25px; Xwidth:25px; \"></i></a>";
 				varRestart = "<a href=\"#\" class=\"restart\"><i class=\"fa fa-refresh\" style=\"color:#0000FF; height:25px; Xwidth:25px; \"></i></a>";
-//				varDel = "<a href=\"#\" class=\"delete\"><i class=\"fa fa-times\" style=\"color:#FF0000; height:25px; Xwidth:25px;\"></i></a>";
 			}
 			
+			if (varNivel != student.mygroup.substring(0, 1)) {
+				varNivel = student.mygroup.substring(0, 1);
+				varNivelLinha = '<tr><td colspan=99><h4>NÍVEL ' + student.mygroup.substring(0, 1) + '</h4></td></tr>';
+			} else {
+				varNivelLinha = '';
+			}
+			if (varNivelMax == '') {
+				varNivelMax = varNivel;
+			}
+			
+			htmlString = htmlString + varNivelLinha;
 			htmlString += "<tr ItemId=" + student.id + ">"
 				+ "<td style=\"color:#000000; font-size:1px; \">" + student.mygroup + "</td>"
-//              + "<td style=\"color:#000000; font-size:1px;\">" + student.mycode + "</td>"
 				+ "<" + varTdTh + " id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " ZZZonClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
 				+ "<a href=\"#\" class=\"playsim\">" + varButtonUnlock + ' ' + student.mytext + ' ' + varButtonPlay + "</a></" + varTdTh + ">"
 				+ "<" + varTdTh + ">" + student.mypoints + "%" + "</" + varTdTh + ">"
-//				+ "<a href=\"#\" class=\"playsim\">" + student.mytext + varButtonPlay + "</" + varTdTh + ">"
-//				+ student.mytext + "</" + varTdTh + ">"
-/*				
-				+ "<" + varTdTh + " id=datashow" + student.id+"4" + " tabIndex=" + student.id+"4" + " ZZZonClick=\"datashow('" + student.id+"4" + "', 4, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 4, event, " + "" + (student.id+"4") + ");\" data-show='" + student.id+"4" + "'>"
-//				+ varPlay + "</" + varTdTh + ">"
-				
-				+ "<" + varTdTh + " id=datashow" + student.id+"5" + " tabIndex=" + student.id+"5" + " ZZZonClick=\"datashow('" + student.id+"5" + "', 5, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 5, event, " + "" + (student.id+"5") + ");\" data-show='" + student.id+"5" + "'>"
-				+ varEdit + "</" + varTdTh + ">"
-*/				
 				+ "<" + varTdTh + " nowrap id=datashow" + student.id+"6" + " tabIndex=" + student.id+"6" + " ZZZonClick=\"datashow('" + student.id+"6" + "', 6, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 6, event, " + "" + (student.id+"6") + ");\" data-show='" + student.id+"6" + "'>"
-//				+ varPlay + ' '
 				+ varRestart + ' '
-//				+ varEdit + ' '
-//				+ '<p/>'
-//				+ varDel
 				+ "</" + varTdTh + ">"
 				;
-				
 				varButtonPlayStyle = 'color:gray; font-size:15px;';
 				varButtonPlay = '<i class=\"fa fa-check\" style="' + varButtonPlayStyle + '"></i>';
 				varButtonUnlock = '<i class=\"fa fa-unlock\" style="' + varButtonPlayStyle + '"></i>';
 		})
+
+//alert('varNivelMax='+varNivelMax + ' mycode='+mycode + ' myorder='+myorder + ' mygroup='+mygroup);
+		varNivelLinha = '';
+		for (var item=CONST_NIVEL_MAX; item>=parseInt(varNivelMax)+1; item--) {
+//			alert('item='+item + ' mycode='+mycode + ' myorder='+myorder + ' mygroup='+mygroup);
+			varNivelLinha = varNivelLinha + '<tr><td colspan=99><font size=3>NÍVEL ' + item + '</font></td></tr>';
+		}
+		htmlString = varNivelLinha + htmlString;
 
 		if (htmlString.length > 0) {
 			htmlString += "</tr>"
