@@ -402,7 +402,7 @@ function registerEvents() {
 		savePoints(myid, mygroup, mycode);
 		showGridAndHideForms();
 		refreshTableData('0', '', '', ''); // botão btnCategory1 carrega essa opção
-		setTimeout(() => { location.reload() }, 3000); // Executa após 1 segundo para esperar o processo
+//		setTimeout(() => { location.reload() }, 3000); // Executa após 1 segundo para esperar o processo
     });	
 	$('#btnEnd').click(function () {
 		var result = confirm('Vou salvar a pontuação e concluir, ok?\n');
