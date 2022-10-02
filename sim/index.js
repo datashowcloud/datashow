@@ -398,7 +398,7 @@ function registerEvents() {
 		var myid = document.getElementById('myidSim').value;
 		var mygroup = document.getElementById('mygroupSim').value;
 		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
-		changeFaseNivel(myid, mygroup, mycode);
+//		changeFaseNivel(myid, mygroup, mycode);
 		savePoints(myid, mygroup, mycode);
 		showGridAndHideForms();
 		refreshTableData('0', '', '', ''); // botão btnCategory1 carrega essa opção
