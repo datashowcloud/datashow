@@ -912,7 +912,7 @@ async function setDashboard(myid, mygroup, mycode) {
 		document.getElementById('txtCorretas').value = 'Corretas: ' + totalCorretas;
 		document.getElementById('txtNaoRespondidas').value = 'Não Respondidas: ' + totalNaoRespondidas;
 		if (calculo >= 70) {
-			document.getElementById('txtCalculo').innerHTML = '<font style="color:green;> <i class="fa fa-check"></i> JÁ ESTÁ APROVADO <br/>' + calculo + '% de acerto é >= 70%' + '</font>';
+			document.getElementById('txtCalculo').innerHTML = '<font style="color:gray;> <i class="fa fa-check"></i> JÁ ESTÁ APROVADO <br/>' + calculo + '% de acerto é >= 70%' + '</font>';
 		} else {
 			document.getElementById('txtCalculo').innerHTML = '<font style="color:red;> <i class="fa fa-remove"></i> AINDA ESTÁ REPROVADO <br/>' + calculo + '% de acerto é < 70%' + '</font>';
 		}
