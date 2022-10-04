@@ -384,7 +384,6 @@ function registerEvents() {
 		if (mycode > 0) {
 			refreshTableQuestion(myid, mygroup, mycode);
 		}
-//		changeFaseNivel(myid, mygroup, mycode);
     })
     $('#btnNext').click(function () {
 		var myid = document.getElementById('myidSim').value;
@@ -398,11 +397,8 @@ function registerEvents() {
 		var myid = document.getElementById('myidSim').value;
 		var mygroup = document.getElementById('mygroupSim').value;
 		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
-//		changeFaseNivel(myid, mygroup, mycode);
 		savePoints(myid, mygroup, mycode);
-		showGridAndHideForms();
-		refreshTableData('0', '', '', ''); // botão btnCategory1 carrega essa opção
-//		setTimeout(() => { location.reload() }, 3000); // Executa após 1 segundo para esperar o processo
+		setTimeout(() => { location.reload() }, 500); // Executa após 1 segundo para esperar o processo
     });	
 	$('#btnEnd').click(function () {
 		var result = confirm('Vou salvar a pontuação e concluir, ok?\n');
@@ -951,9 +947,9 @@ async function setDashboard(myid, mygroup, mycode) {
 		document.getElementById('txtCorretas').value = 'Corretas: ' + totalCorretas;
 		document.getElementById('txtNaoRespondidas').value = 'Não Respondidas: ' + totalNaoRespondidas;
 		if (calculo >= 70) {
-			document.getElementById('txtCalculo').innerHTML = 'JÁ ESTÁ APROVADO <br/>' + calculo + '% de acerto é >= 70%';
+			document.getElementById('txtCalculo').innerHTML = '<font style="color:green;> <i class="fa fa-check"></i> JÁ ESTÁ APROVADO <br/>' + calculo + '% de acerto é >= 70%' + '</font>';
 		} else {
-			document.getElementById('txtCalculo').innerHTML = 'AINDA ESTÁ REPROVADO <br/>' + calculo + '% de acerto é < 70%';
+			document.getElementById('txtCalculo').innerHTML = '<font style="color:red;> <i class="fa fa-remove"></i> AINDA ESTÁ REPROVADO <br/>' + calculo + '% de acerto é < 70%' + '</font>';
 		}
 		
 

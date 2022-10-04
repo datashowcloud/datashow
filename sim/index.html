@@ -100,10 +100,10 @@
 					<tr><td>
 						<button id="btnPrevious" class="btn btn-info" style="display:'none';"> <i class="fa fa-chevron-left"></i> Anterior</button>
 						<button id="btnPause" class="btn btn-danger" style="display:'none';"> <i class="fa fa-times"></i></button>
-						<button id="btnBackward" class="btn btn-danger" style="display:none;"> <i class="fa fa-refresh"></i> </button>
-						<button id="btnPoints" class="btn btn-info" style="display:none;"><i class="fa fa-check-square-o"></i></button>
 						<button id="btnEnd" class="btn btn-default" style="display:'none';"> <i class="fa fa-check"></i> Concluir</button>
 						<button id="btnNext" class="btn btn-info" style="display:'none';">Próximo <i class="fa fa-chevron-right"></i></button>
+						<button id="btnBackward" class="btn btn-danger" style="display:none;"> <i class="fa fa-refresh"></i> </button>
+						<button id="btnPoints" class="btn btn-info" style="display:none;"><i class="fa fa-check-square-o"></i></button>
 					</td></tr>
 				</table>
 				<table id="tableFormSimQuestions" border=0 align=center width="100%" style="display:'none';">
@@ -142,12 +142,26 @@
 						<input type="text" id="myidSim" value="" style="display:none;">
 					</td></tr>
 				</table>
-				<table id="tableFormSimDashboard" border=0 align=center width="60%" style="display:'none';">
+				<table id="tableFormSimDashboard" border=0 align=center width="320px" style="display:'none';">
 					<tr><td nowrap id="txtCalculo"></td></tr>
-					<tr><td nowrap><input type="text" id="txtIncorretas" value="Incorretas" class="btn btn-default" style="padding:9px 15px 9px 15px; width:250px; color:red;" readonly /></td></tr>
-					<tr><td nowrap><input type="text" id="txtCorretas" value="Corretas" class="btn btn-default" style="padding:9px 15px 9px 15px; width:250px; color:green;" readonly /></td></tr>
-					<tr><td nowrap><input type="text" id="txtNaoRespondidas" value="Não Respondidas" class="btn btn-default" style="padding:9px 15px 9px 15px; width:250px; color:blue;" readonly /></td></tr>
-					<tr><td nowrap><input type="text" id="txtTotal" value="Total" class="btn btn-default" style="padding:9px 15px 9px 15px; width:250px; display:none;" readonly ></td></tr>
+					<tr><td nowrap>
+						<i class="fa fa-remove" style="color:red; font-size:25px;"></i>
+						<input type="text" id="txtIncorretas" value="Incorretas" class="btn btn-default" style="width:250px; color:red;" readonly />
+						<i class="fa fa-remove" style="color:red; font-size:25px;"></i>
+					</td></tr>
+					<tr><td nowrap>
+						<i class="fa fa-check" style="color:green; font-size:25px;"></i>
+						<input type="text" id="txtCorretas" value="Corretas" class="btn btn-default" style="width:250px; color:green;" readonly />
+						<i class="fa fa-check" style="color:green; font-size:25px;"></i>
+					</td></tr>
+					<tr><td nowrap>
+						<i class="fa fa-star" style="color:blue; font-size:25px;"></i>
+						<input type="text" id="txtNaoRespondidas" value="Não Respondidas" class="btn btn-default" style="width:250px; color:blue;" readonly />
+						<i class="fa fa-star" style="color:blue; font-size:25px;"></i>
+					</td></tr>
+					<tr><td nowrap>
+						<input type="text" id="txtTotal" value="Total" class="btn btn-default" style="width:250px; display:none;" readonly >
+					</td></tr>
 				</table>
 				<table id="tableLinkhelp" border=0 align=center style="display:'none';">
 					<tr><td id="help" style="display:none; text-align:justify;">
@@ -348,7 +362,7 @@
 		</div>
 		
 		<!--versão-->
-		<font color=gray>v03.10.00.12 &#174;</font>
+		<font color=gray>v04.10.01.19 &#174;</font>
 		<br/>
 		<font color=gray size=1>datashowcloud2022@gmail.com</font>
 
