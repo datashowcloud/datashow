@@ -1161,9 +1161,9 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 
 		var htmlString = "";
 		var varTdTh = '';
-		var varButtonPlayStyle = 'color:blue; font-size:25px;';
+		var varButtonPlayStyle = 'color:blue; font-size:22px;';
 		var varButtonPlay = '<i class=\"fa fa-play\" style="' + varButtonPlayStyle + '"></i></a>';
-		var varButtonUnlock = '<i class=\"fa fa-unlock\" style="' + varButtonPlayStyle + '"></i>';
+//		var varButtonUnlock = '<i class=\"fa fa-unlock\" style="' + varButtonPlayStyle + '"></i>';
 		var varRestart = '';
 		var htmlStringButtons = ""; //getButtonsBar();
 		var varNivel = '<tr><td>FASE</td></tr>';
@@ -1181,7 +1181,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 			
 			if (varNivel != student.mygroup.substring(0, 1)) {
 				varNivel = student.mygroup.substring(0, 1);
-				varNivelLinha = '<tr><td colspan=99 nowrap><font color="green" style="font-size:20px;"><i class=\"fa fa-unlock\"></i> NÍVEL ' + student.mygroup.substring(0, 1) + '</font></td></tr>';
+				varNivelLinha = '<tr><td colspan=99 nowrap><font color="gray" style="font-size:18px;"><i class=\"fa fa-unlock\"></i> NÍVEL ' + student.mygroup.substring(0, 1) + '</font></td></tr>';
 			} else {
 				varNivelLinha = '';
 			}
@@ -1193,7 +1193,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 			htmlString += "<tr ItemId=" + student.id + ">"
 				+ "<td style=\"color:#000000; font-size:1px; \">" + student.mygroup + "</td>"
 				+ "<" + varTdTh + " id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " ZZZonClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
-				+ "<a href=\"#\" class=\"playsim\">" + ' ' + student.mytext + ' ' + varButtonPlay + "</a></" + varTdTh + ">"
+				+ "<a href=\"#\" class=\"playsim\">" + '<i class=\"fa fa-unlock\" style="' + varButtonPlayStyle + '"></i>' + ' ' + student.mytext + ' ' + varButtonPlay + "</a></" + varTdTh + ">"
 				+ "<" + varTdTh + ">" + student.mypoints + "%" + "</" + varTdTh + ">"
 				+ "<" + varTdTh + " nowrap id=datashow" + student.id+"6" + " tabIndex=" + student.id+"6" + " ZZZonClick=\"datashow('" + student.id+"6" + "', 6, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 6, event, " + "" + (student.id+"6") + ");\" data-show='" + student.id+"6" + "'>"
 				+ varRestart + ' '
