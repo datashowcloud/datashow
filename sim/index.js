@@ -4,9 +4,9 @@ var jsstoreCon = new JsStore.Connection();
 
 var CONST_NIVEL_MAX = 6;
 var CONST_FASE_MAX = 6;
-var GLOBAL_textcolor = 'black';
-var GLOBAL_background = 'white';
-var GLOBAL_buttoncolor = 'btn-colors';
+var GLOBAL_textcolor = '';
+var GLOBAL_background = '';
+var GLOBAL_buttoncolor = '';
 var COL_LOGOTIPO = 5;
 
 window.onload = function () {
@@ -413,26 +413,22 @@ function registerEvents() {
 			setTimeout(() => { location.reload() }, 3000); // Executa após 1 segundo para esperar o processo
 		}
     });	
-	$('#btnPoints').click(function () {
-		var mygroup = document.getElementById('mygroupSim').value;
-		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
-		showPoints(mygroup, mycode);
-    });
 	$('#btnGear').click(function () {
-		if (document.getElementById('divGear').style.display == 'none') {
+/*		if (document.getElementById('divGear').style.display == 'none') {
 			showFormGear();
 		} else {
 			showGridAndHideForms();
 		}
+*/
     })
 	$('#selTextColor').change(function () {
-		updateConfigGeneral();
+//		updateConfigGeneral();
     })
 	$('#selBackground').change(function () {
-		updateConfigGeneral();
+//		updateConfigGeneral();
     })
 	$('#selButtonColor').change(function () {
-		updateConfigGeneral();
+//		updateConfigGeneral();
     })
 	$('#btnReview').change(function () {
 		var mygroup = document.getElementById('selectMygroup').value;
@@ -455,17 +451,20 @@ function registerEvents() {
 	$('#btnRefresh').click(function () {
 		refreshTableData('0', '', '', '');
 	})
+	$('#btnNightDay').click(function () {
+		updateConfigGeneral();
+	})
 }
 
 async function initConfigGeneral() {
-//	document.getElementById('divconfig').style.display = 'block';
-	GLOBAL_textcolor = 'black';
+	GLOBAL_textcolor = 'gray';
+	GLOBAL_background = 'white';
 	GLOBAL_buttoncolor = 'btn-colors';
 	try {
 		var configgeneral = {
 			fontfamily: 'Times New Roman',
 			fontsize: '16',
-			background: 'white',
+			background: GLOBAL_background,
 			textcolor: GLOBAL_textcolor,
 			buttoncolor: GLOBAL_buttoncolor,
 			textalign: 'left'
@@ -482,19 +481,27 @@ async function initConfigGeneral() {
     }
 }
 
-async function updateConfigGeneral() {
-	GLOBAL_textcolor = document.getElementById('selTextColor').value;
-	GLOBAL_buttoncolor = document.getElementById('selButtonColor').value;
-	setConfigGeneral(document.getElementById('selTextColor').value, document.getElementById('selBackground').value, document.getElementById('selButtonColor').value);
+async function updateConfigGeneral() {	
+	if (GLOBAL_background == 'white') {
+		GLOBAL_textcolor = 'gray';
+		GLOBAL_background = 'black';
+		GLOBAL_buttoncolor = 'btn-link';
+	} else {
+		GLOBAL_textcolor = 'gray';
+		GLOBAL_background = 'white';
+		GLOBAL_buttoncolor = 'btn-colors';
+	}
+	
+	setConfigGeneral(GLOBAL_textcolor, GLOBAL_background, GLOBAL_buttoncolor);
 
 	var noOfDataUpdated = await jsstoreCon.update({
 		in: 'ConfigGeneral',
 		set: {
 			fontfamily: 'Times New Roman',
 			fontsize: '16',
-			background: '' + document.getElementById('selBackground').value + '',
-			textcolor: '' + document.getElementById('selTextColor').value + '',
-			buttoncolor: '' + document.getElementById('selButtonColor').value + '',
+			background: '' + GLOBAL_background + '',
+			textcolor: '' + GLOBAL_textcolor + '',
+			buttoncolor: '' + GLOBAL_buttoncolor + '',
 			textalign: 'left'
 		}
 	});
@@ -509,103 +516,49 @@ async function getConfigGeneral() {
 		GLOBAL_background = configgeneral.background;
 		GLOBAL_buttoncolor = configgeneral.buttoncolor;
 	})
-	
-	//carrega cor de fundo
-	if (document.getElementById('selTextColor') != null) {
-		var varItens = document.getElementById('selTextColor');
-		for(index = 0;index < varItens.length;index++)
-		{
-			if (varItens.options[index].value == GLOBAL_textcolor) {
-				varItens.selectedIndex = index;
-				break;
-			}
-		}
-	}
-	//carrega cor do texto
-	if (document.getElementById('selBackground') != null) {
-		var varItensFundo = document.getElementById('selBackground');
-		for(index = 0;index < varItensFundo.length;index++)
-		{
-			if (varItensFundo.options[index].value == GLOBAL_background) {
-				varItensFundo.selectedIndex = index;
-				break;
-			}
-		}
-	}
-
-	//carrega cor do botão
-	if (document.getElementById('selButtonColor') != null) {
-		var varItens = document.getElementById('selButtonColor');
-		for(index = 0;index < varItens.length;index++)
-		{
-			if (varItens.options[index].value == GLOBAL_buttoncolor) {
-				varItens.selectedIndex = index;
-				break;
-			}
-		}
-	}
-	
 	setConfigGeneral(GLOBAL_textcolor, GLOBAL_background, GLOBAL_buttoncolor);
 }
 
 async function setConfigGeneral(textcolor, background, buttoncolor) {
-	if(document.getElementById('email') != null) {
-		document.getElementById('email').style.color = textcolor;
-	}
-	if(document.getElementById('version') != null) {
-		document.getElementById('version').style.color = textcolor;
-	}
-	if(document.getElementById('FormularioEditorPerguntas') != null) {
-		document.getElementById('FormularioEditorPerguntas').style.color = textcolor;
-	}
+	document.getElementById('myBody').style.background = background;
+
 	if(document.getElementById('FormularioEditorConfiguracoes') != null) {
 		document.getElementById('FormularioEditorConfiguracoes').style.color = textcolor;
 	}
-	if(document.getElementById('lei13709') != null) {
-		document.getElementById('lei13709').style.color = textcolor;
-		document.getElementById('lei13709').style.backgroundColor = background;
-	}
-	document.getElementById('myBody').style.background = background;
-
-	if(document.getElementById('selTextColor') != null) {
-		document.getElementById('selTextColor').style.color = textcolor;
-	}
-	if(document.getElementById('selBackground') != null) {
-		document.getElementById('selBackground').style.color = background;
-	}
-
+	
 	var classe = '';
 
-	classe = document.getElementById('btnPrevious').classList.value;
-	classe = classe.substring(4, classe.length);
-	document.getElementById('btnPrevious').classList.remove(classe);
-
+	if(document.getElementById('btnPrevious') != null) {
+		classe = document.getElementById('btnPrevious').classList.value;
+		classe = classe.substring(4, classe.length);
+		document.getElementById('btnPrevious').classList.remove(classe);
+	}
 	if(document.getElementById('btnPause') != null) {
 		classe = document.getElementById('btnPause').classList.value;
 		classe = classe.substring(4, classe.length);
 		document.getElementById('btnPause').classList.remove(classe);
 	}
-
-	classe = document.getElementById('btnBackward').classList.value;
-	classe = classe.substring(4, classe.length);
-	document.getElementById('btnBackward').classList.remove(classe);
-
-	if(document.getElementById('btnPoints') != null) {
-		classe = document.getElementById('btnPoints').classList.value;
+	if(document.getElementById('btnEnd') != null) {
+		classe = document.getElementById('btnEnd').classList.value;
 		classe = classe.substring(4, classe.length);
-		document.getElementById('btnPoints').classList.remove(classe);
+		document.getElementById('btnEnd').classList.remove(classe);
 	}
-
+	if(document.getElementById('btnBackward') != null) {
+		classe = document.getElementById('btnBackward').classList.value;
+		classe = classe.substring(4, classe.length);
+		document.getElementById('btnBackward').classList.remove(classe);
+	}
 	if(document.getElementById('btnNext') != null) {
 		classe = document.getElementById('btnNext').classList.value;
 		classe = classe.substring(4, classe.length);
 		document.getElementById('btnNext').classList.remove(classe);
 	}
-
-	if(document.getElementById('selButtonColor') != null) {
-		classe = document.getElementById('selButtonColor').classList.value;
+	
+	//campos
+	if(document.getElementById('txtNaoRespondidas') != null) {
+		classe = document.getElementById('txtNaoRespondidas').classList.value;
 		classe = classe.substring(4, classe.length);
-		document.getElementById('selButtonColor').classList.remove(classe);
+		document.getElementById('txtNaoRespondidas').classList.remove(classe);
 	}
 
 	if (buttoncolor == 'btn-colors') {
@@ -613,21 +566,33 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		if(document.getElementById('btnPause') != null) {
 			document.getElementById('btnPause').classList.add('btn-danger');
 		}
-		document.getElementById('btnBackward').classList.add('btn-danger');
-		if(document.getElementById('btnPoints') != null) {
-			document.getElementById('btnPoints').classList.add('btn-info');
+		if(document.getElementById('btnEnd') != null) {
+			document.getElementById('btnEnd').classList.add('btn-default');
 		}
+		document.getElementById('btnBackward').classList.add('btn-danger');
 		document.getElementById('btnNext').classList.add('btn-info');
 		if(document.getElementById('selButtonColor') != null) {
 			document.getElementById('selButtonColor').classList.add('btn-default');
 		}
+		if(document.getElementById('txtCorretas') != null) {
+			document.getElementById('txtCorretas').classList.add('btn-default');
+		}
+		if(document.getElementById('txtIncorretas') != null) {
+			document.getElementById('txtIncorretas').classList.add('btn-default');
+		}
+		if(document.getElementById('txtNaoRespondidas') != null) {
+			document.getElementById('txtNaoRespondidas').classList.add('btn-default');
+		}
 	} else {
 		document.getElementById('btnPrevious').classList.add(buttoncolor);
 		document.getElementById('btnPause').classList.add(buttoncolor);
+		document.getElementById('btnEnd').classList.add(buttoncolor);
 		document.getElementById('btnBackward').classList.add(buttoncolor);
-		document.getElementById('btnPoints').classList.add(buttoncolor);
 		document.getElementById('btnNext').classList.add(buttoncolor);
 		document.getElementById('selButtonColor').classList.add(buttoncolor);
+		document.getElementById('txtCorretas').classList.add(buttoncolor);
+		document.getElementById('txtIncorretas').classList.add(buttoncolor);
+		document.getElementById('txtNaoRespondidas').classList.add(buttoncolor);
 	}
 }
 
@@ -2311,7 +2276,7 @@ function showGridAndHideForms() {
 //	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
-	if (document.getElementById('btnGear') != null) { document.getElementById('btnGear').style.display=''; }
+//	if (document.getElementById('btnGear') != null) { document.getElementById('btnGear').style.display=''; }
 	if (document.getElementById('tableButtons') != null) { document.getElementById('tableButtons').style.display=''; }
 }
 
