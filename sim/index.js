@@ -941,6 +941,14 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 			
 		} else {
 			students.forEach(function (student) {
+				
+				if (student.mycode >= totalperguntas) {
+					if (document.getElementById('btnEnd').style.display == 'none') {
+						alert('Use o botão Concluir quando terminar.');
+					}
+					document.getElementById('btnEnd').style.display = '';
+				}
+				
 				document.getElementById('myorderSim').style.display='none';
 				document.getElementById('myidSim').style.display='none';
 				document.getElementById('mygroupSim').style.display='none';
