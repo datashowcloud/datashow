@@ -553,8 +553,13 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		classe = classe.substring(4, classe.length);
 		document.getElementById('btnNext').classList.remove(classe);
 	}
-	
-	//campos
+		
+	//campos e botões
+	if(document.getElementById('btnDropDb') != null) {
+		classe = document.getElementById('btnDropDb').classList.value;
+		classe = classe.substring(4, classe.length);
+		document.getElementById('btnDropDb').classList.remove(classe);
+	}
 	if(document.getElementById('txtNaoRespondidas') != null) {
 		classe = document.getElementById('txtNaoRespondidas').classList.value;
 		classe = classe.substring(4, classe.length);
@@ -583,6 +588,9 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		if(document.getElementById('txtNaoRespondidas') != null) {
 			document.getElementById('txtNaoRespondidas').classList.add('btn-default');
 		}
+		if(document.getElementById('btnDropDb') != null) {
+			document.getElementById('btnDropDb').classList.add('btn-default');
+		}
 	} else {
 		document.getElementById('btnPrevious').classList.add(buttoncolor);
 		document.getElementById('btnPause').classList.add(buttoncolor);
@@ -593,6 +601,7 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		document.getElementById('txtCorretas').classList.add(buttoncolor);
 		document.getElementById('txtIncorretas').classList.add(buttoncolor);
 		document.getElementById('txtNaoRespondidas').classList.add(buttoncolor);
+		document.getElementById('btnDropDb').classList.add(buttoncolor);
 	}
 }
 
@@ -1181,7 +1190,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 		students.forEach(function (student) {
 			if (student.mycode == '0') {
 				varTdTh = 'th';
-				varRestart = "&nbsp;<i class=\"fa fa-refresh\"></i> <a href=\"#\" class=\"restart\" style=\"color:#0000FF;\">refazer</a>";
+				varRestart = "&nbsp;<i class=\"fa fa-refresh\" style=\"color:gray;\"></i> <a href=\"#\" class=\"restart\" style=\"color:gray;\">refazer</a>";
 			} else {
 				varTdTh = 'td';
 				varRestart = "<a href=\"#\" class=\"restart\"><i class=\"fa fa-refresh\" style=\"color:#0000FF; height:25px; Xwidth:25px; \"></i></a>";
@@ -1201,8 +1210,8 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 			htmlString += "<tr ItemId=" + student.id + ">"
 				+ "<td style=\"color:#000000; font-size:1px; \">" + student.mygroup + "</td>"
 				+ "<" + varTdTh + " id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " ZZZonClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
-				+ "<a href=\"#\" class=\"playsim\">" + '<i class=\"fa fa-unlock\" style="' + varButtonPlayStyle + '"></i>' + ' ' + student.mytext + ' ' + varButtonPlay + "</a></" + varTdTh + ">"
-				+ "<" + varTdTh + ">" + student.mypoints + "%" + "</" + varTdTh + ">"
+				+ "<a href=\"#\" class=\"playsim\" style=\"color:gray;\">" + '<i class=\"fa fa-unlock\" style="' + varButtonPlayStyle + '"></i>' + ' ' + student.mytext + ' ' + varButtonPlay + "</a></" + varTdTh + ">"
+				+ "<" + varTdTh + " style=\"color:gray;\">" + student.mypoints + "%" + "</" + varTdTh + ">"
 				+ "<" + varTdTh + " nowrap id=datashow" + student.id+"6" + " tabIndex=" + student.id+"6" + " ZZZonClick=\"datashow('" + student.id+"6" + "', 6, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 6, event, " + "" + (student.id+"6") + ");\" data-show='" + student.id+"6" + "'>"
 				+ varRestart + ' '
 				+ "</" + varTdTh + ">"
