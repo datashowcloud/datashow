@@ -145,19 +145,16 @@
 				<table id="tableFormSimDashboard" border=0 align=center width="320px" style="display:'none';">
 					<tr><td nowrap id="txtCalculo"></td></tr>
 					<tr><td nowrap>
-						<i class="fa fa-remove" style="color:red; font-size:25px;"></i>
 						<input type="text" id="txtIncorretas" value="Incorretas" class="btn btn-default" style="width:250px; color:red;" readonly />
-						<i class="fa fa-remove" style="color:red; font-size:25px;"></i>
+						<i class="fa fa-remove" style="color:red;"></i>
 					</td></tr>
 					<tr><td nowrap>
-						<i class="fa fa-check" style="color:green; font-size:25px;"></i>
 						<input type="text" id="txtCorretas" value="Corretas" class="btn btn-default" style="width:250px; color:green;" readonly />
-						<i class="fa fa-check" style="color:green; font-size:25px;"></i>
+						<i class="fa fa-check" style="color:green;"></i>
 					</td></tr>
 					<tr><td nowrap>
-						<i class="fa fa-star" style="color:blue; font-size:25px;"></i>
 						<input type="text" id="txtNaoRespondidas" value="Não Respondidas" class="btn btn-default" style="width:250px; color:blue;" readonly />
-						<i class="fa fa-star" style="color:blue; font-size:25px;"></i>
+						<i class="fa fa-star" style="color:blue;"></i>
 					</td></tr>
 					<tr><td nowrap>
 						<input type="text" id="txtTotal" value="Total" class="btn btn-default" style="width:250px; display:none;" readonly >
@@ -274,98 +271,99 @@
 				<p/><p/><button id="btnSelectCountAll" class="btn btn-default" style="display:none; width:250px;"> <i class="fa fa-asterisk"></i> Count All</button>
 				<p/><p/><button id="btnDeleteLirics" class="btn btn-default" style="display:none; width:250px;"> <i class="fa fa-minus"></i> Clear Lirycs</button>
 
-			<div style="display:none;">
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-envelope"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-star"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-user"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-film"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-check"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-check-square-o"></i> </button>
-				<br/>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-remove"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-signal"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-cog"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-trash"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-home"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-file"></i> </button>
-				<br/>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-road"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-download"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-inbox"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-play"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-repeat"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-refresh"></i> </button>
-				<br/>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-list"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-lock"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-unlock"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-flag"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-off"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-down"></i> </button>
-				<br/>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-up"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-qrcode"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-barcode"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-tag"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-tags"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-book"></i> </button>
-				<br/>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-bookmark"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-print"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-camera"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-font"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-bold"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-italic"></i> </button>
-				<br/>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-text-height"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-text-width"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-left"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-center"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-right"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-justify"></i> </button>
-				<br/>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-list"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-dedent"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-outdent"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-indent"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-video-camera"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-photo"></i> </button>
-				<br/>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-pencil"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-map-marker"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-adjust"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-tint"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-edit"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-share-square-o"></i> </button>
-				<br/>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-arrows"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-step-backward"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-fast-backward"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-backward"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-play"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-th"></i> </button>
-				<br/>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-pause"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-pencil-square-o"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-forward"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-fast-forward"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-step-forward"></i> </button>
-				<br/>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-eject"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-chevron-left"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-chevron-right"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-headphones"></i> </button>
-			</div>
 			</td></tr></table>
 			
 		</div>
 		
 		<!--versão-->
-		<font color=gray>v06.10.00.54 &#174;</font>
+		<font color=gray>v06.10.00.55 &#174;</font>
 		<br/>
 		<font color=gray size=1>datashowcloud2022@gmail.com</font>
+
+		<div style="display:none;">
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-envelope"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-star"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-user"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-film"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-check"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-check-square-o"></i> </button>
+			<br/>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-remove"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-signal"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-cog"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-trash"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-home"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-file"></i> </button>
+			<br/>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-road"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-download"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-inbox"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-play"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-repeat"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-refresh"></i> </button>
+			<br/>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-list"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-lock"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-unlock"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-flag"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-off"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-down"></i> </button>
+			<br/>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-up"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-qrcode"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-barcode"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-tag"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-tags"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-book"></i> </button>
+			<br/>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-bookmark"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-print"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-camera"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-font"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-bold"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-italic"></i> </button>
+			<br/>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-text-height"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-text-width"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-left"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-center"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-right"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-justify"></i> </button>
+			<br/>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-list"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-dedent"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-outdent"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-indent"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-video-camera"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-photo"></i> </button>
+			<br/>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-pencil"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-map-marker"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-adjust"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-tint"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-edit"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-share-square-o"></i> </button>
+			<br/>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-arrows"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-step-backward"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-fast-backward"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-backward"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-play"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-th"></i> </button>
+			<br/>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-pause"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-pencil-square-o"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-forward"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-fast-forward"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-step-forward"></i> </button>
+			<br/>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-eject"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-chevron-left"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-chevron-right"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-headphones"></i> </button>
+		</div>
 
 	</div>
 

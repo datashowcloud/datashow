@@ -993,7 +993,7 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 	//					valorIndice +
 						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 						+ student.mycorrect1answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption1 + ' </font>'
-						+ '<a href="#"><i class="fa fa-tag" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
+						+ '<a href="#"><i class="fa fa-bookmark" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
 
 	//					+ ' <a href="#' + student.myoption1 + '" class="btn btn-default"><b>?</b></a>'
 						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
@@ -1012,7 +1012,7 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 	//					valorIndice +
 						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 						+ student.mycorrect2answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption2 + ' </font>'
-						+ '<a href="#"><i class="fa fa-tag" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
+						+ '<a href="#"><i class="fa fa-bookmark" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
 
 	//					+ ' <a href="#' + student.myoption2 + '" class="btn btn-default"><b>?</b></a>'
 						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
@@ -1031,7 +1031,7 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 	//					valorIndice +
 						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 						+ student.mycorrect3answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption3 + ' </font>'
-						+ '<a href="#"><i class="fa fa-tag" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
+						+ '<a href="#"><i class="fa fa-bookmark" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
 
 	//					+ ' <a href="#' + student.myoption3 + '" class="btn btn-default"><b>?</b></a>'
 						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
@@ -1050,7 +1050,7 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 	//					valorIndice +
 						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 						+ student.mycorrect4answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption4 + ' </font>'
-						+ '<a href="#"><i class="fa fa-tag" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
+						+ '<a href="#"><i class="fa fa-bookmark" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
 
 	//					+ ' <a href="#' + student.myoption4 + '" class="btn btn-default"><b>?</b></a>'
 						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
@@ -1069,7 +1069,7 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 	//					valorIndice +
 						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 						+ student.mycorrect5answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption5 + ' </font>'
-						+ '<a href="#"><i class="fa fa-tag" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
+						+ '<a href="#"><i class="fa fa-bookmark" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
 
 	//					+ ' <a href="#' + student.myoption5 + '" class="btn btn-default"><b>?</b></a>'
 						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
@@ -1088,7 +1088,7 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 	//					valorIndice +
 						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 						+ student.mycorrect6answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption6 + ' </font>'
-						+ '<a href="#"><i class="fa fa-tag" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
+						+ '<a href="#"><i class="fa fa-bookmark" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
 
 	//					+ ' <a href="#' + student.myoption6 + '" class="btn btn-default"><b>?</b></a>'
 						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
@@ -1107,7 +1107,7 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 	//					valorIndice +
 						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 						+ student.mycorrect7answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption7 + ' </font>'
-						+ '<a href="#"><i class="fa fa-tag" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
+						+ '<a href="#"><i class="fa fa-bookmark" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
 
 	//					+ ' <a href="#' + student.myoption7 + '" class="btn btn-default"><b>?</b></a>'
 						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
@@ -1126,7 +1126,7 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 	//					valorIndice +
 						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 						+ student.mycorrect8answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption8 + ' </font>'
-						+ '<a href="#"><i class="fa fa-tag" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
+						+ '<a href="#"><i class="fa fa-bookmark" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
 
 	//					+ ' <a href="#' + student.myoption8 + '" class="btn btn-default"><b>?</b></a>'
 						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
