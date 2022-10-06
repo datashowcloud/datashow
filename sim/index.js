@@ -953,7 +953,7 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 				
 				if (student.mycode >= totalperguntas) {
 					if (document.getElementById('btnEnd').style.display == 'none') {
-						alert('Use o botão Concluir quando terminar.');
+						alert('Use o botão FIM quando terminar.');
 					}
 					document.getElementById('btnEnd').style.display = '';
 				}
