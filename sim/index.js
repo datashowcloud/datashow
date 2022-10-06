@@ -923,7 +923,7 @@ async function setDashboard(myid, mygroup, mycode) {
 		if (calculo >= 70) {
 			document.getElementById('txtCalculo').innerHTML = '<font style="color:gray;> <i class="fa fa-check"></i> JÁ ESTÁ APROVADO <br/>' + calculo + '% de acerto é >= 70%' + '</font>';
 		} else {
-			document.getElementById('txtCalculo').innerHTML = '<font style="color:red;> <i class="fa fa-remove"></i> AINDA ESTÁ REPROVADO <br/>' + calculo + '% de acerto é < 70%' + '</font>';
+			document.getElementById('txtCalculo').innerHTML = '<font style="color:gray;> <i class="fa fa-remove"></i> AINDA ESTÁ REPROVADO <br/>' + calculo + '% de acerto é < 70%' + '</font>';
 		}
 		
 
