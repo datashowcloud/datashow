@@ -74,7 +74,10 @@ function getDbSchema() {
 			myoptionkey6: { Null: false, dataType: 'string' }, //idem
 			myoptionkey7: { Null: false, dataType: 'string' }, //idem
 			myoptionkey8: { Null: false, dataType: 'string' }, //idem
-			mypoints: { Null: false, dataType: 'string' }, //índice de acerto na tentativa 4, 5, 6, 7... exemplo: 85,50,10,100 (todas separadas por vírgula)
+			mypoints: { Null: false, dataType: 'string' }, //porcentagem ou índice de acerto na tentativa 4, 5, 6, 7... exemplo: 85,50,10,100 (todas separadas por vírgula)
+			mycorretas: { Null: false, dataType: 'string' }, //quantidade de corretas
+			myincorretas: { Null: false, dataType: 'string' }, //quantidade de incorretas
+			mynaorespondidas: { Null: false, dataType: 'string' }, //quantidade de não respondidas
 			mycurrentcode: { Null: true, dataType: 'string' }, //posição atual do mycode, onde parou, antes de sair ou antes de pausar.
 			mycomment: { Null: false, dataType: 'string' }, //comentário ou resposta sobre a letra
 			myfix: { Null: false, dataType: 'string' }, //fixa para revisão
@@ -845,12 +848,17 @@ async function savePoints(myid, mygroup, mycode) {
 		  }
 	});
 	var totalCorretas = getTotalCorretas(mygroup, mycode, students);
+	var totalIncorretas = getTotalIncorretas(mygroup, mycode, students);
+	var totalNaoRespondidas = getTotalNaoRespondidas(mygroup, mycode, students);
 	var calculo = calculaPercentualAcerto(mygroup, mycode, totalCorretas, totalperguntas);
-
+//alert('totalCorretas='+totalCorretas + ' totalIncorretas='+totalIncorretas + ' totalNaoRespondidas='+totalNaoRespondidas + ' calculo='+calculo);
 	var noOfDataUpdated = await jsstoreCon.update({
 		in: 'Student',
 		set: {
 			mypoints: calculo
+		  , mycorretas: '' + totalCorretas
+		  , myincorretas: '' + totalIncorretas
+		  , mynaorespondidas: '' + totalNaoRespondidas
 		},
 		where: {
 			mygroup: mygroup
@@ -1179,29 +1187,47 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 			});
 		}
 
+
+		var students_count = 0;
+		if (students != '') {
+			var students_group = await jsstoreCon.select({
+				from: 'Student'
+					, where: { mygroup: '' + students[0].mygroup + ''
+				}
+			});
+			students_group.forEach(function (student) {
+				if (student.mycorrect1answer == '' && student.mycorrect2answer == '' && student.mycorrect3answer == '' && student.mycorrect4answer == ''
+				 && student.mycorrect5answer == '' && student.mycorrect6answer == '' && student.mycorrect7answer == '' && student.mycorrect8answer == '') {
+					students_count = parseInt(students_count + 1);
+				}
+			})
+		}
+		var varCount = '<div class="btn btn-success" style="font-size:10px;">' + parseInt(students_count - 1) + '</div>';
+
+
+
 		var htmlString = "";
 		var varTdTh = '';
-		var varButtonPlayStyle = 'color:blue; font-size:22px;';
-		var varButtonPlay = '<i class=\"fa fa-play\" style="' + varButtonPlayStyle + '"></i></a>';
-//		var varButtonUnlock = '<i class=\"fa fa-unlock\" style="' + varButtonPlayStyle + '"></i>';
-		var varRestart = '';
 		var htmlStringButtons = ""; //getButtonsBar();
 		var varNivel = '<tr><td>FASE</td></tr>';
 		var varNivelLinha = '';
 		var varNivelMax = '';
+		var varButtonLineStyle = 'color:green;';
+		var varButtonLine = '<i class=\"fa fa-play\" style="color:green; font-size:16px;"></i>';
+		var varRestart = '';
 		
 		students.forEach(function (student) {
 			if (student.mycode == '0') {
 				varTdTh = 'th';
-				varRestart = "&nbsp;<i class=\"fa fa-refresh\" style=\"color:gray;\"></i> <a href=\"#\" class=\"restart\" style=\"color:gray;\">refazer</a>";
+				varRestart = '&nbsp;<i class=\"fa fa-refresh\" style=\"' + varButtonLineStyle + '\"></i> <a href=\"#\" class=\"restart\" style=\"' + varButtonLineStyle + '\">refazer</a>';
 			} else {
 				varTdTh = 'td';
-				varRestart = "<a href=\"#\" class=\"restart\"><i class=\"fa fa-refresh\" style=\"color:#0000FF; height:25px; Xwidth:25px; \"></i></a>";
+				varRestart = '<a href=\"#\" class=\"restart\"><i class=\"fa fa-refresh\" style=\"height:25px; ' + varButtonLineStyle + '\"></i></a>';
 			}
 			
 			if (varNivel != student.mygroup.substring(0, 1)) {
 				varNivel = student.mygroup.substring(0, 1);
-				varNivelLinha = '<tr><td colspan=99 nowrap><font color="gray" style="font-size:18px;"><i class=\"fa fa-unlock\"></i> NÍVEL ' + student.mygroup.substring(0, 1) + ' (7 fases)</font></td></tr>';
+				varNivelLinha = '<tr><td colspan=99 nowrap><font color="gray" style="font-size:18px;"><i class=\"fa fa-unlock\"></i> NÍVEL ' + student.mygroup.substring(0, 1) + '</font></td></tr>';
 			} else {
 				varNivelLinha = '';
 			}
@@ -1210,18 +1236,21 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 			}
 			
 			htmlString = htmlString + varNivelLinha;
-			htmlString += "<tr ItemId=" + student.id + ">"
+			htmlString += "<tr ItemId=" + student.id + '>'
 				+ "<td style=\"color:#000000; font-size:1px; \">" + student.mygroup + "</td>"
 				+ "<" + varTdTh + " id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " ZZZonClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
-				+ "<a href=\"#\" class=\"playsim\" style=\"color:gray;\">" + '<i class=\"fa fa-unlock\" style="' + varButtonPlayStyle + '"></i>' + ' ' + student.mytext + ' ' + varButtonPlay + "</a></" + varTdTh + ">"
-				+ "<" + varTdTh + " style=\"color:gray;\">" + student.mypoints + "%" + "</" + varTdTh + ">"
+				
+				+ '<a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + varButtonLine + ' ' + student.mytext +  '</a></' + varTdTh + '>'
+				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + student.mypoints + '%</' + varTdTh + '>'
 				+ "<" + varTdTh + " nowrap id=datashow" + student.id+"6" + " tabIndex=" + student.id+"6" + " ZZZonClick=\"datashow('" + student.id+"6" + "', 6, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 6, event, " + "" + (student.id+"6") + ");\" data-show='" + student.id+"6" + "'>"
 				+ varRestart + ' '
+				+ ' <td>' + '<a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + ' ' + varCount +  '</a>' + ' </td>'
 				+ "</" + varTdTh + ">"
 				;
-				varButtonPlayStyle = 'color:gray; font-size:15px;';
-				varButtonPlay = '<i class=\"fa fa-check\" style="' + varButtonPlayStyle + '"></i>';
-				//varButtonUnlock = '<i class=\"fa fa-unlock\" style="' + varButtonPlayStyle + '"></i>';
+				varButtonLineStyle = 'color:gray;';
+				varButtonLine = '<i class=\"fa fa-check\" style="color:blue; font-size:15px;"></i>';
+//				varCount = '<div class="btn btn-default" style="font-size:10px;">' + '0' + '</div>';
+				varCount = '';
 		})
 
 		varNivelLinha = '';
@@ -1250,6 +1279,16 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 //    } catch (ex) {
 //        console.log(ex.message)
 //    }
+}
+
+async function getStudentsCount(mycode, mygroup) {
+	var students_count = await jsstoreCon.count({
+		from: 'Student'
+			, where: { mygroup: '' + mygroup + ''
+		}
+	});
+//	alert('mygroup='+mygroup + ' students_count='+(parseInt(students_count)-1));
+	return students_count;
 }
 
 //This function select table
@@ -1621,11 +1660,9 @@ async function salvarRegistro(mygroup, mycode, myorder, mytext) {
 	var array = getArrayAnswers(aswers);
 
 //	alert('setStudentFromImport:\n'+array[0]+', '+array[1] + '\n '+array[2]+', '+array[3] + '\n '+array[4]+', '+array[5] + '\n '+array[6]+', '+array[7] + '\n '+array[8]+', '+array[9] + '\n '+array[10]+', '+array[11] + '\n '+array[12]+', '+array[13] + '\n '+array[14]+', '+array[15]);
-//	setStudentFromImport(mygroup, mycode, myorder, question, array[0], array[1], array[2], array[3], array[4], array[5], array[6], array[7]);
 	setStudentFromImport(mygroup, mycode, myorder, question, array[0], array[1], array[2], array[3], array[4], array[5], array[6], array[7], array[8], array[9], array[10], array[11], array[12], array[13], array[14], array[15]);
 	var studentId = $('form').attr('data-student-id');
 	addStudentImportConfig(studentId, mygroup, mycode);
-//	setTimeout(() => { updateStudentPlayOrder(mygroup) }, 1000); // Executa após 5 segundos para esperar o processo de insert terminar
 }
 
 //This function confirm import
@@ -2029,7 +2066,10 @@ function getStudentFromForm(studentId, mygroup, mycode) {
 		myoptionkey6: $('#myoptionkey6').val(),
 		myoptionkey7: $('#myoptionkey7').val(),
 		myoptionkey8: $('#myoptionkey8').val(),
-		mypoints: '0'
+		mypoints: '0',
+		mynaorespondidas: '0',
+		myincorretas: '0',
+		mycorretas: '0'
     };
     return student;
 }
