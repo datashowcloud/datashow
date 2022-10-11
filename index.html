@@ -3,8 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <!-- title>DataShow JsStore</title -->
-    <title>DataShowCloud</title>
+    <title>Sim</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <script src="scripts/jquery.js"></script>
     <script src="scripts/bootstrap.js"></script>
@@ -24,56 +23,64 @@
 	</style>
 </head>
 
-<body id="myBody" background="gallery/paper.jpeg">
+<body id="myBody" bgcolor="white">
 
     <div class="row row-centered " style="margin-top:0px;">
-        
 		
-		<div class="col-xs-12 col-sm-10 col-centered ">
-			<table border=0 align=center><tr><td>
-				<l id="bSearch">
-					<input type="text" id="txtSearch" value="" placeholder="Digite aqui na pesquisa" style="width:200px; height:34px;"><button id="btnSearch" style="height:34px; width:40px;" class="btn btn-info">
-					<i class="fa fa-search"></i></button>
-				</l>
-				
-				<select id="selMycodeTextGroup" name="selMycodeTextGroup" style="height:34px; display:'none';">
-					<option value="0" selected>letras</option>
-					<option value="1">bíblia</option>
-					<option value="2">artes</option>
-				</select>
-				
-				<p/><p/>
-				<button id="btnLogoTop" class="btn btn-info" onclick="showLogo();"><i class="fa fa-minus"></i> Logo</button>
-				<button id="btnFreezeTop" class="btn btn-danger" onclick="freezeDataShow(localStorage.getItem('valueAoVivo'));">Ao Vivo</button>
-				<button id="btnShowStudent" class="btn btn-default"> <i class="fa fa-repeat"></i> Telas</button>
-				<button id="btnAddNewManual" class="btn btn-default"><i class="fa fa-plus"></i></button>
-				<button id="btnGear" class="btn btn-default" style="display:'none';"> <i class="fa fa-cog"></i></button>
-<!--				<button id="btnCompleteTop" class="btn btn-default" onclick="searchComplete();"><i class="fa fa-minus"></i></button>
-				<button id="btnVideoPlayTop" class="btn btn-default" onclick="videoPlayPause();"><i class="fa fa-pause"></i></button>
--->
-			</td></tr></table>
-		</div>
+		<table id="tableButtons" border=0 align=center style="display:none;">
+			<tr>
+				<td>
+					&nbsp;<select id="selectMygroup" name="selectMygroup" class="btn btn-default" style="height:34px; display:none;">
+						<!-- option value="00">Configurações</option -->
+						<option value="10" selected>Nível 1.0</option>
+						<option value="11">Nível 1.1</option>
+						<option value="12">Nível 1.2</option>
+						<option value="13">Nível 1.3</option>
+						<option value="14">Nível 1.4</option>
+						<option value="20">Nível 2.0</option>
+						<option value="21">Nível 2.1</option>
+						<option value="22">Nível 2.2</option>
+						<option value="23">Nível 2.3</option>
+						<option value="30">Nível 3.0</option>
+						<option value="31">Nível 3.1</option>
+						<option value="32">Nível 3.2</option>
+						<option value="33">Nível 3.3</option>
+						<option value="40">Nível 4.0</option>
+						<option value="41">Nível 4.1</option>
+						<option value="42">Nível 4.2</option>
+						<option value="43">Nível 4.3</option>
+					</select>
+					<!-- button id="btnPlay" style="height:34px; width:40px; display:'none';" class="btn btn-info"><i class="fa fa-play"></i></button -->
+					<!-- button id="btnRefresh" style="height:34px; width:40px; display:'none';" class="btn btn-default"><i class="fa fa-refresh"></i></button -->
+					<button id="btnDropDb" class="btn btn-default"> <font color=green><i class="fa fa-trash"></i></font> Restaurar Padrão de Fábrica</button>
+					<button id="btnNightDay" class="btn btn-default" style="display:'none';"> <i class="fa fa-adjust"></i></button>
+					<button id="btnGear" class="btn btn-info" style="display:none;"> <i class="fa fa-cog"></i></button>
+					<l id="bSearch">
+						<input type="text" id="txtSearch" value="" placeholder="Digite aqui na pesquisa" style="width:100px; height:34px; display:none;"><button id="btnSearch" style="height:34px; width:40px; display:none;" class="btn btn-info">
+						<i class="fa fa-search"></i></button>
+					</l>
+				</td>
+			</tr>
+		</table>
 		
 		<div id="divconfig" style="display:none;">
-			<label class="btn btn-default" style="cursor:default; width:300px;">
-			Em conformidade com a Lei 13.709/18
-			<br/>- Lei Geral de Proteção de Dados Pessoais,
-			<br/>concordo, autorizo, reconheço e aceito
-			<br/>a coleta de dados
-			<br/>com a finalidade exclusiva de atualizar
-			<br/>e manter na ferramenta DataShowCloud&#174;
-			<br/>em um prazo inderteminado.
-			<br/>Declaro que não farei cópia da ferramenta,
-			<br/>usarei licença e autorização prévia
-			<br/>e são verdadeiras as informações fornecidas.
-			</label>			
+			<label id="lei13709" class="btn btn-default" style="cursor:default; width:300px; display:none;">
+				Em conformidade com a Lei 13.709/18
+				<br/>- Lei Geral de Proteção de Dados Pessoais,
+				<br/>concordo, autorizo, reconheço e declaro
+				<br/>que não farei cópia da ferramenta
+				<br/>DataShowCloud.
+			</label>
+			<br/>
+			<!-- input type="text" name="config_myowner" size="16" id="config_myowner" maxlength="6" style="width:300px;" value="" placeholder="digite sua chave ou licença... (opcional)" -->
+			<!-- br/><br/ -->
+			<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px;">Primeiro vamos configurar</div>
 			<br/><br/>
-			<button id="btnIndexConfigurar" class="btn btn-info" style="padding:9px 15px 9px 15px; width:300px;"> Configurar DataShow (clique aqui) <i class="fa fa-forward"></i> </button>
-			<!--p/><p/><button id="btnCertifications" class="btn btn-default" style="padding:9px 15px 9px 15px;"> Certificações <i class="fa fa-forward"></i> </button -->
+			<button id="btnIndexConfigurar" class="btn btn-info" style="padding:9px 15px 9px 15px; width:150px;">Começar</button>
+			<br/><br/><br/>
 		</div>
 		
-		
-		<table id="tblGrid" style="width:98%" class="table table-hover ">
+		<table id="tblGrid" style="width:98%; display:none;" ZZZclass="table table-hover ">
 			<tbody>
 					<!--
 				<div id="botoes" style="display:none; text-align:center;">
@@ -82,451 +89,290 @@
 			</tbody>
 		</table>
 
-		<div id="divcontent" style="display:none;">
-		</div>
+		<div id="divcontent" style="display:'none';"></div>
 
+		<!-- form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post" -->
+		<!-- /form -->
 		
+		<div class="form-group" id="divFormSim" style="display:none;">
+			<font size=4.9 style=text-align:justify>
+
+				<a id="top"></a>
+				
+				<table id="tableFormSimButtons" border=0 align=center width="100%" style="display:'none';">
+					<tr><td>
+						<button id="btnPrevious" class="btn btn-default" style="display:'none';"> <i class="fa fa-chevron-left"></i> Anterior</button>
+						<button id="btnPause" class="btn btn-danger" style="display:'none';"><i class="fa fa-times"></i> Sair</button>
+						<button id="btnNext" class="btn btn-default" style="display:'none';">Próximo <i class="fa fa-chevron-right"></i></button>
+						<button id="btnBackward" class="btn btn-danger" style="display:none;"> <i class="fa fa-refresh"></i> </button>
+						<button id="btnEnd" class="btn btn-success" style="display:none;"> <i class="fa fa-check"></i> FIM</button>
+					</td></tr>
+				</table>
+				<table id="tableFormSimQuestions" border=0 align=center width="100%" style="display:'none';">
+					<tr><td id="mytextSim" style="display:'none'; text-align:justify;">
+					</td></tr>
+					<tr><td id="mycorrect1Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect1answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect2Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect2answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect3Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect3answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect4Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect4answer"></div>
+					</td></tr>
+
+					<tr><td id="mycorrect5Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect5answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect6Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect6answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect7Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect7answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect8Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect8answer"></div>
+					</td></tr>
+					<tr><td>
+						<input type="text" id="loading" value="CARREGANDO..." hidden=""> <!-- essa mensagem aparecerá toda vez que estiver carregando uma página com lentidão -->
+						<input type="text" id="mygroupSim" value="" style="display:none;">
+						<input type="text" id="mycodeSim" value="" style="display:none;">
+						<input type="text" id="myorderSim" value="" style="display:none;">
+						<input type="text" id="myidSim" value="" style="display:none;">
+					</td></tr>
+				</table>
+				<table id="tableFormSimDashboard" border=0 align=center width="320px" style="display:'none';">
+					<tr><td nowrap id="txtCalculo"></td></tr>
+					<tr><td nowrap>
+						<input type="text" id="txtIncorretas" value="Incorretas" class="btn btn-default" style="width:250px; color:red;" readonly />
+						<i class="fa fa-remove" style="color:red;"></i>
+					</td></tr>
+					<tr><td nowrap>
+						<input type="text" id="txtCorretas" value="Corretas" class="btn btn-default" style="width:250px; color:green;" readonly />
+						<i class="fa fa-check" style="color:green;"></i>
+					</td></tr>
+					<tr><td nowrap>
+						<input type="text" id="txtNaoRespondidas" value="Não Respondidas" class="btn btn-default" style="width:250px; color:gray;" readonly />
+						<i class="fa fa-star" style="color:gray;"></i>
+					</td></tr>
+					<tr><td nowrap>
+						<input type="text" id="txtTotal" value="Total" class="btn btn-default" style="width:250px; display:none;" readonly >
+					</td></tr>
+				</table>
+				<table id="tableLinkhelp" border=0 align=center style="display:'none';">
+					<tr><td id="help" style="display:none; text-align:justify;">
+						<div id="divlinkhelp"></div>
+					</td></tr>
+				</table>
+			</font>
+		</div>
 		
-		<form id="formAddUpdate" class="form-horizontal" role="form" style="margin-top:50px; display:none;">
-			<div class="form-group">
-				<div class="col-sm-7" style="width:90%;"> <textarea id="mytext" rows="9" style="width:90%;" placeholder="Preencha <p> e o título e o autor em uma linha embaixo da outra. Preencha a letra completa com um espaço separador."></textarea>
-				</div>
-			</div>
-			<div class="form-group">
-				<button id="btnSubmit" type="button" class="btn btn-primary" style="padding:9px 15px 9px 15px;">
-					<i class="fa fa-check"></i> <span>Salvar Alteração</span>
-				</button>
-				<br/>
-				<br/><button id="btnCancel" type="button" class="btn btn-info" style="padding:9px 15px 9px 15px;margin-left:10px; ">
-					<i class="fa fa-times"></i> Fechar
-				</button>
-			</div>
-			<div class="form-group">
-				<label for="mycode" style="display:'none';">Code:</label>
-					<input type="text" size="20" id="mycode" placeholder="título e autor" readonly/>
-				<br/>
-				<label for="myorder" style="display:'none';">Order:</label>
-					<input type="text" size="1" id="myorder"/>
-				<br/>
-				<label for="myversion" style="display:'none';">Version:</label>
-					<input type="text" size="1" id="myversion" value="0" style="display:'none';" />
-				<br/>
-				<label for="myrepeated" style="display:'none';">Repeated:</label>
-					<select id="myrepeated">
-						<option value="0" selected>letra completa</option>
-						<option value="1">repetida (esconder)</option>
-					</select>
-				<br/>
-				<label for="myowner" style="display:'none';">Owner:</label>
-					<input type="text" size="1" id="myowner" value="IIRF" style="display:'none';" /> <!-- HOPE -->
-			</div>
-		</form>
-		
+		<div class="form-group" id="divFormAddUpdate" style="display:none;">
+			<table border=0 align=center width="98%"><tr><td>
+				&nbsp;
+				<b id="FormularioEditorPerguntas">Formulário Editor de Perguntas</b>
+				<button id="btnCancel" class="btn btn-danger" style="display:'none';"> <i class="fa fa-times"></i> </button>
+				&nbsp;
+				<p/><p/>
+				<!-- p/><p/><button id="btnCancel" type="button" class="btn btn-info" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-times"></i> Fechar</button -->
+				<p/><button id="btnSubmit" type="button" class="btn btn-success" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-check"></i> Salvar</button>
+				<p/><p/><select id="mygroup" name="mygroup" style="height:35px; display:'none';">
+					<!-- option value="00">Configurações</option -->
+					<option value="10" selected>Nível 1.0</option>
+					<option value="11">Nível 1.1</option>
+					<option value="12">Nível 1.2</option>
+					<option value="13">Nível 1.3</option>
+					<option value="14">Nível 1.4</option>
+					<option value="20">Nível 2.0</option>
+					<option value="21">Nível 2.1</option>
+					<option value="22">Nível 2.2</option>
+					<option value="23">Nível 2.3</option>
+					<option value="30">Nível 3.0</option>
+					<option value="31">Nível 3.1</option>
+					<option value="32">Nível 3.2</option>
+					<option value="33">Nível 3.3</option>
+					<option value="40">Nível 4.0</option>
+					<option value="41">Nível 4.1</option>
+					<option value="42">Nível 4.2</option>
+					<option value="43">Nível 4.3</option>
+				</select>
+				<select id="mycode" name="mycode" style="height:35px; display:'none';"></select>
+				<select id="myorder" name="myorder" style="height:35px; display:'none';"></select>
+				<p/>
+				<p/><textarea name="mytext" id="mytext" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui..."></textarea>
+				<font style="color:green;">
+					Corretas:
+					<br/>
+					<textarea name="myoption1" id="myoption1" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey1" id="myoptionkey1" style="width:95%;" rows=1 placeholder="chave explicação 1..."></textarea>
+					<br/><textarea name="myoption2" id="myoption2" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey2" id="myoptionkey2" style="width:95%;" rows=1 placeholder="explicação 2..."></textarea>
+					<br/><textarea name="myoption3" id="myoption3" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey3" id="myoptionkey3" style="width:95%;" rows=1 placeholder="explicação 3..."></textarea>
+					<br/><textarea name="myoption4" id="myoption4" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey4" id="myoptionkey4" style="width:95%;" rows=1 placeholder="explicação 4..."></textarea>
+				</font>
+				
+				<font style="color:red; text-align:left;">
+					<br/>
+					Incorretas:
+					<textarea name="myoption5" id="myoption5" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey5" id="myoptionkey5" style="width:95%;" rows=1 placeholder="explicação 5..."></textarea>
+					<br/><textarea name="myoption6" id="myoption6" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey6" id="myoptionkey6" style="width:95%;" rows=1 placeholder="explicação 6..."></textarea>
+					<br/><textarea name="myoption7" id="myoption7" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey7" id="myoptionkey7" style="width:95%;" rows=1 placeholder="explicação 7..."></textarea>
+					<br/><textarea name="myoption8" id="myoption8" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey8" id="myoptionkey8" style="width:95%;" rows=1 placeholder="explicação 8..."></textarea>
+				</font>
+			</td></tr></table>
+		</div>
 		
 		<div class="form-group" id="divGear" style="display:none;">
-<!--			<button id="btnShowStudent" class="btn btn-danger" style="padding:9px 15px 9px 15px; width:150px;"> <i class="fa fa-repeat"></i> Sincroniza Telas </button>
-			<br/><br/>
-			<button id="btnFreeze" class="btn btn-info" style="padding:9px 15px 9px 15px; width:150px;"> <i class="fa fa-lock"></i> Congela Tela 2</button>
-			<button id="btnLogo" class="btn btn-success" style="padding:9px 15px 9px 15px; width:150px;"> <i class="fa fa-minus"></i> Logotipo</button>
--->
-			<!-- button id="btnAddStudent" class="btn btn-datashow" style="width:150px;"> <i class="fa fa-plus"></i> Adiciona Letra </button -->
+			<table border=1 align=center><tr><td nowrap>
+				&nbsp;
+				<b id="FormularioEditorConfiguracoes">Formulário Editor de Configurações</b>
+				<button id="btnCancelImport" class="btn btn-danger" style="display:'none';"> <i class="fa fa-times"></i> </button>
+				&nbsp;
+				<p/><p/>
+			<!-- form id="formAdd" ZZZaction="https://formspree.io/f/xrgjojko" method="post" -->
+			<!-- /form -->
+				<select id="selTextColor" name="selTextColor" class="btn btn-info" style="padding:9px 15px 9px 15px; width:250px; height:35px; display:'none';">
+					<option value="gray" selected>Cor Letra: Cinza</option>
+					<option value="white">Cor Letra: Branca</option>
+					<option value="black">Cor Letra: Preta</option>
+					<option value="green">Cor Letra: Verde</option>
+					<option value="yellow">Cor Letra: Amarela</option>
+					<option value="blue">Cor Letra: Azul</option>
+				</select>
+				<p/><p/>
+				<select id="selBackground" name="selBackground" class="btn btn-info" style="padding:9px 15px 9px 15px; width:250px; height:35px; display:'none';">
+					<option value="white" selected>Cor Fundo: Branco</option>
+					<option value="black">Cor Fundo: Preto</option>
+					<option value="yellow">Cor Fundo: Amarelo</option>
+					<option value="blue">Cor Fundo: Azul</option>
+					<option value="gray">Cor Fundo: Cinza</option>
+				</select>
+				<p/><p/>
+				<select id="selButtonColor" name="selButtonColor" class="btn btn-default" style="padding:9px 15px 9px 15px; width:250px; height:35px; display:'none';">
+					<option value="btn-colors" selected>Cor Botão: Padrão</option>
+					<option value="btn-info">Cor Botão: Azul</option>
+					<option value="btn-default">Cor Botão: Branco</option>
+					<option value="btn-warning">Cor Botão: Laranja</option>
+					<option value="btn-danger">Cor Botão: Vermelho</option>
+					<option value="btn-success">Cor Botão: Verde</option>
+					<option value="btn-primary">Cor Botão: Azul Escuro</option>
+					<option value="btn-link">Cor Botão: Link</option>
+				</select>
+				<!-- p/><p/><button id="btnDropDb" class="btn btn-default" style="padding:9px 15px 9px 15px; width:250px;"> <font color=red><i class="fa fa-trash"></i></font> Restaurar Padrão de Fábrica</button -->
+				<p/><p/><button id="btnAddNewManual" class="btn btn-default" style="padding:9px 15px 9px 15px; width:250px; display:none;"><i class="fa fa-plus"></i> Adicionar Nova Pergunta</button>
+				<p/><p/><button id="btnShowHelp" class="btn btn-default" style="padding:9px 15px 9px 15px; width:250px; display:none;"> <i class="fa fa-book"></i> Tutorial</button>
+				<p/><p/><button id="btnSelectCountAll" class="btn btn-default" style="display:none; width:250px;"> <i class="fa fa-asterisk"></i> Count All</button>
+				<p/><p/><button id="btnDeleteLirics" class="btn btn-default" style="display:none; width:250px;"> <i class="fa fa-minus"></i> Clear Lirycs</button>
+
+			</td></tr></table>
 			
-<!--			<hr/>
-			<form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post">
-				<textarea name="contentAddNewManual" id="contentAddNewManual" style="width:90%;" rows=10 placeholder="Use <p> para separar várias letras de música diferentes. Logo abaixo do <p> deve conter a identificação da letra, exemplo: autor e título."></textarea>
-				<br/><button id="btnConfirmImportManual" class="btn btn-info" style="padding:9px 15px 9px 15px;"> <i class="fa fa-plus"></i> Adicionar Nova Letra</button>
--->
-			<label style="font-size:30px; color:green;">DA</label>
-			<label style="font-size:30px; color:#FFD700;">TA</label>
-			<label style="font-size:30px; color:#3333AA;">SHOW&#174;</label>
-			
-			<br/>Meu Nome (até 6 caractreres): <br/><input type="text" name="config_myowner" size="16" id="config_myowner" maxlength="6" style="width:50px;" value="IIRF"/ alt="HOPE">
-			<br/>Meu Plano de Fundo: <br/><textarea type="text" name="config_myfundo" id="config_myfundo" size="16" style="width:250px;">gallery/fundo.jpeg</textarea>
-			<br/>Meu Logotipo: <br/><textarea type="text" name="config_mylogo" id="config_mylogo" size="16" style="width:250px;">logo/logo.png</textarea>
-<!--			</form>
--->
-			<br/><br/><button id="btnDropDb" class="btn btn-default" style="padding:9px 15px 9px 15px;"> <i class="fa fa-remove"></i> Restaurar Padrão de Fábrica</button>
-			<br/><br/><button id="btnShowHelp" class="btn btn-default" style="padding:9px 15px 9px 15px; width:150px;"> <i class="fa fa-book"></i> Tutorial</button>
-			<br/><br/><button id="btnCancelImport" class="btn btn-info" style="padding:9px 15px 9px 15px;"> <i class="fa fa-times"></i> Fechar</button>			
-			<br/><br/><i>datashowcloud2022@gmail.com
-			<br/>versão 02.10.22.18.03</i>
-
-			<div style="display:none;">
-				<br/><button id="btnSelectCountAll" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-asterisk"></i> Count All</button>
-				<br/><button id="btnDeleteLirics" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-minus"></i> Clear Lirycs</button>
-				<br/><button id="btnDeleteBible" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-minus"></i> Clear Bible</button>
-				<br/><button id="btnDeleteArt" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-minus"></i> Clear Arts</button>
-			</div>
-
-			<div style="display:none;">
-				<br/><br/>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-envelope"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-star"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-user"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-film"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-check"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-th"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-remove"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-signal"></i> </button>
-				<br/>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-cog"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-trash"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-home"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-file"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-road"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-download"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-inbox"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-play"></i> </button>
-				<br/>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-repeat"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-refresh"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-list"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-lock"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-flag"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-headphones"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-off"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-down"></i> </button>
-				<br/>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-up"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-qrcode"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-barcode"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-tag"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-tags"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-book"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-bookmark"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-print"></i> </button>
-				<br/>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-camera"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-font"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-bold"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-italic"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-text-height"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-text-width"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-left"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-center"></i> </button>
-				<br/>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-right"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-justify"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-list"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-dedent"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-outdent"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-indent"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-video-camera"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-photo"></i> </button>
-				<br/>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-pencil"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-map-marker"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-adjust"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-tint"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-edit"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-share-square-o"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-check-square-o"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-arrows"></i> </button>
-				<br/>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-step-backward"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-fast-backward"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-backward"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-play"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-pause"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-pencil-square-o"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-forward"></i> </button>
-				<br/>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-fast-forward"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-step-forward"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-eject"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-chevron-left"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-chevron-right"></i> </button>
-				<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
-			</div>
-		</div>
-
-		<div class="form-group" id="divGearAddNewLiryc" style="display:none;">
-			<form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post">
-				<label style="font-size:30px; color:green;">DA</label>
-				<label style="font-size:30px; color:#FFD700;">TA</label>
-				<label style="font-size:30px; color:#3333AA;">SHOW&#174;</label>
-				
-				<br/>Nome música: <input type="text" size="25" id="nomemusicaAddNewManual" maxlength="60" value="" placeholder="Informe o nome ou título...">
-				<br/>
-				<br/>Nome autor: <input type="text" size="25" id="nomeautorAddNewManual" maxlength="60" value="" placeholder="Informe o autor...">
-				<br/>Letra da música:
-				<br/><textarea name="contentAddNewManual" id="contentAddNewManual" style="width:90%;" rows=10 placeholder="ATENÇÃO! NÃO coloque o nome da música e autor aqui... Coloque somente a letra da música..."></textarea>
-				<br/><button id="btnConfirmImportManual" class="btn btn-primary" style="padding:9px 15px 9px 15px;"> <i class="fa fa-plus"></i> Salvar Nova Letra</button>
-			</form>
-			<br/><button id="btnCancelAddNewManual" class="btn btn-info" style="padding:9px 15px 9px 15px;"> <i class="fa fa-times"></i> Fechar</button>
 		</div>
 		
+		<!--versão-->
+		<br/>
+		<font color=gray>v11.10.02.08 &#174;</font>
+		<br/>
+		<font color=gray size=1>datashowcloud2022@gmail.com</font>
+
+		<div style="display:none;">
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-envelope"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-star"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-user"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-film"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-check"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-check-square-o"></i> </button>
+			<br/>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-remove"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-signal"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-cog"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-trash"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-home"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-file"></i> </button>
+			<br/>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-road"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-download"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-inbox"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-play"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-repeat"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-refresh"></i> </button>
+			<br/>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-list"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-lock"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-unlock"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-flag"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-off"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-down"></i> </button>
+			<br/>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-up"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-qrcode"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-barcode"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-tag"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-tags"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-book"></i> </button>
+			<br/>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-bookmark"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-print"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-camera"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-font"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-bold"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-italic"></i> </button>
+			<br/>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-text-height"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-text-width"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-left"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-center"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-right"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-justify"></i> </button>
+			<br/>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-list"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-dedent"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-outdent"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-indent"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-video-camera"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-photo"></i> </button>
+			<br/>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-pencil"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-map-marker"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-adjust"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-tint"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-edit"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-share-square-o"></i> </button>
+			<br/>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-arrows"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-step-backward"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-fast-backward"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-backward"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-play"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-th"></i> </button>
+			<br/>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-pause"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-pencil-square-o"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-forward"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-fast-forward"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-step-forward"></i> </button>
+			<br/>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-eject"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-chevron-left"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-chevron-right"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-headphones"></i> </button>
+		</div>
+
 	</div>
 
 
 
 		<form id="formBible" class="form-horizontal" role="form" style="margin-top:50px; display: none;">
-			<div class="form-group" align=center>
-
-				<table border=1>
-					<tr>
-						<!--td><label class="btn btn-info">Pentateuco</label></td-->
-						<td style="text-align:left;">
-						
-							<label class="btn btn-info" style="width:150px;">Antigo Testamento</label>
-							
-							<i class="fa fa-forward" style="color:blue;"></i> <label style="color:blue;">1. Pentateuco</label> <i class="fa fa-forward" style="color:blue;"></i>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('genesis ')">GÊNE</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('exodo ')">ÊXOD</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('levitico ')">LEVÍ</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('numeros ')">NÚME</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('deuteronomio ')">DEUT</a>
-
-							<i class="fa fa-forward" style="color:blue;"></i> <label style="color:blue;">2. Históricos</label> <i class="fa fa-forward" style="color:blue;"></i>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('josue ')">JOSU</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('juizes ')">JUÍZ</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('rute ')">RUTE</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('1.samuel ')">1.SAMU</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('2.samuel ')">2.SAMU</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('1.reis ')">1.REIS</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('2.reis ')">2.REIS</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('1.cronicas ')">1.CRÔN</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('2.cronicas ')">2.CRÔN</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('esdras ')">ESDR</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('neemias ')">NEEM</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('ester ')">ESTE</a>
-
-							<i class="fa fa-forward" style="color:blue;"></i> <label style="color:blue;">3. Poéticos</label> <i class="fa fa-forward" style="color:blue;"></i>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('jo ')">JÓ</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('salmos ')">SALM</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('proverbios ')">PROV</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('eclesiastes ')">ECLE</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('canticos ')">CÂNT</a>
-
-							<i class="fa fa-forward" style="color:blue;"></i> <label style="color:blue;">4. Profetas Maiores</label> <i class="fa fa-forward" style="color:blue;"></i>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('isaias ')">ISAÍ</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('jeremias ')">JERE</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('lamentacoes ')">LAME</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('ezequiel ')">EZEQ</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('daniel ')">DANI</a>
-
-							<i class="fa fa-forward" style="color:blue;"></i> <label style="color:blue;">5. Profetas Menores</label> <i class="fa fa-forward" style="color:blue;"></i>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('oseias ')">OSÉI</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('joel ')">JOEL</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('amos ')">AMÓS</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('obadias ')">OBAD</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('jonas ')">JONA</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('miqueias ')">MIQU</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('naum ')">NAUM</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('habacuque ')">HABA</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('sofonias ')">SOFO</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('ageu ')">AGEU</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('zacarias ')">ZACA</a>
-							<a style="color:blue;border:1px solid #CCCCCC;" onclick="chooseBook('malaquias ')">MALA</a>
-						</td>
-					</tr>
-
-					<tr>
-						<!--td>Evangelhos</td-->
-						<td style="text-align:left;">
-							<label class="btn btn-success" style="width:150px;">Novo Testamento</label>
-							
-							<i class="fa fa-forward" style="color:green;"></i> <label style="color:green;">1. Evangelhos</label> <i class="fa fa-forward" style="color:green;"></i>
-							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('mateus ')">MATE</a>
-							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('marcos ')">MARC</a>
-							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('lucas ')">LUCA</a>
-							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('joao ')">JOÃO</a>							
-
-							<i class="fa fa-forward" style="color:green;"></i> <label style="color:green;">2. Profético</label> <i class="fa fa-forward" style="color:green;"></i>
-							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('atos ')">ATOS</a>
-
-							<i class="fa fa-forward" style="color:green;"></i> <label style="color:green;">3. Epístolas de Paulo</label> <i class="fa fa-forward" style="color:green;"></i>
-							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('romanos ')">ROMA</a>
-							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('1.corintios ')">1.CORÍ</a>
-							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('2.corintios ')">2.CORÍ</a>
-							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('galatas ')">GÁLA</a>
-							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('efesios ')">EFÉS</a>
-							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('filipenses ')">FILI</a>
-							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('colossenses ')">COLO</a>
-							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('1.tessalonicenses ')">1.TESS</a>
-							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('2.tessalonicenses ')">2.TESS</a>
-							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('1.timoteo ')">1.TIMÓ</a>
-							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('2.timoteo ')">2.TIMÓ</a>
-							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('tito ')">TITO</a>
-							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('filemon ')">FILE</a>
-
-							<i class="fa fa-forward" style="color:green;"></i> <label style="color:green;">4. Epístolas Gerais</label> <i class="fa fa-forward" style="color:green;"></i>
-							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('hebreus ')">HEBR</a>
-							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('tiago ')">TIAG</a>
-							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('1.pedro ')">1.PEDR</a>
-							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('2.pedro ')">2.PEDR</a>
-							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('1.joao ')">1.JOÃO</a>
-							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('2.joao ')">2.JOÃO</a>
-							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('3.joao ')">3.JOÃO</a>
-							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('judas ')">JUDA</a>
-
-							<i class="fa fa-forward" style="color:green;"></i> <label style="color:green;">5. Profético</label> <i class="fa fa-forward" style="color:green;"></i>
-							<a style="color:green;border:1px solid #CCCCCC;" onclick="chooseBook('apocalipse ')">APOC</a>
-						</td>
-					</tr>
-				</table>
-
-
-
-				<table border=0 align=left>
-					<tr>
-						<td valign=top style="padding:5px 5px 5px 5px; border:0px;">
-							<label>Capítulo</label><br/>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('1')">01</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('2')">02</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('3')">03</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('4')">04</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('5')">05</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('6')">06</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('7')">07</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('8')">08</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('9')">09</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('10')">10</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('11')">11</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('12')">12</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('13')">13</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('14')">14</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('15')">15</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('16')">16</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('17')">17</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('18')">18</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('19')">19</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('20')">20</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('21')">21</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('22')">22</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('23')">23</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('24')">24</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('25')">25</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('26')">26</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('27')">27</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('28')">28</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('29')">29</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('30')">30</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('31')">31</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('32')">32</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('33')">33</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('34')">34</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('35')">35</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('36')">36</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('37')">37</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('38')">38</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('39')">39</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('40')">40</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('41')">41</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('42')">42</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('43')">43</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('44')">44</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('45')">45</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('46')">46</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('47')">47</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('48')">48</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('49')">49</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('50')">50</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('51')">51</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('52')">52</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('53')">53</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('54')">54</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('55')">55</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('56')">56</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('57')">57</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('58')">58</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('59')">59</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('60')">60</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('61')">61</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('62')">62</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('63')">63</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('64')">64</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('65')">65</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('66')">66</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('67')">67</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('68')">68</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('69')">69</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('70')">70</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('71')">71</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('72')">72</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('73')">73</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('74')">74</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('75')">75</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('76')">76</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('77')">77</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('78')">78</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('79')">79</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('80')">80</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('81')">81</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('82')">82</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('83')">83</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('84')">84</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('85')">85</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('86')">86</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('87')">87</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('88')">88</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('89')">89</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('90')">90</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('91')">91</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('92')">92</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('93')">93</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('94')">94</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('95')">95</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('96')">96</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('97')">97</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('98')">98</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('99')">99</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('100')">100</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('101')">101</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('102')">102</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('103')">103</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('104')">104</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('105')">105</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('106')">106</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('107')">107</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('108')">108</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('109')">109</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('110')">110</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('111')">111</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('112')">112</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('113')">113</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('114')">114</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('115')">115</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('116')">116</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('117')">117</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('118')">118</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('119')">119</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('120')">120</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('121')">121</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('122')">122</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('123')">123</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('124')">124</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('125')">125</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('126')">126</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('127')">127</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('128')">128</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('129')">129</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('130')">130</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('131')">131</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('132')">132</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('133')">133</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('134')">134</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('135')">135</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('136')">136</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('137')">137</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('138')">138</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('139')">139</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('140')">140</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('141')">141</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('142')">142</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('143')">143</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('144')">144</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('145')">145</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('146')">146</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('147')">147</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('148')">148</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('149')">149</button>
-							<button id="btnSubmitChapter" type="button" class="btn btn-default" onclick="chooseChapter('150')">150</button>
-						</td>
-					</tr>
-				</table>
-			</div>
 		</form>
 
     <link href="style/main.css " rel="stylesheet " type="text/css " />
