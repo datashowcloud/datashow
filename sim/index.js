@@ -1202,7 +1202,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				}
 			})
 		}
-		var varCount = '<div class="btn btn-success" style="font-size:10px;">' + parseInt(students_count - 1) + '</div>';
+		var varCount = '<div class="btn btn-success">' + parseInt(students_count - 1) + '</div>';
 
 
 
@@ -1212,7 +1212,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 		var varNivel = '<tr><td>FASE</td></tr>';
 		var varNivelLinha = '';
 		var varNivelMax = '';
-		var varButtonLineStyle = 'color:green;';
+		var varButtonLineStyle = 'color:green; font-size:18px;';
 		var varButtonLine = '<i class=\"fa fa-play\" style="color:green; font-size:16px;"></i>';
 		var varRestart = '';
 		
@@ -1249,7 +1249,6 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				;
 				varButtonLineStyle = 'color:gray;';
 				varButtonLine = '<i class=\"fa fa-check\" style="color:blue; font-size:15px;"></i>';
-//				varCount = '<div class="btn btn-default" style="font-size:10px;">' + '0' + '</div>';
 				varCount = '';
 		})
 
