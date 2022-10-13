@@ -5,6 +5,7 @@ var jsstoreCon = new JsStore.Connection();
 var CONST_NIVEL_MAX = 6;
 var CONST_FASE_MAX = 6;
 var CONST_MEDIUM_SEA_GREEN = '#3CB371';
+var CONST_DEEP_SKY_BLUE = '#00BFFF';
 var GLOBAL_textcolor = '';
 var GLOBAL_background = '';
 var GLOBAL_buttoncolor = '';
@@ -1205,6 +1206,9 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 			})
 		}
 		var varCount = '<div class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '">' + parseInt(students_count - 1) + '</div>';
+		if (parseInt(students_count - 1) == 0) {
+			varCount = '';
+		}
 
 
 
@@ -1214,7 +1218,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 		var varNivel = '<tr><td>FASE</td></tr>';
 		var varNivelLinha = '';
 		var varNivelMax = '';
-		var varButtonLineStyle = 'color:' + CONST_MEDIUM_SEA_GREEN + '; font-size:18px;';
+		var varButtonLineStyle = 'color:gray; font-size:18px;';
 		var varButtonLine = '<i class=\"fa fa-check\" style="color:' + CONST_MEDIUM_SEA_GREEN + '; font-size:16px;"></i>';
 		var varRestart = '';
 		
@@ -1250,7 +1254,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				+ "</" + varTdTh + ">"
 				;
 				varButtonLineStyle = 'color:gray;';
-				varButtonLine = '<i class=\"fa fa-check\" style="color:#1E90FF; font-size:15px;"></i>' + '<i class=\"fa fa-check\" style="color:#00BFFF; font-size:15px;"></i>' + '<i class=\"fa fa-check\" style="color:#87CEFA; font-size:15px;"></i>' + '<i class=\"fa fa-check\" style="color:#87CEEB; font-size:15px;"></i>';
+				varButtonLine = '<i class=\"fa fa-check\" style="color:' + CONST_DEEP_SKY_BLUE + '; font-size:15px;"></i>';
 				varCount = '';
 		})
 
