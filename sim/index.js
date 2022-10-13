@@ -4,6 +4,7 @@ var jsstoreCon = new JsStore.Connection();
 
 var CONST_NIVEL_MAX = 6;
 var CONST_FASE_MAX = 6;
+var CONST_MEDIUM_SEA_GREEN = '#3CB371';
 var GLOBAL_textcolor = '';
 var GLOBAL_background = '';
 var GLOBAL_buttoncolor = '';
@@ -1007,7 +1008,7 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 						+ '<a href="#"><i class="fa fa-bookmark" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
 
 	//					+ ' <a href="#' + student.myoption1 + '" class="btn btn-default"><b>?</b></a>'
-						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
+						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:' + CONST_MEDIUM_SEA_GREEN + '; display:none"><i class="fa fa-check"></i> <b>correta</b>'
 						+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
 						+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
 						if (student.myoption1 != '') {
@@ -1026,7 +1027,7 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 						+ '<a href="#"><i class="fa fa-bookmark" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
 
 	//					+ ' <a href="#' + student.myoption2 + '" class="btn btn-default"><b>?</b></a>'
-						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
+						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:' + CONST_MEDIUM_SEA_GREEN + '; display:none"><i class="fa fa-check"></i> <b>correta</b>'
 						+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
 						+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
 						if (student.myoption2 != '') {
@@ -1045,7 +1046,7 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 						+ '<a href="#"><i class="fa fa-bookmark" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
 
 	//					+ ' <a href="#' + student.myoption3 + '" class="btn btn-default"><b>?</b></a>'
-						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
+						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:' + CONST_MEDIUM_SEA_GREEN + '; display:none"><i class="fa fa-check"></i> <b>correta</b>'
 						+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
 						+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
 						if (student.myoption3 != '') {
@@ -1064,7 +1065,7 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 						+ '<a href="#"><i class="fa fa-bookmark" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
 
 	//					+ ' <a href="#' + student.myoption4 + '" class="btn btn-default"><b>?</b></a>'
-						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
+						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:' + CONST_MEDIUM_SEA_GREEN + '; display:none"><i class="fa fa-check"></i> <b>correta</b>'
 						+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
 						+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
 						if (student.myoption4 != '') {
@@ -1188,6 +1189,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 		}
 
 
+
 		var students_count = 0;
 		if (students != '') {
 			var students_group = await jsstoreCon.select({
@@ -1202,7 +1204,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				}
 			})
 		}
-		var varCount = '<div class="btn btn-success">' + parseInt(students_count - 1) + '</div>';
+		var varCount = '<div class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '">' + parseInt(students_count - 1) + '</div>';
 
 
 
@@ -1212,8 +1214,8 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 		var varNivel = '<tr><td>FASE</td></tr>';
 		var varNivelLinha = '';
 		var varNivelMax = '';
-		var varButtonLineStyle = 'color:green; font-size:18px;';
-		var varButtonLine = '<i class=\"fa fa-play\" style="color:green; font-size:16px;"></i>';
+		var varButtonLineStyle = 'color:' + CONST_MEDIUM_SEA_GREEN + '; font-size:18px;';
+		var varButtonLine = '<i class=\"fa fa-check\" style="color:' + CONST_MEDIUM_SEA_GREEN + '; font-size:16px;"></i>';
 		var varRestart = '';
 		
 		students.forEach(function (student) {
@@ -1248,7 +1250,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				+ "</" + varTdTh + ">"
 				;
 				varButtonLineStyle = 'color:gray;';
-				varButtonLine = '<i class=\"fa fa-check\" style="color:blue; font-size:15px;"></i>';
+				varButtonLine = '<i class=\"fa fa-check\" style="color:#836FFF; font-size:15px;"></i>' + '<i class=\"fa fa-check\" style="color:#836FFF; font-size:15px;"></i>';
 				varCount = '';
 		})
 
