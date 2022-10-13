@@ -1227,10 +1227,14 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 		students.forEach(function (student) {
 			if (student.mycode == '0') {
 				varTdTh = 'th';
-				varRestart = '&nbsp;<i class=\"fa fa-refresh\" style=\"' + varButtonRestart + '\"></i> <a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\">refazer</a>';
+				if (parseInt(students_count - 1) == 0) {
+					varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '"><i class=\"fa fa-refresh\"></i> refazer</button></a>';
+				} else {
+					varRestart = '&nbsp;<i class=\"fa fa-refresh\" style=\"' + varButtonRestart + '\"></i> <a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\">refazer</a>';
+				}
 			} else {
 				varTdTh = 'td';
-				varRestart = '<a href=\"#\" class=\"restart\"><i class=\"fa fa-refresh\" style=\"height:25px; ' + varButtonRestart + '\"></i></a>';
+				varRestart = '<a href=\"#\" class=\"restart\"><i class=\"fa fa-refresh\" style=\"height:25px; ' + 'color:gray; font-size:18px;' + '\"></i></a>';
 			}
 			
 			if (varNivel != student.mygroup.substring(0, 1)) {
@@ -1254,8 +1258,10 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				+ ' <td>' + '<a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + ' ' + varCount +  '</a>' + ' </td>'
 				+ "</" + varTdTh + ">"
 				;
+				
 				varButtonLineStyle = 'color:gray;  font-size:18px;';
 				varButtonLine = '<i class=\"fa fa-check\" style="color:' + CONST_DEEP_SKY_BLUE + '; font-size:18px;"></i>';
+				varButtonRestart = 'color:gray; font-size:18px;';
 				varCount = '';
 		})
 
