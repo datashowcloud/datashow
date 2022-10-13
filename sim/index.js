@@ -1250,7 +1250,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				+ "</" + varTdTh + ">"
 				;
 				varButtonLineStyle = 'color:gray;';
-				varButtonLine = '<i class=\"fa fa-check\" style="color:#836FFF; font-size:15px;"></i>' + '<i class=\"fa fa-check\" style="color:#836FFF; font-size:15px;"></i>';
+				varButtonLine = '<i class=\"fa fa-check\" style="color:#0000CD; font-size:15px;"></i>' + '<i class=\"fa fa-check\" style="color:#6495ED; font-size:15px;"></i>' + '<i class=\"fa fa-check\" style="color:#4169E1; font-size:15px;"></i>' + '<i class=\"fa fa-check\" style="color:#1E90FF; font-size:15px;"></i>';
 				varCount = '';
 		})
 
