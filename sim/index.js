@@ -1205,9 +1205,11 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				}
 			})
 		}
+		var varButtonRestart = 'color:gray; font-size:18px;';
 		var varCount = '<div class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '">' + parseInt(students_count - 1) + '</div>';
 		if (parseInt(students_count - 1) == 0) {
 			varCount = '';
+			varButtonRestart = 'color:' + CONST_MEDIUM_SEA_GREEN + '; font-size:18px;';
 		}
 
 
@@ -1219,16 +1221,16 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 		var varNivelLinha = '';
 		var varNivelMax = '';
 		var varButtonLineStyle = 'color:gray; font-size:18px;';
-		var varButtonLine = '<i class=\"fa fa-check\" style="color:' + CONST_MEDIUM_SEA_GREEN + '; font-size:16px;"></i>';
+		var varButtonLine = '<i class=\"fa fa-check\" style="color:' + CONST_MEDIUM_SEA_GREEN + '; font-size:18px;"></i>';
 		var varRestart = '';
 		
 		students.forEach(function (student) {
 			if (student.mycode == '0') {
 				varTdTh = 'th';
-				varRestart = '&nbsp;<i class=\"fa fa-refresh\" style=\"' + varButtonLineStyle + '\"></i> <a href=\"#\" class=\"restart\" style=\"' + varButtonLineStyle + '\">refazer</a>';
+				varRestart = '&nbsp;<i class=\"fa fa-refresh\" style=\"' + varButtonRestart + '\"></i> <a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\">refazer</a>';
 			} else {
 				varTdTh = 'td';
-				varRestart = '<a href=\"#\" class=\"restart\"><i class=\"fa fa-refresh\" style=\"height:25px; ' + varButtonLineStyle + '\"></i></a>';
+				varRestart = '<a href=\"#\" class=\"restart\"><i class=\"fa fa-refresh\" style=\"height:25px; ' + varButtonRestart + '\"></i></a>';
 			}
 			
 			if (varNivel != student.mygroup.substring(0, 1)) {
@@ -1245,7 +1247,6 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 			htmlString += "<tr ItemId=" + student.id + '>'
 				+ "<td style=\"color:#000000; font-size:1px; \">" + student.mygroup + "</td>"
 				+ "<" + varTdTh + " id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " ZZZonClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
-				
 				+ '<a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + varButtonLine + ' ' + student.mytext +  '</a></' + varTdTh + '>'
 				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + student.mypoints + '%</' + varTdTh + '>'
 				+ "<" + varTdTh + " nowrap id=datashow" + student.id+"6" + " tabIndex=" + student.id+"6" + " ZZZonClick=\"datashow('" + student.id+"6" + "', 6, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 6, event, " + "" + (student.id+"6") + ");\" data-show='" + student.id+"6" + "'>"
@@ -1253,8 +1254,8 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				+ ' <td>' + '<a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + ' ' + varCount +  '</a>' + ' </td>'
 				+ "</" + varTdTh + ">"
 				;
-				varButtonLineStyle = 'color:gray;';
-				varButtonLine = '<i class=\"fa fa-check\" style="color:' + CONST_DEEP_SKY_BLUE + '; font-size:15px;"></i>';
+				varButtonLineStyle = 'color:gray;  font-size:18px;';
+				varButtonLine = '<i class=\"fa fa-check\" style="color:' + CONST_DEEP_SKY_BLUE + '; font-size:18px;"></i>';
 				varCount = '';
 		})
 
