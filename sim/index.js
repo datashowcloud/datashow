@@ -2140,6 +2140,7 @@ function getLinkHelp(keylink, hreflink, boldlink, textlink) {
 	}
 }
 
+
 function initLinkHelp() {
 	var linkhelp = ' <b>MINHA AJUDA</b> <br/><br/>';
 
