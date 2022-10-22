@@ -12,6 +12,7 @@ var GLOBAL_buttoncolor = '';
 var COL_LOGOTIPO = 5;
 
 window.onload = function () {
+	
 	refreshTableData('0', '', '', '');
     registerEvents();
     initDb();
@@ -1188,8 +1189,6 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				, order: [ {by: 'mygroup', type: 'desc'}, {by: 'mycode'} ]
 			});
 		}
-
-
 
 		var students_count = 0;
 		if (students != '') {

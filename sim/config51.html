@@ -24,10 +24,10 @@
 </head>
 
 <body id="myBody" ZZZbackground="gallery/paper.jpeg">
-		
+
 			<div style="display:'none'; text-align:center; ">
 				<!-- br/>Aguarde o resultado na janela da configuração -->
-				<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px;">Uma nova fase foi desbloqueada</div>
+				<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px;">Você passou ao próximo nível</div>
 				<br/><br/>
 				<button class="btn btn-info" onclick="window.open('index.html', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
 				
@@ -176,168 +176,28 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 3.4
+Sobre um serviço de web storage como o Amazon S3 é correto afirmar que as suas características principais são:
+
+<ok>
+Alta escalabilidade
+<key>Com o Amazon S3, você pode armazenar a quantidade de dados desejada e acessá-los quando precisar. Não é mais necessário adivinhar as necessidades futuras de armazenamento.</key>
+
+<ok>
+Redundância dos dados
+<key>O Amazon S3 proporciona infraestrutura durável para armazenar dados importantes e foi projetado para oferecer durabilidade de objetos de 99,999999999%. Seus dados são armazenados com redundância em várias instalações e diversos dispositivos em cada instalação.</key>
+
+Controle da infraestrutura de perto
+<key>Quando usa-se um serviço de armazenamento é justamente o contrário que estamos querendo, ou seja, terceirizar esse controle e as cópias defensivas.</key>
+
+<ok>
+Baixo custo
+<key>O Amazon S3 permite armazenar grandes quantidades de dados com custo muito baixo. Com o uso de políticas de ciclo de vida, que será visto no final do curso, pode-se definir políticas para migrar automaticamente dados para a categoria S3 Padrão – Acesso ocasional e para o Amazon Glacier.</key>
+
+Acessível somente pela interface web
+<key>O S3 disponibiliza APIs REST e SDKs completos para a integração fácil com tecnologias de terceiros.</key>
 
 <p>
-Qual das seguintes opções deve ser configurada para que uma função Lambda escreva dados no DynamoDB?
 
-<ok>
-IAM Roles
-<key>IAM Roles</key>
-
-SNS
-<key>SNS</key>
-
-API Gateway
-<key>API Gateway</key>
-
-IAM Users
-<key>IAM Users</key>
-
-<p>
-Qual serviço oferece um grupo de ferramentas que podem ser usadas em conjunto ou individualmente para permitir que desenvolvedores de front-end da web e de dispositivos móveis criem aplicações seguras e escaláveis full-stack, com tecnologia desenvolvida pela AWS?
-
-AWS SDK
-<key>SDK</key>
-
-<ok>
-AWS Amplify
-<key>Amplify</key>
-
-AWS BeanStalk
-<key>Elastic Beanstalk</key>
-
-AWS Fargate
-<key>Fargate</key>
-
-<p>
-Quais serviços abaixo podem ser utilizados para fazer parte da implementação de uma esteira de CI/CD na AWS?
-<br/>(Escolha 2)
-
-AWS Jenkins
-<key>Não Se Aplica</key>
-
-AWS CodePublish
-<key>Não Se Aplica</key>
-
-<ok>
-AWS CodeBuild
-<key>CodeBuild</key>
-
-<ok>
-AWS CodeDeploy
-<key>CodeDeploy</key>
-
-<p>
-Qual é o serviço que através das melhores práticas, pode ser utilizado para te ajudar a identificar vulnerabilidades e desvios de segurança em aplicativos, antes de serem implantados ou enquanto estiverem em execução em ambiente de produção?
-
-AWS WAF
-<key>WAF</key>
-
-AWS GuardDuty
-<key>GuardDuty</key>
-
-<ok>
-AWS Inspector
-<key>Inspector</key>
-
-AWS Trusted Advisor
-<key>Trusted Advisor</key>
-
-<p>
-Qual é a classe de armazenamento do S3 que pode diminuir os custos, à medida que move os objetos automaticamente entre camadas, de acordo com a frequência de uso?
-
-S3 Glacier
-<key>Glacier</key>
-
-S3 Standard
-<key>Standard</key>
-
-<ok>
-S3 Intelligent-Tiering
-<key>Frequent Access</key>
-
-S3 Standard Infrequent Access
-<key>Frequent Access</key>
-
-<p>
-O desenho dos dados da sua aplicação inclui uma base de dados relacional, que será usada pontualmente e de forma imprevisível uma vez que você utilizará também o AWS Elastic Cache para reduzir o acesso aos dados. Qual é o tipo de Instância de banco de dados recomendado pra você ter mais economia neste contexto?
-
-<ok>
-On Demand
-<key>Instance Purchasing Options</key>
-
-Spot
-<key>Instance Purchasing Options</key>
-
-Dedicated Hosts
-<key>Instance Purchasing Options</key>
-
-Reserved
-<key>Instance Purchasing Options</key>
-
-<p>
-Usuários que fazem uso final de aplicações em cloud sem se preocuparem em como foram construídas e implementadas fazem uso de qual tipo de cloud?
-
-BaaS
-<key>BAAS</key>
-
-IaaS
-<key>IAAS</key>
-
-PaaS
-<key>PAAS</key>
-
-<ok>
-SaaS
-<key>SAAS</key>
-
-<p>
-Sua empresa iniciou um piloto de uma aplicação e ainda não tem a dimensão de quantos clientes irão utilizá-la. Essa aplicação precisa ter alta disponibilidade e o piloto tem previsão de duração de três meses. Qual plano de pagamento é o mais indicado para esse contexto?
-
-Reserved
-<key>Instance Purchasing Options</key>
-
-<ok>
-<key>Instance Purchasing Options</key>
-
-<key>Instance Purchasing Options</key>
-
-<key>Instance Purchasing Options</key>
-
-<p>
-Qual plano de suporte oferece um gerente técnico de conta para monitorar o ambiente proativamente e sugerir melhorias para otimização dos serviços?
-
-Basic
-<key>Support</key>
-
-Business
-<key>Support</key>
-
-Developer
-<key>Support</key>
-
-<ok>
-Enterprise
-<key>Support</key>
-
-<p>
-Um objeto de um Bucket do AWS S3 é composto por quais itens abaixo?
-<br/>(Selecione 2)
-
-<ok>
-Arquivo
-<key>S3</key>
-
-<ok>
-Metadados
-<key>S3</key>
-
-Policy
-<key>IAM Policies</key>
-
-Role
-<key>IAM Roles</key>
 
 <p>
 
