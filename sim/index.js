@@ -1,5 +1,4 @@
 
-
 var jsstoreCon = new JsStore.Connection();
 
 var CONST_NIVEL_MAX = 5;
@@ -12,7 +11,6 @@ var GLOBAL_buttoncolor = '';
 var COL_LOGOTIPO = 5;
 
 window.onload = function () {
-	
 	refreshTableData('0', '', '', '');
     registerEvents();
     initDb();
@@ -1190,6 +1188,8 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 			});
 		}
 
+
+
 		var students_count = 0;
 		if (students != '') {
 			var students_group = await jsstoreCon.select({
@@ -2139,7 +2139,6 @@ function getLinkHelp(keylink, hreflink, boldlink, textlink) {
 		return linkhelp;
 	}
 }
-
 
 function initLinkHelp() {
 	var linkhelp = ' <b>MINHA AJUDA</b> <br/><br/>';
