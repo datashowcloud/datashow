@@ -405,8 +405,8 @@ function registerEvents() {
 		setTimeout(() => { location.reload() }, 500); // Executa após 1 segundo para esperar o processo
     });	
 	$('#btnEnd').click(function () {
-		var result = confirm('Vou salvar a pontuação e concluir, ok?\n');
-		if (result) {
+//		var result = confirm('Vou salvar a pontuação e concluir, ok?\n');
+//		if (result) {
 			var myid = document.getElementById('myidSim').value;
 			var mygroup = document.getElementById('mygroupSim').value;
 			var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
@@ -415,7 +415,7 @@ function registerEvents() {
 			showGridAndHideForms();
 			refreshTableData('0', '', '', ''); // botão btnCategory1 carrega essa opção
 			setTimeout(() => { location.reload() }, 3000); // Executa após 1 segundo para esperar o processo
-		}
+//		}
     });	
 	$('#btnGear').click(function () {
 /*		if (document.getElementById('divGear').style.display == 'none') {
@@ -959,17 +959,13 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 			  }
 		});
 		if (students == '') {
-			
+			if (document.getElementById('btnEnd').style.display == 'none') {
+				document.getElementById('btnEnd').style.display = '';
+				alert('Use o botão FIM quando terminar.');
+			}
+			document.getElementById('btnEnd').focus();
 		} else {
 			students.forEach(function (student) {
-				
-				if (student.mycode >= totalperguntas) {
-					if (document.getElementById('btnEnd').style.display == 'none') {
-						alert('Use o botão FIM quando terminar.');
-					}
-					document.getElementById('btnEnd').style.display = '';
-				}
-				
 				document.getElementById('myorderSim').style.display='none';
 				document.getElementById('myidSim').style.display='none';
 				document.getElementById('mygroupSim').style.display='none';
