@@ -425,12 +425,11 @@ function registerEvents() {
 //		}
     });	
 	$('#btnGear').click(function () {
-/*		if (document.getElementById('divGear').style.display == 'none') {
+		if (document.getElementById('divGear').style.display == 'none') {
 			showFormGear();
 		} else {
 			showGridAndHideForms();
 		}
-*/
     })
 	$('#selTextColor').change(function () {
 //		updateConfigGeneral();
@@ -1207,11 +1206,11 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				}
 			})
 		}
-		var varButtonRestart = 'color:gray; font-size:18px;';
+		var varButtonRestart = 'color:gray; font-size:20px;';
 		var varCount = '<div class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '">' + parseInt(students_count - 1) + '</div>';
 		if (parseInt(students_count - 1) == 0) {
 			varCount = '';
-			varButtonRestart = 'color:' + CONST_MEDIUM_SEA_GREEN + '; font-size:18px;';
+			varButtonRestart = 'color:' + CONST_MEDIUM_SEA_GREEN + '; font-size:20px;';
 		}
 
 
@@ -1222,8 +1221,8 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 		var varNivel = '<tr><td>FASE</td></tr>';
 		var varNivelLinha = '';
 		var varNivelMax = '';
-		var varButtonLineStyle = 'color:gray; font-size:18px;';
-		var varButtonLine = '<i class=\"fa fa-play\" style="color:' + CONST_MEDIUM_SEA_GREEN + '; font-size:18px;"></i>';
+		var varButtonLineStyle = 'color:gray; font-size:20px;';
+		var varButtonLine = '<i class=\"fa fa-play\" style="color:' + CONST_MEDIUM_SEA_GREEN + '; font-size:20px;"></i>';
 		var varRestart = '';
 		
 		students.forEach(function (student) {
@@ -1233,19 +1232,19 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 					if (student.mypoints < 100) {
 						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '"><i class=\"fa fa-refresh\"></i> refazer</button></a>';
 					} else {
-						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-default"><i class=\"fa fa-refresh\"></i> refazer</button></a>';
+						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-error"><i class=\"fa fa-refresh\"></i> refazer</button></a>';
 					}
 				} else {
 					varRestart = '';
 				}
 			} else {
 				varTdTh = 'td';
-				varRestart = '<a href=\"#\" class=\"restart\"><i class=\"fa fa-refresh\" style=\"height:25px; ' + 'color:gray; font-size:18px;' + '\"></i></a>';
+				varRestart = '<a href=\"#\" class=\"restart\"><i class=\"fa fa-refresh\" style=\"height:25px; ' + 'color:gray; font-size:20px;' + '\"></i></a>';
 			}
 			
 			if (varNivel != student.mygroup.substring(0, 1)) {
 				varNivel = student.mygroup.substring(0, 1);
-				varNivelLinha = '<tr><td colspan=99 nowrap><font color="gray" style="font-size:18px;"><i class=\"fa fa-unlock\"></i> NÍVEL ' + student.mygroup.substring(0, 1) + '</font></td></tr>';
+				varNivelLinha = '<tr><td colspan=99 nowrap><font color="gray" style="font-size:20px;"><i class=\"fa fa-unlock\"></i> NÍVEL ' + student.mygroup.substring(0, 1) + '/' + CONST_NIVEL_MAX + '</font></td></tr>';
 			} else {
 				varNivelLinha = '';
 			}
@@ -1265,16 +1264,16 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				+ "</" + varTdTh + ">"
 				;
 				
-				varButtonLineStyle = 'color:gray;  font-size:18px;';
-				varButtonLine = '<i class=\"fa fa-check\" style="color:' + CONST_DEEP_SKY_BLUE + '; font-size:18px;"></i>';
-				varButtonRestart = 'color:gray; font-size:18px;';
+				varButtonLineStyle = 'color:gray;  font-size:20px;';
+				varButtonLine = '<i class=\"fa fa-check\" style="color:' + CONST_DEEP_SKY_BLUE + '; font-size:20px;"></i>';
+				varButtonRestart = 'color:gray; font-size:20px;';
 				varCount = '';
 		})
 
 		varNivelLinha = '';
-		for (var item=CONST_NIVEL_MAX; item>=parseInt(varNivelMax)+1; item--) {
-			varNivelLinha = varNivelLinha + '<tr><td colspan=99><font color="gray" style="font-size:15px;"><i class=\"fa fa-lock\"></i> NÍVEL ' + item + '</font></td></tr>';
-		}
+//		for (var item=CONST_NIVEL_MAX; item>=parseInt(varNivelMax)+1; item--) {
+//			varNivelLinha = varNivelLinha + '<tr><td colspan=99><font color="gray" style="font-size:15px;"><i class=\"fa fa-lock\"></i> NÍVEL ' + item + '</font></td></tr>';
+//		}
 		htmlString = varNivelLinha + htmlString;
 
 		if (htmlString.length > 0) {
