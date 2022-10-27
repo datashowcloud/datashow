@@ -1224,7 +1224,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 		var varNivelLinha = '';
 		var varNivelMax = '';
 		var varButtonLineStyle = 'color:gray; font-size:20px;';
-		var varButtonLine = '<i class=\"fa fa-play\" style="color:' + CONST_MEDIUM_SEA_GREEN + '; font-size:20px;"></i>';
+		var varButtonLine = '<i class=\"fa fa-play\" style="color:' + CONST_DEEP_SKY_BLUE + '; font-size:20px;"></i>';
 		var varRestart = '';
 		
 		students.forEach(function (student) {
