@@ -548,7 +548,8 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		classe = classe.substring(4, classe.length);
 		document.getElementById('btnPause').classList.remove(classe);
 	}
-*/	if(document.getElementById('btnEnd') != null) {
+*/
+	if(document.getElementById('btnEnd') != null) {
 		classe = document.getElementById('btnEnd').classList.value;
 		classe = classe.substring(4, classe.length);
 		document.getElementById('btnEnd').classList.remove(classe);
@@ -584,7 +585,8 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 /*		if(document.getElementById('btnPause') != null) {
 			document.getElementById('btnPause').classList.add('btn-danger');
 		}
-*/		if(document.getElementById('btnEnd') != null) {
+*/
+		if(document.getElementById('btnEnd') != null) {
 			document.getElementById('btnEnd').classList.add('btn-success');
 		}
 		document.getElementById('btnBackward').classList.add('btn-danger');
