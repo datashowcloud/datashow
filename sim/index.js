@@ -1224,8 +1224,10 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				varTdTh = 'th';
 				if (parseInt(students_count - 1) == 0 && student.mypoints < 70) {
 					varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '"><i class=\"fa fa-refresh\"></i> refazer</button></a>';
+				} else if (student.mypoints >= 70 && parseInt(students_count - 1) == 0) {
+					varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '"><i class=\"fa fa-refresh\"></i> refazer</button></a>';
 				} else {
-					varRestart = '&nbsp;<i class=\"fa fa-refresh\" style=\"' + varButtonRestart + '\"></i> <a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\">refazer</a>';
+//					varRestart = '&nbsp;<i class=\"fa fa-refresh\" style=\"' + varButtonRestart + '\"></i> <a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\">refazer</a>';
 				}
 			} else {
 				varTdTh = 'td';
