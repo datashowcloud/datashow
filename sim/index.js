@@ -238,7 +238,7 @@ function registerEvents() {
 				var myoption7 = document.getElementById('myoption7').value.trim();
 				var myoption8 = document.getElementById('myoption8').value.trim();
 				
-//console.log('mycode='+mycode + ' myorder='+myorder + ' mygroup='+mygroup + ' mytext='+mytext + ' myoption1='+myoption1 + ' myoption5='+myoption5);
+				//console.log('mycode='+mycode + ' myorder='+myorder + ' mygroup='+mygroup + ' mytext='+mytext + ' myoption1='+myoption1 + ' myoption5='+myoption5);
 				
 				confirmImportManual(mycode, myorder, mygroup, mytext, myoption1, myoption2, myoption3, myoption4, myoption5, myoption6, myoption7, myoption8);
 //				console.log('Clique em "Go back". \nClique em "Go back".');
@@ -325,9 +325,16 @@ function registerEvents() {
 		var myid = row.attr('itemid');
 		var mygroup = child.eq(0).text();
 		var mycode = child.eq(1).text();
-		restartFase(myid, mygroup, mycode);
-		savePoints(myid, mygroup, mycode);
-		setTimeout(() => { location.reload() }, 500); // Executa após meio segundo para esperar o processo
+		var result = confirm('Vou limpar e reiniciar as respostas dessa fase, ok?');
+		if (result) {
+			restartFase(myid, mygroup, mycode);
+			savePoints(myid, mygroup, mycode);
+	//		setTimeout(() => { location.reload() }, 500); // Executa após meio segundo para esperar o processo
+			var id = row.attr('itemid');
+			var mygroup = child.eq(0).text();
+			refreshTableQuestion(id, mygroup, '1');
+			showFormSim();
+		}
     });
     $('#tblGrid tbody').on('click', '.delete', function () {
         var result = confirm('Excluir, ok?');
@@ -613,12 +620,12 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 }
 
 function restartFase(myid, mygroup, mycode) {
-	var result = confirm('Vou limpar e reiniciar as respostas dessa fase, ok?');
-	if (result) {
+//	var result = confirm('Vou limpar e reiniciar as respostas dessa fase, ok?');
+//	if (result) {
 		updateStudentPlayOrder(mygroup);
 		updateStudentPlayClear(mygroup);
-		showGridAndHideForms();
-	}
+//		showGridAndHideForms();
+//	}
 }
 
 function getStudentFromForm(studentId, mygroup, mycode) {
@@ -1222,13 +1229,25 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 		students.forEach(function (student) {
 			if (student.mycode == '0') {
 				varTdTh = 'th';
-				if (parseInt(students_count - 1) == 0 && student.mypoints < 70) {
+				if (varCount == '') {
+					if (student.mypoints <= 70) {
+						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '"><i class=\"fa fa-refresh\"></i> refazer</button></a>';
+					} else {
+						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-default"><i class=\"fa fa-refresh\"></i> refazer</button></a>';
+					}
+				} else {
+					varRestart = '';
+				}
+/*				if (parseInt(students_count - 1) == 0 && student.mypoints < 70) {
 					varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '"><i class=\"fa fa-refresh\"></i> refazer</button></a>';
 				} else if (student.mypoints >= 70 && parseInt(students_count - 1) == 0) {
 					varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '"><i class=\"fa fa-refresh\"></i> refazer</button></a>';
+				} else if (student.mypoints >= 100) {
+					varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '"><i class=\"fa fa-refresh\"></i> refazer</button></a>';
 				} else {
-//					varRestart = '&nbsp;<i class=\"fa fa-refresh\" style=\"' + varButtonRestart + '\"></i> <a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\">refazer</a>';
+					varRestart = '&nbsp;<i class=\"fa fa-refresh\" style=\"' + varButtonRestart + '\"></i> <a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\">refazer</a>';
 				}
+*/
 			} else {
 				varTdTh = 'td';
 				varRestart = '<a href=\"#\" class=\"restart\"><i class=\"fa fa-refresh\" style=\"height:25px; ' + 'color:gray; font-size:18px;' + '\"></i></a>';
@@ -1252,7 +1271,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + student.mypoints + '%</' + varTdTh + '>'
 				+ "<" + varTdTh + " nowrap id=datashow" + student.id+"6" + " tabIndex=" + student.id+"6" + " ZZZonClick=\"datashow('" + student.id+"6" + "', 6, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 6, event, " + "" + (student.id+"6") + ");\" data-show='" + student.id+"6" + "'>"
 				+ varRestart + ' '
-				+ ' <td>' + '<a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + ' ' + varCount +  '</a>' + ' </td>'
+				+ '<a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + ' ' + varCount +  '</a>' 
 				+ "</" + varTdTh + ">"
 				;
 				
