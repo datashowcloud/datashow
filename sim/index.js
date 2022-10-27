@@ -543,12 +543,12 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		classe = classe.substring(4, classe.length);
 		document.getElementById('btnPrevious').classList.remove(classe);
 	}
-	if(document.getElementById('btnPause') != null) {
+/*	if(document.getElementById('btnPause') != null) {
 		classe = document.getElementById('btnPause').classList.value;
 		classe = classe.substring(4, classe.length);
 		document.getElementById('btnPause').classList.remove(classe);
 	}
-	if(document.getElementById('btnEnd') != null) {
+*/	if(document.getElementById('btnEnd') != null) {
 		classe = document.getElementById('btnEnd').classList.value;
 		classe = classe.substring(4, classe.length);
 		document.getElementById('btnEnd').classList.remove(classe);
@@ -581,10 +581,10 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		if(document.getElementById('btnPrevious') != null) {
 			document.getElementById('btnPrevious').classList.add('btn-default');
 		}
-		if(document.getElementById('btnPause') != null) {
+/*		if(document.getElementById('btnPause') != null) {
 			document.getElementById('btnPause').classList.add('btn-danger');
 		}
-		if(document.getElementById('btnEnd') != null) {
+*/		if(document.getElementById('btnEnd') != null) {
 			document.getElementById('btnEnd').classList.add('btn-success');
 		}
 		document.getElementById('btnBackward').classList.add('btn-danger');
@@ -606,7 +606,7 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		}
 	} else {
 		document.getElementById('btnPrevious').classList.add(buttoncolor);
-		document.getElementById('btnPause').classList.add(buttoncolor);
+//		document.getElementById('btnPause').classList.add(buttoncolor);
 		document.getElementById('btnEnd').classList.add(buttoncolor);
 		document.getElementById('btnBackward').classList.add(buttoncolor);
 		document.getElementById('btnNext').classList.add(buttoncolor);
