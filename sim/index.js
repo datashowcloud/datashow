@@ -1246,7 +1246,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 			
 			if (varNivel != student.mygroup.substring(0, 1)) {
 				varNivel = student.mygroup.substring(0, 1);
-				varNivelLinha = '<tr><td colspan=99 nowrap><font color="gray" style="font-size:20px;"><i class=\"fa fa-unlock\"></i> NÍVEL ' + student.mygroup.substring(0, 1) + '/' + CONST_NIVEL_MAX + '</font></td></tr>';
+				varNivelLinha = '<tr><td colspan=99 nowrap><font color="gray" style="font-size:20px;"><i class=\"fa fa-unlock\"></i> NÍVEL ' + student.mygroup.substring(0, 1) + '/' + parseInt(CONST_FASE_MAX + 1) + '</font></td></tr>';
 			} else {
 				varNivelLinha = '';
 			}
