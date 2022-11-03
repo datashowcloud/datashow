@@ -3,6 +3,7 @@ var jsstoreCon = new JsStore.Connection();
 
 var CONST_NIVEL_MAX = 5;
 var CONST_FASE_MAX = 6;
+var CONST_ORANGE = '#FF4700';
 var CONST_MEDIUM_SEA_GREEN = '#3CB371';
 var CONST_DEEP_SKY_BLUE = '#00BFFF';
 var GLOBAL_textcolor = '';
@@ -1230,9 +1231,13 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 		students.forEach(function (student) {
 			if (student.mycode == '0') {
 				varTdTh = 'th';
+				
+				
 				if (varCount == '') {
-					if (student.mypoints < 100) {
-						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '"><i class=\"fa fa-refresh\"></i> refazer</button></a>';
+					if (student.mypoints < 70) {
+						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-danger"><i class=\"fa fa-refresh\"></i> refazer</button></a>';
+					} else if (student.mypoints < 100) {
+						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-warning"><i class=\"fa fa-refresh\"></i> refazer</button></a>';
 					} else {
 						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-link"><i class=\"fa fa-refresh\"></i> refazer</button></a>';
 					}
