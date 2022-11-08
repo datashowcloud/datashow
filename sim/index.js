@@ -328,14 +328,14 @@ function registerEvents() {
 		var mycode = child.eq(1).text();
 		var result = confirm('Vou limpar e reiniciar as respostas dessa fase, ok?');
 		if (result) {
-			restartFase(myid, mygroup, mycode);
+			deletefase(myid, mygroup, mycode);
+/*			restartFase(myid, mygroup, mycode);
 			savePoints(myid, mygroup, mycode);
-	//		setTimeout(() => { location.reload() }, 500); // Executa após meio segundo para esperar o processo
 			var id = row.attr('itemid');
 			var mygroup = child.eq(0).text();
 			refreshTableQuestion(id, mygroup, '1');
 			showFormSim();
-		}
+*/		}
     });
     $('#tblGrid tbody').on('click', '.delete', function () {
         var result = confirm('Excluir, ok?');
@@ -355,7 +355,7 @@ function registerEvents() {
 			refreshTableQuestion(id, mygroup, '1');
 			showFormSim();
 //        }
-    });		
+    });	
     $('#tblGrid tbody').on('click', '.freeze', function () {
 		freezeDataShow(localStorage.getItem('valueAoVivo'));
     });
@@ -619,6 +619,21 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		document.getElementById('txtNaoRespondidas').classList.add(buttoncolor);
 		document.getElementById('btnDropDb').classList.add(buttoncolor);
 	}
+}
+
+async function deletefase(myid, mygroup, mycode) {
+    try {
+		var noOfStudentRemoved = await jsstoreCon.remove({
+			from: 'Student',
+			where: {
+				mygroup: mygroup
+			}
+		});
+		var DataShow_Config = window.open("config" + mygroup + ".html?sim=" + mygroup, "_self");
+        console.log(`${noOfStudentRemoved} students removed`);
+    } catch (ex) {
+        console.log(ex.message);
+    }
 }
 
 function restartFase(myid, mygroup, mycode) {
@@ -1234,12 +1249,15 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				
 				
 				if (varCount == '') {
-					if (student.mypoints < 70) {
-						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-danger"><i class=\"fa fa-refresh\"></i> refazer</button></a>';
+					if (student.mypoints <= 0) {
+						varRestart = '';
+						varCount = '<button class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + ';"><i class=\"fa fa-play\"></i></button>';
+					} else if (student.mypoints < 70) {
+						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-danger">refazer</button></a>';
 					} else if (student.mypoints < 100) {
-						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + ';"><i class=\"fa fa-refresh\"></i> refazer</button></a>';
+						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + ';">refazer</button></a>';
 					} else {
-						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-link"><i class=\"fa fa-refresh\"></i> refazer</button></a>';
+						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-link">refazer</button></a>';
 					}
 				} else {
 					varRestart = '';
@@ -1266,9 +1284,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				+ '<a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + varButtonLine + ' ' + student.mytext +  '</a></' + varTdTh + '>'
 				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + student.mypoints + '%</' + varTdTh + '>'
 				+ "<" + varTdTh + " nowrap id=datashow" + student.id+"6" + " tabIndex=" + student.id+"6" + " ZZZonClick=\"datashow('" + student.id+"6" + "', 6, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 6, event, " + "" + (student.id+"6") + ");\" data-show='" + student.id+"6" + "'>"
-				+ varRestart + ' '
-				+ '<a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + ' ' + varCount +  '</a>' 
-				+ "</" + varTdTh + ">"
+				+ '<' + varTdTh + '>' + varRestart + '<a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + ' ' + varCount +  '</a>' + "</" + varTdTh + ">"
 				;
 				
 				varButtonLineStyle = 'color:gray;  font-size:20px;';
