@@ -1251,7 +1251,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				if (varCount == '') {
 					if (student.mypoints <= 0) {
 						varRestart = '';
-						varCount = '<button class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + ';">fazer</button>';
+						varCount = '<button class="btn btn-warning" style="Zbackground-color:' + CONST_MEDIUM_SEA_GREEN + ';">fazer</button>';
 					} else if (student.mypoints < 70) {
 						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-danger">refazer</button></a>';
 					} else if (student.mypoints < 100) {
