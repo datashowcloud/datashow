@@ -348,7 +348,7 @@ function registerEvents() {
     $('#tblGrid tbody').on('click', '.deletefase', function () {
         var result = confirm('Vou excluir, ok?');
         if (result) {
-			var result = confirm('Aguarde o botão "Continuar" até 3 segundos.');
+			var result = confirm('Não faça nada. \n\nAguarde o botão "Continuar" aparecer.');
 			if (result) {
 				var row = $(this).parents().eq(1);
 				var child = row.children();
