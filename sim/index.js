@@ -329,6 +329,7 @@ function registerEvents() {
 		var result = confirm('Vou limpar e reiniciar as respostas dessa fase, ok?');
 		if (result) {
 			deletefase(myid, mygroup, mycode);
+			var DataShow_Config = window.open("config" + mygroup + ".html?sim=" + mygroup, "_self");
 /*			restartFase(myid, mygroup, mycode);
 			savePoints(myid, mygroup, mycode);
 			var id = row.attr('itemid');
@@ -343,6 +344,21 @@ function registerEvents() {
             var studentId = $(this).parents().eq(1).attr('itemid');
             deleteStudent(Number(studentId));
         }
+    });
+    $('#tblGrid tbody').on('click', '.deletefase', function () {
+        var result = confirm('Vou excluir, ok?');
+        if (result) {
+			var result = confirm('Aguarde o botão "Continuar" até 3 segundos.');
+			if (result) {
+				var row = $(this).parents().eq(1);
+				var child = row.children();
+				var myid = row.attr('itemid');
+				var mygroup = child.eq(0).text();
+				var mycode = child.eq(1).text();
+				deletefase(myid, mygroup, mycode);
+				setTimeout(() => { var DataShow_Config = window.open("config" + mygroup + ".html?sim=" + mygroup, "_self"); }, 3000); // Executa após 1 segundo para esperar o processo
+			}
+		}
     });
     $('#tblGrid tbody').on('click', '.playsim', function () {
 //        var result = confirm('Começar, ok?');
@@ -629,7 +645,6 @@ async function deletefase(myid, mygroup, mycode) {
 				mygroup: mygroup
 			}
 		});
-		var DataShow_Config = window.open("config" + mygroup + ".html?sim=" + mygroup, "_self");
         console.log(`${noOfStudentRemoved} students removed`);
     } catch (ex) {
         console.log(ex.message);
@@ -1251,11 +1266,11 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				if (varCount == '') {
 					if (student.mypoints <= 0) {
 						varRestart = '';
-						varCount = '<button class="btn btn-warning" style="Zbackground-color:' + CONST_MEDIUM_SEA_GREEN + ';">fazer</button>';
+						varCount = '<button class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + ';"><i class=\"fa fa-play\"' + '\"></i> fazer</button>';
 					} else if (student.mypoints < 70) {
-						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-danger">refazer</button></a>';
+						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-danger"><i class=\"fa fa-refresh\"' + '\"></i> refazer</button></a>';
 					} else if (student.mypoints < 100) {
-						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + ';">refazer</button></a>';
+						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + ';"><i class=\"fa fa-refresh\"' + '\"></i> refazer</button></a>';
 					} else {
 						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-link">refazer</button></a>';
 					}
@@ -1283,6 +1298,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				+ "<" + varTdTh + " id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " ZZZonClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
 				+ '<a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + varButtonLine + ' ' + student.mytext +  '</a></' + varTdTh + '>'
 				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + student.mypoints + '%</' + varTdTh + '>'
+/**/				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + '<a href=\"#\" class=\"deletefase\" style=\"' + varButtonLineStyle + '\">' + '<i class=\"fa fa-trash\" style=\"color:gray; font-size:20px;\"></i> </a>'
 				+ "<" + varTdTh + " nowrap id=datashow" + student.id+"6" + " tabIndex=" + student.id+"6" + " ZZZonClick=\"datashow('" + student.id+"6" + "', 6, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 6, event, " + "" + (student.id+"6") + ");\" data-show='" + student.id+"6" + "'>"
 				+ '<' + varTdTh + '>' + varRestart + '<a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + ' ' + varCount +  '</a>' + "</" + varTdTh + ">"
 				;
