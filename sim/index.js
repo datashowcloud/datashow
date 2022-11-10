@@ -1298,7 +1298,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				+ "<" + varTdTh + " id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " ZZZonClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
 				+ '<a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + varButtonLine + ' ' + student.mytext +  '</a></' + varTdTh + '>'
 				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + student.mypoints + '%</' + varTdTh + '>'
-/**/				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + '<a href=\"#\" class=\"deletefase\" style=\"' + varButtonLineStyle + '\">' + '<i class=\"fa fa-trash\" style=\"color:gray; font-size:20px;\"></i> </a>'
+/**/				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + '<a href=\"#\" class=\"deletefase\" style=\"' + varButtonLineStyle + '\">' + '<i class=\"fa fa-refresh\" style=\"color:gray; font-size:20px;\"></i> </a>'
 				+ "<" + varTdTh + " nowrap id=datashow" + student.id+"6" + " tabIndex=" + student.id+"6" + " ZZZonClick=\"datashow('" + student.id+"6" + "', 6, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 6, event, " + "" + (student.id+"6") + ");\" data-show='" + student.id+"6" + "'>"
 				+ '<' + varTdTh + '>' + varRestart + '<a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + ' ' + varCount +  '</a>' + "</" + varTdTh + ">"
 				;
