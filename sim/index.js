@@ -326,17 +326,15 @@ function registerEvents() {
 		var myid = row.attr('itemid');
 		var mygroup = child.eq(0).text();
 		var mycode = child.eq(1).text();
-		var result = confirm('Vou limpar e reiniciar as respostas dessa fase, ok?');
+		var result = confirm('Vou limpar e organizar as respostas dessa fase, ok?');
 		if (result) {
-			deletefase(myid, mygroup, mycode);
-			var DataShow_Config = window.open("config" + mygroup + ".html?sim=" + mygroup, "_self");
-/*			restartFase(myid, mygroup, mycode);
+			restartFase(myid, mygroup, mycode);
 			savePoints(myid, mygroup, mycode);
 			var id = row.attr('itemid');
 			var mygroup = child.eq(0).text();
 			refreshTableQuestion(id, mygroup, '1');
 			showFormSim();
-*/		}
+		}
     });
     $('#tblGrid tbody').on('click', '.delete', function () {
         var result = confirm('Excluir, ok?');
@@ -346,18 +344,15 @@ function registerEvents() {
         }
     });
     $('#tblGrid tbody').on('click', '.deletefase', function () {
-        var result = confirm('Vou atualizar, ok?');
-        if (result) {
-			var result = confirm('Não faça nada. \n\nAguarde o botão azul aparecer.');
-			if (result) {
-				var row = $(this).parents().eq(1);
-				var child = row.children();
-				var myid = row.attr('itemid');
-				var mygroup = child.eq(0).text();
-				var mycode = child.eq(1).text();
-				deletefase(myid, mygroup, mycode);
-				setTimeout(() => { var DataShow_Config = window.open("config" + mygroup + ".html?sim=" + mygroup, "_self"); }, 3000); // Executa após 1 segundo para esperar o processo
-			}
+		var result = confirm('Não faça nada. \nAguarde o botão azul aparecer.');
+		if (result) {
+			var row = $(this).parents().eq(1);
+			var child = row.children();
+			var myid = row.attr('itemid');
+			var mygroup = child.eq(0).text();
+			var mycode = child.eq(1).text();
+			deletefase(myid, mygroup, mycode);
+			setTimeout(() => { var DataShow_Config = window.open("config" + mygroup + ".html?sim=" + mygroup, "_self"); }, 3000); // Executa após 1 segundo para esperar o processo
 		}
     });
     $('#tblGrid tbody').on('click', '.playsim', function () {
@@ -1254,13 +1249,13 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 		var varNivel = '<tr><td>FASE</td></tr>';
 		var varNivelLinha = '';
 		var varNivelMax = '';
-		var varButtonLineStyle = 'color:gray; font-size:20px;';
+		var varButtonLineStyle = 'color:gray; font-size:18px;';
 		var varButtonLine = '<i class=\"fa fa-play\" style="color:' + CONST_DEEP_SKY_BLUE + '; font-size:20px;"></i>';
 		var varRestart = '';
 		
 		students.forEach(function (student) {
 			if (student.mycode == '0') {
-				varTdTh = 'th';
+				varTdTh = 'td';
 				
 				
 				if (varCount == '') {
@@ -1284,7 +1279,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 			
 			if (varNivel != student.mygroup.substring(0, 1)) {
 				varNivel = student.mygroup.substring(0, 1);
-				varNivelLinha = '<tr><td colspan=99 nowrap><font color="gray" style="font-size:20px;"><i class=\"fa fa-unlock\"></i> NÍVEL ' + student.mygroup.substring(0, 1) + '/' + parseInt(CONST_NIVEL_MAX) + '</font></td></tr>';
+				varNivelLinha = '<tr><td></td><th nowrap><font color="gray" style="font-size:20px;"><i class=\"fa fa-unlock\"></i> NÍVEL ' + student.mygroup.substring(0, 1) + ' de ' + parseInt(CONST_NIVEL_MAX) + '</font></th></tr>';
 			} else {
 				varNivelLinha = '';
 			}
@@ -1303,7 +1298,7 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				+ '<' + varTdTh + '>' + varRestart + '<a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + ' ' + varCount +  '</a>' + "</" + varTdTh + ">"
 				;
 				
-				varButtonLineStyle = 'color:gray;  font-size:20px;';
+				varButtonLineStyle = 'color:gray;  font-size:18px;';
 				varButtonLine = '<i class=\"fa fa-check\" style="color:' + CONST_DEEP_SKY_BLUE + '; font-size:20px;"></i>';
 				varButtonRestart = 'color:gray; font-size:20px;';
 				varCount = '';
@@ -2378,10 +2373,7 @@ function initLinkHelp() {
 	linkhelp = linkhelp + getLinkHelp('EC2 Instance Store', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/InstanceStorage.html', '', 'Um armazenamento de instâncias fornece armazenamento temporário em nível de bloco para a instância. Esse armazenamento está localizado em discos que estão anexados fisicamente ao computador host. O armazenamento de instâncias é ideal para o armazenamento temporário de informações que são alteradas frequentemente, como buffers, caches, dados de rascunho e outros conteúdos temporários ou para dados replicados em toda a frota de instâncias, como um grupo com balanceamento de carga de servidores Web.');
 	linkhelp = linkhelp + getLinkHelp('AMS', 'https://aws.amazon.com/managed-services/', 'Fornece recursos proativos, preventivos e de detecção', 'AMS (AWS Managed Services) ajuda você a adotar a AWS em escala e a operar com mais eficiência e segurança. Fornece recursos proativos, preventivos e de detecção que elevam o nível operacional e ajudam a reduzir riscos sem restringir a agilidade, permitindo que você se concentre na inovação.');
 	linkhelp = linkhelp + getLinkHelp('', '', '', '');
-	linkhelp = linkhelp + getLinkHelp('', '', '', '');
-	linkhelp = linkhelp + getLinkHelp('', '', '', '');
-	linkhelp = linkhelp + getLinkHelp('', '', '', '');
-	linkhelp = linkhelp + getLinkHelp('', '', '', '');
+
 
 	document.getElementById('divlinkhelp').innerHTML = linkhelp;
 
