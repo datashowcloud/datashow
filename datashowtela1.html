@@ -62,6 +62,10 @@
  <head>
 
  <body id="body" onload="callback();">
+	<div id="divcor">
+		<button id="btnTextcolordefault" onclick="mudacordefault();" style="cursor:hand;">Cor Padrão</button>
+		<button id="btnTextcolor" onclick="mudacores();" style="cursor:hand;">+Cores</button>
+	</div>
 	<video id="videofundo" loop muted ZZZautoplay ZZZcontrols style="display:'none';">
 		<p>Seu navegador não suporta video HTML5.</p>
 		<source src="" type="video/mp4">
@@ -72,7 +76,7 @@
 	<img src="" id="imagemfundo" style="display:'none';"/>
 	<img src="logo/logo.png" id="logotipo" style="display:'none';"/>
 	<div id="div0">
-		<textarea id="textarea0" class=textareaTop style="display:'none';" readonly></textarea>
+		<textarea id="textarea0" class=textareaTop style="color:white; top:20px; display:'none';" readonly></textarea>
 	</div>
 	<div id="div1">
 		<textarea id="textareaAutor" class=textareaAutor style="display:'none';" readonly></textarea>
@@ -112,6 +116,7 @@ window.onload = function(){
 	logoBig(localStorage.getItem('valueLogoBig'), localStorage.getItem('valueLogoHeightBig'), localStorage.getItem('valueLogoHeightMini'), localStorage.getItem('valueLogoLeftBigTela1'), localStorage.getItem('valueLogoLeftMini'), localStorage.getItem('valueLogoTopBig'), localStorage.getItem('valueLogoTopMini'));
 	//plano de fundo
 	document.getElementById("videofundo").src = localStorage.getItem('valuePlanoFundoMestre');
+	localStorage.setItem('valueTextColor', 'white');
 }
 
 function logoBig(valueLogoBig, valueLogoHeightBig, valueLogoHeightMini, valueLogoLeftBig, valueLogoLeftMini, valueLogoTopBig, valueLogoTopMini) {
@@ -195,6 +200,29 @@ function callback() {
 callback();
 
 
+function mudacores() {
+	if (document.getElementById("textarea0").style.color == 'white') {
+		document.getElementById("textarea0").style.color = 'black';
+	} else if (document.getElementById("textarea0").style.color == 'black') {
+		document.getElementById("textarea0").style.color = 'yellow';
+	} else if (document.getElementById("textarea0").style.color == 'yellow') {
+		document.getElementById("textarea0").style.color = 'red';
+	} else if (document.getElementById("textarea0").style.color == 'red') {
+		document.getElementById("textarea0").style.color = 'green';
+	} else if (document.getElementById("textarea0").style.color == 'green') {
+		document.getElementById("textarea0").style.color = 'blue';
+	} else if (document.getElementById("textarea0").style.color == 'blue') {
+		document.getElementById("textarea0").style.color = 'white';
+	} else {
+		document.getElementById("textarea0").style.color = 'white';
+	}
+	localStorage.setItem('valueTextColor', document.getElementById("textarea0").style.color);
+}
+
+function mudacordefault() {
+	document.getElementById("textarea0").style.color = 'white';
+	localStorage.setItem('valueTextColor', document.getElementById("textarea0").style.color);
+}
 
 function setCookie(cname, cvalue, exdays) {
   const d = new Date();
