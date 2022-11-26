@@ -679,7 +679,7 @@ async function freezeDataShow(aovivo) {
 		} else { //freeze DataShow
 			localStorage.setItem('valueAoVivo', 'false');
 			if (document.getElementById('btnFreezeTop') != null) {
-				document.getElementById('btnFreezeTop').innerHTML = 'Ao Vivo';
+				document.getElementById('btnFreezeTop').innerHTML = 'Descongela';
 				document.getElementById('btnFreezeTop').classList.remove('btn-default');
 				document.getElementById('btnFreezeTop').classList.add('btn-danger');
 			}
