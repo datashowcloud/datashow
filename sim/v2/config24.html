@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Configuração Sim</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/bootstrap.css" />
+    <link rel="stylesheet" href="style/font-awesome.min.css" />
+    <script src="scripts/jsstore.js"></script>
+    <script src="scripts/jsstore.worker.js"></script>
+    <script src="index.js"></script>
+	<style>
+#myBody {
+  border: 0px dashed blue;
+  padding: 25px;
+  background-attachment: fixed;
+  background-position: top; 
+  background-repeat: no-repeat;
+} 
+	</style>
+</head>
+
+<body id="myBody" ZZZbackground="gallery/paper.jpeg">
+		
+			<div style="display:'none'; text-align:center; ">
+				<!-- br/>Aguarde o resultado na janela da configuração -->
+				<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px;">Fase atualizada e desbloqueada</div>
+				<br/><br/>
+				<button class="btn btn-info" onclick="window.open('index.html', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
+				
+				<label id="bSearch" style="display:none;">
+					<input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:200px; height:34px;">
+				</label>
+			</div>
+
+		<table id="tblGrid" style="width:98%" class="table table-hover ">
+			<tbody>
+					<!--
+				<div id="botoes" style="display:none; text-align:center;">
+				</div>
+					-->
+			</tbody>
+		</table>
+
+		<!-- form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post" -->
+		<!-- /form -->
+		
+		<div class="form-group" id="divFormSim" style="display:none;">
+			<font size=4.9 style=text-align:justify>
+				<table border=0 align=center width="100%">
+					<tr><td>
+						<button id="btnBackward" class="btn btn-danger" style="display:none;"> <i class="fa fa-remove"></i> </button>
+						<button id="btnPrevious" class="btn btn-default" style="display:none;"> <i class="fa fa-chevron-left"></i></button>
+						<button id="btnNext" class="btn btn-success" style="display:none;">Próximo <i class="fa fa-chevron-right"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-signal"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-pause"></i></button>
+						<button class="btn btn-warning" style="display:none;"><i class="fa fa-check"></i> Fim</button>
+					</td></tr>
+					<tr><td id="mytextSim" style="display:none; text-align:justify;">
+					</td></tr>
+					<tr><td id="mycorrect1Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect1answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect2Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect2answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect3Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect3answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect4Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect4answer"></div>
+					</td></tr>
+
+					<tr><td id="myincorrect1Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect1answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect2Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect2answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect3Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect3answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect4Sim" style="display:none; text-align:justify;">
+						<div id="myincorrecta4answer"></div>
+					</td></tr>
+					<tr><td>
+						<br/><input type="text" id="mygroupSim" value="" Zhidden="">
+						<br/><input type="text" id="mycodeSim" value="" Zhidden="">
+						<br/><input type="text" id="myorderSim" value="" Zhidden="">
+						<br/><input type="text" id="myidSim" value="" Zhidden="">
+					</td></tr>
+				</table>
+				<table id="tableFormSimDashboard" border=0 align=center width="60%" style="display:'none';">
+					<tr><td nowrap id="txtCalculo"></td></tr>
+					<tr><td nowrap><input type="text" id="txtIncorretas" value="Incorretas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:red;" readonly /></td></tr>
+					<tr><td nowrap><input type="text" id="txtCorretas" value="Corretas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:green;" readonly /></td></tr>
+					<tr><td nowrap><input type="text" id="txtNaoRespondidas" value="Não Respondidas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:blue;" readonly /></td></tr>
+					<tr><td nowrap><br/><input type="text" id="txtTotal" value="Total" class="btn btn-default" style="padding:9px 15px 9px 15px; display:'none';" hidden=""></td></tr>
+				</table>
+				<table id="tableLinkhelp" border=0 align=center style="display:'none';">
+					<tr><td id="help" style="display:none; text-align:justify;">
+						<div id="divlinkhelp"></div>
+					</td></tr>
+				</table>
+			</font>
+		</div>
+
+		<div class="form-group" id="divFormAddUpdate" style="display:none;">
+			<table border=0 align=center width="98%" style="display:none;"><tr><td>
+				<b>Formulário Editor de Perguntas</b>
+				<p/><p/>
+				<select id="mygroup" name="mygroup" style="height:35px; display:none;">
+					<!-- option value="00">Configurações</option -->
+					<option value="10">Nível 1.0</option>
+					<option value="11">Nível 1.1</option>
+					<option value="12">Nível 1.2</option>
+					<option value="13">Nível 1.3</option>
+					<option value="14">Nível 1.4</option>
+					<option value="20">Nível 2.0</option>
+					<option value="21">Nível 2.1</option>
+					<option value="22">Nível 2.2</option>
+					<option value="23">Nível 2.3</option>
+					<option value="30">Nível 3.0</option>
+					<option value="31">Nível 3.1</option>
+					<option value="32">Nível 3.2</option>
+					<option value="33">Nível 3.3</option>
+					<option value="40">Nível 4.0</option>
+					<option value="41">Nível 4.1</option>
+					<option value="42">Nível 4.2</option>
+					<option value="43">Nível 4.3</option>
+					<option value="44">Nível 4.4</option>
+					<option value="45">Nível 4.5</option>
+					<option value="46">Nível 4.6</option>
+					<option value="50">Nível 5.0</option>
+
+				</select>
+				<select id="mycode" name="mycode" style="height:35px; display:none;"></select>
+				<select id="myorder" name="myorder" style="height:35px; display:none;"></select>
+				<p/>
+				<p/><textarea name="mytext" id="mytext" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui..."></textarea>
+				<font style="color:green;">
+					Corretas:
+					<textarea name="myoption1" id="myoption1" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey1" id="myoptionkey1" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption2" id="myoption2" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey2" id="myoptionkey2" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption3" id="myoption3" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey3" id="myoptionkey3" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption4" id="myoption4" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey4" id="myoptionkey4" rows=1 placeholder="explicação..."></textarea>
+				</font>
+				
+				<font style="color:red; text-align:left;">
+					Incorretas:
+					<textarea name="myoption5" id="myoption5" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey5" id="myoptionkey5" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption6" id="myoption6" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey6" id="myoptionkey6" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption7" id="myoption7" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey7" id="myoptionkey7" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption8" id="myoption8" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey8" id="myoptionkey8" rows=1 placeholder="explicação..."></textarea>
+				</font>
+				<p/><p/>
+				<button id="btnSubmit" type="button" class="btn btn-primary" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-check"></i> Salvar</button>
+				<p/><p/>
+				<button id="btnCancel" type="button" class="btn btn-default" style="padding:9px 15px 9px 15px;margin-left:10px; width:110px;"> <i class="fa fa-times"></i> Não Salvar</button>
+			</td></tr></table>
+		</div>
+		
+		<div id="divcontent" style="display:none;">
+
+<!-- Configuração: 1 -->
+<br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
+<p>
+FASE 2.4
+
+<p>
+Sua empresa recentemente foi auditada e autuada, pois mantinha arquivos com dados sensíveis do cliente expostos na sua rede interna, colocando em risco a imagem do cliente e da empresa. Qual serviço da AWS pode ser utilizado para monitorar os dados e evitar esse tipo de ocorrência?
+
+AWS Sensitive
+<key>Não Se Aplica</key>
+
+<ok>
+AWS Macie
+<key>Macie</key>
+
+AWS GuardDuty
+<key>GuardDuty</key>
+
+AWS KMS
+<key>KMS</key>
+
+<p>
+Qual é o banco de dados sem servidor (serverless) ofertado pela AWS?
+
+<ok>
+DynamoDB
+<key>DynamoDB</key>
+
+MySql
+<key>MySql</key>
+
+MariaDB
+<key>MariaDB</key>
+
+Aurora
+<key>Aurora</key>
+
+<p>
+Sua empresa está analisando o banco de dados DynamoDB para conhecer oportunidades em seu uso. Qual opção abaixo não é uma característica do serviço?
+
+É um banco de dados sem servidor
+<key>DynamoDB</key>
+
+É um banco de dados de valores-chave e documentos
+<key>DynamoDB</key>
+
+<ok>
+É um banco de dados cobrado por MB na solicitação de gravação e leitura
+<key>DynamoDB</key>
+
+É um banco de dados totalmente gerenciado
+<key>DynamoDB</key>
+
+<p>
+Qual plano de suporte oferece o AWS Trusted Advisor, serviço que fornece recomendações para ajudar na utilização das melhores práticas de uso?
+
+Developer
+<key>Trusted Advisor</key>
+
+Enterprise
+<key>Trusted Advisor</key>
+
+<ok>
+Todos
+<key>Trusted Advisor</key>
+
+Business
+<key>Trusted Advisor</key>
+
+<p>
+Qual é o banco de dados NoSql do tipo chave e valor gerenciado pela AWS?
+
+<ok>
+DynamoDB
+<key>DynamoDB</key>
+
+Aurora
+<key>Aurora</key>
+
+MySql
+<key>MySql</key>
+
+Cassandra
+<key>Keyspaces</key>
+
+<p>
+Selecione as opções verdadeiras que se referem ao AWS IAM?
+<br/>(Selecione 3)
+
+<ok>
+A maioria das Policies são armazenadas em documentos JSON
+<key>IAM</key>
+
+<ok>
+Permissões determinam se a requisição é permitida ou negada
+<key>IAM</key>
+
+Policy é um documento que todos os usuários devem assinar digitalmente quando acessam a AWS pela primeira vez
+<key>Não Se Aplica</key>
+
+<ok>
+Policy é um objeto da AWS que quando associado a um usuário ou recurso define suas permissões
+<key>IAM</key>
+
+<p>
+Quais são as regras para a criação de nome de Bucket do S3?
+<br/>(Selecione 3)
+
+<ok>
+Devem consistir apenas em letras minúsculas, números, pontos (.) e hífens (-)
+<key>Bucket</key>
+
+<ok>
+Devem começar e terminar com uma letra ou um número
+<key>Bucket</key>
+
+Devem ser formatados como um endereço IP sempre que possível
+<key>Bucket</key>
+
+<ok>
+Devem possuir de 3 a 63 caracteres
+<key>Bucket</key>
+
+<p>
+Você está dando consultoria para uma pequena empresa que deseja disponibilizar um site dinâmico em WordPress e com custo mínimo. Qual dos serviços abaixo oferece um servidor privado virtual simples (VPS) de baixo custo e que pode atender essa necessidade?
+
+Amazon ECS
+<key>ECS</key>
+
+<ok>
+Amazon LightSail
+<key>LightSail</key>
+
+Amazon S3
+<key>S3</key>
+
+Amazon EC2
+<key>EC2</key>
+
+<p>
+Sua empresa começou a utilizar o ECS e conteinerizou 2 microsserviços de uma aplicação que possuem cargas de trabalho diferentes ao longo dia. O primeiro tem mais acessos durante a manhã e o segundo tem mais acesso à tarde, invertendo o cenário no consumo de recursos. Qual solução você deve adotar para que esses serviços escalem de forma automática para otimizar o uso dos recursos da sua infraestrutura?
+
+ECR
+<key>ECR</key>
+
+EC2
+<key>EC2</key>
+
+<ok>
+EKS
+<key>EKS</key>
+
+Lambda
+<key>Lambda</key>
+
+<p>
+Qual é o serviço utilizado para executar containers sem servidores e diminuir a necessidade dos desenvolvedores se preocuparem com questões relacionadas ao gerenciamento de instâncias e infraestrutura?
+
+ECS
+<key>ECS</key>
+
+<ok>
+Fargate
+<key>Fargate</key>
+
+Lambda
+<key>Lambda</key>
+
+EKS
+<key>EKS</key>
+
+<p>
+
+</textarea>
+
+		</div>
+
+    <link href="style/main.css " rel="stylesheet " type="text/css " />
+</body>
+
+</html>
+
+<script type="text/javascript">
+	onLoadConfig();
+</script>
