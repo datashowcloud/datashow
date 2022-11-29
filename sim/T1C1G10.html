@@ -176,230 +176,183 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1.2
+Fundamentos 1
 
 <p>
-Oferece latência de milissegundos e alta performance de taxa de transferência para dados <b>acessados com muita frequência, com pouca frequência</b> e raramente acessados nos níveis Frequent Access, Infrequent Access e o Archive Instant Access.
+Oferece uma <b>capacidade de computação escalável na Nuvem da Amazon Web Services (AWS)</b>. <br/>O uso dele <b>elimina a necessidade de investir em hardware inicialmente</b>, portanto, você pode desenvolver e implantar aplicativos com mais rapidez.
 
 <ok>
-Intelligent Tiering
-<key>Intelligent Tiering</key>
+EC2
+<key>EC2</key>
 
-Infrequent Access
-<key>Infrequent Access</key>
+ECS
+<key>ECS</key>
 
-Frequent Access
-<key>Frequent Access</key>
+EKS
+<key>EKS</key>
 
-Standard
-<key>Standard</key>
+ECR
+<key>ECR</key>
 
 <p>
-É o mais caro e oferece um armazenamento de objetos com altos níveis de resiliência, disponibilidade e performance para dados acessados com frequência. Como fornece baixa latência e alto throughput.
+São um novo tipo de instância de uso geral de baixo custo. <br/>Detalhes: <br/><b>t2.nano</b> (é a menor com 1 CPU e 0,5 RAM), <br/>t2.micro, <br/>t2.small, <br/>t2.medium, <br/>t2.large, <br/>t2.xlarge, <br/><b>t2.2xlarge</b> (é a maior com 8 CPUs e 32 RAM).
 
 <ok>
-Standard
-<key>Standard</key>
+Instâncias T2 no EC2
+<key>Instâncias T2 no EC2</key>
 
-Glacier
-<key>Glacier</key>
+EC2
+<key>EC2</key>
+
+Instâncias Sob Demanda
+<key>Instâncias Sob Demanda</key>
+
+Instâncias Spot
+<key>Instâncias Spot</key>
+
+<p>
+É um serviço de armazenamento de objetos que <b>armazena dados como objetos</b> em buckets (exemplo de <b>arquivos estáticos: .html, .js, .cs.</b>). <br/>A capacidade é virtualmente ilimitada. <br/>Um objeto é um arquivo e quaisquer metadados que descrevam o arquivo. <br/>Um bucket é um contêiner de objetos. <br/>Você pode controlar o acesso a grupos de objetos que começam com um prefixo ou termine com uma determinada extensão. <br/>É compatível com a replicação entre regiões.
+
+<ok>
+S3
+<key>S3</key>
+
+EC2
+<key>EC2</key>
 
 Classes de armazenamento
 <key>Classes de armazenamento</key>
 
-Infrequent Access
-<key>Infrequent Access</key>
+Opções de Compra de Instância
+<key>Opções de Compra de Instância</key>
 
 <p>
-É um serviço de mensagens totalmente gerenciado para a comunicação de aplicação para aplicação (A2A) e de aplicação para pessoa (A2P). A funcionalidade pub/sub de A2A fornece tópicos para sistemas de mensagens de alta taxa de transferência <b>baseados em push</b>.
+<b>Permite acessar objetos privados do S3</b> embora, por padrão, todos os objetos do S3 são privados. <br/>Somente o proprietário do objeto tem permissão para acessá-lo. <br/>Contudo, também permite o proprietário do objeto compartilhar objetos com os outros dessa forma, usando suas próprias credenciais de segurança para conceder permissão de prazo limitado para download de objetos.
 
 <ok>
-SNS
-<key>SNS</key>
+S3 pre-signed URL
+<key>S3 pre-signed URL</key>
 
-SES
-<key>SES</key>
+S3
+<key>S3</key>
 
-SQS
-<key>SQS</key>
+Opções de Compra de Instância
+<key>Opções de Compra de Instância</key>
 
-AWS STS
-<key>STS</key>
+Instâncias Sob Demanda
+<key>Instâncias Sob Demanda</key>
 
 <p>
-É uma <b>plataforma de e-mail</b> que oferece uma forma fácil e econômica para você enviar e receber e-mail usando seus próprios endereços de e-mail e domínios.
+<b>On-demand</b> (Instâncias sob demanda) paga somente pelo uso.<br/><b>Savings Plans (Planos de Poupança)</b> é um modelo de preços flexíveis que oferece preços mais baixos em comparação com os preços sob demanda, em troca de um compromisso de uso específico por um período de 1 ou 3 anos). <br/><b> Instâncias Reservadas</b> paga por um contrato pré-estabelecido de 1 ou 3 anos de compromisso para obter um desconto até 72% comparado ao On-Demand. <br/><b>Instâncias Spot</b> paga pelo uso dos recursos não utilizados por outros modelos. <b>Oferecem descontos de até 90%.</b><br/><b>Hosts Dedicados</b>. <br/><b>Instâncias Dedicadas</b>. <br/><b>Reservas de Capacidade</b>.
 
 <ok>
-SES
-<key>SES</key>
+Opções de Compra de Instância
+<key>Opções de Compra de Instância</key>
 
-SQS
-<key>SQS</key>
+EC2
+<key>EC2</key>
 
-SNS
-<key>SNS</key>
+S3
+<key>S3</key>
 
-Well-Architected Framework
-<key>Well-Architected Framework</key>
+Instâncias Spot
+<key>Instâncias Spot</key>
 
 <p>
-Oferece uma fila hospedada segura, durável e disponível que permite integrar e desacoplar sistemas de software e componentes distribuídos. Oferece construções comuns, como filas de mensagens mortas e tags de alocação de custos.
+É um modelo de preços flexíveis que oferece <b>preços mais baixos em comparação com os preços sob demanda</b>, em troca de um <b>compromisso de uso específico por um período de 1 ou 3 anos</b>.
 
 <ok>
-SQS
-<key>SQS</key>
+Savings Plans (Planos de Poupança)
+<key>Savings Plans</key>
 
-SNS
-<key>SNS</key>
+Instâncias Spot
+<key>Instâncias Spot</key>
 
-SES
-<key>SES</key>
+Instâncias Sob Demanda
+<key>Instâncias Sob Demanda</key>
 
-Amazon MQ
-<key>MQ</key>
+Instâncias Reservadas
+<key>Instâncias Reservadas</key>
 
 <p>
-É um serviço gerenciado pela AWS. É um agente de mensagens para o Apache ActiveMQ e RabbitMQ que facilita a configuração e a operação de agentes de mensagens na AWS. O Amazon MQ reduz suas responsabilidades operacionais gerenciando o provisionamento, a configuração e a manutenção dos agentes de mensagem para você.
+O cliente paga por um <b>contrato pré-estabelecido de 1 ou 3 anos de compromisso</b> para obter um grande desconto. <br/><b>Reserva capacidade a uma taxa com desconto.</b> <br/>O cliente se compromete a comprar uma certa quantidade de computação. <br/>Proporcionam economia significativa em seus custos do Amazon EC2 em comparação com os preços de instâncias sob demanda. <br/>Elas não são instâncias físicas, é um desconto na fatura aplicado na conta pelo uso de instâncias sob demanda.
 
 <ok>
-Amazon MQ
-<key>MQ</key>
+Instâncias Reservadas
+<key>Instâncias Reservadas</key>
 
-SQS
-<key>SQS</key>
+Savings Plans
+<key>Savings Plans</key>
 
-SNS
-<key>SNS</key>
+Instâncias Sob Demanda
+<key>Instâncias Sob Demanda</key>
 
-SES
-<key>SES</key>
+Instâncias Spot
+<key>Instâncias Spot</key>
 
 <p>
-É uma coleção de serviços gerenciados que facilita a configuração, operação e escalabilidade de bancos de dados na nuvem. Uma instância de banco de dados do RDS reside em uma única região. Escolha entre sete opções de mecanismos bastante utilizados: Amazon Aurora compatível com MySQL, Amazon Aurora compatível com PostgreSQL, MySQL, MariaDB, PostgreSQL, Oracle e SQL Server.
+Instâncias sob demanda --> Você <b>paga somente pelo uso</b> e pela capacidade computacional por segundo, <b>sem qualquer compromisso de longo prazo</b>. <br/>Você paga apenas pelos segundos em que essas instâncias estiverem no estado running, com um mínimo de 60 segundos.
 
 <ok>
-RDS
-<key>RDS</key>
+Instâncias Sob Demanda
+<key>Instâncias Sob Demanda</key>
 
-DynamoDB
-<key>DynamoDB</key>
+Savings Plans
+<key>Savings Plans</key>
 
-DynamoDB Accelerator DAX
-<key>DynamoDB Accelerator DAX</key>
+Instâncias Spot
+<key>Instâncias Spot</key>
 
-DMS
-<key>DMS</key>
+Instâncias Reservadas
+<key>Instâncias Reservadas</key>
 
 <p>
-É um banco de dados de chave-valor NoSQL, sem servidor e totalmente gerenciado, projetado para executar aplicações de alta performance em qualquer escala. Usa API do serviço e o Json.
+<b>Permitem aproveitar a capacidade não utilizada do EC2 na Nuvem</b> AWS. <br/>Em comparação com a definição de preço sob demanda, essas instâncias <b>oferecem descontos de até 90%</b>. <br/>Se ajusta com base na oferta e na demanda de instâncias EC2.
+
 <ok>
-DynamoDB
-<key>DynamoDB</key>
+Instâncias Spot
+<key>Instâncias Spot</key>
 
-RDS
-<key>RDS</key>
+Savings Plans
+<key>Savings Plans</key>
 
-DynamoDB Accelerator DAX
-<key>DynamoDB Accelerator DAX</key>
+Instâncias Reservadas
+<key>Instâncias Reservadas</key>
 
-MySql
-<key>MySql</key>
+Instâncias Sob Demanda
+<key>Instâncias Sob Demanda</key>
 
 <p>
-É um serviço de armazenamento em cache compatível com o DynamoDB no qual você pode se beneficiar da rápida performance em memória para aplicações exigentes. Não foi concebido para hospedagem de sites estáticos.
+AWS Hosts Dedicados do Amazon EC2 --> É um servidor físico com capacidade de instância do EC2 totalmente dedicado para seu uso. Os hosts dedicados permitem que você use suas licenças de software existentes por soquete, por núcleo ou por VM, incluindo o Windows Server, o Microsoft SQL Server, o SUSE e o Linux Enterprise Server.
 
 <ok>
-DynamoDB Accelerator DAX
-<key>DynamoDB Accelerator DAX</key>
+Hosts Dedicados
+<key>Hosts Dedicados</key>
 
-DynamoDB
-<key>DynamoDB</key>
+Savings Plans
+<key>Savings Plans</key>
 
-RDS
-<key>RDS</key>
+Instâncias Spot
+<key>Instâncias Spot</key>
 
-Redis
-<key>Redis</key>
+Instâncias Reservadas
+<key>Instâncias Reservadas</key>
 
 <p>
-É um banco de dados relacional de código aberto conhecido no mercado, que foi criado pelos desenvolvedores originais do MySQL. O Amazon RDS facilita a configuração, a operação e a escalabilidade de implantações do servidor desse banco de dados relacional na nuvem.
+O <b>nível gratuito</b> da AWS oferece aos clientes a capacidade de explorar e testar gratuitamente serviços da AWS até os limites especificados para cada serviço. <br/>O nível gratuito é <b>composto por três tipos diferentes de ofertas</b>: <br/>Um nível gratuito de 12 meses, <br/>Uma oferta Always Free, <br/>Testes de curto prazo.
 
 <ok>
-MariaDB
-<key>MariaDB</key>
+Modelo de uso
+<key>Modelo de uso</key>
 
-RDS
-<key>RDS</key>
+S3
+<key>S3</key>
 
-Aurora
-<key>Aurora</key>
+EC2
+<key>EC2</key>
 
-DynamoDB
-<key>DynamoDB</key>
-
-<p>
-É um banco de dados relacional de código aberto NÃO gerenciados pela AWS e o Amazon RDS facilita a configuração, a operação e a escalabilidade de implantações de MySQL na nuvem. Com o Amazon RDS, você pode implantar em minutos servidores MySQL escaláveis com capacidade de hardware econômica e redimensionável.
-
-<ok>
-MySql
-<key>MySql</key>
-
-Aurora
-<key>Aurora</key>
-
-DynamoDB
-<key>DynamoDB</key>
-
-RDS
-<key>RDS</key>
-
-<p>
-É um sistema de gerenciamento de bancos de dados relacionais desenvolvido pela Microsoft. O Amazon RDS para esse banco de dados facilita a configuração, a operação e a escalabilidade de implantações do desse banco de dados na nuvem.
-
-<ok>
-SQL Server
-<key>SQL Server</key>
-
-MySql
-<key>MySql</key>
-
-DynamoDB
-<key>DynamoDB</key>
-
-Aurora
-<key>Aurora</key>
-
-<p>
-Ajuda você a migrar bancos de dados para a AWS de modo rápido e seguro. O banco de dados de origem permanece totalmente operacional durante a migração, minimizando o tempo de inatividade de aplicações que dependem do banco de dados.
-
-<ok>
-AWS DMS
-<key>DMS</key>
-
-RDS
-<key>RDS</key>
-
-DynamoDB
-<key>DynamoDB</key>
-
-Aurora
-<key>Aurora</key>
-
-<p>
-É um mecanismo de banco de dados relacional gerenciado compatível com o MySQL e o PostgreSQL. O Aurora pode oferecer até cinco vezes a taxa de processamento do MySQL e até três vezes a taxa de processamento do PostgreSQL. Oferecer disponibilidade superior a 99,99% replicando seis cópias dos seus dados em três zonas diferentes.
-
-<ok>
-Amazon Aurora
-<key>Aurora</key>
-
-DynamoDB
-<key>DynamoDB</key>
-
-DMS
-<key>DMS</key>
-
-RDS
-<key>RDS</key>
+Opções de Compra de Instância
+<key>Opções de Compra de Instância</key>
 
 <p>
 
