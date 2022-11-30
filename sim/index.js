@@ -228,7 +228,8 @@ function registerEvents() {
     })
     $('#btnDropDb').click(function () {
 		dropdb();
-		var DataShow_Config = window.open("index.html", "_self");
+//		setTimeout(() => { location.reload() }, 3000); // Executa após 1 segundo para esperar o processo
+//		setTimeout(() => { var DataShow_Config = window.open("index.html", "_self"); }, 1000); // Executa após 1 segundo para esperar o processo
     })
     $('#btnImportArt').click(function () {
 		document.getElementById('selectMygroup').selectedIndex = 2;
@@ -470,20 +471,17 @@ function registerEvents() {
 		savePoints(mytema, mycategory, myid, mygroup, mycode);
     })
 	$('#btnEnd').click(function () {
-//		var result = confirm('Vou salvar a pontuação e concluir, ok?\n');
-//		if (result) {
-			var params = new URLSearchParams(window.location.search);
-			var mytema = params.get('tem');
-			var mycategory = params.get('cat');
-			var myid = document.getElementById('myidSim').value;
-			var mygroup = document.getElementById('mygroupSim').value;
-			var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
-			changeFaseNivel(mytema, mycategory, myid, mygroup, mycode);
-			savePoints(mytema, mycategory, myid, mygroup, mycode);
-			showGridAndHideForms();
-			refreshTableData(mytema, mycategory, '0', '', '', ''); // botão btnCategory1 carrega essa opção
-			setTimeout(() => { location.reload() }, 3000); // Executa após 1 segundo para esperar o processo
-//		}
+		var params = new URLSearchParams(window.location.search);
+		var mytema = params.get('tem');
+		var mycategory = params.get('cat');
+		var myid = document.getElementById('myidSim').value;
+		var mygroup = document.getElementById('mygroupSim').value;
+		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
+		changeFaseNivel(mytema, mycategory, myid, mygroup, mycode);
+		savePoints(mytema, mycategory, myid, mygroup, mycode);
+		showGridAndHideForms();
+		refreshTableData(mytema, mycategory, '0', '', '', ''); // botão btnCategory1 carrega essa opção
+//		setTimeout(() => { location.reload() }, 3000); // Executa após 1 segundo para esperar o processo
     });	
 	$('#btnGear').click(function () {
 		if (document.getElementById('divGear').style.display == 'none') {
@@ -908,7 +906,7 @@ function getTotalNaoRespondidas(mytema, mycategory, mygroup, mycode, students) {
 	return totalNaoRespondidas;
 }
 
-async function changeFaseNivel(mytema, mycategory, id, mygroup, mycode) {
+async function changeFaseNivel(mytema, mycategory, myid, mygroup, mycode) {
 	var totalperguntas = await jsstoreCon.count({
 		from: 'Student'
 		  , where: { mytema: mytema + ''
@@ -930,17 +928,19 @@ async function changeFaseNivel(mytema, mycategory, id, mygroup, mycode) {
 	var totalCorretas = getTotalCorretas(mytema, mycategory, mygroup, mycode, students);
 	var calculo = calculaPercentualAcerto(mytema, mycategory, mygroup, mycode, totalCorretas, totalperguntas);
 	
-//	alert('calculo='+calculo + ' calculo >= 70 = ' + calculo >= 70);
+//alert('calculo='+calculo + ' mytema='+mytema + ' mycategory='+mycategory + ' myid='+myid + ' mygroup='+mygroup + ' mycode='+mycode);
 	
 	if (calculo >= 70) {
-		var mygroupNext = getProximaFaseNivel(id, mygroup, mycode);
+		var mygroupNext = getProximaFaseNivel(myid, mygroup, mycode);
 		if (mygroupNext != 'false') {
 			var students = await jsstoreCon.select({
 				from: 'Student'
 				  , where: { mygroup: '' + mygroupNext + ''
 				}
 			});
+//alert(' mytema='+mytema + ' mycategory='+mycategory + ' myid='+myid + ' mygroup='+mygroup + ' mycode='+mycode);
 			if (students == '') {
+//alert("T"+mytema + "C"+mycategory+ "G"+mygroupNext + ".html?sim=" + mygroupNext + "&tem=" + mytema + "&cat=" + mycategory);
 				var DataShow_Config = window.open("T"+mytema + "C"+mycategory+ "G"+mygroupNext + ".html?sim=" + mygroupNext + "&tem=" + mytema + "&cat=" + mycategory, "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
 			}
 		}
@@ -1098,7 +1098,6 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 		});
 		totalperguntas = parseInt(totalperguntas) - 1;
 		setDashboard(mytema, mycategory, myid, mygroup, mycode);
-//alert('mytema='+mytema + ' mycategory='+mycategory + ' myid='+myid + ' mygroup='+mygroup + ' mycode='+mycode);
 		var students = await jsstoreCon.select({ //seleciona uma pergunta selecionada pelo mytema, mycategory, mygroup, mycode
 			from: 'Student'
 				, where: { mytema: mytema + ''
@@ -1107,6 +1106,7 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 				, mycode: mycode + ''
 			  }
 		});
+//alert('mytema='+mytema + ' mycategory='+mycategory + ' myid='+myid + ' mygroup='+mygroup + ' mycode='+mycode);
 		if (students == '') {
 			if (document.getElementById('btnEnd').style.display == 'none') {
 				document.getElementById('btnEnd').style.display = '';
@@ -1561,23 +1561,29 @@ async function deleteTable() {
 
 //This function drop database
 async function dropdb() {
-	var result = confirm('Todas informações serão perdidas e reiniciadas, ok?');
+	var result = confirm('Todas informações serão perdidas, ok?');
 	if (result) {
-		jsstoreCon.dropDb().then(function() {
-			console.log('Db deleted successfully');
-			var params = new URLSearchParams(window.location.search);
-			var mytema = params.get('tem');
-			var mycategory = params.get('cat');
-			var mycode = document.getElementById('mycode').value;
-			var myorder = document.getElementById('myorder').value;
-			var mygroup = document.getElementById('mygroup').value;
-			var mytext = document.getElementById('mytext').value.trim();
-			refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext);
-			location.reload();
-//			console.log('successfull');
-		}).catch(function(error) {
-			console.log(error);
-		});
+		var result = confirm('Confirma?');
+		if (result) {
+			var result = confirm('Ok. Vou apagar tudo.');
+			if (result) {
+				jsstoreCon.dropDb().then(function() {
+					console.log('Db deleted successfully');
+					var params = new URLSearchParams(window.location.search);
+					var mytema = params.get('tem');
+					var mycategory = params.get('cat');
+					var mycode = document.getElementById('mycode').value;
+					var myorder = document.getElementById('myorder').value;
+					var mygroup = document.getElementById('mygroup').value;
+					var mytext = document.getElementById('mytext').value.trim();
+					refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext);
+					location.reload();
+		//			console.log('successfull');
+				}).catch(function(error) {
+					console.log(error);
+				});
+			}
+		}
 	}
 }
 
@@ -2421,7 +2427,7 @@ async function initLinkHelp() {
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'S3', 'EC2', 'Opções de Compra de Instância', 'EBS', save, 'Modelo de uso', 'https://aws.amazon.com/pt/free/free-tier-faqs/', 'composto por três tipos', 'Modelo de uso --> O <b>nível gratuito</b> da AWS oferece aos clientes a capacidade de explorar e testar gratuitamente serviços da AWS até os limites especificados para cada serviço. <br/>O nível gratuito é <b>composto por três tipos diferentes de ofertas</b>: <br/>Um nível gratuito de 12 meses, <br/>Uma oferta Always Free, <br/>Testes de curto prazo.');
 
-	//TREINAMENTO
+	//DESAFIO
 	var mytema = '1';
 	var mycategory = '4';
 	var students = await jsstoreCon.select({
@@ -2440,25 +2446,23 @@ async function initLinkHelp() {
 	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, 'Desafio', '', '', 'Desafio');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Organizations', 'Billing', 'Cost Explorer', 'Princing Calculator', save, 'Budgets', 'https://docs.aws.amazon.com/pt_br/cost-management/latest/userguide/budgets-managing-costs.html', 'rastreamento de uso e custo da AWS', 'AWS Budgets --> É para rastreamento de uso e custo da AWS. Monitorar métricas agregadas de utilização e cobertura para suas Instâncias Reservadas (RIs) ou Savings Plans - Planos de Poupança. Envia mensagem quando o consumo vai atingir o percentual pré-configurado ou pré-definido.');
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Organizations', 'Billing', 'Cost Explorer', 'Princing Calculator', save, 'Budgets', 'https://docs.aws.amazon.com/pt_br/cost-management/latest/userguide/budgets-managing-costs.html', 'rastreamento de uso e custo da AWS', 'AWS Budgets --> É para rastreamento de uso e custo da AWS. <br/>Monitorar métricas agregadas de utilização e cobertura para suas Instâncias Reservadas (RIs) ou Savings Plans - Planos de Poupança. <br/>Envia mensagem quando o consumo vai atingir o percentual pré-configurado ou pré-definido.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Organizations', 'Billing', 'Cost Explorer', 'Princing Calculator', save, 'Budgets Destinatários por Email', 'https://docs.aws.amazon.com/pt_br/cost-management/latest/userguide/budgets-controls.html', 'pode ter até 10 endereços de e-mail', 'Em Notification preferences - Opional (Preferências de notificação - Opcional), em Email recipients (Destinatários de e-mail), insira os endereços de e-mail que você que o alerta notifique. Separe múltiplos endereços de e-mail com vírgulas. Uma notificação pode ter até 10 endereços de e-mail.');
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Organizations', 'Billing', 'Cost Explorer', 'Princing Calculator', save, 'Budgets Destinatários por Email', 'https://docs.aws.amazon.com/pt_br/cost-management/latest/userguide/budgets-controls.html', 'pode ter até 10 endereços de e-mail', 'Em Notification preferences - Opional (Preferências de notificação - Opcional), em Email recipients (Destinatários de e-mail), insira os endereços de e-mail para o alerta o notificar. <br/>Separe múltiplos endereços de e-mail com vírgulas. <br/>Uma notificação pode ter até 10 endereços de e-mail.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', 'Organizations', 'Billing', 'Cost Explorer', 'Budgets', save, 'Princing Calculator', 'https://calculator.aws/#/', 'estimar o custo antes do uso, antes da implementação', 'AWS Princing Calculator --> Estima o custo antes do uso, antes da implementação para sua solução de arquitetura. Configure uma estimativa de custo exclusivo que atenda às suas necessidades de negócios ou pessoais com produtos e serviços da AWS.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', 'Billing', 'Cost Explorer', 'Princing Calculator', 'Budgets', save, 'Organizations', 'https://aws.amazon.com/pt/organizations/?nc2=type_a', 'alocar recursos, agrupar contas', 'AWS Organizations para --> Criar novas contas da AWS e alocar recursos, agrupar contas para organizar seus fluxos de trabalho, aplicar políticas a contas ou grupos para governança e simplificar o faturamento usando <b>um único método de pagamento</b> para todas as suas contas qualificando preços por volume.');
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', 'Billing', 'Cost Explorer', 'Princing Calculator', 'Budgets', save, 'Organizations', 'https://aws.amazon.com/pt/organizations/?nc2=type_a', 'alocar recursos, agrupar contas', 'AWS Organizations para --> Criar novas contas da AWS e alocar recursos, agrupar contas para organizar seus fluxos de trabalho, aplicar políticas a contas ou grupos para governança e simplificar o faturamento usando um único método de pagamento para todas as suas contas qualificando preços por volume.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', 'Cost Explorer', 'Princing Calculator', 'Cost Explorer', 'Organizations', save, 'Billing', 'https://aws.amazon.com/pt/aws-cost-management/aws-billing/', 'visualizar e pagar faturas', 'AWS Billing --> É para entender seus gastos com a AWS, visualizar e pagar faturas, gerenciar preferências de faturamento e configurações de impostos e acessar serviços adicionais de Gerenciamento financeiro na nuvem. Avalie rapidamente se os seus gastos mensais estão alinhados a períodos anteriores, previsões ou orçamentos e investigue e tome medidas corretivas em tempo hábil.');
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', 'Cost Explorer', 'Princing Calculator', 'Budgets', 'Organizations', save, 'Billing', 'https://aws.amazon.com/pt/aws-cost-management/aws-billing/', 'visualizar e pagar faturas', 'AWS Billing --> É para entender seus gastos com a AWS, visualizar e pagar faturas, gerenciar preferências de faturamento e configurações de impostos e acessar serviços adicionais de Gerenciamento financeiro na nuvem. Avalie rapidamente se os seus gastos mensais estão alinhados a períodos anteriores, previsões ou orçamentos e investigue e tome medidas corretivas em tempo hábil.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', 'Princing Calculator', 'Budgets', 'Organizations', 'Refatoração', save, 'Cost Explorer', 'https://aws.amazon.com/pt/aws-cost-management/aws-cost-explorer/', 'relacionado ao gasto que já passou', 'AWS Cost Explorer --> Permite visualizar, entender e gerenciar os custos e o uso da AWS ao longo do tempo relacionado ao gasto que já passou. Os clientes gerenciam de custos de servidores virtuais.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Organizations', 'Billing', 'Cost Explorer', 'Budgets', save, 'Pricing Calculator', 'https://docs.aws.amazon.com/pt_br/pricing-calculator/latest/userguide/what-is-pricing-calculator.html', '', 'AWS Pricing Calculator --> É uma ferramenta de planejamento baseada na web que você pode usar para criar estimativas para os casos de uso AWS. Você pode usá-lo para modelar suas soluções antes de criá-las, planejar como você gasta. Você paga a fatura apenas dos serviços individuais de que precisa conforme o tempo que os utilizar, não precisa se comprometer com um contrato de longo prazo.');
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Organizations', 'Billing', 'Cost Explorer', 'Budgets', save, 'TCO', 'https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/aws-pricingtco-tools.html', 'pagamento conforme o uso', 'TCO (Calculadora de Custo Total) ou (Total Cost of Ownership) --> É uma ferramenta para ajudar você a estimar os gastos dos serviços AWS reduzindo o custo total de propriedade, diminuindo a necessidade de investimento em grandes despesas de capital e oferecendo um modelo de pagamento conforme o uso. Exemplo: Se você for experimentar o (Amazon EC2), pode ser útil saber por quanto tempo pretende usar os servidores, o tipo de sistema operacional, quais são os requisitos de memória e quanta E/S precisa, decidir se precisa de armazenamento e se executará um banco de dados.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Organizations', 'Billing', 'Cost Explorer', 'Budgets', save, 'TCO', 'https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/aws-pricingtco-tools.html', 'pagamento conforme o uso', 'TCO (Calculadora de Custo Total) ou (Total Cost of Ownership) --> É uma ferramenta para ajudar você a estimar os gastos dos serviços AWS reduzindo o custo total de propriedade (TCO), diminuindo a necessidade de investimento em grandes despesas de capital e oferecendo um modelo de pagamento conforme o uso. Exemplo: Se você for experimentar o (Amazon EC2), pode ser útil saber por quanto tempo pretende usar os <b><u>servidores</u></b>, o tipo de sistema operacional, quais são os requisitos de memória e quanta E/S precisa, decidir se precisa de armazenamento e se executará um banco de dados.');
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', 'Confiabilidade', 'Segurança', 'Excelência Operacional', 'Performance Eficiente', save, 'Well-Architected Framework', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', 'Tem os pilares são', 'AWS Well-Architected Framework --> Pilares (dica, decorar iniciais: ESC+POS ou Tecla ESC+ POS-Graduação=P=Performance): <br/><b>E</b>xcelência operacional, <br/><b>S</b>egurança, <br/><b>C</b>onfiabilidade, <br/><b>Performance</b> ou Eficiência de desempenho, <br/><b>O</b>timização de custos, <br/><b>S</b>ustentabilidade.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', 'Confiabilidade', 'Segurança', 'Excelência Operacional', 'Performance Eficiente', save, 'Well-Architected Framework', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', 'Tem os pilares são', 'AWS Well-Architected Framework --> Pilares (dica, decorar iniciais: ESC+POS ou Tecla ESC+ POS-Graduação=P=Performance): <br/>Excelência operacional, <br/>Segurança, <br/>Confiabilidade, <br/>Eficiência de desempenho, <br/>Otimização de custos, <br/>Sustentabilidade.');
-	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Well-Architected Framework', 'EC2', 'S3', 'Excelência Operacional', save, 'Cargas de trabalho (Workload)', 'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/userguide/workloads.html', '', 'Carga de trabalho (workload) --> É um conjunto de códigos e recursos que fornece valor empresarial, como um aplicativo voltado ao cliente ou um processo de back-end. Pode consistir em um subconjunto de recursos em uma Conta da AWS ou ser uma coleção de vários recursos abrangendo várias Contas da AWS.');
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Well-Architected Framework', 'EC2', 'S3', 'Excelência Operacional', save, 'Cargas de trabalho (Workload)', 'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/userguide/workloads.html', '', 'Carga de trabalho (Workload) --> É um conjunto de códigos e recursos que fornece valor empresarial, como um aplicativo voltado ao cliente ou um processo de back-end. Pode consistir em um subconjunto de recursos em uma Conta da AWS ou ser uma coleção de vários recursos abrangendo várias Contas da AWS.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 
 
@@ -2525,7 +2529,7 @@ var save = false; //não precisa gravar o restante na tabela porque estão nos a
 		
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Storage Gateway', 'https://aws.amazon.com/pt/storagegateway/', 'acesso on-premises para armazenamento virtual na nuvem', 'AWS Storage Gateway --> É um conjunto de serviços de armazenamento na nuvem híbrida que oferece acesso on-premises para armazenamento virtual na nuvem praticamente ilimitado. Não é compatível diretamente com a replicação entre regiões.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'API Gateway', 'https://aws.amazon.com/pt/api-gateway/', '', 'AWS API Gateway --> É um serviço gerenciado que permite que desenvolvedores criem, publiquem, mantenham, monitorem e protejam APIs em qualquer escala com facilidade.');
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'API Gateway', 'https://aws.amazon.com/pt/api-gateway/', '', 'AWS API Gateway --> É um serviço gerenciado que permite desenvolvedores criar, publicar, manter, monitorar e protejer APIs em qualquer escala com facilidade.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Direct Connect', 'https://docs.aws.amazon.com/pt_br/directconnect/latest/UserGuide/Welcome.html', '', 'AWS Direct Connect --> Vincula sua rede interna a um local do AWS Direct Connect usando um cabo de fibra óptica Ethernet padrão. Uma extremidade do cabo é conectada ao roteador, e a outra é conectada a um roteador do AWS Direct Connect. O Direct Connect é uma alternativa que fornece uma conexão privada dedicada entre suas instalações locais e a Nuvem AWS.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);

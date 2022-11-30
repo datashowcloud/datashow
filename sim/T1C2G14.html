@@ -179,7 +179,7 @@
 FASE 1.4
 
 <p>
-É um sistema de arquivos simples (não objetos: html, js, css). Sem servidor para definição única que facilita a configuração, a escalabilidade e a otimização de custos do armazenamento de arquivos na AWS. Fornece uma solução de armazenamento de arquivos compartilhado.
+É um <b>sistema de arquivos simples (não armazena como objetos igual o S3: html, js, css)</b>. Sem servidor para definição única que facilita a configuração, a escalabilidade e a otimização de custos do armazenamento de arquivos na AWS. Fornece uma solução de armazenamento de arquivos compartilhado.
 
 <ok>
 AWS EFS
@@ -195,9 +195,10 @@ S3
 <key>S3</key>
 
 <p>
-São backups incrementais, o que significa que somente os blocos no dispositivo que tiverem mudado depois do snapshot mais recente serão salvos. Isso minimiza o tempo necessário para criar o snapshot e economiza em custos de armazenamento ao não duplicar os dados.<br/>Os limites de snapshot manual (100 por região) não se aplicam a backups automáticos.
+<b>São backups incrementais</b>, o que significa que somente os blocos no dispositivo que tiverem mudado depois do backup incremental mais recente serão salvos. Isso minimiza o tempo necessário para criar o backup incremental e economiza em custos de armazenamento ao não duplicar os dados.<br/>Os limites de <b>backup incremental manual (100 por região)</b> não se aplicam a backups automáticos.
 
 <ok>
+EBS Snapshots
 <key>EBS Snapshots</key>
 
 AWS EFS
@@ -210,7 +211,7 @@ AWS Backup
 <key>Backup</key>
 
 <p>
-É um serviço de armazenamento em blocos, escalável e de alta performance projetado para o Amazon Elastic Compute Cloud (Amazon EC2). Replica dados automaticamente em uma zona de disponibilidade. É necessário associar um EBS a uma instância EC2 para garantir a persistência dos dados quando a instância é desligada. Essa arquitetura de banco de dados pode ser gerenciada pelo time do Cliente. Não pode ser compartilhado por se comportarem como dispositivos de blocos brutos e não formatados.
+É um <b>serviço de armazenamento em blocos</b>, escalável e de alta performance projetado para o Amazon Elastic Compute Cloud (Amazon EC2). <br/>Replica dados automaticamente em uma zona de disponibilidade. <br/>É <b>necessário associá-lo a uma instância EC2 para garantir a persistência dos dados quando a instância é desligada</b>. <br/>Essa arquitetura de banco de dados <b>pode ser gerenciada pelo time do Cliente</b>. Não pode ser compartilhado por se comportarem como dispositivos de blocos brutos e não formatados.
 
 <ok>
 Amazon EBS
@@ -226,7 +227,7 @@ AWS DynamoDB
 <key>DynamoDB</key>
 
 <p>
-É um dispositivo de armazenamento em blocos durável que é possível anexar às suas instâncias. Depois de anexar um volume a uma instância, será possível usá-lo como você usaria um disco rígido físico.
+É um <b>dispositivo de armazenamento em blocos</b> durável que é possível anexar às suas instâncias. <br/>Depois de anexá-lo a uma instância, será possível usá-lo como você usaria um disco rígido físico.
 
 <ok>
 EBS Volumes
@@ -235,14 +236,14 @@ EBS Volumes
 AWS EFS
 <key>EFS</key>
 
-AWS Storage Gateway
-<key>Storage Gateway</key>
+Amazon EBS
+<key>EBS</key>
 
 DataSync
 <key>DataSync</key>
 
 <p>
-Fornece armazenamento temporário em nível de bloco para a instância. Esse armazenamento está localizado em discos que estão anexados fisicamente ao computador host. O armazenamento de instâncias é ideal para o armazenamento temporário de informações que são alteradas frequentemente, como buffers, caches, dados de rascunho e outros conteúdos temporários ou para dados replicados em toda a frota de instâncias, como um grupo com balanceamento de carga de servidores Web.
+Fornece <b>armazenamento temporário em nível de bloco para a instância</b>. <br/>Esse armazenamento está localizado em discos que estão anexados fisicamente ao computador host. <br/>É ideal para o armazenamento temporário de informações que são alteradas frequentemente, <b>como buffers, caches, dados de rascunho e outros conteúdos temporários</b> ou para dados replicados em toda a frota de instâncias, como um grupo com balanceamento de carga de servidores Web.
 
 <ok>
 Armazenamento de instâncias EC2
@@ -258,7 +259,7 @@ Amazon EBS
 <key>EBS</key>
 
 <p>
-É um serviço de banco de dados de grafos rápido, confiável e totalmente gerenciado que facilita a criação e a execução de aplicativos na AWS. O núcleo do Neptune é um mecanismo de banco de dados gráfico com projeto específico e alta performance.
+É um <b>serviço de banco de dados de grafos</b> rápido, confiável e totalmente gerenciado que facilita a criação e a execução de aplicativos na AWS. <br/>O núcleo dele é um mecanismo de banco de dados gráfico com projeto específico e alta performance.
 
 <ok>
 Amazon Neptune
@@ -274,7 +275,7 @@ Amazon JanusGraph
 <key>JanusGraph</key>
 
 <p>
-É apenas um conceito para traçar gráficos de funções matemáticas e outras curvas de natureza similar, em um sistema de coordenadas.
+É <b>apenas um conceito para traçar gráficos</b> de funções matemáticas e outras curvas de natureza similar, em um sistema de coordenadas.
 
 <ok>
 Amazon Graph
@@ -290,7 +291,7 @@ Amazon JanusGraph
 <key>JanusGraph</key>
 
 <p>
-Trabalha com a AWS (partner). Capacita desenvolvedores e cientistas de dados a criar rapidamente aplicativos escaláveis ​​e orientados por IA ou analisar big data com algoritmos. Como um banco de dados gráfico nativo criado para armazenar dados e conectar os relacionamentos, o Neo4j permite insights rápidos e profundamente contextuais.
+Trabalha com a AWS <b>(partner)</b>. <br/>Capacita desenvolvedores e cientistas de dados a <b>criar rapidamente aplicativos escaláveis ​​e orientados por IA ou analisar big data com algoritmos</b>. <br/>Como um banco de dados gráfico nativo criado para armazenar dados e conectar os relacionamentos, permite insights rápidos e profundamente contextuais.
 
 <ok>
 Amazon Neo4j
@@ -306,7 +307,7 @@ Amazon JanusGraph
 <key>JanusGraph</key>
 
 <p>
-Trabalha com a AWS (partner). É um banco de dados (open source) gráfico escalável otimizado para armazenar e consultar gráficos contendo centenas de bilhões de vértices e arestas distribuídos em um cluster de várias máquinas.
+Trabalha com a AWS <b>(partner)</b>. <br/>É um <b>banco de dados (open source) gráfico</b> escalável otimizado para armazenar e consultar gráficos contendo centenas de bilhões de vértices e arestas distribuídos em um cluster de várias máquinas.
 
 <ok>
 Amazon JanusGraph
@@ -322,16 +323,19 @@ Amazon Neptune
 <key>Neptune</key>
 
 <p>
-É um serviço de consultas interativas usando SQL padrão que facilita a análise de dados no Amazon S3. Não precisa de servidor. Portanto, não há infraestrutura para gerenciar e você paga apenas pelas consultas executadas.
+É um <b>serviço de consultas interativas usando SQL padrão</b> que facilita a análise de dados no Amazon S3. <br/>Não precisa de servidor. Portanto, não há infraestrutura para gerenciar e você paga apenas pelas consultas executadas.
 
 <ok>
 AWS Athena
 <key>Athena</key>
 
+RDS
 <key>RDS</key>
 
+Aurora
 <key>Aurora</key>
 
+Lambda
 <key>Lambda</key>
 
 <p>
