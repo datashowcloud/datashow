@@ -184,7 +184,7 @@ function registerEvents() {
 		document.getElementById('btnIndexConfigurar').style.display = 'none';
 		document.getElementById('lei13709').style.display = 'none';
 		location.reload(); //recarrega página importando também o teste 01
-console.log("config" + document.getElementById('selectMygroup').value + ".html?sim=" + document.getElementById('selectMygroup').value + "&tem=" + mytema + "&cat=" + mycategory);
+//console.log("config" + document.getElementById('selectMygroup').value + ".html?sim=" + document.getElementById('selectMygroup').value + "&tem=" + mytema + "&cat=" + mycategory);
 		var DataShow_Config = window.open("config" + document.getElementById('selectMygroup').value + ".html?sim=" + document.getElementById('selectMygroup').value + "&tem=" + mytema + "&cat=" + mycategory, "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
 //		var DataShow_ConfigResult = window.open("configresult.html", "_self");
 //		datashowconfigresult.focus();
@@ -379,7 +379,7 @@ console.log("config" + document.getElementById('selectMygroup').value + ".html?s
         }
     });
     $('#tblGrid tbody').on('click', '.deletefase', function () {
-		var result = confirm('Não faça nada. \nAguarde o botão azul aparecer.');
+		var result = confirm('Não faça nada. \n\nAguarde o botão azul aparecer.');
 		if (result) {
 			var params = new URLSearchParams(window.location.search);
 			var mytema = params.get('tem');
@@ -569,7 +569,7 @@ async function updateConfigGeneral() {
 	if (GLOBAL_background == 'white') {
 		GLOBAL_textcolor = 'gray';
 		GLOBAL_background = 'black';
-		GLOBAL_buttoncolor = 'btn-link';
+		GLOBAL_buttoncolor = 'btn-primary';
 	} else {
 		GLOBAL_textcolor = 'gray';
 		GLOBAL_background = 'white';
@@ -617,11 +617,12 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		classe = classe.substring(4, classe.length);
 		document.getElementById('btnPrevious').classList.remove(classe);
 	}
-	if(document.getElementById('btnPause') != null) {
+/*	if(document.getElementById('btnPause') != null) {
 		classe = document.getElementById('btnPause').classList.value;
 		classe = classe.substring(4, classe.length);
 		document.getElementById('btnPause').classList.remove(classe);
 	}
+*/
 	if(document.getElementById('btnEnd') != null) {
 		classe = document.getElementById('btnEnd').classList.value;
 		classe = classe.substring(4, classe.length);
@@ -644,6 +645,16 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		classe = classe.substring(4, classe.length);
 		document.getElementById('btnDropDb').classList.remove(classe);
 */	}
+	if(document.getElementById('txtIncorretas') != null) {
+		classe = document.getElementById('txtIncorretas').classList.value;
+		classe = classe.substring(4, classe.length);
+		document.getElementById('txtIncorretas').classList.remove(classe);
+	}
+	if(document.getElementById('txtCorretas') != null) {
+		classe = document.getElementById('txtCorretas').classList.value;
+		classe = classe.substring(4, classe.length);
+		document.getElementById('txtCorretas').classList.remove(classe);
+	}
 	if(document.getElementById('txtNaoRespondidas') != null) {
 		classe = document.getElementById('txtNaoRespondidas').classList.value;
 		classe = classe.substring(4, classe.length);
@@ -1099,7 +1110,7 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 		if (students == '') {
 			if (document.getElementById('btnEnd').style.display == 'none') {
 				document.getElementById('btnEnd').style.display = '';
-				alert('Use o botão FIM quando terminar.');
+//				alert('Use o botão FIM quando terminar.');
 			}
 			document.getElementById('btnEnd').focus();
 		} else {
@@ -2464,7 +2475,7 @@ var save = false; //não precisa gravar o restante na tabela porque estão nos a
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Resiliência', 'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/reliability-pillar/resiliency-and-the-components-of-reliability.html', 'se recuperar de interrupções de infraestrutura ou serviço', 'Resiliência --> É a capacidade de uma carga de trabalho se recuperar de interrupções de infraestrutura ou serviço, adquirir dinamicamente recursos computacionais para atender à demanda e mitigar interrupções, como configurações incorretas ou problemas temporários de rede.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, 'Perspectivas Well-Architected', 'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/userguide/lenses.html', 'perspectivas oferecem uma maneira de você medir de forma consistente suas arquiteturas', 'As perspectivas --> Oferecem uma maneira de você medir de forma consistente suas arquiteturas em relação às melhores práticas e identificar áreas para melhoria. O AWS Lente de estrutura Well-Architected é aplicado automaticamente quando uma carga de trabalho é definida.');
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, 'Perspectivas Well-Architected', 'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/userguide/lenses.html', 'perspectivas oferecem uma maneira de você medir de forma consistente suas arquiteturas', 'As perspectivas --> Oferecem uma maneira de medir de forma consistente suas arquiteturas em relação às melhores práticas e identificar áreas para melhoria. O AWS Lente de estrutura Well-Architected é aplicado automaticamente quando uma carga de trabalho é definida.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, 'Classes de armazenamento', 'https://aws.amazon.com/pt/s3/storage-classes/', 'armazenamento de objetos', 'Opção padrão (default) de armazenamento de objetos com altos níveis de resiliência, disponibilidade e performance para dados acessados com frequência. Tem baixa latência e alto throughput.<br/>1 Standard (padrão),<br/>2 Intelligent Tiering,<br/>3 Standard-IA,<br/>4 One Zone-IA,<br/>5 Glacier Instant Retrieval,<br/>6 Glacier Flexible,<br/>7 Glacier Deep Archive,<br/>8 Outposts.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
