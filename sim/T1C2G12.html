@@ -176,199 +176,183 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1.1
+FASE 1.2
 
 <p>
-Se concentra nos workloads que executam as funções pretendidas e na <b>recuperação rápida de falhas</b> em atender demandas ou <b>desenho à prova de falhas</b>. Os principais tópicos incluem projeto de sistemas distribuídos, planejamento de recuperação e requisitos adaptação a mudanças.
+Oferece latência de milissegundos e alta performance de taxa de transferência para dados <b>acessados com muita frequência, com pouca frequência</b> e raramente acessados nos níveis Frequent Access, Infrequent Access e o Archive Instant Access.
 
 <ok>
-Confiabilidade
-<key>Confiabilidade</key>
-
-Segurança
-<key>Segurança</key>
-
-Excelência Operacional
-<key>Excelência Operacional</key>
-
-Resiliência
-<key>Resiliência</key>
-
-<p>
-<b>Se concentra na proteção de informações e sistemas</b>. Os principais tópicos incluem confidencialidade e integridade de dados, gerenciamento de permissões de usuário e estabelecimento de controles para detectar eventos de segurança.
-
-<ok>
-Segurança
-<key>Segurança</key>
-
-Confiabilidade
-<key>Confiabilidade</key>
-
-Excelência Operacional
-<key>Excelência Operacional</key>
-
-Performance Eficiente
-<key>Performance Eficiente</key>
-
-<p>
-<b>Se concentra na execução e monitoramento sistemas e na melhoria contínua</b> de processos e procedimentos. Os principais tópicos incluem automação de alterações, reação a eventos e definição de padrões para gerenciar as operações diárias. A automação pode melhorar a estabilidade, a eficiência durante as implementações e a resposta a eventos.
-
-<ok>
-Excelência Operacional
-<key>Excelência Operacional</key>
-
-Confiabilidade
-<key>Confiabilidade</key>
-
-Resiliência
-<key>Resiliência</key>
-
-Perspectivas Well-Architected
-<key>Perspectivas Well-Architected</key>
-
-<p>
-<b>Se concentra na alocação estruturada e simplificada de recursos de TI</b> e computação. Os principais tópicos incluem seleção dos tipos e tamanhos certos dos recursos otimizados para os requisitos de workload, <b>monitoramento de performance e manutenção da eficiência</b> à medida que as necessidades comerciais evoluem.
-
-<ok>
-Performance Eficiente
-<key>Performance Eficiente</key>
-
-Resiliência
-<key>Resiliência</key>
-
-Excelência Operacional
-<key>Perspectivas Well-Architected</key>
-
-Confiabilidade
-<key>Confiabilidade</key>
-
-<p>
-É a capacidade de uma carga de trabalho se <b>recuperar de interrupções de infraestrutura ou serviço</b>, adquirir dinamicamente recursos computacionais para atender à demanda e mitigar interrupções, como configurações incorretas ou problemas temporários de rede.
-
-<ok>
-Resiliência
-<key>Resiliência</key>
-
-Confiabilidade
-<key>Confiabilidade</key>
-
-Excelência Operacional
-<key>Excelência Operacional</key>
-
-Perspectivas Well-Architected
-<key>Perspectivas Well-Architected</key>
-
-<p>
-Oferecem uma maneira, <b>medir as arquiteturas de forma consistente em relação às melhores práticas<b> e identificar áreas para melhoria.
-
-<ok>
-Perspectivas Well-Architected
-<key>Perspectivas Well-Architected</key>
-
-Performance Eficiente
-<key>Performance Eficiente</key>
-
-Confiabilidade
-<key>Confiabilidade</key>
-
-Segurança
-<key>Segurança</key>
-
-<p>
-Opções:<br/>1 <b>Standard (padrão, custo maior)</b>,<br/>2 Intelligent Tiering (camada inteligente),<br/>3 Standard-IA,<br/>4 One Zone-IA,<br/>5 Glacier Instant Retrieval (custo baixo),<br/>6 Glacier Flexible (custo baixo),<br/>7 <b>Glacier Deep Archive (custo menor)</b>,<br/>8 Outposts.
-
-<ok>
-Classes de armazenamento
-<key>Classes de armazenamento</key>
-
-Perspectivas Well-Architected
-<key>Perspectivas Well-Architected</key>
-
-S3
-<key>S3</key>
-
-EC2
-<key>EC2</key>
-
-<p>
-Opção <b>padrão (default) de armazenamento de objetos</b> com altos níveis de resiliência, disponibilidade e performance para dados acessados com frequência. Tem baixa latência e alto throughput.
-
-<ok>
-Standard
-<key>Standard</key>
-
-Perspectivas Well-Architected
-<key>Perspectivas Well-Architected</key>
-
-S3
-<key>S3</key>
-
-EC2
-<key>EC2</key>
-
-<p>
-Está contida na S3 Intelligent-Tiering (camada inteligente). É indicado para dados acessados com <b>mais frequência</b>, mas que exigem <b>acesso rápido</b> quando necessários.
-
-<ok>
-Frequent Access
-<key>Frequent Access</key>
-
-Infrequent Access
-<key>Infrequent Access</key>
-
 Intelligent Tiering
 <key>Intelligent Tiering</key>
 
-Glacier
-<key>Glacier</key>
-
-<p>
-Está contida na S3 Intelligent-Tiering (camada inteligente). É indicado para dados acessados com <b>menos frequência</b>, mas que exigem <b>acesso rápido</b> quando necessários. Oferece os altos níveis de resiliência e throughput e a baixa latência. Combina baixo custo e alta performance.
-
-<ok>
 Infrequent Access
 <key>Infrequent Access</key>
 
 Frequent Access
 <key>Frequent Access</key>
 
-Intelligent Tiering
-<key>Intelligent Tiering</key>
+Standard
+<key>Standard</key>
+
+<p>
+É o mais caro e oferece um armazenamento de objetos com altos níveis de resiliência, disponibilidade e performance para dados acessados com frequência. Como fornece baixa latência e alto throughput.
+
+<ok>
+Standard
+<key>Standard</key>
+
+Glacier
+<key>Glacier</key>
 
 Classes de armazenamento
 <key>Classes de armazenamento</key>
 
-<p>
-É uma classe de armazenamento do Amazon S3 segura, durável e de <b>custo extremamente baixo</b> para <b>arquivamento de dados e backup de longo prazo</b>. É para arquivamento e não para armazenamento.
-
-<ok>
-Glacier
-<key>Glacier</key>
-
-Standard
-<key>Standard</key>
-
-Frequent Access
-<key>Glacier Deep Arquive</key>
-
-Intelligent Tiering
-<key>Intelligent Tiering</key>
+Infrequent Access
+<key>Infrequent Access</key>
 
 <p>
-É uma classe de armazenamento do Amazon S3 que oferece armazenamento de objetos seguro e durável para <b>retenção de longo prazo de dados acessados uma ou duas vezes por ano</b>. oferece armazenamento de <b>custo mais baixo na nuvem</b>, a preços significativamente mais baixos do que armazenar e manter dados em bibliotecas de fitas magnéticas on-premises ou arquivar dados externamente.
+É um serviço de mensagens totalmente gerenciado para a comunicação de aplicação para aplicação (A2A) e de aplicação para pessoa (A2P). A funcionalidade pub/sub de A2A fornece tópicos para sistemas de mensagens de alta taxa de transferência <b>baseados em push</b>.
 
 <ok>
-Glacier Deep Arquive
-<key>Glacier Deep Arquive</key>
+SNS
+<key>SNS</key>
 
-Glacier
-<key>Glacier</key>
+SES
+<key>SES</key>
 
-Standard
-<key>Standard</key>
+SQS
+<key>SQS</key>
 
-Frequent Access
-<key>Frequent Access</key>
+AWS STS
+<key>STS</key>
+
+<p>
+É uma <b>plataforma de e-mail</b> que oferece uma forma fácil e econômica para você enviar e receber e-mail usando seus próprios endereços de e-mail e domínios.
+
+<ok>
+SES
+<key>SES</key>
+
+SQS
+<key>SQS</key>
+
+SNS
+<key>SNS</key>
+
+Well-Architected Framework
+<key>Well-Architected Framework</key>
+
+<p>
+Oferece uma fila hospedada segura, durável e disponível que permite integrar e desacoplar sistemas de software e componentes distribuídos. Oferece construções comuns, como filas de mensagens mortas e tags de alocação de custos.
+
+<ok>
+SQS
+<key>SQS</key>
+
+SNS
+<key>SNS</key>
+
+SES
+<key>SES</key>
+
+Amazon MQ
+<key>MQ</key>
+
+<p>
+É um serviço gerenciado pela AWS. É um agente de mensagens para o Apache ActiveMQ e RabbitMQ que facilita a configuração e a operação de agentes de mensagens na AWS. Reduz suas responsabilidades operacionais gerenciando o provisionamento, a configuração e a manutenção dos agentes de mensagem para você.
+
+<ok>
+Amazon MQ
+<key>MQ</key>
+
+SQS
+<key>SQS</key>
+
+SNS
+<key>SNS</key>
+
+SES
+<key>SES</key>
+
+<p>
+É uma coleção de serviços gerenciados que facilita a configuração, operação e escalabilidade de bancos de dados na nuvem. Uma instância de banco de dados dele reside em uma única região. Escolha entre sete opções de mecanismos bastante utilizados: Amazon Aurora compatível com MySQL, Amazon Aurora compatível com PostgreSQL, MySQL, MariaDB, PostgreSQL, Oracle e SQL Server.
+
+<ok>
+RDS
+<key>RDS</key>
+
+DynamoDB
+<key>DynamoDB</key>
+
+DynamoDB Accelerator DAX
+<key>DynamoDB Accelerator DAX</key>
+
+DMS
+<key>DMS</key>
+
+<p>
+É um banco de dados de chave-valor NoSQL, sem servidor e totalmente gerenciado, projetado para executar aplicações de alta performance em qualquer escala. Usa API do serviço e o Json.
+
+<ok>
+DynamoDB
+<key>DynamoDB</key>
+
+RDS
+<key>RDS</key>
+
+DynamoDB Accelerator DAX
+<key>DynamoDB Accelerator DAX</key>
+
+MySql
+<key>MySql</key>
+
+<p>
+É um serviço de armazenamento em cache compatível com o DynamoDB no qual você pode se beneficiar da rápida performance em memória para aplicações exigentes. Não foi concebido para hospedagem de sites estáticos.
+
+<ok>
+DynamoDB Accelerator DAX
+<key>DynamoDB Accelerator DAX</key>
+
+RDS
+<key>RDS</key>
+
+Redis
+<key>Redis</key>
+
+DynamoDB
+<key>DynamoDB</key>
+
+<p>
+Ajuda você a <b>migrar bancos de dados para a AWS</b> de modo rápido e seguro. O banco de dados de origem permanece totalmente operacional durante a migração, minimizando o tempo de inatividade de aplicações que dependem do banco de dados.
+
+<ok>
+AWS DMS
+<key>DMS</key>
+
+RDS
+<key>RDS</key>
+
+DynamoDB
+<key>DynamoDB</key>
+
+Aurora
+<key>Aurora</key>
+
+<p>
+É um mecanismo de <b>banco de dados relacional gerenciado</b> compatível com o MySQL e o PostgreSQL. O Aurora pode oferecer <b>até cinco vezes a taxa de processamento do MySQL</b> e até três vezes a taxa de processamento do PostgreSQL. Oferecer <b>disponibilidade superior a 99,99%</b> replicando seis cópias dos seus dados em três zonas diferentes.
+
+<ok>
+Amazon Aurora
+<key>Aurora</key>
+
+DynamoDB
+<key>DynamoDB</key>
+
+DMS
+<key>DMS</key>
+
+RDS
+<key>RDS</key>
 
 <p>
 

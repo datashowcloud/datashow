@@ -176,199 +176,163 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1.1
+FASE 1.4
 
 <p>
-Se concentra nos workloads que executam as funções pretendidas e na <b>recuperação rápida de falhas</b> em atender demandas ou <b>desenho à prova de falhas</b>. Os principais tópicos incluem projeto de sistemas distribuídos, planejamento de recuperação e requisitos adaptação a mudanças.
+É um sistema de arquivos simples (não objetos: html, js, css). Sem servidor para definição única que facilita a configuração, a escalabilidade e a otimização de custos do armazenamento de arquivos na AWS. Fornece uma solução de armazenamento de arquivos compartilhado.
 
 <ok>
-Confiabilidade
-<key>Confiabilidade</key>
-
-Segurança
-<key>Segurança</key>
-
-Excelência Operacional
-<key>Excelência Operacional</key>
-
-Resiliência
-<key>Resiliência</key>
-
-<p>
-<b>Se concentra na proteção de informações e sistemas</b>. Os principais tópicos incluem confidencialidade e integridade de dados, gerenciamento de permissões de usuário e estabelecimento de controles para detectar eventos de segurança.
-
-<ok>
-Segurança
-<key>Segurança</key>
-
-Confiabilidade
-<key>Confiabilidade</key>
-
-Excelência Operacional
-<key>Excelência Operacional</key>
-
-Performance Eficiente
-<key>Performance Eficiente</key>
-
-<p>
-<b>Se concentra na execução e monitoramento sistemas e na melhoria contínua</b> de processos e procedimentos. Os principais tópicos incluem automação de alterações, reação a eventos e definição de padrões para gerenciar as operações diárias. A automação pode melhorar a estabilidade, a eficiência durante as implementações e a resposta a eventos.
-
-<ok>
-Excelência Operacional
-<key>Excelência Operacional</key>
-
-Confiabilidade
-<key>Confiabilidade</key>
-
-Resiliência
-<key>Resiliência</key>
-
-Perspectivas Well-Architected
-<key>Perspectivas Well-Architected</key>
-
-<p>
-<b>Se concentra na alocação estruturada e simplificada de recursos de TI</b> e computação. Os principais tópicos incluem seleção dos tipos e tamanhos certos dos recursos otimizados para os requisitos de workload, <b>monitoramento de performance e manutenção da eficiência</b> à medida que as necessidades comerciais evoluem.
-
-<ok>
-Performance Eficiente
-<key>Performance Eficiente</key>
-
-Resiliência
-<key>Resiliência</key>
-
-Excelência Operacional
-<key>Perspectivas Well-Architected</key>
-
-Confiabilidade
-<key>Confiabilidade</key>
-
-<p>
-É a capacidade de uma carga de trabalho se <b>recuperar de interrupções de infraestrutura ou serviço</b>, adquirir dinamicamente recursos computacionais para atender à demanda e mitigar interrupções, como configurações incorretas ou problemas temporários de rede.
-
-<ok>
-Resiliência
-<key>Resiliência</key>
-
-Confiabilidade
-<key>Confiabilidade</key>
-
-Excelência Operacional
-<key>Excelência Operacional</key>
-
-Perspectivas Well-Architected
-<key>Perspectivas Well-Architected</key>
-
-<p>
-Oferecem uma maneira, <b>medir as arquiteturas de forma consistente em relação às melhores práticas<b> e identificar áreas para melhoria.
-
-<ok>
-Perspectivas Well-Architected
-<key>Perspectivas Well-Architected</key>
-
-Performance Eficiente
-<key>Performance Eficiente</key>
-
-Confiabilidade
-<key>Confiabilidade</key>
-
-Segurança
-<key>Segurança</key>
-
-<p>
-Opções:<br/>1 <b>Standard (padrão, custo maior)</b>,<br/>2 Intelligent Tiering (camada inteligente),<br/>3 Standard-IA,<br/>4 One Zone-IA,<br/>5 Glacier Instant Retrieval (custo baixo),<br/>6 Glacier Flexible (custo baixo),<br/>7 <b>Glacier Deep Archive (custo menor)</b>,<br/>8 Outposts.
-
-<ok>
-Classes de armazenamento
-<key>Classes de armazenamento</key>
-
-Perspectivas Well-Architected
-<key>Perspectivas Well-Architected</key>
-
-S3
-<key>S3</key>
-
-EC2
-<key>EC2</key>
-
-<p>
-Opção <b>padrão (default) de armazenamento de objetos</b> com altos níveis de resiliência, disponibilidade e performance para dados acessados com frequência. Tem baixa latência e alto throughput.
-
-<ok>
-Standard
-<key>Standard</key>
-
-Perspectivas Well-Architected
-<key>Perspectivas Well-Architected</key>
-
-S3
-<key>S3</key>
-
-EC2
-<key>EC2</key>
-
-<p>
-Está contida na S3 Intelligent-Tiering (camada inteligente). É indicado para dados acessados com <b>mais frequência</b>, mas que exigem <b>acesso rápido</b> quando necessários.
-
-<ok>
-Frequent Access
-<key>Frequent Access</key>
-
-Infrequent Access
-<key>Infrequent Access</key>
-
-Intelligent Tiering
-<key>Intelligent Tiering</key>
-
-Glacier
-<key>Glacier</key>
-
-<p>
-Está contida na S3 Intelligent-Tiering (camada inteligente). É indicado para dados acessados com <b>menos frequência</b>, mas que exigem <b>acesso rápido</b> quando necessários. Oferece os altos níveis de resiliência e throughput e a baixa latência. Combina baixo custo e alta performance.
-
-<ok>
-Infrequent Access
-<key>Infrequent Access</key>
-
-Frequent Access
-<key>Frequent Access</key>
-
-Intelligent Tiering
-<key>Intelligent Tiering</key>
+AWS EFS
+<key>EFS</key>
 
 Classes de armazenamento
 <key>Classes de armazenamento</key>
 
-<p>
-É uma classe de armazenamento do Amazon S3 segura, durável e de <b>custo extremamente baixo</b> para <b>arquivamento de dados e backup de longo prazo</b>. É para arquivamento e não para armazenamento.
+Amazon EBS
+<key>EBS</key>
 
-<ok>
-Glacier
-<key>Glacier</key>
-
-Standard
-<key>Standard</key>
-
-Frequent Access
-<key>Glacier Deep Arquive</key>
-
-Intelligent Tiering
-<key>Intelligent Tiering</key>
+S3
+<key>S3</key>
 
 <p>
-É uma classe de armazenamento do Amazon S3 que oferece armazenamento de objetos seguro e durável para <b>retenção de longo prazo de dados acessados uma ou duas vezes por ano</b>. oferece armazenamento de <b>custo mais baixo na nuvem</b>, a preços significativamente mais baixos do que armazenar e manter dados em bibliotecas de fitas magnéticas on-premises ou arquivar dados externamente.
+São backups incrementais, o que significa que somente os blocos no dispositivo que tiverem mudado depois do snapshot mais recente serão salvos. Isso minimiza o tempo necessário para criar o snapshot e economiza em custos de armazenamento ao não duplicar os dados.<br/>Os limites de snapshot manual (100 por região) não se aplicam a backups automáticos.
 
 <ok>
-Glacier Deep Arquive
-<key>Glacier Deep Arquive</key>
+<key>EBS Snapshots</key>
 
-Glacier
-<key>Glacier</key>
+AWS EFS
+<key>EFS</key>
 
-Standard
-<key>Standard</key>
+S3
+<key>S3</key>
 
-Frequent Access
-<key>Frequent Access</key>
+AWS Backup
+<key>Backup</key>
+
+<p>
+É um serviço de armazenamento em blocos, escalável e de alta performance projetado para o Amazon Elastic Compute Cloud (Amazon EC2). Replica dados automaticamente em uma zona de disponibilidade. É necessário associar um EBS a uma instância EC2 para garantir a persistência dos dados quando a instância é desligada. Essa arquitetura de banco de dados pode ser gerenciada pelo time do Cliente. Não pode ser compartilhado por se comportarem como dispositivos de blocos brutos e não formatados.
+
+<ok>
+Amazon EBS
+<key>EBS</key>
+
+S3
+<key>S3</key>
+
+AWS EFS
+<key>EFS</key>
+
+AWS DynamoDB
+<key>DynamoDB</key>
+
+<p>
+É um dispositivo de armazenamento em blocos durável que é possível anexar às suas instâncias. Depois de anexar um volume a uma instância, será possível usá-lo como você usaria um disco rígido físico.
+
+<ok>
+EBS Volumes
+<key>EBS Volumes</key>
+
+AWS EFS
+<key>EFS</key>
+
+AWS Storage Gateway
+<key>Storage Gateway</key>
+
+DataSync
+<key>DataSync</key>
+
+<p>
+Fornece armazenamento temporário em nível de bloco para a instância. Esse armazenamento está localizado em discos que estão anexados fisicamente ao computador host. O armazenamento de instâncias é ideal para o armazenamento temporário de informações que são alteradas frequentemente, como buffers, caches, dados de rascunho e outros conteúdos temporários ou para dados replicados em toda a frota de instâncias, como um grupo com balanceamento de carga de servidores Web.
+
+<ok>
+Armazenamento de instâncias EC2
+<key>EC2 Armazenamento de instâncias</key>
+
+AWS EFS
+<key>EFS</key>
+
+AWS Storage Gateway
+<key>Storage Gateway</key>
+
+Amazon EBS
+<key>EBS</key>
+
+<p>
+É um serviço de banco de dados de grafos rápido, confiável e totalmente gerenciado que facilita a criação e a execução de aplicativos na AWS. O núcleo do Neptune é um mecanismo de banco de dados gráfico com projeto específico e alta performance.
+
+<ok>
+Amazon Neptune
+<key>Neptune</key>
+
+Amazon Graph
+<key>Graph</key>
+
+Amazon Neo4j
+<key>Neo4j</key>
+
+Amazon JanusGraph
+<key>JanusGraph</key>
+
+<p>
+É apenas um conceito para traçar gráficos de funções matemáticas e outras curvas de natureza similar, em um sistema de coordenadas.
+
+<ok>
+Amazon Graph
+<key>Graph</key>
+
+Amazon Neptune
+<key>Neptune</key>
+
+Amazon Neo4j
+<key>Neo4j</key>
+
+Amazon JanusGraph
+<key>JanusGraph</key>
+
+<p>
+Trabalha com a AWS (partner). Capacita desenvolvedores e cientistas de dados a criar rapidamente aplicativos escaláveis ​​e orientados por IA ou analisar big data com algoritmos. Como um banco de dados gráfico nativo criado para armazenar dados e conectar os relacionamentos, o Neo4j permite insights rápidos e profundamente contextuais.
+
+<ok>
+Amazon Neo4j
+<key>Neo4j</key>
+
+Amazon Graph
+<key>Graph</key>
+
+Amazon Neptune
+<key>Neptune</key>
+
+Amazon JanusGraph
+<key>JanusGraph</key>
+
+<p>
+Trabalha com a AWS (partner). É um banco de dados (open source) gráfico escalável otimizado para armazenar e consultar gráficos contendo centenas de bilhões de vértices e arestas distribuídos em um cluster de várias máquinas.
+
+<ok>
+Amazon JanusGraph
+<key>JanusGraph</key>
+
+Amazon Neo4j
+<key>Neo4j</key>
+
+Amazon Graph
+<key>Graph</key>
+
+Amazon Neptune
+<key>Neptune</key>
+
+<p>
+É um serviço de consultas interativas usando SQL padrão que facilita a análise de dados no Amazon S3. Não precisa de servidor. Portanto, não há infraestrutura para gerenciar e você paga apenas pelas consultas executadas.
+
+<ok>
+AWS Athena
+<key>Athena</key>
+
+<key>RDS</key>
+
+<key>Aurora</key>
+
+<key>Lambda</key>
 
 <p>
 

@@ -176,199 +176,167 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1.1
+FASE 2.0
 
 <p>
-Se concentra nos workloads que executam as funções pretendidas e na <b>recuperação rápida de falhas</b> em atender demandas ou <b>desenho à prova de falhas</b>. Os principais tópicos incluem projeto de sistemas distribuídos, planejamento de recuperação e requisitos adaptação a mudanças.
+É um serviço de integração contínua totalmente gerenciado que compila o código-fonte, executa testes e produz pacotes de software que estão prontos para implantação.
 
 <ok>
-Confiabilidade
-<key>Confiabilidade</key>
+AWS CodeBuild
+<key>CodeBuild</key>
 
-Segurança
-<key>Segurança</key>
+AWS CodeCommit
+<key>CodeCommit</key>
 
-Excelência Operacional
-<key>Excelência Operacional</key>
+AWS CodeDeploy
+<key>CodeDeploy</key>
+
+AWS CodePipeline
+<key>CodePipeline</key>
+
+<p>
+É um serviço de controle de origem gerenciado seguro e altamente dimensionável que hospeda repositórios privados do Git. Ele torna mais fácil para as equipes colaborarem com segurança no código com contribuições criptografadas em trânsito e em repouso.
+
+<ok>
+AWS CodeCommit
+<key>CodeCommit</key>
+
+AWS CodeDeploy
+<key>CodeDeploy</key>
+
+AWS CodePipeline
+<key>CodePipeline</key>
+
+AWS CodeBuild
+<key>CodeBuild</key>
+
+<p>
+É um serviço totalmente gerenciado de implantação que automatiza implantações de software em diversos serviços de computação como Amazon EC2, AWS Fargate, AWS Lambda e servidores locais.
+
+<ok>
+AWS CodeDeploy
+<key>CodeDeploy</key>
+
+AWS CodeCommit
+<key>CodeCommit</key>
+
+AWS CodePipeline
+<key>CodePipeline</key>
+
+AWS CodeBuild
+<key>CodeBuild</key>
+
+<p>
+É um serviço gerenciado de entrega contínua que ajuda a automatizar pipelines de liberação para oferecer atualizações rápidas e confiáveis de aplicativos e infraestruturas. O CodePipeline automatiza as fases de compilação, Nível e implantação do processo de liberação sempre que ocorre uma mudança no código, de acordo com o modelo de liberação que você definiu.
+
+<ok>
+AWS CodePipeline
+<key>CodePipeline</key>
+
+AWS CodeBuild
+<key>CodeBuild</key>
+
+AWS CodeDeploy
+<key>CodeDeploy</key>
+
+AWS CodeCommit
+<key>CodeCommit</key>
+
+<p>
+Ordem dos serviços AWS em um pipeline de CI/CD.
+
+<ok>
+AWS CodeCommit, AWS CodeBuild, AWS CodeDeploy
+<key>CodeCommit, CodeBuild, CodeDeploy</key>
+
+AWS CodeCommit, AWS CodeDeploy, AWS CodeBuild
+<key>CodeCommit, CodeBuild, CodeDeploy</key>
+
+AWS CodeDeploy, AWS CodeBuild, AWS CodeCommit
+<key>CodeCommit, CodeBuild, CodeDeploy</key>
+
+AWS CodeBuild, AWS CodeDeploy, AWS CodeCommit
+<key>CodeCommit, CodeBuild, CodeDeploy</key>
+
+<p>
+É a propriedade que garante a correta e eficiente operação de um sistema apesar da ocorrência de falhas em qualquer um dos seus componentes ou unidades.
+
+<ok>
+Tolerância a Falha
+<key>Tolerância a Falha</key>
+
+Acoplamento fraco
+<key>Acoplamento fraco</key>
 
 Resiliência
 <key>Resiliência</key>
 
-<p>
-<b>Se concentra na proteção de informações e sistemas</b>. Os principais tópicos incluem confidencialidade e integridade de dados, gerenciamento de permissões de usuário e estabelecimento de controles para detectar eventos de segurança.
-
-<ok>
-Segurança
-<key>Segurança</key>
-
-Confiabilidade
-<key>Confiabilidade</key>
-
-Excelência Operacional
-<key>Excelência Operacional</key>
-
-Performance Eficiente
-<key>Performance Eficiente</key>
-
-<p>
-<b>Se concentra na execução e monitoramento sistemas e na melhoria contínua</b> de processos e procedimentos. Os principais tópicos incluem automação de alterações, reação a eventos e definição de padrões para gerenciar as operações diárias. A automação pode melhorar a estabilidade, a eficiência durante as implementações e a resposta a eventos.
-
-<ok>
-Excelência Operacional
-<key>Excelência Operacional</key>
-
-Confiabilidade
-<key>Confiabilidade</key>
-
-Resiliência
-<key>Resiliência</key>
-
-Perspectivas Well-Architected
-<key>Perspectivas Well-Architected</key>
-
-<p>
-<b>Se concentra na alocação estruturada e simplificada de recursos de TI</b> e computação. Os principais tópicos incluem seleção dos tipos e tamanhos certos dos recursos otimizados para os requisitos de workload, <b>monitoramento de performance e manutenção da eficiência</b> à medida que as necessidades comerciais evoluem.
-
-<ok>
-Performance Eficiente
-<key>Performance Eficiente</key>
-
-Resiliência
-<key>Resiliência</key>
-
-Excelência Operacional
-<key>Perspectivas Well-Architected</key>
-
 Confiabilidade
 <key>Confiabilidade</key>
 
 <p>
-É a capacidade de uma carga de trabalho se <b>recuperar de interrupções de infraestrutura ou serviço</b>, adquirir dinamicamente recursos computacionais para atender à demanda e mitigar interrupções, como configurações incorretas ou problemas temporários de rede.
+É o baixo acoplamento que ajuda a isolar o comportamento de um componente dos outros componentes que dependem dele, o que aumenta a resiliência e a agilidade no pilar de Confiabilidade do AWS Well-Architected Framework. Uma falha em um dos componentes não deve afetar os outros componentes.
 
 <ok>
+Acoplamento fraco
+<key>Acoplamento fraco</key>
+
+AWS Well-Architected Framework
+<key>Well-Architected Framework</key>
+
 Resiliência
 <key>Resiliência</key>
 
 Confiabilidade
 <key>Confiabilidade</key>
 
-Excelência Operacional
-<key>Excelência Operacional</key>
-
-Perspectivas Well-Architected
-<key>Perspectivas Well-Architected</key>
-
 <p>
-Oferecem uma maneira, <b>medir as arquiteturas de forma consistente em relação às melhores práticas<b> e identificar áreas para melhoria.
+É a capacidade de adquirir recursos quando você precisa deles e liberá-los quando você não precisar mais. Com a computação em nuvem, você não precisa provisionar recursos em excesso para absorver picos de atividades empresariais no futuro. Em vez disso, você provisiona a quantidade de recursos realmente necessária.
 
 <ok>
-Perspectivas Well-Architected
-<key>Perspectivas Well-Architected</key>
+Elasticidade
+<key>Elasticidade</key>
 
-Performance Eficiente
-<key>Performance Eficiente</key>
+IP Elástico
+<key>IP Elástico</key>
 
-Confiabilidade
-<key>Confiabilidade</key>
+AWS Elastic Beanstalk
+<key>Elastic Beanstalk</key>
 
-Segurança
-<key>Segurança</key>
-
-<p>
-Opções:<br/>1 <b>Standard (padrão, custo maior)</b>,<br/>2 Intelligent Tiering (camada inteligente),<br/>3 Standard-IA,<br/>4 One Zone-IA,<br/>5 Glacier Instant Retrieval (custo baixo),<br/>6 Glacier Flexible (custo baixo),<br/>7 <b>Glacier Deep Archive (custo menor)</b>,<br/>8 Outposts.
-
-<ok>
-Classes de armazenamento
-<key>Classes de armazenamento</key>
-
-Perspectivas Well-Architected
-<key>Perspectivas Well-Architected</key>
-
-S3
-<key>S3</key>
-
-EC2
-<key>EC2</key>
+Amazon EC2 Auto Scaling
+<key>Auto Scaling</key>
 
 <p>
-Opção <b>padrão (default) de armazenamento de objetos</b> com altos níveis de resiliência, disponibilidade e performance para dados acessados com frequência. Tem baixa latência e alto throughput.
+É um endereço IPv4 estático projetado para computação em nuvem dinâmica. Um endereço IP elástico é alocado para a conta da AWS e será seu até que você o libere.
 
 <ok>
-Standard
-<key>Standard</key>
+IP Elástico
+<key>IP Elástico</key>
 
-Perspectivas Well-Architected
-<key>Perspectivas Well-Architected</key>
+Elasticidade
+<key>Elasticidade</key>
 
-S3
-<key>S3</key>
+AWS Elastic Beanstalk
+<key>Elastic Beanstalk</key>
 
-EC2
-<key>EC2</key>
+Amazon EC2 Auto Scaling
+<key>Auto Scaling</key>
 
 <p>
-Está contida na S3 Intelligent-Tiering (camada inteligente). É indicado para dados acessados com <b>mais frequência</b>, mas que exigem <b>acesso rápido</b> quando necessários.
+É um serviço de fácil utilização para implantação e escalabilidade de aplicações e serviços da web desenvolvidos com Java, .NET, PHP, Node.js, Python, Ruby, Go e Docker em servidores familiares como Apache, Nginx, Passenger e IIS. Não reduz a latência do site.
 
 <ok>
-Frequent Access
-<key>Frequent Access</key>
+AWS Elastic Beanstalk
+<key>Elastic Beanstalk</key>
 
-Infrequent Access
-<key>Infrequent Access</key>
+IP Elástico
+<key>IP Elástico</key>
 
-Intelligent Tiering
-<key>Intelligent Tiering</key>
+Elasticidade
+<key>Elasticidade</key>
 
-Glacier
-<key>Glacier</key>
-
-<p>
-Está contida na S3 Intelligent-Tiering (camada inteligente). É indicado para dados acessados com <b>menos frequência</b>, mas que exigem <b>acesso rápido</b> quando necessários. Oferece os altos níveis de resiliência e throughput e a baixa latência. Combina baixo custo e alta performance.
-
-<ok>
-Infrequent Access
-<key>Infrequent Access</key>
-
-Frequent Access
-<key>Frequent Access</key>
-
-Intelligent Tiering
-<key>Intelligent Tiering</key>
-
-Classes de armazenamento
-<key>Classes de armazenamento</key>
-
-<p>
-É uma classe de armazenamento do Amazon S3 segura, durável e de <b>custo extremamente baixo</b> para <b>arquivamento de dados e backup de longo prazo</b>. É para arquivamento e não para armazenamento.
-
-<ok>
-Glacier
-<key>Glacier</key>
-
-Standard
-<key>Standard</key>
-
-Frequent Access
-<key>Glacier Deep Arquive</key>
-
-Intelligent Tiering
-<key>Intelligent Tiering</key>
-
-<p>
-É uma classe de armazenamento do Amazon S3 que oferece armazenamento de objetos seguro e durável para <b>retenção de longo prazo de dados acessados uma ou duas vezes por ano</b>. oferece armazenamento de <b>custo mais baixo na nuvem</b>, a preços significativamente mais baixos do que armazenar e manter dados em bibliotecas de fitas magnéticas on-premises ou arquivar dados externamente.
-
-<ok>
-Glacier Deep Arquive
-<key>Glacier Deep Arquive</key>
-
-Glacier
-<key>Glacier</key>
-
-Standard
-<key>Standard</key>
-
-Frequent Access
-<key>Frequent Access</key>
+Amazon EC2 Auto Scaling
+<key>Auto Scaling</key>
 
 <p>
 

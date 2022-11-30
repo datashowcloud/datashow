@@ -176,199 +176,215 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1.1
+FASE 1.8
 
 <p>
-Se concentra nos workloads que executam as funções pretendidas e na <b>recuperação rápida de falhas</b> em atender demandas ou <b>desenho à prova de falhas</b>. Os principais tópicos incluem projeto de sistemas distribuídos, planejamento de recuperação e requisitos adaptação a mudanças.
+A AWS tem o conceito de uma região, que --> É um local físico em todo o mundo onde agrupamos datacenters. Chamamos cada grupo de datacenters lógicos de zona de disponibilidade. Cada região da AWS consiste em várias AZs isoladas e separadas fisicamente em uma área geográfica.
 
 <ok>
-Confiabilidade
-<key>Confiabilidade</key>
+Region
+<key>Region</key>
 
-Segurança
-<key>Segurança</key>
+Multi Regions
+<key>Multi Regions</key>
 
-Excelência Operacional
-<key>Excelência Operacional</key>
+Multi-AZ
+<key>Multi-AZ</key>
 
-Resiliência
-<key>Resiliência</key>
+Read Replicas (Cópias de Leitura do Amazon RDS)
+<key>Read Replicas</key>
 
 <p>
-<b>Se concentra na proteção de informações e sistemas</b>. Os principais tópicos incluem confidencialidade e integridade de dados, gerenciamento de permissões de usuário e estabelecimento de controles para detectar eventos de segurança.
+Multi Regions (Distribuir em regiões diferentes) --> É para estratégia de DR (Recuperação de Desastre). Os recursos de computação em nuvem da Amazon são hospedados em vários locais no mundo todo. Esses locais são compostos por regiões da AWS, zonas de disponibilidade e zonas locais. Cada região da AWS é uma área geográfica separada.
 
 <ok>
-Segurança
-<key>Segurança</key>
+Multi Regions
+<key>Multi Regions</key>
 
-Confiabilidade
-<key>Confiabilidade</key>
+Multi-AZ
+<key>Multi-AZ</key>
 
-Excelência Operacional
-<key>Excelência Operacional</key>
+Read Replicas (Cópias de Leitura do Amazon RDS)
+<key>Read Replicas</key>
 
-Performance Eficiente
-<key>Performance Eficiente</key>
+Region
+<key>Region</key>
 
 <p>
-<b>Se concentra na execução e monitoramento sistemas e na melhoria contínua</b> de processos e procedimentos. Os principais tópicos incluem automação de alterações, reação a eventos e definição de padrões para gerenciar as operações diárias. A automação pode melhorar a estabilidade, a eficiência durante as implementações e a resposta a eventos.
+É para aumentar a disponibilidade. Fornece implementações em uma região, ou seja, não é global. Em uma implantação Multi-AZ, o Amazon RDS cria automaticamente uma instância de banco de dados (BD) primária e replica de forma síncrona os dados para uma instância em uma AZ diferente. Quando detecta uma falha, o Amazon RDS executa automaticamente o failover para uma instância secundária sem nenhuma intervenção manual.
 
 <ok>
-Excelência Operacional
-<key>Excelência Operacional</key>
+Multi-AZ
+<key>Multi-AZ</key>
 
-Confiabilidade
-<key>Confiabilidade</key>
+Read Replicas (Cópias de Leitura do Amazon RDS)
+<key>Read Replicas</key>
 
-Resiliência
-<key>Resiliência</key>
+Region
+<key>Region</key>
 
-Perspectivas Well-Architected
-<key>Perspectivas Well-Architected</key>
+Multi Regions
+<key>Multi Regions</key>
 
 <p>
-<b>Se concentra na alocação estruturada e simplificada de recursos de TI</b> e computação. Os principais tópicos incluem seleção dos tipos e tamanhos certos dos recursos otimizados para os requisitos de workload, <b>monitoramento de performance e manutenção da eficiência</b> à medida que as necessidades comerciais evoluem.
+Facilitam a escalabilidade de maneira elástica além dos limites de capacidade de uma única instância de DB para cargas de trabalho de banco de dados com uso intenso de leitura. Complementam as implantações Multi-AZ. Embora ambos os recursos mantenham uma segunda cópia dos dados, há diferenças entre os dois.
 
 <ok>
-Performance Eficiente
-<key>Performance Eficiente</key>
+Read Replicas
+<key>Read Replicas</key>
 
-Resiliência
-<key>Resiliência</key>
+Region
+<key>Region</key>
 
-Excelência Operacional
-<key>Perspectivas Well-Architected</key>
+Multi Regions
+<key>Multi Regions</key>
 
-Confiabilidade
-<key>Confiabilidade</key>
+Multi-AZ
+<key>Multi-AZ</key>
 
 <p>
-É a capacidade de uma carga de trabalho se <b>recuperar de interrupções de infraestrutura ou serviço</b>, adquirir dinamicamente recursos computacionais para atender à demanda e mitigar interrupções, como configurações incorretas ou problemas temporários de rede.
+É uma tecnologia que pode ser usada com o Amazon ECS para executar contêineres sem a necessidade de gerenciar servidores ou clusters de instâncias do Amazon EC2. Com o AWS Fargate, não é mais necessário provisionar, configurar nem dimensionar os clusters de máquinas virtuais para executar contêineres. Fargate elimina a necessidade de escolher tipos de servidor, decidir quando dimensionar clusters ou otimizar o agrupamento de clusters.
 
 <ok>
-Resiliência
-<key>Resiliência</key>
+Fargate
+<key>Fargate</key>
 
-Confiabilidade
-<key>Confiabilidade</key>
+Amazon EKS
+<key>EKS</key>
 
-Excelência Operacional
-<key>Excelência Operacional</key>
+Amazon ECS
+<key>ECS</key>
 
-Perspectivas Well-Architected
-<key>Perspectivas Well-Architected</key>
+Amazon ECR
+<key>ECR</key>
 
 <p>
-Oferecem uma maneira, <b>medir as arquiteturas de forma consistente em relação às melhores práticas<b> e identificar áreas para melhoria.
+É um serviço de contêiner gerenciado para executar e escalar aplicações do Kubernetes na nuvem ou on-premises. Adiciona orquestração ao Amazon ECS.
 
 <ok>
-Perspectivas Well-Architected
-<key>Perspectivas Well-Architected</key>
+Amazon EKS
+<key>EKS</key>
 
-Performance Eficiente
-<key>Performance Eficiente</key>
+Amazon ECS
+<key>ECS</key>
 
-Confiabilidade
-<key>Confiabilidade</key>
+Amazon ECR
+<key>ECR</key>
 
-Segurança
-<key>Segurança</key>
+Fargate
+<key>Fargate</key>
 
 <p>
-Opções:<br/>1 <b>Standard (padrão, custo maior)</b>,<br/>2 Intelligent Tiering (camada inteligente),<br/>3 Standard-IA,<br/>4 One Zone-IA,<br/>5 Glacier Instant Retrieval (custo baixo),<br/>6 Glacier Flexible (custo baixo),<br/>7 <b>Glacier Deep Archive (custo menor)</b>,<br/>8 Outposts.
+É um serviço de gerenciamento de contêineres altamente rápido e escalável. Você pode usá-lo para executar, interromper e gerenciar contêineres em um cluster.
 
 <ok>
-Classes de armazenamento
-<key>Classes de armazenamento</key>
+Amazon ECS
+<key>ECS</key>
 
-Perspectivas Well-Architected
-<key>Perspectivas Well-Architected</key>
+Fargate
+<key>Fargate</key>
 
-S3
-<key>S3</key>
+Amazon ECR
+<key>ECR</key>
 
-EC2
-<key>EC2</key>
+Amazon EKS
+<key>EKS</key>
 
 <p>
-Opção <b>padrão (default) de armazenamento de objetos</b> com altos níveis de resiliência, disponibilidade e performance para dados acessados com frequência. Tem baixa latência e alto throughput.
+É um registro de contêiner totalmente gerenciado que oferece hospedagem de alta performance para que você possa implantar imagens e artefatos de aplicações de forma confiável em qualquer lugar.
 
 <ok>
-Standard
-<key>Standard</key>
+Amazon ECR
+<key>ECR</key>
 
-Perspectivas Well-Architected
-<key>Perspectivas Well-Architected</key>
+Amazon ECS
+<key>ECS</key>
 
-S3
-<key>S3</key>
+Fargate
+<key>Fargate</key>
 
-EC2
-<key>EC2</key>
+Amazon EKS
+<key>EKS</key>
 
 <p>
-Está contida na S3 Intelligent-Tiering (camada inteligente). É indicado para dados acessados com <b>mais frequência</b>, mas que exigem <b>acesso rápido</b> quando necessários.
+Não se aplica na AWS. Ajuda as organizações a atingir suas metas de automação e autoatendimento de DevOps, mantendo arquivos de declaração no controle de versão que definem seus ambientes de aplicativos.
 
 <ok>
-Frequent Access
-<key>Frequent Access</key>
+AWS IAC
+<key>IAC</key>
 
-Infrequent Access
-<key>Infrequent Access</key>
+Fargate
+<key>Fargate</key>
 
-Intelligent Tiering
-<key>Intelligent Tiering</key>
+Step Functions
+<key>Step Functions</key>
 
-Glacier
-<key>Glacier</key>
+AWS Lambda
+<key>Lambda</key>
 
 <p>
-Está contida na S3 Intelligent-Tiering (camada inteligente). É indicado para dados acessados com <b>menos frequência</b>, mas que exigem <b>acesso rápido</b> quando necessários. Oferece os altos níveis de resiliência e throughput e a baixa latência. Combina baixo custo e alta performance.
+Distribui ou redireciona automaticamente o tráfego de aplicações ou requisições de entrada entre servidores, vários destinos e dispositivos virtuais em uma ou mais Zonas de disponibilidade (AZs).
 
 <ok>
-Infrequent Access
-<key>Infrequent Access</key>
+ELB (Elastic Load Balancer)
+<key>ELB</key>
 
-Frequent Access
-<key>Frequent Access</key>
+AWS Batch
+<key>Batch</key>
 
-Intelligent Tiering
-<key>Intelligent Tiering</key>
+Step Functions
+<key>Step Functions</key>
 
-Classes de armazenamento
-<key>Classes de armazenamento</key>
+Security Group
+<key>Security Group</key>
 
 <p>
-É uma classe de armazenamento do Amazon S3 segura, durável e de <b>custo extremamente baixo</b> para <b>arquivamento de dados e backup de longo prazo</b>. É para arquivamento e não para armazenamento.
+Planeja, programa e executa suas cargas de trabalho de computação em lote em toda a linha de recursos e produtos de computação da AWS, como AWS Fargate, Amazon EC2 e instâncias spot.
 
 <ok>
-Glacier
-<key>Glacier</key>
+AWS Batch
+<key>Batch</key>
 
-Standard
-<key>Standard</key>
+ELB (Elastic Load Balancer)
+<key>ELB</key>
 
-Frequent Access
-<key>Glacier Deep Arquive</key>
+Step Functions
+<key>Step Functions</key>
 
-Intelligent Tiering
-<key>Intelligent Tiering</key>
+Security Group
+<key>Security Group</key>
 
 <p>
-É uma classe de armazenamento do Amazon S3 que oferece armazenamento de objetos seguro e durável para <b>retenção de longo prazo de dados acessados uma ou duas vezes por ano</b>. oferece armazenamento de <b>custo mais baixo na nuvem</b>, a preços significativamente mais baixos do que armazenar e manter dados em bibliotecas de fitas magnéticas on-premises ou arquivar dados externamente.
+É um serviço de fluxo de trabalho visual com pouco código utilizado por desenvolvedores para criar aplicações distribuídas, automatizar processos de TI e negócios e criar pipelines de dados e machine learning usando produtos da AWS. Baseado em computação sem servidor e orquestra parte de: S3, API Gateway, Lambda, SQS e SNS.
 
 <ok>
-Glacier Deep Arquive
-<key>Glacier Deep Arquive</key>
+Step Functions
+<key>Step Functions</key>
 
-Glacier
-<key>Glacier</key>
+AWS Batch
+<key>Batch</key>
 
-Standard
-<key>Standard</key>
+Security Group
+<key>Security Group</key>
 
-Frequent Access
-<key>Frequent Access</key>
+ELB (Elastic Load Balancer)
+<key>ELB</key>
+
+<p>
+É um grupo de segurança atua como firewall virtual para as instâncias do EC2 visando controlar o tráfego de entrada e de saída.
+
+<ok>
+Security Group
+<key>Security Group</key>
+
+Step Functions
+<key>Step Functions</key>
+
+ELB (Elastic Load Balancer)
+<key>ELB</key>
+
+AWS Batch
+<key>Batch</key>
 
 <p>
 
