@@ -405,6 +405,7 @@ console.log("config" + document.getElementById('selectMygroup').value + ".html?s
 		refreshTableQuestion(mytema, mycategory, id, mygroup, '1');
 		showFormSim();
 		if (document.getElementById('btnPrevious') != null) {document.getElementById('btnPrevious').disabled = false; }
+		if (document.getElementById('btnPause') != null) {document.getElementById('btnPause').disabled = false; }
 		if (document.getElementById('btnNext') != null) {document.getElementById('btnNext').disabled = false; }
     });	
     $('#tblGrid tbody').on('click', '.freeze', function () {
@@ -446,16 +447,6 @@ console.log("config" + document.getElementById('selectMygroup').value + ".html?s
 			refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode);
 		}
     })
-    $('#btnNext').click(function () {
-		var params = new URLSearchParams(window.location.search);
-		var mytema = params.get('tem');
-		var mycategory = params.get('cat');
-		var myid = document.getElementById('myidSim').value;
-		var mygroup = document.getElementById('mygroupSim').value;
-		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
-		refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode);
-		savePoints(mytema, mycategory, myid, mygroup, mycode);
-    })
 	$('#btnPause').click(function () {
 		var params = new URLSearchParams(window.location.search);
 		var mytema = params.get('tem');
@@ -466,6 +457,16 @@ console.log("config" + document.getElementById('selectMygroup').value + ".html?s
 		savePoints(mytema, mycategory, myid, mygroup, mycode);
 		setTimeout(() => { location.reload() }, 500); // Executa após 1 segundo para esperar o processo
     });
+    $('#btnNext').click(function () {
+		var params = new URLSearchParams(window.location.search);
+		var mytema = params.get('tem');
+		var mycategory = params.get('cat');
+		var myid = document.getElementById('myidSim').value;
+		var mygroup = document.getElementById('mygroupSim').value;
+		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
+		refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode);
+		savePoints(mytema, mycategory, myid, mygroup, mycode);
+    })
 	$('#btnEnd').click(function () {
 //		var result = confirm('Vou salvar a pontuação e concluir, ok?\n');
 //		if (result) {
@@ -528,6 +529,9 @@ console.log("config" + document.getElementById('selectMygroup').value + ".html?s
 	})
 	$('#btnTema1C5').click(function () {
 		var DataShow_Config = window.open("index.html?tem=1&cat=5", "_self");
+	})
+	$('#btnTema1C6').click(function () {
+		var DataShow_Config = window.open("index.html?tem=1&cat=6", "_self");
 	})
 	$('#btnFormCategory').click(function () {
 		var DataShow_Config = window.open("index.html", "_self");
@@ -611,12 +615,11 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		classe = classe.substring(4, classe.length);
 		document.getElementById('btnPrevious').classList.remove(classe);
 	}
-/*	if(document.getElementById('btnPause') != null) {
+	if(document.getElementById('btnPause') != null) {
 		classe = document.getElementById('btnPause').classList.value;
 		classe = classe.substring(4, classe.length);
 		document.getElementById('btnPause').classList.remove(classe);
 	}
-*/
 	if(document.getElementById('btnEnd') != null) {
 		classe = document.getElementById('btnEnd').classList.value;
 		classe = classe.substring(4, classe.length);
@@ -648,17 +651,16 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 	if (buttoncolor == 'btn-colors') {
 		
 		if(document.getElementById('btnPrevious') != null) {
-			document.getElementById('btnPrevious').classList.add('btn-default');
+			document.getElementById('btnPrevious').classList.add('btn-info');
 		}
-/*		if(document.getElementById('btnPause') != null) {
+		if(document.getElementById('btnPause') != null) {
 			document.getElementById('btnPause').classList.add('btn-danger');
 		}
-*/
 		if(document.getElementById('btnEnd') != null) {
 			document.getElementById('btnEnd').classList.add('btn-success');
 		}
 		document.getElementById('btnBackward').classList.add('btn-danger');
-		document.getElementById('btnNext').classList.add('btn-default');
+		document.getElementById('btnNext').classList.add('btn-info');
 		if(document.getElementById('selButtonColor') != null) {
 			document.getElementById('selButtonColor').classList.add('btn-default');
 		}
@@ -676,7 +678,7 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		}
 	} else {
 		document.getElementById('btnPrevious').classList.add(buttoncolor);
-//		document.getElementById('btnPause').classList.add(buttoncolor);
+		document.getElementById('btnPause').classList.add(buttoncolor);
 		document.getElementById('btnEnd').classList.add(buttoncolor);
 		document.getElementById('btnBackward').classList.add(buttoncolor);
 		document.getElementById('btnNext').classList.add(buttoncolor);
@@ -2363,7 +2365,7 @@ async function initLinkHelp() {
 
 	//FUNDAMENTOS
 	var mytema = '1';
-	var mycategory = '1';
+	var mycategory = '2';
 	var students = await jsstoreCon.select({
 		from: 'Student'
 		  , where: { mytema: '' + mytema + ''
@@ -2408,7 +2410,7 @@ async function initLinkHelp() {
 
 	//TREINAMENTO
 	var mytema = '1';
-	var mycategory = '2';
+	var mycategory = '4';
 	var students = await jsstoreCon.select({
 		from: 'Student'
 		  , where: { mytema: '' + mytema + ''
@@ -2422,7 +2424,7 @@ async function initLinkHelp() {
 	}
 	var contadorMycode = 0;
 	//título
-	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, 'Treinamento 1', '', '', 'Treinamento 1');
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, 'Desafio', '', '', 'Desafio');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Organizations', 'Billing', 'Cost Explorer', 'Princing Calculator', save, 'Budgets', 'https://docs.aws.amazon.com/pt_br/cost-management/latest/userguide/budgets-managing-costs.html', 'rastreamento de uso e custo da AWS', 'AWS Budgets --> É para rastreamento de uso e custo da AWS. Monitorar métricas agregadas de utilização e cobertura para suas Instâncias Reservadas (RIs) ou Savings Plans - Planos de Poupança. Envia mensagem quando o consumo vai atingir o percentual pré-configurado ou pré-definido.');
@@ -2443,6 +2445,9 @@ async function initLinkHelp() {
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', 'Confiabilidade', 'Segurança', 'Excelência Operacional', 'Performance Eficiente', save, 'Well-Architected Framework', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', 'Tem os pilares são', 'AWS Well-Architected Framework --> Pilares (dica, decorar iniciais: ESC+POS ou Tecla ESC+ POS-Graduação=P=Performance): <br/>Excelência operacional, <br/>Segurança, <br/>Confiabilidade, <br/>Eficiência de desempenho, <br/>Otimização de custos, <br/>Sustentabilidade.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Well-Architected Framework', 'EC2', 'S3', 'Excelência Operacional', save, 'Cargas de trabalho (Workload)', 'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/userguide/workloads.html', '', 'Carga de trabalho (workload) --> É um conjunto de códigos e recursos que fornece valor empresarial, como um aplicativo voltado ao cliente ou um processo de back-end. Pode consistir em um subconjunto de recursos em uma Conta da AWS ou ser uma coleção de vários recursos abrangendo várias Contas da AWS.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+
 
 var save = false; //não precisa gravar o restante na tabela porque estão nos arquivos, exemplo: T1C1G11.html
 
