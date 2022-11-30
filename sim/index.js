@@ -1,7 +1,7 @@
 
 var jsstoreCon = new JsStore.Connection();
 
-var CONST_NIVEL_MAX = 5;
+var CONST_NIVEL_MAX = 99; //5
 var CONST_FASE_MAX = 99; //6;
 var CONST_ORANGE = '#FF4700';
 var CONST_MEDIUM_SEA_GREEN = '#3CB371';
@@ -2381,7 +2381,7 @@ async function initLinkHelp() {
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', false, 'Não Se Aplica', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', '', 'Não Se Aplica na AWS');
 	
 	//título
-	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, 'Fundamentos 1', '', '', 'Fundamentos 1');
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, 'Fundamentos', '', '', 'Fundamentos');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'ECS', 'EKS', 'ECR', 'S3', save, 'EC2', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', 'computação escalável na Nuvem da Amazon Web Services (AWS)', 'O Amazon EC2 (Elastic Compute Cloud) --> Oferece uma <b>capacidade de computação escalável na Nuvem da Amazon Web Services (AWS)</b>. <br/>O uso dele <b>elimina a necessidade de investir em hardware inicialmente</b>, portanto, você pode desenvolver e implantar aplicativos com mais rapidez.');
@@ -2392,7 +2392,7 @@ async function initLinkHelp() {
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', 'S3', 'Opções de Compra de Instância', 'Instâncias Sob Demanda', 'IAM', save, 'S3 pre-signed URL', 'https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/ShareObjectPreSignedURL.html', '', 'O pre-signed URL --> <b>Permite acessar objetos privados do S3</b> embora, por padrão, todos os objetos do S3 são privados. <br/>Somente o proprietário do objeto tem permissão para acessá-lo. <br/>Contudo, também permite o proprietário do objeto compartilhar objetos com os outros dessa forma, usando suas próprias credenciais de segurança para conceder permissão de prazo limitado para download de objetos.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', 'EC2', 'S3', 'Instâncias Spot', 'Instâncias Sob Demanda', save, 'Opções de Compra de Instância', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/instance-purchasing-options.html', '', '<b>On-demand</b> (Instâncias sob demanda) paga somente pelo uso.<br/><b>Savings Plans (Planos de Poupança)</b> é um modelo de preços flexíveis que oferece preços mais baixos em comparação com os preços sob demanda, em troca de um compromisso de uso específico por um período de 1 ou 3 anos). <br/><b> Instâncias Reservadas</b> paga por um contrato pré-estabelecido de 1 ou 3 anos de compromisso para obter um desconto até 72% comparado ao On-Demand. <br/><b>Instâncias Spot</b> paga pelo uso dos recursos não utilizados por outros modelos. <b>Oferecem descontos de até 90%.</b><br/><b>Hosts Dedicados</b>. <br/><b>Instâncias Dedicadas</b>. <br/><b>Reservas de Capacidade</b>.');
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', 'EC2', 'S3', 'Instâncias Spot', 'Instâncias Sob Demanda', save, 'Opções de Compra de Instância', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/instance-purchasing-options.html', '', '<b>On-demand</b> (Instâncias sob demanda) paga somente pelo uso.<br/><b>Savings Plans (Planos de Poupança)</b> é um modelo de preços flexíveis que oferece preços mais baixos em comparação com os preços sob demanda, em troca de um compromisso de uso específico por um período de 1 ou 3 anos). <br/><b> Instâncias Reservadas</b> paga por um contrato pré-estabelecido de 1 ou 3 anos de compromisso para obter um desconto até 72% comparado ao On-Demand. <br/><b>Instâncias Spot</b> paga pelo uso dos recursos não utilizados por outros modelos. Oferecem descontos de até 90%.<br/><b>Hosts Dedicados servidor físico com capacidade de instância do EC2 totalmente dedicado para seu uso</b>. <br/><b>Instâncias Dedicadas</b>. <br/><b>Reservas de Capacidade</b>.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', 'Instâncias Spot', 'Instâncias Sob Demanda', 'Instâncias Reservadas', 'Budgets', save, 'Savings Plans', 'https://aws.amazon.com/pt/savingsplans/', '', 'Savings Plans (Planos de Poupança) --> É um modelo de preços flexíveis que oferece <b>preços mais baixos em comparação com os preços sob demanda</b>, em troca de um <b>compromisso de uso específico por um período de 1 ou 3 anos</b>.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
