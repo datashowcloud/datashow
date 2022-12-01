@@ -481,7 +481,7 @@ function registerEvents() {
 		savePoints(mytema, mycategory, myid, mygroup, mycode);
 		showGridAndHideForms();
 		refreshTableData(mytema, mycategory, '0', '', '', ''); // botão btnCategory1 carrega essa opção
-//		setTimeout(() => { location.reload() }, 3000); // Executa após 1 segundo para esperar o processo
+		setTimeout(() => { location.reload() }, 3000); // Executa após 1 segundo para esperar o processo
     });	
 	$('#btnGear').click(function () {
 		if (document.getElementById('divGear').style.display == 'none') {
@@ -621,11 +621,12 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		document.getElementById('btnPause').classList.remove(classe);
 	}
 */
-	if(document.getElementById('btnEnd') != null) {
+/*	if(document.getElementById('btnEnd') != null) {
 		classe = document.getElementById('btnEnd').classList.value;
 		classe = classe.substring(4, classe.length);
 		document.getElementById('btnEnd').classList.remove(classe);
 	}
+*/
 	if(document.getElementById('btnBackward') != null) {
 		classe = document.getElementById('btnBackward').classList.value;
 		classe = classe.substring(4, classe.length);
@@ -667,9 +668,11 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 /*		if(document.getElementById('btnPause') != null) {
 			document.getElementById('btnPause').classList.add('btn-danger');
 		}
-*/		if(document.getElementById('btnEnd') != null) {
+*/
+/*		if(document.getElementById('btnEnd') != null) {
 			document.getElementById('btnEnd').classList.add('btn-success');
 		}
+*/
 		document.getElementById('btnBackward').classList.add('btn-danger');
 		document.getElementById('btnNext').classList.add('btn-info');
 		if(document.getElementById('selButtonColor') != null) {
@@ -690,10 +693,10 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 	} else {
 		document.getElementById('btnPrevious').classList.add(buttoncolor);
 //		document.getElementById('btnPause').classList.add(buttoncolor);
-		document.getElementById('btnEnd').classList.add(buttoncolor);
+//		document.getElementById('btnEnd').classList.add(buttoncolor);
 		document.getElementById('btnBackward').classList.add(buttoncolor);
 		document.getElementById('btnNext').classList.add(buttoncolor);
-		document.getElementById('selButtonColor').classList.add(buttoncolor);
+//		document.getElementById('selButtonColor').classList.add(buttoncolor);
 		document.getElementById('txtCorretas').classList.add(buttoncolor);
 		document.getElementById('txtIncorretas').classList.add(buttoncolor);
 		document.getElementById('txtNaoRespondidas').classList.add(buttoncolor);
@@ -912,8 +915,6 @@ async function changeFaseNivel(mytema, mycategory, myid, mygroup, mycode) {
 		  , where: { mytema: mytema + ''
 			, mycategory: mycategory + ''
 			, mygroup: mygroup + ''
-//		  , where: {
-//			  mygroup: mygroup + ''
 		  }
 	});
 	totalperguntas = totalperguntas - 1; //tira a pergunta zero que é o título da lista de perguntas
@@ -922,24 +923,25 @@ async function changeFaseNivel(mytema, mycategory, myid, mygroup, mycode) {
 		  , where: { mytema: mytema + ''
 			, mycategory: mycategory + ''
 			, mygroup: mygroup + ''
-//		  , where: { mygroup: mygroup + '' 
 		  }
 	});
 	var totalCorretas = getTotalCorretas(mytema, mycategory, mygroup, mycode, students);
 	var calculo = calculaPercentualAcerto(mytema, mycategory, mygroup, mycode, totalCorretas, totalperguntas);
-	
-//alert('calculo='+calculo + ' mytema='+mytema + ' mycategory='+mycategory + ' myid='+myid + ' mygroup='+mygroup + ' mycode='+mycode);
 	
 	if (calculo >= 70) {
 		var mygroupNext = getProximaFaseNivel(myid, mygroup, mycode);
 		if (mygroupNext != 'false') {
 			var students = await jsstoreCon.select({
 				from: 'Student'
-				  , where: { mygroup: '' + mygroupNext + ''
+			  , where: { mytema: mytema + ''
+				, mycategory: mycategory + ''
+				, mygroup: mygroupNext + ''
+//				  , where: { mygroup: '' + mygroupNext + ''
 				}
 			});
-//alert(' mytema='+mytema + ' mycategory='+mycategory + ' myid='+myid + ' mygroup='+mygroup + ' mycode='+mycode);
+//alert('antes calculo='+calculo + ' mygroupNext='+mygroupNext + ' mytema='+mytema + ' mycategory='+mycategory + ' myid='+myid + ' mygroup='+mygroup + ' mycode='+mycode);
 			if (students == '') {
+//alert('depois calculo='+calculo + ' mygroupNext='+mygroupNext + ' mytema='+mytema + ' mycategory='+mycategory + ' myid='+myid + ' mygroup='+mygroup + ' mycode='+mycode);
 //alert("T"+mytema + "C"+mycategory+ "G"+mygroupNext + ".html?sim=" + mygroupNext + "&tem=" + mytema + "&cat=" + mycategory);
 				var DataShow_Config = window.open("T"+mytema + "C"+mycategory+ "G"+mygroupNext + ".html?sim=" + mygroupNext + "&tem=" + mytema + "&cat=" + mycategory, "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
 			}
