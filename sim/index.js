@@ -1,7 +1,7 @@
 
 var jsstoreCon = new JsStore.Connection();
 
-var CONST_NIVEL_MAX = 99; //5
+var CONST_NIVEL_MAX = 5;
 var CONST_FASE_MAX = 99; //6;
 var CONST_ORANGE = '#FF4700';
 var CONST_MEDIUM_SEA_GREEN = '#3CB371';
