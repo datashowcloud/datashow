@@ -675,14 +675,14 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		if(document.getElementById('selButtonColor') != null) {
 			document.getElementById('selButtonColor').classList.add('btn-default');
 		}
-		if(document.getElementById('txtCorretas') != null) {
-			document.getElementById('txtCorretas').classList.add('btn-default');
-		}
 		if(document.getElementById('txtIncorretas') != null) {
-			document.getElementById('txtIncorretas').classList.add('btn-default');
+			document.getElementById('txtIncorretas').classList.add('btn-primary');
+		}
+		if(document.getElementById('txtCorretas') != null) {
+			document.getElementById('txtCorretas').classList.add('btn-primary');
 		}
 		if(document.getElementById('txtNaoRespondidas') != null) {
-			document.getElementById('txtNaoRespondidas').classList.add('btn-default');
+			document.getElementById('txtNaoRespondidas').classList.add('btn-primary');
 		}
 		if(document.getElementById('btnDropDb') != null) {
 //			document.getElementById('btnDropDb').classList.add('btn-default');
