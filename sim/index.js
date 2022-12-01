@@ -664,10 +664,10 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		if(document.getElementById('btnPrevious') != null) {
 			document.getElementById('btnPrevious').classList.add('btn-info');
 		}
-		if(document.getElementById('btnPause') != null) {
+/*		if(document.getElementById('btnPause') != null) {
 			document.getElementById('btnPause').classList.add('btn-danger');
 		}
-		if(document.getElementById('btnEnd') != null) {
+*/		if(document.getElementById('btnEnd') != null) {
 			document.getElementById('btnEnd').classList.add('btn-success');
 		}
 		document.getElementById('btnBackward').classList.add('btn-danger');
@@ -689,7 +689,7 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		}
 	} else {
 		document.getElementById('btnPrevious').classList.add(buttoncolor);
-		document.getElementById('btnPause').classList.add(buttoncolor);
+//		document.getElementById('btnPause').classList.add(buttoncolor);
 		document.getElementById('btnEnd').classList.add(buttoncolor);
 		document.getElementById('btnBackward').classList.add(buttoncolor);
 		document.getElementById('btnNext').classList.add(buttoncolor);
@@ -2425,7 +2425,7 @@ async function initLinkHelp() {
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Savings Plans', 'Instâncias Spot', 'Instâncias Reservadas', 'Instâncias Sob Demanda', save, 'Hosts Dedicados', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html', 'servidor físico com capacidade de instância do EC2', 'AWS Hosts Dedicados do Amazon EC2 --> É um <b>servidor físico com capacidade de instância do EC2 totalmente dedicado para seu uso</b>. Permitem que você use suas licenças de software existentes por soquete, por núcleo ou por VM, incluindo o Windows Server, o Microsoft SQL Server, o SUSE e o Linux Enterprise Server.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'S3', 'EC2', 'Opções de Compra de Instância', 'EBS', save, 'Modelo de uso', 'https://aws.amazon.com/pt/free/free-tier-faqs/', 'composto por três tipos', 'Modelo de uso --> O <b>nível gratuito</b> da AWS oferece aos clientes a capacidade de explorar e testar gratuitamente serviços da AWS até os limites especificados para cada serviço. <br/>O nível gratuito é <b>composto por três tipos diferentes de ofertas</b>: <br/>Um nível gratuito de 12 meses, <br/>Uma oferta Always Free, <br/>Testes de curto prazo.');
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'S3', 'EC2', 'Opções de Compra de Instância', 'EBS', save, 'Modelo de uso', 'https://aws.amazon.com/pt/free/free-tier-faqs/', 'composto por três tipos', 'Modelo de uso --> O <b>nível gratuito</b> da AWS oferece aos clientes a capacidade de explorar e testar gratuitamente serviços da AWS até os limites especificados para cada serviço. <br/>O nível gratuito é <b>composto por três tipos diferentes de ofertas</b>: <br/>Um nível gratuito de 12 meses (750 horas/mês), <br/>Uma oferta Always Free, <br/>Testes de curto prazo.');
 
 	//DESAFIO
 	var mytema = '1';
