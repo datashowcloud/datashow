@@ -24,12 +24,12 @@
 </head>
 
 <body id="myBody" ZZZbackground="gallery/paper.jpeg">
-		
+
 			<div style="display:'none'; text-align:center; ">
 				<!-- br/>Aguarde o resultado na janela da configuração -->
-				<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px;">Fase atualizada e desbloqueada</div>
+				<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px;">Você passou ao próximo nível</div>
 				<br/><br/>
-				<button class="btn btn-info" onclick="window.open('index.html?tem=1&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
+				<button class="btn btn-info" onclick="window.open('index.html', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
 				
 				<label id="bSearch" style="display:none;">
 					<input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:200px; height:34px;">
@@ -135,7 +135,6 @@
 					<option value="45">Nível 4.5</option>
 					<option value="46">Nível 4.6</option>
 					<option value="50">Nível 5.0</option>
-
 				</select>
 				<select id="mycode" name="mycode" style="height:35px; display:none;"></select>
 				<select id="myorder" name="myorder" style="height:35px; display:none;"></select>
@@ -176,199 +175,167 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1.8
+FASE 4.6
 
 <p>
-<b>É um local físico</b> em todo o mundo onde agrupamos datacenters. <br/>Chamamos cada grupo de datacenters lógicos de zona de disponibilidade. <br/>Consiste em várias AZs (Zonas de Disponibilidade) isoladas e separadas fisicamente em uma área geográfica.
+Qual categoria abaixo não faz parte das ofertadas para instâncias EC2?
+
+Computação Acelerada
+<key>Tipos de instância EC2</key>
 
 <ok>
-Region
-<key>Region</key>
+Propósitos Específicos
+<key>Tipos de instância EC2</key>
 
-Multi Regions
-<key>Multi Regions</key>
+Propósitos Gerais
+<key>Tipos de instância EC2</key>
 
-Multi-AZ
-<key>Multi-AZ</key>
-
-Read Replicas (Cópias de Leitura do Amazon RDS)
-<key>Read Replicas</key>
+Computação Otimizada
+<key>Tipos de instância EC2</key>
 
 <p>
-É para <b>estratégia de DR (Recuperação de Desastre)</b>. <br/>Os recursos de computação em nuvem da Amazon são hospedados em vários locais no mundo todo. <br/>Esses locais são compostos por regiões da AWS, zonas de disponibilidade e zonas locais. <br/>Cada região da AWS é uma área geográfica separada.
+Qual é o serviço da AWS recomendado para armazenar arquivos de dados, filmes e  música como objetos?
 
-<ok>
-Multi Regions
-<key>Multi Regions</key>
-
-Multi-AZ
-<key>Multi-AZ</key>
-
-Read Replicas (Cópias de Leitura do Amazon RDS)
-<key>Read Replicas</key>
-
-Region
-<key>Region</key>
-
-<p>
-É para <b>aumentar a disponibilidade</b>. <br/>Fornece implementações em uma região, ou seja, não é global. <br/>Em uma implantação, o Amazon RDS cria automaticamente uma instância de banco de dados (BD) primária e replica de forma síncrona os dados para uma instância em uma AZ diferente. <br/>Quando detecta uma falha, o Amazon RDS executa automaticamente o failover para uma instância secundária sem nenhuma intervenção manual.
-
-<ok>
-Multi-AZ
-<key>Multi-AZ</key>
-
-Read Replicas (Cópias de Leitura do Amazon RDS)
-<key>Read Replicas</key>
-
-Region
-<key>Region</key>
-
-Multi Regions
-<key>Multi Regions</key>
-
-<p>
-Facilitam a <b>escalabilidade de maneira elástica</b> além dos limites de capacidade de uma única instância de DB para cargas de trabalho de banco de dados com uso intenso de leitura. <br/>Complementam as implantações Multi-AZ. <br/>Embora ambos os recursos mantenham uma segunda cópia dos dados, há diferenças entre os dois.
-
-<ok>
-Read Replicas
-<key>Read Replicas</key>
-
-ElasticSearch
-<key>Region</key>
-
-Multi Regions
-<key>Multi Regions</key>
-
-Multi-AZ
-<key>Multi-AZ</key>
-
-<p>
-É uma tecnologia que pode ser usada com o Amazon ECS para <b>executar contêineres sem a necessidade de gerenciar servidores ou clusters de instâncias</b> do Amazon EC2. <br/><b>Não é mais necessário provisionar, configurar nem dimensionar os clusters de máquinas virtuais</b> para executar contêineres. <br/>Elimina a necessidade de escolher tipos de servidor, decidir quando dimensionar clusters ou otimizar o agrupamento de clusters.
-
-<ok>
-Fargate
-<key>Fargate</key>
-
-Amazon EKS
-<key>EKS</key>
+DynamoDB
+<key>DynamoDB</key>
 
 EC2
 <key>EC2</key>
 
-Amazon ECR
-<key>ECR</key>
-
-<p>
-É um <b>serviço de contêiner para Kubernetes</b> gerenciado para executar e escalar aplicações do Kubernetes na nuvem ou on-premises. <br/>Adiciona <b>orquestração ao Amazon ECS</b>.
+Amazon Elastic Cache
+<key>Elastic Cache</key>
 
 <ok>
-Amazon EKS
-<key>EKS</key>
-
-Amazon ECS
-<key>ECS</key>
-
-Amazon ECR
-<key>ECR</key>
-
-Fargate
-<key>Fargate</key>
+S3
+<key>S3</key>
 
 <p>
-É um <b>serviço de gerenciamento de contêineres</b> altamente rápido e escalável. <br/>Você pode usá-lo para executar, interromper e gerenciar contêineres em um cluster.
+Qual plano de suporte é recomendado se você tem cargas de trabalho empresariais e/ou de missão crítica na AWS?
 
 <ok>
-Amazon ECS
-<key>ECS</key>
+Enterprise
+<key>Suporte</key>
 
-Fargate
-<key>Fargate</key>
+Basic
+<key>Suporte</key>
 
-Amazon ECR
-<key>ECR</key>
+Business
+<key>Suporte</key>
 
-Amazon EKS
-<key>EKS</key>
+Developer
+<key>Suporte</key>
 
 <p>
-É um <b>registro de contêiner</b> totalmente gerenciado que oferece hospedagem de alta performance para que você possa implantar imagens e artefatos de aplicações de forma confiável em qualquer lugar.
+Decidi implementar na minha arquitetura um banco de dados totalmente gerenciado pelo meu time rodando numa instância EC2. Qual é o serviço que será utilizado para armazenar os dados deste banco?
+
+DynamoDB
+<key>DynamoDB</key>
+
+RDS
+<key>RDS</key>
 
 <ok>
-Amazon ECR
-<key>ECR</key>
+EBS
+<key>EBS</key>
 
-Amazon ECS
-<key>ECS</key>
-
-Fargate
-<key>Fargate</key>
-
-Amazon EKS
-<key>EKS</key>
+Aurora
+<key>Aurora</key>
 
 <p>
-<b>Distribui ou redireciona automaticamente o tráfego de aplicações ou requisições de entrada</b> entre servidores, vários destinos e dispositivos virtuais em uma ou mais Zonas de disponibilidade (AZs).
-
-<ok>
-ELB (Elastic Load Balancer)
-<key>ELB</key>
-
-AWS Batch
-<key>Batch</key>
-
-Step Functions
-<key>Step Functions</key>
+Qual serviço da AWS pode ser utilizado se você deseja hospedar aplicações web de várias camadas e estabelecer o acesso e as restrições de segurança entre seus servidores web, aplicações e bancos de dados?
 
 Security Group
 <key>Security Group</key>
 
-<p>
-Planeja, programa e executa suas <b>cargas de trabalho de computação em lote</b> em toda a linha de recursos e produtos de computação da AWS, como AWS Fargate, Amazon EC2 e instâncias spot.
-
 <ok>
-AWS Batch
-<key>Batch</key>
+VPC
+<key>VPC</key>
 
-ELB (Elastic Load Balancer)
-<key>ELB</key>
+NACL
+<key>NACL</key>
 
-Step Functions
-<key>Step Functions</key>
-
-Security Group
-<key>Security Group</key>
+VPN
+<key>VPN</key>
 
 <p>
-É um serviço de <b>fluxo de trabalho visual com pouco código</b> utilizado por desenvolvedores para criar aplicações distribuídas, automatizar processos de TI e negócios e criar pipelines de dados e machine learning usando produtos da AWS. Baseado em computação sem servidor e <b>orquestra parte de: S3, API Gateway, Lambda, SQS e SNS</b>.
+Qual é o firewall da AWS que protege suas aplicações web de bots e outras ameaças comuns que podem afetar a disponibilidade e a performance dos seus serviços?
+
+AWS Certificate Manager
+<key>Certificate Manager</key>
 
 <ok>
-Step Functions
-<key>Step Functions</key>
+AWS WAF
+<key>WAF</key>
 
-AWS Batch
-<key>Batch</key>
+AWS CloudFront
+<key>CloudFront</key>
 
-Security Group
-<key>Security Group</key>
-
-ELB (Elastic Load Balancer)
-<key>ELB</key>
+AWS Shield
+<key>Shield</key>
 
 <p>
-É um <b>grupo de segurança</b> que atua como firewall virtual para as instâncias do EC2 visando <b>controlar o tráfego de entrada e de saída</b>.
+Qual é o serviço da AWS que permite criar uma imagem a partir de uma EC2 configurada para ser utilizada em serviços como Auto Scaling, DR, entre outros ?
+
+AWS Workspaces
+<key>Workspaces</key>
 
 <ok>
-Security Group
-<key>Security Group</key>
+AMI
+<key>AMI</key>
 
-Step Functions
-<key>Step Functions</key>
+AWS Image
+<key>Não Se Aplica</key>
 
-ELB (Elastic Load Balancer)
-<key>ELB</key>
+AWS Config
+<key>Config</key>
 
-AWS Batch
-<key>Batch</key>
+<p>
+No modelo de Responsabilidade Compartilhada, qual é o papel do cliente?
+
+<ok>
+proteger e configurar instâncias EC2 contra invasões
+<key>Responsabilidade Compartilhada</key>
+
+proteger os hardwares que executam os serviços da nuvem
+<key>Responsabilidade Compartilhada</key>
+
+proteger os data centers físicos
+<key>Responsabilidade Compartilhada</key>
+
+proteger os softwares que executam os serviços da nuvem
+<key>Responsabilidade Compartilhada</key>
+
+<p>
+Sua empresa implementou alguns serviços que identificam problemas de segurança na sua infraestrutura da AWS. Qual é o serviço que, através de visualização interativa e unificada de seus recursos, usuários e interações,  facilita a investigação e a identificação rápida da causa raiz dos problemas de segurança ou atividades suspeitas na sua rede?
+
+Amazon Macie
+<key>Macie</key>
+
+AWS Security Hub
+<key></key>
+
+Amazon GuardDuty
+<key>GuardDuty</key>
+
+<ok>
+Amazon Detective
+<key>Detective</key>
+
+<p>
+Você precisa migrar uma grande quantidade de dados do seu ambiente on-premise para armazenamento no S3 de forma automática e periódica, liberando a capacidade da sua infraestrutra particular. Qual serviço que pode ser utilizado para essa finalidade?
+
+AWS DMS
+<key>DMS</key>
+
+AWS VPN
+<key>VPN</key>
+
+<ok>
+AWS DataSync
+<key>DataSync</key>
+
+AWS DirectConnect
+<key>Direct Connect</key>
 
 <p>
 

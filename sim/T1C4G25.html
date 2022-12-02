@@ -29,7 +29,7 @@
 				<!-- br/>Aguarde o resultado na janela da configuração -->
 				<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px;">Fase atualizada e desbloqueada</div>
 				<br/><br/>
-				<button class="btn btn-info" onclick="window.open('index.html?tem=1&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
+				<button class="btn btn-info" onclick="window.open('index.html', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
 				
 				<label id="bSearch" style="display:none;">
 					<input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:200px; height:34px;">
@@ -176,199 +176,167 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1.8
+FASE 2.5
 
 <p>
-<b>É um local físico</b> em todo o mundo onde agrupamos datacenters. <br/>Chamamos cada grupo de datacenters lógicos de zona de disponibilidade. <br/>Consiste em várias AZs (Zonas de Disponibilidade) isoladas e separadas fisicamente em uma área geográfica.
+No modelo de Responsabilidade Compartilhada, a AWS deve proteger todos os dados trafegados na sua infraestrutura global. Sobre a criptografia realizada neste processo, podemos afirmar que:
+
+A AWS criptografa automaticamente os dados na camada lógica antes de sair de suas instalações protegidas
+<key>Responsabilidade Compartilhada</key>
 
 <ok>
-Region
-<key>Region</key>
+A AWS criptografa automaticamente os dados na camada física antes de sair de suas instalações protegidas
+<key>Responsabilidade Compartilhada</key>
 
-Multi Regions
-<key>Multi Regions</key>
+A AWS não criptografa os dados, entretanto fornece o KMS para o usuário fazê-la
+<key>Responsabilidade Compartilhada</key>
 
-Multi-AZ
-<key>Multi-AZ</key>
-
-Read Replicas (Cópias de Leitura do Amazon RDS)
-<key>Read Replicas</key>
+A AWS não criptografa os dados, entretanto fornece o AWS Certificate Manager para o usuário fazê-la
+<key>Responsabilidade Compartilhada</key>
 
 <p>
-É para <b>estratégia de DR (Recuperação de Desastre)</b>. <br/>Os recursos de computação em nuvem da Amazon são hospedados em vários locais no mundo todo. <br/>Esses locais são compostos por regiões da AWS, zonas de disponibilidade e zonas locais. <br/>Cada região da AWS é uma área geográfica separada.
+Qual é o modelo de planos flexíveis que oferece preços mais baixos em comparação com os preços sob demanda, em troca de um compromisso de uso específico (medido em USD/hora) por um período de um ou três anos?
+
+AWS Efficient Cost
+<key>Não Se Aplica</key>
+
+Low Cost
+<key>Não Se Aplica</key>
 
 <ok>
-Multi Regions
-<key>Multi Regions</key>
+Savings Plans
+<key>Opções de Compra de Instância</key>
 
-Multi-AZ
-<key>Multi-AZ</key>
-
-Read Replicas (Cópias de Leitura do Amazon RDS)
-<key>Read Replicas</key>
-
-Region
-<key>Region</key>
+AWS Billing
+<key>Billing</key>
 
 <p>
-É para <b>aumentar a disponibilidade</b>. <br/>Fornece implementações em uma região, ou seja, não é global. <br/>Em uma implantação, o Amazon RDS cria automaticamente uma instância de banco de dados (BD) primária e replica de forma síncrona os dados para uma instância em uma AZ diferente. <br/>Quando detecta uma falha, o Amazon RDS executa automaticamente o failover para uma instância secundária sem nenhuma intervenção manual.
+Seu time de desenvolvimento está planejando modernizar um sistema e redesenhá-lo dentro da AWS. Um dos requisitos não funcionais é a redução de interdependência para minimizar falhas que acontecem e impactam outros componentes. Qual dos seguintes conceitos se refere a esse requisito?
+
+Segregação
+<key>Não Se Aplica</key>
+
+Integração
+<key>Não Se Aplica</key>
+
+Agregação
+<key>Não Se Aplica</key>
 
 <ok>
-Multi-AZ
-<key>Multi-AZ</key>
-
-Read Replicas (Cópias de Leitura do Amazon RDS)
-<key>Read Replicas</key>
-
-Region
-<key>Region</key>
-
-Multi Regions
-<key>Multi Regions</key>
+Desacoplamento
+<key>SQS</key>
 
 <p>
-Facilitam a <b>escalabilidade de maneira elástica</b> além dos limites de capacidade de uma única instância de DB para cargas de trabalho de banco de dados com uso intenso de leitura. <br/>Complementam as implantações Multi-AZ. <br/>Embora ambos os recursos mantenham uma segunda cópia dos dados, há diferenças entre os dois.
+Na implementação de uma estratégia de backups, qual é o número máximo de snapshots manuais de RDS permitidas por região?
+
+256 por região
+<key>EBS Snapshots</key>
 
 <ok>
-Read Replicas
-<key>Read Replicas</key>
+100 por região
+<key>EBS Snapshots</key>
 
-ElasticSearch
-<key>Region</key>
+o número de cópia é virtualmente ilimitado
+<key>Não Se Aplica</key>
 
-Multi Regions
-<key>Multi Regions</key>
-
-Multi-AZ
-<key>Multi-AZ</key>
+128 por região
+<key>EBS Snapshots</key>
 
 <p>
-É uma tecnologia que pode ser usada com o Amazon ECS para <b>executar contêineres sem a necessidade de gerenciar servidores ou clusters de instâncias</b> do Amazon EC2. <br/><b>Não é mais necessário provisionar, configurar nem dimensionar os clusters de máquinas virtuais</b> para executar contêineres. <br/>Elimina a necessidade de escolher tipos de servidor, decidir quando dimensionar clusters ou otimizar o agrupamento de clusters.
+Qual é o formato de arquivo utilizado na maioria das configurações de serviços da AWS?
 
 <ok>
-Fargate
-<key>Fargate</key>
+JSON
+<key>JSON</key>
 
-Amazon EKS
-<key>EKS</key>
+TXT
+<key>Não Se Aplica</key>
 
+XML
+<key>Não Se Aplica</key>
+
+Config
+<key>Não Se Aplica</key>
+
+<p>
+Você trabalha numa multinacional que opera em todos os continentes e com clientes em quase todos os países. Qual é o maior benefício no uso da AWS para esse contexto?
+
+Suporte em mais de 50 idiomas
+<key>Infraestrutura Global</key>
+
+Suporte ao usuário final
+<key>Suporte</key>
+
+Documentações bem traduzidas
+<key>Infraestrutura Global</key>
+
+<ok>
+Presença Global
+<key>Infraestrutura Global</key>
+
+<p>
+Qual é o serviço da AWS que oferece diversos tipos de máquinas com capacidades computacionais para atender a diversas necessidades de cargas de trabalho (workloads)?
+
+<ok>
 EC2
 <key>EC2</key>
 
-Amazon ECR
-<key>ECR</key>
+S3
+<key>S3</key>
+
+EBS
+<key>EBS</key>
+
+EFS
+<key>EFS</key>
 
 <p>
-É um <b>serviço de contêiner para Kubernetes</b> gerenciado para executar e escalar aplicações do Kubernetes na nuvem ou on-premises. <br/>Adiciona <b>orquestração ao Amazon ECS</b>.
+Você construiu uma aplicação no EC2 que se conecta aos dados no RDS. Qual serviço você deve utilizar para que as devidas configurações de acesso entre a aplicação e o banco de dados sejam realizadas?
 
 <ok>
-Amazon EKS
-<key>EKS</key>
+IAM Roles
+<key>IAM Roles</key>
 
-Amazon ECS
-<key>ECS</key>
+IAM Grant
+<key>Não Se Aplica</key>
 
-Amazon ECR
-<key>ECR</key>
+IAM Users
+<key>IAM Users</key>
 
-Fargate
-<key>Fargate</key>
+IAM Groups
+<key>IAM Groups</key>
 
 <p>
-É um <b>serviço de gerenciamento de contêineres</b> altamente rápido e escalável. <br/>Você pode usá-lo para executar, interromper e gerenciar contêineres em um cluster.
+Qual é a plataforma da AWS para Big Data em Cloud que permite integração com várias ferramentas de código livre como Apache Spark, Apache Hive, Apache HBase, Apache Flink, Apache Hudi?
 
 <ok>
-Amazon ECS
-<key>ECS</key>
+Amazon EMR
+<key>EMR</key>
 
-Fargate
-<key>Fargate</key>
+Amazon Hadoop
+<key>Apache Handoop</key>
 
-Amazon ECR
-<key>ECR</key>
+Amazon Kinesis
+<key>Kinesis</key>
 
-Amazon EKS
-<key>EKS</key>
+Amazon RedShift
+<key>RedShift</key>
 
 <p>
-É um <b>registro de contêiner</b> totalmente gerenciado que oferece hospedagem de alta performance para que você possa implantar imagens e artefatos de aplicações de forma confiável em qualquer lugar.
+Qual é o serviço, que através da infraestrutura global da AWS, pode ser utilizado quando as suas aplicações apresentarem problemas de tráfego devido ao congestionamento da Internet?
 
 <ok>
-Amazon ECR
-<key>ECR</key>
+AWS Global Accelerator
+<key>Global Accelerator</key>
 
-Amazon ECS
-<key>ECS</key>
+AWS CloudFront
+<key>CloudFront</key>
 
-Fargate
-<key>Fargate</key>
+AWS DataSync
+<key>DataSync</key>
 
-Amazon EKS
-<key>EKS</key>
-
-<p>
-<b>Distribui ou redireciona automaticamente o tráfego de aplicações ou requisições de entrada</b> entre servidores, vários destinos e dispositivos virtuais em uma ou mais Zonas de disponibilidade (AZs).
-
-<ok>
-ELB (Elastic Load Balancer)
-<key>ELB</key>
-
-AWS Batch
-<key>Batch</key>
-
-Step Functions
-<key>Step Functions</key>
-
-Security Group
-<key>Security Group</key>
-
-<p>
-Planeja, programa e executa suas <b>cargas de trabalho de computação em lote</b> em toda a linha de recursos e produtos de computação da AWS, como AWS Fargate, Amazon EC2 e instâncias spot.
-
-<ok>
-AWS Batch
-<key>Batch</key>
-
-ELB (Elastic Load Balancer)
-<key>ELB</key>
-
-Step Functions
-<key>Step Functions</key>
-
-Security Group
-<key>Security Group</key>
-
-<p>
-É um serviço de <b>fluxo de trabalho visual com pouco código</b> utilizado por desenvolvedores para criar aplicações distribuídas, automatizar processos de TI e negócios e criar pipelines de dados e machine learning usando produtos da AWS. Baseado em computação sem servidor e <b>orquestra parte de: S3, API Gateway, Lambda, SQS e SNS</b>.
-
-<ok>
-Step Functions
-<key>Step Functions</key>
-
-AWS Batch
-<key>Batch</key>
-
-Security Group
-<key>Security Group</key>
-
-ELB (Elastic Load Balancer)
-<key>ELB</key>
-
-<p>
-É um <b>grupo de segurança</b> que atua como firewall virtual para as instâncias do EC2 visando <b>controlar o tráfego de entrada e de saída</b>.
-
-<ok>
-Security Group
-<key>Security Group</key>
-
-Step Functions
-<key>Step Functions</key>
-
-ELB (Elastic Load Balancer)
-<key>ELB</key>
-
-AWS Batch
-<key>Batch</key>
+AWS Snowball
+<key>Snowball</key>
 
 <p>
 

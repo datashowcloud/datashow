@@ -24,12 +24,12 @@
 </head>
 
 <body id="myBody" ZZZbackground="gallery/paper.jpeg">
-		
+
 			<div style="display:'none'; text-align:center; ">
 				<!-- br/>Aguarde o resultado na janela da configuração -->
-				<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px;">Fase atualizada e desbloqueada</div>
+				<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px;">Nível atualizado com sucesso</div>
 				<br/><br/>
-				<button class="btn btn-info" onclick="window.open('index.html?tem=1&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
+				<button class="btn btn-info" onclick="window.open('index.html', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
 				
 				<label id="bSearch" style="display:none;">
 					<input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:200px; height:34px;">
@@ -176,199 +176,182 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1.8
+FASE 5.0
 
 <p>
-<b>É um local físico</b> em todo o mundo onde agrupamos datacenters. <br/>Chamamos cada grupo de datacenters lógicos de zona de disponibilidade. <br/>Consiste em várias AZs (Zonas de Disponibilidade) isoladas e separadas fisicamente em uma área geográfica.
+Quais das seguintes opções são benefícios da Nuvem AWS?
+<br/>(Selecione 2)
+
+As empresas precisam de uma equipe de TI maior.
+<key>Não Se Aplica</key>
 
 <ok>
-Region
-<key>Region</key>
+As despesas de capital são substituidas por despesas varáveis.
+<key>Advantages Cloud Computing</key>
 
-Multi Regions
-<key>Multi Regions</key>
+Os clientes recebem a mesma fatura mensal, independemente de quais recursos eles usam.
+<key>Pricing Calculator</key>
 
-Multi-AZ
-<key>Multi-AZ</key>
+<ok>
+As empresas ganham maior agilidade.
+<key>Advantages Cloud Computing</key>
 
-Read Replicas (Cópias de Leitura do Amazon RDS)
-<key>Read Replicas</key>
+A AWS é responsável pela segurança na nuvem.
+<key>Responsabilidade Compartilhada</key>
 
 <p>
-É para <b>estratégia de DR (Recuperação de Desastre)</b>. <br/>Os recursos de computação em nuvem da Amazon são hospedados em vários locais no mundo todo. <br/>Esses locais são compostos por regiões da AWS, zonas de disponibilidade e zonas locais. <br/>Cada região da AWS é uma área geográfica separada.
+Quais das opções a seguir são vantagens da Nuvem AWS?
+<br/>(Selecione 2)
 
 <ok>
-Multi Regions
-<key>Multi Regions</key>
+A AWS gerencia a manutenção da infraestrutura de nuvem.
+<key>Responsabilidade Compartilhada</key>
 
-Multi-AZ
-<key>Multi-AZ</key>
+A AWS gerencia a segurança de aplicações criadas na nuvem AWS.
+<key>Responsabilidade Compartilhada</key>
 
-Read Replicas (Cópias de Leitura do Amazon RDS)
-<key>Read Replicas</key>
+<ok>
+A AWS gerencia o planejamento de capacidade para servidores físicos.
+<key>Responsabilidade Compartilhada</key>
 
-Region
-<key>Region</key>
+A AWS gerencia o planejamento de custos para servidores virtuais.
+<key>Cost Explorer</key>
+
+A AWS gerencia o desenvolvimento de aplicações na nuvem AWS.
+<key>Responsabilidade Compartilhada</key>
 
 <p>
-É para <b>aumentar a disponibilidade</b>. <br/>Fornece implementações em uma região, ou seja, não é global. <br/>Em uma implantação, o Amazon RDS cria automaticamente uma instância de banco de dados (BD) primária e replica de forma síncrona os dados para uma instância em uma AZ diferente. <br/>Quando detecta uma falha, o Amazon RDS executa automaticamente o failover para uma instância secundária sem nenhuma intervenção manual.
+Uma empresa exige isolamento físico de suas instâncias Amazon EC2 das instâncias de outros clientes. Qual opção de compra de instâncias atende a esse requisito?
 
 <ok>
-Multi-AZ
-<key>Multi-AZ</key>
+Hosts dedicados
+<key>Hosts Dedicados</key>
 
-Read Replicas (Cópias de Leitura do Amazon RDS)
-<key>Read Replicas</key>
+Instâncias reservadas
+<key>Instâncias Reservadas</key>
 
-Region
-<key>Region</key>
+Instâncias On-Demand
+<key>Instâncias Sob Demanda</key>
 
-Multi Regions
-<key>Multi Regions</key>
+Instâncias Spot
+<key>Instâncias Spot</key>
 
 <p>
-Facilitam a <b>escalabilidade de maneira elástica</b> além dos limites de capacidade de uma única instância de DB para cargas de trabalho de banco de dados com uso intenso de leitura. <br/>Complementam as implantações Multi-AZ. <br/>Embora ambos os recursos mantenham uma segunda cópia dos dados, há diferenças entre os dois.
+Qual princípio da arquitetura da Nuvem AWS afirma que os sistemas devem reduzir as interdependências?
+
+Escalabilidade
+<key>Auto Scaling</key>
+
+Serviços, não servidores
+<key>Não Se Aplica</key>
+
+Automação
+<key>Excelência Operacional</key>
 
 <ok>
-Read Replicas
-<key>Read Replicas</key>
-
-ElasticSearch
-<key>Region</key>
-
-Multi Regions
-<key>Multi Regions</key>
-
-Multi-AZ
-<key>Multi-AZ</key>
+Acoplamento fraco
+<key>Acoplamento fraco</key>
 
 <p>
-É uma tecnologia que pode ser usada com o Amazon ECS para <b>executar contêineres sem a necessidade de gerenciar servidores ou clusters de instâncias</b> do Amazon EC2. <br/><b>Não é mais necessário provisionar, configurar nem dimensionar os clusters de máquinas virtuais</b> para executar contêineres. <br/>Elimina a necessidade de escolher tipos de servidor, decidir quando dimensionar clusters ou otimizar o agrupamento de clusters.
+Qual princípio de design da arquitetura da Nuvem AWS é compatível com a distribuição de cargas de trabalho em várias zonas de disponibilidade?
+
+Implementação de automação
+<key>CloudFormation</key>
+
+Design para agilidade
+<key>Não Se Aplica</key>
 
 <ok>
-Fargate
-<key>Fargate</key>
+Design à prova de falhas
+<key>Confiabilidade</key>
 
-Amazon EKS
-<key>EKS</key>
-
-EC2
-<key>EC2</key>
-
-Amazon ECR
-<key>ECR</key>
+Implementação de elasticidade
+<key>Elasticidade</key>
 
 <p>
-É um <b>serviço de contêiner para Kubernetes</b> gerenciado para executar e escalar aplicações do Kubernetes na nuvem ou on-premises. <br/>Adiciona <b>orquestração ao Amazon ECS</b>.
+Qual das seguintes opções é uma responsabilidade da AWS de acordo com o modelo de Responsabilidade Compartilhada da AWS?
+
+Projetar a aplicação de um cliente para recuperação de desastres.
+<key>Responsabilidade Compartilhada</key>
+
+Atualizar os sistemas operacionais convidados em instâncias Amazon EC2 implantadas.
+<key>Responsabilidade Compartilhada</key>
+
+Configurar novos recursos em uma conta da AWS.
+<key>Responsabilidade Compartilhada</key>
 
 <ok>
-Amazon EKS
-<key>EKS</key>
-
-Amazon ECS
-<key>ECS</key>
-
-Amazon ECR
-<key>ECR</key>
-
-Fargate
-<key>Fargate</key>
+Proteger a infraestrutura física.
+<key>Responsabilidade Compartilhada</key>
 
 <p>
-É um <b>serviço de gerenciamento de contêineres</b> altamente rápido e escalável. <br/>Você pode usá-lo para executar, interromper e gerenciar contêineres em um cluster.
+Qual das opções a seguir descreve uma melhor prática de segurança que pode ser implementada usando o AWS Identity and Access Management (IAM)?
+
+Desativar o acesso ao Console de Gerenciamento da AWS para todos os usuários.
+<key>Não Se Aplica</key>
+
+Gerar chaves secretas para cada usuário do IAM.
+<key>Não Se Aplica</key>
 
 <ok>
-Amazon ECS
-<key>ECS</key>
+Conceder permissões a usuários que precisam executar apenas uma tarefa específica.
+<key>IAM Roles</key>
 
-Fargate
-<key>Fargate</key>
-
-Amazon ECR
-<key>ECR</key>
-
-Amazon EKS
-<key>EKS</key>
+Armazenar credenciais da AWS em instâncias Amazon EC2.
+<key>Não Se Aplica</key>
 
 <p>
-É um <b>registro de contêiner</b> totalmente gerenciado que oferece hospedagem de alta performance para que você possa implantar imagens e artefatos de aplicações de forma confiável em qualquer lugar.
+Uma empresa precisa monitorar e receber alertas sobre eventos de login do Console de Gerenciamento da AWS que envolvem o usuário raiz da conta da AWS. Qual produto da AWS a empresa pode usar para atender a esses requisitos?
 
 <ok>
-Amazon ECR
-<key>ECR</key>
+Amazon CloudWatch
+<key>CloudWatch</key>
 
-Amazon ECS
-<key>ECS</key>
+AWS Config
+<key>Config</key>
 
-Fargate
-<key>Fargate</key>
+AWS Trusted Advisor
+<key>Trusted Advisor</key>
 
-Amazon EKS
-<key>EKS</key>
+AWS Identity and Access Management (IAM)
+<key>IAM</key>
 
 <p>
-<b>Distribui ou redireciona automaticamente o tráfego de aplicações ou requisições de entrada</b> entre servidores, vários destinos e dispositivos virtuais em uma ou mais Zonas de disponibilidade (AZs).
+Uma empresa tem um servidor de aplicações em execução em uma instância Amazon EC2. O servidor de aplicações precisa acessar o conteúdo em um bucket privado do Amazon S3. Qual é a abordagem recomendada para atender a esse requisito?
 
 <ok>
-ELB (Elastic Load Balancer)
-<key>ELB</key>
+Crie uma IAM role com as permissões apropriadas. Associe a role à instância EC2.
+<key>Melhores Práticas Chaves De Acesso</key>
 
-AWS Batch
-<key>Batch</key>
+Configure uma conexão de peering de VPC para permitir a comunicação privada entre a instância EC2 e o bucket do S3.
+<key>VPC</key>
 
-Step Functions
-<key>Step Functions</key>
+Crie uma chave de acesso compartilhada. Configure a instância EC2 para usar a chave codificada.
+<key>IAM Roles</key>
 
-Security Group
-<key>Security Group</key>
+Configure a aplicação para ler uma chave de acesso de uma fonte segura.
+<key>Bucket</key>
 
 <p>
-Planeja, programa e executa suas <b>cargas de trabalho de computação em lote</b> em toda a linha de recursos e produtos de computação da AWS, como AWS Fargate, Amazon EC2 e instâncias spot.
+Quais recursos ou serviços relacionados à segurança a AWS oferece?
+<br/>(Selecione 2)
+
+Compliance completa com PCI para aplicações do Cliente executadas na AWS.
+<key>Conformidade da AWS</key>
 
 <ok>
-AWS Batch
-<key>Batch</key>
-
-ELB (Elastic Load Balancer)
-<key>ELB</key>
-
-Step Functions
-<key>Step Functions</key>
-
-Security Group
-<key>Security Group</key>
-
-<p>
-É um serviço de <b>fluxo de trabalho visual com pouco código</b> utilizado por desenvolvedores para criar aplicações distribuídas, automatizar processos de TI e negócios e criar pipelines de dados e machine learning usando produtos da AWS. Baseado em computação sem servidor e <b>orquestra parte de: S3, API Gateway, Lambda, SQS e SNS</b>.
+Verificações de segurança do AWS Trusted Advisor
+<key>Trusted Advisor</key>
 
 <ok>
-Step Functions
-<key>Step Functions</key>
+Criptografia dos dados
+<key>Criptografia dos dados</key>
 
-AWS Batch
-<key>Batch</key>
+Teste de penetração automatizado
+<key>Teste de penetração</key>
 
-Security Group
-<key>Security Group</key>
-
-ELB (Elastic Load Balancer)
-<key>ELB</key>
-
-<p>
-É um <b>grupo de segurança</b> que atua como firewall virtual para as instâncias do EC2 visando <b>controlar o tráfego de entrada e de saída</b>.
-
-<ok>
-Security Group
-<key>Security Group</key>
-
-Step Functions
-<key>Step Functions</key>
-
-ELB (Elastic Load Balancer)
-<key>ELB</key>
-
-AWS Batch
-<key>Batch</key>
+Detecção de conteúdo protegido por diretos autorais do Amazon S3
+<key>Data Privacy</key>
 
 <p>
 
