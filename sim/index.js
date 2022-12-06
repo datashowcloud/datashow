@@ -663,7 +663,7 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 	if (buttoncolor == 'btn-colors') {
 		
 		if(document.getElementById('btnPrevious') != null) {
-			document.getElementById('btnPrevious').classList.add('btn-info');
+			document.getElementById('btnPrevious').classList.add('btn-default');
 		}
 /*		if(document.getElementById('btnPause') != null) {
 			document.getElementById('btnPause').classList.add('btn-danger');
@@ -674,7 +674,7 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		}
 */
 		document.getElementById('btnBackward').classList.add('btn-danger');
-		document.getElementById('btnNext').classList.add('btn-info');
+		document.getElementById('btnNext').classList.add('btn-default');
 		if(document.getElementById('selButtonColor') != null) {
 			document.getElementById('selButtonColor').classList.add('btn-default');
 		}
