@@ -1,0 +1,434 @@
+<p>
+Quais das seguintes opções são benefícios da Nuvem AWS?
+<br/>(Selecione 2)
+
+As empresas precisam de uma equipe de TI maior.
+Incorreto. Com a Nuvem AWS, você pode se concentrar em seus clientes, em vez de se preocupar com a aquisição, a instalação e o gerenciamento da infraestrutura. Embora o uso dos produtos da AWS possa se tornar parte do trabalho que sua equipe de TI executa, isso não aumentará diretamente a equipe de TI.
+<key>Não Se Aplica</key>
+
+<ok>
+As despesas de capital são substituidas por despesas varáveis.
+Correto. Com a Nuvem AWS, você se beneficia da compra global de recursos computacionais pela Amazon. Você não precisa investir muito em datacenters.
+<key>Advantages Cloud Computing</key>
+
+Os clientes rcebem a mesma fatura mensal, independemente de quais recursos eles usam.
+Incorreto. Com a Nuvem AWS, você paga apenas pelos serviços individuais de que precisa conforme o tempo que os utilizar. Você não precisa se comprometer com um contrato de longo prazo.
+<key>Pricing</key>
+
+<ok>
+As empresas ganham maior agilidade.
+Correto. Com a Nuvem AWS, você disponibiliza recursos de TI para desenvolvedores em minutos, em vez de semanas. Isso resulta em tempo e custo reduzidos para desenvolvimento, aumentando a agilidade
+<key>Advantages Cloud Computing</key>
+
+A AWS é responsável pela segurança na nuvem.
+Incorreto. O cliente é responsável pela segurança na Nuvem AWS como parte do modelo de responsabilidade compartilhada da AWS.
+<key>Shared Responsability</key>
+
+<p>
+Quais das opções a seguir são vantagens da Nuvem AWS?
+<br/>(Selecione 2)
+
+<ok>
+A AWS grencia a manutenção da infraestrutura de nuvem.
+Correto. Essa solução é um exemplo de segurança “da” nuvem. A AWS é responsável pela proteção da infraestrutura que executa todos os serviços oferecidos na Nuvem AWS. Essa infraestrutura é composta por hardware, software, redes e instalações que executam os serviços de nuvem da AWS.
+<key>Shared Responsability</key>
+
+A AWS gerencia a segurança de aplicações criadas na AWS.
+Incorreto. Essa solução é um exemplo de segurança “na” nuvem. A segurança da aplicação é de responsabilidade do cliente.
+<key>Shared Responsability</key>
+
+<ok>
+A AWS gerencia o planejamento de capacidade para servidores físicos.
+Correto. Essa solução é um exemplo de segurança “da” nuvem. O planejamento de capacidade da nuvem é um controle herdado da AWS. A AWS compra servidores adicionais conforme necessário, com base na demanda geral do cliente.
+<key>Shared Responsability</key>
+
+A AWS gerencia o planejamento de custos para servidores virtuais.
+Incorreto. A AWS oferece ferramentas para ajudar os clientes a visualizar, entender e gerenciar os custos. Os clientes são responsáveis pelo planejamento de custos de seus servidores virtuais.
+<key>Cost Explorer</key>
+
+A AWS gerencia o desenvolvimento de aplicações na AWS.
+Incorreto. Essa solução é um exemplo de segurança “na” nuvem. A AWS não gerencia o desenvolvimento de aplicações
+<key>Shared Responsability</key>
+
+<p>
+Uma empresa exige isolamento físico de suas instâncias Amazon EC2 das instâncias de outros clientes.
+Qual opção de compra de instâncias atende a esse requisito?
+
+<ok>
+Hosts dedicados
+Correto. Com hosts dedicados, um servidor físico é dedicado ao seu uso. Hosts dedicados fornecem visibilidade e a opção de controlar como você coloca suas instâncias em um servidor físico isolado.
+Hosts dedicados do Amazon EC2: https://aws.amazon.com/ec2/dedicated-hosts/
+
+Instâncias reservadas
+Incorreto. As instâncias reservadas não são instâncias físicas. As instâncias reservadas são um desconto de faturamento aplicado ao uso de instâncias on-demand em sua conta. As instâncias reservadas não fornecem isolamento de carga de trabalho física.
+Instâncias reservadas. https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-reserved-instances.html
+
+Instâncias On-Demand
+Incorreto. Com as instâncias On-Demand, você paga pela capacidade computacional por segundo sem compromissos de longo prazo. As instâncias On-Demand não fornecem isolamento de carga de trabalho física.
+Instâncias On-Demand. https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-on-demand-instances.html
+
+Instâncias Spot
+Incorreto. Com instâncias spot, você pode aproveitar a capacidade do EC2 não utilizada na Nuvem AWS. As instâncias spot não fornecem isolamento físico de cargas de trabalho.
+Instâncias spot do Amazon EC2. https://aws.amazon.com/ec2/spot/
+
+<p>
+Qual princípio da arquitetura da Nuvem AWS afirma que os sistemas devem reduzir as interdependências?
+
+Escalabilidade
+Incorreto. Os sistemas escaláveis podem reagir a aumentos e reduções na carga. A escalabilidade não reduz as interdependências entre os componentes do sistema.
+AWS Well-Architected Framework. https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html
+
+Serviços, não servidores
+Incorreto. Essa solução não reduz as interdependências entre os componentes do sistema em uma implementação de aplicação. No entanto, você ainda precisa projetar recursos que são desacoplados na aplicação para reduzir endpoints únicos que podem se tornar falhas.
+AWS Well-Architected Framework. https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html
+
+Automação
+Incorreto. A automação pode melhorar a estabilidade, a eficiência durante as implementações e a resposta a eventos. No entanto, você ainda precisa projetar uma arquitetura que reduza dependências restritas entre as camadas da aplicação.
+AWS Well-Architected Framework. https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html
+
+<ok>
+Acoplamento fraco
+Correto. O acoplamento fraco ajuda a isolar o comportamento de um componente de outros componentes que dependem dele, aumentando a resiliência e a agilidade. Uma alteração ou uma falha em um dos componentes não deve afetar os outros componentes.
+AWS Well-Architected Framework. https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html
+
+<p>
+Qual princípio de design da arquitetura da Nuvem AWS é compatível com a distribuição de cargas de trabalho em várias zonas de disponibilidade?
+
+Implementação de automação
+Incorreto. Você pode usar serviços de automação, como o AWS CloudFormation, para implantar recursos em uma ou mais zonas de disponibilidade. No entanto, a implementação da automação não está diretamente vinculada ou limitada à distribuição de cargas de trabalho em várias zonas de disponibilidade.
+Perguntas frequentes sobre o AWS CloudFormation. https://aws.amazon.com/pt/cloudformation/faqs/
+
+Design para agilidade
+Incorreto. Quando você cria um design para agilidade, é possível provisionar recursos mais rapidamente. A agilidade não está relacionada ao número de zonas de disponibilidade.
+Risco é falta de agilidade. https://aws.amazon.com/blogs/enterprise-strategy/risk-is-lack-of-agility
+
+<ok>
+Design à prova de falhas
+Correto. A AWS recomenda que você distribua as cargas de trabalho em várias zonas de disponibilidade. Essa distribuição garantirá a disponibilidade contínua da aplicação, mesmo que ela não esteja disponível em uma única zona de disponibilidade.
+Pilar da eficiência de performance – AWS Well-Architected Framework. https://docs.aws.amazon.com/wellarchitected/latest/performance-efficiency-pillar/welcome.html
+
+Implementação de elasticidade
+Incorreto. Elasticidade é a capacidade de ativar recursos conforme necessário e devolvê-los quando não precisar mais deles. A elasticidade não está relacionada ao número de zonas de disponibilidade.
+Elasticidade. https://wa.aws.amazon.com/wellarchitected/2020-07-02T19-33-23/wat.concept.elasticity.en.html
+
+<p>
+Qual das seguintes opções é uma responsabilidade da AWS de acordo com o modelo de responsabilidade compartilhada da AWS?
+
+Projetar a aplicação de um cliente para recuperação de desastres.
+Incorreto. A AWS oferece muitos serviços para ajudar na recuperação de desastres e no planejamento da continuidade dos negócios. No entanto, de acordo com o modelo de responsabilidade compartilhada, é responsabilidade do cliente decidir quais serviços são necessários.
+Modelo de responsabilidade compartilhada. https://aws.amazon.com/compliance/shared-responsibility-model/
+
+Atualizar os sistemas operacionais convidados em instâncias Amazon EC2 implantadas.
+Incorreto. O cliente deve gerenciar suas próprias atualizações na infraestrutura provisionada.
+Modelo de responsabilidade compartilhada. https://aws.amazon.com/compliance/shared-responsibility-model/
+
+Configurar novos recursos em uma conta da AWS.
+Incorreto. O cliente decide quais serviços usar e como usá-los.
+Modelo de responsabilidade compartilhada. https://aws.amazon.com/compliance/shared-responsibility-model/
+
+<ok>
+Proteger a infraestrutura física.
+Correto. A AWS mantém totalmente os controles físicos.
+Modelo de responsabilidade compartilhada. https://aws.amazon.com/compliance/shared-responsibility-model/
+
+<p>
+Qual das opções a seguir descreve uma melhor prática de segurança que pode ser implementada usando o AWS Identity and Access Management (IAM)?
+
+Desativar o acesso ao Console de Gerenciamento da AWS para todos os usuários.
+Incorreto. Pode haver requisitos legítimos para que determinados usuários do IAM tenham acesso ao console. Consequentemente, desativar o acesso a todos os usuários não é a solução correta.
+Quais são algumas das melhores práticas para proteger minha conta da AWS e seus recursos? https://aws.amazon.com/premiumsupport/knowledge-center/security-best-practices/
+
+Gerar chaves secretas para cada usuário do IAM.
+Incorreto. Essa solução geraria chaves secretas para usuários do IAM e exigiria que eles acessassem as aplicações por meio de acesso programático.
+Quais são algumas das melhores práticas para proteger minha conta da AWS e seus recursos? https://aws.amazon.com/premiumsupport/knowledge-center/security-best-practices/
+
+<ok>
+Conceder permissões a usuários que precisam executar apenas uma tarefa específica.
+Correto. Por meio da recomendação de segurança de menor privilégio, uma prática recomendada do IAM é conceder permissões detalhadas aos usuários usando IAM roles.
+Conceder o menor privilégio. https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege
+Quais são algumas das melhores práticas para proteger minha conta da AWS e seus recursos? https://aws.amazon.com/premiumsupport/knowledge-center/security-best-practices/
+
+Armazenar credenciais da AWS em instâncias Amazon EC2.
+Incorreto. A solução de armazenar credenciais em instâncias EC2 não é uma prática recomendada de segurança. Seria uma melhor prática de segurança usar IAM roles para conceder permissões a instâncias EC2, porque as IAM roles vão alternar as credenciais automaticamente.
+Quais são algumas das melhores práticas para proteger minha conta da AWS e seus recursos? https://aws.amazon.com/premiumsupport/knowledge-center/security-best-practices/
+
+<p>
+Uma empresa precisa monitorar e receber alertas sobre eventos de login do Console de Gerenciamento da AWS que envolvem o usuário raiz da conta da AWS.
+Qual produto da AWS a empresa pode usar para atender a esses requisitos?
+
+<ok>
+Amazon CloudWatch
+Correto. O CloudWatch monitora os recursos da AWS e as aplicações executadas em tempo real na AWS. Você pode usar o CloudWatch para monitorar e receber alertas sobre eventos de login do console que envolvam o usuário raiz da conta da AWS.
+O que é o Amazon CloudWatch? https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html
+
+AWS Config
+Incorreto. É possível usar o AWS Config para avaliar, auditar e verificar as configurações dos recursos da AWS. O AWS Config não pode alertar sobre eventos de login do console que envolvam o usuário raiz da conta da AWS.
+O que é o AWS Config? https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html
+
+AWS Trusted Advisor
+Incorreto. É possível usar o Trusted Advisor para fornecer orientações em tempo real para ajudar a provisionar seus recursos de acordo com as melhores práticas da AWS. O Trusted Advisor não pode alertar sobre eventos de login do console que envolvam o usuário raiz da conta da AWS.
+AWS Trusted Advisor. https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor.html
+
+AWS Identity and Access Management (IAM)
+Incorreto. Com o IAM, é possível gerenciar o acesso aos recursos e produtos da AWS com segurança. O IAM não pode alertá-lo sobre eventos de login do console que envolvam o usuário raiz da conta da AWS.
+AWS Identity and Access Management (IAM). https://aws.amazon.com/iam/
+
+<p>
+Uma empresa tem um servidor de aplicações em execução em uma instância Amazon EC2. O servidor de aplicações precisa acessar o conteúdo em um bucket privado do Amazon S3.
+Qual é a abordagem recomendada para atender a esse requisito?
+
+<ok>
+Crie uma IAM role com as permissões apropriadas. Associe a role à instância EC2.
+Correto. As IAM roles são credenciais temporárias que expiram. As IAM roles são mais seguras do que as chaves de acesso de longo prazo porque reduzem o risco caso as credenciais sejam expostas acidentalmente.
+Usar uma IAM role para conceder permissões a aplicações executadas em instâncias Amazon EC2. https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html
+
+Configure uma conexão de peering de VPC para permitir a comunicação privada entre a instância EC2 e o bucket do S3.
+Incorreto. Uma conexão de peering de VPC é uma conexão de rede entre duas VPCs que permite rotear o tráfego entre elas usando endereços IPv4 ou IPv6 privados. As conexões de peering de VPC não podem conectar uma VPC e um bucket S3.
+O que é peering de VPC? https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html
+
+Crie uma chave de acesso compartilhada. Configure a instância EC2 para usar a chave codificada.
+Incorreto. A criação de uma chave compartilhada não é uma prática recomendada porque isso reduz o valor da auditoria do acesso a recursos da AWS. Incorporar chaves de acesso ao código da aplicação não é uma prática recomendada porque o código pode ficar comprometido.
+Melhores práticas para o gerenciamento de chaves de acesso da AWS. https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
+
+Configure a aplicação para ler uma chave de acesso de uma fonte segura.
+Incorreto. O uso de IAM roles em vez de chaves de acesso de longo prazo é uma prática recomendada. As chaves de acesso de longo prazo, como aquelas associadas a usuários do IAM e a usuários raiz da conta da AWS, permanecem válidas até que sejam revogadas manualmente. No entanto, as credenciais de segurança temporárias obtidas por meio de IAM roles e outros recursos do AWS Security Token Service (AWS STS) expiram após um curto período. Use credenciais de segurança temporárias para ajudar a reduzir o risco de que as credenciais sejam expostas acidentalmente.
+Melhores práticas para gerenciar chaves de acesso da AWS. https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
+
+<p>
+Quais recursos ou serviços relacionados à segurança a AWS oferece? (Selecione DUAS respostas)
+
+Compliance completa com PCI para aplicações do Cliente executadas na AWS.
+Incorreto. Os clientes são responsáveis pela certificação de compliance com PCI de suas aplicações. Alguns produtos da AWS são certificados por serem compliant com PCI.
+Parceiros de competência em segurança da AWS. https://aws.amazon.com/security/partner-solutions/
+
+<ok>
+Verificações de segurança do AWS Trusted Advisor
+Correto. O Trusted Advisor baseia-se nas melhores práticas aprendidas ao atender centenas de milhares de clientes da AWS. Essas melhores práticas incluem verificações de segurança.
+AWS Trusted Advisor. https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor.html
+
+<ok>
+Criptografia dos dados
+Correto. Muitos produtos da AWS são compatíveis com a criptografia de dados, incluindo o Amazon Elastic Block Store (Amazon EBS) e o Amazon S3.
+Proteção de dados usando criptografia. https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingEncryption.html
+
+Teste de penetração automatizado
+Incorreto. A AWS não fornece teste de penetração automatizado. Os clientes da AWS podem realizar avaliações de segurança ou testes de penetração em sua infraestrutura da AWS sem aprovação prévia de alguns serviços.
+Teste de penetração. https://aws.amazon.com/security/penetration-testing/
+
+Detecção de conteúdo protegido por diretos autorais do Amazon S3
+Incorreto. A AWS fornece detecção de conteúdo protegido por direitos autorais.
+
+<p>
+Quais recomendações estão incluídas nas verificações do AWS Trusted Advisor?
+(Selecione DUAS respostas)
+
+<ok>
+Permissões de bucket do Amazon S3
+Correto. O Trusted Advisor verifica permissões de bucket do S3 no Amazon S3 com permissões de acesso aberto. As permissões de bucket que concedem acesso de listagem a todos podem resultar em custos superiores aos esperados se os objetos do bucket forem acessados por usuários indesejados com alta frequência. As permissões de bucket que concedem acesso de upload e exclusão a todos os usuários criam possíveis vulnerabilidades de segurança, pois permitem que qualquer pessoa adicione, modifique ou remova itens em um bucket. Essa verificação do Trusted Advisor examina permissões explícitas de bucket e políticas de bucket associadas que podem substituir as permissões de bucket.
+Lista de verificação de melhores práticas do AWS Trusted Advisor. https://aws.amazon.com/premiumsupport/technology/trusted-advisor/best-practice-checklist/
+
+Interrupções de produtos da AWS para serviços
+Incorreto. O Trusted Advisor não fornece notificações para interrupções de serviço. Você pode usar o AWS Personal Health Dashboard para saber mais sobre eventos do AWS Health que podem afetar a conta ou os produtos da AWS.
+Conceitos básicos do AWS Personal Health Dashboard. https://docs.aws.amazon.com/health/latest/ug/getting-started-phd.html
+
+<ok>
+Uso de autenticação multifator (MFA) no usuário raiz da conta da AWS
+Correto. O Trusted Advisor confere a conta raiz e avisa se a MFA não está habilitada.
+Lista de verificação de melhores práticas do AWS Trusted Advisor. https://aws.amazon.com/premiumsupport/technology/trusted-advisor/best-practice-checklist/
+
+Patches de software disponíveis para instâncias Amazon EC2
+Incorreto. O Trusted Advisor não fornece notificações sobre patches de software para instâncias EC2.
+
+Número de usuários na conta
+Incorreto. O Trusted Advisor não fornece informações sobre o número de usuários em uma conta da AWS.
+
+<p>
+Uma empresa quer uma conexão privada dedicada entre suas operações locais e a Nuvem AWS.
+Qual recurso ou produto da AWS fornecerá essa conexão?
+
+AWS VPN
+Incorreto. A AWS VPN estabelece conexões seguras entre redes locais, escritórios remotos, dispositivos cliente e a rede global da AWS. A AWS VPN não é uma conexão dedicada.
+AWS VPN. https://aws.amazon.com/vpn/
+
+AWS PrivateLink
+Incorreto. Você usa o PrivateLink quando deseja usar os serviços oferecidos por outra VPC com segurança na rede da AWS. Com o PrivateLink, todo o tráfego de rede permanece na estrutura global da AWS e nunca passa pela Internet pública. O PrivateLink não se conecta a operações locais.
+AWS PrivateLink. https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/aws-privatelink.html
+
+VPC endpoint
+Incorreto. Um VPC endpoint permite conexões privadas entre a VPC e produtos da AWS compatíveis e serviços de VPC endpoint desenvolvidos pelo PrivateLink. Um VPC endpoint não se conecta a operações locais.
+VPC endpoints. https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints.html
+
+<ok>
+AWS Direct Connect
+Correto. O Direct Connect fornece uma conexão privada dedicada entre suas instalações locais e a Nuvem AWS. O Direct Connect é uma alternativa ao uso da Internet para acessar os serviços de nuvem da AWS.
+AWS Direct Connect. https://aws.amazon.com/directconnect/
+
+<p>
+Qual aspecto da infraestrutura da AWS fornece implementação global de computação e armazenamento?
+
+Várias zonas de disponibilidade em uma região da AWS
+Incorreto. Zonas de disponibilidade são um ou mais datacenters distintos com energia, redes e conectividade redundantes em uma região. Quando a infraestrutura é implantada em várias zonas de disponibilidade, é possível obter uma implementação altamente disponível dentro da localização geográfica da região. No entanto, essa solução não fornece implementações globais.
+Infraestrutura global. https://aws.amazon.com/about-aws/global-infrastructure/
+
+<ok>
+Várias regiões AWS
+Correto. Uma região é um local físico onde há clusters de datacenters da AWS. A AWS oferece muitas regiões diferentes nas quais é possível implantar infraestrutura em todo o mundo. Com o uso de várias regiões, você pode obter uma implementação global de computação, armazenamento e bancos de dados.
+Infraestrutura global. https://aws.amazon.com/about-aws/global-infrastructure/
+
+Tags
+Incorreto. Tags são metadados que você pode associar aos recursos da AWS. As tags são dados definidos pelo usuário na forma de pares de chave-valor. Você pode usar tags para gerenciar, identificar, organizar, pesquisar e filtrar recursos. As tags não fornecem implementações globais de aplicações e soluções.
+Marcar recursos da AWS. https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html
+
+Resource Groups
+Incorreto. O AWS Resource Groups é um serviço que você pode usar para gerenciar e automatizar tarefas em muitos recursos ao mesmo tempo. Os recursos na AWS são entidades como instâncias Amazon EC2 e buckets do Amazon S3. Com o Resource Groups, é possível filtrar recursos com base em tags ou pilhas do AWS CloudFormation e, depois, executar uma ação em relação a um grupo de recursos. O Resource Groups não é usado para implantar recursos da AWS globalmente.
+O que são AWS Resource Groups? https://docs.aws.amazon.com/ARG/latest/userguide/welcome.html
+
+<p>
+Quais recursos ou produtos da AWS são compatíveis com a replicação de dados em todas as regiões AWS?
+(Selecione DUAS respostas)
+
+<ok>
+Amazon S3
+Correto. O Amazon S3 é compatível com a replicação entre regiões. Com a replicação entre regiões, você designa um bucket do S3 de destino em outra região. Quando a replicação entre regiões estiver ativada, qualquer novo objeto carregado será replicado no bucket do S3 de destino.
+Replicar objetos. https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html
+
+Amazon Elastic Block Store (Amazon EBS)
+Incorreto. O Amazon EBS replica dados automaticamente em uma zona de disponibilidade. O Amazon EBS não é compatível com a replicação entre regiões.
+Amazon Elastic Block Store. https://aws.amazon.com/ebs/
+
+Amazon EC2 instance store
+Incorreto. Um armazenamento de instância EC2 é o armazenamento em bloco anexado a uma instância EC2. Esse armazenamento está localizado em discos que estão anexados fisicamente ao computador host. Um armazenamento de instância é ideal para armazenamento temporário de informações que mudam com frequência. Os dados armazenados em um armazenamento de instância são temporários. Não há mecanismo integrado para replicar dados entre regiões.
+Armazenamento de instâncias Amazon EC2. https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html
+
+AWS Storage Gateway
+Incorreto. O Storage Gateway conecta um dispositivo de software local ao armazenamento baseado na nuvem. O Storage Gateway fornece integração com recursos de segurança de dados entre o ambiente de TI local e a infraestrutura de armazenamento da AWS, como o Amazon S3. O Storage Gateway não é compatível diretamente com a replicação entre regiões.
+O que é o AWS Storage Gateway? https://docs.aws.amazon.com/storagegateway/latest/userguide/WhatIsStorageGateway.html
+
+<ok>
+Amazon RDS
+Correto. Você pode usar o Amazon RDS para hospedar bancos de dados relacionais na AWS. Uma instância de banco de dados do RDS reside em uma única região. Com o Amazon RDS, você pode criar réplicas de leitura entre regiões. O Amazon RDS replica todos os dados da instância do banco de dados primário na réplica de leitura entre regiões.
+Trabalhar com réplicas de leitura. https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html
+
+<p>
+Uma empresa está hospedando um site estático por meio de um único bucket do Amazon S3. 
+Qual produto da AWS atingirá latência mais baixa e alta velocidade de transferência?
+
+AWS Elastic Beanstalk
+Incorreto. O Elastic Beanstalk é um serviço para implantar e dimensionar serviços e aplicações Web desenvolvidos com linguagens de programação comuns em infraestrutura implantada automaticamente com gerenciamento de capacidade, balanceamento de carga, auto scaling e monitoramento. O Elastic Beanstalk facilita o provisionamento e a compatibilidade de uma aplicação. O Elastic Beanstalk não reduz a latência do site.
+O que é o AWS Elastic Beanstalk? https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/Welcome.html
+
+Amazon DynamoDB Accelerator (DAX)
+Incorreto. O DAX é usado para reduzir o tempo de resposta de uma tabela do DynamoDB de um dígito em milissegundos para microssegundos. As tabelas do DynamoDB não podem hospedar sites estáticos.
+Aceleração na memória com o DynamoDB Accelerator (DAX). https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.html
+
+Amazon Route S3
+Incorreto. O Route 53 é um serviço da Web de DNS altamente disponível e escalável. As três principais funções do Route 53 são registrar nomes de domínio, rotear o tráfego da Internet para os recursos do domínio e conferir a integridade desses recursos. O Route 53 pode direcionar o tráfego para buckets do S3. Mas como a pergunta descreve apenas um bucket do S3, o Route 53 teria apenas uma rota possível e não poderia reduzir a latência.
+O que é o Amazon Route 53? https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html
+Roteamento de tráfego para um site hospedado em um bucket do Amazon S3. https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/RoutingToS3Bucket.html
+
+Amazon CloudFront
+Correto. O CloudFront é um serviço da Web que acelera a distribuição do conteúdo estático e dinâmico da Web, como arquivos .html, .css, .js e de imagem aos usuários. O conteúdo é armazenado em cache nos pontos de presença. O conteúdo acessado repetidamente pode ser fornecido pelos pontos de presença em vez do bucket do S3 de origem.
+Acelerar a entrega de conteúdo do site estático. https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/IntroductionUseCases.html#IntroductionUseCasesStaticWebsite
+
+<p>
+Qual produto da AWS fornece uma solução de armazenamento de arquivos compartilhado, simples e escalável para uso com servidores locais e instâncias Amazon EC2 baseadas em Linux?
+
+AWS Managed Services (AWS)
+Incorreto. O AMS ajuda a operar sua infraestrutura da AWS de forma mais eficiente e segura. Usando os produtos da AWS e uma biblioteca crescente de automações, configurações e registros, o AMS pode aumentar e otimizar os recursos operacionais em ambientes da AWS novos e existentes. No entanto, o AMS não é um serviço de armazenamento.
+AWS Managed Services. https://aws.amazon.com/managed-services/
+
+Amazon S3 Glacier
+Incorreto. O S3 Glacier é um object store usado para fins de arquivamento. Ele não é adequado para acesso único.
+O que é o Amazon S3 Glacier? https://docs.aws.amazon.com/amazonglacier/latest/dev/introduction.html
+
+Amazon Elastic Block Store (Amazon EBS)
+Incorreto. O Amazon EBS fornece volumes de armazenamento em nível de bloco para uso com instâncias EC2. Os volumes do EBS se comportam como dispositivos de blocos brutos e não formatados. No entanto, os volumes do EBS não podem ser compartilhados entre servidores locais e instâncias EC2.
+Amazon Elastic Block Store (Amazon EBS). https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html
+
+<ok>
+Amazon Elastic File System (Amazon EFS)
+Correto. O Amazon EFS fornece um sistema de arquivos elástico que permite compartilhar dados de arquivos sem a necessidade de provisionar e gerenciar o armazenamento. Ele pode ser usado com os serviços de nuvem da AWS e recursos locais, e foi criado visando dimensionar sob demanda para petabytes sem interromper as aplicações. Com o Amazon EFS, é possível aumentar e reduzir seus sistemas de arquivos automaticamente à medida que adiciona e remove arquivos, eliminando a necessidade de provisionar e gerenciar a capacidade para acomodar o crescimento.
+Passo a passo: Crie e monte um sistema de arquivos no local com o AWS Direct Connect e a VPN. https://docs.aws.amazon.com/efs/latest/ug/efs-onpremises.html
+
+<p>
+Uma empresa precisa de acesso ininterrupto por telefone, e-mail e chat. O tempo de resposta deverá ser inferior a uma hora se um sistema de produção tiver uma interrupção de serviço.
+Qual plano do AWS Support atende a esses requisitos pelo MENOR custo?
+
+AWS Basic Support
+Incorreto. O plano Basic Support não inclui acesso por chat nem chamadas telefônicas.
+Comparar planos do AWS Support. https://aws.amazon.com/premiumsupport/plans/
+
+AWS Developer Support
+Incorreto. O plano Developer Support não inclui acesso por chat nem chamadas telefônicas. Ele fornece suporte por e-mail somente durante o horário comercial.
+Comparar planos do AWS Support. https://aws.amazon.com/premiumsupport/plans/
+
+<ok>
+AWS Business Support
+Correto. O plano Business Support fornece acesso ininterrupto por telefone, e-mail e chat. O plano Business Support tem um tempo de resposta inferior a um hora caso um sistema de produção sofra uma interrupção de serviço.
+Comparar planos do AWS Support. https://aws.amazon.com/premiumsupport/plans/
+
+AWS Enterprise Support
+Incorreto. O plano Enterprise Support fornece acesso ininterrupto por telefone, e-mail e chat. O plano Enterprise Support tem um tempo de resposta inferior a 15 minutos caso um sistema de produção sofra uma interrupção de serviço. No entanto, o plano Enterprise Support é mais caro do que o Business Support.
+Comparar planos do AWS Support. https://aws.amazon.com/premiumsupport/plans/
+
+<p>
+Qual modelo de preço do Amazon EC2 se ajusta com base na oferta e na demanda de instâncias EC2?
+
+Instâncias On-Demand
+Incorreto. As instâncias On-Demand são oferecidas a um preço definido de acordo com a região da AWS.
+Preço on-demand do Amazon EC2. https://aws.amazon.com/ec2/pricing/on-demand/
+
+Instâncias reservadas
+Incorreto. As instâncias reservadas reservam capacidade a uma taxa com desconto. O cliente se compromete a comprar uma certa quantidade de computação.
+Instâncias reservadas do Amazon EC2. https://aws.amazon.com/ec2/pricing/reserved-instances/
+
+<ok>
+Instâncias Spot
+Correto. As instâncias spot são descontadas mais intensamente quando há mais capacidade disponível nas zonas de disponibilidade.
+Instâncias spot do Amazon EC2. https://aws.amazon.com/ec2/spot/
+
+Instâncias reservadas conversíveis
+Incorreto. As instâncias reservadas reservam capacidade a uma taxa com desconto. O cliente se compromete a comprar uma certa quantidade de computação. Com as instâncias reservadas conversíveis, é possível alterar a família da instância, o sistema operacional e as locações.
+Instâncias reservadas do Amazon EC2. https://aws.amazon.com/ec2/pricing/reserved-instances/
+
+<p>
+Qual das opções a seguir é uma vantagem do faturamento consolidado na AWS?
+
+<ok>
+Qualificação de preços por volume
+Correto. O faturamento consolidado é um recurso do AWS Organizations. É possível combinar o uso em todas as contas na organização para compartilhar os descontos de preços por volume, os descontos de instância reservada e os Savings Plans. Essa solução pode resultar em uma carga menor em comparação com o uso de contas individuais independentes.
+Faturamento consolidado para o AWS Organizations. https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html
+
+Permissões de acesso compartilhado
+Incorreto. As permissões de acesso compartilhado são um recurso de roles desenvolvido no AWS Identity and Access Management (IAM). Essa solução não está relacionada ao faturamento consolidado.
+O que é o IAM? https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html
+
+Várias faturas para cada conta
+Incorreto. O objetivo do faturamento consolidado é ter uma fatura para várias contas.
+Faturamento consolidado para o AWS Organizations. https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html
+
+Eliminação da necessidade de marcar recursos
+Incorreto. No faturamento consolidado, é possível aplicar tags que representam categorias de negócios. Essa funcionalidade ajuda a organizar seus custos em vários serviços dentro do faturamento consolidado.
+Usar tags de alocação de custos. https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html
+
+<p>
+Qual produto da AWS pode criar um alarme que envia uma notificação quando um limite de faturamento é excedido?
+
+AWS Trusted Advisor
+Incorreto. O Trusted Advisor baseia-se nas melhores práticas aprendidas ao atender centenas de milhares de clientes da AWS. O Trusted Advisor inspeciona seu ambiente da AWS e faz recomendações quando há oportunidades para economizar dinheiro, melhorar a performance do sistema ou ajudar a corrigir falhas de segurança. No entanto, o Trusted Advisor não pode criar um alarme de faturamento.
+AWS Trusted Advisor. https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor.html
+
+AWS CloudTrail
+Incorreto. O CloudTrail é um produto da AWS que torna possível a governança, a compliance e a auditoria operacional e de risco na sua conta da AWS. O CloudTrail registra ações realizadas por um usuário, uma função ou um produto da AWS como eventos. No entanto, o CloudTrail não pode criar um alarme de faturamento.
+O que é o AWS CloudTrail? https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html
+
+<ok>
+Amazon CloudWatch
+Correto. Você pode monitorar suas cobranças estimadas da AWS usando o CloudWatch. Quando você ativa o monitoramento de cobranças estimadas em sua conta da AWS, elas são calculadas e enviadas várias vezes ao dia para o CloudWatch como dados de métrica.
+Criação de um alarme de faturamento para monitorar as cobranças estimadas da AWS. https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html
+
+Amazon QuickSight
+Incorreto. O QuickSight é um serviço de business intelligence (BI) em escala de nuvem que você pode usar para fornecer insights fáceis de entender. O QuickSight se conecta aos seus dados na nuvem e combina dados de muitas fontes diferentes. No entanto, o QuickSight é uma ferramenta de visualização de dados, não uma ferramenta para criar alarmes.
+O que é o Amazon QuickSight? https://docs.aws.amazon.com/quicksight/latest/user/welcome.html
+
+<p>

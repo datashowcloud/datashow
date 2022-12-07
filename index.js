@@ -1,16 +1,17 @@
 
-
 var jsstoreCon = new JsStore.Connection();
 
-var CONST_NIVEL_MAX = 6;
-var CONST_FASE_MAX = 6;
+var CONST_NIVEL_MAX = 5;
+var CONST_FASE_MAX = 99; //6;
+var CONST_ORANGE = '#FF4700';
+var CONST_MEDIUM_SEA_GREEN = '#3CB371';
+var CONST_DEEP_SKY_BLUE = '#00BFFF';
 var GLOBAL_textcolor = '';
 var GLOBAL_background = '';
 var GLOBAL_buttoncolor = '';
 var COL_LOGOTIPO = 5;
 
 window.onload = function () {
-	refreshTableData('0', '', '', '');
     registerEvents();
     initDb();
 	getConfigGeneral();	
@@ -19,6 +20,7 @@ window.onload = function () {
 	loadCombobox('mygroup', '0', '100', 'Teste');
 	loadCombobox('mycode', '0', '100', 'Número');
 	loadCombobox('myorder', '0', '100', 'Ordem');
+	openForm();
 	$('#selectMygroup').focus();
 	$('#selectMygroup').select();
 //	localStorage.setItem('valueText1', document.getElementById('selectMygroup').selectedIndex);
@@ -42,11 +44,10 @@ function getDbSchema() {
         name: 'Student',
         columns: {
 			id: { primaryKey: true, autoIncrement: true },
-//			mycategory: { notNull: true, dataType: 'string' }, //nível de agrupamento, exemplo: Tecnologia, Igreja, Conhecimentos Gerais...
-//			mysubcategory: { notNull: true, dataType: 'string' }, //sub nível de agrupamento, exemplo: domínio 1, domínio 2, domínio 3...
-//			myfase: { notNull: true, dataType: 'string' }, //fase, exemplo: fase 1, fase 2, fase 3 e fase 4
+			mytema: { Null: false, dataType: 'string' }, //nível de agrupamento, exemplo: AWS Practitioner, AZURE...
+			mycategory: { Null: false, dataType: 'string' }, //sub nível de agrupamento, exemplo: Apresentação, Treinamento, Experiência, Simulado, Desafio...
 			mygroup: { notNull: true, dataType: 'string' }, //qual grupo a pergunta pertence, exemplo: domínio 1, domínio 2, domínio 3...
-			mycode: { notNull: true, dataType: 'string' }, //código único numérico da pergunta
+			mycode: { Null: false, dataType: 'string' }, //código único numérico da pergunta
 			mytext: { notNull: true, dataType: 'string' }, //uma pergunta
 			mysearch: { Null: false, dataType: 'string' }, //pergunta ou texto sem os caracteres especiais para fazer o search com maior precisão
 			myoption1: { Null: false, dataType: 'string' }, //texto da resposta correta 1
@@ -75,6 +76,9 @@ function getDbSchema() {
 			myoptionkey7: { Null: false, dataType: 'string' }, //idem
 			myoptionkey8: { Null: false, dataType: 'string' }, //idem
 			mypoints: { Null: false, dataType: 'string' }, //porcentagem ou índice de acerto na tentativa 4, 5, 6, 7... exemplo: 85,50,10,100 (todas separadas por vírgula)
+			mycorretas: { Null: false, dataType: 'string' }, //quantidade de corretas
+			myincorretas: { Null: false, dataType: 'string' }, //quantidade de incorretas
+			mynaorespondidas: { Null: false, dataType: 'string' }, //quantidade de não respondidas
 			mycurrentcode: { Null: true, dataType: 'string' }, //posição atual do mycode, onde parou, antes de sair ou antes de pausar.
 			mycomment: { Null: false, dataType: 'string' }, //comentário ou resposta sobre a letra
 			myfix: { Null: false, dataType: 'string' }, //fixa para revisão
@@ -139,11 +143,14 @@ function registerEvents() {
     })	
     $('#txtSearch').keyup(function () {
 		if (event.keyCode == 13 || event.which == 13) { //13=tecla ENTER
+			var params = new URLSearchParams(window.location.search);
+			var mytema = params.get('tem');
+			var mycategory = params.get('cat');
 			var mycode = document.getElementById('mycode').value;
 			var myorder = document.getElementById('myorder').value;
 			var mygroup = document.getElementById('mygroup').value;
 			var mytext = document.getElementById('mytext').value.trim();
-			refreshTableData(mycode, myorder, mygroup, mytext);
+			refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext);
 			if (document.getElementById('txtSearch').value.length <= 1) { // pesquisa somente com mais de 1 caracter preenchido no campo search
 				if (document.getElementById('selectMygroup').selectedIndex == '1') {
 					showBible();
@@ -160,23 +167,37 @@ function registerEvents() {
 		}
     })
 	$('#btnBackward').click(function () {
-        restartFase();
+		var params = new URLSearchParams(window.location.search);
+		var mytema = params.get('tem');
+		var mycategory = params.get('cat');
+		var row = $(this).parents().eq(1);
+        var child = row.children();
+		var myid = row.attr('itemid');
+		var mygroup = child.eq(0).text();
+		var mycode = child.eq(1).text();
+        restartFase(mytema, mycategory, myid, mygroup, mycode);
     });
     $('#btnIndexConfigurar').click(function () {
-//		window.close();
+		var params = new URLSearchParams(window.location.search);
+		var mytema = params.get('tem');
+		var mycategory = params.get('cat');
 		document.getElementById('btnIndexConfigurar').style.display = 'none';
 		document.getElementById('lei13709').style.display = 'none';
 		location.reload(); //recarrega página importando também o teste 01
-		var DataShow_Config = window.open("config" + document.getElementById('selectMygroup').value + ".html?sim=" + document.getElementById('selectMygroup').value, "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
+//console.log("config" + document.getElementById('selectMygroup').value + ".html?sim=" + document.getElementById('selectMygroup').value + "&tem=" + mytema + "&cat=" + mycategory);
+		var DataShow_Config = window.open("config" + document.getElementById('selectMygroup').value + ".html?sim=" + document.getElementById('selectMygroup').value + "&tem=" + mytema + "&cat=" + mycategory, "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
 //		var DataShow_ConfigResult = window.open("configresult.html", "_self");
 //		datashowconfigresult.focus();
 	})
     $('#btnSearch').click(function () {
+		var params = new URLSearchParams(window.location.search);
+		var mytema = params.get('tem');
+		var mycategory = params.get('cat');
 		var mygroup = document.getElementById('mygroup').value;
 		var mycode = document.getElementById('mycode').value;
 		var myorder = document.getElementById('myorder').value;
 		var mytext = document.getElementById('mytext').value.trim();
-		refreshTableData(mycode, myorder, mygroup, mytext);
+		refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext);
 		showGridAndHideForms();
 //		$('#txtSearch').focus();
 //		$('#txtSearch').select();
@@ -187,6 +208,9 @@ function registerEvents() {
 		datashowconfigresult.focus();
 	})
     $('#selectMygroup').change(function () {
+		var params = new URLSearchParams(window.location.search);
+		var mytema = params.get('tem');
+		var mycategory = params.get('cat');
 		var mygroup = selectMygroup.value.trim();
 		var mycode = '';
 		var mytext = '';
@@ -194,7 +218,7 @@ function registerEvents() {
 		if (mygroup != '00') {
 			mycode = '0';
 		}
-		refreshTableData(mycode, myorder, mygroup, mytext);
+		refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext);
 		showGridAndHideForms();
 		$('#selectMygroup').focus();
 		$('#selectMygroup').select();
@@ -204,6 +228,8 @@ function registerEvents() {
     })
     $('#btnDropDb').click(function () {
 		dropdb();
+//		setTimeout(() => { location.reload() }, 3000); // Executa após 1 segundo para esperar o processo
+//		setTimeout(() => { var DataShow_Config = window.open("index.html", "_self"); }, 1000); // Executa após 1 segundo para esperar o processo
     })
     $('#btnImportArt').click(function () {
 		document.getElementById('selectMygroup').selectedIndex = 2;
@@ -221,6 +247,9 @@ function registerEvents() {
 //		var result = confirm('Confirma?');
 //		if (result) {
 			try {
+				var params = new URLSearchParams(window.location.search);
+				var mytema = params.get('tem');
+				var mycategory = params.get('cat');
 				var mycode = document.getElementById('mycode').value;
 				var myorder = document.getElementById('myorder').value;
 				var mygroup = document.getElementById('mygroup').value;
@@ -234,9 +263,9 @@ function registerEvents() {
 				var myoption7 = document.getElementById('myoption7').value.trim();
 				var myoption8 = document.getElementById('myoption8').value.trim();
 				
-//console.log('mycode='+mycode + ' myorder='+myorder + ' mygroup='+mygroup + ' mytext='+mytext + ' myoption1='+myoption1 + ' myoption5='+myoption5);
+				//console.log('mycode='+mycode + ' myorder='+myorder + ' mygroup='+mygroup + ' mytext='+mytext + ' myoption1='+myoption1 + ' myoption5='+myoption5);
 				
-				confirmImportManual(mycode, myorder, mygroup, mytext, myoption1, myoption2, myoption3, myoption4, myoption5, myoption6, myoption7, myoption8);
+				confirmImportManual(mytema, mycategory, mycode, myorder, mygroup, mytext, myoption1, myoption2, myoption3, myoption4, myoption5, myoption6, myoption7, myoption8);
 //				console.log('Clique em "Go back". \nClique em "Go back".');
 //				document.getElementById("formAdd").submit();
 			} catch (ex) {
@@ -247,12 +276,15 @@ function registerEvents() {
     $('#btnConfigForward').click(function () {
 		var result = confirm('Confirma configuração automática? \n\nNão faça nada. Aguarde alguns segundos...');
 		if (result) {
+			var params = new URLSearchParams(window.location.search);
+			var mytema = params.get('tem');
+			var mycategory = params.get('cat');
 			document.getElementById('selectMygroup').selectedIndex = 1;
-			confirmImport('contents2', '1'); //bíblia
+			confirmImport(mytema, mycategory, 'contents2', '1'); //bíblia
 			document.getElementById('selectMygroup').selectedIndex = 2;
-			confirmImport('contents3', '2'); //artes
+			confirmImport(mytema, mycategory, 'contents3', '2'); //artes
 			document.getElementById('selectMygroup').selectedIndex = 0;
-			confirmImport('contents1', '0'); //a última frase é testada na pesquisa de letras
+			confirmImport(mytema, mycategory, 'contents1', '0'); //a última frase é testada na pesquisa de letras
 		} else {
 			console.log('Configuração cancelada.');
 		}
@@ -289,13 +321,16 @@ function registerEvents() {
 		var DataShow_Help = window.open("help/helpconfig.pdf", "_self", "top=100, width=1100, height=10000, left=0, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
     })
     $('#btnSubmit').click(function () {
+		var params = new URLSearchParams(window.location.search);
+		var mytema = params.get('tem');
+		var mycategory = params.get('cat');
 		var studentId = $('form').attr('data-student-id');
 		var mygroup = document.getElementById('mygroupSim').value;
 		var mycode = parseInt(document.getElementById('mycodeSim').value) - 1;
 		if (studentId) {
-			updateStudent(studentId, mygroup, mycode);
+			updateStudent(mytema, mycategory, studentId, mygroup, mycode);
 		} else {
-			addStudentImport(studentId, mygroup, mycode);
+			addStudentImport(mytema, mycategory, studentId, mygroup, mycode);
 		}
     });
     $('#btnAddNewManual').click(function () {
@@ -316,14 +351,26 @@ function registerEvents() {
 		showFormAddUpdate();
     });
     $('#tblGrid tbody').on('click', '.restart', function () {
+		var params = new URLSearchParams(window.location.search);
+		var mytema = params.get('tem');
+		var mycategory = params.get('cat');
 		var row = $(this).parents().eq(1);
         var child = row.children();
 		var myid = row.attr('itemid');
 		var mygroup = child.eq(0).text();
 		var mycode = child.eq(1).text();
-		restartFase(myid, mygroup, mycode);
-		savePoints(myid, mygroup, mycode);
-		setTimeout(() => { location.reload() }, 500); // Executa após meio segundo para esperar o processo
+		var result = confirm('Vou limpar e organizar as respostas dessa fase, ok?');
+		if (result) {
+			var params = new URLSearchParams(window.location.search);
+			var mytema = params.get('tem');
+			var mycategory = params.get('cat');
+			restartFase(mytema, mycategory, myid, mygroup, mycode);
+			savePoints(mytema, mycategory, myid, mygroup, mycode);
+			var id = row.attr('itemid');
+			var mygroup = child.eq(0).text();
+			refreshTableQuestion(mytema, mycategory, id, mygroup, '1');
+			showFormSim();
+		}
     });
     $('#tblGrid tbody').on('click', '.delete', function () {
         var result = confirm('Excluir, ok?');
@@ -332,18 +379,38 @@ function registerEvents() {
             deleteStudent(Number(studentId));
         }
     });
-    $('#tblGrid tbody').on('click', '.playsim', function () {
-//        var result = confirm('Começar, ok?');
-//        if (result) {			
+    $('#tblGrid tbody').on('click', '.deletefase', function () {
+		var result = confirm('Não faça nada. \n\nAguarde o botão azul aparecer.');
+		if (result) {
+			var params = new URLSearchParams(window.location.search);
+			var mytema = params.get('tem');
+			var mycategory = params.get('cat');
 			var row = $(this).parents().eq(1);
 			var child = row.children();
-			var id = row.attr('itemid');
+			var myid = row.attr('itemid');
 			var mygroup = child.eq(0).text();
 			var mycode = child.eq(1).text();
-			refreshTableQuestion(id, mygroup, '1');
-			showFormSim();
-//        }
-    });		
+//alert('mytema='+mytema + ' mycategory='+mycategory + ' mygroup='+mygroup + ' mycode='+mycode + ' myid='+myid);
+			deletefase(mytema, mycategory, mygroup, mycode, myid);
+			setTimeout(() => { var DataShow_Config = window.open("T"+mytema + "C"+mycategory+ "G"+mygroup + ".html?sim=" + mygroup + "&tem=" + mytema + "&cat=" + mycategory, "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no"); }, 3000); // Executa após 1 segundo para esperar o processo
+		}
+    });
+    $('#tblGrid tbody').on('click', '.playsim', function () {
+		var params = new URLSearchParams(window.location.search);
+		var mytema = params.get('tem');
+		var mycategory = params.get('cat');
+		var row = $(this).parents().eq(1);
+		var child = row.children();
+		var id = row.attr('itemid');
+		var mygroup = child.eq(0).text();
+		var mycode = child.eq(1).text();
+		refreshTableQuestion(mytema, mycategory, id, mygroup, '1');
+		showFormSim();
+		if (document.getElementById('btnPrevious') != null) {document.getElementById('btnPrevious').disabled = false; }
+		if (document.getElementById('btnNext') != null) {document.getElementById('btnNext').disabled = false; }
+		if (document.getElementById('btnPause') != null) {document.getElementById('btnPause').style.display = ''; }
+		if (document.getElementById('btnFormCategory') != null) {document.getElementById('btnFormCategory').style.display = 'none'; }
+    });	
     $('#tblGrid tbody').on('click', '.freeze', function () {
 		freezeDataShow(localStorage.getItem('valueAoVivo'));
     });
@@ -372,54 +439,56 @@ function registerEvents() {
 		}
 		console.log(array);
     });
-    $('#btnPlay').click(function () {
-		var mygroup = document.getElementById('selectMygroup').value;
-		refreshTableQuestion('', mygroup, '1');
-		showFormSim();
-    });	
     $('#btnPrevious').click(function () {
+		var params = new URLSearchParams(window.location.search);
+		var mytema = params.get('tem');
+		var mycategory = params.get('cat');
 		var myid = document.getElementById('myidSim').value;
 		var mygroup = document.getElementById('mygroupSim').value;
 		var mycode = parseInt(document.getElementById('mycodeSim').value) - 1;
 		if (mycode > 0) {
-			refreshTableQuestion(myid, mygroup, mycode);
+			refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode);
 		}
-    })
-    $('#btnNext').click(function () {
-		var myid = document.getElementById('myidSim').value;
-		var mygroup = document.getElementById('mygroupSim').value;
-		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
-		refreshTableQuestion(myid, mygroup, mycode);
-//		changeFaseNivel(myid, mygroup, mycode);
-		savePoints(myid, mygroup, mycode);
     })
 	$('#btnPause').click(function () {
+		var params = new URLSearchParams(window.location.search);
+		var mytema = params.get('tem');
+		var mycategory = params.get('cat');
 		var myid = document.getElementById('myidSim').value;
 		var mygroup = document.getElementById('mygroupSim').value;
 		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
-		savePoints(myid, mygroup, mycode);
+		savePoints(mytema, mycategory, myid, mygroup, mycode);
 		setTimeout(() => { location.reload() }, 500); // Executa após 1 segundo para esperar o processo
-    });	
+    });
+    $('#btnNext').click(function () {
+		var params = new URLSearchParams(window.location.search);
+		var mytema = params.get('tem');
+		var mycategory = params.get('cat');
+		var myid = document.getElementById('myidSim').value;
+		var mygroup = document.getElementById('mygroupSim').value;
+		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
+		refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode);
+		savePoints(mytema, mycategory, myid, mygroup, mycode);
+    })
 	$('#btnEnd').click(function () {
-		var result = confirm('Vou salvar a pontuação e concluir, ok?\n');
-		if (result) {
-			var myid = document.getElementById('myidSim').value;
-			var mygroup = document.getElementById('mygroupSim').value;
-			var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
-			changeFaseNivel(myid, mygroup, mycode);
-			savePoints(myid, mygroup, mycode);
-			showGridAndHideForms();
-			refreshTableData('0', '', '', ''); // botão btnCategory1 carrega essa opção
-			setTimeout(() => { location.reload() }, 3000); // Executa após 1 segundo para esperar o processo
-		}
+		var params = new URLSearchParams(window.location.search);
+		var mytema = params.get('tem');
+		var mycategory = params.get('cat');
+		var myid = document.getElementById('myidSim').value;
+		var mygroup = document.getElementById('mygroupSim').value;
+		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
+		changeFaseNivel(mytema, mycategory, myid, mygroup, mycode);
+		savePoints(mytema, mycategory, myid, mygroup, mycode);
+		showGridAndHideForms();
+		refreshTableData(mytema, mycategory, '0', '', '', ''); // botão btnCategory1 carrega essa opção
+		setTimeout(() => { location.reload() }, 3000); // Executa após 1 segundo para esperar o processo
     });	
 	$('#btnGear').click(function () {
-/*		if (document.getElementById('divGear').style.display == 'none') {
+		if (document.getElementById('divGear').style.display == 'none') {
 			showFormGear();
 		} else {
 			showGridAndHideForms();
 		}
-*/
     })
 	$('#selTextColor').change(function () {
 //		updateConfigGeneral();
@@ -430,17 +499,6 @@ function registerEvents() {
 	$('#selButtonColor').change(function () {
 //		updateConfigGeneral();
     })
-	$('#btnReview').change(function () {
-		var mygroup = document.getElementById('selectMygroup').value;
-		refreshTableQuestion('', mygroup, '1');
-		showFormSim();
-	})
-	$('#btnCategory1Fase1').click(function () {
-		refreshTableData('0', '', '', ''); // botão btnCategory1 carrega essa opção
-		showGridAndHideForms();
-		document.getElementById('txtControleNavegacao').value = '11';
-		//var DataShow_Nivel = window.open("index.html?cat=1&fase=1", "_self");
-	})
 	$('#btnVersions').click(function () {
 		var versions = 'Atualizações:';
 		versions = versions + '\n' + '25.09.22 botão fechar x vermelho';
@@ -449,10 +507,34 @@ function registerEvents() {
 		alert(versions);
 	})
 	$('#btnRefresh').click(function () {
-		refreshTableData('0', '', '', '');
+		var params = new URLSearchParams(window.location.search);
+		var mytema = params.get('tem');
+		var mycategory = params.get('cat');
+		refreshTableData(mytema, mycategory, '0', '', '', '');
 	})
 	$('#btnNightDay').click(function () {
 		updateConfigGeneral();
+	})
+	$('#btnTema1C1').click(function () {
+		var DataShow_Config = window.open("index.html?tem=1&cat=1", "_self");
+	})
+	$('#btnTema1C2').click(function () {
+		var DataShow_Config = window.open("index.html?tem=1&cat=2", "_self");
+	})
+	$('#btnTema1C3').click(function () {
+		var DataShow_Config = window.open("index.html?tem=1&cat=3", "_self");
+	})
+	$('#btnTema1C4').click(function () {
+		var DataShow_Config = window.open("index.html?tem=1&cat=4", "_self");
+	})
+	$('#btnTema1C5').click(function () {
+		var DataShow_Config = window.open("index.html?tem=1&cat=5", "_self");
+	})
+	$('#btnTema1C6').click(function () {
+		var DataShow_Config = window.open("index.html?tem=1&cat=6", "_self");
+	})
+	$('#btnFormCategory').click(function () {
+		var DataShow_Config = window.open("index.html", "_self");
 	})
 }
 
@@ -485,7 +567,7 @@ async function updateConfigGeneral() {
 	if (GLOBAL_background == 'white') {
 		GLOBAL_textcolor = 'gray';
 		GLOBAL_background = 'black';
-		GLOBAL_buttoncolor = 'btn-link';
+		GLOBAL_buttoncolor = 'btn-primary';
 	} else {
 		GLOBAL_textcolor = 'gray';
 		GLOBAL_background = 'white';
@@ -533,16 +615,18 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		classe = classe.substring(4, classe.length);
 		document.getElementById('btnPrevious').classList.remove(classe);
 	}
-	if(document.getElementById('btnPause') != null) {
+/*	if(document.getElementById('btnPause') != null) {
 		classe = document.getElementById('btnPause').classList.value;
 		classe = classe.substring(4, classe.length);
 		document.getElementById('btnPause').classList.remove(classe);
 	}
-	if(document.getElementById('btnEnd') != null) {
+*/
+/*	if(document.getElementById('btnEnd') != null) {
 		classe = document.getElementById('btnEnd').classList.value;
 		classe = classe.substring(4, classe.length);
 		document.getElementById('btnEnd').classList.remove(classe);
 	}
+*/
 	if(document.getElementById('btnBackward') != null) {
 		classe = document.getElementById('btnBackward').classList.value;
 		classe = classe.substring(4, classe.length);
@@ -556,9 +640,19 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		
 	//campos e botões
 	if(document.getElementById('btnDropDb') != null) {
-		classe = document.getElementById('btnDropDb').classList.value;
+/*		classe = document.getElementById('btnDropDb').classList.value;
 		classe = classe.substring(4, classe.length);
 		document.getElementById('btnDropDb').classList.remove(classe);
+*/	}
+	if(document.getElementById('txtIncorretas') != null) {
+		classe = document.getElementById('txtIncorretas').classList.value;
+		classe = classe.substring(4, classe.length);
+		document.getElementById('txtIncorretas').classList.remove(classe);
+	}
+	if(document.getElementById('txtCorretas') != null) {
+		classe = document.getElementById('txtCorretas').classList.value;
+		classe = classe.substring(4, classe.length);
+		document.getElementById('txtCorretas').classList.remove(classe);
 	}
 	if(document.getElementById('txtNaoRespondidas') != null) {
 		classe = document.getElementById('txtNaoRespondidas').classList.value;
@@ -571,57 +665,89 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		if(document.getElementById('btnPrevious') != null) {
 			document.getElementById('btnPrevious').classList.add('btn-default');
 		}
-		if(document.getElementById('btnPause') != null) {
+/*		if(document.getElementById('btnPause') != null) {
 			document.getElementById('btnPause').classList.add('btn-danger');
 		}
-		if(document.getElementById('btnEnd') != null) {
+*/
+/*		if(document.getElementById('btnEnd') != null) {
 			document.getElementById('btnEnd').classList.add('btn-success');
 		}
+*/
 		document.getElementById('btnBackward').classList.add('btn-danger');
 		document.getElementById('btnNext').classList.add('btn-default');
 		if(document.getElementById('selButtonColor') != null) {
 			document.getElementById('selButtonColor').classList.add('btn-default');
 		}
-		if(document.getElementById('txtCorretas') != null) {
-			document.getElementById('txtCorretas').classList.add('btn-default');
-		}
 		if(document.getElementById('txtIncorretas') != null) {
-			document.getElementById('txtIncorretas').classList.add('btn-default');
+			document.getElementById('txtIncorretas').classList.add('btn-primary');
+		}
+		if(document.getElementById('txtCorretas') != null) {
+			document.getElementById('txtCorretas').classList.add('btn-primary');
 		}
 		if(document.getElementById('txtNaoRespondidas') != null) {
-			document.getElementById('txtNaoRespondidas').classList.add('btn-default');
+			document.getElementById('txtNaoRespondidas').classList.add('btn-primary');
 		}
 		if(document.getElementById('btnDropDb') != null) {
-			document.getElementById('btnDropDb').classList.add('btn-default');
+//			document.getElementById('btnDropDb').classList.add('btn-default');
 		}
 	} else {
 		document.getElementById('btnPrevious').classList.add(buttoncolor);
-		document.getElementById('btnPause').classList.add(buttoncolor);
-		document.getElementById('btnEnd').classList.add(buttoncolor);
+//		document.getElementById('btnPause').classList.add(buttoncolor);
+//		document.getElementById('btnEnd').classList.add(buttoncolor);
 		document.getElementById('btnBackward').classList.add(buttoncolor);
 		document.getElementById('btnNext').classList.add(buttoncolor);
-		document.getElementById('selButtonColor').classList.add(buttoncolor);
+//		document.getElementById('selButtonColor').classList.add(buttoncolor);
 		document.getElementById('txtCorretas').classList.add(buttoncolor);
 		document.getElementById('txtIncorretas').classList.add(buttoncolor);
 		document.getElementById('txtNaoRespondidas').classList.add(buttoncolor);
-		document.getElementById('btnDropDb').classList.add(buttoncolor);
+//		document.getElementById('btnDropDb').classList.add(buttoncolor);
 	}
 }
 
-function restartFase(myid, mygroup, mycode) {
-	var result = confirm('Vou limpar e reiniciar as respostas dessa fase, ok?');
-	if (result) {
-		updateStudentPlayOrder(mygroup);
-		updateStudentPlayClear(mygroup);
+async function deletefase(mytema, mycategory, mygroup, mycode, myid) {
+    try {
+		var noOfStudentRemoved = await jsstoreCon.remove({
+			from: 'Student'
+		  , where: { mytema: mytema + ''
+			, mycategory: mycategory + ''
+			, mygroup: mygroup + ''
+//			where: {
+//				mygroup: mygroup + ''
+			}
+		});
+        console.log(`${noOfStudentRemoved} students removed`);
+    } catch (ex) {
+        console.log(ex.message);
+    }
+}
+
+function openForm() {
+	var params = new URLSearchParams(window.location.search);
+	var mytema = params.get('tem');
+	var mycategory = params.get('cat');
+	if ((mytema != null && mycategory != null)) {
+		refreshTableData(mytema, mycategory, '0', '', '', '');
 		showGridAndHideForms();
+//		if (document.getElementById('btnFormCategory') != null) {document.getElementById('btnFormCategory').disabled = false; }
 	}
 }
 
-function getStudentFromForm(studentId, mygroup, mycode) {
+function restartFase(mytema, mycategory, myid, mygroup, mycode) {
+//	var result = confirm('Vou limpar e reiniciar as respostas dessa fase, ok?');
+//	if (result) {
+		updateStudentPlayOrder(mytema, mycategory, mygroup);
+		updateStudentPlayClear(mytema, mycategory, mygroup);
+//		showGridAndHideForms();
+//	}
+}
+
+function getStudentFromForm(mytema, mycategory, studentId, mygroup, mycode) {
 	var mygroup = document.getElementById('mygroupSim').value;
-	setTimeout(() => { updateStudentPlayOrder(mygroup) }, 1000); // Executa após 5 segundos para esperar o processo de insert terminar
+	setTimeout(() => { updateStudentPlayOrder(mytema, mycategory, mygroup) }, 1000); // Executa após 5 segundos para esperar o processo de insert terminar
 	var student = {
         id: Number(studentId),
+		mytema: $('#mytema').val(),
+		mycategory: $('#mycategory').val(),
         mycode: $('#mycode').val(),
 		mygroup: $('#mygroup').val(),
         mytext: $('#mytext').val(),
@@ -630,13 +756,13 @@ function getStudentFromForm(studentId, mygroup, mycode) {
     return student;
 }
 
-function calculaPercentualAcerto(mygroup, mycode, totalCorretas, totalperguntas) {
+function calculaPercentualAcerto(mytema, mycategory, mygroup, mycode, totalCorretas, totalperguntas) {
 	var calculo = (totalCorretas*100) / (parseInt(totalperguntas));
 	calculo = calculo.toFixed(0); //remove decimais
 	return calculo;
 }
 
-function getTotalCorretas(mygroup, mycode, students) {
+function getTotalCorretas(mytema, mycategory, mygroup, mycode, students) {
 	var totalCorretas = 0;
 	var totalIncorretas = 0;
 	var totalNaoRespondidas = 0;
@@ -685,7 +811,7 @@ function getTotalCorretas(mygroup, mycode, students) {
 	return totalCorretas;
 }
 
-function getTotalIncorretas(mygroup, mycode, students) {
+function getTotalIncorretas(mytema, mycategory, mygroup, mycode, students) {
 	var totalCorretas = 0;
 	var totalIncorretas = 0;
 	var totalNaoRespondidas = 0;
@@ -734,7 +860,7 @@ function getTotalIncorretas(mygroup, mycode, students) {
 	return totalIncorretas;
 }
 
-function getTotalNaoRespondidas(mygroup, mycode, students) {
+function getTotalNaoRespondidas(mytema, mycategory, mygroup, mycode, students) {
 	var totalCorretas = 0;
 	var totalIncorretas = 0;
 	var totalNaoRespondidas = 0;
@@ -783,37 +909,41 @@ function getTotalNaoRespondidas(mygroup, mycode, students) {
 	return totalNaoRespondidas;
 }
 
-async function changeFaseNivel(id, mygroup, mycode) {
+async function changeFaseNivel(mytema, mycategory, myid, mygroup, mycode) {
 	var totalperguntas = await jsstoreCon.count({
 		from: 'Student'
-		  , where: {
-			  mygroup: mygroup
+		  , where: { mytema: mytema + ''
+			, mycategory: mycategory + ''
+			, mygroup: mygroup + ''
 		  }
 	});
 	totalperguntas = totalperguntas - 1; //tira a pergunta zero que é o título da lista de perguntas
 	var students = await jsstoreCon.select({
 		from: 'Student'
-		  , where: { mygroup: mygroup 
+		  , where: { mytema: mytema + ''
+			, mycategory: mycategory + ''
+			, mygroup: mygroup + ''
 		  }
 	});
-	var totalCorretas = getTotalCorretas(mygroup, mycode, students);
-	var calculo = calculaPercentualAcerto(mygroup, mycode, totalCorretas, totalperguntas);
-	
-//	alert('calculo='+calculo + ' calculo >= 70 = ' + calculo >= 70);
+	var totalCorretas = getTotalCorretas(mytema, mycategory, mygroup, mycode, students);
+	var calculo = calculaPercentualAcerto(mytema, mycategory, mygroup, mycode, totalCorretas, totalperguntas);
 	
 	if (calculo >= 70) {
-		var mygroupNext = getProximaFaseNivel(id, mygroup, mycode);
+		var mygroupNext = getProximaFaseNivel(myid, mygroup, mycode);
 		if (mygroupNext != 'false') {
 			var students = await jsstoreCon.select({
 				from: 'Student'
-				  , where: { mygroup: '' + mygroupNext + ''
+			  , where: { mytema: mytema + ''
+				, mycategory: mycategory + ''
+				, mygroup: mygroupNext + ''
+//				  , where: { mygroup: '' + mygroupNext + ''
 				}
 			});
+//alert('antes calculo='+calculo + ' mygroupNext='+mygroupNext + ' mytema='+mytema + ' mycategory='+mycategory + ' myid='+myid + ' mygroup='+mygroup + ' mycode='+mycode);
 			if (students == '') {
-//				alert('config' + mygroupNext + '.html?sim=' + mygroupNext);
-				
-				var DataShow_Config = window.open("config" + mygroupNext + ".html?sim=" + mygroupNext, "_self");
-//				var DataShow_Config = window.open("config" + mygroupNext + ".html?sim=" + mygroupNext, "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
+//alert('depois calculo='+calculo + ' mygroupNext='+mygroupNext + ' mytema='+mytema + ' mycategory='+mycategory + ' myid='+myid + ' mygroup='+mygroup + ' mycode='+mycode);
+//alert("T"+mytema + "C"+mycategory+ "G"+mygroupNext + ".html?sim=" + mygroupNext + "&tem=" + mytema + "&cat=" + mycategory);
+				var DataShow_Config = window.open("T"+mytema + "C"+mycategory+ "G"+mygroupNext + ".html?sim=" + mygroupNext + "&tem=" + mytema + "&cat=" + mycategory, "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
 			}
 		}
 	}
@@ -831,51 +961,67 @@ function getProximaFaseNivel(id, mygroup, mycode) {
 	return mygroup;
 }
 
-async function savePoints(myid, mygroup, mycode) {
+async function savePoints(mytema, mycategory, myid, mygroup, mycode) {
 	var totalperguntas = await jsstoreCon.count({
 		from: 'Student'
-		  , where: {
-			  mygroup: mygroup
+		  , where: { mytema: mytema + ''
+			, mycategory: mycategory + ''
+			, mygroup: mygroup + ''
+//		  , where: {
+//			  mygroup: mygroup + ''
 		  }
 	});
 	totalperguntas = totalperguntas - 1; //tira a pergunta zero que é o título da lista de perguntas
 	var students = await jsstoreCon.select({
 		from: 'Student'
-		  , where: { mygroup: mygroup 
+		  , where: { mytema: mytema + ''
+			, mycategory: mycategory + ''
+			, mygroup: mygroup + ''
+//		  , where: { mygroup: mygroup + '' 
 		  }
 	});
-	var totalCorretas = getTotalCorretas(mygroup, mycode, students);
-	var totalIncorretas = getTotalIncorretas(mygroup, mycode, students);
-	var totalNaoRespondidas = getTotalNaoRespondidas(mygroup, mycode, students);
-	var calculo = calculaPercentualAcerto(mygroup, mycode, totalCorretas, totalperguntas);
+	var totalCorretas = getTotalCorretas(mytema, mycategory, mygroup, mycode, students);
+	var totalIncorretas = getTotalIncorretas(mytema, mycategory, mygroup, mycode, students);
+	var totalNaoRespondidas = getTotalNaoRespondidas(mytema, mycategory, mygroup, mycode, students);
+	var calculo = calculaPercentualAcerto(mytema, mycategory, mygroup, mycode, totalCorretas, totalperguntas);
 //alert('totalCorretas='+totalCorretas + ' totalIncorretas='+totalIncorretas + ' totalNaoRespondidas='+totalNaoRespondidas + ' calculo='+calculo);
 	var noOfDataUpdated = await jsstoreCon.update({
 		in: 'Student',
 		set: {
 			mypoints: calculo
-		},
-		where: {
-			mygroup: mygroup
+		  , mycorretas: '' + totalCorretas
+		  , myincorretas: '' + totalIncorretas
+		  , mynaorespondidas: '' + totalNaoRespondidas
+		}
+	  , where: { mytema: mytema + ''
+		, mycategory: mycategory + ''
+		, mygroup: mygroup + ''
+//		where: {
+//			mygroup: mygroup + ''
 		}
 	});
 }
 
-async function showPoints(mygroup, mycode) {
+async function showPoints(mytema, mycategory, mygroup, mycode) {
 	var students = await jsstoreCon.select({
 		from: 'Student'
-		  , where: { mygroup: mygroup 
+		  , where: { mytema: mytema + ''
+			, mycategory: mycategory + ''
+			, mygroup: mygroup + ''
+//		  , where: { mygroup: mygroup + '' 
 		  }
 	});
-	var totalCorretas = getTotalCorretas(mygroup, mycode, students);
-	var totalIncorretas = getTotalIncorretas(mygroup, mycode, students);
-	var totalNaoRespondidas = getTotalNaoRespondidas(mygroup, mycode, students);
+	var totalCorretas = getTotalCorretas(mytema, mycategory, mygroup, mycode, students);
+	var totalIncorretas = getTotalIncorretas(mytema, mycategory, mygroup, mycode, students);
+	var totalNaoRespondidas = getTotalNaoRespondidas(mytema, mycategory, mygroup, mycode, students);
 
 //alert('totalCorretas='+totalCorretas + ' totalIncorretas='+totalIncorretas + ' totalNaoRespondidas='+totalNaoRespondidas);
 
 	var totalperguntas = await jsstoreCon.count({
 		from: 'Student'
-		  , where: {
-			  mygroup: mygroup
+		  , where: { mytema: mytema + ''
+			, mycategory: mycategory + ''
+			, mygroup: mygroup + ''
 		  }
 	});
 	totalperguntas = totalperguntas - 1; //tira a pergunta zero que é o título da lista de perguntas
@@ -887,7 +1033,7 @@ async function showPoints(mygroup, mycode) {
 //	resultado = resultado + '\n\nResponda: '  + responder;
 	var aprovacao = '';
 
-	var calculo = calculaPercentualAcerto(mygroup, mycode, totalCorretas, totalperguntas);
+	var calculo = calculaPercentualAcerto(mytema, mycategory, mygroup, mycode, totalCorretas, totalperguntas);
 	if (calculo >= 70) {
 		aprovacao = '\n\n' + 'JÁ ESTÁ APROVADO \n' + calculo + '% de acerto é >= 70%';
 	} else {
@@ -900,24 +1046,30 @@ async function showPoints(mygroup, mycode) {
 	alert(resultado);
 }
 
-async function setDashboard(myid, mygroup, mycode) {
+async function setDashboard(mytema, mycategory, myid, mygroup, mycode) {
 		var totalperguntas = await jsstoreCon.count({
 			from: 'Student'
-			  , where: {
-				  mygroup: mygroup
+			  , where: { mytema: mytema + ''
+				, mycategory: mycategory + ''
+				, mygroup: mygroup + ''
+//			  , where: {
+//				  mygroup: mygroup + ''
 			  }
 		});
 		totalperguntas = parseInt(totalperguntas) - 1;
 		
 		var studentsDashboard = await jsstoreCon.select({
 			from: 'Student'
-			  , where: { mygroup: mygroup 
+			  , where: { mytema: mytema + ''
+				, mycategory: mycategory + ''
+				, mygroup: mygroup + ''
+//			  , where: { mygroup: mygroup + '' 
 			  }
 		});
-		var totalCorretas = getTotalCorretas(mygroup, mycode, studentsDashboard);
-		var totalIncorretas = getTotalIncorretas(mygroup, mycode, studentsDashboard);
-		var totalNaoRespondidas = getTotalNaoRespondidas(mygroup, mycode, studentsDashboard);
-		var calculo = calculaPercentualAcerto(mygroup, mycode, totalCorretas, totalperguntas);
+		var totalCorretas = getTotalCorretas(mytema, mycategory, mygroup, mycode, studentsDashboard);
+		var totalIncorretas = getTotalIncorretas(mytema, mycategory, mygroup, mycode, studentsDashboard);
+		var totalNaoRespondidas = getTotalNaoRespondidas(mytema, mycategory, mygroup, mycode, studentsDashboard);
+		var calculo = calculaPercentualAcerto(mytema, mycategory, mygroup, mycode, totalCorretas, totalperguntas);
 
 //	alert('totalperguntas='+totalperguntas + ' totalCorretas='+totalCorretas + ' totalIncorretas='+totalIncorretas);
 
@@ -935,34 +1087,36 @@ async function setDashboard(myid, mygroup, mycode) {
 }
 
 //This function select table play
-async function refreshTableQuestion(myid, mygroup, mycode) {
+async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 //    try {
 		var totalperguntas = await jsstoreCon.count({
 			from: 'Student'
-			  , where: {
-				  mygroup: mygroup
+				, where: { mytema: mytema + ''
+				, mycategory: mycategory + ''
+				, mygroup: mygroup + ''
+//			  , where: {
+//				  mygroup: mygroup
 			  }
 		});
 		totalperguntas = parseInt(totalperguntas) - 1;
-		setDashboard(myid, mygroup, mycode);
-		var students = await jsstoreCon.select({
+		setDashboard(mytema, mycategory, myid, mygroup, mycode);
+		var students = await jsstoreCon.select({ //seleciona uma pergunta selecionada pelo mytema, mycategory, mygroup, mycode
 			from: 'Student'
-			  , where: { mygroup: '' + mygroup + ''
-					   , mycode: '' + mycode + ''
+				, where: { mytema: mytema + ''
+				, mycategory: mycategory + ''
+				, mygroup: mygroup + ''
+				, mycode: mycode + ''
 			  }
 		});
+//alert('mytema='+mytema + ' mycategory='+mycategory + ' myid='+myid + ' mygroup='+mygroup + ' mycode='+mycode);
 		if (students == '') {
-			
+			if (document.getElementById('btnEnd').style.display == 'none') {
+				document.getElementById('btnEnd').style.display = '';
+//				alert('Use o botão FIM quando terminar.');
+			}
+			document.getElementById('btnEnd').focus();
 		} else {
 			students.forEach(function (student) {
-				
-				if (student.mycode >= totalperguntas) {
-					if (document.getElementById('btnEnd').style.display == 'none') {
-						alert('Use o botão FIM quando terminar.');
-					}
-					document.getElementById('btnEnd').style.display = '';
-				}
-				
 				document.getElementById('myorderSim').style.display='none';
 				document.getElementById('myidSim').style.display='none';
 				document.getElementById('mygroupSim').style.display='none';
@@ -982,7 +1136,7 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 				document.getElementById('mycorrect7Sim').style.display='none';
 				document.getElementById('mycorrect8Sim').style.display='none';
 
-				document.getElementById('mytextSim').innerHTML = '<font color=' + GLOBAL_textcolor + '>' + ' <b>' + student.mycode + '/' + totalperguntas + '. ' + student.mytext + '</b> </font>';
+				document.getElementById('mytextSim').innerHTML = '<font color=' + GLOBAL_textcolor + '>' + student.mycode + '/' + totalperguntas + '. ' + student.mytext + '</font>';
 
 				var myorder = student.myorder;
 				myorder = myorder.replaceAll('\,', '');
@@ -998,10 +1152,10 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 	//					valorIndice +
 						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 						+ student.mycorrect1answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption1 + ' </font>'
-						+ '<a href="#"><i class="fa fa-bookmark" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
+						+ '<a href="#"><i class="fa fa-flag" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"> (cola)</i></a>'
 
 	//					+ ' <a href="#' + student.myoption1 + '" class="btn btn-default"><b>?</b></a>'
-						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
+						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:' + CONST_MEDIUM_SEA_GREEN + '; display:none"><i class="fa fa-check"></i> <b>correta</b>'
 						+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
 						+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
 						if (student.myoption1 != '') {
@@ -1017,10 +1171,10 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 	//					valorIndice +
 						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 						+ student.mycorrect2answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption2 + ' </font>'
-						+ '<a href="#"><i class="fa fa-bookmark" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
+						+ '<a href="#"><i class="fa fa-flag" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"> (cola)</i></a>'
 
 	//					+ ' <a href="#' + student.myoption2 + '" class="btn btn-default"><b>?</b></a>'
-						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
+						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:' + CONST_MEDIUM_SEA_GREEN + '; display:none"><i class="fa fa-check"></i> <b>correta</b>'
 						+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
 						+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
 						if (student.myoption2 != '') {
@@ -1036,10 +1190,10 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 	//					valorIndice +
 						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 						+ student.mycorrect3answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption3 + ' </font>'
-						+ '<a href="#"><i class="fa fa-bookmark" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
+						+ '<a href="#"><i class="fa fa-flag" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"> (cola)</i></a>'
 
 	//					+ ' <a href="#' + student.myoption3 + '" class="btn btn-default"><b>?</b></a>'
-						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
+						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:' + CONST_MEDIUM_SEA_GREEN + '; display:none"><i class="fa fa-check"></i> <b>correta</b>'
 						+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
 						+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
 						if (student.myoption3 != '') {
@@ -1055,10 +1209,10 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 	//					valorIndice +
 						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 						+ student.mycorrect4answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption4 + ' </font>'
-						+ '<a href="#"><i class="fa fa-bookmark" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
+						+ '<a href="#"><i class="fa fa-flag" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"> (cola)</i></a>'
 
 	//					+ ' <a href="#' + student.myoption4 + '" class="btn btn-default"><b>?</b></a>'
-						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:green; display:none"><i class="fa fa-check"></i> <b>correta</b>'
+						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:' + CONST_MEDIUM_SEA_GREEN + '; display:none"><i class="fa fa-check"></i> <b>correta</b>'
 						+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
 						+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
 						if (student.myoption4 != '') {
@@ -1074,7 +1228,7 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 	//					valorIndice +
 						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 						+ student.mycorrect5answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption5 + ' </font>'
-						+ '<a href="#"><i class="fa fa-bookmark" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
+						+ '<a href="#"><i class="fa fa-flag" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"> (cola)</i></a>'
 
 	//					+ ' <a href="#' + student.myoption5 + '" class="btn btn-default"><b>?</b></a>'
 						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
@@ -1093,7 +1247,7 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 	//					valorIndice +
 						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 						+ student.mycorrect6answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption6 + ' </font>'
-						+ '<a href="#"><i class="fa fa-bookmark" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
+						+ '<a href="#"><i class="fa fa-flag" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"> (cola)</i></a>'
 
 	//					+ ' <a href="#' + student.myoption6 + '" class="btn btn-default"><b>?</b></a>'
 						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
@@ -1112,7 +1266,7 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 	//					valorIndice +
 						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 						+ student.mycorrect7answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption7 + ' </font>'
-						+ '<a href="#"><i class="fa fa-bookmark" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
+						+ '<a href="#"><i class="fa fa-flag" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"> (cola)</i></a>'
 
 	//					+ ' <a href="#' + student.myoption7 + '" class="btn btn-default"><b>?</b></a>'
 						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
@@ -1131,7 +1285,7 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 	//					valorIndice +
 						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
 						+ student.mycorrect8answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption8 + ' </font>'
-						+ '<a href="#"><i class="fa fa-bookmark" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"></i></a>'
+						+ '<a href="#"><i class="fa fa-flag" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"> (cola)</i></a>'
 
 	//					+ ' <a href="#' + student.myoption8 + '" class="btn btn-default"><b>?</b></a>'
 						+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
@@ -1151,42 +1305,54 @@ async function refreshTableQuestion(myid, mygroup, mycode) {
 }
 
 //This function refreshes the table
-async function refreshTableData(mycode, myorder, mygroup, mytext) {
+async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext) {
 //    try {
-		if (mygroup != '' && mycode != '') {
+//alert('mytema='+mytema + ' mycategory='+mycategory + ' mycode='+mycode + ' myorder='+myorder + ' mygroup='+mygroup);
+		if (mygroup == '' && mycode == '') {
 			var students = await jsstoreCon.select({
 				from: 'Student'
-					, where: { mycode: mycode
-					, mygroup: mygroup
+					, where: { mytema: mytema + ''
+					, mycategory: mycategory + ''
+				}
+				, order: [ {by: 'mygroup', type: 'desc'}, {by: 'mycode'} ]
+			});
+		} else if (mygroup != '' && mycode != '') {
+			var students = await jsstoreCon.select({
+				from: 'Student'
+					, where: { mytema: mytema + ''
+					, mycategory: mycategory + ''
+					, mygroup: mygroup + ''
+					, mycode: mycode + ''
+				}
+				, order: [ {by: 'mygroup', type: 'desc'}, {by: 'mycode'} ]
+			});
+		} else if (mygroup != '' && mycode == '') {
+			var students = await jsstoreCon.select({
+				from: 'Student'
+					, where: { mytema: mytema + ''
+					, mycategory: mycategory + ''
+					, mygroup: mygroup + ''
+				}
+				, order: [ {by: 'mygroup', type: 'desc'}, {by: 'mycode'} ]
+			});
+		} else if (mygroup == '' && mycode != '') {
+			var students = await jsstoreCon.select({
+				from: 'Student'
+					, where: { mytema: mytema + ''
+					, mycategory: mycategory + ''
+					, mycode: mycode + ''
 				}
 				, order: [ {by: 'mygroup', type: 'desc'}, {by: 'mycode'} ]
 			});
 		}
-
-		if (mygroup != '' && mycode == '') {
-			var students = await jsstoreCon.select({
-				from: 'Student'
-					, where: { mygroup: '' + mygroup + ''
-				}
-				, order: [ {by: 'mygroup', type: 'desc'}, {by: 'mycode'} ]
-			});
-		}
-
-		if (mygroup == '' && mycode != '') {
-			var students = await jsstoreCon.select({
-				from: 'Student'
-					, where: { mycode: '' + mycode + ''
-				}
-				, order: [ {by: 'mygroup', type: 'desc'}, {by: 'mycode'} ]
-			});
-		}
-
 
 		var students_count = 0;
-		if (students != '') {
+		if (students != '') { //calcula students_count de todas perguntas da fase e categoria e grupo selecionado
 			var students_group = await jsstoreCon.select({
 				from: 'Student'
-					, where: { mygroup: '' + students[0].mygroup + ''
+					, where: { mytema: mytema + ''
+					, mycategory: mycategory + ''
+					, mygroup: '' + students[0].mygroup + ''
 				}
 			});
 			students_group.forEach(function (student) {
@@ -1196,7 +1362,13 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 				}
 			})
 		}
-		var varCount = '<div class="btn btn-success" style="font-size:10px;">' + parseInt(students_count - 1) + '</div>';
+		
+		var varButtonRestart = 'color:gray; font-size:20px;';
+		var varCount = '<div class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '">' + parseInt(students_count - 1) + '</div>';
+		if (parseInt(students_count - 1) == 0) {
+			varCount = '';
+			varButtonRestart = 'color:' + CONST_MEDIUM_SEA_GREEN + '; font-size:20px;';
+		}
 
 
 
@@ -1206,56 +1378,69 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 		var varNivel = '<tr><td>FASE</td></tr>';
 		var varNivelLinha = '';
 		var varNivelMax = '';
-		var varButtonLineStyle = 'color:green;';
-		var varButtonLine = '<i class=\"fa fa-play\" style="color:green; font-size:16px;"></i>';
+		var varButtonLineStyle = 'color:gray; font-size:18px;';
+		var varButtonLine = '<i class=\"fa fa-play\" style="color:' + CONST_DEEP_SKY_BLUE + '; font-size:20px;"></i>';
 		var varRestart = '';
 		
 		students.forEach(function (student) {
 			if (student.mycode == '0') {
-				varTdTh = 'th';
-				varRestart = '&nbsp;<i class=\"fa fa-refresh\" style=\"' + varButtonLineStyle + '\"></i> <a href=\"#\" class=\"restart\" style=\"' + varButtonLineStyle + '\">refazer</a>';
+				varTdTh = 'td';
+				if (varCount == '') {
+					if (student.mypoints <= 0) {
+						varRestart = '';
+						varCount = '<button class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + ';"><i class=\"fa fa-play\"' + '\"></i> fazer</button>';
+					} else if (student.mypoints < 70) {
+						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-danger"><i class=\"fa fa-refresh\"' + '\"></i> refazer</button></a>';
+					} else if (student.mypoints < 100) {
+						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + ';"><i class=\"fa fa-refresh\"' + '\"></i> refazer</button></a>';
+					} else {
+						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-link">refazer</button></a>';
+					}
+				} else {
+					varRestart = '';
+				}
 			} else {
 				varTdTh = 'td';
-				varRestart = '<a href=\"#\" class=\"restart\"><i class=\"fa fa-refresh\" style=\"height:25px; ' + varButtonLineStyle + '\"></i></a>';
+				varRestart = '<a href=\"#\" class=\"restart\"><i class=\"fa fa-refresh\" style=\"height:25px; ' + 'color:gray; font-size:20px;' + '\"></i></a>';
 			}
 			
 			if (varNivel != student.mygroup.substring(0, 1)) {
 				varNivel = student.mygroup.substring(0, 1);
-				varNivelLinha = '<tr><td colspan=99 nowrap><font color="gray" style="font-size:18px;"><i class=\"fa fa-unlock\"></i> NÍVEL ' + student.mygroup.substring(0, 1) + '</font></td></tr>';
+//				varNivelLinha = '<tr><td></td><th nowrap><font color="gray" style="font-size:20px;"><i class=\"fa fa-unlock\"></i> NÍVEL ' + student.mygroup.substring(0, 1) + ' de ' + parseInt(CONST_NIVEL_MAX) + '</font></th></tr>';
+				varNivelLinha = '<tr><td></td><th nowrap><font color="gray" style="font-size:20px;"><i class=\"fa fa-unlock\"></i> NÍVEL ' + student.mygroup.substring(0, 1) + '</font></th></tr>';
 			} else {
 				varNivelLinha = '';
 			}
 			if (varNivelMax == '') {
 				varNivelMax = varNivel;
 			}
-			
+
 			htmlString = htmlString + varNivelLinha;
 			htmlString += "<tr ItemId=" + student.id + '>'
 				+ "<td style=\"color:#000000; font-size:1px; \">" + student.mygroup + "</td>"
 				+ "<" + varTdTh + " id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " ZZZonClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
-				
 				+ '<a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + varButtonLine + ' ' + student.mytext +  '</a></' + varTdTh + '>'
+				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + '<a href=\"#\" class=\"deletefase\" style=\"' + varButtonLineStyle + '\">' + '<i class=\"fa fa-trash\" style=\"color:gray; font-size:20px;\"></i><i class=\"fa fa-refresh\" style=\"color:gray; font-size:20px;\"></i> </a>'
 				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + student.mypoints + '%</' + varTdTh + '>'
 				+ "<" + varTdTh + " nowrap id=datashow" + student.id+"6" + " tabIndex=" + student.id+"6" + " ZZZonClick=\"datashow('" + student.id+"6" + "', 6, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 6, event, " + "" + (student.id+"6") + ");\" data-show='" + student.id+"6" + "'>"
-				+ varRestart + ' '
-				+ ' <td>' + '<a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + ' ' + varCount +  '</a>' + ' </td>'
-				+ "</" + varTdTh + ">"
+				+ '<' + varTdTh + '>' + varRestart + '<a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + ' ' + varCount +  '</a>' + "</" + varTdTh + ">"
 				;
-				varButtonLineStyle = 'color:gray;';
-				varButtonLine = '<i class=\"fa fa-check\" style="color:blue; font-size:15px;"></i>';
-//				varCount = '<div class="btn btn-default" style="font-size:10px;">' + '0' + '</div>';
+				
+				varButtonLineStyle = 'color:gray;  font-size:18px;';
+				varButtonLine = '<i class=\"fa fa-check\" style="color:' + CONST_DEEP_SKY_BLUE + '; font-size:20px;"></i>';
+				varButtonRestart = 'color:gray; font-size:20px;';
 				varCount = '';
 		})
 
 		varNivelLinha = '';
-		for (var item=CONST_NIVEL_MAX; item>=parseInt(varNivelMax)+1; item--) {
-			varNivelLinha = varNivelLinha + '<tr><td colspan=99><font color="gray" style="font-size:15px;"><i class=\"fa fa-lock\"></i> NÍVEL ' + item + '</font></td></tr>';
-		}
+//		for (var item=CONST_NIVEL_MAX; item>=parseInt(varNivelMax)+1; item--) {
+//			varNivelLinha = varNivelLinha + '<tr><td colspan=99><font color="gray" style="font-size:15px;"><i class=\"fa fa-lock\"></i> NÍVEL ' + item + '</font></td></tr>';
+//		}
 		htmlString = varNivelLinha + htmlString;
-
+		
 		if (htmlString.length > 0) {
 			htmlString += "</tr>"
-			showGridAndHideForms();
+//			showFormCategory();
 		} else {
 /*			htmlString += htmlStringButtons
 			const d = new Date();
@@ -1266,7 +1451,9 @@ async function refreshTableData(mycode, myorder, mygroup, mytext) {
 			htmlString += d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ":" + d.getMilliseconds();
 			htmlString += "</b>"
 */
-			showIniciarConfiguracao();
+////			var DataShow_Config = window.open("config" + document.getElementById('selectMygroup').value + ".html?sim=" + document.getElementById('selectMygroup').value + "&tem=" + mytema + "&cat=" + mycategory, "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
+//			var DataShow_Config = window.open("T"+mytema + "C"+mycategory+ "G10" + ".html?sim=" + document.getElementById('selectMygroup').value + "&tem=" + mytema + "&cat=" + mycategory, "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
+			//showIniciarConfiguracao();
 //			document.getElementById('btnPlay').style.display='none';
 		}
         $('#tblGrid tbody').html(htmlString);
@@ -1297,6 +1484,8 @@ async function getFromTable(id, mygroup, mycode) {
 
 	students.forEach(function (student) {
 		$('form').attr('data-student-id', student.id);
+		$('#mytema').val(student.mytema);
+		$('#mycategory').val(student.mycategory);
 		$('#mygroup').val(student.mygroup);
 		$('#mycode').val(student.mycode);
 		$('#myorder').val(student.myorder);
@@ -1358,11 +1547,14 @@ async function deleteTable() {
 				from: 'Student'
 			});
 			console.log(`${noOfStudentRemoved} students removed`);
+			var params = new URLSearchParams(window.location.search);
+			var mytema = params.get('tem');
+			var mycategory = params.get('cat');
 			var mycode = document.getElementById('mycode').value;
 			var myorder = document.getElementById('myorder').value;
 			var mygroup = document.getElementById('mygroup').value;
 			var mytext = document.getElementById('mytext').value.trim();
-			refreshTableData(mycode, myorder, mygroup, mytext);
+			refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext);
 			console.log('successfull');
 		}
     } catch (ex) {
@@ -1372,20 +1564,29 @@ async function deleteTable() {
 
 //This function drop database
 async function dropdb() {
-	var result = confirm('Todas informações serão perdidas e reiniciadas, ok?');
+	var result = confirm('Todas informações serão perdidas, ok?');
 	if (result) {
-		jsstoreCon.dropDb().then(function() {
-			console.log('Db deleted successfully');
-			var mycode = document.getElementById('mycode').value;
-			var myorder = document.getElementById('myorder').value;
-			var mygroup = document.getElementById('mygroup').value;
-			var mytext = document.getElementById('mytext').value.trim();
-			refreshTableData(mycode, myorder, mygroup, mytext);
-			location.reload();
-//			console.log('successfull');
-		}).catch(function(error) {
-			console.log(error);
-		});
+		var result = confirm('Confirma?');
+		if (result) {
+			var result = confirm('Ok. Vou apagar tudo.');
+			if (result) {
+				jsstoreCon.dropDb().then(function() {
+					console.log('Db deleted successfully');
+					var params = new URLSearchParams(window.location.search);
+					var mytema = params.get('tem');
+					var mycategory = params.get('cat');
+					var mycode = document.getElementById('mycode').value;
+					var myorder = document.getElementById('myorder').value;
+					var mygroup = document.getElementById('mygroup').value;
+					var mytext = document.getElementById('mytext').value.trim();
+					refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext);
+					location.reload();
+		//			console.log('successfull');
+				}).catch(function(error) {
+					console.log(error);
+				});
+			}
+		}
 	}
 }
 
@@ -1476,6 +1677,9 @@ async function freezeDataShow(aovivo) {
 //This function text repeated = myrepeated>0
 async function searchComplete() {
     try {
+		var params = new URLSearchParams(window.location.search);
+		var mytema = params.get('tem');
+		var mycategory = params.get('cat');
 		var mycode = document.getElementById('mycode').value;
 		var myorder = document.getElementById('myorder').value;
 		var mygroup = document.getElementById('mygroup').value;
@@ -1483,13 +1687,13 @@ async function searchComplete() {
 		if (localStorage.getItem('valueComplete') == 'true') {
 			localStorage.setItem('valueComplete', 'false');
 			document.getElementById('btnCompleteTop').innerHTML = '<i class=\"fa fa-minus\"></i>';
-			refreshTableData(mycode, myorder, mygroup, mytext);
+			refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext);
 //			document.getElementById('btnCompleteTop').classList.remove('btn-warning');
 //			document.getElementById('btnCompleteTop').classList.add('btn-default');
 		} else {
 			localStorage.setItem('valueComplete', 'true');
 			document.getElementById('btnCompleteTop').innerHTML = '<i class=\"fa fa-list\"></i>';
-			refreshTableData(mycode, myorder, mygroup, mytext);
+			refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext);
 //			document.getElementById('btnCompleteTop').classList.remove('btn-default');
 //			document.getElementById('btnCompleteTop').classList.add('btn-warning');
 		}
@@ -1523,21 +1727,27 @@ async function videoPlayPause() {
 //This function text repeated = myrepeated=0
 async function searchSimples() {
     try {
+		var params = new URLSearchParams(window.location.search);
+		var mytema = params.get('tem');
+		var mycategory = params.get('cat');
 		var mycode = document.getElementById('mycode').value;
 		var myorder = document.getElementById('myorder').value;
 		var mygroup = document.getElementById('mygroup').value;
 		var mytext = document.getElementById('mytext').value.trim();
-		refreshTableData(mycode, myorder, mygroup, mytext);
+		refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext);
     } catch (ex) {
         console.log(ex.message);
     }
 }
 
 function onLoadConfig() {
+	var params = new URLSearchParams(window.location.search);
+	var mytema = params.get('tem');
+	var mycategory = params.get('cat');
 	loadCombobox('mygroup', '0', '200', 'Teste');
 	loadCombobox('mycode', '0', '200', 'Número');
 	loadCombobox('myorder', '0', '200', 'Ordem');
-	confirmImport('contents1', '0');
+	confirmImport(mytema, mycategory, 'contents1', '0');
 	setTimeout(() => { document.getElementById('tblGrid').style.display='none'; }, 1000); // Executa após 1 segundo para esperar o processo terminar
 }
 
@@ -1642,7 +1852,7 @@ function getArrayAnswers(valor) {
 	return array;
 }
 
-async function salvarRegistro(mygroup, mycode, myorder, mytext) {
+async function salvarRegistro(mytema, mycategory, mygroup, mycode, myorder, mytext) {
 	var posicao=0;
 	var nextpos = 0;
 	nextpos = mytext.indexOf('\n\n', posicao);
@@ -1653,18 +1863,16 @@ async function salvarRegistro(mygroup, mycode, myorder, mytext) {
 //	console.log('aswers= \n'+aswers);
 	var array = getArrayAnswers(aswers);
 
-//	alert('setStudentFromImport:\n'+array[0]+', '+array[1] + '\n '+array[2]+', '+array[3] + '\n '+array[4]+', '+array[5] + '\n '+array[6]+', '+array[7] + '\n '+array[8]+', '+array[9] + '\n '+array[10]+', '+array[11] + '\n '+array[12]+', '+array[13] + '\n '+array[14]+', '+array[15]);
-	setStudentFromImport(mygroup, mycode, myorder, question, array[0], array[1], array[2], array[3], array[4], array[5], array[6], array[7], array[8], array[9], array[10], array[11], array[12], array[13], array[14], array[15]);
+//	alert(':\n'+array[0]+', '+array[1] + '\n '+array[2]+', '+array[3] + '\n '+array[4]+', '+array[5] + '\n '+array[6]+', '+array[7] + '\n '+array[8]+', '+array[9] + '\n '+array[10]+', '+array[11] + '\n '+array[12]+', '+array[13] + '\n '+array[14]+', '+array[15]);
+	setStudentFromImport(mytema, mycategory, mygroup, mycode, myorder, question, array[0], array[1], array[2], array[3], array[4], array[5], array[6], array[7], array[8], array[9], array[10], array[11], array[12], array[13], array[14], array[15]);
 	var studentId = $('form').attr('data-student-id');
-	addStudentImportConfig(studentId, mygroup, mycode);
+	addStudentImportConfig(mytema, mycategory, studentId, mygroup, mycode);
 }
 
 //This function confirm import
-async function confirmImport(contents, group) {
+async function confirmImport(mytema, mycategory, contents, group) {
 	try {
 		var params = new URLSearchParams(window.location.search);
-		
-//		console.log('params.get(sim) = ' + params.get('sim'));
 		var mygroup = params.get('sim');
 		var mytext = document.getElementById(contents).value;
 		var mycode = 0;
@@ -1679,10 +1887,9 @@ async function confirmImport(contents, group) {
 				break;
 			}
 //			console.log(' posicao='+posicao + ' nextp='+nextp + '\n [' + mytext.substring(posicao, nextp) + ']');
-			
 			var valor = mytext.substring(posicao, nextp);
-//			console.log('salvarRegistro: \n [' + '\n mygroup='+mygroup + '\n mycode='+mycode + '\n myorder='+myorder + '\n [' + valor + ']');
-			salvarRegistro(mygroup, mycode, myorder, valor);
+//			alert(': ' + '\n mytema='+mytema + '\n mycategory='+mycategory + '\n mygroup='+mygroup + '\n mycode='+mycode + '\n myorder='+myorder + '\n\n [' + valor + ']');
+			salvarRegistro(mytema+'', mycategory+'', mygroup+'', mycode+'', myorder+'', valor);
 			
 			posicao = nextp;
 			mycode = parseInt(mycode) + parseInt(1);
@@ -1695,21 +1902,24 @@ async function confirmImport(contents, group) {
 }
 
 //This function confirm import
-async function confirmImportManual(mycode, myorder, mygroup, mytext, myoption1, myoption2, myoption3, myoption4, myoption5, myoption6, myoption7, myoption8) {
+async function confirmImportManual(mytema, mycategory, mycode, myorder, mygroup, mytext, myoption1, myoption2, myoption3, myoption4, myoption5, myoption6, myoption7, myoption8) {
 		try {
 			
 //console.log(' mygroup='+mygroup + ' mycode='+mycode + ' myorder='+myorder + ' mytext='+mytext + ' myoption1='+myoption1 + ' myoption5='+myoption5);
 				
-				setStudentFromImport(mygroup, mycode, myorder, mytext, myoption1, '', myoption2, '', myoption3, '', myoption4, '', myoption5, '', myoption6, '', myoption7, '', myoption8, '');
+				setStudentFromImport(mytema, mycategory, mygroup, mycode, myorder, mytext, myoption1, '', myoption2, '', myoption3, '', myoption4, '', myoption5, '', myoption6, '', myoption7, '', myoption8, '');
 
 				var studentId = $('form').attr('data-student-id');
-				addStudentImport(studentId, mygroup, mycode);
+				addStudentImport(mytema, mycategory, studentId, mygroup, mycode);
 				
+				var params = new URLSearchParams(window.location.search);
+				var mytema = params.get('tem');
+				var mycategory = params.get('cat');
 				var mycode = document.getElementById('mycode').value;
 				var myorder = document.getElementById('myorder').value;
 				var mygroup = document.getElementById('mygroup').value;
 				var mytext = document.getElementById('mytext').value.trim();
-				setTimeout(() => { refreshTableData(mycode, myorder, mygroup, mytext) }, 1000); // Executa novamente a cada 500 milisegundos
+				setTimeout(() => { refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext) }, 1000); // Executa novamente a cada 500 milisegundos
 				
 				showGridAndHideForms();
 			document.getElementById('divcontent').style.display='none';
@@ -1746,8 +1956,8 @@ async function selectCountAll() {
     }
 }
 
-async function addStudentImportConfig(studentId, mygroup, mycode) {
-    var student = getStudentFromForm(studentId, mygroup, mycode);
+async function addStudentImportConfig(mytema, mycategory, studentId, mygroup, mycode) {
+    var student = getStudentFromForm(mytema, mycategory, studentId, mygroup, mycode);
     try {
 		var noOfDataInserted = await jsstoreCon.insert({
 			into: 'Student',
@@ -1762,8 +1972,8 @@ async function addStudentImportConfig(studentId, mygroup, mycode) {
     }
 }
 
-async function addStudentImport(studentId, mygroup, mycode) {
-    var student = getStudentFromForm(studentId, mygroup, mycode);
+async function addStudentImport(mytema, mycategory, studentId, mygroup, mycode) {
+    var student = getStudentFromForm(mytema, mycategory, studentId, mygroup, mycode);
     try {
 		var noOfDataInserted = await jsstoreCon.insert({
 			into: 'Student',
@@ -1772,21 +1982,24 @@ async function addStudentImport(studentId, mygroup, mycode) {
 //		console.log('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext + '\n '+student.myoption1 + '\n '+student.myoption2 + '\n '+student.myoption3 + '\n '+student.myoption4);
 //		console.log('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext);
 		if (noOfDataInserted === 1) {
+			var params = new URLSearchParams(window.location.search);
+			var mytema = params.get('tem');
+			var mycategory = params.get('cat');
 			var mycode = document.getElementById('mycode').value;
 			var myorder = document.getElementById('myorder').value;
 			var mygroup = document.getElementById('mygroup').value;
 			var mytext = document.getElementById('mytext').value.trim();
-			refreshTableData(mycode, myorder, mygroup, mytext);
+			refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext);
 			showGridAndHideForms();
 		}
-		setTimeout(() => { updateStudentPlayOrder(mygroup) }, 1000); // Executa após 5 segundos para esperar o processo de update/insert terminar
+		setTimeout(() => { updateStudentPlayOrder(mytema, mycategory, mygroup) }, 1000); // Executa após 5 segundos para esperar o processo de update/insert terminar
     } catch (ex) {
         console.log(ex.message + ' error ' + student.text);
     }
 }
 
-async function updateStudentPlay(studentId, mygroup, mycode) {
-    var student = getStudentFromFormPlay(studentId, mygroup, mycode);
+async function updateStudentPlay(mytema, mycategory, studentId, mygroup, mycode) {
+    var student = getStudentFromFormPlay(mytema, mycategory, studentId, mygroup, mycode);
 //	try {
 /*
 	alert('student.mycorrect1answer='+student.mycorrect1answer);
@@ -1819,7 +2032,7 @@ async function updateStudentPlay(studentId, mygroup, mycode) {
 //    }
 }
 
-async function updateStudentPlayClear(mygroup) {
+async function updateStudentPlayClear(mytema, mycategory, mygroup) {
 //	try {
 		var noOfDataUpdated = await jsstoreCon.update({
 			in: 'Student',
@@ -1832,9 +2045,11 @@ async function updateStudentPlayClear(mygroup) {
 				mycorrect6answer: '',
 				mycorrect7answer: '',
 				mycorrect8answer: ''
-			},
-			where: {
-				mygroup: mygroup
+			}
+			  , where: { mytema: mytema + ''
+				, mycategory: mycategory + ''
+				, mygroup: mygroup + ''
+//				mygroup: mygroup + ''
 			}
 		});
 //    } catch (ex) {
@@ -1842,7 +2057,7 @@ async function updateStudentPlayClear(mygroup) {
 //    }
 }
 
-function getStudentFromFormPlay(studentId, mygroup, mycode) {
+function getStudentFromFormPlay(mytema, mycategory, studentId, mygroup, mycode) {
 	var chkMycorrect1answer = '';
 	if (document.getElementById('chkMycorrect1answer').checked == true) { chkMycorrect1answer = 'checked'; }
 	var chkMycorrect2answer = '';
@@ -1915,11 +2130,14 @@ async function updateOrder(id, min, max) {
     }
 }
 
-async function updateStudentPlayOrder(mygroup) {
+async function updateStudentPlayOrder(mytema, mycategory, mygroup) {
     try {
 		var students = await jsstoreCon.select({
 			from: 'Student'
-			  , where: { mygroup: mygroup
+			  , where: { mytema: mytema + ''
+				, mycategory: mycategory + ''
+				, mygroup: mygroup + ''
+//			  , where: { mygroup: mygroup + ''
 			  }
 		});
 		students.forEach(function (student) {
@@ -1932,8 +2150,8 @@ async function updateStudentPlayOrder(mygroup) {
     }	
 }
 
-async function updateStudent(studentId, mygroup, mycode) {
-    var student = getStudentFromForm(studentId, mygroup, mycode);
+async function updateStudent(mytema, mycategory, studentId, mygroup, mycode) {
+    var student = getStudentFromForm(mytema, mycategory, studentId, mygroup, mycode);
 	try {
 		var noOfDataUpdated = await jsstoreCon.update({
 			in: 'Student',
@@ -1957,14 +2175,14 @@ async function updateStudent(studentId, mygroup, mycode) {
 			}
 		});
         console.log(`data updated ${noOfDataUpdated}`);
-		setTimeout(() => { updateStudentPlayOrder(mygroup) }, 1000); // Executa após 5 segundos para esperar o processo de update/insert terminar
+		setTimeout(() => { updateStudentPlayOrder(mytema, mycategory, mygroup) }, 1000); // Executa após 5 segundos para esperar o processo de update/insert terminar
 		showGridAndHideForms();
         $('form').attr('data-student-id', null);
 		var mygroup = document.getElementById('mygroup').value;
 		var mycode = '';
 		var mytext = '';
 		var myorder = '';
-		refreshTableData(mycode, myorder, mygroup, mytext);
+		refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext);
         refreshFormData({});
     } catch (ex) {
         console.log(ex.message);
@@ -1980,11 +2198,14 @@ async function deleteStudent(id) {
 			}
 		});
         console.log(`${noOfStudentRemoved} students removed`);
+		var params = new URLSearchParams(window.location.search);
+		var mytema = params.get('tem');
+		var mycategory = params.get('cat');
 		var mycode = document.getElementById('mycode').value;
 		var myorder = document.getElementById('myorder').value;
 		var mygroup = document.getElementById('mygroup').value;
 		var mytext = document.getElementById('mytext').value.trim();
-		refreshTableData(mycode, myorder, mygroup, mytext);
+		refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext);
     } catch (ex) {
         console.log(ex.message);
     }
@@ -2017,21 +2238,23 @@ function getButtonsBar() {
 	return htmlStringButtons;
 }
 
-function getStudentFromForm(studentId, mygroup, mycode) {
+function getStudentFromForm(mytema, mycategory, studentId, mygroup, mycode) {
 	var myorderFormated = '';
 	myorderFormated = '000' + $('#myorder').val();
 	myorderFormated = myorderFormated.substring(myorderFormated.length-3, myorderFormated.length);
 
 	var mycodeFormated = '';
-	mycodeFormated = '000' + $('#mycode').val();
+	mycodeFormated = '000' + mycode;
 	mycodeFormated = mycodeFormated.substring(mycodeFormated.length-3, mycodeFormated.length);
 
 	var mygroup = document.getElementById('mygroupSim').value;
 	
-	setTimeout(() => { updateStudentPlayOrder($('#mygroup').val()) }, 1000); // Executa após 5 segundos para esperar o processo de insert terminar
+	setTimeout(() => { updateStudentPlayOrder(mytema, mycategory, $('#mygroup').val()) }, 1000); // Executa após 5 segundos para esperar o processo de insert terminar
 	var student = {
         id: Number(studentId),
-        mycode: $('#mycode').val(),
+        mytema: mytema, //$('#mytema').val(),
+        mycategory: mycategory, //$('#mycategory').val(),
+        mycode: mycode,
 //		myorder: myorderFormated,
 		mygroup: $('#mygroup').val(),
         mytext: $('#mytext').val(),
@@ -2060,12 +2283,17 @@ function getStudentFromForm(studentId, mygroup, mycode) {
 		myoptionkey6: $('#myoptionkey6').val(),
 		myoptionkey7: $('#myoptionkey7').val(),
 		myoptionkey8: $('#myoptionkey8').val(),
-		mypoints: '0'
+		mypoints: '0',
+		mynaorespondidas: '0',
+		myincorretas: '0',
+		mycorretas: '0'
     };
     return student;
 }
 
-function setStudentFromImport(mygroup, mycode, myorder, mytext, myoption1, myoptionkey1, myoption2, myoptionkey2, myoption3, myoptionkey3, myoption4, myoptionkey4, myoption5, myoptionkey5, myoption6, myoptionkey6, myoption7, myoptionkey7, myoption8, myoptionkey8) {
+function setStudentFromImport(mytema, mycategory, mygroup, mycode, myorder, mytext, myoption1, myoptionkey1, myoption2, myoptionkey2, myoption3, myoptionkey3, myoption4, myoptionkey4, myoption5, myoptionkey5, myoption6, myoptionkey6, myoption7, myoptionkey7, myoption8, myoptionkey8) {
+//	document.getElementById('mytema').value = mytema;
+//	document.getElementById('mycategory').value = mycategory;
 	document.getElementById('mygroup').value = mygroup;
 	document.getElementById('mycode').value = mycode;
 	document.getElementById('myorder').value = myorder;
@@ -2087,7 +2315,7 @@ function setStudentFromImport(mygroup, mycode, myorder, mytext, myoption1, myopt
 	document.getElementById('myoptionkey7').value = myoptionkey7;
 	document.getElementById('myoptionkey8').value = myoptionkey8;
 //	alert(' mygroup='+document.getElementById('mygroup').value + '\n mycode='+document.getElementById('mycode').value + '\n myorder='+myorder + '\n mytext=[' +mytext+']\n' + '\n '+myoption1 + ', '+myoptionkey1 + '\n '+myoption2 + ', '+myoptionkey2 + '\n '+myoption3 + ', '+myoptionkey3 + '\n '+myoption4 + ', '+myoptionkey4 + '\n '+myoption5 + ', '+myoptionkey5 + '\n '+myoption6 + ', '+myoptionkey6 + '\n '+myoption7 + ', '+myoptionkey7 + '\n '+myoption8 + ', '+myoptionkey8);
-    $('#divFormAddUpdate').show();
+//    $('#divFormAddUpdate').show();
 }
 
 async function refreshLinkHelp() {
@@ -2105,7 +2333,41 @@ async function refreshLinkHelp() {
 	document.getElementById('divlinkhelp').innerHTML = linkhelp;
 }
 
-function getLinkHelp(keylink, hreflink, boldlink, textlink) {
+async function salvarLinkHelp(mytema, mycategory, mygroup, mycode, myorder, answerincorrect1, answerincorrect2, answerincorrect3, answerincorrect4, save, keylink, hreflink, boldlink, textlink) {
+	
+	var posini = textlink.indexOf('-->', 0);
+	if (posini > 0) {
+		textlink = textlink.substring(posini+4, textlink.length).trim();
+	} else {
+		textlink = textlink.substring(posini, textlink.length).trim();
+	}
+	var valor = '';
+	var withoutkeylink = textlink;
+	valor += '<p>';
+	valor += '\n' + '' + withoutkeylink;
+//	valor += '\n<br/>(Selecione 1)';
+	
+	valor += '\n\n' + '<ok>' + '\n' + keylink;
+	valor += '\n<key>' + keylink + '</key>';
+	
+	valor += '\n\n' + answerincorrect1;
+	valor += '\n<key>' + answerincorrect1 + '</key>';
+	
+	valor += '\n\n' + answerincorrect2;
+	valor += '\n<key>' + answerincorrect2 + '</key>';
+	
+	valor += '\n\n' + answerincorrect3;
+	valor += '\n<key>' + answerincorrect3 + '</key>';
+
+	salvarRegistro(mytema, mycategory, mygroup, mycode, myorder, valor);
+//	alert(': \n mytema='+mytema + '\n mycategory='+mycategory + '\n mygroup='+mygroup + '\n mycode='+mycode + '\n myorder='+myorder + '\n\n [' + valor + ']');
+}
+
+function getLinkHelp(mytema, mycategory, mygroup, mycode, myorder, answerincorrect1, answerincorrect2, answerincorrect3, answerincorrect4, save, keylink, hreflink, boldlink, textlink) {
+	if (save == true) {
+		var valor = salvarLinkHelp(mytema, mycategory, mygroup, mycode, myorder, answerincorrect1, answerincorrect2, answerincorrect3, answerincorrect4, save, keylink, hreflink, boldlink, textlink);
+	}
+	
 	var withbold = textlink.replaceAll(boldlink, '<b>' + boldlink + '</b>');
 	var linkhelp = '';
 	linkhelp = linkhelp + '<p/><a href="#top" class="btn btn-default"><i class="fa fa-arrow-up"></i></a>';
@@ -2120,181 +2382,455 @@ function getLinkHelp(keylink, hreflink, boldlink, textlink) {
 	}
 }
 
-function initLinkHelp() {
+async function initLinkHelp() {
 	var linkhelp = ' <b>MINHA AJUDA</b> <br/><br/>';
 
-	linkhelp = linkhelp + getLinkHelp('Git', 'https://aws.amazon.com/pt/getting-started/hands-on/migrate-git-repository/', '', 'Repositório privado do Github.');
-	linkhelp = linkhelp + getLinkHelp('Não Se Aplica', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', 'Não Se Aplica', 'Não Se Aplica na AWS');
-	linkhelp = linkhelp + getLinkHelp('EC2', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', 'computação escalável na Nuvem da Amazon Web Services (AWS)', 'O Amazon EC2 (Elastic Compute Cloud) oferece uma capacidade de computação escalável na Nuvem da Amazon Web Services (AWS). O uso do Amazon EC2 elimina a necessidade de investir em hardware inicialmente, portanto, você pode desenvolver e implantar aplicativos com mais rapidez.');
-	linkhelp = linkhelp + getLinkHelp('Tipos de instância EC2', 'https://aws.amazon.com/pt/ec2/instance-types/', 'tipos de instâncias', 'O Amazon EC2 oferece uma ampla seleção de tipos de instâncias otimizadas para atender a diferentes casos de uso. <br/>Otimizadas para computação.<br/>Otimizadas para memória.<br/>Computação acelerada.<br/>Otimizadas para armazenamento.');
-	linkhelp = linkhelp + getLinkHelp('S3', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', 'armazenamento de objetos que armazena dados como objetos em buckets (exemplo de arquivos estáticos: .html, .js, .cs', 'O Amazon S3 (Simple Storage Service) é um serviço de armazenamento de objetos que armazena dados como objetos em buckets (exemplo de arquivos estáticos: .html, .js, .cs.). A capacidade é virtualmente ilimitada. Um objeto é um arquivo e quaisquer metadados que descrevam o arquivo. Um bucket é um contêiner de objetos. Você pode controlar o acesso a grupos de objetos que começam com um prefixo ou termine com uma determinada extensão.');
-	linkhelp = linkhelp + getLinkHelp('Instance Purchasing Options', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/instance-purchasing-options.html', '', '<b>- On-demand</b> (Instâncias sob demanda), paga somente pelo uso.<br/><b>- Savings Plans</b> é um modelo de preços flexíveis que oferece preços mais baixos em comparação com os preços sob demanda, em troca de um compromisso de uso específico por um período de 1 ou 3 anos)<br/><b>- Reserved Instances</b> (Instâncias reservadas), paga por um contrato pré-estabelecido.<br/><b>- Spot Instances</b> (Instâncias spot), paga pelo uso dos recursos não utilizados por outros modelos.<br/><b>- Dedicated Hosts</b> (Hosts dedicados).<br/><b>- Dedicated Instances</b> (Instâncias dedicadas).<br/><b>- Capacity Reservations</b> (Reservas de Capacidade).');
-	linkhelp = linkhelp + getLinkHelp('Princing Calculator', 'https://calculator.aws/#/', 'estimar o custo antes do uso, antes da implementação', 'AWS Princing Calculator para estimar o custo antes do uso, antes da implementação para sua solução de arquitetura. Configure uma estimativa de custo exclusivo que atenda às suas necessidades de negócios ou pessoais com produtos e serviços da AWS.');
-	linkhelp = linkhelp + getLinkHelp('Organizations', 'https://aws.amazon.com/pt/organizations/?nc2=type_a', 'alocar recursos, agrupar contas', 'AWS Organizations para criar novas contas da AWS e alocar recursos, agrupar contas para organizar seus fluxos de trabalho, aplicar políticas a contas ou grupos para governança e simplificar o faturamento usando um único método de pagamento para todas as suas contas.');
-	linkhelp = linkhelp + getLinkHelp('Billing', 'https://aws.amazon.com/pt/aws-cost-management/aws-billing/', 'visualizar e pagar faturas', 'AWS Billing é para entender seus gastos com a AWS, visualizar e pagar faturas, gerenciar preferências de faturamento e configurações de impostos e acessar serviços adicionais de Gerenciamento financeiro na nuvem. Avalie rapidamente se os seus gastos mensais estão alinhados a períodos anteriores, previsões ou orçamentos e investigue e tome medidas corretivas em tempo hábil.');
-	linkhelp = linkhelp + getLinkHelp('Cost Explorer', 'https://aws.amazon.com/pt/aws-cost-management/aws-cost-explorer/', 'relacionado ao gasto que já passou', 'AWS Cost Explorer permite visualizar, entender e gerenciar os custos e o uso da AWS ao longo do tempo relacionado ao gasto que já passou.');
-	linkhelp = linkhelp + getLinkHelp('Well-Architected Framework', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', 'Os pilares são', 'Os pilares são: <br/>Excelência operacional, <br/>Segurança, <br/>Confiabilidade, <br/>Eficiência de desempenho, <br/>Otimização de custos, <br/>Sustentabilidade');
-	linkhelp = linkhelp + getLinkHelp('Storage Classes', 'https://aws.amazon.com/pt/s3/storage-classes/', 'armazenamento de objetos', 'Opção padrão (default) de armazenamento de objetos com altos níveis de resiliência, disponibilidade e performance para dados acessados com frequência. Tem baixa latência e alto throughput.<br/>1 Standard (padrão),<br/>2 Intelligent Tiering,<br/>3 Standard-IA,<br/>4 One Zone-IA,<br/>5 Glacier Instant Retrieval,<br/>6 Glacier Flexible,<br/>7 Glacier Deep Archive,<br/>8 Outposts.');
-	linkhelp = linkhelp + getLinkHelp('Frequent Access', 'https://aws.amazon.com/pt/s3/storage-classes/', 'S3 Intelligent-Tiering', 'Frequent Access (Acesso Frequente) está contida na S3 Intelligent-Tiering (camada inteligente) oferece latência de milissegundos e alta performance de taxa de transferência para dados acessados com muita frequência, com pouca frequência e raramente acessados nos níveis Frequent Access, Infrequent Access e o Archive Instant Access.');
-	linkhelp = linkhelp + getLinkHelp('Infrequent Access', 'https://aws.amazon.com/pt/s3/storage-classes/', 'dados acessados com menos frequência, mas que exigem acesso rápido', 'Infrequent Access (Acesso Infrequente) do S3 Standard-IA é indicado para dados acessados com menos frequência, mas que exigem acesso rápido quando necessários. Oferece os altos níveis de resiliência e throughput e a baixa latência. Combina baixo custo e alta performance.');
-	linkhelp = linkhelp + getLinkHelp('Glacier', 'https://docs.aws.amazon.com/pt_br/amazonglacier/latest/dev/introduction.html', 'custo extremamente baixo', 'Armazenamento de objetos da classe S3, opção Glacier é uma classe de armazenamento do Amazon S3 segura, durável e de custo extremamente baixo para arquivamento de dados e backup de longo prazo.');
-	linkhelp = linkhelp + getLinkHelp('Intelligent Tiering', 'https://aws.amazon.com/pt/s3/storage-classes/', '', 'Intelligent Tiering (Camada Inteligente) oferece latência de milissegundos e alta performance de taxa de transferência para dados acessados com muita frequência, com pouca frequência e raramente acessados nos níveis Frequent Access, Infrequent Access e o Archive Instant Access.');
-	linkhelp = linkhelp + getLinkHelp('Standard', 'https://aws.amazon.com/pt/s3/storage-classes/', 'é o mais caro', 'Armazenamento de objetos da classe S3, opção Standard (Padrão) é o mais caro e oferece um armazenamento de objetos com altos níveis de resiliência, disponibilidade e performance para dados acessados com frequência. Como fornece baixa latência e alto throughput.');
-	linkhelp = linkhelp + getLinkHelp('SNS', 'https://aws.amazon.com/pt/sns/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc', 'baseados em push', 'Amazon SNS (Simple Notification Service) é um serviço de mensagens totalmente gerenciado para a comunicação de aplicação para aplicação (A2A) e de aplicação para pessoa (A2P). A funcionalidade pub/sub de A2A fornece tópicos para sistemas de mensagens de alta taxa de transferência baseados em push.');
-	linkhelp = linkhelp + getLinkHelp('SES', 'https://docs.aws.amazon.com/pt_br/ses/latest/dg/Welcome.html', 'plataforma de e-mail', 'Amazon SES (Simple Email Service) é uma plataforma de e-mail que oferece uma forma fácil e econômica para você enviar e receber e-mail usando seus próprios endereços de e-mail e domínios.');
-	linkhelp = linkhelp + getLinkHelp('SQS', 'https://aws.amazon.com/pt/sqs/', 'filas de mensagens', 'Amazon SQS (Simple Queue Service) oferece uma fila hospedada segura, durável e disponível que permite integrar e desacoplar sistemas de software e componentes distribuídos. O Amazon SQS oferece construções comuns, como filas de mensagens mortas e tags de alocação de custos.');
-	linkhelp = linkhelp + getLinkHelp('Modelo de uso', 'https://aws.amazon.com/pt/free/free-tier-faqs/', 'composto por três tipos', 'O nível gratuito da AWS oferece aos clientes a capacidade de explorar e testar gratuitamente serviços da AWS até os limites especificados para cada serviço. O nível gratuito é composto por três tipos diferentes de ofertas: um nível gratuito de 12 meses, uma oferta Always Free e testes de curto prazo.');
-	linkhelp = linkhelp + getLinkHelp('Open Source', 'https://www.redhat.com/pt-br/topics/open-source/what-is-open-source', '', 'Open Source é um termo que se refere ao software open source (OSS). Ele é um código projetado para ser acessado abertamente pelo público: todas as pessoas podem vê-lo, modificá-lo e distribuí-lo conforme suas necessidades.');
-	linkhelp = linkhelp + getLinkHelp('RDS', 'https://aws.amazon.com/pt/rds/', 'facilita a configuração, operação e escalabilidade de bancos de dados na nuvem', 'O Amazon Relational Database Service (Amazon RDS) é uma coleção de serviços gerenciados que facilita a configuração, operação e escalabilidade de bancos de dados na nuvem. Escolha entre sete opções de mecanismos bastante utilizados: Amazon Aurora compatível com MySQL, Amazon Aurora compatível com PostgreSQL, MySQL, MariaDB, PostgreSQL, Oracle e SQL Server.');
-	linkhelp = linkhelp + getLinkHelp('DynamoDB', 'https://aws.amazon.com/pt/dynamodb/', 'chave-valor NoSQL', 'AWS DynamoDB é um banco de dados de chave-valor NoSQL, sem servidor e totalmente gerenciado, projetado para executar aplicações de alta performance em qualquer escala. Usa API do serviço e o Json');
-	linkhelp = linkhelp + getLinkHelp('DynamoDB APIS e JSON', 'https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.LowLevelAPI.html', 'API do DynamoDB de baixo nível usa JSON', 'A API do DynamoDB de baixo nível usa JSON (JavaScript Object Notation) como um formato de protocolo de fio.');
-	linkhelp = linkhelp + getLinkHelp('MariaDB', 'https://aws.amazon.com/pt/rds/mariadb/', '', 'MariaDB é um banco de dados relacional de código aberto conhecido no mercado, que foi criado pelos desenvolvedores originais do MySQL. O Amazon RDS facilita a configuração, a operação e a escalabilidade de implantações do servidor MariaDB na nuvem.');
-	linkhelp = linkhelp + getLinkHelp('MySql', 'https://aws.amazon.com/pt/rds/mysql/', '', 'MySql é um banco de dados relacional de código aberto NÃO gerenciados pela AWS e o Amazon RDS facilita a configuração, a operação e a escalabilidade de implantações de MySQL na nuvem. Com o Amazon RDS, você pode implantar em minutos servidores MySQL escaláveis com capacidade de hardware econômica e redimensionável.');
-	linkhelp = linkhelp + getLinkHelp('SQL Server', 'https://aws.amazon.com/pt/rds/sqlserver/', '', 'SQL Server é um sistema de gerenciamento de bancos de dados relacionais desenvolvido pela Microsoft. O Amazon RDS for SQL Server facilita a configuração, a operação e a escalabilidade de implantações do SQL Server na nuvem.');
-	linkhelp = linkhelp + getLinkHelp('STS', 'https://aws.amazon.com/pt/about-aws/whats-new/2019/04/aws-security-token-service-sts-now-supports-enabling-the-global-sts-endpoint-to-issue-session-tokens-compatible-with-all-aws-regions/', 'emissão de tokens de sessão', 'AWS STS (Security Token Service) oferece suporte à habilitação do endpoint global do STS para emissão de tokens de sessão compatíveis com todas as regiões da AWS.');
-	linkhelp = linkhelp + getLinkHelp('SSH', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/ec2-key-pairs.html', '', 'SSH (Secure Socket Shell) é um par de chaves, que consiste em uma chave pública e uma chave privada, trata-se de um conjunto de credenciais de segurança usadas para provar sua identidade ao se conectar a uma instância do Amazon EC2.');
-	linkhelp = linkhelp + getLinkHelp('Storage Gateway', 'https://aws.amazon.com/pt/storagegateway/', 'acesso on-premises para armazenamento virtual na nuvem', 'AWS Storage Gateway é um conjunto de serviços de armazenamento na nuvem híbrida que oferece acesso on-premises para armazenamento virtual na nuvem praticamente ilimitado.');
-	linkhelp = linkhelp + getLinkHelp('DMS', 'https://aws.amazon.com/pt/dms/', 'migrar bancos de dados', 'AWS DMS (Database Migration Service), ajuda você a migrar bancos de dados para a AWS de modo rápido e seguro. O banco de dados de origem permanece totalmente operacional durante a migração, minimizando o tempo de inatividade de aplicações que dependem do banco de dados.');
-	linkhelp = linkhelp + getLinkHelp('KMS', 'https://docs.aws.amazon.com/pt_br/kms/latest/developerguide/overview.html', 'chaves criptográficas', 'AWS KMS (Key Management Service) é um serviço gerenciado que facilita a criação e o controle de chaves criptográficas usadas para proteger os dados. Para proteger e validar suas AWS KMS keys, o AWS KMS usa módulos de segurança de hardware (HSMs) de acordo com o Programa de validação de módulos criptográficos FIPS 140-2.');
-	linkhelp = linkhelp + getLinkHelp('EFS', 'https://aws.amazon.com/pt/efs/', 'sistema de arquivos simples, não objetos', 'AWS EFS (Elastic File System) é um sistema de arquivos simples, não objetos (como: html, js, css), e sem servidor para definição única que facilita a configuração, a escalabilidade e a otimização de custos do armazenamento de arquivos na AWS.');
-	linkhelp = linkhelp + getLinkHelp('AWS Audit Manager', 'https://aws.amazon.com/pt/audit-manager/', '', 'O AWS Audit Manager ajuda a auditar continuamente seu uso da AWS para simplificar sua forma de avaliar os riscos e a compatibilidade com os regulamentos e padrões do setor. O Audit Manager automatiza a coleta de evidências para reduzir o esforço manual coletivo que costuma acontecer durante as auditorias e permite escalar sua capacidade de auditoria na nuvem à medida que sua empresa cresce.');
-	linkhelp = linkhelp + getLinkHelp('Config', 'https://aws.amazon.com/pt/config/', 'acessar, auditar e avaliar as configurações', 'AWS Config é um serviço que permite acessar, auditar e avaliar as configurações dos recursos da AWS. Você pode analisar alterações feitas nas configurações e relacionamentos entre os recursos da AWS, aprofundar-se de forma detalhada no histórico de configuração de recursos e determinar a conformidade geral em relação às configurações especificadas em suas diretrizes internas.');
-	linkhelp = linkhelp + getLinkHelp('Athena', 'https://aws.amazon.com/pt/athena/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc', 'consultas interativas usando SQL padrão', 'AWS Athena é um serviço de consultas interativas usando SQL padrão que facilita a análise de dados no Amazon S3. O Athena não precisa de servidor. Portanto, não há infraestrutura para gerenciar e você paga apenas pelas consultas executadas.');
-	linkhelp = linkhelp + getLinkHelp('RedShift', 'https://docs.aws.amazon.com/pt_br/redshift/latest/mgmt/welcome.html', 'Data Warehouse', 'AWS RedShift é um serviço de Data Warehouse em escala de petabytes totalmente gerenciado na nuvem. Permite usar os dados para adquirir novos insights para seus negócios e clientes.');
-	linkhelp = linkhelp + getLinkHelp('Aurora', 'https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html', 'banco de dados relacional', 'O Amazon Aurora é um mecanismo de banco de dados relacional gerenciado compatível com o MySQL e o PostgreSQL. O Aurora pode oferecer até cinco vezes a taxa de processamento do MySQL e até três vezes a taxa de processamento do PostgreSQL. Oferecer disponibilidade superior a 99,99% replicando seis cópias dos seus dados em três zonas diferentes.');
-	linkhelp = linkhelp + getLinkHelp('EMR', 'https://aws.amazon.com/pt/emr/', 'Big Data', 'AWS EMR (Amazon Elastic MapReduce) é uma plataforma de Big Data em nuvem usada para executar trabalhos de processamento de dados distribuídos em grande escala, consultas SQL interativas e aplicações de machine learning (ML).');
-	linkhelp = linkhelp + getLinkHelp('CloudTrail', 'https://docs.aws.amazon.com/pt_br/awscloudtrail/latest/userguide/cloudtrail-user-guide.html', 'monitora e registra a atividade da conta por toda a infraestrutura', 'AWS CloudTrail rastreia atividades dos usuários e uso de APIs. O AWS CloudTrail monitora e registra a atividade da conta por toda a infraestrutura da AWS, oferecendo controle sobre o armazenamento, análise e ações de remediação.');
-	linkhelp = linkhelp + getLinkHelp('CloudSearch', 'https://aws.amazon.com/pt/cloudsearch/', 'pesquisa para o site ou aplicativo', 'AWS CloudSearch é um serviço gerenciado na nuvem AWS com o qual é possível configurar, gerenciar e dimensionar uma solução de pesquisa para o site ou aplicativo de forma simples e econômica.');
-	linkhelp = linkhelp + getLinkHelp('ElasticSearch', 'https://aws.amazon.com/pt/opensearch-service/the-elk-stack/what-is-elasticsearch/', 'análises de log', 'AWS ElasticSearch é um mecanismo distribuído de pesquisa e análise usado para casos de uso de análises de log. Foi introduzido o projeto OpenSearch que é uma bifurcação do Elasticsearch e Kibana de código aberto.');
-	linkhelp = linkhelp + getLinkHelp('Lambda', 'https://docs.aws.amazon.com/pt_br/lambda/latest/dg/welcome.html', 'permite que você execute o código sem provisionar ou gerenciar servidores', 'AWS Lambda é um serviço de computação que permite que você execute o código sem provisionar ou gerenciar servidores. O Lambda executa seu código em uma infraestrutura de computação de alta disponibilidade e executa toda a administração dos recursos computacionais, inclusive a manutenção do servidor e do sistema operacional, o provisionamento e a escalabilidade automática da capacidade e o monitoramento e o registro em log do código.');
-	linkhelp = linkhelp + getLinkHelp('Shield', 'https://aws.amazon.com/pt/shield/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc', 'proteção contra DDoS', 'AWS Shield é um serviço gerenciado de proteção contra DDoS (Negação de serviço distribuída) que protege os aplicativos executados na AWS. O AWS Shield oferece de detecção e mitigações em linha automáticas e sempre ativas que minimizam o tempo de inatividade e a latência dos aplicativos, fornecendo proteção contra DDoS sem necessidade de envolver o AWS Support. O AWS Shield tem dois níveis, Standard e Advanced.');
-	linkhelp = linkhelp + getLinkHelp('WAF', 'https://aws.amazon.com/pt/waf/', 'firewall de aplicações Web', 'AWS WAF é um firewall de aplicações Web que ajuda a proteger suas aplicações Web ou APIs contra bots e exploits comuns na Web que podem afetar a disponibilidade, comprometer a segurança ou consumir recursos em excesso. O AWS WAF oferece controle sobre como o tráfego atinge suas aplicações, permitindo que você crie regras de segurança que controlam o tráfego de bots e bloqueiam padrões de ataque comuns, como injeção de SQL ou cross-site scripting.');
-	linkhelp = linkhelp + getLinkHelp('Security Group', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/ec2-security-groups.html', 'controlar o tráfego de entrada e de saída', 'Security Group é um grupo de segurança atua como firewall virtual para as instâncias do EC2 visando controlar o tráfego de entrada e de saída.');
-	linkhelp = linkhelp + getLinkHelp('GuardDuty', 'https://aws.amazon.com/pt/guardduty/', 'detecção de ameaças que monitora continuamente', 'GuardDuty é um serviço de detecção de ameaças que monitora continuamente suas contas e workloads da AWS para detectar atividade maliciosa e entrega resultados de segurança detalhados para visibilidade e correção.');
-	linkhelp = linkhelp + getLinkHelp('Graph', 'https://www.padowan.dk/doc/portuguese/Introduction.html', '', 'Amazon Graph é um conceito para traçar gráficos de funções matemáticas e outras curvas de natureza similar, em um sistema de coordenadas.');
-	linkhelp = linkhelp + getLinkHelp('Neptune', 'https://aws.amazon.com/pt/neptune/', 'serviço de banco de dados de grafos', 'Amazon Neptune é um serviço de banco de dados de grafos rápido, confiável e totalmente gerenciado que facilita a criação e a execução de aplicativos na AWS. O núcleo do Neptune é um mecanismo de banco de dados gráfico com projeto específico e alta performance.');
-	linkhelp = linkhelp + getLinkHelp('Neo4j', 'https://neo4j.com/partners/amazon/', '', 'Amazon Neo4j trabalha com a AWS (partner). Capacita desenvolvedores e cientistas de dados a criar rapidamente aplicativos escaláveis ​​e orientados por IA ou analisar big data com algoritmos. Como um banco de dados gráfico nativo criado para armazenar dados e conectar os relacionamentos, o Neo4j permite insights rápidos e profundamente contextuais.');
-	linkhelp = linkhelp + getLinkHelp('JanusGraph', 'https://janusgraph.org/', '', 'Amazon JanusGraph trabalha com a AWS (partner). É um banco de dados (open source) gráfico escalável otimizado para armazenar e consultar gráficos contendo centenas de bilhões de vértices e arestas distribuídos em um cluster de várias máquinas.');
-	linkhelp = linkhelp + getLinkHelp('Docker', 'https://aws.amazon.com/pt/docker/', '', 'Docker é uma plataforma de software que permite a criação, o Nível e a implantação de aplicações rapidamente. O Docker permite executar o código de maneira padronizada. O Docker é um sistema operacional para contêineres. Da mesma maneira que uma máquina virtual virtualiza.');
-	linkhelp = linkhelp + getLinkHelp('AMI', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html', 'imagem de uma máquina virtual', 'AWS AMI (Imagem de Máquina da Amazon) é uma Imagem de Máquina da Amazon (AMI) é uma imagem de uma máquina virtual suportada e mantida pela AWS que fornece as informações necessárias para iniciar uma instância.');
-	linkhelp = linkhelp + getLinkHelp('MFA', 'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_credentials_mfa.html#id_credentials_mfa-what-is-mfa', 'agrega mais segurança', 'AWS MFA (Autenticação Multi Fator) agrega mais segurança porque requer dos usuários fornecer autenticação exclusiva de um mecanismo de MFA com suporte da AWS, além das suas credenciais de login regular ao acessarem sites ou serviços da AWS.');
-	linkhelp = linkhelp + getLinkHelp('Marketplace', 'https://aws.amazon.com/pt/mp/marketplace-service/overview/', 'catálogo digital de software pronto de terceiros', 'AWS Marketplace é um catálogo digital de software pronto de terceiros que facilita encontrar, testar, comprar e implantar e podem ser executados no AWS.');
-	linkhelp = linkhelp + getLinkHelp('OpsWorks', 'https://aws.amazon.com/pt/opsworks/', 'gerenciamento de configurações de servidores via código', 'AWS OpsWorks é um serviço de gerenciamento de configurações de servidores via código que oferece instâncias gerenciadas do Chef e do Puppet. O Chef e o Puppet são plataformas de automação que permitem usar código para automatizar a configuração de servidores. Ele permite usar o Chef e o Puppet para automatizar a forma como os servidores são configurados, implantados e gerenciados em instâncias do Amazon EC2 ou ambientes de computação no local.');
-	linkhelp = linkhelp + getLinkHelp('Region', 'https://aws.amazon.com/pt/about-aws/global-infrastructure/regions_az/', '', 'A AWS tem o conceito de uma região, que é um local físico em todo o mundo onde agrupamos datacenters. Chamamos cada grupo de datacenters lógicos de zona de disponibilidade. Cada região da AWS consiste em várias AZs isoladas e separadas fisicamente em uma área geográfica.');
-	linkhelp = linkhelp + getLinkHelp('Multi Regions', 'https://aws.amazon.com/pt/solutions/implementations/multi-region-application-architecture/', 'estratégia de DR', 'Multi Regions (Distribuir em regiões diferentes), é para estratégia de DR (Recuperação de Desastre). Os recursos de computação em nuvem da Amazon são hospedados em vários locais no mundo todo. Esses locais são compostos por regiões da AWS, zonas de disponibilidade e zonas locais. Cada região da AWS é uma área geográfica separada.');
-	linkhelp = linkhelp + getLinkHelp('Multi-AZ', 'https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html', 'aumentar a disponibilidade', 'Multi-AZ é para aumentar a disponibilidade. Em uma implantação Multi-AZ, o Amazon RDS cria automaticamente uma instância de banco de dados (BD) primária e replica de forma síncrona os dados para uma instância em uma AZ diferente. Quando detecta uma falha, o Amazon RDS executa automaticamente o failover para uma instância secundária sem nenhuma intervenção manual.');
-	linkhelp = linkhelp + getLinkHelp('Read Replicas', 'https://aws.amazon.com/pt/rds/features/read-replicas/', 'escalabilidade', 'Read Replicas (Cópias de Leitura do Amazon RDS) facilitam a escalabilidade de maneira elástica além dos limites de capacidade de uma única instância de DB para cargas de trabalho de banco de dados com uso intenso de leitura. Complementam as implantações Multi-AZ. Embora ambos os recursos mantenham uma segunda cópia dos dados, há diferenças entre os dois.');
-	linkhelp = linkhelp + getLinkHelp('ELB', 'https://aws.amazon.com/pt/elasticloadbalancing/', 'distribui automaticamente o tráfego de aplicações de entrada', 'ELB (Elastic Load Balancer) distribui automaticamente o tráfego de aplicações de entrada entre vários destinos e dispositivos virtuais em uma ou mais Zonas de disponibilidade (AZs).');
-	linkhelp = linkhelp + getLinkHelp('Clusters', 'https://docs.aws.amazon.com/pt_br/AmazonECS/latest/userguide/clusters.html', '', 'Um cluster do Amazon ECS é um agrupamento lógico de tarefas ou serviços.');
-	linkhelp = linkhelp + getLinkHelp('EKS', 'https://aws.amazon.com/pt/eks/', 'executar e escalar aplicações do Kubernetes', 'Amazon EKS (Elastic Kubernetes Service) é um serviço de contêiner gerenciado para executar e escalar aplicações do Kubernetes na nuvem ou on-premises. Adiciona orquestração ao Amazon ECS.');
-	linkhelp = linkhelp + getLinkHelp('ECS', 'https://docs.aws.amazon.com/pt_br/AmazonECS/latest/developerguide/Welcome.html', 'serviço de gerenciamento de contêineres', 'Amazon ECS (Elastic Container Service) é um serviço de gerenciamento de contêineres altamente rápido e escalável. Você pode usá-lo para executar, interromper e gerenciar contêineres em um cluster.');
-	linkhelp = linkhelp + getLinkHelp('Refatoração', 'https://aws.amazon.com/pt/getting-started/hands-on/break-monolith-app-microservices-ecs-docker-ec2/module-one/', '', 'A refatoração é uma forma disciplinada de reestruturar o código quando pequenas mudanças são feitas nele para melhorar o design. Ao usar o Refactor Spaces, os clientes se concentram na refatoração das suas aplicações, e não na criação e no gerenciamento da infraestrutura subjacente que torna a refatoração possível.');
-	linkhelp = linkhelp + getLinkHelp('ECR', 'https://aws.amazon.com/pt/ecr/', 'registro de contêiner', 'Amazon ECR (Elastic Container Registry) é um registro de contêiner totalmente gerenciado que oferece hospedagem de alta performance para que você possa implantar imagens e artefatos de aplicações de forma confiável em qualquer lugar.');
-	linkhelp = linkhelp + getLinkHelp('Fargate', 'https://docs.aws.amazon.com/pt_br/AmazonECS/latest/developerguide/AWS_Fargate.html', 'executar contêineres sem a necessidade de gerenciar servidores', 'Fargate é uma tecnologia que pode ser usada com o Amazon ECS para executar contêineres sem a necessidade de gerenciar servidores ou clusters de instâncias do Amazon EC2. Com o AWS Fargate, não é mais necessário provisionar, configurar nem dimensionar os clusters de máquinas virtuais para executar contêineres. Fargate elimina a necessidade de escolher tipos de servidor, decidir quando dimensionar clusters ou otimizar o agrupamento de clusters.');
-	linkhelp = linkhelp + getLinkHelp('EventSync', 'https://docs.aws.amazon.com/pt_br/cognito/latest/developerguide/getting-started-with-cognito-sync.html', 'sincronização dos dados de usuários', 'O Amazon Cognito Sync é um serviço da AWS e uma biblioteca de clientes que permite a sincronização dos dados de usuários relacionados a aplicações entre dispositivos.');
-	linkhelp = linkhelp + getLinkHelp('EventBridge', 'https://aws.amazon.com/pt/eventbridge/?nc2=h_ql_prod_ap_eb', 'barramento de eventos', 'O Amazon EventBridge é um barramento de eventos sem servidor que torna mais fácil a criação de aplicações orientadas por eventos em escala usando eventos gerados com base em suas aplicações, aplicações integradas de software como serviço (SaaS) e serviços da AWS.');
-	linkhelp = linkhelp + getLinkHelp('Auto Scaling', 'https://aws.amazon.com/pt/ec2/autoscaling/', 'adicionar ou remover instâncias do EC2 automaticamente', 'O Amazon EC2 Auto Scaling ajuda a manter a disponibilidade das aplicações e permite adicionar ou remover instâncias do EC2 automaticamente de acordo com as condições que você definir (escalar baseado em demanda).');
-	linkhelp = linkhelp + getLinkHelp('Route53', 'https://docs.aws.amazon.com/pt_br/Route53/latest/DeveloperGuide/Welcome.html', 'registro de domínios', 'O Amazon Route 53 é um web service de Domain Name System (DNS) altamente disponível e dimensionável. Você pode usar o Route 53 para executar três funções principais em qualquer combinação: registro de domínios, roteamento de DNS e verificação de integridade.');
-	linkhelp = linkhelp + getLinkHelp('Dedicted Hosts', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html', 'servidor físico com capacidade de instância do EC2', 'AWS Dedicted Hosts é um Host Dedicado do Amazon EC2 é um servidor físico com capacidade de instância do EC2 totalmente dedicado para seu uso. Os hosts dedicados permitem que você use suas licenças de software existentes por soquete, por núcleo ou por VM, incluindo o Windows Server, o Microsoft SQL Server, o SUSE e o Linux Enterprise Server.');
-	linkhelp = linkhelp + getLinkHelp('Budgets', 'https://docs.aws.amazon.com/pt_br/cost-management/latest/userguide/budgets-managing-costs.html', 'rastreamento de uso e custo da AWS', 'AWS Budgets é para rastreamento de uso e custo da AWS. Monitorar métricas agregadas de utilização e cobertura para suas Instâncias Reservadas (RIs) ou Savings Plans.');
-	linkhelp = linkhelp + getLinkHelp('Budgets Destinatários por Email', 'https://docs.aws.amazon.com/pt_br/cost-management/latest/userguide/budgets-controls.html', 'pode ter até 10 endereços de e-mail', 'Em Notification preferences - Opional (Preferências de notificação - Opcional), em Email recipients (Destinatários de e-mail), insira os endereços de e-mail que você que o alerta notifique. Separe múltiplos endereços de e-mail com vírgulas. Uma notificação pode ter até 10 endereços de e-mail.');
-	linkhelp = linkhelp + getLinkHelp('Inspector', 'https://aws.amazon.com/pt/inspector/', 'gerenciamento de vulnerabilidade que verifica continuamente', 'O Amazon Inspector é um serviço automatizado de gerenciamento de vulnerabilidade que verifica continuamente as workloads da AWS em busca de vulnerabilidades de software e exposição não intencional à rede.');
-	linkhelp = linkhelp + getLinkHelp('Support', 'https://docs.aws.amazon.com/pt_br/awssupport/latest/user/getting-started.html', 'cinco planos de suporte', 'O AWS Support oferece cinco planos de suporte:Basic, Desenvolvedor, Business, Enterprise On-Ramp, Enterprise.<br/>Basic, Desenvolvedor, Business (tempo de resposta menor que 1 hora),<br/>Enterprise On-Ramp (tempo de resposta menor que 30 minutos),<br/>Enterprise (tempo de resposta menor que 15 minutos),<br/>Todos os planos de suporte oferecem acesso <b>24 horas por dia, 7 dias por semana ao atendimento ao cliente, à documentação da AWS, aos whitepapers e aos fóruns de suporte</b>.');
-	linkhelp = linkhelp + getLinkHelp('Trusted Advisor', 'https://aws.amazon.com/pt/premiumsupport/technology/trusted-advisor/', 'avalia a sua conta por meio de verificações', 'AWS Trusted Advisor avalia a sua conta por meio de verificações. Essas verificações identificam formas de otimizar sua infraestrutura da AWS, aumentar a segurança e o desempenho, reduzir os custos gerais e monitorar as cotas do serviço.<br/>Benefícios:<br/>Otimização de custos<br/>Performance<br/>Segurança<br/>Tolerância a falhas<br/>Cotas de serviço.<br/>Os clientes do AWS Basic Support e AWS Developer Support podem acessar as principais verificações de segurança. AWS Business Support e do AWS Enterprise Support podem acessar todas as verificações.');
-	linkhelp = linkhelp + getLinkHelp('IPV4', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/using-instance-addressing.html', 'São limitados a 5 por região', 'Um endereço IPv4 privado é um endereço IP que não é acessível pela Internet. É possível usar endereços IPv4 privados para comunicação entre instâncias na mesma VPC. São limitados a 5 por região.');
-	linkhelp = linkhelp + getLinkHelp('IP Elástico', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html', 'alocado para a conta da AWS e será seu até que você o libere', 'Um Endereço IP elástico é um endereço IPv4 estático projetado para computação em nuvem dinâmica. Um endereço IP elástico é alocado para a conta da AWS e será seu até que você o libere.');
-	linkhelp = linkhelp + getLinkHelp('IPV6', 'https://docs.aws.amazon.com/pt_br/vpc/latest/userguide/vpc-migrate-ipv6.html', 'suporte ao IPv6', 'Se você possuir uma VPC existente que ofereça suporte somente para IPv4 e recursos na sub-rede que sejam configurados para usar somente o IPv4, você pode habilitar o suporte ao IPv6 para a VPC e recursos.');
-	linkhelp = linkhelp + getLinkHelp('Elastic Cache', 'https://aws.amazon.com/pt/elasticache/', 'cache na memória', 'AWS Elastic Cache é um serviço de cache na memória totalmente gerenciado. Você pode usar para armazenamento em cache, o que acelera a performance de aplicações e bancos de dados, ou como um armazenamento de dados principal para casos de uso que não exigem durabilidade, como armazenamentos de sessões, placares de jogos, streaming e análises. Compatível com o Redis e o Memcached.');
-	linkhelp = linkhelp + getLinkHelp('Redis', 'https://aws.amazon.com/pt/redis/', 'datastore de chave-valor', 'O Redis (Remote Dictionary Server) é um datastore de chave-valor rápido e de código aberto na memória e é usado como banco de dados, cache, agente de mensagens e fila. A AWS oferece dois serviços totalmente gerenciados para executar o Redis: Amazon MemoryDB for Redis e o  O Amazon ElastiCache for Redis.');
-	linkhelp = linkhelp + getLinkHelp('Pricing', 'https://docs.aws.amazon.com/pt_br/pricing-calculator/latest/userguide/what-is-pricing-calculator.html', '', 'AWS Pricing Calculator é uma ferramenta de planejamento baseada na web que você pode usar para criar estimativas para os casos de uso AWS. Você pode usá-lo para modelar suas soluções antes de criá-las, planejar como você gasta.');
-	linkhelp = linkhelp + getLinkHelp('IAAS', 'https://aws.amazon.com/pt/what-is-cloud-computing/?nc2=h_ql_le_int_cc', 'recursos de rede, computadores', 'IaaS (Infraestrutura como Serviço) contém os componentes básicos da IT na nuvem. Normalmente, o IaaS oferece acesso a recursos de rede, computadores (virtuais ou em hardware dedicado) e espaço de armazenamento de dados. O IaaS oferece o mais alto nível de flexibilidade e controle de gerenciamento sobre os recursos de infraestrutura de tecnologia.');
-	linkhelp = linkhelp + getLinkHelp('SAAS', 'https://aws.amazon.com/pt/what-is-cloud-computing/?nc2=h_ql_le_int_cc', 'aplicativos de usuários finais', 'SaaS (Software como Serviço) O SaaS oferece um produto completo, executado e gerenciado pelo provedor de serviços. Na maioria dos casos, refere-se a aplicativos de usuários finais (como e-mail baseado na web). Com uma oferta de SaaS, você não precisa pensar sobre a manutenção do serviço ou o gerenciamento da infraestrutura subjacente. Você só precisa se preocupar sobre como utilizará esse software específico.');
-	linkhelp = linkhelp + getLinkHelp('PAAS', 'https://aws.amazon.com/pt/what-is-cloud-computing/?nc2=h_ql_le_int_cc', 'hardware e sistemas operacionais', 'PaaS (Plataforma como Serviço) você não precisa mais gerenciar a infraestrutura subjacente (geralmente, hardware e sistemas operacionais) e pode manter o foco na implantação e no gerenciamento de aplicativos.');
-	linkhelp = linkhelp + getLinkHelp('BAAS', 'https://aws.amazon.com/pt/what-is-cloud-computing/?nc2=h_ql_le_int_cc', 'automatiza o desenvolvimento do backend', 'BAAS (Backend As A Service) é um serviço que automatiza o desenvolvimento do backend, por meio da terceirização dessas funções. Pode ser classificado como um middleware, ou seja, um software que fornece serviços para outros aplicativos ou o próprio sistema. O backend é a estrutura que possibilita a operação do sistema.');
-	linkhelp = linkhelp + getLinkHelp('Cognito', 'https://docs.aws.amazon.com/pt_br/cognito/latest/developerguide/what-is-amazon-cognito.html', 'cadastramento, login e controle de acesso', 'AWS Cognito permite adicionar autenticação de usuários (cadastramento, login e controle de acesso) a aplicações Web e móveis com rapidez e facilidade para vários dispositivos e mídias sociais como Apple, Facebook, Google e Amazon. Integra com SAML 2.0 e OpenID.');
-	linkhelp = linkhelp + getLinkHelp('IAM', 'https://aws.amazon.com/pt/iam/', 'controle de acesso a serviços e recursos', 'AWS IAM (Identity and Access Management) fornece controle de acesso a serviços e recursos em determinada condição em toda a AWS. Com as políticas do IAM, você gerencia permissões para seu quadro de funcionários e sistemas para garantir permissões com privilégios mínimos no princípio do menor privilégio.');
-	linkhelp = linkhelp + getLinkHelp('IAM Policies', 'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/access_policies_examples.html', 'associado a uma identidade ou um recurso, define suas permissões e fornece uma declaração formal', 'IAM Policies (Política), é um objeto na AWS que, quando associado a uma identidade ou um recurso, define suas permissões e fornece uma declaração formal de uma ou mais permissões no IAM. A AWS avalia essas políticas quando uma entidade de segurança do IAM (usuário ou função) faz uma solicitação. As permissões nas políticas determinam se a solicitação será permitida ou negada. Fornece uma declaração formal de uma ou mais permissões no IAM.');
-	linkhelp = linkhelp + getLinkHelp('IAM Groups', 'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_groups.html', '', 'IAM Groups (Grupo de Usuários do IAM) é um conjunto de usuários do IAM. Os grupos de usuários permitem especificar permissões para vários usuários, o que pode facilitar o gerenciamento das permissões para esses usuários. Por exemplo, você pode ter um grupo de usuários chamado Admins e oferecer a esse grupo de usuários os tipos de permissões de que os administradores normalmente precisam.');
-	linkhelp = linkhelp + getLinkHelp('IAM Users', 'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_users.html', '', 'IAM Users (Usuário do AWS) é uma entidade que você cria na AWS para representar a pessoa ou a aplicação que o utilizará para interagir com a AWS. Um usuário na AWS consiste em um nome e credenciais.');
-	linkhelp = linkhelp + getLinkHelp('IAM Roles', 'https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html', '', 'IAM Roles (Função do IAM) é uma identidade do IAM que você pode criar em sua conta que tem permissões específicas. Você pode usar funções para delegar acesso a usuários, aplicativos ou serviços que normalmente não têm acesso aos seus recursos da AWS. Por exemplo, você pode permitir que um aplicativo móvel use recursos da AWS.');
-	linkhelp = linkhelp + getLinkHelp('CloudWatch', 'https://aws.amazon.com/pt/cloudwatch/faqs/', '', 'AWS CloudWatch, é um serviço de monitoramento para recursos em nuvem AWS e os aplicativos que você executa na AWS. Você pode usar para coletar e rastrear métricas, coletar e monitorar arquivos de log, e definir alarmes.');
-	linkhelp = linkhelp + getLinkHelp('Macie', 'https://aws.amazon.com/pt/macie/', '', 'AWS Macie é um serviço de segurança e privacidade de dados totalmente gerenciado que usa machine learning e correspondência de padrões para descobrir e proteger seus dados confidenciais na AWS.');
-	linkhelp = linkhelp + getLinkHelp('Glue', 'https://docs.aws.amazon.com/pt_br/glue/latest/dg/what-is-glue.html', '', 'O AWS Glue é um serviço de ETL (extração, transformação e carregamento) totalmente gerenciado pela AWS.');
-	linkhelp = linkhelp + getLinkHelp('DataSync', 'https://aws.amazon.com/pt/datasync/', '', 'DataSync é um serviço online seguro que automatiza e acelera a movimentação de dados entre serviços de armazenamento on-premises e da AWS.');
-	linkhelp = linkhelp + getLinkHelp('Segurança', 'https://aws.amazon.com/pt/architecture/well-architected/?achp_wa1&wa-lens-whitepapers.sort-by=item.additionalFields.sortDate&wa-lens-whitepapers.sort-order=desc', '', 'Segurança se concentra na proteção de informações e sistemas. Os principais tópicos incluem confidencialidade e integridade de dados, gerenciamento de permissões de usuário e estabelecimento de controles para detectar eventos de segurança.');
-	linkhelp = linkhelp + getLinkHelp('Excelência Operacional', 'https://aws.amazon.com/pt/architecture/well-architected/?achp_wa1&wa-lens-whitepapers.sort-by=item.additionalFields.sortDate&wa-lens-whitepapers.sort-order=desc', '', 'Excelência Operacional se concentra na execução e monitoramento sistemas e na melhoria contínua de processos e procedimentos. Os principais tópicos incluem automação de alterações, reação a eventos e definição de padrões para gerenciar as operações diárias.');
-	linkhelp = linkhelp + getLinkHelp('Elasticidade', 'https://aws.amazon.com/pt/what-is-cloud-computing/?nc2=h_ql_le_int_cc', 'provisiona a quantidade de recursos realmente necessária', 'Com a computação em nuvem, você não precisa provisionar recursos em excesso para absorver picos de atividades empresariais no futuro. Em vez disso, você provisiona a quantidade de recursos realmente necessária. Você pode aumentar ou diminuir instantaneamente a escala desses recursos para ajustar a capacidade de acordo com a evolução das necessidades empresariais.');
-	linkhelp = linkhelp + getLinkHelp('Performance Eficiente', 'https://aws.amazon.com/pt/architecture/well-architected/?achp_wa1&wa-lens-whitepapers.sort-by=item.additionalFields.sortDate&wa-lens-whitepapers.sort-order=desc', '', 'Performance Eficiente se concentra na alocação estruturada e simplificada de recursos de TI e computação. Os principais tópicos incluem seleção dos tipos e tamanhos certos dos recursos otimizados para os requisitos de workload, monitoramento de performance e manutenção da eficiência à medida que as necessidades comerciais evoluem.');
-	linkhelp = linkhelp + getLinkHelp('Resiliência', 'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/reliability-pillar/resiliency-and-the-components-of-reliability.html', 'se recuperar de interrupções de infraestrutura ou serviço', 'Resiliência é a capacidade de uma carga de trabalho se recuperar de interrupções de infraestrutura ou serviço, adquirir dinamicamente recursos computacionais para atender à demanda e mitigar interrupções, como configurações incorretas ou problemas temporários de rede.');
-	linkhelp = linkhelp + getLinkHelp('Confiabilidade', 'https://aws.amazon.com/pt/architecture/well-architected/?achp_wa1&wa-lens-whitepapers.sort-by=item.additionalFields.sortDate&wa-lens-whitepapers.sort-order=desc', '', 'Confiabilidade (também conhecida como disponibilidade) se concentra nos workloads que executam as funções pretendidas e na recuperação rápida de falhas em atender demandas. Os principais tópicos incluem projeto de sistemas distribuídos, planejamento de recuperação e requisitos adaptação a mudanças.');
-	linkhelp = linkhelp + getLinkHelp('EBS Snapshots', 'https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow', '100 por região', 'EBS Snapshots, do serviço RDS, são backups incrementais, o que significa que somente os blocos no dispositivo que tiverem mudado depois do snapshot mais recente serão salvos. Isso minimiza o tempo necessário para criar o snapshot e economiza em custos de armazenamento ao não duplicar os dados.<br/>Os limites de snapshot manual (100 por região) não se aplicam a backups automáticos.');
-	linkhelp = linkhelp + getLinkHelp('EBS', 'https://aws.amazon.com/pt/ebs/', '', 'EBS (Amazon Elastic Block Store) é um serviço de armazenamento em blocos fácil de usar, escalável e de alta performance projetado para o Amazon Elastic Compute Cloud (Amazon EC2). É necessário associar um EBS a uma instância EC2 para garantir a persistência dos dados quando a instância é desligada.');
-	linkhelp = linkhelp + getLinkHelp('EBS Volumes', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/ebs-volumes.html', 'dispositivo de armazenamento em blocos', 'Um volume do Amazon EBS é um dispositivo de armazenamento em blocos durável que é possível anexar às suas instâncias. Depois de anexar um volume a uma instância, será possível usá-lo como você usaria um disco rígido físico.');
-	linkhelp = linkhelp + getLinkHelp('Glacier Deep Arquive', 'https://aws.amazon.com/pt/s3/faqs/#Amazon_S3_Glacier_Deep_Archive', '', 'S3 Glacier Deep Arquive é uma classe de armazenamento do Amazon S3 que oferece armazenamento de objetos seguro e durável para retenção de longo prazo de dados acessados uma ou duas vezes por ano. oferece armazenamento de custo mais baixo na nuvem, a preços significativamente mais baixos do que armazenar e manter dados em bibliotecas de fitas magnéticas on-premises ou arquivar dados externamente.');
-	linkhelp = linkhelp + getLinkHelp('CodeBuild, CodeCommit, CodeDeploy', 'https://aws.amazon.com/pt/blogs/aws-brasil/construindo-um-pipeline-de-ci-cd-aws-devsecops-de-ponta-a-ponta-com-ferramentas-de-codigo-aberto-sca-sast-e-dast/#:~:text=Servi%C3%A7os%20de%20CI%2FCD&text=AWS%20CodeDeploy%20%E2%80%93%20%C3%A9%20um%20servi%C3%A7o,AWS%20Lambda%20e%20servidores%20locais', '', 'Ordem dos serviços AWS em um pipeline de CI/CD é 1, 2, 3.<br/>1 - AWS CodeCommit – Um serviço totalmente gerenciado de controle de código-fonte que hospeda repositórios seguros baseados em Git.<br/>2 - AWS CodeBuild – Um serviço de integração contínua totalmente gerenciado que compila o código-fonte, executa testes e produz pacotes de software que estão prontos para implantação.<br/>3 - AWS CodeDeploy – é um serviço totalmente gerenciado de implantação que automatiza implantações de software em diversos serviços de computação como Amazon EC2, AWS Fargate, AWS Lambda e servidores locais.');
-	linkhelp = linkhelp + getLinkHelp('CodeDeploy', 'https://aws.amazon.com/pt/codedeploy/', '', 'AWS CodeDeploy é um serviço totalmente gerenciado de implantação que automatiza implantações de software em diversos serviços de computação como Amazon EC2, AWS Fargate, AWS Lambda e servidores locais.');
-	linkhelp = linkhelp + getLinkHelp('CodeBuild', 'https://aws.amazon.com/pt/codebuild/', '', 'AWS CodeBuild é um serviço de integração contínua totalmente gerenciado que compila o código-fonte, executa testes e produz pacotes de software que estão prontos para implantação.');
-	linkhelp = linkhelp + getLinkHelp('CodeCommit', 'https://aws.amazon.com/pt/codecommit/', '', 'O AWS CodeCommit é um serviço de controle de origem gerenciado seguro e altamente dimensionável que hospeda repositórios privados do Git. Ele torna mais fácil para as equipes colaborarem com segurança no código com contribuições criptografadas em trânsito e em repouso.');
-	linkhelp = linkhelp + getLinkHelp('API Gateway', 'https://aws.amazon.com/pt/api-gateway/', '', 'AWS API Gateway é um serviço gerenciado que permite que desenvolvedores criem, publiquem, mantenham, monitorem e protejam APIs em qualquer escala com facilidade.');
-	linkhelp = linkhelp + getLinkHelp('Direct Connect', 'https://docs.aws.amazon.com/pt_br/directconnect/latest/UserGuide/Welcome.html', '', 'Direct Connect vincula sua rede interna a um local do AWS Direct Connect usando um cabo de fibra óptica Ethernet padrão. Uma extremidade do cabo é conectada ao roteador, e a outra é conectada a um roteador do AWS Direct Connect.');
-	linkhelp = linkhelp + getLinkHelp('WorkSpaces', 'https://aws.amazon.com/pt/workspaces/#:~:text=O%20Amazon%20Workspaces%20%C3%A9%20um,partir%20de%20qualquer%20dispositivo%20compat%C3%ADvel', '', 'O Amazon Workspaces é um serviço de virtualização de desktop totalmente gerenciado para Windows e Linux que habilita o acesso a recursos a partir de qualquer dispositivo compatível.');
-	linkhelp = linkhelp + getLinkHelp('CLI', 'https://aws.amazon.com/pt/cli/', '', 'CLI (AWS Command Line Interface) é uma ferramenta de código aberto que permite interagir com os serviços da AWS usando comandos no shell da linha de comando. Permite criar scripts e fazer automação.');
-	linkhelp = linkhelp + getLinkHelp('X-Ray', 'https://aws.amazon.com/pt/xray/', '', 'AWS X-Ray ajuda desenvolvedores a analisar e depurar aplicações distribuídas de produção, como as criadas usando uma arquitetura de microsserviços. Com o X-Ray, é possível entender a performance de aplicativos e de seus serviços subjacentes para identificar e solucionar problemas e erros de performance.');
-	linkhelp = linkhelp + getLinkHelp('Certificate Manager', 'https://aws.amazon.com/pt/certificate-manager/#:~:text=O%20AWS%20Certificate%20Manager%20%C3%A9,e%20os%20recursos%20internos%20conectados', '', 'Certificate Manager é um serviço que permite provisionar, gerenciar e implantar facilmente certificados Secure Sockets Layer (SSL)/Transport Layer Security (TLS) para uso com os serviços da AWS e os recursos internos conectados.');
-	linkhelp = linkhelp + getLinkHelp('Kinesis', 'https://aws.amazon.com/pt/kinesis/#:~:text=O%20Amazon%20Kinesis%20Data%20Streams,centenas%20de%20milhares%20de%20fontes', '', 'Amazon Kinesis Data Streams é um serviço escalável e durável de streaming de dados em tempo real capaz de capturar continuamente gigabytes de dados por segundo de centenas de milhares de fontes.');
-	linkhelp = linkhelp + getLinkHelp('Batch', 'https://aws.amazon.com/pt/batch/?nc2=h_ql_prod_cp_ba', '', 'AWS Batch planeja, programa e executa suas cargas de trabalho de computação em lote em toda a linha de recursos e produtos de computação da AWS, como AWS Fargate, Amazon EC2 e instâncias spot.');
-	linkhelp = linkhelp + getLinkHelp('Elastic Beanstalk', 'https://aws.amazon.com/pt/elasticbeanstalk/', '', 'AWS Elastic Beanstalk é um serviço de fácil utilização para implantação e escalabilidade de aplicações e serviços da web desenvolvidos com Java, .NET, PHP, Node.js, Python, Ruby, Go e Docker em servidores familiares como Apache, Nginx, Passenger e IIS.');
-	linkhelp = linkhelp + getLinkHelp('Lifecycle', 'https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/object-lifecycle-mgmt.html', '', 'Lifecycle, uma configuração do S3 Lifecycle é um arquivo XML que consiste em um conjunto de regras com ações predefinidas que você deseja que o Amazon S3 execute em objetos durante sua vida útil.');
-	linkhelp = linkhelp + getLinkHelp('CloudFormation', 'https://aws.amazon.com/pt/cloudformation/', '', 'Permite modelar, provisionar e gerenciar recursos da AWS e de terceiros ao tratar a infraestrutura como código.');
-	linkhelp = linkhelp + getLinkHelp('OpsWorks Stacks', 'https://aws.amazon.com/pt/opsworks/stacks/faqs/', 'gerenciar aplicações e servidores na AWS e localmente', 'O AWS OpsWorks Stacks permite gerenciar aplicações e servidores na AWS e localmente.');
-	linkhelp = linkhelp + getLinkHelp('Shared Responsability', 'https://aws.amazon.com/pt/compliance/shared-responsibility-model/#:~:text=Responsabilidade%20da%20AWS%3A%20%E2%80%9Cseguran%C3%A7a%20da,os%20Servi%C3%A7os%20de%20nuvem%20AWS', '', 'A AWS é responsável por proteger a infraestrutura que executa todos os serviços oferecidos na Nuvem AWS. Essa infraestrutura é composta por hardware, software, redes e instalações que executam os Serviços de nuvem AWS.');
-	linkhelp = linkhelp + getLinkHelp('Tolerância a Falha', 'https://inf.unioeste.br/gia/index.php/2020/10/22/tolerancia-a-falhas-em-sistemas-distribuidos-e-suas-aplicacoes/', '', 'A tolerância a falhas é a propriedade que garante a correta e eficiente operação de um sistema apesar da ocorrência de falhas em qualquer um dos seus componentes, ou unidades.');
-	linkhelp = linkhelp + getLinkHelp('IAC', 'https://aws.amazon.com/marketplace/solutions/devops/infrastructure-as-code?aws-marketplace-cards.sort-by=item.additionalFields.headline&aws-marketplace-cards.sort-order=desc&awsf.aws-marketplace-devops-store-use-cases=*all', '', 'AWS IAC (Infraestrutura como CódigoC) ajuda as organizações a atingir suas metas de automação e autoatendimento de DevOps, mantendo arquivos de declaração no controle de versão que definem seus ambientes de aplicativos.');
-	linkhelp = linkhelp + getLinkHelp('CodePipeline', 'https://aws.amazon.com/pt/codepipeline/#:~:text=O%20AWS%20CodePipeline%20permite%20modelar,um%20aplicativo%20e%20suas%20depend%C3%AAncias', '', 'AWS CodePipeline é um serviço gerenciado de entrega contínua que ajuda a automatizar pipelines de liberação para oferecer atualizações rápidas e confiáveis de aplicativos e infraestruturas. O CodePipeline automatiza as fases de compilação, Nível e implantação do processo de liberação sempre que ocorre uma mudança no código, de acordo com o modelo de liberação que você definiu.');
-	linkhelp = linkhelp + getLinkHelp('Step Functions', 'https://aws.amazon.com/step-functions/?c=ser&sec=srv&step-functions.sort-by=item.additionalFields.postDateTime&step-functions.sort-order=desc', '', 'Step Functions é um serviço de fluxo de trabalho visual com pouco código utilizado por desenvolvedores para criar aplicações distribuídas, automatizar processos de TI e negócios e criar pipelines de dados e machine learning usando produtos da AWS.');
-	linkhelp = linkhelp + getLinkHelp('QuickSight', 'https://aws.amazon.com/pt/quicksight/', '', 'O Amazon QuickSight permite que todos em sua organização entendam seus dados por meio de perguntas em linguagem natural, do uso de painéis interativos ou procurando automaticamente padrões e discrepâncias com tecnologia de machine learning.');
-	linkhelp = linkhelp + getLinkHelp('On Premises', 'https://docs.aws.amazon.com/codedeploy/latest/userguide/instances-on-premises.html', '', 'On premises é a infraestrutura ou Data Center particular, privado, local de uma empresa.');
-	linkhelp = linkhelp + getLinkHelp('CloudFront', 'https://docs.aws.amazon.com/pt_br/AmazonCloudFront/latest/DeveloperGuide/Introduction.html', '', 'O Amazon CloudFront é um serviço da web que acelera a distribuição do conteúdo estático e dinâmico da web, como arquivos .html, .css, .js e arquivos de imagem, para os usuários. O CloudFront distribui o conteúdo por meio de uma rede global de datacenters denominados pontos de presença.');
-	linkhelp = linkhelp + getLinkHelp('TCO', 'https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/aws-pricingtco-tools.html', 'pagamento conforme o uso', 'TCO (Calculadora de Custo Total) ou (Total Cost of Ownership) é uma ferramenta para ajudar você a estimar os gastos dos serviços AWS reduzindo o custo total de propriedade (TCO), diminuindo a necessidade de investimento em grandes despesas de capital e oferecendo um modelo de pagamento conforme o uso. Exemplo: Se você for experimentar o (Amazon EC2), pode ser útil saber por quanto tempo pretende usar os <b><u>servidores</u></b>, o tipo de sistema operacional, quais são os requisitos de memória e quanta E/S precisa, decidir se precisa de armazenamento e se executará um banco de dados.');
-	linkhelp = linkhelp + getLinkHelp('Console Manager', 'https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/learn-whats-new.html', '', 'AWS Management Console (Console de Gerenciamento da AWS) é um aplicativo da web que compreende e se refere a uma ampla coleção de consoles de serviço para gerenciar recursos da AWS.');
-	linkhelp = linkhelp + getLinkHelp('Service Catalog', 'https://aws.amazon.com/pt/servicecatalog/?aws-service-catalog.sort-by=item.additionalFields.createdDate&aws-service-catalog.sort-order=desc', '', 'O AWS Service Catalog permite que empresas criem e gerenciem catálogos de serviços de TI que estejam aprovados para uso na AWS. Esses serviços de TI podem incluir tudo, de imagens de máquinas virtuais, servidores, software e bancos de dados a arquiteturas completas de aplicações multicamadas.');
-	linkhelp = linkhelp + getLinkHelp('Infraestrutura Global', 'https://aws.amazon.com/pt/about-aws/global-infrastructure/', '', 'A AWS atende a mais de 1 milhão de clientes ativos em 245 países e territórios. A Nuvem AWS opera 87 zonas de disponibilidade em 27 regiões geográficas, mais de 410 pontos de presença, 115 locais Direct Connect e há planos para adicionar mais zonas de disponibilidade e regiões.');
-	linkhelp = linkhelp + getLinkHelp('Conformidade da AWS', 'https://aws.amazon.com/pt/compliance/', 'PCI-DSS, HIPAA/HITECH, FedRAMP, GDPR, FIPS 140-2 e NIST 800-171', 'A AWS oferece suporte a padrões de segurança e certificações de conformidade como PCI-DSS, HIPAA/HITECH, FedRAMP, GDPR, FIPS 140-2 e NIST 800-171, ajudando os clientes a cumprir os requisitos de conformidade de praticamente todos os órgãos normativos do mundo.');
-	linkhelp = linkhelp + getLinkHelp('DocumentDB', 'https://aws.amazon.com/pt/documentdb/', '', 'O Amazon DocumentDB é um serviço de banco de dados escalável, altamente durável e totalmente gerenciado pela AWS para operar workloads do MongoDB de missão crítica. Dimensiona workloads JSON.');
-	linkhelp = linkhelp + getLinkHelp('SDK', 'https://aws.amazon.com/pt/developer/tools/', 'C++, Go, Java, JavaScript, Kotlin, .NET, Node.js, PHP, Python, Ruby, Rust, Swift', 'Desenvolver aplicativos na AWS na linguagem de programação de sua escolha, como: C++, Go, Java, JavaScript, Kotlin, .NET, Node.js, PHP, Python, Ruby, Rust, Swift.');
-	linkhelp = linkhelp + getLinkHelp('Keyspaces', 'https://aws.amazon.com/pt/keyspaces/', 'compatível com o Apache Cassandra', 'O Amazon Keyspaces (for Apache Cassandra) é um serviço de banco de dados compatível com o Apache Cassandra, escalável, altamente disponível e gerenciado.');
-	linkhelp = linkhelp + getLinkHelp('Bucket', 'https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html', '', 'Regras de nomenclatura de bucket do serviço S3.<br/>Devem ter entre 3 (min) e 63 (max) caracteres.<br/>Podem consistir apenas em letras minúsculas, números, pontos (.) e hífens (-).<br/>Devem começar e terminar com uma letra ou número.<br/>Não devem conter dois pontos adjacentes.<br/>Não devem ser formatados como um endereço IP (por exemplo, 192.168.5.4).<br/>Não devem começar com o prefixo xn--.<br/>Não devem terminar com o sufixo -s3alias.<br/>devem ser exclusivos em todas as contas em todas as regiões em uma partição, da AWS.');
-	linkhelp = linkhelp + getLinkHelp('LightSail', 'https://aws.amazon.com/pt/lightsail/?nc2=h_ql_prod_fs_ls', '', 'O Amazon Lightsail oferece instâncias de servidor privado virtual (VPS), contêineres, armazenamento, bancos de dados e muito mais a um preço mensal econômico. Cria sites personalizados, como: WordPress, Magento, Prestashop e Joomla.');
-	linkhelp = linkhelp + getLinkHelp('JSON', 'https://docs.aws.amazon.com/pt_br/athena/latest/ug/parsing-JSON.html', 'Muitos aplicativos e ferramentas produzem dados codificados em JSON', 'JavaScript Object Notation (JSON) é um método comum para codificar estruturas de dados como texto. Muitos aplicativos e ferramentas produzem dados codificados em JSON.');
-	linkhelp = linkhelp + getLinkHelp('Apache Handoop', 'https://aws.amazon.com/pt/emr/features/hadoop/', 'Apache Hadoop dentro do serviço Amazon EMR (Big Data)', 'O Apache Hadoop no serviço Amazon EMR (Big Data) é um projeto de software de código aberto que pode ser usado para processar de modo eficiente grandes conjuntos de dados.');
-	linkhelp = linkhelp + getLinkHelp('Global Accelerator', 'https://aws.amazon.com/pt/global-accelerator/?blogs-global-accelerator.sort-by=item.additionalFields.createdDate&blogs-global-accelerator.sort-order=desc&aws-global-accelerator-wn.sort-by=item.additionalFields.postDateTime&aws-global-accelerator-wn.sort-order=desc', 'otimiza o caminho quando a Internet está congestionada', 'O AWS Global Accelerator é um serviço de redes que melhora a performance do tráfego de seus usuários em até 60% usando a infraestrutura de rede global da Amazon Web Services. O AWS Global Accelerator otimiza o caminho quando a Internet está congestionada para sua aplicação para manter a perda de pacotes, o jitter e a latência consistentemente baixos.');
-	linkhelp = linkhelp + getLinkHelp('VPC', 'https://aws.amazon.com/pt/vpc/', 'lança recursos da AWS em uma rede virtual isolada logicamente', 'O AWS VPC (Virtual Private Cloud) define e lança recursos da AWS em uma rede virtual isolada logicamente. Oferece controle total sobre seu ambiente de redes virtual, incluindo posicionamento de recursos, conectividade e segurança.');
-	linkhelp = linkhelp + getLinkHelp('VPN', 'https://aws.amazon.com/pt/vpn/', 'estabelecem conexões seguras entre redes locais', 'As soluções do AWS Virtual Private Network (VPN) estabelecem conexões seguras entre redes locais, escritórios remotos, dispositivos de clientes e a rede global da AWS. O AWS VPN é composto por dois serviços: AWS Site-to-Site VPN e AWS Client VPN.');
-	linkhelp = linkhelp + getLinkHelp('License Manager', 'https://aws.amazon.com/pt/license-manager/', 'gerenciamento de suas licenças de software de fornecedores', 'O AWS License Manager facilita o gerenciamento de suas licenças de software de fornecedores como Microsoft, SAP, Oracle e IBM em ambientes AWS e on-premises.');
-	linkhelp = linkhelp + getLinkHelp('Snow', 'https://aws.amazon.com/pt/snow/', 'Migrar petabytes de dados', 'Dispositivos desenvolvidos especificamente para migrar petabytes de dados de forma econômica, offline para a AWS ou processar dados na borda. Dispositivos da família: AWS Snowcone ou AWS Snowball.');
-	linkhelp = linkhelp + getLinkHelp('Snowball', 'https://aws.amazon.com/pt/getting-started/hands-on/migrate-petabyte-scale-data/faq/', 'dispositivo para transporte de dados que acelera a transferência de terabytes a petabytes de dados', 'O AWS Snowball é uma solução de dispositivo para transporte de dados que acelera a transferência de terabytes a petabytes de dados para dentro e para fora da AWS usando dispositivos de armazenamento criados para oferecer transporte físico seguro.');
-	linkhelp = linkhelp + getLinkHelp('Connect', 'https://docs.aws.amazon.com/pt_br/connect/latest/adminguide/what-is-amazon-connect.html', 'integrar com outros aplicativos corporativos', 'O Amazon Connect é uma plataforma aberta que você pode integrar com outros aplicativos corporativos. Você pode configurar um centro de contatos em algumas etapas, adicionar agentes de qualquer lugar e começar a interagir com seus clientes.');
-	linkhelp = linkhelp + getLinkHelp('MQ', 'https://aws.amazon.com/pt/amazon-mq/?amazon-mq.sort-by=item.additionalFields.postDateTime&amazon-mq.sort-order=desc', 'agente de mensagens na AWS', 'O Amazon MQ é um serviço gerenciado de agente de mensagens para o Apache ActiveMQ e RabbitMQ que facilita a configuração e a operação de agentes de mensagens na AWS. O Amazon MQ reduz suas responsabilidades operacionais gerenciando o provisionamento, a configuração e a manutenção dos agentes de mensagem para você.');
-	linkhelp = linkhelp + getLinkHelp('Kafka', 'https://aws.amazon.com/pt/msk/', 'processamento de dados de streaming em tempo real', 'Amazon Managed Streaming for Apache Kafka (MSK) facilita a ingestão e o processamento de dados de streaming em tempo real com o Apache Kafka totalmente gerenciado.');
-	linkhelp = linkhelp + getLinkHelp('SageMaker', 'https://aws.amazon.com/pt/pm/sagemaker/?trk=41368dcc-5040-4349-998b-a9c524544f65&sc_channel=ps&s_kwcid=AL!4422!3!532488969034!e!!g!!aws%20sagemaker&ef_id=EAIaIQobChMI-beq1r7E-gIViCZMCh2PqgFVEAAYASAAEgK2kfD_BwE:G:s&s_kwcid=AL!4422!3!532488969034!e!!g!!aws%20sagemaker', 'machine learning', 'Criar, treinar e implantar modelos de machine learning para qualquer caso de uso com infraestrutura, ferramentas e fluxos de trabalho totalmente gerenciados pela AWS oferecendo uma IDE para uso.');
-	linkhelp = linkhelp + getLinkHelp('AppFlow', 'https://aws.amazon.com/pt/appflow/', 'transferir dados com segurança entre aplicações de Software', 'O Amazon AppFlow é um serviço de integração totalmente gerenciado que permite transferir dados com segurança entre aplicações de Software como Serviço (SaaS), como Salesforce, SAP, Zendesk, Slack e ServiceNow, e produtos da AWS, como o Amazon S3 e Amazon Redshift.');
-	linkhelp = linkhelp + getLinkHelp('Federation', 'https://aws.amazon.com/pt/identity/federation/', 'autenticar usuários', 'A AWS Federation (federação de identidade) é um sistema de confiança entre duas partes com o objetivo de autenticar usuários e transmitir informações necessárias para autorizar seu acesso aos recursos.');
-	linkhelp = linkhelp + getLinkHelp('Pricing on-demand', 'https://aws.amazon.com/pt/ec2/pricing/on-demand/', 'Dados transferidos diretamente na mesma região da AWS não são cobrados', 'Dados transferidos diretamente na mesma região da AWS não são cobrados entre os serviços Amazon e das instâncias do Amazon EC2. Os dados transferidos entre instâncias na mesma zona de disponibilidade não são cobrados.');
-	linkhelp = linkhelp + getLinkHelp('Transfer Acceleration', 'https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/transfer-acceleration.html', 'transferências de arquivos rápidas em nível de bucket', 'O Amazon S3 Transfer Acceleration é um recurso que possibilita transferências de arquivos rápidas em nível de bucket, fáceis e seguras em longas distâncias entre o seu cliente e um bucket do S3. Ele tira proveito dos pontos de presença distribuídos globalmente no Amazon CloudFront.');
-	linkhelp = linkhelp + getLinkHelp('CodeStar', 'https://aws.amazon.com/pt/codestar/', 'desenvolva, compile e implante rapidamente aplicativos', 'O AWS CodeStar permite que você desenvolva, compile e implante rapidamente aplicativos na AWS. Com o AWS CodeStar, é possível configurar toda a sua cadeia de ferramentas de entrega contínua em questão de minutos.');
-	linkhelp = linkhelp + getLinkHelp('Amplify', 'https://aws.amazon.com/pt/amplify/', 'permite que desenvolvedores frontend para plataformas móveis e Web', 'O AWS Amplify é uma solução completa que permite que desenvolvedores frontend para plataformas móveis e Web criem, enviem e hospedem aplicações full-stack na AWS.');
-	linkhelp = linkhelp + getLinkHelp('GraphQl', 'https://aws.amazon.com/pt/appsync/', 'consultar vários bancos de dados', 'O AWS AppSync é um serviço sem servidor das APIs GraphQL e Pub/Sub que simplifica a criação de aplicações Web e de plataformas móveis modernas. As APIs GraphQL criadas com o AWS AppSync fornecem aos desenvolvedores de front-end a capacidade de consultar vários bancos de dados, microsserviços e APIs a partir de um único endpoint do GraphQL.');
-	linkhelp = linkhelp + getLinkHelp('ACL', 'https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/acl-overview.html', 'gerenciamento do acesso aos buckets e objetos', 'ACL (Lista de Controle de Acesso) do Amazon S3 permitem o gerenciamento do acesso aos buckets e objetos. Cada bucket e objeto tem uma ACL anexada como um sub-recurso. Ela define a quais grupos ou Contas da AWS o acesso é concedido, bem como o tipo de acesso.');
-	linkhelp = linkhelp + getLinkHelp('CodeArtifact', 'https://aws.amazon.com/pt/codeartifact/', 'serviço de repositório de artefatos', 'O AWS CodeArtifact é um serviço de repositório de artefatos totalmente gerenciado que facilita para organizações de qualquer tamanho o armazenamento, a publicação e o compartilhamento com segurança de pacotes de software usados em seu processo de desenvolvimento.');
-	linkhelp = linkhelp + getLinkHelp('Edge Location', 'https://aws.amazon.com/pt/cloudfront/features/?whats-new-cloudfront.sort-by=item.additionalFields.postDateTime&whats-new-cloudfront.sort-order=desc', 'Edge Location atendem à solicitações do CloudFront e do Route 53', 'Uma Edge Location é basicamente um pequeno servidor de cache. Os Edge Location atendem à solicitações do CloudFront e do Route 53. O usuário pode estar longe de uma Region mas próximo de um Edge Location. O AWS Lambda@Edge é um recurso de computação sem servidor e de uso geral compatível com uma grande variedade de necessidades e personalizações de computação.');
-	linkhelp = linkhelp + getLinkHelp('Backup', 'https://docs.aws.amazon.com/pt_br/aws-backup/latest/devguide/whatisbackup.html', 'proteção de dados', 'AWS Backup é um serviço totalmente gerenciado que facilita a centralização e a automação da proteção de dados em serviços AWS, na nuvem e no local.');
-	linkhelp = linkhelp + getLinkHelp('Security Hub', 'https://aws.amazon.com/pt/security-hub/', 'verificações de práticas recomendadas de segurança', 'O AWS Security Hub é um serviço de gerenciamento de procedimentos de segurança na nuvem que realiza verificações de práticas recomendadas de segurança, agrega alertas e permite a correção automatizada.');
-	linkhelp = linkhelp + getLinkHelp('Detective', 'https://aws.amazon.com/pt/detective/faqs/', 'facilita a análise, a investigação e a identificação rápidas da causa raiz de potenciais problemas de segurança ou atividades suspeitas', 'O Amazon Detective facilita a análise, a investigação e a identificação rápidas da causa raiz de potenciais problemas de segurança ou atividades suspeitas. O Amazon Detective coleta automaticamente dados de log de seus recursos da AWS e usa aprendizado de máquina, análise estatística e teoria dos gráficos para criar um conjunto de dados vinculados que permite realizar facilmente investigações de segurança mais rápidas e eficientes.');
-	linkhelp = linkhelp + getLinkHelp('', '', '', '');
-	linkhelp = linkhelp + getLinkHelp('', '', '', '');
-	linkhelp = linkhelp + getLinkHelp('', '', '', '');
-	linkhelp = linkhelp + getLinkHelp('', '', '', '');
-	linkhelp = linkhelp + getLinkHelp('', '', '', '');
+	//FUNDAMENTOS
+	var mytema = '1';
+	var mycategory = '2';
+	var students = await jsstoreCon.select({
+		from: 'Student'
+		  , where: { mytema: '' + mytema + ''
+				   , mycategory: '' + mycategory + ''
+		  }
+	});
+	if (students == '') {
+		var save = true;
+	} else {
+		var save = false;
+	}
+	var contadorMygroup = 10;
+	var contadorMycode = 0;
+	//não se aplica
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', false, 'Não Se Aplica', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', '', 'Não Se Aplica na AWS');
+	
+	//título
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, 'Fundamentos', '', '', 'Fundamentos');
+	//perguntas
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'ECS', 'EKS', 'ECR', 'S3', save, 'EC2', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', 'computação escalável na Nuvem da Amazon Web Services (AWS)', 'O Amazon EC2 (Elastic Compute Cloud) --> Oferece uma <b>capacidade de computação escalável na Nuvem da Amazon Web Services (AWS)</b>. <br/>O uso dele <b>elimina a necessidade de investir em hardware inicialmente</b>, portanto, você pode desenvolver e implantar aplicativos com mais rapidez.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', 'EC2', 'Instâncias Sob Demanda', 'Instâncias Spot', 'Budgets', save, 'Instâncias T2 no EC2', 'https://aws.amazon.com/pt/ec2/instance-types/t2/', 't2.nano (é a menor com 1 CPU e 0,5 RAM)', 'As instâncias T2 do serviço EC2 --> São um novo tipo de instância de uso geral de baixo custo. <br/>Detalhes: <br/><b>t2.nano</b> (é a menor com 1 CPU e 0,5 RAM), <br/>t2.micro, <br/>t2.small, <br/>t2.medium, <br/>t2.large, <br/>t2.xlarge, <br/><b>t2.2xlarge</b> (é a maior com 8 CPUs e 32 RAM).');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', 'EC2', 'Classes de armazenamento', 'Opções de Compra de Instância', 'EBS', save, 'S3', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', 'armazenamento de objetos que armazena dados como objetos em buckets (exemplo de arquivos estáticos: .html, .js, .cs', 'O Amazon S3 (Simple Storage Service) --> É um serviço de armazenamento de objetos que <b>armazena dados como objetos</b> em buckets (exemplo de <b>arquivos estáticos: .html, .js, .cs.</b>). <br/>A capacidade é virtualmente ilimitada. <br/>Um objeto é um arquivo e quaisquer metadados que descrevam o arquivo. <br/>Um bucket é um contêiner de objetos. <br/>Você pode controlar o acesso a grupos de objetos que começam com um prefixo ou termine com uma determinada extensão. <br/>É compatível com a replicação entre regiões.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', 'S3', 'Opções de Compra de Instância', 'Instâncias Sob Demanda', 'IAM', save, 'S3 pre-signed URL', 'https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/ShareObjectPreSignedURL.html', '', 'O pre-signed URL --> <b>Permite acessar objetos privados do S3</b> embora, por padrão, todos os objetos do S3 são privados. <br/>Somente o proprietário do objeto tem permissão para acessá-lo. <br/>Contudo, também permite o proprietário do objeto compartilhar objetos com os outros dessa forma, usando suas próprias credenciais de segurança para conceder permissão de prazo limitado para download de objetos.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', 'EC2', 'S3', 'Instâncias Spot', 'Instâncias Sob Demanda', save, 'Opções de Compra de Instância', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/instance-purchasing-options.html', '', '<b>On-demand</b> (Instâncias sob demanda) paga somente pelo uso.<br/><b>Savings Plans (Planos de Poupança)</b> é um modelo de preços flexíveis que oferece preços mais baixos em comparação com os preços sob demanda, em troca de um compromisso de uso específico por um período de 1 ou 3 anos). <br/><b> Instâncias Reservadas</b> paga por um contrato pré-estabelecido de 1 ou 3 anos de compromisso para obter um desconto até 72% comparado ao On-Demand. <br/><b>Instâncias Spot</b> paga pelo uso dos recursos não utilizados por outros modelos. Oferecem descontos de até 90%.<br/><b>Hosts Dedicados</b> servidor físico com capacidade de instância do EC2 totalmente dedicado para seu uso. <br/><b>Instâncias Dedicadas</b>. <br/><b>Reservas de Capacidade</b>.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', 'Instâncias Spot', 'Instâncias Sob Demanda', 'Instâncias Reservadas', 'Budgets', save, 'Savings Plans', 'https://aws.amazon.com/pt/savingsplans/', '', 'Savings Plans (Planos de Poupança) --> É um modelo de preços flexíveis que oferece <b>preços mais baixos em comparação com os preços sob demanda</b>, em troca de um <b>compromisso de uso específico por um período de 1 ou 3 anos</b>.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', 'Savings Plans', 'Instâncias Sob Demanda', 'Instâncias Spot', 'S3', save, 'Instâncias Reservadas', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/ec2-reserved-instances.html', '', 'As instâncias reservadas --> O cliente paga por um <b>contrato pré-estabelecido de 1 ou 3 anos de compromisso</b> para obter um grande desconto. <br/><b>Reserva capacidade a uma taxa com desconto.</b> <br/>O cliente se compromete a comprar uma certa quantidade de computação. <br/>Proporcionam economia significativa em seus custos do Amazon EC2 em comparação com os preços de instâncias sob demanda. <br/>Elas não são instâncias físicas, é um desconto na fatura aplicado na conta pelo uso de instâncias sob demanda.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', 'Savings Plans', 'Instâncias Spot', 'Instâncias Reservadas', 'Budgets', save, 'Instâncias Sob Demanda', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/ec2-on-demand-instances.html', '', 'Instâncias sob demanda --> Você <b>paga somente pelo uso</b> e pela capacidade computacional por segundo, <b>sem qualquer compromisso de longo prazo</b>. <br/>Você paga apenas pelos segundos em que essas instâncias estiverem no estado running, com um mínimo de 60 segundos.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', 'Savings Plans', 'Instâncias Reservadas', 'Instâncias Sob Demanda', 'EC2', save, 'Instâncias Spot', 'https://aws.amazon.com/pt/ec2/spot/', '', 'As instâncias spot do Amazon EC2 --> <b>Permitem aproveitar a capacidade não utilizada do EC2 na Nuvem</b> AWS. <br/>Em comparação com a definição de preço sob demanda, essas instâncias <b>oferecem descontos de até 90%</b>. <br/>Se ajusta com base na oferta e na demanda de instâncias EC2.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Savings Plans', 'Instâncias Spot', 'Instâncias Reservadas', 'Instâncias Sob Demanda', save, 'Hosts Dedicados', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html', 'servidor físico com capacidade de instância do EC2', 'AWS Hosts Dedicados do Amazon EC2 --> É um <b>servidor físico com capacidade de instância do EC2 totalmente dedicado para seu uso</b>. Permitem que você use suas licenças de software existentes por soquete, por núcleo ou por VM, incluindo o Windows Server, o Microsoft SQL Server, o SUSE e o Linux Enterprise Server.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'S3', 'EC2', 'Opções de Compra de Instância', 'EBS', save, 'Modelo de uso', 'https://aws.amazon.com/pt/free/free-tier-faqs/', 'composto por três tipos', 'Modelo de uso --> O <b>nível gratuito</b> da AWS oferece aos clientes a capacidade de explorar e testar gratuitamente serviços da AWS até os limites especificados para cada serviço. <br/>O nível gratuito é <b>composto por três tipos diferentes de ofertas</b>: <br/>Um nível gratuito de 12 meses (750 horas/mês), <br/>Uma oferta Always Free, <br/>Testes de curto prazo.');
+
+	//DESAFIO
+	var mytema = '1';
+	var mycategory = '4';
+	var students = await jsstoreCon.select({
+		from: 'Student'
+		  , where: { mytema: '' + mytema + ''
+				   , mycategory: '' + mycategory + ''
+		  }
+	});
+	if (students == '') {
+		var save = true;
+	} else {
+		var save = false;
+	}
+	var contadorMycode = 0;
+	//título
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, 'Desafio', '', '', 'Desafio');
+	//perguntas
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Organizations', 'Billing', 'Cost Explorer', 'Princing Calculator', save, 'Budgets', 'https://docs.aws.amazon.com/pt_br/cost-management/latest/userguide/budgets-managing-costs.html', 'rastreamento de uso e custo da AWS', 'AWS Budgets --> É para rastreamento de uso e custo da AWS. <br/>Monitorar métricas agregadas de utilização e cobertura para suas Instâncias Reservadas (RIs) ou Savings Plans - Planos de Poupança. <br/>Envia mensagem quando o consumo vai atingir o percentual pré-configurado ou pré-definido.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Organizations', 'Billing', 'Cost Explorer', 'Princing Calculator', save, 'Budgets Destinatários por Email', 'https://docs.aws.amazon.com/pt_br/cost-management/latest/userguide/budgets-controls.html', 'pode ter até 10 endereços de e-mail', 'Em Notification preferences - Opional (Preferências de notificação - Opcional), em Email recipients (Destinatários de e-mail), insira os endereços de e-mail para o alerta o notificar. <br/>Separe múltiplos endereços de e-mail com vírgulas. <br/>Uma notificação pode ter até 10 endereços de e-mail.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', 'Organizations', 'Billing', 'Cost Explorer', 'Budgets', save, 'Princing Calculator', 'https://calculator.aws/#/', 'estimar o custo antes do uso, antes da implementação', 'AWS Princing Calculator --> Estima o custo antes do uso, antes da implementação para sua solução de arquitetura. Configure uma estimativa de custo exclusivo que atenda às suas necessidades de negócios ou pessoais com produtos e serviços da AWS.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', 'Billing', 'Cost Explorer', 'Princing Calculator', 'Budgets', save, 'Organizations', 'https://aws.amazon.com/pt/organizations/?nc2=type_a', 'alocar recursos, agrupar contas', 'AWS Organizations para --> Criar novas contas da AWS e alocar recursos, agrupar contas para organizar seus fluxos de trabalho, aplicar políticas a contas ou grupos para governança e simplificar o faturamento usando um único método de pagamento para todas as suas contas qualificando preços por volume.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', 'Cost Explorer', 'Princing Calculator', 'Budgets', 'Organizations', save, 'Billing', 'https://aws.amazon.com/pt/aws-cost-management/aws-billing/', 'visualizar e pagar faturas', 'AWS Billing --> É para entender seus gastos com a AWS, visualizar e pagar faturas, gerenciar preferências de faturamento e configurações de impostos e acessar serviços adicionais de Gerenciamento financeiro na nuvem. Avalie rapidamente se os seus gastos mensais estão alinhados a períodos anteriores, previsões ou orçamentos e investigue e tome medidas corretivas em tempo hábil.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', 'Princing Calculator', 'Budgets', 'Organizations', 'Refatoração', save, 'Cost Explorer', 'https://aws.amazon.com/pt/aws-cost-management/aws-cost-explorer/', 'relacionado ao gasto que já passou', 'AWS Cost Explorer --> Permite visualizar, entender e gerenciar os custos e o uso da AWS ao longo do tempo relacionado ao gasto que já passou. Os clientes gerenciam de custos de servidores virtuais.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Organizations', 'Billing', 'Cost Explorer', 'Budgets', save, 'TCO', 'https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/aws-pricingtco-tools.html', 'pagamento conforme o uso', 'TCO (Calculadora de Custo Total) ou (Total Cost of Ownership) --> É uma ferramenta para ajudar você a estimar os gastos dos serviços AWS reduzindo o custo total de propriedade, diminuindo a necessidade de investimento em grandes despesas de capital e oferecendo um modelo de pagamento conforme o uso. Exemplo: Se você for experimentar o (Amazon EC2), pode ser útil saber por quanto tempo pretende usar os servidores, o tipo de sistema operacional, quais são os requisitos de memória e quanta E/S precisa, decidir se precisa de armazenamento e se executará um banco de dados.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', 'Confiabilidade', 'Segurança', 'Excelência Operacional', 'Performance Eficiente', save, 'Well-Architected Framework', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', 'Tem os pilares são', 'AWS Well-Architected Framework --> Pilares (dica, decorar iniciais: ESC+POS ou Tecla ESC+ POS-Graduação=P=Performance): <br/><b>E</b>xcelência operacional, <br/><b>S</b>egurança, <br/><b>C</b>onfiabilidade, <br/><b>Performance</b> ou Eficiência de desempenho, <br/><b>O</b>timização de custos, <br/><b>S</b>ustentabilidade.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Well-Architected Framework', 'EC2', 'S3', 'Excelência Operacional', save, 'Cargas de trabalho (Workload)', 'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/userguide/workloads.html', '', 'Carga de trabalho (Workload) --> É um conjunto de códigos e recursos que fornece valor empresarial, como um aplicativo voltado ao cliente ou um processo de back-end. Pode consistir em um subconjunto de recursos em uma Conta da AWS ou ser uma coleção de vários recursos abrangendo várias Contas da AWS.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+
+
+var save = false; //não precisa gravar o restante na tabela porque estão nos arquivos, exemplo: T1C1G11.html
+
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Confiabilidade', 'https://aws.amazon.com/pt/architecture/well-architected/?achp_wa1&wa-lens-whitepapers.sort-by=item.additionalFields.sortDate&wa-lens-whitepapers.sort-order=desc', '', 'Confiabilidade (também conhecida como disponibilidade) --> Se concentra nos workloads que executam as funções pretendidas e na recuperação rápida de falhas em atender demandas ou desenho à prova de falhas. Os principais tópicos incluem projeto de sistemas distribuídos, planejamento de recuperação e requisitos adaptação a mudanças.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Segurança', 'https://aws.amazon.com/pt/architecture/well-architected/?achp_wa1&wa-lens-whitepapers.sort-by=item.additionalFields.sortDate&wa-lens-whitepapers.sort-order=desc', '', 'Segurança --> Se concentra na proteção de informações e sistemas. Os principais tópicos incluem confidencialidade e integridade de dados, gerenciamento de permissões de usuário e estabelecimento de controles para detectar eventos de segurança.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Excelência Operacional', 'https://aws.amazon.com/pt/architecture/well-architected/?achp_wa1&wa-lens-whitepapers.sort-by=item.additionalFields.sortDate&wa-lens-whitepapers.sort-order=desc', '', 'Excelência Operacional --> Se concentra na execução e monitoramento sistemas e na melhoria contínua de processos e procedimentos. Os principais tópicos incluem automação de alterações, reação a eventos e definição de padrões para gerenciar as operações diárias. A automação pode melhorar a estabilidade, a eficiência durante as implementações e a resposta a eventos.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Performance Eficiente', 'https://aws.amazon.com/pt/architecture/well-architected/?achp_wa1&wa-lens-whitepapers.sort-by=item.additionalFields.sortDate&wa-lens-whitepapers.sort-order=desc', '', 'Performance Eficiente --> Se concentra na alocação estruturada e simplificada de recursos de TI e computação. Os principais tópicos incluem seleção dos tipos e tamanhos certos dos recursos otimizados para os requisitos de workload, monitoramento de performance e manutenção da eficiência à medida que as necessidades comerciais evoluem.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Resiliência', 'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/reliability-pillar/resiliency-and-the-components-of-reliability.html', 'se recuperar de interrupções de infraestrutura ou serviço', 'Resiliência --> É a capacidade de uma carga de trabalho se recuperar de interrupções de infraestrutura ou serviço, adquirir dinamicamente recursos computacionais para atender à demanda e mitigar interrupções, como configurações incorretas ou problemas temporários de rede.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, 'Perspectivas Well-Architected', 'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/userguide/lenses.html', 'perspectivas oferecem uma maneira de você medir de forma consistente suas arquiteturas', 'As perspectivas --> Oferecem uma maneira de medir de forma consistente suas arquiteturas em relação às melhores práticas e identificar áreas para melhoria. O AWS Lente de estrutura Well-Architected é aplicado automaticamente quando uma carga de trabalho é definida.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, 'Classes de armazenamento', 'https://aws.amazon.com/pt/s3/storage-classes/', 'armazenamento de objetos', 'Opção padrão (default) de armazenamento de objetos com altos níveis de resiliência, disponibilidade e performance para dados acessados com frequência. Tem baixa latência e alto throughput.<br/>1 Standard (padrão),<br/>2 Intelligent Tiering,<br/>3 Standard-IA,<br/>4 One Zone-IA,<br/>5 Glacier Instant Retrieval,<br/>6 Glacier Flexible,<br/>7 Glacier Deep Archive,<br/>8 Outposts.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, 'Frequent Access', 'https://aws.amazon.com/pt/s3/storage-classes/', 'S3 Intelligent-Tiering', 'Frequent Access (Acesso Frequente) --> Está contida na S3 Intelligent-Tiering (camada inteligente) oferece latência de milissegundos e alta performance de taxa de transferência para dados acessados com muita frequência, com pouca frequência e raramente acessados nos níveis Frequent Access, Infrequent Access e o Archive Instant Access.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, 'Infrequent Access', 'https://aws.amazon.com/pt/s3/storage-classes/', 'dados acessados com menos frequência, mas que exigem acesso rápido', 'Infrequent Access (Acesso Infrequente) do S3 Standard-IA --> É indicado para dados acessados com menos frequência, mas que exigem acesso rápido quando necessários. Oferece os altos níveis de resiliência e throughput e a baixa latência. Combina baixo custo e alta performance.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, 'Glacier', 'https://docs.aws.amazon.com/pt_br/amazonglacier/latest/dev/introduction.html', 'custo extremamente baixo', 'Armazenamento de objetos da classe S3, opção Glacier --> É uma classe de armazenamento do Amazon S3 segura, durável e de custo extremamente baixo para arquivamento de dados e backup de longo prazo. É para arquivamento e não para armazenamento.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, 'Intelligent Tiering', 'https://aws.amazon.com/pt/s3/storage-classes/', '', 'Intelligent Tiering (Camada Inteligente) --> Oferece latência de milissegundos e alta performance de taxa de transferência para dados acessados com muita frequência, com pouca frequência e raramente acessados nos níveis Frequent Access, Infrequent Access e o Archive Instant Access.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, 'Standard', 'https://aws.amazon.com/pt/s3/storage-classes/', 'é o mais caro', 'Armazenamento de objetos da classe S3, opção Standard (Padrão) --> É o mais caro e oferece um armazenamento de objetos com altos níveis de resiliência, disponibilidade e performance para dados acessados com frequência. Como fornece baixa latência e alto throughput.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Glacier Deep Arquive', 'https://aws.amazon.com/pt/s3/faqs/#Amazon_S3_Glacier_Deep_Archive', '', 'S3 Glacier Deep Arquive --> É uma classe de armazenamento do Amazon S3 que oferece armazenamento de objetos seguro e durável para retenção de longo prazo de dados acessados uma ou duas vezes por ano. oferece armazenamento de custo mais baixo na nuvem, a preços significativamente mais baixos do que armazenar e manter dados em bibliotecas de fitas magnéticas on-premises ou arquivar dados externamente.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'SNS', 'https://aws.amazon.com/pt/sns/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc', 'baseados em push', 'Amazon SNS (Simple Notification Service) --> É um serviço de mensagens totalmente gerenciado para a comunicação de aplicação para aplicação (A2A) e de aplicação para pessoa (A2P). A funcionalidade pub/sub de A2A fornece tópicos para sistemas de mensagens de alta taxa de transferência baseados em push.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'SES', 'https://docs.aws.amazon.com/pt_br/ses/latest/dg/Welcome.html', 'plataforma de e-mail', 'Amazon SES (Simple Email Service) --> É uma plataforma de e-mail que oferece uma forma fácil e econômica para você enviar e receber e-mail usando seus próprios endereços de e-mail e domínios.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'SQS', 'https://aws.amazon.com/pt/sqs/', 'filas de mensagens', 'Amazon SQS (Simple Queue Service) --> Oferece uma fila hospedada segura, durável e disponível que permite integrar e desacoplar sistemas de software e componentes distribuídos. O Amazon SQS oferece construções comuns, como filas de mensagens mortas e tags de alocação de custos.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'MQ', 'https://aws.amazon.com/pt/amazon-mq/?amazon-mq.sort-by=item.additionalFields.postDateTime&amazon-mq.sort-order=desc', 'agente de mensagens na AWS', 'O Amazon MQ --> É um serviço gerenciado pela AWS. É um agente de mensagens para o Apache ActiveMQ e RabbitMQ que facilita a configuração e a operação de agentes de mensagens na AWS. O Amazon MQ reduz suas responsabilidades operacionais gerenciando o provisionamento, a configuração e a manutenção dos agentes de mensagem para você.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Open Source', 'https://www.redhat.com/pt-br/topics/open-source/what-is-open-source', '', 'Open Source é um termo que se refere ao software open source (OSS). Ele é um código projetado para ser acessado abertamente pelo público: todas as pessoas podem vê-lo, modificá-lo e distribuí-lo conforme suas necessidades.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'RDS', 'https://aws.amazon.com/pt/rds/', 'facilita a configuração, operação e escalabilidade de bancos de dados na nuvem', 'O Amazon Relational Database Service (Amazon RDS) --> É uma coleção de serviços gerenciados que facilita a configuração, operação e escalabilidade de bancos de dados na nuvem. Uma instância de banco de dados do RDS reside em uma única região. Escolha entre sete opções de mecanismos bastante utilizados: Amazon Aurora compatível com MySQL, Amazon Aurora compatível com PostgreSQL, MySQL, MariaDB, PostgreSQL, Oracle e SQL Server.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'DMS', 'https://aws.amazon.com/pt/dms/', 'migrar bancos de dados', 'AWS DMS (Database Migration Service) --> Ajuda você a migrar bancos de dados para a AWS de modo rápido e seguro. O banco de dados de origem permanece totalmente operacional durante a migração, minimizando o tempo de inatividade de aplicações que dependem do banco de dados.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Aurora', 'https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html', 'banco de dados relacional', 'O Amazon Aurora --> É um mecanismo de banco de dados relacional gerenciado compatível com o MySQL e o PostgreSQL. O Aurora pode oferecer até cinco vezes a taxa de processamento do MySQL e até três vezes a taxa de processamento do PostgreSQL. Oferecer disponibilidade superior a 99,99% replicando seis cópias dos seus dados em três zonas diferentes.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'DynamoDB', 'https://aws.amazon.com/pt/dynamodb/', 'chave-valor NoSQL', 'AWS DynamoDB --> É um banco de dados de chave-valor NoSQL, sem servidor e totalmente gerenciado, projetado para executar aplicações de alta performance em qualquer escala. Usa API do serviço e o Json.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'DynamoDB Accelerator DAX', 'https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.html', '', 'O DAX (DynamoDB Accelerator) --> É um serviço de armazenamento em cache compatível com o DynamoDB no qual você pode se beneficiar da rápida performance em memória para aplicações exigentes. Não foi concebido para hospedagem de sites estáticos.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'DynamoDB APIS e JSON', 'https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.LowLevelAPI.html', 'API do DynamoDB de baixo nível usa JSON', 'A API do DynamoDB de baixo nível usa JSON (JavaScript Object Notation) como um formato de protocolo de fio.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'MariaDB', 'https://aws.amazon.com/pt/rds/mariadb/', '', 'MariaDB --> É um banco de dados relacional de código aberto conhecido no mercado, que foi criado pelos desenvolvedores originais do MySQL. O Amazon RDS facilita a configuração, a operação e a escalabilidade de implantações do servidor desse banco de dados relacional na nuvem.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'MySql', 'https://aws.amazon.com/pt/rds/mysql/', '', 'MySql --> É um banco de dados relacional de código aberto NÃO gerenciados pela AWS e o Amazon RDS facilita a configuração, a operação e a escalabilidade de implantações de MySQL na nuvem. Com o Amazon RDS, você pode implantar em minutos servidores MySQL escaláveis com capacidade de hardware econômica e redimensionável.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'SQL Server', 'https://aws.amazon.com/pt/rds/sqlserver/', '', 'SQL Server --> É um sistema de gerenciamento de bancos de dados relacionais desenvolvido pela Microsoft. O Amazon RDS para esse banco de dados facilita a configuração, a operação e a escalabilidade de implantações do desse banco de dados na nuvem.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+		
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Storage Gateway', 'https://aws.amazon.com/pt/storagegateway/', 'acesso on-premises para armazenamento virtual na nuvem', 'AWS Storage Gateway --> É um conjunto de serviços de armazenamento na nuvem híbrida que oferece acesso on-premises para armazenamento virtual na nuvem praticamente ilimitado. Não é compatível diretamente com a replicação entre regiões.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'API Gateway', 'https://aws.amazon.com/pt/api-gateway/', '', 'AWS API Gateway --> É um serviço gerenciado que permite desenvolvedores criar, publicar, manter, monitorar e protejer APIs em qualquer escala com facilidade.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Direct Connect', 'https://docs.aws.amazon.com/pt_br/directconnect/latest/UserGuide/Welcome.html', '', 'AWS Direct Connect --> Vincula sua rede interna a um local do AWS Direct Connect usando um cabo de fibra óptica Ethernet padrão. Uma extremidade do cabo é conectada ao roteador, e a outra é conectada a um roteador do AWS Direct Connect. O Direct Connect é uma alternativa que fornece uma conexão privada dedicada entre suas instalações locais e a Nuvem AWS.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'DataSync', 'https://aws.amazon.com/pt/datasync/', '', 'DataSync --> É um serviço online seguro que automatiza e acelera a movimentação de dados entre serviços de armazenamento on-premises e da AWS.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'EventSync', 'https://docs.aws.amazon.com/pt_br/cognito/latest/developerguide/getting-started-with-cognito-sync.html', 'sincronização dos dados de usuários', 'O Amazon Cognito Sync --> É um serviço da AWS e uma biblioteca de clientes que permite a sincronização dos dados de usuários relacionados a aplicações entre dispositivos.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'SSH', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/ec2-key-pairs.html', '', 'SSH (Secure Socket Shell) --> É um par de chaves, que consiste em uma chave pública e uma chave privada, trata-se de um conjunto de credenciais de segurança usadas para provar sua identidade ao se conectar a uma instância do Amazon EC2.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'KMS', 'https://docs.aws.amazon.com/pt_br/kms/latest/developerguide/overview.html', 'chaves criptográficas', 'AWS KMS (Key Management Service) --> É um serviço gerenciado que facilita a criação e o controle de chaves criptográficas usadas para proteger os dados. Para proteger e validar suas AWS KMS keys, o AWS KMS usa módulos de segurança de hardware (HSMs) de acordo com o Programa de validação de módulos criptográficos FIPS 140-2.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'STS', 'https://aws.amazon.com/pt/about-aws/whats-new/2019/04/aws-security-token-service-sts-now-supports-enabling-the-global-sts-endpoint-to-issue-session-tokens-compatible-with-all-aws-regions/', 'emissão de tokens de sessão', 'AWS STS (Security Token Service) --> Oferece suporte à habilitação do endpoint global dele para emissão de tokens de sessão compatíveis com todas as regiões da AWS.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Redis', 'https://aws.amazon.com/pt/redis/', 'datastore de chave-valor', 'O Redis (Remote Dictionary Server) --> É um datastore de chave-valor rápido e de código aberto na memória e é usado como banco de dados, cache, agente de mensagens e fila. A AWS oferece dois serviços totalmente gerenciados para executar o Redis: Amazon MemoryDB for Redis e o  O Amazon ElastiCache for Redis.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Elastic Cache', 'https://aws.amazon.com/pt/elasticache/', 'cache na memória', 'AWS Elastic Cache --> É um serviço de cache na memória totalmente gerenciado. Você pode usar para armazenamento em cache, o que acelera a performance de aplicações e bancos de dados, ou como um armazenamento de dados principal para casos de uso que não exigem durabilidade, como armazenamentos de sessões, placares de jogos, streaming e análises. Compatível com o Redis e o Memcached.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Cognito', 'https://docs.aws.amazon.com/pt_br/cognito/latest/developerguide/what-is-amazon-cognito.html', 'cadastramento, login e controle de acesso', 'AWS Cognito --> Permite adicionar autenticação de usuários (cadastramento, login e controle de acesso) a aplicações Web e móveis com rapidez e facilidade para vários dispositivos e mídias sociais como Apple, Facebook, Google e Amazon. Integra com SAML 2.0 e OpenID.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'EFS', 'https://aws.amazon.com/pt/efs/', 'sistema de arquivos simples, não objetos', 'AWS EFS (Elastic File System) --> É um sistema de arquivos simples (não objetos: html, js, css). Sem servidor para definição única que facilita a configuração, a escalabilidade e a otimização de custos do armazenamento de arquivos na AWS. Fornece uma solução de armazenamento de arquivos compartilhado.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'EBS Snapshots', 'https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow', '100 por região', 'EBS Snapshots do serviço RDS --> São backups incrementais, o que significa que somente os blocos no dispositivo que tiverem mudado depois do snapshot mais recente serão salvos. Isso minimiza o tempo necessário para criar o snapshot e economiza em custos de armazenamento ao não duplicar os dados.<br/>Os limites de snapshot manual (100 por região) não se aplicam a backups automáticos.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'EBS', 'https://aws.amazon.com/pt/ebs/', '', 'EBS (Amazon Elastic Block Store) --> É um serviço de armazenamento em blocos, escalável e de alta performance projetado para o Amazon Elastic Compute Cloud (Amazon EC2). Replica dados automaticamente em uma zona de disponibilidade. É necessário associar um EBS a uma instância EC2 para garantir a persistência dos dados quando a instância é desligada. Essa arquitetura de banco de dados pode ser gerenciada pelo time do Cliente. Não pode ser compartilhado por se comportarem como dispositivos de blocos brutos e não formatados.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'EBS Volumes', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/ebs-volumes.html', 'dispositivo de armazenamento em blocos', 'EBS Volumes --> É um dispositivo de armazenamento em blocos durável que é possível anexar às suas instâncias. Depois de anexar um volume a uma instância, será possível usá-lo como você usaria um disco rígido físico.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'EC2 Armazenamento de instâncias', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/InstanceStorage.html', '', 'Armazenamento de instâncias EC2 ---> Fornece armazenamento temporário em nível de bloco para a instância. Esse armazenamento está localizado em discos que estão anexados fisicamente ao computador host. O armazenamento de instâncias é ideal para o armazenamento temporário de informações que são alteradas frequentemente, como buffers, caches, dados de rascunho e outros conteúdos temporários ou para dados replicados em toda a frota de instâncias, como um grupo com balanceamento de carga de servidores Web.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Neptune', 'https://aws.amazon.com/pt/neptune/', 'serviço de banco de dados de grafos', 'Amazon Neptune --> É um serviço de banco de dados de grafos rápido, confiável e totalmente gerenciado que facilita a criação e a execução de aplicativos na AWS. O núcleo do Neptune é um mecanismo de banco de dados gráfico com projeto específico e alta performance.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Graph', 'https://www.padowan.dk/doc/portuguese/Introduction.html', '', 'Amazon Graph --> É apenas um conceito para traçar gráficos de funções matemáticas e outras curvas de natureza similar, em um sistema de coordenadas.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Neo4j', 'https://neo4j.com/partners/amazon/', '', 'Amazon Neo4j --> Trabalha com a AWS (partner). Capacita desenvolvedores e cientistas de dados a criar rapidamente aplicativos escaláveis ​​e orientados por IA ou analisar big data com algoritmos. Como um banco de dados gráfico nativo criado para armazenar dados e conectar os relacionamentos, o Neo4j permite insights rápidos e profundamente contextuais.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'JanusGraph', 'https://janusgraph.org/', '', 'Amazon JanusGraph --> Trabalha com a AWS (partner). É um banco de dados (open source) gráfico escalável otimizado para armazenar e consultar gráficos contendo centenas de bilhões de vértices e arestas distribuídos em um cluster de várias máquinas.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Athena', 'https://aws.amazon.com/pt/athena/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc', 'consultas interativas usando SQL padrão', 'AWS Athena --> É um serviço de consultas interativas usando SQL padrão que facilita a análise de dados no Amazon S3. Não precisa de servidor. Portanto, não há infraestrutura para gerenciar e você paga apenas pelas consultas executadas.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'RedShift', 'https://docs.aws.amazon.com/pt_br/redshift/latest/mgmt/welcome.html', 'Data Warehouse', 'AWS RedShift --> É um serviço de Data Warehouse em escala de petabytes totalmente gerenciado na nuvem. Permite usar os dados para adquirir novos insights para seus negócios e clientes.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'EMR', 'https://aws.amazon.com/pt/emr/', 'Big Data', 'AWS EMR (Amazon Elastic MapReduce) --> É uma plataforma de Big Data em nuvem usada para executar trabalhos de processamento de dados distribuídos em grande escala, consultas SQL interativas e aplicações de machine learning (ML).');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'X-Ray', 'https://aws.amazon.com/pt/xray/', '', 'AWS X-Ray --> Ajuda desenvolvedores a analisar e depurar aplicações distribuídas de produção, como as criadas usando uma arquitetura de microsserviços. Com o X-Ray, é possível entender a performance de aplicativos e de seus serviços subjacentes para identificar e solucionar problemas e erros de performance.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Kinesis', 'https://aws.amazon.com/pt/kinesis/#:~:text=O%20Amazon%20Kinesis%20Data%20Streams,centenas%20de%20milhares%20de%20fontes', '', 'Amazon Kinesis Data Streams --> É um serviço escalável e durável de streaming de dados em tempo real capaz de capturar continuamente gigabytes de dados por segundo de centenas de milhares de fontes.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'QuickSight', 'https://aws.amazon.com/pt/quicksight/', '', 'O Amazon QuickSight --> Permite que todos em sua organização entendam seus dados por meio de perguntas em linguagem natural, do uso de painéis interativos ou procurando automaticamente padrões e discrepâncias com tecnologia de machine learning.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'SageMaker', 'https://aws.amazon.com/pt/pm/sagemaker/?trk=41368dcc-5040-4349-998b-a9c524544f65&sc_channel=ps&s_kwcid=AL!4422!3!532488969034!e!!g!!aws%20sagemaker&ef_id=EAIaIQobChMI-beq1r7E-gIViCZMCh2PqgFVEAAYASAAEgK2kfD_BwE:G:s&s_kwcid=AL!4422!3!532488969034!e!!g!!aws%20sagemaker', 'machine learning', 'SageMaker --> É para criar, treinar e implantar modelos de machine learning para qualquer caso de uso com infraestrutura, ferramentas e fluxos de trabalho totalmente gerenciados pela AWS oferecendo uma IDE para uso.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'AppFlow', 'https://aws.amazon.com/pt/appflow/', 'transferir dados com segurança entre aplicações de Software', 'O Amazon AppFlow --> É um serviço de integração totalmente gerenciado que permite transferir dados com segurança entre aplicações de Software como Serviço (SaaS), como Salesforce, SAP, Zendesk, Slack e ServiceNow, e produtos da AWS, como o Amazon S3 e Amazon Redshift.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'OpsWorks Stacks', 'https://aws.amazon.com/pt/opsworks/stacks/faqs/', 'gerenciar aplicações e servidores na AWS e localmente', 'O AWS OpsWorks Stacks --> Permite gerenciar aplicações e servidores na AWS e localmente.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'OpsWorks', 'https://aws.amazon.com/pt/opsworks/', 'gerenciamento de configurações de servidores via código', 'AWS OpsWorks --> É um serviço de gerenciamento de configurações de servidores via código que oferece instâncias gerenciadas do Chef e do Puppet. O Chef e o Puppet são plataformas de automação que permitem usar código para automatizar a configuração de servidores. Ele permite usar o Chef e o Puppet para automatizar a forma como os servidores são configurados, implantados e gerenciados em instâncias do Amazon EC2 ou ambientes de computação no local.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Refatoração', 'https://aws.amazon.com/pt/getting-started/hands-on/break-monolith-app-microservices-ecs-docker-ec2/module-one/', '', 'A refatoração --> É uma forma disciplinada de reestruturar o código quando pequenas mudanças são feitas nele para melhorar o design. Ao usar o Refactor Spaces, os clientes se concentram na refatoração das suas aplicações, e não na criação e no gerenciamento da infraestrutura subjacente que torna a refatoração possível.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Docker', 'https://aws.amazon.com/pt/docker/', '', 'Docker --> É uma plataforma de software que permite a criação, o Nível e a implantação de aplicações rapidamente. Permite executar o código de maneira padronizada. É um sistema operacional para contêineres. Da mesma maneira que uma máquina virtual virtualiza.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'CloudWatch', 'https://aws.amazon.com/pt/cloudwatch/faqs/', '', 'AWS CloudWatch --> É um serviço de monitoramento para recursos em nuvem AWS e os aplicativos que você executa na AWS. Você pode usar para coletar e rastrear métricas, coletar e monitorar arquivos de log, e definir alarmes de faturamento para monitorar as cobranças estimadas da AWS.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'CloudTrail', 'https://docs.aws.amazon.com/pt_br/awscloudtrail/latest/userguide/cloudtrail-user-guide.html', 'monitora e registra a atividade da conta por toda a infraestrutura', 'AWS CloudTrail --> Rastreia atividades dos usuários e uso de APIs. O AWS CloudTrail monitora e registra a atividade da conta por toda a infraestrutura da AWS, oferecendo controle sobre o armazenamento, análise e ações de remediação.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'CloudSearch', 'https://aws.amazon.com/pt/cloudsearch/', 'pesquisa para o site ou aplicativo', 'AWS CloudSearch --> É um serviço gerenciado na nuvem AWS com o qual é possível configurar, gerenciar e dimensionar uma solução de pesquisa para o site ou aplicativo de forma simples e econômica.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'ElasticSearch', 'https://aws.amazon.com/pt/opensearch-service/the-elk-stack/what-is-elasticsearch/', 'análises de log', 'AWS ElasticSearch --> É um mecanismo distribuído de pesquisa e análise usado para casos de uso de análises de log.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'WAF', 'https://aws.amazon.com/pt/waf/', 'firewall de aplicações Web', 'AWS WAF --> É um firewall de aplicações Web que ajuda a proteger suas aplicações Web ou APIs contra bots e exploits comuns na Web que podem afetar a disponibilidade, comprometer a segurança ou consumir recursos em excesso. O AWS WAF oferece controle sobre como o tráfego atinge suas aplicações, permitindo que você crie regras de segurança que controlam o tráfego de bots e bloqueiam padrões de ataque comuns, como injeção de SQL ou cross-site scripting.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Shield', 'https://aws.amazon.com/pt/shield/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc', 'proteção contra DDoS', 'AWS Shield --> É um serviço gerenciado de proteção contra DDoS (Negação de serviço distribuída) que protege os aplicativos executados na AWS. O AWS Shield oferece de detecção e mitigações em linha automáticas e sempre ativas que minimizam o tempo de inatividade e a latência dos aplicativos, fornecendo proteção contra DDoS sem necessidade de envolver o AWS Support. O AWS Shield tem dois níveis, Standard e Advanced.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Macie', 'https://aws.amazon.com/pt/macie/', '', 'AWS Macie --> É um serviço de segurança e privacidade de dados totalmente gerenciado que usa machine learning e correspondência de padrões para descobrir e proteger seus dados confidenciais na AWS.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'GuardDuty', 'https://aws.amazon.com/pt/guardduty/', 'detecção de ameaças que monitora continuamente', 'GuardDuty --> É um serviço de detecção de ameaças que monitora continuamente suas contas e workloads da AWS para detectar atividade maliciosa e entrega resultados de segurança detalhados para visibilidade e correção.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Inspector', 'https://aws.amazon.com/pt/inspector/', 'gerenciamento de vulnerabilidade que verifica continuamente', 'O Amazon Inspector --> É um serviço automatizado de gerenciamento de vulnerabilidade que verifica continuamente as workloads da AWS em busca de vulnerabilidades de software e exposição não intencional à rede.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Trusted Advisor', 'https://aws.amazon.com/pt/premiumsupport/technology/trusted-advisor/', 'avalia a sua conta por meio de verificações', 'AWS Trusted Advisor --> Avalia a sua conta por meio de verificações, avisa se a MFA não está habilitada, sem interromper serviços. Também verifica permissões de bucket do S3 no Amazon S3 com permissões de acesso aberto. Essas verificações identificam formas de otimizar sua infraestrutura da AWS, aumentar a segurança e o desempenho, reduzir os custos gerais e monitorar as cotas do serviço.<br/>Benefícios:<br/>Otimização de custos<br/>Performance<br/>Segurança<br/>Tolerância a falhas<br/>Cotas de serviço.<br/>Os clientes do AWS Basic Support e AWS Developer Support podem acessar as principais verificações de segurança. AWS Business Support e do AWS Enterprise Support podem acessar todas as verificações.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'IAAS', 'https://aws.amazon.com/pt/what-is-cloud-computing/?nc2=h_ql_le_int_cc', 'recursos de rede, computadores', 'IaaS (Infraestrutura como Serviço) --> Contém os componentes básicos da IT na nuvem. Normalmente, o IaaS oferece acesso a recursos de rede, computadores (virtuais ou em hardware dedicado) e espaço de armazenamento de dados. O IaaS oferece o mais alto nível de flexibilidade e controle de gerenciamento sobre os recursos de infraestrutura de tecnologia.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'SAAS', 'https://aws.amazon.com/pt/what-is-cloud-computing/?nc2=h_ql_le_int_cc', 'aplicativos de usuários finais', 'SaaS (Software como Serviço) O SaaS --> Oferece um produto completo, executado e gerenciado pelo provedor de serviços. Na maioria dos casos, refere-se a aplicativos de usuários finais (como e-mail baseado na web). Com uma oferta de SaaS, você não precisa pensar sobre a manutenção do serviço ou o gerenciamento da infraestrutura subjacente. Você só precisa se preocupar sobre como utilizará esse software específico.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'PAAS', 'https://aws.amazon.com/pt/what-is-cloud-computing/?nc2=h_ql_le_int_cc', 'hardware e sistemas operacionais', 'PaaS (Plataforma como Serviço) --> Você não precisa mais gerenciar a infraestrutura subjacente (geralmente, hardware e sistemas operacionais) e pode manter o foco na implantação e no gerenciamento de aplicativos.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'BAAS', 'https://aws.amazon.com/pt/what-is-cloud-computing/?nc2=h_ql_le_int_cc', 'automatiza o desenvolvimento do backend', 'BAAS (Backend As A Service) --> É um serviço que automatiza o desenvolvimento do backend, por meio da terceirização dessas funções. Pode ser classificado como um middleware, ou seja, um software que fornece serviços para outros aplicativos ou o próprio sistema. O backend é a estrutura que possibilita a operação do sistema.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'MFA', 'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_credentials_mfa.html#id_credentials_mfa-what-is-mfa', 'agrega mais segurança', 'AWS MFA (Autenticação Multi Fator) --> Agrega mais segurança porque requer dos usuários fornecer autenticação exclusiva de um mecanismo de MFA com suporte da AWS, além das suas credenciais de login regular ao acessarem sites ou serviços da AWS.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'IAM', 'https://aws.amazon.com/pt/iam/', 'controle de acesso a serviços e recursos', 'AWS IAM (Identity and Access Management) --> Fornece controle de acesso a serviços e recursos em determinada condição em toda a AWS. Com as políticas dele, você gerencia permissões para seu quadro de funcionários e sistemas para garantir permissões com privilégios mínimos no princípio do menor privilégio. Não alerta sobre eventos de login do console por usuário raiz.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'IAM Policies', 'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/access_policies_examples.html', 'associado a uma identidade ou um recurso, define suas permissões e fornece uma declaração formal', 'IAM Policies (Política) --> É um objeto na AWS que, quando associado a uma identidade ou um recurso, define suas permissões e fornece uma declaração formal de uma ou mais permissões no IAM. A AWS avalia essas políticas quando uma entidade de segurança do IAM (usuário ou função) faz uma solicitação. As permissões nas políticas determinam se a solicitação será permitida ou negada. Fornece uma declaração formal de uma ou mais permissões no IAM.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'IAM Groups', 'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_groups.html', '', 'IAM Groups (Grupo de Usuários do IAM) --> É um conjunto de usuários do IAM. Os grupos de usuários permitem especificar permissões para vários usuários, o que pode facilitar o gerenciamento das permissões para esses usuários. Por exemplo, você pode ter um grupo de usuários chamado Admins e oferecer a esse grupo de usuários os tipos de permissões de que os administradores normalmente precisam.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'IAM Users', 'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_users.html', '', 'IAM Users (Usuário do AWS) --> É uma entidade que você cria na AWS para representar a pessoa ou a aplicação que o utilizará para interagir com a AWS. Um usuário na AWS consiste em um nome e credenciais.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'IAM Roles', 'https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html', '', 'IAM Roles (Função do IAM) --> É uma identidade do IAM que você pode criar em sua conta que tem permissões específicas. São credenciais temporárias que expiram. Você pode usar funções para delegar acesso a usuários, aplicativos ou serviços que normalmente não têm acesso aos seus recursos da AWS. Por exemplo, você pode permitir que um aplicativo móvel use recursos da AWS.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Region', 'https://aws.amazon.com/pt/about-aws/global-infrastructure/regions_az/', '', 'A AWS tem o conceito de uma região, que --> É um local físico em todo o mundo onde agrupamos datacenters. Chamamos cada grupo de datacenters lógicos de zona de disponibilidade. Cada região da AWS consiste em várias AZs isoladas e separadas fisicamente em uma área geográfica.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Multi Regions', 'https://aws.amazon.com/pt/solutions/implementations/multi-region-application-architecture/', 'estratégia de DR', 'Multi Regions (Distribuir em regiões diferentes) --> É para estratégia de DR (Recuperação de Desastre). Os recursos de computação em nuvem da Amazon são hospedados em vários locais no mundo todo. Esses locais são compostos por regiões da AWS, zonas de disponibilidade e zonas locais. Cada região da AWS é uma área geográfica separada.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Multi-AZ', 'https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html', 'aumentar a disponibilidade', 'Multi-AZ --> É para aumentar a disponibilidade. Fornece implementações em uma região, ou seja, não é global. Em uma implantação Multi-AZ, o Amazon RDS cria automaticamente uma instância de banco de dados (BD) primária e replica de forma síncrona os dados para uma instância em uma AZ diferente. Quando detecta uma falha, o Amazon RDS executa automaticamente o failover para uma instância secundária sem nenhuma intervenção manual.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Read Replicas', 'https://aws.amazon.com/pt/rds/features/read-replicas/', 'escalabilidade', 'Read Replicas (Cópias de Leitura do Amazon RDS) --> Facilitam a escalabilidade de maneira elástica além dos limites de capacidade de uma única instância de DB para cargas de trabalho de banco de dados com uso intenso de leitura. Complementam as implantações Multi-AZ. Embora ambos os recursos mantenham uma segunda cópia dos dados, há diferenças entre os dois.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Fargate', 'https://docs.aws.amazon.com/pt_br/AmazonECS/latest/developerguide/AWS_Fargate.html', 'executar contêineres sem a necessidade de gerenciar servidores', 'Fargate --> É uma tecnologia que pode ser usada com o Amazon ECS para executar contêineres sem a necessidade de gerenciar servidores ou clusters de instâncias do Amazon EC2. Com o AWS Fargate, não é mais necessário provisionar, configurar nem dimensionar os clusters de máquinas virtuais para executar contêineres. Fargate elimina a necessidade de escolher tipos de servidor, decidir quando dimensionar clusters ou otimizar o agrupamento de clusters.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'EKS', 'https://aws.amazon.com/pt/eks/', 'executar e escalar aplicações do Kubernetes', 'Amazon EKS (Elastic Kubernetes Service) --> É um serviço de contêiner gerenciado para executar e escalar aplicações do Kubernetes na nuvem ou on-premises. Adiciona orquestração ao Amazon ECS.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'ECS', 'https://docs.aws.amazon.com/pt_br/AmazonECS/latest/developerguide/Welcome.html', 'serviço de gerenciamento de contêineres', 'Amazon ECS (Elastic Container Service) --> É um serviço de gerenciamento de contêineres altamente rápido e escalável. Você pode usá-lo para executar, interromper e gerenciar contêineres em um cluster.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'ECR', 'https://aws.amazon.com/pt/ecr/', 'registro de contêiner', 'Amazon ECR (Elastic Container Registry) --> É um registro de contêiner totalmente gerenciado que oferece hospedagem de alta performance para que você possa implantar imagens e artefatos de aplicações de forma confiável em qualquer lugar.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'IAC', 'https://aws.amazon.com/marketplace/solutions/devops/infrastructure-as-code?aws-marketplace-cards.sort-by=item.additionalFields.headline&aws-marketplace-cards.sort-order=desc&awsf.aws-marketplace-devops-store-use-cases=*all', '', 'AWS IAC (Infraestrutura como Código) --> Não se aplica na AWS. Ajuda as organizações a atingir suas metas de automação e autoatendimento de DevOps, mantendo arquivos de declaração no controle de versão que definem seus ambientes de aplicativos.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'ELB', 'https://aws.amazon.com/pt/elasticloadbalancing/', 'distribui ou redireciona automaticamente o tráfego de aplicações ou requisições de entrada entre servidores', 'AWS ELB (Elastic Load Balancer) --> Distribui ou redireciona automaticamente o tráfego de aplicações ou requisições de entrada entre servidores, vários destinos e dispositivos virtuais em uma ou mais Zonas de disponibilidade (AZs).');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Batch', 'https://aws.amazon.com/pt/batch/?nc2=h_ql_prod_cp_ba', '', 'AWS Batch --> Planeja, programa e executa suas cargas de trabalho de computação em lote em toda a linha de recursos e produtos de computação da AWS, como AWS Fargate, Amazon EC2 e instâncias spot.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Step Functions', 'https://aws.amazon.com/step-functions/?c=ser&sec=srv&step-functions.sort-by=item.additionalFields.postDateTime&step-functions.sort-order=desc', '', 'Step Functions --> É um serviço de fluxo de trabalho visual com pouco código utilizado por desenvolvedores para criar aplicações distribuídas, automatizar processos de TI e negócios e criar pipelines de dados e machine learning usando produtos da AWS. Baseado em computação sem servidor e orquestra parte de: S3, API Gateway, Lambda, SQS e SNS.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Security Group', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/ec2-security-groups.html', 'controlar o tráfego de entrada e de saída', 'Security Group --> É um grupo de segurança atua como firewall virtual para as instâncias do EC2 visando controlar o tráfego de entrada e de saída.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'AWS Audit Manager', 'https://aws.amazon.com/pt/audit-manager/', '', 'O AWS Audit Manager --> Ajuda a auditar continuamente seu uso da AWS para simplificar sua forma de avaliar os riscos e a compatibilidade com os regulamentos e padrões do setor. O Audit Manager automatiza a coleta de evidências para reduzir o esforço manual coletivo que costuma acontecer durante as auditorias e permite escalar sua capacidade de auditoria na nuvem à medida que sua empresa cresce.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Auto Scaling', 'https://aws.amazon.com/pt/ec2/autoscaling/', 'adicionar ou remover instâncias do EC2 automaticamente', 'O Amazon EC2 Auto Scaling --> Ajuda a manter a disponibilidade das aplicações e permite adicionar ou remover instâncias do EC2 automaticamente de acordo com as condições que você definir (escalar baseado em demanda). A escalabilidade não reduz as interdependências entre os componentes.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Personal Health Dashboard', 'https://aws.amazon.com/pt/premiumsupport/technology/personal-health-dashboard/', '', 'O AWS Personal Health Dashboard --> Fornece alertas e orientação para eventos da AWS que podem afetar seu ambiente. Mostra o status geral dos produtos da AWS e fornece notificações proativas e transparentes sobre seu ambiente específico na AWS.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Config', 'https://aws.amazon.com/pt/config/', 'acessar, auditar e avaliar as configurações', 'AWS Config --> É um serviço que permite acessar, auditar e avaliar as configurações dos recursos da AWS. Você pode analisar alterações feitas nas configurações e relacionamentos entre os recursos da AWS, aprofundar-se de forma detalhada no histórico de configuração de recursos e determinar a conformidade geral em relação às configurações especificadas em suas diretrizes internas.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'AMS', 'https://aws.amazon.com/managed-services/', 'Fornece recursos proativos, preventivos e de detecção', 'AMS (AWS Managed Services) --> Ajuda você a adotar a AWS em escala e a operar com mais eficiência e segurança. Fornece recursos proativos, preventivos e de detecção que elevam o nível operacional e ajudam a reduzir riscos sem restringir a agilidade, permitindo que você se concentre na inovação.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Criptografia dos dados', 'https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/UsingEncryption.html', '', 'Proteção de dados protege os dados em trânsito à medida que são transferidos para e do Amazon S3. É possível proteger dados em trânsito usando SSL/TLS (Secure Socket Layer/Transport Layer Security) com criptografia no lado do cliente ou no lado do servidor.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'LightSail', 'https://aws.amazon.com/pt/lightsail/?nc2=h_ql_prod_fs_ls', '', 'O Amazon Lightsail --> Oferece instâncias de servidor privado virtual (VPS), contêineres, armazenamento, bancos de dados e muito mais a um preço mensal econômico. Cria sites personalizados, como: WordPress, Magento, Prestashop e Joomla.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Lambda', 'https://docs.aws.amazon.com/pt_br/lambda/latest/dg/welcome.html', '', 'AWS Lambda --> É um serviço de computação que permite executar código sem provisionar ou gerenciar servidores, ou seja, processa dados sem servidor e pode ser acionado pelo S3 e SNS.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Clusters', 'https://docs.aws.amazon.com/pt_br/AmazonECS/latest/userguide/clusters.html', '', 'Um cluster do Amazon ECS --> É um agrupamento lógico de tarefas ou serviços no Amazon ECS.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Suporte', 'https://docs.aws.amazon.com/pt_br/awssupport/latest/user/getting-started.html', 'cinco planos de suporte', 'O AWS Suporte --> Oferece cinco planos de suporte: Basic, Desenvolvedor, Business, Enterprise On-Ramp, Enterprise.<br/>Basic, Desenvolvedor, Business (tempo de resposta menor que 1 hora com acesso aos engenheiros do Cloud Support por telefone),<br/>Enterprise On-Ramp (tempo de resposta menor que 30 minutos),<br/>Enterprise (tempo de resposta menor que 15 minutos),<br/>Todos os planos de suporte oferecem acesso <b>24 horas por dia, 7 dias por semana ao atendimento ao cliente, à documentação da AWS, aos whitepapers e aos fóruns de suporte</b>. Developer tem acesso somente por e-mail em horário comercial. Enterprise e Business fornecem acesso ininterrupto por telefone, e-mail e chat.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'AMI', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html', 'imagem de uma máquina virtual', 'AWS AMI (Imagem de Máquina da Amazon) --> É uma imagem de uma máquina virtual suportada e mantida pela AWS que fornece as informações necessárias para iniciar uma instância.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Marketplace', 'https://aws.amazon.com/pt/mp/marketplace-service/overview/', 'catálogo digital de software pronto de terceiros', 'AWS Marketplace --> É um catálogo digital de software pronto de terceiros que facilita encontrar, testar, comprar e implantar e podem ser executados no AWS.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Service Catalog', 'https://aws.amazon.com/pt/servicecatalog/?aws-service-catalog.sort-by=item.additionalFields.createdDate&aws-service-catalog.sort-order=desc', '', 'O AWS Service Catalog --> Permite que empresas criem e gerenciem catálogos de serviços de TI que estejam aprovados para uso na AWS. Esses serviços de TI podem incluir tudo, de imagens de máquinas virtuais, servidores, software e bancos de dados a arquiteturas completas de aplicações multicamadas.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Route53', 'https://docs.aws.amazon.com/pt_br/Route53/latest/DeveloperGuide/Welcome.html', 'registro de domínios', 'O Amazon Route 53 --> É um web service de Domain Name System (DNS) altamente disponível e dimensionável. Você pode usá-lo para executar três funções principais em qualquer combinação: registro de domínios, roteamento de DNS e verificação de integridade.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'CodeBuild', 'https://aws.amazon.com/pt/codebuild/', '', 'AWS CodeBuild --> É um serviço de integração contínua totalmente gerenciado que compila o código-fonte, executa testes e produz pacotes de software que estão prontos para implantação.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'CodeCommit', 'https://aws.amazon.com/pt/codecommit/', '', 'O AWS CodeCommit --> É um serviço de controle de origem gerenciado seguro e altamente dimensionável que hospeda repositórios privados do Git. Ele torna mais fácil para as equipes colaborarem com segurança no código com contribuições criptografadas em trânsito e em repouso.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'CodeDeploy', 'https://aws.amazon.com/pt/codedeploy/', '', 'AWS CodeDeploy --> É um serviço totalmente gerenciado de implantação que automatiza implantações de software em diversos serviços de computação como Amazon EC2, AWS Fargate, AWS Lambda e servidores locais.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'CodePipeline', 'https://aws.amazon.com/pt/codepipeline/#:~:text=O%20AWS%20CodePipeline%20permite%20modelar,um%20aplicativo%20e%20suas%20depend%C3%AAncias', '', 'AWS CodePipeline --> É um serviço gerenciado de entrega contínua que ajuda a automatizar pipelines de liberação para oferecer atualizações rápidas e confiáveis de aplicativos e infraestruturas. O CodePipeline automatiza as fases de compilação, Nível e implantação do processo de liberação sempre que ocorre uma mudança no código, de acordo com o modelo de liberação que você definiu.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'CodeCommit, CodeBuild, CodeDeploy', 'https://aws.amazon.com/pt/blogs/aws-brasil/construindo-um-pipeline-de-ci-cd-aws-devsecops-de-ponta-a-ponta-com-ferramentas-de-codigo-aberto-sca-sast-e-dast/#:~:text=Servi%C3%A7os%20de%20CI%2FCD&text=AWS%20CodeDeploy%20%E2%80%93%20%C3%A9%20um%20servi%C3%A7o,AWS%20Lambda%20e%20servidores%20locais', '', 'Ordem dos serviços AWS em um pipeline de CI/CD é 1, 2, 3. <br/>1 - AWS CodeCommit – Um serviço totalmente gerenciado de controle de código-fonte que hospeda repositórios seguros baseados em Git.<br/>2 - AWS CodeBuild – Um serviço de integração contínua totalmente gerenciado que compila o código-fonte, executa testes e produz pacotes de software que estão prontos para implantação.<br/>3 - AWS CodeDeploy – é um serviço totalmente gerenciado de implantação que automatiza implantações de software em diversos serviços de computação como Amazon EC2, AWS Fargate, AWS Lambda e servidores locais.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Tolerância a Falha', 'https://inf.unioeste.br/gia/index.php/2020/10/22/tolerancia-a-falhas-em-sistemas-distribuidos-e-suas-aplicacoes/', '', 'A tolerância a falhas --> É a propriedade que garante a correta e eficiente operação de um sistema apesar da ocorrência de falhas em qualquer um dos seus componentes ou unidades.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Acoplamento fraco', 'https://wa.aws.amazon.com/wat.question.REL_4.pt_BR.html', 'uma das melhores práticas é o baixo acoplamento', 'Aclopamento fraco --> É o baixo acoplamento que ajuda a isolar o comportamento de um componente dos outros componentes que dependem dele, o que aumenta a resiliência e a agilidade no pilar de Confiabilidade do AWS Well-Architected Framework. Uma falha em um dos componentes não deve afetar os outros componentes.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Elasticidade', 'https://aws.amazon.com/pt/what-is-cloud-computing/?nc2=h_ql_le_int_cc', 'provisiona a quantidade de recursos realmente necessária', 'Elasticidade --> É a capacidade de adquirir recursos quando você precisa deles e liberá-los quando você não precisar mais. Com a computação em nuvem, você não precisa provisionar recursos em excesso para absorver picos de atividades empresariais no futuro. Em vez disso, você provisiona a quantidade de recursos realmente necessária.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'IP Elástico', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html', 'alocado para a conta da AWS e será seu até que você o libere', 'IP Elástico --> É um Endereço IP elástico --> É um endereço IPv4 estático projetado para computação em nuvem dinâmica. Um endereço IP elástico é alocado para a conta da AWS e será seu até que você o libere.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Elastic Beanstalk', 'https://aws.amazon.com/pt/elasticbeanstalk/', '', 'AWS Elastic Beanstalk --> É um serviço de fácil utilização para implantação e escalabilidade de aplicações e serviços da web desenvolvidos com Java, .NET, PHP, Node.js, Python, Ruby, Go e Docker em servidores familiares como Apache, Nginx, Passenger e IIS. Não reduz a latência do site.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'CloudFormation', 'https://aws.amazon.com/pt/cloudformation/', '', 'AWS CloudFormation --> Permite modelar, provisionar e gerenciar recursos da AWS e de terceiros ao tratar a infraestrutura como código. Permite padronizar e versionar as configurações de banco de dados. de forma automatizada usando pipelines de CI/CD.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'CloudFront', 'https://docs.aws.amazon.com/pt_br/AmazonCloudFront/latest/DeveloperGuide/Introduction.html', '', 'O Amazon CloudFront --> É um serviço da web que acelera a distribuição do conteúdo estático e dinâmico da web para os usuários, diminuindo a latência entre a requisição e a entrega. Exemplo de arquivos estáticos: .html, .css, .js e arquivos de imagem. Distribui o conteúdo por meio de uma rede global de datacenters denominados pontos de presença.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'VPC', 'https://aws.amazon.com/pt/vpc/', 'lança recursos da AWS em uma rede virtual isolada logicamente', 'O AWS VPC (Virtual Private Cloud) --> Define e lança recursos da AWS em uma rede virtual isolada logicamente. Oferece controle total sobre seu ambiente de redes virtual, incluindo posicionamento de recursos, conectividade e segurança.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'VPC endpoint', 'https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints.html', '', 'VPC endpoint --> Você pode criar seu próprio aplicativo em seu VPC e configurá-lo como um serviço habilitado pela AWS PrivateLink (conhecido como serviço de endpoint). Ele não se conecta a operações locais.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'VPN', 'https://aws.amazon.com/pt/vpn/', 'estabelecem conexões seguras entre redes locais', 'As soluções do AWS Virtual Private Network (VPN) --> Estabelecem conexões seguras entre redes locais, escritórios remotos, dispositivos de clientes e a rede global da AWS. O AWS VPN é composto por dois serviços: AWS Site-to-Site VPN e AWS Client VPN.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'PrivateLink', 'https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/aws-privatelink.html', '', 'O AWS PrivateLink --> Permite que você se conecte a alguns serviços AWS, serviços hospedados por outras contas AWS (chamadosde serviços de ponto final) e suportados serviços parceiros do AWS Marketplace, através de endereços IP privados em seu VPC. Os pontos finais da interface são criados diretamente dentro do seu VPC, usando interfaces de rede elásticas e endereços IP em seu Sub-redes do VPC.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Certificate Manager', 'https://aws.amazon.com/pt/certificate-manager/#:~:text=O%20AWS%20Certificate%20Manager%20%C3%A9,e%20os%20recursos%20internos%20conectados', '', 'Certificate Manager --> É um serviço que permite provisionar, gerenciar e implantar facilmente certificados Secure Sockets Layer (SSL)/Transport Layer Security (TLS) para uso com os serviços da AWS e os recursos internos conectados.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'License Manager', 'https://aws.amazon.com/pt/license-manager/', 'gerenciamento de suas licenças de software de fornecedores', 'O AWS License Manager --> Facilita o gerenciamento de suas licenças de software de fornecedores como Microsoft, SAP, Oracle e IBM em ambientes AWS e on-premises.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Console Manager', 'https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/learn-whats-new.html', '', 'AWS Management Console (Console de Gerenciamento da AWS) --> É um aplicativo da web que compreende e se refere a uma ampla coleção de consoles de serviço para gerenciar recursos da AWS.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'SDK', 'https://aws.amazon.com/pt/developer/tools/', 'C++, Go, Java, JavaScript, Kotlin, .NET, Node.js, PHP, Python, Ruby, Rust, Swift', 'SDK é para --> Desenvolver aplicativos na AWS na linguagem de programação de sua escolha, como: C++, Go, Java, JavaScript, Kotlin, .NET, Node.js, PHP, Python, Ruby, Rust, Swift.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'CLI', 'https://aws.amazon.com/pt/cli/', '', 'CLI (AWS Command Line Interface) --> É uma ferramenta de código aberto que permite interagir com os serviços da AWS usando comandos no shell da linha de comando. Permite criar scripts e fazer automação.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'EventBridge', 'https://aws.amazon.com/pt/eventbridge/?nc2=h_ql_prod_ap_eb', 'barramento de eventos', 'O Amazon EventBridge --> É um barramento de eventos sem servidor que torna mais fácil a criação de aplicações orientadas por eventos em escala usando eventos gerados com base em suas aplicações, aplicações integradas de software como serviço (SaaS) e serviços da AWS.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Resource Groups', 'https://docs.aws.amazon.com/ARG/latest/userguide/welcome.html', '', 'AWS Resource Groups --> É o serviço que permite gerenciar e automatizar tarefas em um grande número de recursos de uma vez. Um recurso é uma entidade com a qual você pode trabalhar. Os recursos na AWS são entidades como instâncias Amazon EC2 e buckets do Amazon S3.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Glue', 'https://docs.aws.amazon.com/pt_br/glue/latest/dg/what-is-glue.html', '', 'O AWS Glue --> É um serviço de ETL (extração, transformação e carregamento) totalmente gerenciado pela AWS.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'WorkSpaces', 'https://aws.amazon.com/pt/workspaces/#:~:text=O%20Amazon%20Workspaces%20%C3%A9%20um,partir%20de%20qualquer%20dispositivo%20compat%C3%ADvel', '', 'O Amazon Workspaces --> É um serviço de virtualização de desktop totalmente gerenciado para Windows e Linux que habilita o acesso a recursos a partir de qualquer dispositivo compatível.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Lifecycle', 'https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/object-lifecycle-mgmt.html', '', 'Lifecycle --> É uma configuração do S3, um arquivo XML que consiste em um conjunto de regras com ações predefinidas que você deseja que o Amazon S3 execute em objetos durante sua vida útil.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Responsabilidade Compartilhada', 'https://aws.amazon.com/pt/compliance/shared-responsibility-model/#:~:text=Responsabilidade%20da%20AWS%3A%20%E2%80%9Cseguran%C3%A7a%20da,os%20Servi%C3%A7os%20de%20nuvem%20AWS', '', 'Responsabilidade Compartilhada: --> A AWS é responsável por proteger a infraestrutura que executa todos os serviços oferecidos na Nuvem AWS. Essa infraestrutura é composta por hardware, software, redes e instalações que executam os Serviços de nuvem AWS. AWS e Cliente gerenciam configuração, patches e treinamentos, cada uma para seus próprios funcionários. O cliente é responsável pela segurança "NA" Nuvem AWS e gerencia o desenvolvimento de aplicações. A AWS responsável pela segurança "DA" Nuvem. A AWS compra servidores adicionais conforme necessidade do cliente e mantém totalmente os controles físicos.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'CodeStar', 'https://aws.amazon.com/pt/codestar/', 'desenvolva, compile e implante rapidamente aplicativos', 'O AWS CodeStar --> Permite que você desenvolva, compile e implante rapidamente aplicativos na AWS. Com o AWS CodeStar, é possível configurar toda a sua cadeia de ferramentas de entrega contínua em questão de minutos.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Amplify', 'https://aws.amazon.com/pt/amplify/', 'permite que desenvolvedores frontend para plataformas móveis e Web', 'O AWS Amplify --> É uma solução completa que permite que desenvolvedores frontend para plataformas móveis e Web criem, enviem e hospedem aplicações full-stack na AWS.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Global Accelerator', 'https://aws.amazon.com/pt/global-accelerator/?blogs-global-accelerator.sort-by=item.additionalFields.createdDate&blogs-global-accelerator.sort-order=desc&aws-global-accelerator-wn.sort-by=item.additionalFields.postDateTime&aws-global-accelerator-wn.sort-order=desc', 'otimiza o caminho quando a Internet está congestionada', 'O AWS Global Accelerator --> É um serviço de redes que melhora a performance do tráfego de seus usuários em até 60% usando a infraestrutura de rede global da Amazon Web Services. O AWS Global Accelerator otimiza o caminho quando a Internet está congestionada para sua aplicação para manter a perda de pacotes, o jitter e a latência consistentemente baixos.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'CodeArtifact', 'https://aws.amazon.com/pt/codeartifact/', 'serviço de repositório de artefatos', 'O AWS CodeArtifact --> É um serviço de repositório de artefatos totalmente gerenciado que facilita para organizações de qualquer tamanho o armazenamento, a publicação e o compartilhamento com segurança de pacotes de software usados em seu processo de desenvolvimento.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Edge Location', 'https://aws.amazon.com/pt/cloudfront/features/?whats-new-cloudfront.sort-by=item.additionalFields.postDateTime&whats-new-cloudfront.sort-order=desc', 'Edge Location --> Atendem à solicitações do CloudFront e do Route 53', 'É basicamente um pequeno servidor de cache. Atendem à solicitações do CloudFront e do Route 53. O usuário pode estar longe de uma Region mas próximo de um Edge Location. O AWS Lambda@Edge é um recurso de computação sem servidor e de uso geral compatível com uma grande variedade de necessidades e personalizações de computação.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Backup', 'https://docs.aws.amazon.com/pt_br/aws-backup/latest/devguide/whatisbackup.html', 'proteção de dados', 'AWS Backup --> É um serviço totalmente gerenciado que facilita a centralização e a automação da proteção de dados em serviços AWS, na nuvem e no local. Você pode configurar políticas de backup e monitorar a atividade para seus recursos de AWS em um só lugar.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Detective', 'https://aws.amazon.com/pt/detective/faqs/', 'facilita a análise, a investigação e a identificação rápidas da causa raiz de potenciais problemas de segurança ou atividades suspeitas', 'O Amazon Detective --> Facilita a análise, a investigação e a identificação rápidas da causa raiz de potenciais problemas de segurança ou atividades suspeitas. Coleta automaticamente dados de log de seus recursos da AWS e usa aprendizado de máquina, análise estatística e teoria dos gráficos para criar um conjunto de dados vinculados que permite realizar facilmente investigações de segurança mais rápidas e eficientes.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Tags', 'https://docs.aws.amazon.com/pt_br/general/latest/gr/aws_tagging.html', '', 'Tags --> São metadados que você pode associar aos recursos da AWS. Você pode atribuir metadados aos seus recursos da AWS na forma de tags. Cada tag é um rótulo que consiste em um valor e uma chave definida pelo usuário. As tags podem ajudar você a gerenciar, identificar, organizar, pesquisar e filtrar recursos. Você pode criar tags para categorizar recursos por finalidade, proprietário, ambiente ou outros critérios. Exemplo: faturamento consolidado por categorias de negócios.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Snow', 'https://aws.amazon.com/pt/snow/', 'Migrar petabytes de dados', 'Snow --> São dispositivos desenvolvidos especificamente para migrar petabytes de dados de forma econômica, offline para a AWS ou processar dados na borda. Dispositivos da família: AWS Snowcone ou AWS Snowball.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Snowball', 'https://aws.amazon.com/pt/getting-started/hands-on/migrate-petabyte-scale-data/faq/', 'dispositivo para transporte de dados que acelera a transferência de terabytes a petabytes de dados', 'O AWS Snowball é uma solução de dispositivo para transporte de dados que acelera a transferência de terabytes a petabytes de dados para dentro e para fora da AWS usando dispositivos de armazenamento criados para oferecer transporte físico seguro.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Federation', 'https://aws.amazon.com/pt/identity/federation/', 'autenticar usuários', 'A AWS Federation (federação de identidade) é um sistema de confiança entre duas partes com o objetivo de autenticar usuários e transmitir informações necessárias para autorizar seu acesso aos recursos.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Transfer Acceleration', 'https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/transfer-acceleration.html', 'transferências de arquivos rápidas em nível de bucket', 'O Amazon S3 Transfer Acceleration --> É um recurso que possibilita transferências de arquivos rápidas em nível de bucket, fáceis e seguras em longas distâncias entre o seu cliente e um bucket do S3. Ele tira proveito dos pontos de presença distribuídos globalmente no Amazon CloudFront.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Connect', 'https://docs.aws.amazon.com/pt_br/connect/latest/adminguide/what-is-amazon-connect.html', 'integrar com outros aplicativos corporativos', 'O Amazon Connect --> É uma plataforma aberta que você pode integrar com outros aplicativos corporativos. Você pode configurar um centro de contatos em algumas etapas, adicionar agentes de qualquer lugar e começar a interagir com seus clientes.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Kafka', 'https://aws.amazon.com/pt/msk/', 'processamento de dados de streaming em tempo real', 'MSK (Amazon Managed Streaming for Apache Kafka) --> Facilita a ingestão e o processamento de dados de streaming em tempo real com o Apache Kafka totalmente gerenciado.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Conformidade da AWS', 'https://aws.amazon.com/pt/compliance/', 'PCI-DSS, HIPAA/HITECH, FedRAMP, GDPR, FIPS 140-2 e NIST 800-171', 'Conformidade da AWS --> Oferece suporte a padrões de segurança e certificações de conformidade como PCI-DSS, HIPAA/HITECH, FedRAMP, GDPR, FIPS 140-2 e NIST 800-171, ajudando os clientes a cumprir os requisitos de conformidade de praticamente todos os órgãos normativos do mundo. O cliente é responsável pela certificação de compliance.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'DocumentDB', 'https://aws.amazon.com/pt/documentdb/', '', 'O Amazon DocumentDB --> É um serviço de banco de dados escalável, altamente durável e totalmente gerenciado pela AWS para operar workloads do MongoDB de missão crítica. Dimensiona workloads JSON.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Melhores Práticas Chaves De Acesso', 'https://docs.aws.amazon.com/pt_br/accounts/latest/reference/credentials-access-keys-best-practices.html', '', 'Melhores Práticas Chaves De Acesso --> Use credenciais de segurança temporárias (funções do IAM) em vez de chaves de acesso de longo prazo. Em muitos casos, você não precisa de chaves de acesso de longo prazo que nunca expiram (como você tem com um usuário do IAM). Em vez disso, você pode criar funções do IAM e gerar credenciais de segurança temporárias.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Infraestrutura Global', 'https://aws.amazon.com/pt/about-aws/global-infrastructure/', '', 'A AWS atende a mais de 1 milhão de clientes ativos em 245 países e territórios. A Nuvem AWS opera 87 zonas de disponibilidade em 27 regiões geográficas, mais de 410 pontos de presença, 115 locais Direct Connect e há planos para adicionar mais zonas de disponibilidade e regiões.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+
+
+
+
+
+
+
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'NACL', 'https://docs.aws.amazon.com/pt_br/vpc/latest/userguide/vpc-network-acls.html', 'tráfego de entrada ou de saída no nível da sub-rede', 'Uma lista de controle de acesso (ACL) de rede permite ou não determinado tráfego de entrada ou de saída no nível da sub-rede (subnet).');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'ACL', 'https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/acl-overview.html', 'gerenciamento do acesso aos buckets e objetos', 'As listas de controle de acesso (ACLs) do Amazon S3 permitem o gerenciamento do acesso aos buckets e objetos. Cada bucket e objeto tem uma ACL anexada como um sub-recurso. Ela define a quais grupos ou Contas da AWS o acesso é concedido, bem como o tipo de acesso. Quando um recurso é solicitado, o Amazon S3 consulta a ACL correspondente para verificar se o solicitante tem as permissões de acesso necessárias.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'IPV4', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/using-instance-addressing.html', 'São limitados a 5 por região', 'Um endereço IPv4 privado é um endereço IP que não é acessível pela Internet. É possível usar endereços IPv4 privados para comunicação entre instâncias na mesma VPC. São limitados a 5 por região.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'IPV6', 'https://docs.aws.amazon.com/pt_br/vpc/latest/userguide/vpc-migrate-ipv6.html', 'suporte ao IPv6', 'Se você possuir uma VPC existente que ofereça suporte somente para IPv4 e recursos na sub-rede que sejam configurados para usar somente o IPv4, você pode habilitar o suporte ao IPv6 para a VPC e recursos.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'On Premises', 'https://docs.aws.amazon.com/codedeploy/latest/userguide/instances-on-premises.html', '', 'On premises é a infraestrutura ou Data Center particular, privado, local de uma empresa.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Keyspaces', 'https://aws.amazon.com/pt/keyspaces/', 'compatível com o Apache Cassandra', 'O Amazon Keyspaces (for Apache Cassandra) é um serviço de banco de dados compatível com o Apache Cassandra, escalável, altamente disponível e gerenciado.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Bucket', 'https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html', '', 'Regras de nomenclatura de bucket do serviço S3.<br/>Devem ter entre 3 (min) e 63 (max) caracteres.<br/>Podem consistir apenas em letras minúsculas, números, pontos (.) e hífens (-).<br/>Devem começar e terminar com uma letra ou número.<br/>Não devem conter dois pontos adjacentes.<br/>Não devem ser formatados como um endereço IP (por exemplo, 192.168.5.4).<br/>Não devem começar com o prefixo xn--.<br/>Não devem terminar com o sufixo -s3alias.<br/>devem ser exclusivos em todas as contas em todas as regiões em uma partição, da AWS. Use IAM role para dar permissões a um bucket privado.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'JSON', 'https://docs.aws.amazon.com/pt_br/athena/latest/ug/parsing-JSON.html', 'Muitos aplicativos e ferramentas produzem dados codificados em JSON', 'JavaScript Object Notation (JSON) é um método comum para codificar estruturas de dados como texto. Muitos aplicativos e ferramentas produzem dados codificados em JSON.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Apache Handoop', 'https://aws.amazon.com/pt/emr/features/hadoop/', 'Apache Hadoop dentro do serviço Amazon EMR (Big Data)', 'O Apache Hadoop --> No serviço Amazon EMR (Big Data) é um projeto de software de código aberto que pode ser usado para processar de modo eficiente grandes conjuntos de dados.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'GraphQl', 'https://aws.amazon.com/pt/appsync/', 'consultar vários bancos de dados', 'O AWS AppSync é um serviço sem servidor das APIs GraphQL e Pub/Sub que simplifica a criação de aplicações Web e de plataformas móveis modernas. As APIs GraphQL criadas com o AWS AppSync fornecem aos desenvolvedores de front-end a capacidade de consultar vários bancos de dados, microsserviços e APIs a partir de um único endpoint do GraphQL.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Security Hub', 'https://aws.amazon.com/pt/security-hub/', 'verificações de práticas recomendadas de segurança', 'O AWS Security Hub é um serviço de gerenciamento de procedimentos de segurança na nuvem que realiza verificações de práticas recomendadas de segurança, agrega alertas e permite a correção automatizada.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Advantages Cloud Computing', 'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html', '', '1 Troca as despesas de capital por despesas variáveis.<br/> 2 Grandes economias de escala alcançando um custo variável mais baixo do que normalmente seria possível.<br/> 3 Fazer suposições sobre capacidade.<br/> 4 Aumentar a velocidade e a agilidade.<br/> 5 Não investir dinheiro em administração e manutenção de datacenters.<br/> 6 Tornar-se global em minutos.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Teste de penetração', 'https://aws.amazon.com/pt/security/penetration-testing/', '', 'Os clientes da AWS podem realizar avaliações de segurança ou testes de penetração em sua infraestrutura da AWS sem aprovação prévia em oito serviços, listados na próxima seção como “Serviços permitidos”.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Data Privacy', 'https://aws.amazon.com/pt/compliance/data-privacy-faq/', '', 'A confiança do cliente é a principal prioridade da AWS. A AWS monitora continuamente o regulamento de privacidade em desenvolvimento e o cenário legislativo para identificar mudanças e determinar de quais ferramentas nossos clientes podem precisar para estar em conformidade com as suas necessidades.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Pricing on-demand', 'https://aws.amazon.com/pt/ec2/pricing/on-demand/', 'Dados transferidos diretamente na mesma região da AWS não são cobrados', 'Dados transferidos diretamente na mesma região da AWS não são cobrados entre os serviços Amazon e das instâncias do Amazon EC2. Os dados transferidos entre instâncias na mesma zona de disponibilidade não são cobrados.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
 
 	document.getElementById('divlinkhelp').innerHTML = linkhelp;
 
@@ -2308,7 +2844,24 @@ function showCorrect(valorindice, myid, mygroup, mycode) {
 	} else {
 		document.getElementById('lblcorrect' + valorindice).style.display='none';
 	}
-	updateStudentPlay(myid, mygroup, mycode);
+	var params = new URLSearchParams(window.location.search);
+	var mytema = params.get('tem');
+	var mycategory = params.get('cat');
+	updateStudentPlay(mytema, mycategory, myid, mygroup, mycode);
+}
+
+function showFormCategory() {
+    $('#tblGrid').hide();
+    $('#divFormAddUpdate').hide();
+	$('#divGear').hide();
+	$('#divcontent').hide();
+	$('#formBible').hide();
+	$('#divconfig').hide();
+	$('#divGearAddNewLiryc').hide();
+	$('#divFormSim').hide();
+	$('#divbuttons').hide();
+	$('#tblCategory').show();
+//	if (document.getElementById('tableButtons') != null) { document.getElementById('tableButtons').style.display=''; }
 }
 
 function showFormSim() {
@@ -2321,7 +2874,8 @@ function showFormSim() {
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').show();
 	$('#divbuttons').hide();
-	document.getElementById('tableButtons').style.display='none';
+	$('#tblCategory').hide();
+//	document.getElementById('tableButtons').style.display='none';
 }
 
 function showFormAddUpdate() {
@@ -2333,6 +2887,7 @@ function showFormAddUpdate() {
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
+	$('#tblCategory').hide();
 }
 
 function showGridAndHideForms() {
@@ -2341,11 +2896,10 @@ function showGridAndHideForms() {
 	$('#divGear').hide();
 	$('#divcontent').hide();
 	$('#formBible').hide();
-//	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
-//	if (document.getElementById('btnGear') != null) { document.getElementById('btnGear').style.display=''; }
-	if (document.getElementById('tableButtons') != null) { document.getElementById('tableButtons').style.display=''; }
+	$('#tblCategory').hide();
+//	if (document.getElementById('tableButtons') != null) { document.getElementById('tableButtons').style.display=''; }
 }
 
 function showAddNewManual() {
@@ -2357,6 +2911,7 @@ function showAddNewManual() {
 	$('#formBible').hide();
 	$('#divconfig').hide();
 	$('#divFormSim').hide();
+	$('#tblCategory').hide();
 }
 
 function showFormGear() {
@@ -2365,9 +2920,9 @@ function showFormGear() {
 	$('#divGear').show();
 	$('#divcontent').hide();
 	$('#formBible').hide();
-//	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
+	$('#tblCategory').hide();
 }
 
 function showFormImport() {
@@ -2379,6 +2934,7 @@ function showFormImport() {
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
+	$('#tblCategory').hide();
 }
 
 function showBible() {
@@ -2390,6 +2946,7 @@ function showBible() {
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
+	$('#tblCategory').hide();
 }
 
 function showIniciarConfiguracao() {
@@ -2401,9 +2958,7 @@ function showIniciarConfiguracao() {
 	$('#divconfig').show();
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
-//	document.getElementById('btnPlay').style.display='none';
-//	document.getElementById('btnAddNewManual').style.display='none';
-//	document.getElementById('btnGear').style.display='none';
+	$('#tblCategory').hide();
 }
 
 function showForm1Form2() {
@@ -2609,11 +3164,14 @@ function moveCursor(mycode, col, evento, index) {
 				setColor(index, localStorage.getItem('valueAoVivo'));
 			}
 			document.getElementById('txtSearch').value = removeSpecials(index.trim());
+			var params = new URLSearchParams(window.location.search);
+			var mytema = params.get('tem');
+			var mycategory = params.get('cat');
 			var mycode = document.getElementById('mycode').value;
 			var myorder = document.getElementById('myorder').value;
 			var mygroup = document.getElementById('mygroup').value;
 			var mytext = document.getElementById('mytext').value.trim();
-			refreshTableData(mycode, myorder, mygroup, mytext);
+			refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext);
 		}
     } else if (evento.keyCode == 27 || event.which == 27) { //ESC
 		if (localStorage.getItem('valueAoVivo') == 'false') {
@@ -2659,11 +3217,14 @@ function datashow(index, col, code) {
 		//Com o click, seleciona apenas uma letra da lista de pesquida
 		if (document.getElementById('txtSearch').value != removeSpecials(code.trim())) {
 			document.getElementById('txtSearch').value = removeSpecials(code.trim());
+			var params = new URLSearchParams(window.location.search);
+			var mytema = params.get('tem');
+			var mycategory = params.get('cat');
 			var mycode = document.getElementById('mycode').value;
 			var myorder = document.getElementById('myorder').value;
 			var mygroup = document.getElementById('mygroup').value;
 			var mytext = document.getElementById('mytext').value.trim();
-			refreshTableData(mycode, myorder, mygroup, mytext);
+			refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext);
 		}
 		localStorage.setItem('valueAutor', ' ');
 		if (localStorage.getItem('valueArt') == '2') {
@@ -2712,11 +3273,14 @@ function chooseChapter(content) {
 	if (document.getElementById('txtSearch').value.length = 2) {
 		var sizeSearch = document.getElementById('txtSearch').value.length;
 		document.getElementById('txtSearch').value = document.getElementById('txtSearch').value.substring(0, sizeSearch) + content + ';';
+		var params = new URLSearchParams(window.location.search);
+		var mytema = params.get('tem');
+		var mycategory = params.get('cat');
 		var mycode = document.getElementById('mycode').value;
 		var myorder = document.getElementById('myorder').value;
 		var mygroup = document.getElementById('mygroup').value;
 		var mytext = document.getElementById('mytext').value.trim();
-		refreshTableData(mycode, myorder, mygroup, mytext);
+		refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext);
 		if (document.getElementById('txtSearch').value.length <= 1) { // pesquisa somente com mais de 1 caracter preenchido no campo search
 			if (document.getElementById('selectMygroup').selectedIndex == '1') {
 				showBible();

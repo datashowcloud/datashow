@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Configuração Sim</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/bootstrap.css" />
+    <link rel="stylesheet" href="style/font-awesome.min.css" />
+    <script src="scripts/jsstore.js"></script>
+    <script src="scripts/jsstore.worker.js"></script>
+    <script src="index.js"></script>
+	<style>
+#myBody {
+  border: 0px dashed blue;
+  padding: 25px;
+  background-attachment: fixed;
+  background-position: top; 
+  background-repeat: no-repeat;
+} 
+	</style>
+</head>
+
+<body id="myBody" ZZZbackground="gallery/paper.jpeg">
+		
+			<div style="display:'none'; text-align:center; ">
+				<!-- br/>Aguarde o resultado na janela da configuração -->
+				<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px;">Fase atualizada e desbloqueada</div>
+				<br/><br/>
+				<button class="btn btn-info" onclick="window.open('index.html?tem=1&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
+				
+				<label id="bSearch" style="display:none;">
+					<input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:200px; height:34px;">
+				</label>
+			</div>
+
+		<table id="tblGrid" style="width:98%" class="table table-hover ">
+			<tbody>
+					<!--
+				<div id="botoes" style="display:none; text-align:center;">
+				</div>
+					-->
+			</tbody>
+		</table>
+
+		<!-- form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post" -->
+		<!-- /form -->
+		
+		<div class="form-group" id="divFormSim" style="display:none;">
+			<font size=4.9 style=text-align:justify>
+				<table border=0 align=center width="100%">
+					<tr><td>
+						<button id="btnBackward" class="btn btn-danger" style="display:none;"> <i class="fa fa-remove"></i> </button>
+						<button id="btnPrevious" class="btn btn-default" style="display:none;"> <i class="fa fa-chevron-left"></i></button>
+						<button id="btnNext" class="btn btn-success" style="display:none;">Próximo <i class="fa fa-chevron-right"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-signal"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-pause"></i></button>
+						<button class="btn btn-warning" style="display:none;"><i class="fa fa-check"></i> Fim</button>
+					</td></tr>
+					<tr><td id="mytextSim" style="display:none; text-align:justify;">
+					</td></tr>
+					<tr><td id="mycorrect1Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect1answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect2Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect2answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect3Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect3answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect4Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect4answer"></div>
+					</td></tr>
+
+					<tr><td id="myincorrect1Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect1answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect2Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect2answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect3Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect3answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect4Sim" style="display:none; text-align:justify;">
+						<div id="myincorrecta4answer"></div>
+					</td></tr>
+					<tr><td>
+						<br/><input type="text" id="mygroupSim" value="" Zhidden="">
+						<br/><input type="text" id="mycodeSim" value="" Zhidden="">
+						<br/><input type="text" id="myorderSim" value="" Zhidden="">
+						<br/><input type="text" id="myidSim" value="" Zhidden="">
+					</td></tr>
+				</table>
+				<table id="tableFormSimDashboard" border=0 align=center width="60%" style="display:'none';">
+					<tr><td nowrap id="txtCalculo"></td></tr>
+					<tr><td nowrap><input type="text" id="txtIncorretas" value="Incorretas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:red;" readonly /></td></tr>
+					<tr><td nowrap><input type="text" id="txtCorretas" value="Corretas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:green;" readonly /></td></tr>
+					<tr><td nowrap><input type="text" id="txtNaoRespondidas" value="Não Respondidas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:blue;" readonly /></td></tr>
+					<tr><td nowrap><br/><input type="text" id="txtTotal" value="Total" class="btn btn-default" style="padding:9px 15px 9px 15px; display:'none';" hidden=""></td></tr>
+				</table>
+				<table id="tableLinkhelp" border=0 align=center style="display:'none';">
+					<tr><td id="help" style="display:none; text-align:justify;">
+						<div id="divlinkhelp"></div>
+					</td></tr>
+				</table>
+			</font>
+		</div>
+
+		<div class="form-group" id="divFormAddUpdate" style="display:none;">
+			<table border=0 align=center width="98%" style="display:none;"><tr><td>
+				<b>Formulário Editor de Perguntas</b>
+				<p/><p/>
+				<select id="mygroup" name="mygroup" style="height:35px; display:none;">
+					<!-- option value="00">Configurações</option -->
+					<option value="10">Nível 1.0</option>
+					<option value="11">Nível 1.1</option>
+					<option value="12">Nível 1.2</option>
+					<option value="13">Nível 1.3</option>
+					<option value="14">Nível 1.4</option>
+					<option value="20">Nível 2.0</option>
+					<option value="21">Nível 2.1</option>
+					<option value="22">Nível 2.2</option>
+					<option value="23">Nível 2.3</option>
+					<option value="30">Nível 3.0</option>
+					<option value="31">Nível 3.1</option>
+					<option value="32">Nível 3.2</option>
+					<option value="33">Nível 3.3</option>
+					<option value="40">Nível 4.0</option>
+					<option value="41">Nível 4.1</option>
+					<option value="42">Nível 4.2</option>
+					<option value="43">Nível 4.3</option>
+					<option value="44">Nível 4.4</option>
+					<option value="45">Nível 4.5</option>
+					<option value="46">Nível 4.6</option>
+					<option value="50">Nível 5.0</option>
+
+				</select>
+				<select id="mycode" name="mycode" style="height:35px; display:none;"></select>
+				<select id="myorder" name="myorder" style="height:35px; display:none;"></select>
+				<p/>
+				<p/><textarea name="mytext" id="mytext" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui..."></textarea>
+				<font style="color:green;">
+					Corretas:
+					<textarea name="myoption1" id="myoption1" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey1" id="myoptionkey1" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption2" id="myoption2" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey2" id="myoptionkey2" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption3" id="myoption3" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey3" id="myoptionkey3" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption4" id="myoption4" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey4" id="myoptionkey4" rows=1 placeholder="explicação..."></textarea>
+				</font>
+				
+				<font style="color:red; text-align:left;">
+					Incorretas:
+					<textarea name="myoption5" id="myoption5" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey5" id="myoptionkey5" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption6" id="myoption6" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey6" id="myoptionkey6" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption7" id="myoption7" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey7" id="myoptionkey7" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption8" id="myoption8" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey8" id="myoptionkey8" rows=1 placeholder="explicação..."></textarea>
+				</font>
+				<p/><p/>
+				<button id="btnSubmit" type="button" class="btn btn-primary" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-check"></i> Salvar</button>
+				<p/><p/>
+				<button id="btnCancel" type="button" class="btn btn-default" style="padding:9px 15px 9px 15px;margin-left:10px; width:110px;"> <i class="fa fa-times"></i> Não Salvar</button>
+			</td></tr></table>
+		</div>
+		
+		<div id="divcontent" style="display:none;">
+
+<!-- Configuração: 1 -->
+<br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
+<p>
+FASE 2.0
+
+<p>
+É um serviço de integração contínua totalmente gerenciado que <b>compila o código-fonte, executa testes e produz pacotes</b> de software que estão prontos para implantação.
+
+<ok>
+AWS CodeBuild
+<key>CodeBuild</key>
+
+AWS CodeCommit
+<key>CodeCommit</key>
+
+AWS CodeDeploy
+<key>CodeDeploy</key>
+
+AWS CodePipeline
+<key>CodePipeline</key>
+
+<p>
+É um serviço de <b>controle de origem</b> gerenciado seguro e altamente dimensionável que <b>hospeda repositórios privados do Git</b>. <br/>Ele torna mais fácil para as equipes colaborarem com segurança no código com contribuições criptografadas em trânsito e em repouso.
+
+<ok>
+AWS CodeCommit
+<key>CodeCommit</key>
+
+AWS CodeDeploy
+<key>CodeDeploy</key>
+
+AWS CodePipeline
+<key>CodePipeline</key>
+
+AWS CodeBuild
+<key>CodeBuild</key>
+
+<p>
+É um <b>serviço totalmente gerenciado de implantação que automatiza implantações</b> de software em diversos serviços de computação como Amazon EC2, AWS Fargate, AWS Lambda e servidores locais.
+
+<ok>
+AWS CodeDeploy
+<key>CodeDeploy</key>
+
+AWS CodeCommit
+<key>CodeCommit</key>
+
+AWS CodePipeline
+<key>CodePipeline</key>
+
+AWS CodeBuild
+<key>CodeBuild</key>
+
+<p>
+É um <b>serviço gerenciado de entrega contínua que ajuda a automatizar pipelines de liberação</b> para oferecer atualizações rápidas e confiáveis de aplicativos e infraestruturas. <br/>Automatiza as fases de compilação, Nível e implantação do processo de liberação sempre que ocorre uma mudança no código, de acordo com o modelo de liberação que você definiu.
+
+<ok>
+AWS CodePipeline
+<key>CodePipeline</key>
+
+AWS CodeBuild
+<key>CodeBuild</key>
+
+AWS CodeDeploy
+<key>CodeDeploy</key>
+
+AWS CodeCommit
+<key>CodeCommit</key>
+
+<p>
+Ordem dos serviços AWS em um pipeline de CI/CD.
+
+<ok>
+AWS CodeCommit, AWS CodeBuild, AWS CodeDeploy
+<key>CodeCommit, CodeBuild, CodeDeploy</key>
+
+AWS CodeCommit, AWS CodeDeploy, AWS CodeBuild
+<key>CodeCommit, CodeBuild, CodeDeploy</key>
+
+AWS CodeDeploy, AWS CodeBuild, AWS CodeCommit
+<key>CodeCommit, CodeBuild, CodeDeploy</key>
+
+AWS CodeBuild, AWS CodeDeploy, AWS CodeCommit
+<key>CodeCommit, CodeBuild, CodeDeploy</key>
+
+<p>
+É a propriedade que <b>garante a correta e eficiente operação de um sistema apesar da ocorrência de falhas</b> em qualquer um dos seus componentes ou unidades.
+
+<ok>
+Tolerância a Falha
+<key>Tolerância a Falha</key>
+
+Acoplamento fraco
+<key>Acoplamento fraco</key>
+
+Resiliência
+<key>Resiliência</key>
+
+Confiabilidade
+<key>Confiabilidade</key>
+
+<p>
+<b>Ajuda a isolar o comportamento de um componente dos outros componentes</b> que dependem dele, o que aumenta a resiliência e a agilidade no pilar de Confiabilidade do AWS Well-Architected Framework. <br/>Uma falha em um dos componentes não deve afetar os outros componentes.
+
+<ok>
+Acoplamento fraco
+<key>Acoplamento fraco</key>
+
+AWS Well-Architected Framework
+<key>Well-Architected Framework</key>
+
+Resiliência
+<key>Resiliência</key>
+
+Confiabilidade
+<key>Confiabilidade</key>
+
+<p>
+É a <b>capacidade de adquirir recursos quando você precisa deles e liberá-los quando você não precisar mais</b>. <br/>Com a computação em nuvem, você não precisa provisionar recursos em excesso para absorver picos de atividades empresariais no futuro. <br/>Em vez disso, você provisiona a quantidade de recursos realmente necessária.
+
+<ok>
+Elasticidade
+<key>Elasticidade</key>
+
+IP Elástico
+<key>IP Elástico</key>
+
+AWS Elastic Beanstalk
+<key>Elastic Beanstalk</key>
+
+Amazon EC2 Auto Scaling
+<key>Auto Scaling</key>
+
+<p>
+É um endereço IPv4 estático projetado para computação em nuvem dinâmica. <br/>Um endereço <b>é alocado para a conta da AWS e será seu até que você o libere</b>.
+
+<ok>
+IP Elástico
+<key>IP Elástico</key>
+
+Elasticidade
+<key>Elasticidade</key>
+
+AWS Elastic Beanstalk
+<key>Elastic Beanstalk</key>
+
+Amazon EC2 Auto Scaling
+<key>Auto Scaling</key>
+
+<p>
+É um <b>serviço de fácil utilização para implantação e escalabilidade de aplicações e serviços da web</b> desenvolvidos com Java, .NET, PHP, Node.js, Python, Ruby, Go e Docker em servidores familiares como Apache, Nginx, Passenger e IIS. Não reduz a latência do site.
+
+<ok>
+AWS Elastic Beanstalk
+<key>Elastic Beanstalk</key>
+
+IP Elástico
+<key>IP Elástico</key>
+
+Elasticidade
+<key>Elasticidade</key>
+
+Amazon EC2 Auto Scaling
+<key>Auto Scaling</key>
+
+<p>
+
+</textarea>
+
+		</div>
+
+    <link href="style/main.css " rel="stylesheet " type="text/css " />
+</body>
+
+</html>
+
+<script type="text/javascript">
+	onLoadConfig();
+</script>
