@@ -533,28 +533,20 @@ function registerEvents() {
 		}
 		var DataShow_Config = window.open("index.html?tem=" + varTema + "&cat="+ varCategoria, "_self");
 	})
-	$('#imgTema1').click(function () {
-		var varCategoria = '1';
-		for (var i = 0; i < radCategory.length; i++) {
-			if (radCategory[i].checked == true) {
-				varCategoria = radCategory[i].value;
-				break;
-			}
-		}
-		var DataShow_Config = window.open("index.html?tem=1&cat="+ varCategoria, "_self");
-	})
-	$('#imgTema2').click(function () {
-		var varCategoria = '1';
-		for (var i = 0; i < radCategory.length; i++) {
-			if (radCategory[i].checked == true) {
-				varCategoria = radCategory[i].value;
-				break;
-			}
-		}
-		var DataShow_Config = window.open("index.html?tem=2&cat="+ varCategoria, "_self");
-	})
 	$('#btnFormCategory').click(function () {
 		var DataShow_Config = window.open("index.html", "_self");
+	})
+	$('#imgTema1White').click(function () {
+		imgTema1();
+	})
+	$('#imgTema1Black').click(function () {
+		imgTema1();
+	})
+	$('#imgTema2White').click(function () {
+		imgTema2();
+	})
+	$('#imgTema2Black').click(function () {
+		imgTema2();
 	})
 }
 
@@ -622,6 +614,18 @@ async function getConfigGeneral() {
 }
 
 async function setConfigGeneral(textcolor, background, buttoncolor) {
+	if (background == 'white') {
+		document.getElementById('imgTema1White').style.display='';
+		document.getElementById('imgTema2White').style.display='';
+		document.getElementById('imgTema1Black').style.display='none';
+		document.getElementById('imgTema2Black').style.display='none';
+	} else {
+		document.getElementById('imgTema1White').style.display='none';
+		document.getElementById('imgTema2White').style.display='none';
+		document.getElementById('imgTema1Black').style.display='';
+		document.getElementById('imgTema2Black').style.display='';
+	}
+	
 	document.getElementById('myBody').style.background = background;
 
 	if(document.getElementById('FormularioEditorConfiguracoes') != null) {
@@ -739,6 +743,28 @@ async function deletefase(mytema, mycategory, mygroup, mycode, myid) {
     } catch (ex) {
         console.log(ex.message);
     }
+}
+
+function imgTema1() {
+	var varCategoria = '1';
+	for (var i = 0; i < radCategory.length; i++) {
+		if (radCategory[i].checked == true) {
+			varCategoria = radCategory[i].value;
+			break;
+		}
+	}
+	var DataShow_Config = window.open("index.html?tem=1&cat="+ varCategoria, "_self");
+}
+
+function imgTema2() {
+	var varCategoria = '1';
+	for (var i = 0; i < radCategory.length; i++) {
+		if (radCategory[i].checked == true) {
+			varCategoria = radCategory[i].value;
+			break;
+		}
+	}
+	var DataShow_Config = window.open("index.html?tem=2&cat="+ varCategoria, "_self");
 }
 
 function openForm() {
