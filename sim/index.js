@@ -515,23 +515,43 @@ function registerEvents() {
 	$('#btnNightDay').click(function () {
 		updateConfigGeneral();
 	})
-	$('#btnTema1C1').click(function () {
-		var DataShow_Config = window.open("index.html?tem=1&cat=1", "_self");
+	$('#btnContinuarCategoria').click(function () {
+		var varCategoria = '1';
+		var varTema = '1';
+//		alert('radCategory='+radCategory[i].value + ' checked='+radCategory[i].checked);
+		for (var i = 0; i < radCategory.length; i++) {
+			if (radCategory[i].checked == true) {
+				varCategoria = radCategory[i].value;
+				break;
+			}
+		}
+		for (var i = 0; i < radTema.length; i++) {
+			if (radTema[i].checked == true) {
+				varTema = radTema[i].value;
+				break;
+			}
+		}
+		var DataShow_Config = window.open("index.html?tem=" + varTema + "&cat="+ varCategoria, "_self");
 	})
-	$('#btnTema1C2').click(function () {
-		var DataShow_Config = window.open("index.html?tem=1&cat=2", "_self");
+	$('#imgTema1').click(function () {
+		var varCategoria = '1';
+		for (var i = 0; i < radCategory.length; i++) {
+			if (radCategory[i].checked == true) {
+				varCategoria = radCategory[i].value;
+				break;
+			}
+		}
+		var DataShow_Config = window.open("index.html?tem=1&cat="+ varCategoria, "_self");
 	})
-	$('#btnTema1C3').click(function () {
-		var DataShow_Config = window.open("index.html?tem=1&cat=3", "_self");
-	})
-	$('#btnTema1C4').click(function () {
-		var DataShow_Config = window.open("index.html?tem=1&cat=4", "_self");
-	})
-	$('#btnTema1C5').click(function () {
-		var DataShow_Config = window.open("index.html?tem=1&cat=5", "_self");
-	})
-	$('#btnTema1C6').click(function () {
-		var DataShow_Config = window.open("index.html?tem=1&cat=6", "_self");
+	$('#imgTema2').click(function () {
+		var varCategoria = '1';
+		for (var i = 0; i < radCategory.length; i++) {
+			if (radCategory[i].checked == true) {
+				varCategoria = radCategory[i].value;
+				break;
+			}
+		}
+		var DataShow_Config = window.open("index.html?tem=2&cat="+ varCategoria, "_self");
 	})
 	$('#btnFormCategory').click(function () {
 		var DataShow_Config = window.open("index.html", "_self");
@@ -2831,13 +2851,51 @@ var save = false; //não precisa gravar o restante na tabela porque estão nos a
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Pricing on-demand', 'https://aws.amazon.com/pt/ec2/pricing/on-demand/', 'Dados transferidos diretamente na mesma região da AWS não são cobrados', 'Dados transferidos diretamente na mesma região da AWS não são cobrados entre os serviços Amazon e das instâncias do Amazon EC2. Os dados transferidos entre instâncias na mesma zona de disponibilidade não são cobrados.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Tipos de instância EC2', 'https://aws.amazon.com/pt/ec2/instance-types/', '', 'Tipos de instância do Amazon EC2 --> Otimizadas para computação <br/>Computação acelerada <br/>Otimizadas para armazenamento <br/>Recursos das instâncias <br/>Medição da performance das instâncias');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
+
+
+
+	//AZ-900
+	
+
+	az900(linkhelp);
+
+
 
 	document.getElementById('divlinkhelp').innerHTML = linkhelp;
 
 //	var DataShow_Config = window.open("config00.html?sim=00", "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
+}
+
+async function az900(linkhelp) {
+	//DESAFIO
+	var mytema = '2';
+	var mycategory = '4';
+	var students = await jsstoreCon.select({
+		from: 'Student'
+		  , where: { mytema: '' + mytema + ''
+				   , mycategory: '' + mycategory + ''
+		  }
+	});
+	if (students == '') {
+		var save = true;
+	} else {
+		var save = false;
+	}
+	var contadorMygroup = 10;
+	var contadorMycode = 0;
+	//título
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'AZ-900 Delete a Resource Group', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'Delete a Resource Group --> Se você excluir um grupo de recursos, todos os recursos subjacentes também serão excluídos.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'AZ-900 Conta Gratuita Usa Outros Serviços', 'https://azure.microsoft.com/en-us/free/', '', 'AZ-900 Conta Gratuita Usa Outros Serviços --> Com a Conta Gratuita do Azure, você também pode optar por usar outros serviços do Azure. Você não está limitado apenas à máquina virtual do Azure ou ao serviço de conta de armazenamento do Azure.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'AZ-900 Recursos Como Parte De Uma Assinatura', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900 Recursos Como Parte De Uma Assinatura --> Sua empresa tem um conjunto de recursos definidos como parte de uma assinatura. É VERDADE que os recursos do Azure só podem acessar outros recursos no mesmo grupo de recursos?');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'AZ-900 ', '', '', ' --> ');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+
+	
 }
 
 function showCorrect(valorindice, myid, mygroup, mycode) {

@@ -92,42 +92,44 @@
 		</div>
 		
 
-
-		<table border=0 id="tblCategory" style="width:100%; display:'none';" align=center>
+		<table border=0 id="tblCategory" style="width:310px; display:'none';" align=center>
 			<tr>
-				<td style="color:gray;">
-					<input type=radio value="0" checked> AWS Practitioner</input>
-					&nbsp;
-					<input type=radio value="1" disabled> Microsoft AZURE</input>
-				</td>
-			</tr>
-			<tr>
-				<td colspan=2>
-					<table border=0 align=center>
-						<tr><td> <button id="btnTema1C1" class="btn btn-default" disabled style="padding:14px 15px 14px 15px; width:250px; font-size:17px;">Apresentação</button> </td></tr>
+				<td>
+					<table border=0 align=center style="width:200px;">
+						<tr><td style="text-align:left; width:100%;">Categoria:</td></tr>
 						<tr>
-							<td>
-								<button id="btnTema1C2" class="btn btn-primary" style="padding:14px 15px 14px 15px; width:250px; font-size:17px;">Fundamentos</button>
+							<td style="text-align:left; width:100%; color:gray;" class="btn btn-default">
+							<input name="radCategory" id="radCategory" type=radio value="1" disabled> Apresentação</input>
 							</td>
 						</tr>
 						<tr>
-							<td>
-								<button id="btnTema1C4" class="btn btn-primary" style="padding:14px 15px 14px 15px; width:250px; font-size:17px;">Desafio</button>
+							<td style="text-align:left; width:100%;" onclick="radCategory[1].checked=true;" class="btn btn-default">
+								<input name="radCategory" id="radCategory" type=radio value="2" checked> Fundamentos</input>
 							</td>
 						</tr>
-						<tr><td> <button id="btnTema1C3" class="btn btn-default" disabled style="padding:14px 15px 14px 15px; width:250px; font-size:17px;">Memorização</button> </td></tr>
-						<tr><td> <button id="btnTema1C6" class="btn btn-default" disabled style="padding:14px 15px 14px 15px; width:250px; font-size:17px;">Perfeição</button> </td></tr>
-						<tr><td> <button id="btnTema1C5" class="btn btn-default" disabled style="padding:14px 15px 14px 15px; width:250px; font-size:17px;">Game</button> </td></tr>
 						<tr>
-							<td colspan=2>
-								<font color=gray>versão 11.12.22.17.03 &#174;</font>
-								<br/>
-								<font color=gray size=2>datashowcloud2022@gmail.com</font>
+							<td style="text-align:left; width:100%; color:gray;" class="btn btn-default">
+							<input name="radCategory" id="radCategory" type=radio value="3" disabled> Memorização</input>
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:left; width:100%;" onclick="radCategory[3].checked=true;" class="btn btn-default">
+							<input name="radCategory" id="radCategory" type=radio value="4"> Desafio</input>
 							</td>
 						</tr>
 					</table>
 				</td>
 			</tr>
+			<tr><td> </td> </tr>
+			<tr>
+				<td>
+					Tema:<br/>
+					<img id="imgTema1" src="clf-c01.jpg" width="130px" onclick="radTema[0].checked=true;">
+					<img id="imgTema2" src="az-900.png" width="130px" onclick="radTema[1].checked=true;">
+				</td>
+			</tr>
+			<tr><td> </td> </tr>
+			<tr> <td> <font color=gray>versão 20.12.22.12.00 &#174;</font> <br/> <font color=gray size=2>datashowcloud2022@gmail.com</font> </td></tr>
 		</table>
 		
 		<table id="tblGrid" style="width:98%; display:none;" ZZZclass="table table-hover ">
