@@ -639,18 +639,6 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		classe = classe.substring(4, classe.length);
 		document.getElementById('btnPrevious').classList.remove(classe);
 	}
-/*	if(document.getElementById('btnPause') != null) {
-		classe = document.getElementById('btnPause').classList.value;
-		classe = classe.substring(4, classe.length);
-		document.getElementById('btnPause').classList.remove(classe);
-	}
-*/
-/*	if(document.getElementById('btnEnd') != null) {
-		classe = document.getElementById('btnEnd').classList.value;
-		classe = classe.substring(4, classe.length);
-		document.getElementById('btnEnd').classList.remove(classe);
-	}
-*/
 	if(document.getElementById('btnBackward') != null) {
 		classe = document.getElementById('btnBackward').classList.value;
 		classe = classe.substring(4, classe.length);
@@ -661,13 +649,18 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		classe = classe.substring(4, classe.length);
 		document.getElementById('btnNext').classList.remove(classe);
 	}
+	if(document.getElementById('tdCategory1') != null) {
+		classe = document.getElementById('tdCategory1').classList.value;
+		classe = classe.substring(4, classe.length);
+		document.getElementById('tdCategory1').classList.remove(classe);
+	}
+	if(document.getElementById('tdCategory2') != null) {
+		classe = document.getElementById('tdCategory2').classList.value;
+		classe = classe.substring(4, classe.length);
+		document.getElementById('tdCategory2').classList.remove(classe);
+	}
 		
 	//campos e botões
-	if(document.getElementById('btnDropDb') != null) {
-/*		classe = document.getElementById('btnDropDb').classList.value;
-		classe = classe.substring(4, classe.length);
-		document.getElementById('btnDropDb').classList.remove(classe);
-*/	}
 	if(document.getElementById('txtIncorretas') != null) {
 		classe = document.getElementById('txtIncorretas').classList.value;
 		classe = classe.substring(4, classe.length);
@@ -689,16 +682,10 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		if(document.getElementById('btnPrevious') != null) {
 			document.getElementById('btnPrevious').classList.add('btn-default');
 		}
-/*		if(document.getElementById('btnPause') != null) {
-			document.getElementById('btnPause').classList.add('btn-danger');
-		}
-*/
-/*		if(document.getElementById('btnEnd') != null) {
-			document.getElementById('btnEnd').classList.add('btn-success');
-		}
-*/
 		document.getElementById('btnBackward').classList.add('btn-danger');
 		document.getElementById('btnNext').classList.add('btn-default');
+		document.getElementById('tdCategory1').classList.add('btn-default');
+		document.getElementById('tdCategory2').classList.add('btn-default');
 		if(document.getElementById('selButtonColor') != null) {
 			document.getElementById('selButtonColor').classList.add('btn-default');
 		}
@@ -711,20 +698,15 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		if(document.getElementById('txtNaoRespondidas') != null) {
 			document.getElementById('txtNaoRespondidas').classList.add('btn-primary');
 		}
-		if(document.getElementById('btnDropDb') != null) {
-//			document.getElementById('btnDropDb').classList.add('btn-default');
-		}
 	} else {
 		document.getElementById('btnPrevious').classList.add(buttoncolor);
-//		document.getElementById('btnPause').classList.add(buttoncolor);
-//		document.getElementById('btnEnd').classList.add(buttoncolor);
 		document.getElementById('btnBackward').classList.add(buttoncolor);
 		document.getElementById('btnNext').classList.add(buttoncolor);
-//		document.getElementById('selButtonColor').classList.add(buttoncolor);
+		document.getElementById('tdCategory1').classList.add(buttoncolor);
+		document.getElementById('tdCategory2').classList.add(buttoncolor);
 		document.getElementById('txtCorretas').classList.add(buttoncolor);
 		document.getElementById('txtIncorretas').classList.add(buttoncolor);
 		document.getElementById('txtNaoRespondidas').classList.add(buttoncolor);
-//		document.getElementById('btnDropDb').classList.add(buttoncolor);
 	}
 }
 
