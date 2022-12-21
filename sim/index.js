@@ -644,6 +644,11 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		classe = classe.substring(4, classe.length);
 		document.getElementById('btnBackward').classList.remove(classe);
 	}
+	if(document.getElementById('btnDropDb') != null) {
+		classe = document.getElementById('btnDropDb').classList.value;
+		classe = classe.substring(4, classe.length);
+		document.getElementById('btnDropDb').classList.remove(classe);
+	}
 	if(document.getElementById('btnNext') != null) {
 		classe = document.getElementById('btnNext').classList.value;
 		classe = classe.substring(4, classe.length);
@@ -683,6 +688,7 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 			document.getElementById('btnPrevious').classList.add('btn-default');
 		}
 		document.getElementById('btnBackward').classList.add('btn-danger');
+		document.getElementById('btnDropDb').classList.add('btn-default');
 		document.getElementById('btnNext').classList.add('btn-default');
 		document.getElementById('tdCategory1').classList.add('btn-default');
 		document.getElementById('tdCategory2').classList.add('btn-default');
@@ -701,6 +707,7 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 	} else {
 		document.getElementById('btnPrevious').classList.add(buttoncolor);
 		document.getElementById('btnBackward').classList.add(buttoncolor);
+		document.getElementById('btnDropDb').classList.add(buttoncolor);
 		document.getElementById('btnNext').classList.add(buttoncolor);
 		document.getElementById('tdCategory1').classList.add(buttoncolor);
 		document.getElementById('tdCategory2').classList.add(buttoncolor);
