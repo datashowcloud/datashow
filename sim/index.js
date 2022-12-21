@@ -10,6 +10,7 @@ var GLOBAL_textcolor = '';
 var GLOBAL_background = '';
 var GLOBAL_buttoncolor = '';
 var COL_LOGOTIPO = 5;
+var linkhelp = '';
 
 window.onload = function () {
     registerEvents();
@@ -538,15 +539,19 @@ function registerEvents() {
 	})
 	$('#imgTema1White').click(function () {
 		imgTema1();
+		initLinkHelp();
 	})
 	$('#imgTema1Black').click(function () {
 		imgTema1();
+		initLinkHelp();
 	})
 	$('#imgTema2White').click(function () {
 		imgTema2();
+		initLinkHelp();
 	})
 	$('#imgTema2Black').click(function () {
 		imgTema2();
+		initLinkHelp();
 	})
 }
 
@@ -2424,11 +2429,21 @@ function getLinkHelp(mytema, mycategory, mygroup, mycode, myorder, answerincorre
 }
 
 async function initLinkHelp() {
-	var linkhelp = ' <b>MINHA AJUDA</b> <br/><br/>';
-
-	//FUNDAMENTOS
+	var params = new URLSearchParams(window.location.search);
+	var mytema = params.get('tem');
 	var mytema = '1';
 	var mycategory = '2';
+	var save = false;
+	var contadorMygroup = 10;
+	var contadorMycode = 0;
+
+	linkhelp = ' <b>MINHA AJUDA</b> <br/><br/>';
+
+
+
+	//CLF-C01 FUNDAMENTOS
+	mytema = '1';
+	mycategory = '2';
 	var students = await jsstoreCon.select({
 		from: 'Student'
 		  , where: { mytema: '' + mytema + ''
@@ -2436,17 +2451,17 @@ async function initLinkHelp() {
 		  }
 	});
 	if (students == '') {
-		var save = true;
+		save = true;
 	} else {
-		var save = false;
+		save = false;
 	}
-	var contadorMygroup = 10;
-	var contadorMycode = 0;
+	contadorMygroup = 10;
+	contadorMycode = 0;
 	//não se aplica
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', false, 'Não Se Aplica', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', '', 'Não Se Aplica na AWS');
 	
 	//título
-	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, 'Fundamentos', '', '', 'Fundamentos');
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'CLF-C01 Fundamentos');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'ECS', 'EKS', 'ECR', 'S3', save, 'EC2', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', 'computação escalável na Nuvem da Amazon Web Services (AWS)', 'O Amazon EC2 (Elastic Compute Cloud) --> Oferece uma <b>capacidade de computação escalável na Nuvem da Amazon Web Services (AWS)</b>. <br/>O uso dele <b>elimina a necessidade de investir em hardware inicialmente</b>, portanto, você pode desenvolver e implantar aplicativos com mais rapidez.');
@@ -2471,9 +2486,9 @@ async function initLinkHelp() {
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'S3', 'EC2', 'Opções de Compra de Instância', 'EBS', save, 'Modelo de uso', 'https://aws.amazon.com/pt/free/free-tier-faqs/', 'composto por três tipos', 'Modelo de uso --> O <b>nível gratuito</b> da AWS oferece aos clientes a capacidade de explorar e testar gratuitamente serviços da AWS até os limites especificados para cada serviço. <br/>O nível gratuito é <b>composto por três tipos diferentes de ofertas</b>: <br/>Um nível gratuito de 12 meses (750 horas/mês), <br/>Uma oferta Always Free, <br/>Testes de curto prazo.');
 
-	//DESAFIO
-	var mytema = '1';
-	var mycategory = '4';
+	//CLF-C01 DESAFIO
+	mytema = '1';
+	mycategory = '4';
 	var students = await jsstoreCon.select({
 		from: 'Student'
 		  , where: { mytema: '' + mytema + ''
@@ -2481,13 +2496,13 @@ async function initLinkHelp() {
 		  }
 	});
 	if (students == '') {
-		var save = true;
+		save = true;
 	} else {
-		var save = false;
+		save = false;
 	}
-	var contadorMycode = 0;
+	contadorMycode = 0;
 	//título
-	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, 'Desafio', '', '', 'Desafio');
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'CLF-C01 Desafio');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Organizations', 'Billing', 'Cost Explorer', 'Princing Calculator', save, 'Budgets', 'https://docs.aws.amazon.com/pt_br/cost-management/latest/userguide/budgets-managing-costs.html', '', 'AWS Budgets --> É para rastreamento de uso e custo da AWS. <br/>Monitorar métricas agregadas de utilização e cobertura para suas Instâncias Reservadas (RIs) ou Savings Plans - Planos de Poupança. <br/>Envia mensagem quando o consumo vai atingir o percentual pré-configurado ou pré-definido.');
@@ -2509,8 +2524,55 @@ async function initLinkHelp() {
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Well-Architected Framework', 'EC2', 'S3', 'Excelência Operacional', save, 'Cargas de trabalho (Workload)', 'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/userguide/workloads.html', '', 'Carga de trabalho (Workload) --> É um conjunto de códigos e recursos que fornece valor empresarial, como um aplicativo voltado ao cliente ou um processo de back-end. Pode consistir em um subconjunto de recursos em uma Conta da AWS ou ser uma coleção de vários recursos abrangendo várias Contas da AWS.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 
+	//AZ-900 DESAFIO
+	mytema = '2';
+	mycategory = '4';
+	students = await jsstoreCon.select({
+		from: 'Student'
+		  , where: { mytema: '' + mytema + ''
+				   , mycategory: '' + mycategory + ''
+		  }
+	});
+	if (students == '') {
+		save = true;
+	} else {
+		save = false;
+	}
+	contadorMygroup = 10;
+	contadorMycode = 0;
+	//título
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'AZ-900 Desafio');
+	//perguntas
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Sim (Yes) - Excluir um Grupo de Recursos', '', '', '', save, 'Não (No) - Excluir um Grupo de Recursos', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900: Excluir um Grupo de Recursos (Delete a Resource Group) --> Se você excluir um grupo de recursos, todos os recursos subjacentes também serão excluídos. <br/>If you delete a resource group, all of the underlying resources also get deleted.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'AZ-900: Conta Gratuita Usa Outros Serviços', 'https://azure.microsoft.com/en-us/free/', '', 'AZ-900: Conta Gratuita Usa Outros Serviços --> Uma empresa acaba de definir uma conta do Azure Free. É VERDADE que apenas as máquinas virtuais do Azure e as contas de armazenamento do Azure podem ser implantadas na Conta Gratuita do Azure? <br/>A company has just set an Azure Free account. Is it TRUE that only Azure virtual machines and Azure storage accounts can be deployed to the Azure Free Account?');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Recursos Como Parte De Uma Assinatura', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900: Recursos Como Parte De Uma Assinatura --> Sua empresa tem um conjunto de recursos definidos como parte de uma assinatura. É VERDADE que os recursos do Azure só podem acessar outros recursos no mesmo grupo de recursos?');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
 
-var save = false; //não precisa gravar o restante na tabela porque estão nos arquivos, exemplo: T1C1G11.html
+
+	//preenche divlinkhelp se ainda estiver vazia
+	if (mytema == '1') {
+		initLinkHelp_clfc01(mytema, mycategory, contadorMygroup, contadorMycode);
+	} else {
+		initLinkHelp_az900(mytema, mycategory, contadorMygroup, contadorMycode);
+	}
+}
+
+async function initLinkHelp_az900(mytema, mycategory, contadorMygroup, contadorMycode) {
+
+var save = false; //não precisa gravar o restante na tabela porque já estão nos arquivos, exemplo: T1C1G11.html
+
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Sim (Yes) - Excluir um Grupo de Recursos', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-azure/?&ef_id=EAIaIQobChMIs57m3umL_AIVekJIAB0CBguvEAAYASABEgLycvD_BwE:G:s&OCID=AIDcmmzmnb0182_SEM_EAIaIQobChMIs57m3umL_AIVekJIAB0CBguvEAAYASABEgLycvD_BwE:G:s&gclid=EAIaIQobChMIs57m3umL_AIVekJIAB0CBguvEAAYASABEgLycvD_BwE', '', 'AZ-900: Não Se Aplica --> Não Se Aplica');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+
+	document.getElementById('divlinkhelp').innerHTML = linkhelp;
+}
+
+async function initLinkHelp_clfc01(mytema, mycategory, contadorMygroup, contadorMycode) {
+	
+	var save = false; //não precisa gravar o restante na tabela porque já estão nos arquivos, exemplo: T1C1G11.html
 
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Confiabilidade', 'https://aws.amazon.com/pt/architecture/well-architected/?achp_wa1&wa-lens-whitepapers.sort-by=item.additionalFields.sortDate&wa-lens-whitepapers.sort-order=desc', '', 'Confiabilidade (também conhecida como disponibilidade) --> Se concentra nos workloads que executam as funções pretendidas e na recuperação rápida de falhas em atender demandas ou desenho à prova de falhas. Os principais tópicos incluem projeto de sistemas distribuídos, planejamento de recuperação e requisitos adaptação a mudanças.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
@@ -2869,48 +2931,7 @@ var save = false; //não precisa gravar o restante na tabela porque estão nos a
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Tipos de instância EC2', 'https://aws.amazon.com/pt/ec2/instance-types/', '', 'Tipos de instância do Amazon EC2 --> Otimizadas para computação <br/>Computação acelerada <br/>Otimizadas para armazenamento <br/>Recursos das instâncias <br/>Medição da performance das instâncias');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 
-
-
-	//AZ-900
-	
-
-	az900(linkhelp);
-
-
-
 	document.getElementById('divlinkhelp').innerHTML = linkhelp;
-
-//	var DataShow_Config = window.open("config00.html?sim=00", "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
-}
-
-async function az900(linkhelp) {
-	//DESAFIO
-	var mytema = '2';
-	var mycategory = '4';
-	var students = await jsstoreCon.select({
-		from: 'Student'
-		  , where: { mytema: '' + mytema + ''
-				   , mycategory: '' + mycategory + ''
-		  }
-	});
-	if (students == '') {
-		var save = true;
-	} else {
-		var save = false;
-	}
-	var contadorMygroup = 10;
-	var contadorMycode = 0;
-	//título
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'AZ-900 Delete a Resource Group', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'Delete a Resource Group --> Se você excluir um grupo de recursos, todos os recursos subjacentes também serão excluídos.');
-	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'AZ-900 Conta Gratuita Usa Outros Serviços', 'https://azure.microsoft.com/en-us/free/', '', 'AZ-900 Conta Gratuita Usa Outros Serviços --> Com a Conta Gratuita do Azure, você também pode optar por usar outros serviços do Azure. Você não está limitado apenas à máquina virtual do Azure ou ao serviço de conta de armazenamento do Azure.');
-	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'AZ-900 Recursos Como Parte De Uma Assinatura', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900 Recursos Como Parte De Uma Assinatura --> Sua empresa tem um conjunto de recursos definidos como parte de uma assinatura. É VERDADE que os recursos do Azure só podem acessar outros recursos no mesmo grupo de recursos?');
-	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'AZ-900 ', '', '', ' --> ');
-	contadorMycode = String(parseInt(contadorMycode) + 1);
-
-	
 }
 
 function showCorrect(valorindice, myid, mygroup, mycode) {
