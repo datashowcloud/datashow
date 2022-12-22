@@ -701,13 +701,13 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 			document.getElementById('selButtonColor').classList.add('btn-default');
 		}
 		if(document.getElementById('txtIncorretas') != null) {
-			document.getElementById('txtIncorretas').classList.add('btn-primary');
+			document.getElementById('txtIncorretas').classList.add('btn-default');
 		}
 		if(document.getElementById('txtCorretas') != null) {
-			document.getElementById('txtCorretas').classList.add('btn-primary');
+			document.getElementById('txtCorretas').classList.add('btn-default');
 		}
 		if(document.getElementById('txtNaoRespondidas') != null) {
-			document.getElementById('txtNaoRespondidas').classList.add('btn-primary');
+			document.getElementById('txtNaoRespondidas').classList.add('btn-default');
 		}
 	} else {
 		document.getElementById('btnPrevious').classList.add(buttoncolor);
