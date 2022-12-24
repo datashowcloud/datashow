@@ -1126,6 +1126,16 @@ async function setDashboard(mytema, mycategory, myid, mygroup, mycode) {
 
 }
 
+function selectKeyMyoption(myoption) {
+	var posini = myoption.indexOf('-->', 0);
+	if (posini > 0) {
+		myoption = myoption.substring(0, posini).trim();
+	} else {
+		myoption = myoption.substring(0, myoption.length).trim();
+	}
+	return myoption;
+}
+
 //This function select table play
 async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 //    try {
@@ -1191,7 +1201,7 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 	//					valorIndice +
 						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
-						+ student.mycorrect1answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption1 + ' </font>'
+						+ student.mycorrect1answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +selectKeyMyoption(student.myoption1) + ' </font>'
 						+ '<a href="#"><i class="fa fa-flag" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"> (cola)</i></a>'
 
 	//					+ ' <a href="#' + student.myoption1 + '" class="btn btn-default"><b>?</b></a>'
@@ -1210,7 +1220,7 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 	//					valorIndice +
 						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
-						+ student.mycorrect2answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption2 + ' </font>'
+						+ student.mycorrect2answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +selectKeyMyoption(student.myoption2) + ' </font>'
 						+ '<a href="#"><i class="fa fa-flag" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"> (cola)</i></a>'
 
 	//					+ ' <a href="#' + student.myoption2 + '" class="btn btn-default"><b>?</b></a>'
@@ -1229,7 +1239,7 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 	//					valorIndice +
 						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
-						+ student.mycorrect3answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption3 + ' </font>'
+						+ student.mycorrect3answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +selectKeyMyoption(student.myoption3) + ' </font>'
 						+ '<a href="#"><i class="fa fa-flag" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"> (cola)</i></a>'
 
 	//					+ ' <a href="#' + student.myoption3 + '" class="btn btn-default"><b>?</b></a>'
@@ -1248,7 +1258,7 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 	//					valorIndice +
 						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
-						+ student.mycorrect4answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption4 + ' </font>'
+						+ student.mycorrect4answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +selectKeyMyoption(student.myoption4) + ' </font>'
 						+ '<a href="#"><i class="fa fa-flag" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"> (cola)</i></a>'
 
 	//					+ ' <a href="#' + student.myoption4 + '" class="btn btn-default"><b>?</b></a>'
@@ -1267,7 +1277,7 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 	//					valorIndice +
 						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
-						+ student.mycorrect5answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption5 + ' </font>'
+						+ student.mycorrect5answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +selectKeyMyoption(student.myoption5) + ' </font>'
 						+ '<a href="#"><i class="fa fa-flag" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"> (cola)</i></a>'
 
 	//					+ ' <a href="#' + student.myoption5 + '" class="btn btn-default"><b>?</b></a>'
@@ -1286,7 +1296,7 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 	//					valorIndice +
 						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
-						+ student.mycorrect6answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption6 + ' </font>'
+						+ student.mycorrect6answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +selectKeyMyoption(student.myoption6) + ' </font>'
 						+ '<a href="#"><i class="fa fa-flag" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"> (cola)</i></a>'
 
 	//					+ ' <a href="#' + student.myoption6 + '" class="btn btn-default"><b>?</b></a>'
@@ -1305,7 +1315,7 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 	//					valorIndice +
 						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
-						+ student.mycorrect7answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption7 + ' </font>'
+						+ student.mycorrect7answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +selectKeyMyoption(student.myoption7) + ' </font>'
 						+ '<a href="#"><i class="fa fa-flag" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"> (cola)</i></a>'
 
 	//					+ ' <a href="#' + student.myoption7 + '" class="btn btn-default"><b>?</b></a>'
@@ -1324,7 +1334,7 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 						document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
 	//					valorIndice +
 						' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
-						+ student.mycorrect8answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +student.myoption8 + ' </font>'
+						+ student.mycorrect8answer + '> ' + '<font color=' + GLOBAL_textcolor + '>' +selectKeyMyoption(student.myoption8) + ' </font>'
 						+ '<a href="#"><i class="fa fa-flag" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"> (cola)</i></a>'
 
 	//					+ ' <a href="#' + student.myoption8 + '" class="btn btn-default"><b>?</b></a>'
@@ -2458,7 +2468,7 @@ async function initLinkHelp() {
 	contadorMygroup = 10;
 	contadorMycode = 0;
 	//não se aplica
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', false, 'Não Se Aplica', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', '', 'Não Se Aplica na AWS');
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', false, 'Não Se Aplica', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', '', 'Não Se Aplica');
 	
 	//título
 	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'CLF-C01 Fundamentos');
@@ -2544,12 +2554,23 @@ async function initLinkHelp() {
 	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'AZ-900 Desafio');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Sim (Yes) - Excluir um Grupo de Recursos', '', '', '', save, 'Não (No) - Excluir um Grupo de Recursos', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900: Excluir um Grupo de Recursos (Delete a Resource Group) --> Se você excluir um grupo de recursos, todos os recursos subjacentes também serão excluídos. <br/>If you delete a resource group, all of the underlying resources also get deleted.');
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Nenhuma (Nothing) --> AZ-900', 'Disponibilização de sites acessíveis pela Internet --> AZ-900', 'Entrega de serviços de armazenamento pela Internet --> AZ-900', 'Nenhuma (Nothing) --> AZ-900', save, 'Entregar serviços de computação pela Internet', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-cloud-computing', '', 'AZ-900: --> O que é computação em nuvem?');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'AZ-900: Conta Gratuita Usa Outros Serviços', 'https://azure.microsoft.com/en-us/free/', '', 'AZ-900: Conta Gratuita Usa Outros Serviços --> Uma empresa acaba de definir uma conta do Azure Free. É VERDADE que apenas as máquinas virtuais do Azure e as contas de armazenamento do Azure podem ser implantadas na Conta Gratuita do Azure? <br/>A company has just set an Azure Free account. Is it TRUE that only Azure virtual machines and Azure storage accounts can be deployed to the Azure Free Account?');
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Nuvem pública', 'Várias nuvens', 'Nenhuma (Nothing) --> AZ-900', '', save, 'Nuvem híbrida', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-are-private-public-hybrid-clouds/', '', 'AZ-900 --> Qual modelo de nuvem usa alguns datacenters focados em fornecer serviços de nuvem para quem quiser e alguns data centers que estão focados em um único cliente?');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Recursos Como Parte De Uma Assinatura', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900: Recursos Como Parte De Uma Assinatura --> Sua empresa tem um conjunto de recursos definidos como parte de uma assinatura. É VERDADE que os recursos do Azure só podem acessar outros recursos no mesmo grupo de recursos?');
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'SAAS', 'PAAS', 'BAAS', '', save, 'IAAS', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900 --> De acordo com o modelo de Responsabilidade Compartilhada, qual tipo de serviço de nuvem coloca a maior responsabilidade sobre o cliente?');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Dimensionamento vertical', 'Escalação direta', 'IAAS', '', save, 'Dimensionamento horizontal', 'https://', '', 'AZ-900 --> Que tipo de escalagem envolve adicionar ou remover recursos (como máquinas virtuais ou contentores) para satisfazer a procura?');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Escalabilidade', 'Resiliência', 'Confiabilidade', 'Segurança', save, 'Fiabilidade', 'https://', '', 'AZ-900 --> O que se caracteriza como a capacidade de um sistema recuperar de falhas e continuar a funcionar?');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'PAAS', 'SAAS', 'BAAS', 'FAAS', save, 'IAAS', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900 --> Qual o tipo de serviço em nuvem mais adequado para um elevador e transferir a migração de um datacenter no local para uma implantação em nuvem?');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'PAAS', 'IAAS', 'BAAS', 'FAAS', save, 'SAAS', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900 --> Que tipo de serviço em nuvem seria normalmente uma solução de rastreio de Finanças e Despesas?');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'PAAS', 'IAAS', 'BAAS', 'FAAS', save, 'SAAS', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900 --> Um engenheiro de TI precisa criar uma máquina virtual no Azure. Atualmente, o engenheiro de TI tem uma estação de trabalho baseada no sistema operacional Android. Qual das opções a seguir o engenheiro de TI pode usar para criar a máquina virtual desejada no Azure?<br/> Selecione 3 <br/> An IT Engineer needs to create a Virtual Machine in Azure. Currently, the IT Engineer has an Android OS based workstation. Which of the following can the IT Engineer use to create the desired Virtual Machine in Azure? <br/>[Select 3]');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+
 
 
 	//preenche divlinkhelp se ainda estiver vazia
@@ -2558,19 +2579,8 @@ async function initLinkHelp() {
 	} else {
 		initLinkHelp_az900(mytema, mycategory, contadorMygroup, contadorMycode);
 	}
-}
-
-async function initLinkHelp_az900(mytema, mycategory, contadorMygroup, contadorMycode) {
-
-var save = false; //não precisa gravar o restante na tabela porque já estão nos arquivos, exemplo: T1C1G11.html
-
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Sim (Yes) - Excluir um Grupo de Recursos', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-azure/?&ef_id=EAIaIQobChMIs57m3umL_AIVekJIAB0CBguvEAAYASABEgLycvD_BwE:G:s&OCID=AIDcmmzmnb0182_SEM_EAIaIQobChMIs57m3umL_AIVekJIAB0CBguvEAAYASABEgLycvD_BwE:G:s&gclid=EAIaIQobChMIs57m3umL_AIVekJIAB0CBguvEAAYASABEgLycvD_BwE', '', 'AZ-900: Não Se Aplica --> Não Se Aplica');
-	contadorMycode = String(parseInt(contadorMycode) + 1);
-
-	document.getElementById('divlinkhelp').innerHTML = linkhelp;
-}
-
-async function initLinkHelp_clfc01(mytema, mycategory, contadorMygroup, contadorMycode) {
+	
+	
 	
 	var save = false; //não precisa gravar o restante na tabela porque já estão nos arquivos, exemplo: T1C1G11.html
 
@@ -2932,6 +2942,27 @@ async function initLinkHelp_clfc01(mytema, mycategory, contadorMygroup, contador
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 
 	document.getElementById('divlinkhelp').innerHTML = linkhelp;
+	
+}
+
+async function initLinkHelp_az900(mytema, mycategory, contadorMygroup, contadorMycode) {
+
+var save = false; //não precisa gravar o restante na tabela porque já estão nos arquivos, exemplo: T1C1G11.html
+
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Nenhuma (Nothing) --> AZ-900', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-cloud-computing', '', 'AZ-900: --> Nenhuma (Nothing)');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Sim (Yes) --> AZ-900: Não Se Aplica', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-cloud-computing', '', 'AZ-900: --> Não Se Aplica');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Não (No) --> AZ-900: Não Se Aplica', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-cloud-computing', '', 'AZ-900: --> Não Se Aplica');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Dimensionamento horizontal', 'https://', '', 'AZ-900: --> A escala horizontal é adicionar ou subtrair o número de recursos.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+
+	document.getElementById('divlinkhelp').innerHTML = linkhelp;
+}
+
+async function initLinkHelp_clfc01(mytema, mycategory, contadorMygroup, contadorMycode) {
+	
 }
 
 function showCorrect(valorindice, myid, mygroup, mycode) {
