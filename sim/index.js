@@ -2989,7 +2989,6 @@ function showFormCategory() {
 	$('#divFormSim').hide();
 	$('#divbuttons').hide();
 	$('#tblCategory').show();
-//	if (document.getElementById('tableButtons') != null) { document.getElementById('tableButtons').style.display=''; }
 }
 
 function showFormSim() {
@@ -3003,7 +3002,6 @@ function showFormSim() {
 	$('#divFormSim').show();
 	$('#divbuttons').hide();
 	$('#tblCategory').hide();
-//	document.getElementById('tableButtons').style.display='none';
 }
 
 function showFormAddUpdate() {
@@ -3027,7 +3025,6 @@ function showGridAndHideForms() {
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
 	$('#tblCategory').hide();
-//	if (document.getElementById('tableButtons') != null) { document.getElementById('tableButtons').style.display=''; }
 }
 
 function showAddNewManual() {
