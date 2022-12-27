@@ -34,8 +34,9 @@
 				<a class="navbar-brand" href="#">Sim</a>
 				<button id="btnNightDay" class="btn btn-primary"><i class="fa fa-adjust"></i> </button>
 				&nbsp;<button id="btnDropDb" class="btn btn-primary"><i class="fa fa-trash"></i></font></button>
-				&nbsp;<button id="btnPrevious" class="btn btn-primary" disabled> <i class="fa fa-chevron-left"></i></button>
+<!--				&nbsp;<button id="btnPrevious" class="btn btn-primary" disabled> <i class="fa fa-chevron-left"></i></button>
 				&nbsp;<button id="btnNext" class="btn btn-primary" disabled> <i class="fa fa-chevron-right"></i></button>
+-->
 				&nbsp;<button id="btnFormCategory" class="btn btn-danger"> <i class="fa fa-remove"></i></button>
 				<button id="btnPause" class="btn btn-danger" style="display:none;"><i class="fa fa-remove"></i></button>
 				<button id="btnEnd" class="btn btn-success" style="display:none;"> <i class="fa fa-check"></i> FIM</button>
@@ -50,7 +51,7 @@
 						<li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html?tem=1&cat=4">CLF-C01:Desafio</a></li>
 						<li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html?tem=2&cat=2">AZ-900:Fundamentos</a></li>
 						<li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html?tem=2&cat=4">AZ-900:Desafio</a></li>
-						<li class="nav-item"><a class="nav-link active" aria-current="page" href="#">versão 17.27.00</a></li>
+						<li class="nav-item"><a class="nav-link active" aria-current="page" href="#">versão 17.57.00</a></li>
 					</ul>
 					<form class="d-flex">
 						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -82,7 +83,7 @@
 		</div>
 		
 
-		<table border=0 id="tblCategory" style="width:310px; color:gray; display:none;" align=center>
+		<table border=0 id="tblCategory" style="width:310px; color:gray; display:'none';" align=center>
 			<tr><td> &nbsp;</td></tr>
 			<tr><td style="text-align:left; color:gray;">Escolha um cenário:</td></tr>
 			<tr><td style="text-align:left; color:gray;">&nbsp;&nbsp;<input name="radCategory" id="radCategory" type=radio value="2"> Fundamentos</input></td></tr>
@@ -401,11 +402,15 @@
 
 	</div>
 
-	<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+	<div id="myCarousel" class="carousel slide" data-bs-ride="carousel" style="display:none;">
 		<div class="carousel-indicators">
-			<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+			<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" aria-label="Slide 1" class="active" aria-current="true"></button>
 			<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
 			<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+			<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+			<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+			<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
+			<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="6" aria-label="Slide 7"></button>
 		</div>
 		<div class="carousel-inner">
 			<div class="carousel-item active" style="height:550px; width:105%">
@@ -413,11 +418,13 @@
 
 				<div class="container">
 					<div class="carousel-caption text-start">
-						<p><b>Avalia a sua conta por meio de verificações</b>, avisa se a MFA não está habilitada, sem interromper serviços. <br/>Também verifica permissões de bucket do S3 no Amazon S3 com permissões de acesso aberto. <br/>Essas verificações identificam formas de otimizar sua infraestrutura da AWS, aumentar a segurança e o desempenho, reduzir os custos gerais e monitorar as cotas do serviço.<br/>Benefícios: (<b>OPS...TC...</b>)<br/><b>O</b>timização de custos, <b>P</b>erformance, <b>S</b>egurança, <b>T</b>olerância a falhas, <b>C</b>otas de serviço.<br/>Os clientes do AWS Basic Suporte e AWS Developer Suporte podem acessar as principais verificações de segurança. AWS Business Suporte e do AWS Enterprise Suporte podem acessar todas as verificações.</p>
-						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary"> AWS Trusted Advisor </font> </td></tr></table>
-						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary"> GuardDuty </font> </td></tr></table>
-						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary"> Amazon Inspector </font> </td></tr></table>
-						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary"> Security Group </font> </td></tr></table>
+						<p>O que é a computação em nuvem?</p>
+						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""/> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
+							Entregar serviços de computação pela Internet </font> </td></tr></table>
+						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""/> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
+							Entrega de serviços de armazenamento pela Internet </font> </td></tr></table>
+						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""/> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
+							Disponibilização de sites acessíveis pela Internet </font> </td></tr></table>
 					</div>
 				</div>
 			</div>
@@ -425,10 +432,14 @@
 				<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
 
 				<div class="container">
-					<div class="carousel-caption">
-						<p><b>Avalia a sua conta por meio de verificações</b>, avisa se a MFA não está habilitada, sem interromper serviços. <br/>Também verifica permissões de bucket do S3 no Amazon S3 com permissões de acesso aberto. <br/>Essas verificações identificam formas de otimizar sua infraestrutura da AWS, aumentar a segurança e o desempenho, reduzir os custos gerais e monitorar as cotas do serviço.<br/>Benefícios: (<b>OPS...TC...</b>)<br/><b>O</b>timização de custos<br/><b>P</b>erformance<br/><b>S</b>egurança<br/><b>T</b>olerância a falhas<br/><b>C</b>otas de serviço.<br/>Os clientes do AWS Basic Suporte e AWS Developer Suporte podem acessar as principais verificações de segurança. AWS Business Suporte e do AWS Enterprise Suporte podem acessar todas as verificações.</p>
-						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary"> Verdadeiro </font> </td></tr></table>
-						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary"> Falso </font> </td></tr></table>
+					<div class="carousel-caption text-start">
+						<p>Qual modelo de nuvem usa alguns datacenters focados em fornecer serviços de nuvem para quem quiser e alguns data centers que estão focados em um único cliente?</p>
+						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
+							Nuvem híbrida </font> </td></tr></table>
+						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
+							Nuvem pública </font> </td></tr></table>
+						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
+							Várias nuvens </font> </td></tr></table>
 					</div>
 				</div>
 			</div>
@@ -436,14 +447,74 @@
 				<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
 
 				<div class="container">
-					<div class="carousel-caption text-end">
-						<h1>One more for good measure.</h1>
-						<p><b>Avalia a sua conta por meio de verificações</b>, avisa se a MFA não está habilitada, sem interromper serviços. <br/>Também verifica permissões de bucket do S3 no Amazon S3 com permissões de acesso aberto. <br/>Essas verificações identificam formas de otimizar sua infraestrutura da AWS, aumentar a segurança e o desempenho, reduzir os custos gerais e monitorar as cotas do serviço.<br/>Benefícios: (<b>OPS...TC...</b>)<br/><b>O</b>timização de custos<br/><b>P</b>erformance<br/><b>S</b>egurança<br/><b>T</b>olerância a falhas<br/><b>C</b>otas de serviço.<br/>Os clientes do AWS Basic Suporte e AWS Developer Suporte podem acessar as principais verificações de segurança. AWS Business Suporte e do AWS Enterprise Suporte podem acessar todas as verificações.</p>
-						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary"> Some representative placeholder content </font> </td></tr></table>
-						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary"> Some representative placeholder </font> </td></tr></table>
-						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary"> Some representative placeholder content </font> </td></tr></table>
-						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary"> Some representative placeholder content for the first slide </font> </td></tr></table>
-						</table>
+					<div class="carousel-caption text-start">
+						<p>De acordo com o modelo de Responsabilidade Compartilhada, qual tipo de serviço de nuvem coloca a maior responsabilidade sobre o cliente?</p>
+						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
+							IaaS (infraestrutura como serviço) </font> </td></tr></table>
+						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
+							SaaS (software como serviço) </font> </td></tr></table>
+						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
+							PaaS (plataforma como serviço) </font> </td></tr></table>
+					</div>
+				</div>
+			</div>
+			<div class="carousel-item" style="height:550px; width:105%">
+				<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+
+				<div class="container">
+					<div class="carousel-caption text-start">
+						<p>Que tipo de escalagem envolve adicionar ou remover recursos (como máquinas virtuais ou contentores) para satisfazer a procura?</p>
+						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
+							Dimensionamento horizontal </font> </td></tr></table>
+						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
+							Dimensionamento vertical </font> </td></tr></table>
+						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
+							Escalação direta </font> </td></tr></table>
+					</div>
+				</div>
+			</div>
+			<div class="carousel-item" style="height:550px; width:105%">
+				<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+
+				<div class="container">
+					<div class="carousel-caption text-start">
+						<p>O que se caracteriza como a capacidade de um sistema recuperar de falhas e continuar a funcionar?</p>
+						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
+							Fiabilidade </font> </td></tr></table>
+						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
+							Previsibilidade </font> </td></tr></table>
+						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
+							Escalabilidade </font> </td></tr></table>
+					</div>
+				</div>
+			</div>
+			<div class="carousel-item" style="height:550px; width:105%">
+				<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+
+				<div class="container">
+					<div class="carousel-caption text-start">
+						<p>Qual o tipo de serviço em nuvem mais adequado para um elevador e transferir a migração de um datacenter no local para uma implantação em nuvem?</p>
+						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
+							Infraestrutura como um Serviço (IaaS) </font> </td></tr></table>
+						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
+							Plataforma como um Serviço (PaaS) </font> </td></tr></table>
+						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
+							Software como um Serviço (SaaS) </font> </td></tr></table>
+					</div>
+				</div>
+			</div>
+			<div class="carousel-item" style="height:550px; width:105%">
+				<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+
+				<div class="container">
+					<div class="carousel-caption text-start">
+						<p>Que tipo de serviço em nuvem seria normalmente uma solução de rastreio de Finanças e Despesas?</p>
+						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
+							Software como um Serviço (SaaS) </font> </td></tr></table>
+						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
+							Infraestrutura como um Serviço (IaaS) </font> </td></tr></table>
+						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
+							Plataforma como um Serviço (PaaS) </font> </td></tr></table>
 					</div>
 				</div>
 			</div>

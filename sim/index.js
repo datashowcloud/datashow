@@ -3003,7 +3003,8 @@ function showFormSim() {
 	$('#formBible').hide();
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
-	$('#divFormSim').show();
+//	$('#divFormSim').show();
+	$('#myCarousel').show();	
 	$('#divbuttons').hide();
 	$('#tblCategory').hide();
 }
