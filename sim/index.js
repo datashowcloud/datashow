@@ -639,26 +639,28 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 	
 	var classe = '';
 
-	if(document.getElementById('btnPrevious') != null) {
-		classe = document.getElementById('btnPrevious').classList.value;
-		classe = classe.substring(4, classe.length);
-		document.getElementById('btnPrevious').classList.remove(classe);
-	}
 	if(document.getElementById('btnBackward') != null) {
 		classe = document.getElementById('btnBackward').classList.value;
 		classe = classe.substring(4, classe.length);
 		document.getElementById('btnBackward').classList.remove(classe);
 	}
-	if(document.getElementById('btnDropDb') != null) {
+/*	if(document.getElementById('btnDropDb') != null) {
 		classe = document.getElementById('btnDropDb').classList.value;
 		classe = classe.substring(4, classe.length);
 		document.getElementById('btnDropDb').classList.remove(classe);
+	}
+
+	if(document.getElementById('btnPrevious') != null) {
+		classe = document.getElementById('btnPrevious').classList.value;
+		classe = classe.substring(4, classe.length);
+		document.getElementById('btnPrevious').classList.remove(classe);
 	}
 	if(document.getElementById('btnNext') != null) {
 		classe = document.getElementById('btnNext').classList.value;
 		classe = classe.substring(4, classe.length);
 		document.getElementById('btnNext').classList.remove(classe);
 	}
+*/
 	if(document.getElementById('tdCategory1') != null) {
 		classe = document.getElementById('tdCategory1').classList.value;
 		classe = classe.substring(4, classe.length);
@@ -689,31 +691,33 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 
 	if (buttoncolor == 'btn-colors') {
 		
-		if(document.getElementById('btnPrevious') != null) {
+		document.getElementById('btnBackward').classList.add('btn-danger');
+/*		if(document.getElementById('btnPrevious') != null) {
 			document.getElementById('btnPrevious').classList.add('btn-primary');
 		}
-		document.getElementById('btnBackward').classList.add('btn-danger');
 		document.getElementById('btnDropDb').classList.add('btn-primary');
 		document.getElementById('btnNext').classList.add('btn-primary');
-		document.getElementById('tdCategory1').classList.add('btn-primary');
-		document.getElementById('tdCategory2').classList.add('btn-primary');
+*/
+		document.getElementById('tdCategory1').classList.add('btn-default');
+		document.getElementById('tdCategory2').classList.add('btn-default');
 		if(document.getElementById('selButtonColor') != null) {
 			document.getElementById('selButtonColor').classList.add('btn-primary');
 		}
 		if(document.getElementById('txtIncorretas') != null) {
-			document.getElementById('txtIncorretas').classList.add('btn-primary');
+			document.getElementById('txtIncorretas').classList.add('btn-default');
 		}
 		if(document.getElementById('txtCorretas') != null) {
-			document.getElementById('txtCorretas').classList.add('btn-primary');
+			document.getElementById('txtCorretas').classList.add('btn-default');
 		}
 		if(document.getElementById('txtNaoRespondidas') != null) {
-			document.getElementById('txtNaoRespondidas').classList.add('btn-primary');
+			document.getElementById('txtNaoRespondidas').classList.add('btn-default');
 		}
 	} else {
-		document.getElementById('btnPrevious').classList.add(buttoncolor);
 		document.getElementById('btnBackward').classList.add(buttoncolor);
-		document.getElementById('btnDropDb').classList.add(buttoncolor);
+/*		document.getElementById('btnDropDb').classList.add(buttoncolor);
+		document.getElementById('btnPrevious').classList.add(buttoncolor);
 		document.getElementById('btnNext').classList.add(buttoncolor);
+*/
 		document.getElementById('tdCategory1').classList.add(buttoncolor);
 		document.getElementById('tdCategory2').classList.add(buttoncolor);
 		document.getElementById('txtCorretas').classList.add(buttoncolor);
