@@ -538,6 +538,7 @@ function registerEvents() {
 		var DataShow_Config = window.open("index.html", "_self");
 	})
 	$('#imgTema1White').click(function () {
+//		var DataShow_Config = window.open("index.html?tem=1&cat=4", "_self");
 		imgTema1();
 		initLinkHelp();
 	})
