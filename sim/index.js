@@ -624,11 +624,13 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		document.getElementById('imgTema2White').style.display='';
 		document.getElementById('imgTema1Black').style.display='none';
 		document.getElementById('imgTema2Black').style.display='none';
+		document.getElementById('tblMenu').style.backgroundColor='#EEEEEE';
 	} else {
 		document.getElementById('imgTema1White').style.display='none';
 		document.getElementById('imgTema2White').style.display='none';
 		document.getElementById('imgTema1Black').style.display='';
 		document.getElementById('imgTema2Black').style.display='';
+		document.getElementById('tblMenu').style.backgroundColor='#444444';
 	}
 	
 	document.getElementById('myBody').style.background = background;
@@ -661,19 +663,8 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		document.getElementById('btnNext').classList.remove(classe);
 	}
 */
-	if(document.getElementById('tdCategory1') != null) {
-		classe = document.getElementById('tdCategory1').classList.value;
-		classe = classe.substring(4, classe.length);
-		document.getElementById('tdCategory1').classList.remove(classe);
-	}
-	if(document.getElementById('tdCategory2') != null) {
-		classe = document.getElementById('tdCategory2').classList.value;
-		classe = classe.substring(4, classe.length);
-		document.getElementById('tdCategory2').classList.remove(classe);
-	}
-		
 	//campos e botões
-	if(document.getElementById('txtIncorretas') != null) {
+/*	if(document.getElementById('txtIncorretas') != null) {
 		classe = document.getElementById('txtIncorretas').classList.value;
 		classe = classe.substring(4, classe.length);
 		document.getElementById('txtIncorretas').classList.remove(classe);
@@ -688,7 +679,7 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		classe = classe.substring(4, classe.length);
 		document.getElementById('txtNaoRespondidas').classList.remove(classe);
 	}
-
+*/
 	if (buttoncolor == 'btn-colors') {
 		
 		document.getElementById('btnBackward').classList.add('btn-danger');
@@ -698,12 +689,11 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		document.getElementById('btnDropDb').classList.add('btn-primary');
 		document.getElementById('btnNext').classList.add('btn-primary');
 */
-		document.getElementById('tdCategory1').classList.add('btn-default');
-		document.getElementById('tdCategory2').classList.add('btn-default');
+
 		if(document.getElementById('selButtonColor') != null) {
 			document.getElementById('selButtonColor').classList.add('btn-primary');
 		}
-		if(document.getElementById('txtIncorretas') != null) {
+/*		if(document.getElementById('txtIncorretas') != null) {
 			document.getElementById('txtIncorretas').classList.add('btn-default');
 		}
 		if(document.getElementById('txtCorretas') != null) {
@@ -712,17 +702,17 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		if(document.getElementById('txtNaoRespondidas') != null) {
 			document.getElementById('txtNaoRespondidas').classList.add('btn-default');
 		}
+*/
 	} else {
 		document.getElementById('btnBackward').classList.add(buttoncolor);
 /*		document.getElementById('btnDropDb').classList.add(buttoncolor);
 		document.getElementById('btnPrevious').classList.add(buttoncolor);
 		document.getElementById('btnNext').classList.add(buttoncolor);
 */
-		document.getElementById('tdCategory1').classList.add(buttoncolor);
-		document.getElementById('tdCategory2').classList.add(buttoncolor);
-		document.getElementById('txtCorretas').classList.add(buttoncolor);
+/*		document.getElementById('txtCorretas').classList.add(buttoncolor);
 		document.getElementById('txtIncorretas').classList.add(buttoncolor);
 		document.getElementById('txtNaoRespondidas').classList.add(buttoncolor);
+*/
 	}
 }
 
@@ -3003,8 +2993,8 @@ function showFormSim() {
 	$('#formBible').hide();
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
-//	$('#divFormSim').show();
-	$('#myCarousel').show();	
+	$('#divFormSim').show();
+//	$('#myCarousel').show();	
 	$('#divbuttons').hide();
 	$('#tblCategory').hide();
 }

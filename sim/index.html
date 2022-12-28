@@ -18,7 +18,7 @@
 	<style>
 #myBody {
   border: 0px dashed blue;
-  padding: 5px;
+  padding: 0px;
   background-attachment: fixed;
   background-position: top; 
   background-repeat: no-repeat;
@@ -28,41 +28,25 @@
 
 <body id="myBody" bgcolor="white">
 
-	<header>
-		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="#">Sim</a>
-				<button id="btnNightDay" class="btn btn-primary"><i class="fa fa-adjust"></i> </button>
-				&nbsp;<button id="btnDropDb" class="btn btn-primary"><i class="fa fa-trash"></i></font></button>
-<!--				&nbsp;<button id="btnPrevious" class="btn btn-primary" disabled> <i class="fa fa-chevron-left"></i></button>
-				&nbsp;<button id="btnNext" class="btn btn-primary" disabled> <i class="fa fa-chevron-right"></i></button>
--->
-				&nbsp;<button id="btnFormCategory" class="btn btn-danger"> <i class="fa fa-remove"></i></button>
-				<button id="btnPause" class="btn btn-danger" style="display:none;"><i class="fa fa-remove"></i></button>
-				<button id="btnEnd" class="btn btn-success" style="display:none;"> <i class="fa fa-check"></i> FIM</button>
-				&nbsp;
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarCollapse">
-					<ul class="navbar-nav me-auto mb-2 mb-md-0">
-						<li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Início</a></li>
-						<li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html?tem=1&cat=2">CLF-C01:Fundamentos</a></li>
-						<li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html?tem=1&cat=4">CLF-C01:Desafio</a></li>
-						<li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html?tem=2&cat=2">AZ-900:Fundamentos</a></li>
-						<li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html?tem=2&cat=4">AZ-900:Desafio</a></li>
-						<li class="nav-item"><a class="nav-link active" aria-current="page" href="#">versão 18.03.00</a></li>
-					</ul>
-					<form class="d-flex">
-						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-						<button class="btn btn-outline-success" type="submit">Search</button>
-					</form>
-				</div>
-			</div>
-		</nav>
-	</header>
-
-	<br/><br/>
+	<table id="tblMenu" border=0 width="100%" style="background-color:#EEEEEE; border-style:none;">
+		<tr>
+			<td>
+				<table border=0 >
+					<tr>
+						<td nowrap width="50px" style="color:gray;"> <b>SIM</b> </td>
+						<td nowrap width="50px"> <button id="btnNightDay" class="btn btn-primary"><i class="fa fa-adjust"></i> </button> </td>
+						<td nowrap width="50px"> <button id="btnDropDb" class="btn btn-primary"><i class="fa fa-trash"></i></font></button> </td>
+						<td nowrap width="50px"> <button id="btnPrevious" class="btn btn-primary" disabled> <i class="fa fa-chevron-left"></i></button> </td>
+						<td nowrap width="50px"> <button id="btnNext" class="btn btn-primary" disabled> Próximo <i class="fa fa-chevron-right"></i></button> </td>
+						<td nowrap width="90px"> <button id="btnEnd" class="btn btn-success" style="display:none;"> <i class="fa fa-check"></i> FIM</button> </td>
+						<td></td>
+					</tr>
+				</table>
+			</td>
+			<td nowrap width="1%"> <button id="btnFormCategory" class="btn btn-primary" style="display:'none';"> <i class="fa fa-list"></i></button> </td>
+			<td nowrap width="1%"> <button id="btnPause" class="btn btn-danger" style="display:none;"><i class="fa fa-remove"></i></button> &nbsp;</td>
+		</tr>
+	</table>
 
     <div class="row row-centered " style="margin-top:0px;">
 		<div id="divconfig" style="display:none;">
@@ -165,15 +149,15 @@
 				<table id="tableFormSimDashboard" border=0 align=center width="320px" style="display:'none';">
 					<tr><td nowrap id="txtCalculo"></td></tr>
 					<tr><td nowrap>
-						<input type="text" id="txtIncorretas" value="Incorretas" class="btn btn-primary" style="width:250px; color:gray;" readonly />
+						<input type="text" id="txtIncorretas" value="Incorretas" class="btn btn-default" style="width:250px; color:gray;" readonly />
 						<i class="fa fa-remove" style="color:red;"></i>
 					</td></tr>
 					<tr><td nowrap>
-						<input type="text" id="txtCorretas" value="Corretas" class="btn btn-primary" style="width:250px; color:gray;" readonly />
+						<input type="text" id="txtCorretas" value="Corretas" class="btn btn-default" style="width:250px; color:gray;" readonly />
 						<i class="fa fa-check" style="color:#3CB371;"></i>
 					</td></tr>
 					<tr><td nowrap>
-						<input type="text" id="txtNaoRespondidas" value="Não Respondidas" class="btn btn-primary" style="width:250px; color:gray;" readonly />
+						<input type="text" id="txtNaoRespondidas" value="Não Respondidas" class="btn btn-default" style="width:250px; color:gray;" readonly />
 						<i class="fa fa-star" style="color:gray;"></i>
 					</td></tr>
 					<tr><td nowrap>
@@ -530,8 +514,9 @@
 	</div>
   
 	<!-- FOOTER -->
-	<!--footer>
-	</footer -->
+	<footer>
+		<font size=1>&copy; SIM versão 28.10.55</font>
+	</footer>
 
 	<form id="formBible" class="form-horizontal" role="form" style="margin-top:50px; display: none;">
 	</form>
