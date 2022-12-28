@@ -2585,23 +2585,36 @@ async function initLinkHelp() {
 	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'AZ-900 Desafio');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'PAAS', 'IAAS', 'BAAS', 'FAAS', save, 'SAAS', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900 --> Um engenheiro de TI precisa criar uma máquina virtual no Azure. Atualmente, o engenheiro de TI tem uma estação de trabalho baseada no sistema operacional Android. Qual das opções a seguir o engenheiro de TI pode usar para criar a máquina virtual desejada no Azure?<br/> Selecione 3 <br/> (<i>An IT Engineer needs to create a Virtual Machine in Azure. Currently, the IT Engineer has an Android OS based workstation. Which of the following can the IT Engineer use to create the desired Virtual Machine in Azure? <br/>[Select 3]</i>)');
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'PAAS', 'IAAS', 'BAAS', 'FAAS', save, 'SAAS', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900 --> Um engenheiro de TI precisa criar uma máquina virtual no Azure. Atualmente, o engenheiro de TI tem uma estação de trabalho baseada no sistema operacional Android. Qual das opções a seguir o engenheiro de TI pode usar para criar a máquina virtual desejada no Azure?<br/> Selecione 3 <br/> <i>An IT Engineer needs to create a Virtual Machine in Azure. Currently, the IT Engineer has an Android OS based workstation. Which of the following can the IT Engineer use to create the desired Virtual Machine in Azure? <br/>Select 3</i>');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Não', '', '', '', save, 'Sim', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900 --> Sua empresa tem um conjunto de recursos definidos como parte de uma assinatura. Se eles excluírem um grupo de recursos, os recursos no grupo de recursos também serão excluídos? <br/> (<i>Your company has a set of resources defined as part of a subscription. If they delete a resource group, would the resources in the resource group also get deleted?</i>)');
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Não --> AZ-900: Não Se Aplica', '', '', '', save, 'Sim --> AZ-900: Delete a Resource Group', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900 --> Sua empresa tem um conjunto de recursos definidos como parte de uma assinatura. Se eles excluírem um grupo de recursos, os recursos no grupo de recursos também serão excluídos? <br/> <i>Your company has a set of resources defined as part of a subscription. If they delete a resource group, would the resources in the resource group also get deleted?</i>');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 
 
-	//preenche divlinkhelp se ainda estiver vazia
-	if (mytema == '1') {
-		initLinkHelp_clfc01(mytema, mycategory, contadorMygroup, contadorMycode);
-	} else {
-		initLinkHelp_az900(mytema, mycategory, contadorMygroup, contadorMycode);
-	}
-	
-	
-	
+
 	var save = false; //não precisa gravar o restante na tabela porque já estão nos arquivos, exemplo: T1C1G11.html
 
+
+
+	//////////////////////////
+	// AZURE AZ-900 - LINKHELP
+	//////////////////////////
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Nenhuma --> AZ-900', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-cloud-computing', '', 'AZ-900: --> Nenhuma');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Sim --> AZ-900: Não Se Aplica', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-cloud-computing', '', 'AZ-900: --> Não Se Aplica');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Não --> AZ-900: Não Se Aplica', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-cloud-computing', '', 'AZ-900: --> Não Se Aplica');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Dimensionamento horizontal', 'https://', '', 'AZ-900: --> A escala horizontal é adicionar ou subtrair o número de recursos.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'AZ-900 Conta Gratuita Usa Outros Serviços', 'https://azure.microsoft.com/en-us/free/', '', 'AZ-900: Conta Gratuita Usa Outros Serviços --> Com a Conta Gratuita do Azure, você também pode optar por usar outros serviços do Azure. Você não está limitado apenas à máquina virtual do Azure ou ao serviço de conta de armazenamento do Azure. <br/> <i>With the Azure Free Account , you can choose to use other Azure services as well. You are not limited to just the Azure virtual machine or the Azure storage account service.</i>');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+
+
+
+	/////////////////////////
+	// AWS CFL-C01 - LINKHELP
+	/////////////////////////
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Confiabilidade', 'https://aws.amazon.com/pt/architecture/well-architected/?achp_wa1&wa-lens-whitepapers.sort-by=item.additionalFields.sortDate&wa-lens-whitepapers.sort-order=desc', '', 'Confiabilidade (também conhecida como disponibilidade) --> Se concentra nos workloads que executam as funções pretendidas e na recuperação rápida de falhas em atender demandas ou desenho à prova de falhas. Os principais tópicos incluem projeto de sistemas distribuídos, planejamento de recuperação e requisitos adaptação a mudanças.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Segurança', 'https://aws.amazon.com/pt/architecture/well-architected/?achp_wa1&wa-lens-whitepapers.sort-by=item.additionalFields.sortDate&wa-lens-whitepapers.sort-order=desc', '', 'Segurança --> Se concentra na proteção de informações e sistemas. Os principais tópicos incluem confidencialidade e integridade de dados, gerenciamento de permissões de usuário e estabelecimento de controles para detectar eventos de segurança.');
@@ -2960,27 +2973,23 @@ async function initLinkHelp() {
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 
 	document.getElementById('divlinkhelp').innerHTML = linkhelp;
-	
+
+
+
+	//preenche divlinkhelp se ainda estiver vazia
+	if (mytema == '1') {
+		initLinkHelp_clfc01(mytema, mycategory, contadorMygroup, contadorMycode);
+	} else {
+		initLinkHelp_az900(mytema, mycategory, contadorMygroup, contadorMycode);
+	}	
 }
 
 async function initLinkHelp_az900(mytema, mycategory, contadorMygroup, contadorMycode) {
-
-var save = false; //não precisa gravar o restante na tabela porque já estão nos arquivos, exemplo: T1C1G11.html
-
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Nenhuma --> AZ-900', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-cloud-computing', '', 'AZ-900: --> Nenhuma');
-	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Sim (Yes) --> AZ-900: Não Se Aplica', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-cloud-computing', '', 'AZ-900: --> Não Se Aplica');
-	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Não (No) --> AZ-900: Não Se Aplica', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-cloud-computing', '', 'AZ-900: --> Não Se Aplica');
-	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Dimensionamento horizontal', 'https://', '', 'AZ-900: --> A escala horizontal é adicionar ou subtrair o número de recursos.');
-	contadorMycode = String(parseInt(contadorMycode) + 1);
-
-	document.getElementById('divlinkhelp').innerHTML = linkhelp;
+	var save = false; //não precisa gravar o restante na tabela porque já estão nos arquivos, exemplo: T1C1G11.html
 }
 
 async function initLinkHelp_clfc01(mytema, mycategory, contadorMygroup, contadorMycode) {
-	
+	var save = false; //não precisa gravar o restante na tabela porque já estão nos arquivos, exemplo: T1C1G11.html
 }
 
 function showCorrect(valorindice, myid, mygroup, mycode) {
