@@ -630,7 +630,7 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		document.getElementById('imgTema2White').style.display='none';
 		document.getElementById('imgTema1Black').style.display='';
 		document.getElementById('imgTema2Black').style.display='';
-		document.getElementById('tblMenu').style.backgroundColor='#444444';
+		document.getElementById('tblMenu').style.backgroundColor='#000000';
 	}
 	
 	document.getElementById('myBody').style.background = background;
