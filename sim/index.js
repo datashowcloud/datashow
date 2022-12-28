@@ -2528,6 +2528,43 @@ async function initLinkHelp() {
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Well-Architected Framework', 'EC2', 'S3', 'Excelência Operacional', save, 'Cargas de trabalho (Workload)', 'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/userguide/workloads.html', '', 'Carga de trabalho (Workload) --> É um conjunto de códigos e recursos que fornece valor empresarial, como um aplicativo voltado ao cliente ou um processo de back-end. Pode consistir em um subconjunto de recursos em uma Conta da AWS ou ser uma coleção de vários recursos abrangendo várias Contas da AWS.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 
+
+
+	//AZ-900 FUNDAMENTOS
+	mytema = '2';
+	mycategory = '2';
+	students = await jsstoreCon.select({
+		from: 'Student'
+		  , where: { mytema: '' + mytema + ''
+				   , mycategory: '' + mycategory + ''
+		  }
+	});
+	if (students == '') {
+		save = true;
+	} else {
+		save = false;
+	}
+	contadorMygroup = 10;
+	contadorMycode = 0;
+	//título
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'AZ-900 Fundamentos');
+	//perguntas
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Nenhuma --> AZ-900', 'Disponibilização de sites acessíveis pela Internet --> AZ-900', 'Entrega de serviços de armazenamento pela Internet --> AZ-900', 'Nenhuma --> AZ-900', save, 'Entregar serviços de computação pela Internet', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-cloud-computing', '', 'AZ-900: --> O que é computação em nuvem?');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Nuvem pública', 'Várias nuvens', 'Nenhuma --> AZ-900', '', save, 'Nuvem híbrida', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-are-private-public-hybrid-clouds/', '', 'AZ-900 --> Qual modelo de nuvem usa alguns datacenters focados em fornecer serviços de nuvem para quem quiser e alguns data centers que estão focados em um único cliente?');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'SAAS', 'PAAS', 'BAAS', '', save, 'IAAS', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900 --> De acordo com o modelo de Responsabilidade Compartilhada, qual tipo de serviço de nuvem coloca a maior responsabilidade sobre o cliente?');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Dimensionamento vertical', 'Escalação direta', 'IAAS', '', save, 'Dimensionamento horizontal', 'https://', '', 'AZ-900 --> Que tipo de escalagem envolve adicionar ou remover recursos (como máquinas virtuais ou contentores) para satisfazer a procura?');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Escalabilidade', 'Resiliência', 'Confiabilidade', 'Segurança', save, 'Fiabilidade', 'https://', '', 'AZ-900 --> O que se caracteriza como a capacidade de um sistema recuperar de falhas e continuar a funcionar?');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'PAAS', 'SAAS', 'BAAS', 'FAAS', save, 'IAAS', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900 --> Qual o tipo de serviço em nuvem mais adequado para um elevador e transferir a migração de um datacenter no local para uma implantação em nuvem?');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'PAAS', 'IAAS', 'BAAS', 'FAAS', save, 'SAAS', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900 --> Que tipo de serviço em nuvem seria normalmente uma solução de rastreio de Finanças e Despesas?');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+
 	//AZ-900 DESAFIO
 	mytema = '2';
 	mycategory = '4';
@@ -2548,23 +2585,10 @@ async function initLinkHelp() {
 	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'AZ-900 Desafio');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Nenhuma (Nothing) --> AZ-900', 'Disponibilização de sites acessíveis pela Internet --> AZ-900', 'Entrega de serviços de armazenamento pela Internet --> AZ-900', 'Nenhuma (Nothing) --> AZ-900', save, 'Entregar serviços de computação pela Internet', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-cloud-computing', '', 'AZ-900: --> O que é computação em nuvem?');
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'PAAS', 'IAAS', 'BAAS', 'FAAS', save, 'SAAS', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900 --> Um engenheiro de TI precisa criar uma máquina virtual no Azure. Atualmente, o engenheiro de TI tem uma estação de trabalho baseada no sistema operacional Android. Qual das opções a seguir o engenheiro de TI pode usar para criar a máquina virtual desejada no Azure?<br/> Selecione 3 <br/> (<i>An IT Engineer needs to create a Virtual Machine in Azure. Currently, the IT Engineer has an Android OS based workstation. Which of the following can the IT Engineer use to create the desired Virtual Machine in Azure? <br/>[Select 3]</i>)');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Nuvem pública', 'Várias nuvens', 'Nenhuma (Nothing) --> AZ-900', '', save, 'Nuvem híbrida', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-are-private-public-hybrid-clouds/', '', 'AZ-900 --> Qual modelo de nuvem usa alguns datacenters focados em fornecer serviços de nuvem para quem quiser e alguns data centers que estão focados em um único cliente?');
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Não', '', '', '', save, 'Sim', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900 --> Sua empresa tem um conjunto de recursos definidos como parte de uma assinatura. Se eles excluírem um grupo de recursos, os recursos no grupo de recursos também serão excluídos? <br/> (<i>Your company has a set of resources defined as part of a subscription. If they delete a resource group, would the resources in the resource group also get deleted?</i>)');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'SAAS', 'PAAS', 'BAAS', '', save, 'IAAS', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900 --> De acordo com o modelo de Responsabilidade Compartilhada, qual tipo de serviço de nuvem coloca a maior responsabilidade sobre o cliente?');
-	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Dimensionamento vertical', 'Escalação direta', 'IAAS', '', save, 'Dimensionamento horizontal', 'https://', '', 'AZ-900 --> Que tipo de escalagem envolve adicionar ou remover recursos (como máquinas virtuais ou contentores) para satisfazer a procura?');
-	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Escalabilidade', 'Resiliência', 'Confiabilidade', 'Segurança', save, 'Fiabilidade', 'https://', '', 'AZ-900 --> O que se caracteriza como a capacidade de um sistema recuperar de falhas e continuar a funcionar?');
-	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'PAAS', 'SAAS', 'BAAS', 'FAAS', save, 'IAAS', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900 --> Qual o tipo de serviço em nuvem mais adequado para um elevador e transferir a migração de um datacenter no local para uma implantação em nuvem?');
-	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'PAAS', 'IAAS', 'BAAS', 'FAAS', save, 'SAAS', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900 --> Que tipo de serviço em nuvem seria normalmente uma solução de rastreio de Finanças e Despesas?');
-	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'PAAS', 'IAAS', 'BAAS', 'FAAS', save, 'SAAS', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900 --> Um engenheiro de TI precisa criar uma máquina virtual no Azure. Atualmente, o engenheiro de TI tem uma estação de trabalho baseada no sistema operacional Android. Qual das opções a seguir o engenheiro de TI pode usar para criar a máquina virtual desejada no Azure?<br/> Selecione 3 <br/> An IT Engineer needs to create a Virtual Machine in Azure. Currently, the IT Engineer has an Android OS based workstation. Which of the following can the IT Engineer use to create the desired Virtual Machine in Azure? <br/>[Select 3]');
-	contadorMycode = String(parseInt(contadorMycode) + 1);
-
 
 
 	//preenche divlinkhelp se ainda estiver vazia
@@ -2943,7 +2967,7 @@ async function initLinkHelp_az900(mytema, mycategory, contadorMygroup, contadorM
 
 var save = false; //não precisa gravar o restante na tabela porque já estão nos arquivos, exemplo: T1C1G11.html
 
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Nenhuma (Nothing) --> AZ-900', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-cloud-computing', '', 'AZ-900: --> Nenhuma (Nothing)');
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Nenhuma --> AZ-900', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-cloud-computing', '', 'AZ-900: --> Nenhuma');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Sim (Yes) --> AZ-900: Não Se Aplica', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-cloud-computing', '', 'AZ-900: --> Não Se Aplica');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
