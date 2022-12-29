@@ -551,11 +551,9 @@ function registerEvents() {
 	})
 	$('#tdCategory2').click(function () {
 		radCategory[0].checked = true;
-//		alert('radCategory[0].checked='+radCategory[0].checked);
 	})
 	$('#tdCategory4').click(function () {
 		radCategory[1].checked = true;
-//		alert('radCategory[1].checked='+radCategory[1].checked);
 	})
 }
 
