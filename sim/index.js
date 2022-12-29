@@ -452,14 +452,10 @@ function registerEvents() {
 		}
     })
 	$('#btnPause').click(function () {
-		var params = new URLSearchParams(window.location.search);
-		var mytema = params.get('tem');
-		var mycategory = params.get('cat');
-		var myid = document.getElementById('myidSim').value;
-		var mygroup = document.getElementById('mygroupSim').value;
-		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
-		savePoints(mytema, mycategory, myid, mygroup, mycode);
-		setTimeout(() => { location.reload() }, 500); // Executa após 1 segundo para esperar o processo
+		exitQuestions();
+    });
+	$('#btnPause2').click(function () {
+		exitQuestions();
     });
     $('#btnNext').click(function () {
 		var params = new URLSearchParams(window.location.search);
@@ -538,21 +534,26 @@ function registerEvents() {
 		var DataShow_Config = window.open("index.html", "_self");
 	})
 	$('#imgTema1White').click(function () {
-//		var DataShow_Config = window.open("index.html?tem=1&cat=4", "_self");
-		imgTema1();
+		changeTema('1');
 		initLinkHelp();
 	})
 	$('#imgTema1Black').click(function () {
-		imgTema1();
+		changeTema('1');
 		initLinkHelp();
 	})
 	$('#imgTema2White').click(function () {
-		imgTema2();
+		changeTema('2');
 		initLinkHelp();
 	})
 	$('#imgTema2Black').click(function () {
-		imgTema2();
+		changeTema('2');
 		initLinkHelp();
+	})
+	$('#tdCategory2').click(function () {
+		radCategory[0].checked = true;
+	})
+	$('#tdCategory4').click(function () {
+		radCategory[1].checked = true;
 	})
 }
 
@@ -647,73 +648,26 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		classe = classe.substring(4, classe.length);
 		document.getElementById('btnBackward').classList.remove(classe);
 	}
-/*	if(document.getElementById('btnDropDb') != null) {
-		classe = document.getElementById('btnDropDb').classList.value;
+	if(document.getElementById('navBottom') != null) {
+		classe = document.getElementById('navBottom').classList.value;
 		classe = classe.substring(4, classe.length);
-		document.getElementById('btnDropDb').classList.remove(classe);
+		document.getElementById('navBottom').classList.remove(classe);
 	}
-
-	if(document.getElementById('btnPrevious') != null) {
-		classe = document.getElementById('btnPrevious').classList.value;
-		classe = classe.substring(4, classe.length);
-		document.getElementById('btnPrevious').classList.remove(classe);
-	}
-	if(document.getElementById('btnNext') != null) {
-		classe = document.getElementById('btnNext').classList.value;
-		classe = classe.substring(4, classe.length);
-		document.getElementById('btnNext').classList.remove(classe);
-	}
-*/
 	//campos e botões
-/*	if(document.getElementById('txtIncorretas') != null) {
-		classe = document.getElementById('txtIncorretas').classList.value;
-		classe = classe.substring(4, classe.length);
-		document.getElementById('txtIncorretas').classList.remove(classe);
-	}
-	if(document.getElementById('txtCorretas') != null) {
-		classe = document.getElementById('txtCorretas').classList.value;
-		classe = classe.substring(4, classe.length);
-		document.getElementById('txtCorretas').classList.remove(classe);
-	}
-	if(document.getElementById('txtNaoRespondidas') != null) {
-		classe = document.getElementById('txtNaoRespondidas').classList.value;
-		classe = classe.substring(4, classe.length);
-		document.getElementById('txtNaoRespondidas').classList.remove(classe);
-	}
-*/
 	if (buttoncolor == 'btn-colors') {
 		
-		document.getElementById('btnBackward').classList.add('btn-danger');
-/*		if(document.getElementById('btnPrevious') != null) {
-			document.getElementById('btnPrevious').classList.add('btn-primary');
+		if(document.getElementById('btnBackward') != null) {
+			document.getElementById('btnBackward').classList.add('btn-danger');
 		}
-		document.getElementById('btnDropDb').classList.add('btn-primary');
-		document.getElementById('btnNext').classList.add('btn-primary');
-*/
-
+		if(document.getElementById('navBottom') != null) {
+			document.getElementById('navBottom').classList.add('btn-danger');
+		}
 		if(document.getElementById('selButtonColor') != null) {
 			document.getElementById('selButtonColor').classList.add('btn-primary');
 		}
-/*		if(document.getElementById('txtIncorretas') != null) {
-			document.getElementById('txtIncorretas').classList.add('btn-default');
-		}
-		if(document.getElementById('txtCorretas') != null) {
-			document.getElementById('txtCorretas').classList.add('btn-default');
-		}
-		if(document.getElementById('txtNaoRespondidas') != null) {
-			document.getElementById('txtNaoRespondidas').classList.add('btn-default');
-		}
-*/
 	} else {
 		document.getElementById('btnBackward').classList.add(buttoncolor);
-/*		document.getElementById('btnDropDb').classList.add(buttoncolor);
-		document.getElementById('btnPrevious').classList.add(buttoncolor);
-		document.getElementById('btnNext').classList.add(buttoncolor);
-*/
-/*		document.getElementById('txtCorretas').classList.add(buttoncolor);
-		document.getElementById('txtIncorretas').classList.add(buttoncolor);
-		document.getElementById('txtNaoRespondidas').classList.add(buttoncolor);
-*/
+		document.getElementById('navBottom').classList.add(buttoncolor);
 	}
 }
 
@@ -734,26 +688,34 @@ async function deletefase(mytema, mycategory, mygroup, mycode, myid) {
     }
 }
 
-function imgTema1() {
-	var varCategoria = '1';
-	for (var i = 0; i < radCategory.length; i++) {
-		if (radCategory[i].checked == true) {
-			varCategoria = radCategory[i].value;
-			break;
-		}
-	}
-	var DataShow_Config = window.open("index.html?tem=1&cat="+ varCategoria, "_self");
+function exitQuestions() {
+	var params = new URLSearchParams(window.location.search);
+	var mytema = params.get('tem');
+	var mycategory = params.get('cat');
+	var myid = document.getElementById('myidSim').value;
+	var mygroup = document.getElementById('mygroupSim').value;
+	var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
+	savePoints(mytema, mycategory, myid, mygroup, mycode);
+	document.getElementById('navBottom').style.display='none';
+	setTimeout(() => { location.reload() }, 500); // Executa após 1 segundo para esperar o processo
 }
 
-function imgTema2() {
-	var varCategoria = '1';
+function changeTema(mytema) {
+	var params = new URLSearchParams(window.location.search);
+	var mycategory = params.get('cat');
 	for (var i = 0; i < radCategory.length; i++) {
 		if (radCategory[i].checked == true) {
-			varCategoria = radCategory[i].value;
+			mycategory = radCategory[i].value;
 			break;
 		}
 	}
-	var DataShow_Config = window.open("index.html?tem=2&cat="+ varCategoria, "_self");
+	var DataShow_Config = window.open("index.html?tem="+ mytema +"&cat="+ mycategory, "_self");
+}
+
+function changeCategory(mycategory) {
+	var params = new URLSearchParams(window.location.search);
+	var mytema = params.get('tem');
+	var DataShow_Config = window.open("index.html?tem="+ mytema +"&cat="+ mycategory, "_self");
 }
 
 function openForm() {
@@ -768,12 +730,8 @@ function openForm() {
 }
 
 function restartFase(mytema, mycategory, myid, mygroup, mycode) {
-//	var result = confirm('Vou limpar e reiniciar as respostas dessa fase, ok?');
-//	if (result) {
 		updateStudentPlayOrder(mytema, mycategory, mygroup);
 		updateStudentPlayClear(mytema, mycategory, mygroup);
-//		showGridAndHideForms();
-//	}
 }
 
 function getStudentFromForm(mytema, mycategory, studentId, mygroup, mycode) {
@@ -1476,6 +1434,7 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 				varButtonRestart = 'color:gray; font-size:20px;';
 				varCount = '';
 		})
+
 
 		varNivelLinha = '';
 //		for (var item=CONST_NIVEL_MAX; item>=parseInt(varNivelMax)+1; item--) {
@@ -2610,6 +2569,8 @@ async function initLinkHelp() {
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'AZ-900 Conta Gratuita Usa Outros Serviços', 'https://azure.microsoft.com/en-us/free/', '', 'AZ-900: Conta Gratuita Usa Outros Serviços --> Com a Conta Gratuita do Azure, você também pode optar por usar outros serviços do Azure. Você não está limitado apenas à máquina virtual do Azure ou ao serviço de conta de armazenamento do Azure. <br/> <i>With the Azure Free Account , you can choose to use other Azure services as well. You are not limited to just the Azure virtual machine or the Azure storage account service.</i>');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'AZ-900 Recursos Acessam Grupo de Recursos', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900 Recursos Acessam Grupo de Recursos --> Os recursos do Azure também podem acessar recursos que estão em outros grupos de recursos. <br/> <i>Azure resources can access resources that are in other resource groups as well.</i>');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
 
 
 
@@ -3031,6 +2992,7 @@ function showFormSim() {
 //	$('#myCarousel').show();	
 	$('#divbuttons').hide();
 	$('#tblCategory').hide();
+	document.getElementById('navBottom').style.display='';
 }
 
 function showFormAddUpdate() {
