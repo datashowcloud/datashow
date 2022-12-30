@@ -2550,6 +2550,8 @@ async function initLinkHelp() {
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Não --> AZ-900: Não Se Aplica', '', '', '', save, 'Sim --> AZ-900: Delete a Resource Group', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900 --> Sua empresa tem um conjunto de recursos definidos como parte de uma assinatura. Se eles excluírem um grupo de recursos, os recursos no grupo de recursos também serão excluídos? <br/> <i>Your company has a set of resources defined as part of a subscription. If they delete a resource group, would the resources in the resource group also get deleted?</i>');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Sim --> AZ-900: Não Se Aplica', '', '', '', save, 'Não --> AZ-900 Conta Gratuita Usa Outros Serviços', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900 --> Uma empresa acaba de definir uma conta do Azure Free. É VERDADE que apenas as máquinas virtuais do Azure e as contas de armazenamento do Azure podem ser implantadas na Conta Gratuita do Azure? <br/> <i>A company has just set an Azure Free account. Is it TRUE that only Azure virtual machines and Azure storage accounts can be deployed to the Azure Free Account?</i>');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
 
 
 	var save = false; //não precisa gravar o restante na tabela porque já estão nos arquivos, exemplo: T1C1G11.html
