@@ -73,11 +73,22 @@
 -->
 	<nav id="navBottom" style="display:none;" class="navbar navbar-light bg-light fixed-bottom">
 		<div class="container-fluid">
-			<button id="btnPause2" class="btn btn-sm btn-outline-secondary" title="Sair"><i class="fa fa-remove"></i></button>
+			<button id="btnPause2" class="btn btn-outline-secondary" title="Sair"><i class="fa fa-remove"></i></button>
+
+			<table border=0><tr><td nowrap>
+				<i class="fa fa-remove" style="color:red;"></i>=<input type="text" id="txtIncorretas" value="0" style="width:30px; background-color:#EEEEEE; color:gray; text-align:left; border-width:0px;" readonly />
+			</td>
+			<td nowrap>
+				<i class="fa fa-check" style="color:#3CB371;"></i>=<input type="text" id="txtCorretas" value="0" style="width:30px; background-color:#EEEEEE; color:gray; border-width:0px;" readonly />
+			</td>
+			<td nowrap>
+				<i class="fa fa-envelope" style="color:gray;"></i>=<input type="text" id="txtNaoRespondidas" value="Não Respondidas" style="width:30px; background-color:#EEEEEE; color:gray; border-width:0px;" readonly />
+			</td></tr></table>
+				
 			<div>
-				<button id="btnEnd" class="btn btn-sm btn-outline-success me-2" title="Concluir" style="display:none;"> <i class="fa fa-check"></i> FIM</button>
-				<button id="btnPrevious" class="btn btn-sm btn-secondary" title="Anterior" disabled> <i class="fa fa-chevron-left"></i> Anterior</button>
-				<button id="btnNext" class="btn btn-sm btn-secondary" title="Próxima" disabled> Próxima <i class="fa fa-chevron-right"></i></button>
+				<button id="btnEnd" class="btn btn-outline-success me-2" title="Concluir" style="display:none;"> <i class="fa fa-check"></i> FIM</button>
+				<button id="btnPrevious" class="btn btn-secondary" title="Pergunta anterior" disabled> <i class="fa fa-chevron-left"></i> Anterior</button>
+				<button id="btnNext" class="btn btn-secondary" title="Próxima pergunta" disabled> Próxima <i class="fa fa-chevron-right"></i></button>
 			</div>
 			<div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
 				<div class="offcanvas-header">
@@ -120,17 +131,17 @@
 			<td>
 				<table border=0 >
 					<tr>
-						<td nowrap> &nbsp;<button id="btnNightDay" class="btn btn-outline-secondary" title="Dia e noite"><i class="fa fa-adjust"></i> </button> </td>
-						<td nowrap> &nbsp;<button id="btnDropDb" class="btn btn-outline-secondary" title="Restaurar padrão de fábrica"><i class="fa fa-trash"></i></font></button> </td>
-						<!-- td nowrap width="50px"> <button id="btnPrevious" class="btn btn-secondary" title="Anterior" disabled> <i class="fa fa-chevron-left"></i></button> </td>
-						<td nowrap width="50px"> <button id="btnNext" class="btn btn-secondary" title="Próximo" disabled> Próximo <i class="fa fa-chevron-right"></i></button> </td>
-						<td nowrap width="90px"> <button id="btnEnd" class="btn btn-outline-success me-2" title="Concluir" style="display:none;"> <i class="fa fa-check"></i> FIM</button> </td -->
+						<td nowrap> &nbsp;<button id="btnNightDay" class="btn btn-sm btn-outline-secondary" title="Dia e noite"><i class="fa fa-adjust"></i> </button> </td>
+						<td nowrap> &nbsp;<button id="btnDropDb" class="btn btn-sm btn-outline-secondary" title="Restaurar padrão de fábrica"><i class="fa fa-trash"></i></font></button> </td>
+						<!-- td nowrap width="50px"> <button id="btnPrevious" class="btn btn-sm btn-secondary" title="Anterior" disabled> <i class="fa fa-chevron-left"></i></button> </td>
+						<td nowrap width="50px"> <button id="btnNext" class="btn btn-sm btn-secondary" title="Próximo" disabled> Próximo <i class="fa fa-chevron-right"></i></button> </td>
+						<td nowrap width="90px"> <button id="btnEnd" class="btn btn-sm btn-outline-success me-2" title="Concluir" style="display:none;"> <i class="fa fa-check"></i> FIM</button> </td -->
 						<td></td>
 					</tr>
 				</table>
 			</td>
 			<td nowrap width="1%"> <button id="btnFormCategory" class="btn btn-sm btn-outline-secondary" title="Menu" style="display:'none';"> <i class="fa fa-list"></i></button> </td>
-			<td nowrap width="1%"> <button id="btnPause" class="btn btn-outline-secondary" title="Sair" style="display:none;"><i class="fa fa-remove"></i></button> &nbsp;</td>
+			<td nowrap width="1%"> <button id="btnPause" class="btn btn-sm btn-outline-secondary" title="Sair" style="display:none;"><i class="fa fa-remove"></i></button> &nbsp;</td>
 		</tr>
 	</table>
 
@@ -392,7 +403,7 @@
 
 
 		<div style="display:none;">
-			<i class="fa fa-envelope"></i>
+			<button id="btnTest" class="btn btn-default" > <i class="fa fa-envelope"></i> </button>
 			<button id="btnTest" class="btn btn-default" > <i class="fa fa-star"></i> </button>
 			<button id="btnTest" class="btn btn-default" > <i class="fa fa-user"></i> </button>
 			<button id="btnTest" class="btn btn-default" > <i class="fa fa-film"></i> </button>
@@ -609,7 +620,7 @@
 
 	<!-- FOOTER -->
 	<footer>
-		<font size=1 style="color:gray">&copy; versão 30.20.15</font>
+		<font size=1 style="color:gray">&copy; versão 30.21.13</font>
 		<br/><br/><br/>
 	</footer>
 
