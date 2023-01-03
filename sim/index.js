@@ -645,26 +645,17 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		classe = classe.substring(4, classe.length);
 		document.getElementById('btnBackward').classList.remove(classe);
 	}
-	if(document.getElementById('navBottom') != null) {
-		classe = document.getElementById('navBottom').classList.value;
-		classe = classe.substring(4, classe.length);
-		document.getElementById('navBottom').classList.remove(classe);
-	}
 	//campos e botões
 	if (buttoncolor == 'btn-colors') {
 		
 		if(document.getElementById('btnBackward') != null) {
 			document.getElementById('btnBackward').classList.add('btn-danger');
 		}
-		if(document.getElementById('navBottom') != null) {
-			document.getElementById('navBottom').classList.add('btn-danger');
-		}
 		if(document.getElementById('selButtonColor') != null) {
 			document.getElementById('selButtonColor').classList.add('btn-primary');
 		}
 	} else {
 		document.getElementById('btnBackward').classList.add(buttoncolor);
-		document.getElementById('navBottom').classList.add(buttoncolor);
 	}
 }
 
@@ -1066,7 +1057,8 @@ async function setDashboard(mytema, mycategory, myid, mygroup, mycode) {
 		document.getElementById('txtTotal').value = totalperguntas;
 		document.getElementById('txtIncorretas').value = '' + totalIncorretas;
 		document.getElementById('txtCorretas').value = '' + totalCorretas;
-		document.getElementById('txtNaoRespondidas').value = '' + totalNaoRespondidas;
+		//document.getElementById('txtNaoRespondidas').value = '' + totalNaoRespondidas;
+		document.getElementById('txtCalculo').value = '' + calculo;
 //		document.getElementById('txtIncorretas').value = 'Incorretas: ' + totalIncorretas;
 //		document.getElementById('txtCorretas').value = 'Corretas: ' + totalCorretas;
 //		document.getElementById('txtNaoRespondidas').value = 'Não Respondidas: ' + totalNaoRespondidas;
@@ -1076,7 +1068,6 @@ async function setDashboard(mytema, mycategory, myid, mygroup, mycode) {
 			document.getElementById('txtCalculo').innerHTML = '<font style="color:gray;> <i class="fa fa-remove"></i> AINDA ESTÁ REPROVADO <br/>' + calculo + '% de acerto é < 70%' + '</font>';
 		}
 */
-		document.getElementById('txtCalculo').value = '' + calculo;
 		
 
 }
