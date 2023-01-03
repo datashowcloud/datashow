@@ -454,9 +454,6 @@ function registerEvents() {
 	$('#btnPause').click(function () {
 		exitQuestions();
     });
-	$('#btnPause2').click(function () {
-		exitQuestions();
-    });
     $('#btnNext').click(function () {
 		var params = new URLSearchParams(window.location.search);
 		var mytema = params.get('tem');
@@ -1073,11 +1070,13 @@ async function setDashboard(mytema, mycategory, myid, mygroup, mycode) {
 //		document.getElementById('txtIncorretas').value = 'Incorretas: ' + totalIncorretas;
 //		document.getElementById('txtCorretas').value = 'Corretas: ' + totalCorretas;
 //		document.getElementById('txtNaoRespondidas').value = 'Não Respondidas: ' + totalNaoRespondidas;
-		if (calculo >= 70) {
+/*		if (calculo >= 70) {
 			document.getElementById('txtCalculo').innerHTML = '<font style="color:gray;> <i class="fa fa-check"></i> JÁ ESTÁ APROVADO <br/>' + calculo + '% de acerto é >= 70%' + '</font>';
 		} else {
 			document.getElementById('txtCalculo').innerHTML = '<font style="color:gray;> <i class="fa fa-remove"></i> AINDA ESTÁ REPROVADO <br/>' + calculo + '% de acerto é < 70%' + '</font>';
 		}
+*/
+		document.getElementById('txtCalculo').value = '' + calculo;
 		
 
 }
@@ -2513,19 +2512,13 @@ async function initLinkHelp() {
 	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'AZ-900 Fundamentos');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Nenhuma --> AZ-900', 'Disponibilização de sites acessíveis pela Internet --> AZ-900', 'Entrega de serviços de armazenamento pela Internet --> AZ-900', 'Nenhuma --> AZ-900', save, 'Entregar serviços de computação pela Internet', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-cloud-computing', '', 'AZ-900: --> O que é computação em nuvem?');
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Nuvem Privada --> AZ-900', 'Nuvem Híbrida --> AZ-900', 'Multinuvem --> AZ-900', 'AZ-900: --> Nenhuma das alternativas', save, 'Nuvem Pública --> AZ-900', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-a-public-cloud/', '', 'AZ-900: Nuvem Pública --> Definida como uma série de serviços de computação oferecidos por terceiros à Internet pública, os quais são disponibilizados a qualquer pessoa que queira utilizá-los ou comprá-los. Eles podem ser gratuitos ou vendidos sob demanda, permitindo que os clientes paguem apenas pelo seu consumo de ciclos de CPU, armazenamento ou largura de banda.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Nuvem pública', 'Várias nuvens', 'Nenhuma --> AZ-900', '', save, 'Nuvem híbrida', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-are-private-public-hybrid-clouds/', '', 'AZ-900 --> Qual modelo de nuvem usa alguns datacenters focados em fornecer serviços de nuvem para quem quiser e alguns data centers que estão focados em um único cliente?');
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Nuvem Pública --> AZ-900', 'Nuvem Híbrida --> AZ-900', 'Multinuvem --> AZ-900', 'AZ-900: --> Nenhuma das alternativas', save, 'Nuvem Privada --> AZ-900', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-a-private-cloud/', '', 'AZ-900: Nuvem Privada --> Refere-se aos serviços de computação em nuvem oferecidos pela Internet ou por uma rede interna privada somente a usuários selecionados e não ao público geral. Também chamada de nuvem interna ou corporativa.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'SAAS', 'PAAS', 'BAAS', '', save, 'IAAS', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900 --> De acordo com o modelo de Responsabilidade Compartilhada, qual tipo de serviço de nuvem coloca a maior responsabilidade sobre o cliente?');
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Nuvem Privada --> AZ-900', 'Nuvem Pública --> AZ-900', 'Multinuvem --> AZ-900', 'AZ-900: --> Nenhuma das alternativas', save, 'Nuvem Híbrida --> AZ-900', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-hybrid-cloud-computing/', '', 'AZ-900: Nuvem Híbrida --> Ambiente de computação que combina um datacenter local (também chamado de nuvem privada) com uma nuvem pública, permitindo que dados e aplicativos sejam compartilhados entre eles. Algumas pessoas definem para incluir configurações de “multinuvem” em que uma organização usa mais de uma nuvem pública, além do datacenter local.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Dimensionamento vertical', 'Escalação direta', 'IAAS', '', save, 'Dimensionamento horizontal', 'https://', '', 'AZ-900 --> Que tipo de escalagem envolve adicionar ou remover recursos (como máquinas virtuais ou contentores) para satisfazer a procura?');
-	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Escalabilidade', 'Resiliência', 'Confiabilidade', 'Segurança', save, 'Fiabilidade', 'https://', '', 'AZ-900 --> O que se caracteriza como a capacidade de um sistema recuperar de falhas e continuar a funcionar?');
-	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'PAAS', 'SAAS', 'BAAS', 'FAAS', save, 'IAAS', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900 --> Qual o tipo de serviço em nuvem mais adequado para um elevador e transferir a migração de um datacenter no local para uma implantação em nuvem?');
-	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'PAAS', 'IAAS', 'BAAS', 'FAAS', save, 'SAAS', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900 --> Que tipo de serviço em nuvem seria normalmente uma solução de rastreio de Finanças e Despesas?');
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Nuvem Privada --> AZ-900', 'Nuvem Híbrida --> AZ-900', 'Nuvem Pública --> AZ-900', 'AZ-900: --> Nenhuma das alternativas', save, 'Multinuvem --> AZ-900', 'https://azure.microsoft.com/pt-br/solutions/hybrid-cloud-app/#overview', '', 'AZ-900: Multinuvem --> Uma parte da sua empresa está no Microsoft Azure e outra parte está em outra nuvem, como: AWS, Google Cloud Platform, aplicativos SaaS baseados em nuvem e até ambientes de colocation.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 
 	//AZ-900 DESAFIO
@@ -2548,13 +2541,15 @@ async function initLinkHelp() {
 	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'AZ-900 Desafio');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'PAAS', 'IAAS', 'BAAS', 'FAAS', save, 'SAAS', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900 --> Um engenheiro de TI precisa criar uma máquina virtual no Azure. Atualmente, o engenheiro de TI tem uma estação de trabalho baseada no sistema operacional Android. Qual das opções a seguir o engenheiro de TI pode usar para criar a máquina virtual desejada no Azure?<br/> Selecione 3 <br/> <i>An IT Engineer needs to create a Virtual Machine in Azure. Currently, the IT Engineer has an Android OS based workstation. Which of the following can the IT Engineer use to create the desired Virtual Machine in Azure? <br/>Select 3</i>');
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'PAAS --> AZ-900', 'SAAS --> AZ-900', 'Computação Sem Servidor --> AZ-900', 'BAAS', save, 'IAAS --> AZ-900', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-iaas/', '', 'AZ-900 IAAS (Infraestrutura como Serviço) --> Um tipo de serviço de computação em nuvem que oferece recursos fundamentais de computação, armazenamento e rede sob demanda e pagos conforme o uso.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Não --> AZ-900: Não Se Aplica', '', '', '', save, 'Sim --> AZ-900: Delete a Resource Group', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900 --> Sua empresa tem um conjunto de recursos definidos como parte de uma assinatura. Se eles excluírem um grupo de recursos, os recursos no grupo de recursos também serão excluídos? <br/> <i>Your company has a set of resources defined as part of a subscription. If they delete a resource group, would the resources in the resource group also get deleted?</i>');
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'IAAS --> AZ-900', 'SAAS --> AZ-900', 'Computação Sem Servidor --> AZ-900', 'BAAS', save, 'PAAS --> AZ-900', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-paas/', '', 'AZ-900 PAAS (Plataforma como Serviço) --> Um ambiente de desenvolvimento e implantação completo na nuvem, com recursos que permitem a você fornecer tudo, desde aplicativos simples baseados em nuvem até sofisticados aplicativos empresariais habilitados para a nuvem. Você adquire os recursos necessários por meio de um provedor de serviços de nuvem com pagamento conforme o uso e os acessa por uma conexão com a Internet segura.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'PAAS --> AZ-900', 'IAAS --> AZ-900', 'Computação Sem Servidor --> AZ-900', 'BAAS', save, 'SAAS --> AZ-900', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-saas/', '', 'AZ-900 SAAS (Software como Serviço) --> Permite aos usuários se conectar e usar aplicativos baseados em nuvem pela Internet. Exemplos comuns são email, calendário e ferramentas do Office (como Microsoft Office 365). Fornece uma solução de software completa que você pode comprar em uma base paga conforme o uso por um  provedor de serviço de nuvem.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'PAAS --> AZ-900', 'SAAS --> AZ-900', 'IAAS --> AZ-900', 'BAAS', save, 'Computação Sem Servidor --> AZ-900', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-serverless-computing/', '', 'AZ-900 Computação Sem Servidor --> Eliminando a necessidade de gerenciar a infraestrutura, ela permite que os desenvolvedores criem aplicativos de forma mais rápida. Com aplicativos nessa computação, o provedor de serviços de nuvem provisiona, dimensiona e gerencia automaticamente a infraestrutura necessária para executar o código.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Sim --> AZ-900: Não Se Aplica', '', '', '', save, 'Não --> AZ-900 Conta Gratuita Usa Outros Serviços', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900 --> Uma empresa acaba de definir uma conta do Azure Free. É VERDADE que apenas as máquinas virtuais do Azure e as contas de armazenamento do Azure podem ser implantadas na Conta Gratuita do Azure? <br/> <i>A company has just set an Azure Free account. Is it TRUE that only Azure virtual machines and Azure storage accounts can be deployed to the Azure Free Account?</i>');
-	contadorMycode = String(parseInt(contadorMycode) + 1);
 
 
 	var save = false; //não precisa gravar o restante na tabela porque já estão nos arquivos, exemplo: T1C1G11.html
@@ -2564,18 +2559,13 @@ async function initLinkHelp() {
 	//////////////////////////
 	// AZURE AZ-900 - LINKHELP
 	//////////////////////////
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Nenhuma --> AZ-900', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-cloud-computing', '', 'AZ-900: --> Nenhuma');
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Nenhuma das alternativas --> AZ-900', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-cloud-computing', '', 'AZ-900: --> Nenhuma das alternativas');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Sim --> AZ-900: Não Se Aplica', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-cloud-computing', '', 'AZ-900: --> Não Se Aplica');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Não --> AZ-900: Não Se Aplica', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-cloud-computing', '', 'AZ-900: --> Não Se Aplica');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Dimensionamento horizontal', 'https://', '', 'AZ-900: --> A escala horizontal é adicionar ou subtrair o número de recursos.');
-	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'AZ-900 Conta Gratuita Usa Outros Serviços', 'https://azure.microsoft.com/en-us/free/', '', 'AZ-900: Conta Gratuita Usa Outros Serviços --> Com a Conta Gratuita do Azure, você também pode optar por usar outros serviços do Azure. Você não está limitado apenas à máquina virtual do Azure ou ao serviço de conta de armazenamento do Azure. <br/> <i>With the Azure Free Account , you can choose to use other Azure services as well. You are not limited to just the Azure virtual machine or the Azure storage account service.</i>');
-	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'AZ-900 Recursos Acessam Grupo de Recursos', 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview', '', 'AZ-900 Recursos Acessam Grupo de Recursos --> Os recursos do Azure também podem acessar recursos que estão em outros grupos de recursos. <br/> <i>Azure resources can access resources that are in other resource groups as well.</i>');
-	contadorMycode = String(parseInt(contadorMycode) + 1);
+
 
 
 

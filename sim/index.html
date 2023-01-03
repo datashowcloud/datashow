@@ -77,13 +77,16 @@
 
 			<table border=0><tr>
 				<td nowrap>
-					<input type="text" id="txtIncorretas" value="0" style="width:25px; background-color:#EEEEEE; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-remove" style="color:red;"></i>
+					<input type="text" id="txtIncorretas" value="0" style="width:22px; background-color:#EEEEEE; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-remove" style="color:red;"></i>
 				</td>
 				<td nowrap>
-					&nbsp;&nbsp;<input type="text" id="txtCorretas" value="0" style="width:25px; background-color:#EEEEEE; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-check" style="color:#3CB371;"></i>
+					&nbsp;&nbsp;<input type="text" id="txtCorretas" value="0" style="width:22px; background-color:#EEEEEE; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-check" style="color:#3CB371;"></i>
 				</td>
-				<td nowrap>
+				<!-- td nowrap>
 					&nbsp;&nbsp;<input type="text" id="txtNaoRespondidas" value="0" style="width:25px; background-color:#EEEEEE; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-envelope" style="color:gray;"></i>
+				</td -->
+				<td nowrap>
+					&nbsp;&nbsp;<input type="text" id="txtCalculo" value="0" style="width:30px; background-color:#EEEEEE; color:gray; text-align:right; border-width:0px;" readonly /><font style="color:gray;">%</font>
 				</td>
 			</tr></table>
 				
@@ -185,6 +188,7 @@
 				</td>
 			</tr>
 			<tr><td> <p/> </td></tr>
+			<tr><td> <font size=1 style="color:gray">&copy; versão 03.15.54 &reg; datashowcloud2022@gmail.com</font> </td></tr>
 		</table>
 		
 		<table id="tblGrid" style="width:98%; display:none;" ZZZclass="table table-hover ">
@@ -248,12 +252,12 @@
 						<input type="text" id="myidSim" value="" style="display:none;">
 					</td></tr>
 				</table>
+<!--
 				<table id="tableFormSimDashboard" border=0 align=center width="320px" style="display:'none';">
 					<tr><td><hr/></td></tr>
 					<tr><td nowrap id="txtCalculo"></td></tr>
 					<tr>
 						<td nowrap>
-<!--
 							<input type="text" id="txtIncorretas" value="Incorretas" class="btn btn-default" style="width:250px; color:gray;" readonly />
 							<i class="fa fa-remove" style="color:red;"></i>
 							<br/>
@@ -263,12 +267,12 @@
 							<input type="text" id="txtNaoRespondidas" value="Não Respondidas" class="btn btn-default" style="width:250px; color:gray;" readonly />
 							<i class="fa fa-star" style="color:gray;"></i>
 							<br/>
--->
 							<input type="text" id="txtTotal" value="Total" class="btn btn-primary" style="width:250px; display:none;" readonly >
 						</td>
 					</tr>
 					<tr><td><hr/></td></tr>
 				</table>
+-->
 				<table id="tableLinkhelp" border=0 align=center style="display:'none';">
 					<tr>
 						<td id="help" style="display:none; text-align:justify;">
@@ -623,11 +627,12 @@
 -->
 
 	<!-- FOOTER -->
+<!--
 	<footer>
-		<font size=1 style="color:gray">&copy; versão 31.01.27</font>
+		<font size=1 style="color:gray">&copy; versão 03.15.00</font>
 		<br/><br/><br/>
 	</footer>
-
+-->
 	<form id="formBible" class="form-horizontal" role="form" style="margin-top:50px; display: none;">
 	</form>
 
