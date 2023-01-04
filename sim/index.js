@@ -619,17 +619,37 @@ async function getConfigGeneral() {
 
 async function setConfigGeneral(textcolor, background, buttoncolor) {
 	if (background == 'white') {
-		document.getElementById('imgTema1White').style.display='';
-		document.getElementById('imgTema2White').style.display='';
-		document.getElementById('imgTema1Black').style.display='none';
-		document.getElementById('imgTema2Black').style.display='none';
-		document.getElementById('tblMenu').style.backgroundColor='#EEEEEE';
+		if (document.getElementById('imgTema1White') != null) {
+			document.getElementById('imgTema1White').style.display='';
+		}
+		if (document.getElementById('imgTema2White') != null) {
+			document.getElementById('imgTema2White').style.display='';
+		}
+		if (document.getElementById('imgTema1Black') != null) {
+			document.getElementById('imgTema1Black').style.display='none';
+		}
+		if (document.getElementById('imgTema2Black') != null) {
+			document.getElementById('imgTema2Black').style.display='none';
+		}
+		if (document.getElementById('tblMenu') != null) {
+			document.getElementById('tblMenu').style.backgroundColor='#EEEEEE';
+		}
 	} else {
-		document.getElementById('imgTema1White').style.display='none';
-		document.getElementById('imgTema2White').style.display='none';
-		document.getElementById('imgTema1Black').style.display='';
-		document.getElementById('imgTema2Black').style.display='';
-		document.getElementById('tblMenu').style.backgroundColor='#000000';
+		if (document.getElementById('imgTema1White') != null) {
+			document.getElementById('imgTema1White').style.display='none';
+		}
+		if (document.getElementById('imgTema2White') != null) {
+			document.getElementById('imgTema2White').style.display='none';
+		}
+		if (document.getElementById('imgTema1Black') != null) {
+			document.getElementById('imgTema1Black').style.display='';
+		}
+		if (document.getElementById('imgTema2Black') != null) {
+			document.getElementById('imgTema2Black').style.display='';
+		}
+		if (document.getElementById('tblMenu') != null) {
+			document.getElementById('tblMenu').style.backgroundColor='#000000';
+		}
 	}
 	
 	document.getElementById('myBody').style.background = background;
@@ -1054,7 +1074,7 @@ async function setDashboard(mytema, mycategory, myid, mygroup, mycode) {
 
 //	alert('totalperguntas='+totalperguntas + ' totalCorretas='+totalCorretas + ' totalIncorretas='+totalIncorretas);
 
-		document.getElementById('txtTotal').value = totalperguntas;
+//		document.getElementById('txtTotal').value = totalperguntas;
 		document.getElementById('txtIncorretas').value = '' + totalIncorretas;
 		document.getElementById('txtCorretas').value = '' + totalCorretas;
 		//document.getElementById('txtNaoRespondidas').value = '' + totalNaoRespondidas;
@@ -2538,7 +2558,7 @@ async function initLinkHelp() {
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'PAAS --> AZ-900', 'IAAS --> AZ-900', 'Computação Sem Servidor --> AZ-900', 'BAAS', save, 'SAAS --> AZ-900', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-saas/', '', 'AZ-900 SAAS (Software como Serviço) --> Permite aos usuários se conectar e usar aplicativos baseados em nuvem pela Internet. Exemplos comuns são email, calendário e ferramentas do Office (como Microsoft Office 365). Fornece uma solução de software completa que você pode comprar em uma base paga conforme o uso por um  provedor de serviço de nuvem.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'PAAS --> AZ-900', 'SAAS --> AZ-900', 'IAAS --> AZ-900', 'BAAS', save, 'Computação Sem Servidor --> AZ-900', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-serverless-computing/', '', 'AZ-900 Computação Sem Servidor --> Eliminando a necessidade de gerenciar a infraestrutura, ela permite que os desenvolvedores criem aplicativos de forma mais rápida. Com aplicativos nessa computação, o provedor de serviços de nuvem provisiona, dimensiona e gerencia automaticamente a infraestrutura necessária para executar o código.');
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'PAAS --> AZ-900', 'SAAS --> AZ-900', 'IAAS --> AZ-900', 'BAAS', save, 'Computação Sem Servidor --> AZ-900', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-serverless-computing/', '', 'AZ-900 Computação Sem Servidor --> Elimina a necessidade de gerenciar a infraestrutura, permite que os desenvolvedores criem aplicativos de forma mais rápida. Com aplicativos nessa computação, o provedor de serviços de nuvem provisiona, dimensiona e gerencia automaticamente a infraestrutura necessária para executar o código.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 
 
