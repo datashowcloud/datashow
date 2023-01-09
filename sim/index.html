@@ -18,7 +18,7 @@
 	<style>
 #myBody {
   border: 0px dashed blue;
-  padding: 9px;
+  padding: 6px;
   background-attachment: fixed;
   background-position: top; 
   background-repeat: no-repeat;
@@ -28,62 +28,65 @@
 
 <body id="myBody" bgcolor="white">
 
-<!--
-<nav class="navbar navbar-dark bg-dark fixed-top">
+<br/><br/>
+
+<nav id="menudireito" class="navbar navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Offcanvas dark navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+    <div>
+		<a class="navbar-brand" href="index.html" title="Página Inicial">SuperHelp</a>
+		<button id="btnNightDay" class="btn btn-sm btn-outline-secondary" title="Dia e noite"><i class="fa fa-adjust"></i> </button>
+		<button id="btnDropDb" class="btn btn-sm btn-outline-secondary" title="Restaurar padrão de fábrica"><i class="fa fa-trash"></i></font></button>
+		<button id="btnPause" class="btn btn-sm btn-outline-secondary" title="Sair" style="display:none;"><i class="fa fa-remove"></i> Sair</button>
+	</div>
+	<button class="navbar-toggler" type="button" title="Menu" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dark offcanvas</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel"> <font style="color:gray;">Escolha um tema:</font> </h5>
+        <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+		  <li class="nav-item">
+			<img id="imgTema1White" src="clf-c01.png" class="btn btn-outline-secondary" width="120px" style="cursor:pointer; display:'none';" title="AWS CLF-C01"></img>
+			<img id="imgTema1Black" src="clf-c01-b.png" class="btn btn-outline-secondary" width="120px" style="cursor:pointer; display:none;" title="CLF-C01"> AWS - CLF-C01</img>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+			<br/>
+			<img id="imgTema2White" src="az-900.png" class="btn btn-outline-secondary" width="120px" style="cursor:pointer; display:'none';" title="AZURE AZ-900"></img>
+			<img id="imgTema2Black" src="az-900-b.png" class="btn btn-outline-secondary" width="120px" style="cursor:pointer; display:none;" title="AZ-900"> AZURE - AZ-900</img>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
+			<br/>
+			<img id="imgTema3White" src="ocif2022ca.png" class="btn btn-outline-secondary" width="120px" style="cursor:pointer; display:'none';" title="ORACLE OCIF2022CA"></img>
+			<img id="imgTema3Black" src="ocif2022ca-b.png" class="btn btn-outline-secondary" width="120px" style="cursor:pointer; display:none;" title="ORACLE OCIF2022CA"> ORACLE - OCIF2022CA</img>
           </li>
         </ul>
-        <form class="d-flex mt-3" role="search">
+        <!-- form class="d-flex mt-3" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-success" type="submit">Search</button>
-        </form>
+        </form -->
       </div>
     </div>
   </div>
 </nav>
--->
-	<nav id="navBottom" style="display:none;" class="navbar navbar-light bg-light fixed-bottom">
+
+
+
+	<nav id="navBottom" style="display:none;" class="navbar navbar-dark bg-dark fixed-bottom">
 		<div class="container-fluid">
 			<!-- button id="btnPause2" class="btn btn-outline-secondary" title="Sair"><i class="fa fa-remove"></i></button -->
 
 			<table border=0><tr>
 				<td nowrap>
-					<input type="text" id="txtIncorretas" value="0" style="width:22px; background-color:#FFFAFA; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-remove" style="color:red;"></i>
+					<input type="text" id="txtIncorretas" value="0" title="respostas incorretas" style="width:22px; background-color:#000000; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-remove" style="color:red;" title="respostas incorretas"></i>
 				</td>
 				<td nowrap>
-					&nbsp;<input type="text" id="txtCorretas" value="0" style="width:22px; background-color:#FFFAFA; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-check" style="color:#3CB371;"></i>
+					&nbsp;<input type="text" id="txtCorretas" value="0" title="respostas corretas" style="width:22px; background-color:#000000; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-check" style="color:#3CB371;" title="respostas corretas"></i>
 				</td>
 				<td nowrap>
-					&nbsp;<input type="text" id="txtCalculo" value="0" style="width:30px; background-color:#FFFAFA; color:gray; text-align:right; border-width:0px;" readonly /><font style="color:gray;">%</font>
+					&nbsp;<input type="text" id="txtCalculo" value="0" title="índice de acerto" style="width:30px; background-color:#000000; color:gray; text-align:right; border-width:0px;" readonly /><font style="color:gray;" title="índice de acerto">%</font>
 				</td>
 				<!-- td nowrap>
 					&nbsp;<input type="text" id="txtNaoRespondidas" value="0" style="width:25px; background-color:#FFFAFA; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-envelope" style="color:gray;"></i>
@@ -94,7 +97,7 @@
 			</tr></table>
 				
 			<div>
-				<button id="btnEnd" class="btn btn-sm btn-outline-success me-2" title="Concluir" style="display:none;">FIM</button>
+				<button id="btnEnd" class="btn btn-sm btn-outline-success me-2" title="Terminar" style="display:none;">FIM</button>
 				<button id="btnPrevious" class="btn btn-sm btn-outline-secondary me-2" title="Pergunta anterior" disabled><i class="fa fa-chevron-left"></i></button>
 				<button id="btnNext" class="btn btn-success" title="Próxima pergunta" disabled>Próxima <i class="fa fa-chevron-right"></i></button>
 			</div>
@@ -134,16 +137,13 @@
 		</div>
 	</nav>
 	
-	<table id="tblMenu" border=0 width="100%" style="background-color:#EEEEEE; border-style:none;" Bbackground="paper.jpeg">
+	<!-- table id="tblMenu" border=0 width="100%" style="background-color:#EEEEEE; border-style:none;" Bbackground="paper.jpeg">
 		<tr>
 			<td>
 				<table border=0 >
 					<tr>
 						<td nowrap> &nbsp;<button id="btnNightDay" class="btn btn-sm btn-outline-secondary" title="Dia e noite"><i class="fa fa-adjust"></i> </button> </td>
 						<td nowrap> &nbsp;<button id="btnDropDb" class="btn btn-sm btn-outline-secondary" title="Restaurar padrão de fábrica"><i class="fa fa-trash"></i></font></button> </td>
-						<!-- td nowrap width="50px"> <button id="btnPrevious" class="btn btn-sm btn-secondary" title="Anterior" disabled> <i class="fa fa-chevron-left"></i></button> </td>
-						<td nowrap width="50px"> <button id="btnNext" class="btn btn-sm btn-secondary" title="Próximo" disabled> Próximo <i class="fa fa-chevron-right"></i></button> </td>
-						<td nowrap width="90px"> <button id="btnEnd" class="btn btn-sm btn-outline-success me-2" title="Concluir" style="display:none;"> <i class="fa fa-check"></i> FIM</button> </td -->
 						<td></td>
 					</tr>
 				</table>
@@ -151,7 +151,7 @@
 			<td nowrap width="1%"> <button id="btnFormCategory" class="btn btn-sm btn-outline-secondary" title="Menu" style="display:'none';"> <i class="fa fa-list"></i></button> </td>
 			<td nowrap width="1%"> <button id="btnPause" class="btn btn-sm btn-outline-secondary" title="Sair" style="display:none;"><i class="fa fa-remove"></i></button> &nbsp;</td>
 		</tr>
-	</table>
+	</table -->
 
     <div class="row row-centered " style="margin-top:0px;">
 		<div id="divconfig" style="display:none;">
@@ -173,25 +173,29 @@
 		
 
 		<table border=0 id="tblCategory" style="width:310px; color:gray;" align=center cellspacing=10 cellpadding=10>
-			<tr><td> <p/> </td></tr>
+<!--			<tr><td> <p/> </td></tr>
 			<tr><td style="color:gray;">Escolha um cenário:</td></tr>
 			<tr>
 				<td nowrap id="tdCategory2" class="btn btn-outline-secondary" style="width:140px;"> <input id="radCategory" name="radCategory" type=radio value="2" style="cursor:pointer;"> Fundamentos</input> </td>
-				<td nowrap id="tdCategory4" class="btn btn-outline-secondary" style="width:140px;"> <input id="radCategory" name="radCategory" type=radio value="4" style="cursor:pointer;" checked> Desafio</input> </td>
+				<td nowrap id="tdCategory4" class="btn btn-outline-secondary" style="width:140px;"> <input id="radCategory" name="radCategory" type=radio value="4" style="cursor:pointer;" checked> Desafios</input> </td>
 			</tr>
+
 			<tr><td> <p/> </td></tr>
 			<tr><td> <hr/> </td></tr>
-			<tr><td style="color:gray;">Escolha um tema:</td></tr>
+-->			<tr><td style="color:gray; font-size:22px;">Escolha um tema:</td></tr>
 			<tr>
 				<td style="color:gray;">
-					<img id="imgTema1White" src="clf-c01.png" class="btn btn-outline-secondary" width="140px" style="cursor:pointer; display:'none';" title="CLF-C01">
-					<img id="imgTema2White" src="az-900.png" class="btn btn-outline-secondary" width="140px" style="cursor:pointer; display:'none';" title="AZ-900">
-					<img id="imgTema1Black" src="clf-c01-b.png" class="btn btn-outline-secondary" width="140px" style="cursor:pointer; display:none;" title="CLF-C01">
-					<img id="imgTema2Black" src="az-900-b.png" class="btn btn-outline-secondary" width="140px" style="cursor:pointer; display:none;" title="AZ-900">
+					<img id="imgTema1WhiteApresentacao" src="clf-c01.png" class="btn btn-outline-secondary" width="140px" style="cursor:pointer; display:'none';" title="AWS CLF-C01"><br/>AWS - CLF-C01</img>
+					<br/><br/><img id="imgTema2WhiteApresentacao" src="az-900.png" class="btn btn-outline-secondary" width="140px" style="cursor:pointer; display:'none';" title="AZURE AZ-900"><br/>AZURE - AZ-900</img>
+					<br/><br/><img id="imgTema3WhiteApresentacao" src="ocif2022ca.png" class="btn btn-outline-secondary" width="140px" style="cursor:pointer; display:'none';" title="ORACLE OCIF2022CA"><br/>ORACLE - OCIF2022CA</img>
+
+					<img id="imgTema1BlackApresentacao" src="clf-c01-b.png" class="btn btn-outline-secondary" width="140px" style="cursor:pointer; display:none;" title="CLF-C01"></img>
+					<br/><br/><img id="imgTema2BlackApresentacao" src="az-900-b.png" class="btn btn-outline-secondary" width="140px" style="cursor:pointer; display:none;" title="AZ-900"></img>
+					<br/><br/><img id="imgTema3BlackApresentacao" src="ocif2022ca-b.png" class="btn btn-outline-secondary" width="140px" style="cursor:pointer; display:none;" title="ORACLE OCIF2022CA"></img>
 				</td>
 			</tr>
 			<tr><td> <hr/> </td></tr>
-			<tr><td> <font size=1 style="color:gray">versão 05.16.48 &copy; datashowcloud2022@gmail.com&reg;</font> </td></tr>
+			<tr><td> <font size=1 style="color:gray">versão 09.17.56 &copy; datashowcloud2022@gmail.com&reg;</font> </td></tr>
 		</table>
 		
 		<table id="tblGrid" style="width:98%; display:none;" ZZZclass="table table-hover ">
@@ -413,7 +417,7 @@
 		
 
 
-		<div style="display:none;">
+		<div style="display:none;"> <!-- ícones-->
 			<button id="btnTest" class="btn btn-default" > <i class="fa fa-envelope"></i> </button>
 			<button id="btnTest" class="btn btn-default" > <i class="fa fa-star"></i> </button>
 			<button id="btnTest" class="btn btn-default" > <i class="fa fa-user"></i> </button>
@@ -500,137 +504,57 @@
 
 	</div>
 
-<!--
-	<div id="myCarousel" class="carousel slide" data-bs-ride="carousel" style="display:none;">
-		<div class="carousel-indicators">
-			<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" aria-label="Slide 1" class="active" aria-current="true"></button>
-			<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-			<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-			<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
-			<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
-			<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
-			<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="6" aria-label="Slide 7"></button>
-		</div>
-		<div class="carousel-inner">
-			<div class="carousel-item active" style="height:550px; width:105%">
-				<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
-
-				<div class="container">
-					<div class="carousel-caption text-start">
-						<p>O que é a computação em nuvem?</p>
-						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""/> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
-							Entregar serviços de computação pela Internet </font> </td></tr></table>
-						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""/> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
-							Entrega de serviços de armazenamento pela Internet </font> </td></tr></table>
-						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""/> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
-							Disponibilização de sites acessíveis pela Internet </font> </td></tr></table>
-					</div>
-				</div>
-			</div>
-			<div class="carousel-item" style="height:550px; width:105%">
-				<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
-
-				<div class="container">
-					<div class="carousel-caption text-start">
-						<p>Qual modelo de nuvem usa alguns datacenters focados em fornecer serviços de nuvem para quem quiser e alguns data centers que estão focados em um único cliente?</p>
-						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
-							Nuvem híbrida </font> </td></tr></table>
-						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
-							Nuvem pública </font> </td></tr></table>
-						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
-							Várias nuvens </font> </td></tr></table>
-					</div>
-				</div>
-			</div>
-			<div class="carousel-item" style="height:550px; width:105%">
-				<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
-
-				<div class="container">
-					<div class="carousel-caption text-start">
-						<p>De acordo com o modelo de Responsabilidade Compartilhada, qual tipo de serviço de nuvem coloca a maior responsabilidade sobre o cliente?</p>
-						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
-							IaaS (infraestrutura como serviço) </font> </td></tr></table>
-						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
-							SaaS (software como serviço) </font> </td></tr></table>
-						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
-							PaaS (plataforma como serviço) </font> </td></tr></table>
-					</div>
-				</div>
-			</div>
-			<div class="carousel-item" style="height:550px; width:105%">
-				<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
-
-				<div class="container">
-					<div class="carousel-caption text-start">
-						<p>Que tipo de escalagem envolve adicionar ou remover recursos (como máquinas virtuais ou contentores) para satisfazer a procura?</p>
-						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
-							Dimensionamento horizontal </font> </td></tr></table>
-						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
-							Dimensionamento vertical </font> </td></tr></table>
-						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
-							Escalação direta </font> </td></tr></table>
-					</div>
-				</div>
-			</div>
-			<div class="carousel-item" style="height:550px; width:105%">
-				<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
-
-				<div class="container">
-					<div class="carousel-caption text-start">
-						<p>O que se caracteriza como a capacidade de um sistema recuperar de falhas e continuar a funcionar?</p>
-						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
-							Fiabilidade </font> </td></tr></table>
-						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
-							Previsibilidade </font> </td></tr></table>
-						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
-							Escalabilidade </font> </td></tr></table>
-					</div>
-				</div>
-			</div>
-			<div class="carousel-item" style="height:550px; width:105%">
-				<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
-
-				<div class="container">
-					<div class="carousel-caption text-start">
-						<p>Qual o tipo de serviço em nuvem mais adequado para um elevador e transferir a migração de um datacenter no local para uma implantação em nuvem?</p>
-						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
-							Infraestrutura como um Serviço (IaaS) </font> </td></tr></table>
-						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
-							Plataforma como um Serviço (PaaS) </font> </td></tr></table>
-						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
-							Software como um Serviço (SaaS) </font> </td></tr></table>
-					</div>
-				</div>
-			</div>
-			<div class="carousel-item" style="height:550px; width:105%">
-				<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
-
-				<div class="container">
-					<div class="carousel-caption text-start">
-						<p>Que tipo de serviço em nuvem seria normalmente uma solução de rastreio de Finanças e Despesas?</p>
-						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
-							Software como um Serviço (SaaS) </font> </td></tr></table>
-						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
-							Infraestrutura como um Serviço (IaaS) </font> </td></tr></table>
-						<table border=0><tr><td width=30> <input id="chkMycorrect" type=checkbox value=""> </td><td> <font style="padding:1px 4px 1px 4px;" class="btn btn-primary">
-							Plataforma como um Serviço (PaaS) </font> </td></tr></table>
-					</div>
-				</div>
-			</div>
-		</div>
-		<button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			<span class="visually-hidden">Previous</span>
-		</button>
-		<button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
-			<span class="visually-hidden">Next</span>
-		</button>
-	</div>
--->
-
 	<footer>
 		<br/><br/><br/>
+<!--
+		<div id="myCarousel" class="carousel slide" data-bs-ride="carousel" style="display:'none';">
+			<div class="carousel-indicators">
+				<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" aria-label="AWS" class="active" aria-current="true"></button>
+				<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="AZURE"></button>
+				<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="ORACLE"></button>
+			</div>
+			<div class="carousel-inner">
+				<div class="carousel-item active" style="height:350px;">
+					<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#CCC"/></svg>
+					<div class="container">
+						<div class="carousel-caption text-start">
+							<img id="imgTema1White" src="clf-c01.png" class="btn btn-outline-secondary" width="222px" style="cursor:pointer; display:'none';" title="AWS CLF-C01" data-bs-target="#myCarousel" data-bs-slide-to="0" aria-label="AWS" class="active" aria-current="true">
+							<img id="imgTema1Black" src="clf-c01-b.png" class="btn btn-outline-secondary" width="140px" style="cursor:pointer; display:none;" title="CLF-C01">
+							<p>AWS</p>
+						</div>
+					</div>
+				</div>
+				<div class="carousel-item" style="height:350px;">
+					<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#CCC"/></svg>
+					<div class="container">
+						<div class="carousel-caption text-start">
+							<img id="imgTema2White" src="az-900.png" class="btn btn-outline-secondary" width="222px" style="cursor:pointer; display:'none';" title="AZURE AZ-900">
+							<img id="imgTema2Black" src="az-900-b.png" class="btn btn-outline-secondary" width="140px" style="cursor:pointer; display:none;" title="AZ-900">
+							<p>AZURE</p>
+						</div>
+					</div>
+				</div>
+				<div class="carousel-item" style="height:350px;">
+					<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#CCC"/></svg>
+					<div class="container">
+						<div class="carousel-caption text-start">
+							<img id="imgTema3White" src="ocif2022ca.png" class="btn btn-outline-secondary" width="222px" style="cursor:pointer; display:'none';" title="ORACLE OCIF2022CA">
+							<img id="imgTema3Black" src="ocif2022ca-b.png" class="btn btn-outline-secondary" width="140px" style="cursor:pointer; display:none;" title="ORACLE OCIF2022CA">
+							<p>ORACLE</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
+			</button>
+		</div>
+-->
 	</footer>
 
 	<form id="formBible" class="form-horizontal" role="form" style="margin-top:50px; display: none;">

@@ -46,7 +46,7 @@ function getDbSchema() {
         columns: {
 			id: { primaryKey: true, autoIncrement: true },
 			mytema: { Null: false, dataType: 'string' }, //nível de agrupamento, exemplo: AWS Practitioner, AZURE...
-			mycategory: { Null: false, dataType: 'string' }, //sub nível de agrupamento, exemplo: Apresentação, Treinamento, Experiência, Simulado, Desafio...
+			mycategory: { Null: false, dataType: 'string' }, //sub nível de agrupamento, exemplo: Apresentação, Treinamento, Experiência, Simulado, Desafios...
 			mygroup: { notNull: true, dataType: 'string' }, //qual grupo a pergunta pertence, exemplo: domínio 1, domínio 2, domínio 3...
 			mycode: { Null: false, dataType: 'string' }, //código único numérico da pergunta
 			mytext: { notNull: true, dataType: 'string' }, //uma pergunta
@@ -509,24 +509,6 @@ function registerEvents() {
 	$('#btnNightDay').click(function () {
 		updateConfigGeneral();
 	})
-	$('#btnContinuarCategoria').click(function () {
-		var varCategoria = '1';
-		var varTema = '1';
-//		alert('radCategory='+radCategory[i].value + ' checked='+radCategory[i].checked);
-		for (var i = 0; i < radCategory.length; i++) {
-			if (radCategory[i].checked == true) {
-				varCategoria = radCategory[i].value;
-				break;
-			}
-		}
-		for (var i = 0; i < radTema.length; i++) {
-			if (radTema[i].checked == true) {
-				varTema = radTema[i].value;
-				break;
-			}
-		}
-		var DataShow_Config = window.open("index.html?tem=" + varTema + "&cat="+ varCategoria, "_self");
-	})
 	$('#btnFormCategory').click(function () {
 		var DataShow_Config = window.open("index.html", "_self");
 	})
@@ -534,7 +516,7 @@ function registerEvents() {
 		changeTema('1');
 		initLinkHelp();
 	})
-	$('#imgTema1Black').click(function () {
+	$('#imgTema1WhiteApresentacao').click(function () {
 		changeTema('1');
 		initLinkHelp();
 	})
@@ -542,16 +524,49 @@ function registerEvents() {
 		changeTema('2');
 		initLinkHelp();
 	})
+	$('#imgTema2WhiteApresentacao').click(function () {
+		changeTema('2');
+		initLinkHelp();
+	})
+	$('#imgTema3White').click(function () {
+		changeTema('3');
+		initLinkHelp();
+	})
+	$('#imgTema3WhiteApresentacao').click(function () {
+		changeTema('3');
+		initLinkHelp();
+	})
+	$('#imgTema1Black').click(function () {
+		changeTema('1');
+		initLinkHelp();
+	})
+	$('#imgTema1BlackApresentacao').click(function () {
+		changeTema('1');
+		initLinkHelp();
+	})
 	$('#imgTema2Black').click(function () {
 		changeTema('2');
 		initLinkHelp();
 	})
-	$('#tdCategory2').click(function () {
+	$('#imgTema2BlackApresentacao').click(function () {
+		changeTema('2');
+		initLinkHelp();
+	})
+	$('#imgTema3Black').click(function () {
+		changeTema('3');
+		initLinkHelp();
+	})
+	$('#imgTema3BlackApresentacao').click(function () {
+		changeTema('3');
+		initLinkHelp();
+	})
+/*	$('#tdCategory2').click(function () {
 		radCategory[0].checked = true;
 	})
 	$('#tdCategory4').click(function () {
 		radCategory[1].checked = true;
 	})
+*/
 }
 
 async function initConfigGeneral() {
@@ -625,15 +640,21 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		if (document.getElementById('imgTema2White') != null) {
 			document.getElementById('imgTema2White').style.display='';
 		}
+		if (document.getElementById('imgTema3White') != null) {
+			document.getElementById('imgTema3White').style.display='';
+		}
 		if (document.getElementById('imgTema1Black') != null) {
 			document.getElementById('imgTema1Black').style.display='none';
 		}
 		if (document.getElementById('imgTema2Black') != null) {
 			document.getElementById('imgTema2Black').style.display='none';
 		}
-		if (document.getElementById('tblMenu') != null) {
-			document.getElementById('tblMenu').style.backgroundColor='#EEEEEE';
+		if (document.getElementById('imgTema3Black') != null) {
+			document.getElementById('imgTema3Black').style.display='none';
 		}
+//		if (document.getElementById('tblMenu') != null) {
+//			document.getElementById('tblMenu').style.backgroundColor='#EEEEEE';
+//		}
 	} else {
 		if (document.getElementById('imgTema1White') != null) {
 			document.getElementById('imgTema1White').style.display='none';
@@ -641,15 +662,21 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		if (document.getElementById('imgTema2White') != null) {
 			document.getElementById('imgTema2White').style.display='none';
 		}
+		if (document.getElementById('imgTema3White') != null) {
+			document.getElementById('imgTema3White').style.display='none';
+		}
 		if (document.getElementById('imgTema1Black') != null) {
 			document.getElementById('imgTema1Black').style.display='';
 		}
 		if (document.getElementById('imgTema2Black') != null) {
 			document.getElementById('imgTema2Black').style.display='';
 		}
-		if (document.getElementById('tblMenu') != null) {
-			document.getElementById('tblMenu').style.backgroundColor='#000000';
+		if (document.getElementById('imgTema3Black') != null) {
+			document.getElementById('imgTema3Black').style.display='';
 		}
+//		if (document.getElementById('tblMenu') != null) {
+//			document.getElementById('tblMenu').style.backgroundColor='#000000';
+//		}
 	}
 	
 	document.getElementById('myBody').style.background = background;
@@ -711,11 +738,15 @@ function exitQuestions() {
 function changeTema(mytema) {
 	var params = new URLSearchParams(window.location.search);
 	var mycategory = params.get('cat');
-	for (var i = 0; i < radCategory.length; i++) {
-		if (radCategory[i].checked == true) {
-			mycategory = radCategory[i].value;
-			break;
+	if (mycategory == null) {
+		mycategory = '2';
+/*		for (var i = 0; i < radCategory.length; i++) {
+			if (radCategory[i].checked == true) {
+				mycategory = radCategory[i].value;
+				break;
+			}
 		}
+*/
 	}
 	var DataShow_Config = window.open("index.html?tem="+ mytema +"&cat="+ mycategory, "_self");
 }
@@ -1453,6 +1484,15 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 //		for (var item=CONST_NIVEL_MAX; item>=parseInt(varNivelMax)+1; item--) {
 //			varNivelLinha = varNivelLinha + '<tr><td colspan=99><font color="gray" style="font-size:15px;"><i class=\"fa fa-lock\"></i> NÍVEL ' + item + '</font></td></tr>';
 //		}
+
+		var radCategory = ' <tr><td colspan=99 style="background-color:gray; color:white;">';
+		radCategory = radCategory + ' <table border=0 align="center" width="70%"><tr>';
+		radCategory = radCategory + ' <td onclick="changeCategory(\'2\');" style="cursor:pointer;"><i class=\"fa fa-signal\"></i> Fundamentos</td>';
+		radCategory = radCategory + ' <td width="50px"></td>';
+		radCategory = radCategory + ' <td onclick="changeCategory(\'4\');" style="cursor:pointer;"><i class=\"fa fa-road\"></i> Desafios</td>';
+		radCategory = radCategory + ' </tr></table>';
+		radCategory = radCategory + ' </td> </tr> ';
+		htmlString = radCategory + htmlString;
 		htmlString = varNivelLinha + htmlString;
 		
 		if (htmlString.length > 0) {
@@ -2463,7 +2503,7 @@ async function initLinkHelp() {
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'S3', 'EC2', 'Opções de Compra de Instância', 'EBS', save, 'Modelo de uso', 'https://aws.amazon.com/pt/free/free-tier-faqs/', 'composto por três tipos', 'Modelo de uso --> O <b>nível gratuito</b> da AWS oferece aos clientes a capacidade de explorar e testar gratuitamente serviços da AWS até os limites especificados para cada serviço. <br/>O nível gratuito é <b>composto por três tipos diferentes de ofertas</b>: <br/>Um nível gratuito de 12 meses (750 horas/mês), <br/>Uma oferta Always Free, <br/>Testes de curto prazo.');
 
-	//CLF-C01 DESAFIO
+	//CLF-C01 DESAFIOS
 	mytema = '1';
 	mycategory = '4';
 	var students = await jsstoreCon.select({
@@ -2479,7 +2519,7 @@ async function initLinkHelp() {
 	}
 	contadorMycode = 0;
 	//título
-	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'CLF-C01 Desafio');
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'CLF-C01 Desafios');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Organizations', 'Billing', 'Cost Explorer', 'Princing Calculator', save, 'Budgets', 'https://docs.aws.amazon.com/pt_br/cost-management/latest/userguide/budgets-managing-costs.html', '', 'AWS Budgets --> É para rastreamento de uso e custo da AWS. <br/>Monitorar métricas agregadas de utilização e cobertura para suas Instâncias Reservadas (RIs) ou Savings Plans - Planos de Poupança. <br/>Envia mensagem quando o consumo vai atingir o percentual pré-configurado ou pré-definido.');
@@ -2532,7 +2572,7 @@ async function initLinkHelp() {
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Nuvem Privada --> AZ-900', 'Nuvem Híbrida --> AZ-900', 'Nuvem Pública --> AZ-900', 'AZ-900: --> Nenhuma das alternativas', save, 'Multinuvem --> AZ-900', 'https://azure.microsoft.com/pt-br/solutions/hybrid-cloud-app/#overview', '', 'AZ-900: Multinuvem --> Uma parte da sua empresa está no Microsoft Azure e outra parte está em outra nuvem, como: AWS, Google Cloud Platform, aplicativos SaaS baseados em nuvem e até ambientes de colocation.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 
-	//AZ-900 DESAFIO
+	//AZ-900 DESAFIOS
 	mytema = '2';
 	mycategory = '4';
 	students = await jsstoreCon.select({
@@ -2549,7 +2589,7 @@ async function initLinkHelp() {
 	contadorMygroup = 10;
 	contadorMycode = 0;
 	//título
-	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'AZ-900 Desafio');
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'AZ-900 Desafios');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'PAAS --> AZ-900', 'SAAS --> AZ-900', 'Computação Sem Servidor --> AZ-900', 'BAAS', save, 'IAAS --> AZ-900', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-iaas/', '', 'AZ-900 IAAS (Infraestrutura como Serviço) --> Um tipo de serviço de computação em nuvem que oferece recursos fundamentais de computação, armazenamento e rede sob demanda e pagos conforme o uso.');
