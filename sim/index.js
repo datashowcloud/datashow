@@ -633,52 +633,32 @@ async function getConfigGeneral() {
 }
 
 async function setConfigGeneral(textcolor, background, buttoncolor) {
+	//apresentação tela inicial
 	if (background == 'white') {
-		if (document.getElementById('imgTema1White') != null) {
-			document.getElementById('imgTema1White').style.display='';
-		}
-		if (document.getElementById('imgTema2White') != null) {
-			document.getElementById('imgTema2White').style.display='';
-		}
-		if (document.getElementById('imgTema3White') != null) {
-			document.getElementById('imgTema3White').style.display='';
-		}
-		if (document.getElementById('imgTema1Black') != null) {
-			document.getElementById('imgTema1Black').style.display='none';
-		}
-		if (document.getElementById('imgTema2Black') != null) {
-			document.getElementById('imgTema2Black').style.display='none';
-		}
-		if (document.getElementById('imgTema3Black') != null) {
-			document.getElementById('imgTema3Black').style.display='none';
-		}
-//		if (document.getElementById('tblMenu') != null) {
-//			document.getElementById('tblMenu').style.backgroundColor='#EEEEEE';
-//		}
+		if (document.getElementById('tdTemaWhiteApresentacao') != null) { document.getElementById('tdTemaWhiteApresentacao').style.display=''; }
+		if (document.getElementById('tdTemaBlackApresentacao') != null) { document.getElementById('tdTemaBlackApresentacao').style.display='none'; }
 	} else {
-		if (document.getElementById('imgTema1White') != null) {
-			document.getElementById('imgTema1White').style.display='none';
-		}
-		if (document.getElementById('imgTema2White') != null) {
-			document.getElementById('imgTema2White').style.display='none';
-		}
-		if (document.getElementById('imgTema3White') != null) {
-			document.getElementById('imgTema3White').style.display='none';
-		}
-		if (document.getElementById('imgTema1Black') != null) {
-			document.getElementById('imgTema1Black').style.display='';
-		}
-		if (document.getElementById('imgTema2Black') != null) {
-			document.getElementById('imgTema2Black').style.display='';
-		}
-		if (document.getElementById('imgTema3Black') != null) {
-			document.getElementById('imgTema3Black').style.display='';
-		}
-//		if (document.getElementById('tblMenu') != null) {
-//			document.getElementById('tblMenu').style.backgroundColor='#000000';
-//		}
+		if (document.getElementById('tdTemaWhiteApresentacao') != null) { document.getElementById('tdTemaWhiteApresentacao').style.display='none'; }
+		if (document.getElementById('tdTemaBlackApresentacao') != null) { document.getElementById('tdTemaBlackApresentacao').style.display=''; }
 	}
-	
+		
+	//menu lateral direito
+	if (background == 'white') {
+		if (document.getElementById('imgTema1White') != null) { document.getElementById('imgTema1White').style.display=''; }
+		if (document.getElementById('imgTema1Black') != null) { document.getElementById('imgTema1Black').style.display='none'; }
+		if (document.getElementById('imgTema2White') != null) { document.getElementById('imgTema2White').style.display=''; }
+		if (document.getElementById('imgTema2Black') != null) { document.getElementById('imgTema2Black').style.display='none'; }
+		if (document.getElementById('imgTema3White') != null) { document.getElementById('imgTema3White').style.display=''; }
+		if (document.getElementById('imgTema3Black') != null) { document.getElementById('imgTema3Black').style.display='none'; }
+	} else {
+		if (document.getElementById('imgTema1White') != null) { document.getElementById('imgTema1White').style.display='none'; }
+		if (document.getElementById('imgTema1Black') != null) { document.getElementById('imgTema1Black').style.display=''; }
+		if (document.getElementById('imgTema2White') != null) { document.getElementById('imgTema2White').style.display='none'; }
+		if (document.getElementById('imgTema2Black') != null) { document.getElementById('imgTema2Black').style.display=''; }
+		if (document.getElementById('imgTema3White') != null) { document.getElementById('imgTema3White').style.display='none'; }
+		if (document.getElementById('imgTema3Black') != null) { document.getElementById('imgTema3Black').style.display=''; }
+	}
+
 	document.getElementById('myBody').style.background = background;
 
 	if(document.getElementById('FormularioEditorConfiguracoes') != null) {
