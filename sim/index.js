@@ -660,6 +660,7 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 	}
 
 	document.getElementById('myBody').style.background = background;
+	document.getElementById('menudireito').style.color = 'white';
 
 	if(document.getElementById('FormularioEditorConfiguracoes') != null) {
 		document.getElementById('FormularioEditorConfiguracoes').style.color = textcolor;
@@ -672,9 +673,9 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		classe = classe.substring(4, classe.length);
 		document.getElementById('btnBackward').classList.remove(classe);
 	}
+
 	//campos e botões
 	if (buttoncolor == 'btn-colors') {
-		
 		if(document.getElementById('btnBackward') != null) {
 			document.getElementById('btnBackward').classList.add('btn-danger');
 		}
