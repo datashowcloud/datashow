@@ -1474,7 +1474,7 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 		var radCategory = ' <tr><td colspan=99 style="background-color:gray; color:white;">';
 		radCategory = radCategory + ' <table border=0 align="center" width="70%"><tr>';
 		radCategory = radCategory + ' <td onclick="changeCategory(\'2\');" style="cursor:pointer;"><i class=\"fa fa-signal\"></i> Fundamentos</td>';
-		radCategory = radCategory + ' <td width="50px"></td>';
+		radCategory = radCategory + ' <td width="50px">|</td>';
 		radCategory = radCategory + ' <td onclick="changeCategory(\'4\');" style="cursor:pointer;"><i class=\"fa fa-road\"></i> Desafios</td>';
 		radCategory = radCategory + ' </tr></table>';
 		radCategory = radCategory + ' </td> </tr> ';
