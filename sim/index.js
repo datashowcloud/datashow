@@ -1415,13 +1415,13 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 				if (varCount == '') {
 					if (student.mypoints <= 0) {
 						varRestart = '';
-						varCount = '<button class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + ';"><i class=\"fa fa-play\"' + '\"></i> fazer</button>';
+						varCount = '<button class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '; text-align:right; ">fazer</button>';
 					} else if (student.mypoints < 70) {
-						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-danger"><i class=\"fa fa-refresh\"' + '\"></i> refazer</button></a>';
+						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + ' text-align:right; \"><button class="btn btn-danger">refazer</button></a>';
 					} else if (student.mypoints < 100) {
-						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + ';"><i class=\"fa fa-refresh\"' + '\"></i> refazer</button></a>';
+						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + ' text-align:right; \"><button class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + ';"><i class=\"fa fa-refresh\"' + '\"></i> refazer</button></a>';
 					} else {
-						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + '\"><button class="btn btn-link">refazer</button></a>';
+						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + ' text-align:right; \"><button class="btn btn-light">refazer</button></a>';
 					}
 				} else {
 					varRestart = '';
@@ -1434,7 +1434,7 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 			if (varNivel != student.mygroup.substring(0, 1)) {
 				varNivel = student.mygroup.substring(0, 1);
 //				varNivelLinha = '<tr><td></td><th nowrap><font color="gray" style="font-size:20px;"><i class=\"fa fa-unlock\"></i> NÍVEL ' + student.mygroup.substring(0, 1) + ' de ' + parseInt(CONST_NIVEL_MAX) + '</font></th></tr>';
-				varNivelLinha = '<tr><td></td><th nowrap><font color="gray" style="font-size:20px;"><i class=\"fa fa-unlock\"></i> NÍVEL ' + student.mygroup.substring(0, 1) + '</font></th></tr>';
+				varNivelLinha = '<tr><td></td><td nowrap style="text-align:left;"><font color="gray"  style="font-size:20px;"> &nbsp; <i class=\"fa fa-unlock\"></i> NÍVEL ' + student.mygroup.substring(0, 1) + '</font></td></tr>';
 			} else {
 				varNivelLinha = '';
 			}
@@ -1444,13 +1444,18 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 
 			htmlString = htmlString + varNivelLinha;
 			htmlString += "<tr ItemId=" + student.id + '>'
+				//identificação mygroup
 				+ "<td style=\"color:#000000; font-size:1px; \">" + student.mygroup + "</td>"
-				+ "<" + varTdTh + " id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " ZZZonClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
-				+ '<a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + varButtonLine + ' ' + student.mytext +  '</a></' + varTdTh + '>'
+				//texto
+				+ "<" + varTdTh + " style=\"text-align:left;\" id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " ZZZonClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
+					+ '&nbsp; <a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + varButtonLine + ' ' + student.mytext +  '</a></' + varTdTh + '>'
+				//botão delete e refresh fase
 				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + '<a href=\"#\" class=\"deletefase\" style=\"' + varButtonLineStyle + '\">' + '<i class=\"fa fa-trash\" style=\"color:gray; font-size:20px;\"></i><i class=\"fa fa-refresh\" style=\"color:gray; font-size:20px;\"></i> </a>'
+				//porcentagem
 				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + student.mypoints + '%</' + varTdTh + '>'
-				+ "<" + varTdTh + " nowrap id=datashow" + student.id+"6" + " tabIndex=" + student.id+"6" + " ZZZonClick=\"datashow('" + student.id+"6" + "', 6, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 6, event, " + "" + (student.id+"6") + ");\" data-show='" + student.id+"6" + "'>"
-				+ '<' + varTdTh + '>' + varRestart + '<a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + ' ' + varCount +  '</a>' + "</" + varTdTh + ">"
+				//botão playsim ou link refazer
+				+ '<' + varTdTh + ' style="text-align:right;">' + varRestart + '<a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + ' ' + varCount +  '</a>' + "</" + varTdTh + ">"
+				+ '<td>&nbsp;&nbsp;</td>'
 				;
 				
 				varButtonLineStyle = 'color:gray;  font-size:18px;';
