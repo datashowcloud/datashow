@@ -24,14 +24,14 @@
 </head>
 
 <body id="myBody" ZZZbackground="gallery/paper.jpeg">
-
+		
 			<div style="display:'none'; text-align:center; ">
 				<!-- br/>Aguarde o resultado na janela da configuração -->
 				<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px;">Está tudo pronto!</div>
 				<br/>
 				<div style="padding:9px 15px 9px 15px; cursor:default; Xfont-size:30px;">As perguntas estão instaladas no seu dispositivo.</div>
 				<br/><br/>
-				<button class="btn btn-info" onclick="window.open('index.html?tem=1&cat=4', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Fechar</button>
+				<button class="btn btn-info" onclick="window.open('index.html?tem=2&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Vamos lá</button>
 				
 				<label id="bSearch" style="display:none;">
 					<input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:200px; height:34px;">
@@ -178,170 +178,119 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1.9
+FASE 1.0
 
 <p>
-Qual é o serviço capaz de coletar e processar, em tempo real, um grande volume de streams de dados oriundos de diversos dispositivos, gerando novas informações para rápidas reações e direções?
+Sua empresa tem um conjunto de recursos definidos como parte de uma assinatura. Se eles excluírem um grupo de recursos, os recursos no grupo de recursos também serão excluídos?
+<br/>
+Your company has a set of resources defined as part of a subscription. If they delete a resource group, would the resources in the resource group also get deleted?
 
 <ok>
-Kinesis
-<key>Kinesis</key>
+Sim (Yes)
+<key>AZ-900 Delete a Resource Group</key>
 
-SQS
-<key>SQS</key>
-
-SNS
-<key>SNS</key>
-
-EventBridge
-<key>EventBridge</key>
-
-<p>
-Sua equipe de desenvolvimento está montando uma pipeline de CI/CD para uma nova aplicação na AWS, qual serviço eles precisam incluir no final da esteira para implantar a aplicação nos servidores de forma automatizada?
-
-AWS Deploy
-<key>Não Se Aplica</key>
-
-<ok>
-AWS CodeDeploy
-<key>CodeDeploy</key>
-
-AWS CodeCommit
-<key>CodeCommit</key>
-
-AWS Git
+Não (No)
 <key>Não Se Aplica</key>
 
 <p>
-Qual serviço da AWS que, além de ajudar na visualização dos cinco serviços que mais aumentam os custos de uma conta, disponibiliza um detalhamento minucioso sobre todos os recursos utilizados?
+Uma empresa acaba de definir uma conta do Azure Free. É VERDADE que apenas as máquinas virtuais do Azure e as contas de armazenamento do Azure podem ser implantadas na Conta Gratuita do Azure?
+<br/>
+A company has just set an Azure Free account. Is it TRUE that only Azure virtual machines and Azure storage accounts can be deployed to the Azure Free Account?
 
 <ok>
-AWS Cost Explorer
-<key>Cost Explorer</key>
+Não (No)
+<key>AZ-900 Conta Gratuita Usa Outros Serviços</key>
 
-AWS Billing
-<key>Billing</key>
-
-AWS Pricing
-<key>Pricing Calculator</key>
-
-AWS Budget
-<key>Budgets</key>
-
-<p>
-Sua empresa precisa executar centenas de batch para atualizar diversas informações dos seus clientes sem ter a dimensão dos recursos tecnológicos que precisará utilizar, qual é a melhor solução a ser utilizada?
-
-AWS EC2 Reserved
-<key>Opções de Compra de Instância</key>
-
-AWS Step Functions
-<key>Step Functions</key>
-
-<ok>
-AWS Batch
-<key>Batch</key>
-
-AWS OnDemand
-<key>Opções de Compra de Instância</key>
-
-<p>
-Sobre o AWS Budget e suas finalidades podemos afirmar que:
-<br/>(Selecione 3)
-
-<ok>
-Podem ser utilizados para enviar alertas para te ajudar no controle do uso dos serviços da sua conta
-<key>Budgets</key>
-
-Podem enviar notificações para até 5 destinatários por email
-<key>Budgets Destinatários por Email</key>
-
-<ok>
-Podem ser usados para criar e gerenciar orçamentos
-<key>Budgets</key>
-
-<ok>
-Podem ser usados para refinar e filtrar orçamentos
-<key>Budgets</key>
-
-<p>
-Qual é a melhor prática para atender o princípio: "desenvolver para falhar e nada vai falhar"?
-
-Implantar a aplicação sempre com o CodeDeploy
-<key>CodeDeploy</key>
-
-Monitorar o ambiente pare enviar alertas com o CloudWatch
-<key>CloudWatch</key>
-
-Utilizar CloudFront para fazer o cache do conteúdo
-<key>CloudFront</key>
-
-<ok>
-Implantar a aplicação em múltiplas zonas de disponibilidade
-<key>Multi-AZ</key>
-
-<p>
-Qual serviço da AWS pode ser utilizado para gerenciar todos os custos dos recursos utilizados na AWS?
-
-AWS Price
+Sim (Yes)
 <key>Não Se Aplica</key>
 
-AWS Budget
-<key>Budgets</key>
+<p>
 
 <ok>
-AWS Cost Explorer
-<key>Cost Explorer</key>
+<key></key>
 
-AWS Pricing Calculator
-<key>Pricing Calculator</key>
+<key></key>
+
+<key></key>
+
+<key></key>
 
 <p>
-Você trabalha num escritório jurídico que lida com um volume muito grande de contratos. Esses documentos são alterados muitas vezes e requerem um processo de gerenciamento de versões. Qual serviço da AWS é indicado para armazenar esses documentos e atender tal requisito?
 
 <ok>
-S3
-<key>S3</key>
+<key></key>
 
-EBS
-<key>EBS</key>
+<key></key>
 
-Git
-<key>Git</key>
+<key></key>
 
-CodeCommit
-<key>CodeCommit</key>
+<key></key>
 
 <p>
-Você está criando uma rede virtual isolada para os seus recursos dentro da AWS e deseja separar a camada de servidores de dados da camada de servidores de aplicação. A solução é criar duas sub-redes (subnets), uma para dados e uma para a aplicação. Qual é o serviço que permite esse tipo de organização?
-
-AWS Organizations
-<key>Organizations</key>
-
-ELB
-<key>ELB</key>
-
-AWS Budget
-<key>Budgets</key>
 
 <ok>
-VPC
-<key>VPC</key>
+<key></key>
+
+<key></key>
+
+<key></key>
+
+<key></key>
 
 <p>
-Sua empresa deseja implementar governança nos serviços de TI que estejam aprovados para uso na AWS acompanhando o custo, desempenho, segurança e status operacional dos mesmos. Qual é o serviço que permite a criação de catálogos de serviços de TI para essa finalidade?
-
-AWS Catalog
-<key>Não Se Aplica</key>
-
-AWS Console Manager
-<key>Console Manager</key>
-
-AWS IT Service
-<key>Não Se Aplica</key>
 
 <ok>
-AWS Service Catalog
-<key>Service Catalog</key>
+<key></key>
+
+<key></key>
+
+<key></key>
+
+<key></key>
+
+<p>
+
+<ok>
+<key></key>
+
+<key></key>
+
+<key></key>
+
+<key></key>
+
+<p>
+
+<ok>
+<key></key>
+
+<key></key>
+
+<key></key>
+
+<key></key>
+
+<p>
+
+<ok>
+<key></key>
+
+<key></key>
+
+<key></key>
+
+<key></key>
+
+<p>
+
+<ok>
+<key></key>
+
+<key></key>
+
+<key></key>
+
+<key></key>
 
 <p>
 
