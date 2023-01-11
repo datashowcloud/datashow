@@ -1420,7 +1420,7 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 					} else if (student.mypoints < 70) {
 						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + ' text-align:right; \"><button class="btn btn-danger">refazer</button></a>';
 					} else if (student.mypoints < 100) {
-						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + ' text-align:right; \"><button class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + ';"><i class=\"fa fa-refresh\"' + '\"></i> refazer</button></a>';
+						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + ' text-align:right; \"><button class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + ';">refazer</button></a>';
 					} else {
 						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + ' text-align:right; \"><button class="btn btn-light">refazer</button></a>';
 					}
