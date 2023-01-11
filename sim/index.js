@@ -2589,6 +2589,58 @@ async function initLinkHelp() {
 
 
 
+	//ORACLE FUNDAMENTOS
+	mytema = '3';
+	mycategory = '2';
+	students = await jsstoreCon.select({
+		from: 'Student'
+		  , where: { mytema: '' + mytema + ''
+				   , mycategory: '' + mycategory + ''
+		  }
+	});
+	if (students == '') {
+		save = true;
+	} else {
+		save = false;
+	}
+	contadorMygroup = 10;
+	contadorMycode = 0;
+	//título
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Oracle Fundamentos');
+	//perguntas
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Nuvem Privada --> AZ-900', 'Nuvem Híbrida --> AZ-900', 'HCM (Oracle Fusion Cloud Human Capital Management) --> Oracle', 'AZ-900: --> Nenhuma das alternativas', save, 'OCI (Oracle Cloud Infrastructure) --> Oracle', 'https://docs.oracle.com/pt-br/iaas/Content/GSG/Concepts/baremetalintro.htm', '', 'Oracle: OCI (Oracle Cloud Infrastructure) --> Conjunto complementar de serviços de nuvem que permite criar e executar uma variedade de aplicativos e serviços em um ambiente hospedado altamente disponível.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'OCI (Oracle Cloud Infrastructure) --> Oracle', 'Nuvem Híbrida --> AZ-900', 'Multinuvem --> AZ-900', 'AZ-900: --> Nenhuma das alternativas', save, 'HCM (Oracle Fusion Cloud Human Capital Management) --> Oracle', 'https://www.oracle.com/br/cloud/', '', 'Oracle: HCM (Oracle Fusion Cloud Human Capital Management)  --> Solução de RH nativa em nuvem completa que conecta todos os processos de recursos humanos, desde a contratação até a aposentadoria.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+
+	//ORACLE DESAFIOS
+	mytema = '3';
+	mycategory = '4';
+	students = await jsstoreCon.select({
+		from: 'Student'
+		  , where: { mytema: '' + mytema + ''
+				   , mycategory: '' + mycategory + ''
+		  }
+	});
+	if (students == '') {
+		save = true;
+	} else {
+		save = false;
+	}
+	contadorMygroup = 10;
+	contadorMycode = 0;
+	//título
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Oracle Desafios');
+	//perguntas
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Vertical Scaling', 'Parallel Scaling', 'Manual Scaling', '', save, 'Autoscaling', 'https://docs.oracle.com/pt-br/iaas/Content/Compute/Tasks/autoscalinginstancepools.htm', '', 'You have a web application that receives 5X more traffic on the weekends than weekdays. You need to automatically match capacity to demand, keep the application always up and running, and save cost. <br/>Which Oracle Cloud Infrastructure (OCI) compute feature can be used to meet these requirements?');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Monitoring', 'Events', 'Cost Analysis', '', save, 'Budget', 'https://docs.oracle.com/pt-br/iaas/Content/Billing/Concepts/budgetsoverview.htm', '', 'Which Oracle Cloud Infrastructure (OCI) capability allows you to set up alerts to notify you if a budget forecast is to be exceeded or spending surpasses a certain amount?');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+
+
+
 	var save = false; //não precisa gravar o restante na tabela porque já estão nos arquivos, exemplo: T1C1G11.html
 
 
