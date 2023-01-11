@@ -178,181 +178,190 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1.2
+FASE 1.7
 
 <p>
-A developer wants to develop Docker-based applications on Oracle Cloud Infrastructure (OCI) and deploy it on a managed servisse that supports containerized applications.
+You are configuring a 2-node Oracle Real Application Cluster (RAC) DB System for high availability. These instances need near zero latency for inter-instance communication.
+What is the correct configuration for this scenario?
 
 <ok>
-Oracle Container Engine for Kubernetes (OKE)
+Configure instances across multiple availability domains.
 <key></key>
 
-Oracle Cloud VMWare Solution
+Configure instances inside single VCN using multiple availability domains.
 <key></key>
 
-Streaming
+Configure instances across multiple fault domains.
 <key></key>
 
-API Gateway
-<key></key>
-
-<p>
-You store multiple versions of objects in a bucket, but your IT team has asked you to delete any previous object versions 120 days after the object version transitions from the latest version to a previous version.
-Which Oracle Cloud Infrastructure (OCI) Object Storage feature can be used for this purpose?
-
-<ok>
-Object Lifecycle Management
-<key></key>
-
-Multipart Uploads
-<key></key>
-
-Retention Rules
-<key></key>
-
-Pre-Authenticated Requests
+Configure instances across multiple regions.
 <key></key>
 
 <p>
-Which Oracle offering allows a customer provision Oracle Cloud Infrastructure (OCI) services into their own data centers in a self-contained model, achieving the same architecture, billing, and operational processes as that of the OCI public cloud?
-
-<ok>
-Oracle Dedicated Region Cloud@Customer
-<key></key>
-
-Oracle Customer Region
-<key></key>
-
-OCI Private Region
-<key></key>
-
-Oracle Cloud VMware Solution
-<key></key>
-
-<p>
-What is NOT a primary use case for the Oracle Cloud VMware Solution?
-
-<ok>
-Hyper-V Workloads
-<key></key>
-
-Cloud Migration
-<key></key>
-
-Disaster Recovery
-<key></key>
-
-Data Center Extension
-<key></key>
-
-<p>
-Which three are benefits of Oracle Cloud VMware Solution?
+Which three statements are correct about Oracle Cloud Infrastructure Compartments?
 <br/>Select 3.
 
 <ok>
-Runs the certified VMware product stack in the cloud.
+Compartments can have sub-compartments.
 <key></key>
 
 <ok>
-Customers can leverage same set of tools and processes used on-premises.
+Compartments are logical entities.
 <key></key>
 
 <ok>
-Provides full administrative control to customers.
+Compartments can be nested.
 <key></key>
 
-Customers can choose their own data center hardware.
+Compartments can be used for authentication services.
 <key></key>
 
-VMware workloads are refactored for migration.
+Each compartment is local to a region.
+<key></key>
+
+Resources inside the compartments cannot be moved to another compartment.
 <key></key>
 
 <p>
-Which Oracle Cloud Infrastructure (OCI) service can be used for running serverless applications?
+Which TWO statements correctly describe the Oracle Cloud Infrastructure Accelerated Data Science SDK?
+<br/>Select 2.
 
 <ok>
-Oracle Functions
+It is included as part of the Data Science service.
 <key></key>
 
-Oracle Container Engine for Kubernetes (OKE)
+<ok>
+It is a Python library that makes common tasks faster, easier, and less error prone.
 <key></key>
 
-Oracle Cloud VMWare Solution
+It is a JavaScript library that makes common tasks faster, easier, and less error prone.
 <key></key>
 
-OCI API Gateway
+It is an additional cost to the Data Science service.
+<key></key>
+
+It is a PHP library that makes common tasks faster, easier, and less error prone.
 <key></key>
 
 <p>
-Which Oracle Cloud Infrastructure (OCI) service allows you to run code without provisioning any underlying infrastructure resources, such as virtual machines?
+Which type of data transfer incur costs within Oracle Cloud Infrastructure (OCI)?
 
 <ok>
-Oracle Functions
+Data egress to the Internet
 <key></key>
 
-Compute
+Data transfer from one instance to another within the same Availability Domain
 <key></key>
 
-API Gateway
+Data ingress from the Internet
 <key></key>
 
-Storage Gateway
-<key></key>
-
-Oracle Container Engine for Kubernetes (OKE)
+Data transfer from one instance to another across different Availability Domains in a region
 <key></key>
 
 <p>
-Which is NOT a supported target environment for deploying artifacts using the Oracle Cloud Infrastructure (OCI) DevOps service?
+Which two statements are correct regarding Oracle Cloud Infrastructure Fault Domains?
+<br/>Select 2.
 
 <ok>
-Oracle Cloud VMWare Solution
+Fault domains are used to mitigate hardware failures.
 <key></key>
 
-OCI Functions
+<ok>
+Fault domains are logical data center within regions.
 <key></key>
 
-OCI Compute Instances
+Fault domains are physical data centers with availability domains.
 <key></key>
 
-Oracle Container Engine for Kubernetes (OKE) Cluster
+Fault domains are physical data centers within regions.
+<key></key>
+
+Fault domains are logical data centers with availability domains.
 <key></key>
 
 <p>
-Which Oracle Cloud Infrastructure (OCI) service automatically encrypts all communication between microservices and collects telemetry, metrics, and logs for application performance and health monitoring?
-Service Mesh
+You want to edit a compute instance in a running state to support changes in your application workload.
+Which parameter is NOT modifiable?
 
 <ok>
-Container Engine for Kubernetes (OKE)
+Primary Private IP address
+<key></key>
+
+Amount of Memory
+<key></key>
+
+Number of OCPUs
+<key></key>
+
+Fault Domain
+<key></key>
+
+<p>
+Which is NOT a valid compute shape option within the Oracle Cloud Infrastructure (OCI) compute service?
+
+<ok>
+Container Instance.
+<key></key>
+
+Bare Metal.
+<key></key>
+
+Dedicated Virtual Machine Host.
+<key></key>
+
+Virtual Machine.
+<key></key>
+
+<p>
+Which is a valid syntax for an Oracle Cloud Infrastructure (OCI) Identity and Access Management (IAM) Policy?
+
+<ok>
+Allow group <group_name> to <verb> <resource-type> in tenancy
+<key></key>
+
+Deny group <group_name> to <verb> <resource-type> in tenancy
+<key></key>
+
+Deny user <user_name> to <verb> <resource-type> in tenancy
+<key></key>
+
+Allow user <user_name> to <verb> <resource-type> in tenancy
+<key></key>
+
+<p>
+Which statement correctly describes Oracle Cloud Manageability SLA?
+
+<ok>
+Ability to manage, monitor, and modify OCI resources.
+<key></key>
+
+Access to the console is guaranteed.
+<key></key>
+
+Services are in operation with uptime and connectivity requirements.
+<key></key>
+
+100% availability to manage resources.
+<key></key>
+
+Services consistently perform as expected.
+<key></key>
+
+<p>
+Which capability enables you to search, purchase, and start using software in your Oracle Cloud Infrastructure (OCI) tenancy?
+
+<ok>
+Marketplace
 <key></key>
 
 Resource Manager
 <key></key>
 
-Application Performance Monitoring (APM)
+Container Registry
 <key></key>
 
-Logging Analytics
-<key></key>
-
-<p>
-A banking platform has been re-designed to a microservices-based architecture using Docker containers.
-Which Oracle Cloud Infrastructure (OCI) service should be used for deployment of these new microservices?
-
-<ok>
-Container Engine for Kubernetes (OKE)
-<key></key>
-
-Streaming Service
-<key></key>
-
-Artifact Registry
-<key></key>
-
-Event Service
-<key></key>
-
-API Gateway
+OS Management
 <key></key>
 
 <p>
