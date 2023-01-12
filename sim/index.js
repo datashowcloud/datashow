@@ -1472,14 +1472,6 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 //			varNivelLinha = varNivelLinha + '<tr><td colspan=99><font color="gray" style="font-size:15px;"><i class=\"fa fa-lock\"></i> NÍVEL ' + item + '</font></td></tr>';
 //		}
 
-		var radCategory = ' <tr><td colspan=99>';
-		radCategory = radCategory + ' <table border=0 align="center" width=100%><tr>';
-		radCategory = radCategory + ' <td nowrap> <button class="btn btn-dark" onclick="changeCategory(\'2\');"><i class=\"fa fa-signal\"></i> Fundamentos</button></td>';
-//		radCategory = radCategory + ' <td>&nbsp;</td>';
-		radCategory = radCategory + ' <td nowrap><button class="btn btn-dark" onclick="changeCategory(\'4\');"><i class=\"fa fa-road\"></i> Desafios</button></td>';
-		radCategory = radCategory + ' </tr></table>';
-		radCategory = radCategory + ' </td> </tr> ';
-		htmlString = radCategory + htmlString;
 		htmlString = varNivelLinha + htmlString;
 		
 		if (htmlString.length > 0) {
@@ -3054,6 +3046,7 @@ function showCorrect(valorindice, myid, mygroup, mycode) {
 
 function showFormCategory() {
     $('#tblGrid').hide();
+	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
 	$('#divcontent').hide();
@@ -3067,6 +3060,7 @@ function showFormCategory() {
 
 function showFormSim() {
     $('#tblGrid').hide();
+	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
 	$('#divcontent').hide();
@@ -3082,6 +3076,7 @@ function showFormSim() {
 
 function showFormAddUpdate() {
     $('#tblGrid').hide();
+	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').show();
 	$('#divGear').hide();
 	$('#divcontent').hide();
@@ -3094,6 +3089,7 @@ function showFormAddUpdate() {
 
 function showGridAndHideForms() {
     $('#tblGrid').show();
+	$('#tblMenuCategrias').show();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
 	$('#divcontent').hide();
@@ -3105,6 +3101,7 @@ function showGridAndHideForms() {
 
 function showAddNewManual() {
 	$('#divGearAddNewLiryc').show();
+	$('#tblMenuCategrias').hide();
     $('#tblGrid').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
@@ -3117,6 +3114,7 @@ function showAddNewManual() {
 
 function showFormGear() {
     $('#tblGrid').hide();
+	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').show();
 	$('#divcontent').hide();
@@ -3128,6 +3126,7 @@ function showFormGear() {
 
 function showFormImport() {
     $('#tblGrid').hide();
+	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
 	$('#divcontent').show();
@@ -3140,6 +3139,7 @@ function showFormImport() {
 
 function showBible() {
     $('#tblGrid').hide();
+	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
 	$('#divcontent').hide();
@@ -3152,6 +3152,7 @@ function showBible() {
 
 function showIniciarConfiguracao() {
     $('#tblGrid').hide();
+	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
 	$('#divcontent').hide();
