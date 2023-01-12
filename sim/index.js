@@ -1436,7 +1436,7 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 			if (varNivel != student.mygroup.substring(0, 1)) {
 				varNivel = student.mygroup.substring(0, 1);
 //				varNivelLinha = '<tr><td></td><th nowrap><font color="gray" style="font-size:20px;"><i class=\"fa fa-unlock\"></i> NÍVEL ' + student.mygroup.substring(0, 1) + ' de ' + parseInt(CONST_NIVEL_MAX) + '</font></th></tr>';
-				varNivelLinha = '<tr><td></td><td nowrap style="text-align:left;"><font color="gray"  style="font-size:20px;"> &nbsp; <i class=\"fa fa-unlock\"></i> NÍVEL ' + student.mygroup.substring(0, 1) + '</font></td></tr>';
+				varNivelLinha = '<tr><td></td><td nowrap style="text-align:left;" colspan=99><font color="gray"  style="font-size:20px;"> &nbsp; <i class=\"fa fa-unlock\"></i> NÍVEL ' + student.mygroup.substring(0, 1) + '</font></td></tr>';
 			} else {
 				varNivelLinha = '';
 			}
@@ -1473,10 +1473,10 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 //		}
 
 		var radCategory = ' <tr><td colspan=99>';
-		radCategory = radCategory + ' <table border=0 align="center"><tr>';
-		radCategory = radCategory + ' <td nowrap> <button class="btn btn-dark" style="width:140px;" onclick="changeCategory(\'2\');"><i class=\"fa fa-signal\"></i> Fundamentos</button></td>';
+		radCategory = radCategory + ' <table border=1 align="center" width=100%><tr>';
+		radCategory = radCategory + ' <td nowrap> <button class="btn btn-dark" onclick="changeCategory(\'2\');"><i class=\"fa fa-signal\"></i> Fundamentos</button></td>';
 		radCategory = radCategory + ' <td>&nbsp;</td>';
-		radCategory = radCategory + ' <td nowrap><button class="btn btn-dark" style="width:140px;" onclick="changeCategory(\'4\');"><i class=\"fa fa-road\"></i> Desafios</button></td>';
+		radCategory = radCategory + ' <td nowrap><button class="btn btn-dark" onclick="changeCategory(\'4\');"><i class=\"fa fa-road\"></i> Desafios</button></td>';
 		radCategory = radCategory + ' </tr></table>';
 		radCategory = radCategory + ' </td> </tr> ';
 		htmlString = radCategory + htmlString;
