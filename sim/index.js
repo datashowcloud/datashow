@@ -1452,7 +1452,7 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 				+ "<" + varTdTh + " style=\"text-align:left;\" id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " ZZZonClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
 					+ '&nbsp; <a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + varButtonLine + ' ' + student.mytext +  '</a></' + varTdTh + '>'
 				//botão delete e refresh fase
-				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + '<a href=\"#\" class=\"deletefase\" style=\"' + varButtonLineStyle + '\">' + '<i class=\"fa fa-trash\" style=\"color:gray; font-size:20px;\"></i><i class=\"fa fa-refresh\" style=\"color:gray; font-size:20px;\"></i> </a>'
+				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + '<a href=\"#\" class=\"deletefase\" style=\"' + varButtonLineStyle + '\">' + '<i class=\"fa fa-refresh\" style=\"color:gray; font-size:20px;\"></i> </a>'
 				//porcentagem
 				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + student.mypoints + '%</' + varTdTh + '>'
 				//botão playsim ou link refazer
@@ -1473,9 +1473,9 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 //		}
 
 		var radCategory = ' <tr><td colspan=99>';
-		radCategory = radCategory + ' <table border=1 align="center" width=100%><tr>';
+		radCategory = radCategory + ' <table border=0 align="center" width=100%><tr>';
 		radCategory = radCategory + ' <td nowrap> <button class="btn btn-dark" onclick="changeCategory(\'2\');"><i class=\"fa fa-signal\"></i> Fundamentos</button></td>';
-		radCategory = radCategory + ' <td>&nbsp;</td>';
+//		radCategory = radCategory + ' <td>&nbsp;</td>';
 		radCategory = radCategory + ' <td nowrap><button class="btn btn-dark" onclick="changeCategory(\'4\');"><i class=\"fa fa-road\"></i> Desafios</button></td>';
 		radCategory = radCategory + ' </tr></table>';
 		radCategory = radCategory + ' </td> </tr> ';
