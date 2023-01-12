@@ -30,13 +30,14 @@
 
 <br/><br/>
 
-<nav id="menudireito" class="navbar navbar-dark bg-dark fixed-top">
+<nav id="menudireito" class="navbar navbar-dark bg-dark fixed-bottom">
   <div class="container-fluid">
     <div>
 		<a class="navbar-brand" href="index.html" title="Página Inicial">SuperHelp</a>
-		<button id="btnNightDay" class="btn btn-sm btn-outline-secondary" title="Dia e noite"><i class="fa fa-adjust"></i> </button>
-		<button id="btnDropDb" class="btn btn-sm btn-outline-secondary" title="Restaurar padrão de fábrica"><i class="fa fa-trash"></i></font></button>
-		<button id="btnPause" class="btn btn-sm btn-outline-secondary" title="Sair" style="display:none;"><i class="fa fa-remove"></i> Sair</button>
+		<button id="btnNightDay" class="btn btn-sm btn-outline-secondary" title="Dia e noite" style="color:white;"><i class="fa fa-adjust"></i> </button>
+		<button id="btnDropDb" class="btn btn-sm btn-outline-secondary" title="Restaurar padrão de fábrica" style="color:white;"><i class="fa fa-trash"></i></font></button>
+		<button id="btnLanguage" class="btn btn-sm btn-outline-secondary" title="Trocar língua: Inglês e Português" style="color:white;"><i class="fa fa-book"></i></font></button>
+		<!-- button id="btnPause" class="btn btn-sm btn-outline-secondary" title="Sair da fase" style="color:white; display:none;"><i class="fa fa-remove"></i> Sair</button -->
 	</div>
 	<button class="navbar-toggler" type="button" title="Menu" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
       <span class="navbar-toggler-icon"></span>
@@ -80,13 +81,13 @@
 
 			<table border=0><tr>
 				<td nowrap>
-					<input type="text" id="txtIncorretas" value="0" title="respostas incorretas" style="width:22px; background-color:#000000; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-remove" style="color:red;" title="respostas incorretas"></i>
+					<input type="text" id="txtIncorretas" value="0" title="respostas incorretas" style="width:22px; background-color:#000000; color:white; text-align:right; border-width:0px;" readonly /><i class="fa fa-remove" style="color:red;" title="respostas incorretas"></i>
 				</td>
 				<td nowrap>
-					&nbsp;<input type="text" id="txtCorretas" value="0" title="respostas corretas" style="width:22px; background-color:#000000; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-check" style="color:#3CB371;" title="respostas corretas"></i>
+					&nbsp;<input type="text" id="txtCorretas" value="0" title="respostas corretas" style="width:22px; background-color:#000000; color:white; text-align:right; border-width:0px;" readonly /><i class="fa fa-check" style="color:#3CB371;" title="respostas corretas"></i>
 				</td>
 				<td nowrap>
-					&nbsp;<input type="text" id="txtCalculo" value="0" title="índice de acerto" style="width:30px; background-color:#000000; color:gray; text-align:right; border-width:0px;" readonly /><font style="color:gray;" title="índice de acerto">%</font>
+					&nbsp;<input type="text" id="txtCalculo" value="0" title="índice de acerto" style="width:30px; background-color:#000000; color:white; text-align:right; border-width:0px;" readonly /><font style="color:white;" title="índice de acerto">%</font>
 				</td>
 				<!-- td nowrap>
 					&nbsp;<input type="text" id="txtNaoRespondidas" value="0" style="width:25px; background-color:#FFFAFA; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-envelope" style="color:gray;"></i>
@@ -97,9 +98,10 @@
 			</tr></table>
 				
 			<div>
-				<button id="btnEnd" class="btn btn-success" title="Terminar" style="display:none;">FIM</button>
-				<button id="btnPrevious" class="btn btn-sm btn-outline-secondary me-2" title="Pergunta anterior" disabled><i class="fa fa-chevron-left"></i></button>
-				<button id="btnNext" class="btn btn-success" title="Próxima pergunta" disabled>Próxima <i class="fa fa-chevron-right"></i></button>
+				<button id="btnPrevious" class="btn btn-sm btn-outline-secondary ZZZme-2" title="Exibe a pergunta anterior" style="color:white;"><i class="fa fa-chevron-left"></i></button>
+				<button id="btnEnd" class="btn btn-sm btn-success" title="Concluir a fase" style="display:none;">Fim</button>
+				<button id="btnNext" class="btn btn-sm btn-success" title="Exibe a próxima pergunta" disabled>Próxima <i class="fa fa-chevron-right"></i></button>
+				<button id="btnPause" class="btn btn-sm btn-outline-secondary" title="Sair da fase" style="color:white;"><i class="fa fa-remove"></i></button>
 			</div>
 			<div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
 				<div class="offcanvas-header">
@@ -199,7 +201,7 @@
 					<img src="1z0-1085-22-b.png" class="btn btn-outline-secondary" id="imgTema3BlackApresentacao" width="140px" style="cursor:pointer; display:'none';" title="ORACLE 1Z0-1085-22"></img>
 				</td>
 			</tr>
-			<tr> <td> <font size=1><i>versão 12.12.51 &copy; datashowcloud2022@gmail.com</i></font> </td> </tr>
+			<tr> <td> <font size=1><i>versão 12.16.08 &copy; datashowcloud2022@gmail.com</i></font> </td> </tr>
 		</table>
 		
 		<table id="tblGrid" style="width:98%; display:none;" ZZZclass="table table-hover ">
