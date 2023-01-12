@@ -1164,6 +1164,7 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 				document.getElementById('mycorrect7Sim').style.display='none';
 				document.getElementById('mycorrect8Sim').style.display='none';
 
+//				document.getElementById('mytextSim').innerHTML = '<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">26%</div></div>'
 				document.getElementById('mytextSim').innerHTML = '<font color=' + GLOBAL_textcolor + '>' + student.mycode + '/' + totalperguntas + '. ' + student.mytext + '</font>';
 
 				var myorder = student.myorder;
@@ -1472,9 +1473,10 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 //		}
 
 		var radCategory = ' <tr><td colspan=99>';
-		radCategory = radCategory + ' <table border=0 align="center" width="70%"><tr>';
-		radCategory = radCategory + ' <td> <button class="btn btn-dark" onclick="changeCategory(\'2\');"><i class=\"fa fa-signal\"></i> Fundamentos</button></td>';
-		radCategory = radCategory + ' <td><button class="btn btn-dark" onclick="changeCategory(\'4\');"><i class=\"fa fa-road\"></i> Desafios</button></td>';
+		radCategory = radCategory + ' <table border=0 align="center"><tr>';
+		radCategory = radCategory + ' <td nowrap> <button class="btn btn-dark" style="width:140px;" onclick="changeCategory(\'2\');"><i class=\"fa fa-signal\"></i> Fundamentos</button></td>';
+		radCategory = radCategory + ' <td>&nbsp;</td>';
+		radCategory = radCategory + ' <td nowrap><button class="btn btn-dark" style="width:140px;" onclick="changeCategory(\'4\');"><i class=\"fa fa-road\"></i> Desafios</button></td>';
 		radCategory = radCategory + ' </tr></table>';
 		radCategory = radCategory + ' </td> </tr> ';
 		htmlString = radCategory + htmlString;
