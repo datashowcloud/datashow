@@ -1471,11 +1471,10 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 //			varNivelLinha = varNivelLinha + '<tr><td colspan=99><font color="gray" style="font-size:15px;"><i class=\"fa fa-lock\"></i> NÍVEL ' + item + '</font></td></tr>';
 //		}
 
-		var radCategory = ' <tr><td colspan=99 style="background-color:gray; color:white;">';
+		var radCategory = ' <tr><td colspan=99>';
 		radCategory = radCategory + ' <table border=0 align="center" width="70%"><tr>';
-		radCategory = radCategory + ' <td onclick="changeCategory(\'2\');" style="cursor:pointer;"><i class=\"fa fa-signal\"></i> Fundamentos</td>';
-		radCategory = radCategory + ' <td width="50px">|</td>';
-		radCategory = radCategory + ' <td onclick="changeCategory(\'4\');" style="cursor:pointer;"><i class=\"fa fa-road\"></i> Desafios</td>';
+		radCategory = radCategory + ' <td> <button class="btn btn-dark" onclick="changeCategory(\'2\');"><i class=\"fa fa-signal\"></i> Fundamentos</button></td>';
+		radCategory = radCategory + ' <td><button class="btn btn-dark" onclick="changeCategory(\'4\');"><i class=\"fa fa-road\"></i> Desafios</button></td>';
 		radCategory = radCategory + ' </tr></table>';
 		radCategory = radCategory + ' </td> </tr> ';
 		htmlString = radCategory + htmlString;
