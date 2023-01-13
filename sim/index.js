@@ -1436,7 +1436,7 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 			if (varNivel != student.mygroup.substring(0, 1)) {
 				varNivel = student.mygroup.substring(0, 1);
 //				varNivelLinha = '<tr><td></td><th nowrap><font color="gray" style="font-size:20px;"><i class=\"fa fa-unlock\"></i> NÍVEL ' + student.mygroup.substring(0, 1) + ' de ' + parseInt(CONST_NIVEL_MAX) + '</font></th></tr>';
-				varNivelLinha = '<tr><td></td><td nowrap style="text-align:left;" colspan=99><font color="gray"  style="font-size:20px;"> &nbsp; <i class=\"fa fa-unlock\"></i> NÍVEL ' + student.mygroup.substring(0, 1) + '</font></td></tr>';
+				varNivelLinha = '<tr style="border-bottom: 1px solid #ddd; border-top: 1px solid #ddd;"><td></td><td nowrap style="text-align:left;" colspan=99><font color="gray"  style="font-size:20px;"> &nbsp; <i class=\"fa fa-unlock\"></i> NÍVEL ' + student.mygroup.substring(0, 1) + '</font></td></tr>';
 			} else {
 				varNivelLinha = '';
 			}
@@ -1445,14 +1445,14 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 			}
 
 			htmlString = htmlString + varNivelLinha;
-			htmlString += "<tr ItemId=" + student.id + '>'
+		htmlString += "<tr ItemId=" + student.id + ' style="border-bottom: 1px solid #ddd;">'
 				//identificação mygroup
 				+ "<td style=\"color:#000000; font-size:1px; \">" + student.mygroup + "</td>"
 				//texto
 				+ "<" + varTdTh + " style=\"text-align:left;\" id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " ZZZonClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
 					+ '&nbsp; <a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + varButtonLine + ' ' + student.mytext +  '</a></' + varTdTh + '>'
 				//botão delete e refresh fase
-				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + '<a href=\"#\" class=\"deletefase\" style=\"' + varButtonLineStyle + '\">' + '<i class=\"fa fa-refresh\" style=\"color:gray; font-size:20px;\"></i> </a>'
+				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + '<a href=\"#\" class=\"deletefase\" style=\"' + varButtonLineStyle + '\">' + '<i class=\"fa fa-cloud-download\" title="Baixar fase atualizada" style=\"color:gray; font-size:20px;\"></i> </a>'
 				//porcentagem
 				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + student.mypoints + '%</' + varTdTh + '>'
 				//botão playsim ou link refazer
