@@ -381,7 +381,7 @@ function registerEvents() {
         }
     });
     $('#tblGrid tbody').on('click', '.deletefase', function () {
-		var result = confirm('Não faça nada. \n\nAguarde o botão azul aparecer.');
+		var result = confirm('Não faça nada durante a atualização. \n\nAguarde o botão azul aparecer na próxima página.');
 		if (result) {
 			var params = new URLSearchParams(window.location.search);
 			var mytema = params.get('tem');
@@ -1436,7 +1436,7 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 			if (varNivel != student.mygroup.substring(0, 1)) {
 				varNivel = student.mygroup.substring(0, 1);
 //				varNivelLinha = '<tr><td></td><th nowrap><font color="gray" style="font-size:20px;"><i class=\"fa fa-unlock\"></i> NÍVEL ' + student.mygroup.substring(0, 1) + ' de ' + parseInt(CONST_NIVEL_MAX) + '</font></th></tr>';
-				varNivelLinha = '<tr style="border-bottom: 1px solid #ddd; border-top: 1px solid #ddd;"><td></td><td nowrap style="text-align:left;" colspan=99><font color="gray"  style="font-size:20px;"> &nbsp; <i class=\"fa fa-unlock\"></i> NÍVEL ' + student.mygroup.substring(0, 1) + '</font></td></tr>';
+				varNivelLinha = '<tr style="border-bottom: 1px solid #ddd; border-top: 1px solid #ddd;"><td></td><td nowrap style="text-align:left;" colspan=99><font color="gray"  style="font-size:20px;"> &nbsp; <b>NÍVEL ' + student.mygroup.substring(0, 1) + '</b></font></td></tr>';
 			} else {
 				varNivelLinha = '';
 			}
@@ -1445,12 +1445,12 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 			}
 
 			htmlString = htmlString + varNivelLinha;
-		htmlString += "<tr ItemId=" + student.id + ' style="border-bottom: 1px solid #ddd;">'
+			htmlString += "<tr ItemId=" + student.id + ' style="border-bottom: 1px solid #ddd;">'
 				//identificação mygroup
 				+ "<td style=\"color:#000000; font-size:1px; \">" + student.mygroup + "</td>"
 				//texto
 				+ "<" + varTdTh + " style=\"text-align:left;\" id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " ZZZonClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
-					+ '&nbsp; <a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + varButtonLine + ' ' + student.mytext +  '</a></' + varTdTh + '>'
+					+ '&nbsp; <a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + student.mytext + '</a> ' + varButtonLine + '</' + varTdTh + '>'
 				//botão delete e refresh fase
 				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + '<a href=\"#\" class=\"deletefase\" style=\"' + varButtonLineStyle + '\">' + '<i class=\"fa fa-cloud-download\" title="Baixar fase atualizada" style=\"color:gray; font-size:20px;\"></i> </a>'
 				//porcentagem
@@ -1461,7 +1461,7 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 				;
 				
 				varButtonLineStyle = 'color:gray;  font-size:18px;';
-				varButtonLine = '<i class=\"fa fa-check\" style="color:' + CONST_DEEP_SKY_BLUE + '; font-size:20px;"></i>';
+				varButtonLine = ''; //				varButtonLine = '<i class=\"fa fa-check\" style="color:' + CONST_DEEP_SKY_BLUE + '; font-size:20px;"></i>';
 				varButtonRestart = 'color:gray; font-size:20px;';
 				varCount = '';
 		})
@@ -2457,7 +2457,7 @@ async function initLinkHelp() {
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', false, 'Não Se Aplica', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', '', 'Não Se Aplica');
 	
 	//título
-	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'CLF-C01 Fundamentos');
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Fundamentos');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'ECS', 'EKS', 'ECR', 'S3', save, 'EC2', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', 'computação escalável na Nuvem da Amazon Web Services (AWS)', 'O Amazon EC2 (Elastic Compute Cloud) --> Oferece uma <b>capacidade de computação escalável na Nuvem da Amazon Web Services (AWS)</b>. <br/>O uso dele <b>elimina a necessidade de investir em hardware inicialmente</b>, portanto, você pode desenvolver e implantar aplicativos com mais rapidez.');
@@ -2498,7 +2498,7 @@ async function initLinkHelp() {
 	}
 	contadorMycode = 0;
 	//título
-	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'CLF-C01 Desafios');
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Desafios');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Organizations', 'Billing', 'Cost Explorer', 'Princing Calculator', save, 'Budgets', 'https://docs.aws.amazon.com/pt_br/cost-management/latest/userguide/budgets-managing-costs.html', '', 'AWS Budgets --> É para rastreamento de uso e custo da AWS. <br/>Monitorar métricas agregadas de utilização e cobertura para suas Instâncias Reservadas (RIs) ou Savings Plans - Planos de Poupança. <br/>Envia mensagem quando o consumo vai atingir o percentual pré-configurado ou pré-definido.');
@@ -2539,7 +2539,7 @@ async function initLinkHelp() {
 	contadorMygroup = 10;
 	contadorMycode = 0;
 	//título
-	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'AZ-900 Fundamentos');
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Fundamentos');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Nuvem Privada --> AZ-900', 'Nuvem Híbrida --> AZ-900', 'Multinuvem --> AZ-900', 'AZ-900: --> Nenhuma das alternativas', save, 'Nuvem Pública --> AZ-900', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-a-public-cloud/', '', 'AZ-900: Nuvem Pública --> Definida como uma série de serviços de computação oferecidos por terceiros à Internet pública, os quais são disponibilizados a qualquer pessoa que queira utilizá-los ou comprá-los. Eles podem ser gratuitos ou vendidos sob demanda, permitindo que os clientes paguem apenas pelo seu consumo de ciclos de CPU, armazenamento ou largura de banda.');
@@ -2568,7 +2568,7 @@ async function initLinkHelp() {
 	contadorMygroup = 10;
 	contadorMycode = 0;
 	//título
-	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'AZ-900 Desafios');
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Desafios');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'PAAS --> AZ-900', 'SAAS --> AZ-900', 'Computação Sem Servidor --> AZ-900', 'BAAS', save, 'IAAS --> AZ-900', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-iaas/', '', 'AZ-900 IAAS (Infraestrutura como Serviço) --> Um tipo de serviço de computação em nuvem que oferece recursos fundamentais de computação, armazenamento e rede sob demanda e pagos conforme o uso.');
@@ -2599,7 +2599,7 @@ async function initLinkHelp() {
 	contadorMygroup = 10;
 	contadorMycode = 0;
 	//título
-	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Oracle Fundamentos');
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Fundamentos');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Nuvem Privada --> AZ-900', 'Nuvem Híbrida --> AZ-900', 'HCM (Oracle Fusion Cloud Human Capital Management) --> Oracle', '', save, 'OCI (Oracle Cloud Infrastructure) --> Oracle', 'https://docs.oracle.com/pt-br/iaas/Content/GSG/Concepts/baremetalintro.htm', '', 'Oracle: OCI (Oracle Cloud Infrastructure) --> Conjunto complementar de serviços de nuvem que permite criar e executar uma variedade de aplicativos e serviços em um ambiente hospedado altamente disponível.');
@@ -2624,7 +2624,7 @@ async function initLinkHelp() {
 	contadorMygroup = 10;
 	contadorMycode = 0;
 	//título
-	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Oracle Desafios');
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Desafios');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Vertical Scaling', 'Parallel Scaling', 'Manual Scaling', '', save, 'Autoscaling', 'https://docs.oracle.com/pt-br/iaas/Content/Compute/Tasks/autoscalinginstancepools.htm', '', 'You have a web application that receives 5X more traffic on the weekends than weekdays. You need to automatically match capacity to demand, keep the application always up and running, and save cost. <br/>Which Oracle Cloud Infrastructure (OCI) compute feature can be used to meet these requirements?');
@@ -3541,3 +3541,4 @@ function getCookie(cname) {
 //protocol	protocolo de um URL
 //search	consulta parte de um URL
 //https://jsstore.net/tutorial/get-started/
+//https://velhobit.com.br/design/fab-botao-flutuante-com-css3-e-html-sem-javascript.html
