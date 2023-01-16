@@ -80,7 +80,40 @@ input:checked[type="checkbox"]::before{
   -ms-transform: translateY(-5px);  
   transform: translateY(-5px);
   box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.69);  
-} 
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  margin-top: -30px;
+  padding: 1px;
+  color: #888;
+  font-weight: bold;
+  font-size: 30px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  position: fixed;
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+/* Position the "next button" to the right */
+.prev {
+  position: fixed;
+  border-radius: 3px 0 0 3px;
+}
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+  color: white;
+}
+
 	</style>
 </head>
 
@@ -145,9 +178,9 @@ input:checked[type="checkbox"]::before{
 				<input type="text" id="txtCorretas" value="0" title="respostas corretas" style="width:22px; background-color:#000000; color:white; text-align:right; border-width:0px;" readonly /><i class="fa fa-check" style="color:#3CB371;" title="respostas corretas"></i>
 				<!-- &nbsp;<input type="text" id="txtNaoRespondidas" value="0" style="width:25px; background-color:#FFFAFA; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-envelope" style="color:gray;"></i> -->
 				<!-- &nbsp;<input type="text" id="txtTotal" value="0" style="width:30px; background-color:#FFFAFA; color:gray; text-align:right; border-width:0px;" readonly /> -->
-				<button id="btnPrevious" class="btn btn-sm btn-outline-secondary ZZZme-2" title="Exibe a pergunta anterior" style="color:white;"><i class="fa fa-chevron-left"></i></button>
+				<button id="btnPrevious2" class="btn btn-sm btn-outline-secondary ZZZme-2" title="Exibe a pergunta anterior" style="color:white;"><i class="fa fa-chevron-left"></i></button>
 				<button id="btnEnd" class="btn btn-sm btn-info" title="Conclui a fase" style="display:none;">Fim</button>
-				<button id="btnNext" class="btn btn-sm btn-success" title="Exibe a próxima pergunta" disabled>Próxima <i class="fa fa-chevron-right"></i></button>
+				<button id="btnNext2" class="btn btn-sm btn-success" title="Exibe a próxima pergunta">Próxima <i class="fa fa-chevron-right"></i></button>
 				<button id="btnPause" class="btn btn-outline-secondary" title="Sair da fase" style="color:white;"><i class="fa fa-remove"></i></button>
 			</div>
 		</div>
@@ -182,10 +215,9 @@ input:checked[type="checkbox"]::before{
 					<img src="1z0-1085-22.png" id="imgTema3Apresentacao" class="btn btn-outline-secondary" width="140px" border=1 style="cursor:pointer; display:'none';" title="ORACLE 1Z0-1085-22"></img>
 				</td>
 			</tr>
-			<tr> <td> <font size=1><i>versão 16.11.54 &copy; datashowcloud2022@gmail.com</i></font> </td> </tr>
-			
+			<tr> <td> <font size=1><i>versão 16.16.26 &copy; datashowcloud2022@gmail.com</i></font> </td> </tr>
 		</table>
-		
+                        		
 		<table id="tblMenuCategrias" border=0 align="center" width="100%" style="display:none;" Xclass="table table-hover">
 			<tr>
 				<td nowrap> <button class="botao flutuante" onclick="changeCategory('2');"><i class="fa fa-book"></i> Fundamentos</button></td>
@@ -205,48 +237,61 @@ input:checked[type="checkbox"]::before{
 		<!-- form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post" -->
 		<!-- /form -->
 		
+
 		<div class="form-group" id="divFormSim" style="display:none;">
-			<font size=4.9 style=text-align:justify>
+			<font size=4.9 style="text-align:justify">
 
 				<a id="top"></a>
-				
-				<table id="tableFormSimQuestions" border=0 align=center style="display:'none'; width:95%;" Zclass="table table-hover">
-					<tr><td id="mytextSim" style="display:'none'; text-align:justify;">
-					</td></tr>
-					<tr><td id="mycorrect1Sim" style="display:none; text-align:justify;">
-						<div id="mycorrect1answer"></div>
-					</td></tr>
-					<tr><td id="mycorrect2Sim" style="display:none; text-align:justify;">
-						<div id="mycorrect2answer"></div>
-					</td></tr>
-					<tr><td id="mycorrect3Sim" style="display:none; text-align:justify;">
-						<div id="mycorrect3answer"></div>
-					</td></tr>
-					<tr><td id="mycorrect4Sim" style="display:none; text-align:justify;">
-						<div id="mycorrect4answer"></div>
-					</td></tr>
+				<label id="btnPrevious" class="prev"> <i class="fa fa-chevron-left"></i> </label>
 
-					<tr><td id="mycorrect5Sim" style="display:none; text-align:justify;">
-						<div id="mycorrect5answer"></div>
-					</td></tr>
-					<tr><td id="mycorrect6Sim" style="display:none; text-align:justify;">
-						<div id="mycorrect6answer"></div>
-					</td></tr>
-					<tr><td id="mycorrect7Sim" style="display:none; text-align:justify;">
-						<div id="mycorrect7answer"></div>
-					</td></tr>
-					<tr><td id="mycorrect8Sim" style="display:none; text-align:justify;">
-						<div id="mycorrect8answer"></div>
-					</td></tr>
+				<table id="tableFormSimQuestions" border=0 align=center style="display:'none'; width:90%;" Zclass="table table-hover">
+					
 					<tr>
 						<td>
-							<input type="text" id="loading" value="CARREGANDO..." hidden=""> <!-- essa mensagem aparecerá toda vez que estiver carregando uma página com lentidão -->
-							<input type="text" id="mygroupSim" value="" style="display:none;">
-							<input type="text" id="mycodeSim" value="" style="display:none;">
-							<input type="text" id="myorderSim" value="" style="display:none;">
-							<input type="text" id="myidSim" value="" style="display:none;">
+							<table border=0 style="border-color:#EEEEEE;">
+								<tr><td id="mytextSim" style="display:'none'; text-align:justify;">
+								</td></tr>
+								<tr><td id="mycorrect1Sim" style="display:none; text-align:justify;">
+									<div id="mycorrect1answer"></div>
+								</td></tr>
+								<tr><td id="mycorrect2Sim" style="display:none; text-align:justify;">
+									<div id="mycorrect2answer"></div>
+								</td></tr>
+								<tr><td id="mycorrect3Sim" style="display:none; text-align:justify;">
+									<div id="mycorrect3answer"></div>
+								</td></tr>
+								<tr><td id="mycorrect4Sim" style="display:none; text-align:justify;">
+									<div id="mycorrect4answer"></div>
+								</td></tr>
+
+								<tr><td id="mycorrect5Sim" style="display:none; text-align:justify;">
+									<div id="mycorrect5answer"></div>
+								</td></tr>
+								<tr><td id="mycorrect6Sim" style="display:none; text-align:justify;">
+									<div id="mycorrect6answer"></div>
+								</td></tr>
+								<tr><td id="mycorrect7Sim" style="display:none; text-align:justify;">
+									<div id="mycorrect7answer"></div>
+								</td></tr>
+								<tr><td id="mycorrect8Sim" style="display:none; text-align:justify;">
+									<div id="mycorrect8answer"></div>
+								</td></tr>
+								<tr>
+									<td>
+										<input type="text" id="loading" value="CARREGANDO..." hidden=""> <!-- essa mensagem aparecerá toda vez que estiver carregando uma página com lentidão -->
+										<input type="text" id="mygroupSim" value="" style="display:none;">
+										<input type="text" id="mycodeSim" value="" style="display:none;">
+										<input type="text" id="myorderSim" value="" style="display:none;">
+										<input type="text" id="myidSim" value="" style="display:none;">
+									</td>
+								</tr>
+							</table>
+						</td>
+						<td width="1px">
+<label id="btnNext" class="next"> <i class="fa fa-chevron-right"></i> </label>
 						</td>
 					</tr>
+
 				</table>
 				<table id="tableFormSimButtons" border=0 align=center width="100%" style="display:'none';">
 					<tr><td>

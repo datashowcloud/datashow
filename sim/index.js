@@ -451,9 +451,6 @@ function registerEvents() {
 			refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode);
 		}
     })
-	$('#btnPause').click(function () {
-		exitQuestions();
-    });
     $('#btnNext').click(function () {
 		var params = new URLSearchParams(window.location.search);
 		var mytema = params.get('tem');
@@ -464,6 +461,30 @@ function registerEvents() {
 		refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode);
 		savePoints(mytema, mycategory, myid, mygroup, mycode);
     })
+    $('#btnPrevious2').click(function () {
+		var params = new URLSearchParams(window.location.search);
+		var mytema = params.get('tem');
+		var mycategory = params.get('cat');
+		var myid = document.getElementById('myidSim').value;
+		var mygroup = document.getElementById('mygroupSim').value;
+		var mycode = parseInt(document.getElementById('mycodeSim').value) - 1;
+		if (mycode > 0) {
+			refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode);
+		}
+    })
+    $('#btnNext2').click(function () {
+		var params = new URLSearchParams(window.location.search);
+		var mytema = params.get('tem');
+		var mycategory = params.get('cat');
+		var myid = document.getElementById('myidSim').value;
+		var mygroup = document.getElementById('mygroupSim').value;
+		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
+		refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode);
+		savePoints(mytema, mycategory, myid, mygroup, mycode);
+    })
+	$('#btnPause').click(function () {
+		exitQuestions();
+    });
 	$('#btnEnd').click(function () {
 		var params = new URLSearchParams(window.location.search);
 		var mytema = params.get('tem');
@@ -1283,27 +1304,26 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 					}
 				}
 				
+				//se está checado então coloca a cor de fundo vermelho=incorreta ou verde=correta
 				for (var index=0; index<=4; index++) {
-					//se está checado então coloca a cor de fundo vermelho=incorreta ou verde=correta
 					if (document.getElementById('chkMycorrect' + index + 'answer') != null) {
 						if (document.getElementById('chkMycorrect' + index + 'answer').checked == true) {
-							document.getElementById('chkMycorrect' + index + 'answer').style.backgroundColor='#55FF55';
+							document.getElementById('chkMycorrect' + index + 'answer').style.backgroundColor=CONST_MEDIUM_SEA_GREEN;
 						} else {
 							document.getElementById('chkMycorrect' + index + 'answer').style.backgroundColor='#FFFFFF';
 						}
 					}
 				}
-				for (var index=5; index<=8; index++) {
-					//se está checado então coloca a cor de fundo vermelho=incorreta ou verde=correta
+/*				for (var index=5; index<=8; index++) {
 					if (document.getElementById('chkMycorrect' + index + 'answer') != null) {
 						if (document.getElementById('chkMycorrect' + index + 'answer').checked == true) {
-							document.getElementById('chkMycorrect' + index + 'answer').style.backgroundColor='#FF5555';
+							document.getElementById('chkMycorrect' + index + 'answer').style.backgroundColor='#FF4444';
 						} else {
 							document.getElementById('chkMycorrect' + index + 'answer').style.backgroundColor='#FFFFFF';
 						}
 					}
 				}
-				
+*/
 			})
 		}
 		
@@ -3013,7 +3033,7 @@ async function initLinkHelp_clfc01(mytema, mycategory, contadorMygroup, contador
 function showCorrect(valorindice, myid, mygroup, mycode) {
 	
 	if (valorindice < 5) { //1 a 4 = corretas. 5 a 8 = incorretas
-		document.getElementById('chkMycorrect'+valorindice+'answer').style.backgroundColor='#55FF55';
+		document.getElementById('chkMycorrect'+valorindice+'answer').style.backgroundColor=CONST_MEDIUM_SEA_GREEN;
 	} else {
 		document.getElementById('chkMycorrect'+valorindice+'answer').style.backgroundColor='#FF5555';
 	}
