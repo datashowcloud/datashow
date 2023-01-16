@@ -47,7 +47,7 @@ input[type="checkbox"] {
 input:checked[type="checkbox"]::before{
 	border-left: none;
 	border-top: none;
-	width: 20px;
+	width: 15px;
 	transform: rotate(45deg) translate(5px, -10px);
 	border-color: gray;
 	transition: .5s;
@@ -87,10 +87,11 @@ input:checked[type="checkbox"]::before{
   cursor: pointer;
   position: absolute;
   top: 50%;
-  width: 20px;
+  width: 25px;
   margin-top: -30px;
   padding: 1px;
   color: #888;
+  background-color: #DCDCDC;
   font-weight: bold;
   font-size: 30px;
   border-radius: 0 3px 3px 0;
@@ -215,7 +216,7 @@ input:checked[type="checkbox"]::before{
 					<img src="1z0-1085-22.png" id="imgTema3Apresentacao" class="btn btn-outline-secondary" width="140px" border=1 style="cursor:pointer; display:'none';" title="ORACLE 1Z0-1085-22"></img>
 				</td>
 			</tr>
-			<tr> <td> <font size=1><i>versão 16.16.26 &copy; datashowcloud2022@gmail.com</i></font> </td> </tr>
+			<tr> <td> <font size=1><i>versão 16.16.41 &copy; datashowcloud2022@gmail.com</i></font> </td> </tr>
 		</table>
                         		
 		<table id="tblMenuCategrias" border=0 align="center" width="100%" style="display:none;" Xclass="table table-hover">
@@ -244,13 +245,16 @@ input:checked[type="checkbox"]::before{
 				<a id="top"></a>
 				<label id="btnPrevious" class="prev"> <i class="fa fa-chevron-left"></i> </label>
 
+				<table border=0 width="98%" align=center style="border-color:#EEEEEE;">
+					<tr><td id="mytextSim" style="display:'none'; text-align:justify;"></tr>
+				</table>
 				<table id="tableFormSimQuestions" border=0 align=center style="display:'none'; width:90%;" Zclass="table table-hover">
 					
 					<tr>
 						<td>
 							<table border=0 style="border-color:#EEEEEE;">
-								<tr><td id="mytextSim" style="display:'none'; text-align:justify;">
-								</td></tr>
+								<!--tr><td id="mytextSim" style="display:'none'; text-align:justify;">
+								</td></tr-->
 								<tr><td id="mycorrect1Sim" style="display:none; text-align:justify;">
 									<div id="mycorrect1answer"></div>
 								</td></tr>
