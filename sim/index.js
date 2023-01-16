@@ -1287,7 +1287,7 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 					//se está checado então coloca a cor de fundo vermelho=incorreta ou verde=correta
 					if (document.getElementById('chkMycorrect' + index + 'answer') != null) {
 						if (document.getElementById('chkMycorrect' + index + 'answer').checked == true) {
-							document.getElementById('chkMycorrect' + index + 'answer').style.backgroundColor='#DDFFDD';
+							document.getElementById('chkMycorrect' + index + 'answer').style.backgroundColor='#55FF55';
 						} else {
 							document.getElementById('chkMycorrect' + index + 'answer').style.backgroundColor='#FFFFFF';
 						}
@@ -1297,7 +1297,7 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 					//se está checado então coloca a cor de fundo vermelho=incorreta ou verde=correta
 					if (document.getElementById('chkMycorrect' + index + 'answer') != null) {
 						if (document.getElementById('chkMycorrect' + index + 'answer').checked == true) {
-							document.getElementById('chkMycorrect' + index + 'answer').style.backgroundColor='#FFDDDD';
+							document.getElementById('chkMycorrect' + index + 'answer').style.backgroundColor='#FF5555';
 						} else {
 							document.getElementById('chkMycorrect' + index + 'answer').style.backgroundColor='#FFFFFF';
 						}
@@ -3013,9 +3013,9 @@ async function initLinkHelp_clfc01(mytema, mycategory, contadorMygroup, contador
 function showCorrect(valorindice, myid, mygroup, mycode) {
 	
 	if (valorindice < 5) { //1 a 4 = corretas. 5 a 8 = incorretas
-		document.getElementById('chkMycorrect'+valorindice+'answer').style.backgroundColor='#DDFFDD';
+		document.getElementById('chkMycorrect'+valorindice+'answer').style.backgroundColor='#55FF55';
 	} else {
-		document.getElementById('chkMycorrect'+valorindice+'answer').style.backgroundColor='#FFDDDD';
+		document.getElementById('chkMycorrect'+valorindice+'answer').style.backgroundColor='#FF5555';
 	}
 	
 	if (document.getElementById('chkMycorrect'+valorindice+'answer').checked == true) {
