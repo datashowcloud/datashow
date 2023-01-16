@@ -3012,12 +3012,10 @@ async function initLinkHelp_clfc01(mytema, mycategory, contadorMygroup, contador
 
 function showCorrect(valorindice, myid, mygroup, mycode) {
 	
-	if (document.getElementById('chkMycorrect'+valorindice+'answer').checked != true) {
-		if (valorindice < 5) { //1 a 4 = corretas. 5 a 8 = incorretas
-			document.getElementById('chkMycorrect'+valorindice+'answer').style.backgroundColor='#DDFFDD';
-		} else {
-			document.getElementById('chkMycorrect'+valorindice+'answer').style.backgroundColor='#FFDDDD';
-		}
+	if (valorindice < 5) { //1 a 4 = corretas. 5 a 8 = incorretas
+		document.getElementById('chkMycorrect'+valorindice+'answer').style.backgroundColor='#DDFFDD';
+	} else {
+		document.getElementById('chkMycorrect'+valorindice+'answer').style.backgroundColor='#FFDDDD';
 	}
 	
 	if (document.getElementById('chkMycorrect'+valorindice+'answer').checked == true) {
