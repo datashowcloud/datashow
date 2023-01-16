@@ -650,7 +650,7 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 	document.getElementById('imgTema3MenuTopo').src = '1z0-1085-22' + b + '.png';
 
 	document.getElementById('myBody').style.background = background;
-	document.getElementById('menudireito').style.color = 'white';
+	document.getElementById('menutopodireito').style.color = 'white';
 
 	if(document.getElementById('FormularioEditorConfiguracoes') != null) {
 		document.getElementById('FormularioEditorConfiguracoes').style.color = textcolor;
@@ -3087,7 +3087,7 @@ function showFormSim() {
 //	$('#myCarousel').show();	
 	$('#divbuttons').hide();
 	$('#tblCategory').hide();
-	document.getElementById('navBottom').style.display='';
+//document.getElementById('navBottom').style.display='';
 }
 
 function showFormAddUpdate() {
