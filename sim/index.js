@@ -512,61 +512,30 @@ function registerEvents() {
 	$('#btnFormCategory').click(function () {
 		var DataShow_Config = window.open("index.html", "_self");
 	})
-	$('#imgTema1White').click(function () {
+	$('#imgTema1Apresentacao').click(function () {
 		changeTema('1');
 		initLinkHelp();
 	})
-	$('#imgTema1WhiteApresentacao').click(function () {
+	$('#imgTema2Apresentacao').click(function () {
+		changeTema('2');
+		initLinkHelp();
+	})
+	$('#imgTema3Apresentacao').click(function () {
+		changeTema('3');
+		initLinkHelp();
+	})
+	$('#imgTema1MenuTopo').click(function () {
 		changeTema('1');
 		initLinkHelp();
 	})
-	$('#imgTema2White').click(function () {
+	$('#imgTema2MenuTopo').click(function () {
 		changeTema('2');
 		initLinkHelp();
 	})
-	$('#imgTema2WhiteApresentacao').click(function () {
-		changeTema('2');
-		initLinkHelp();
-	})
-	$('#imgTema3White').click(function () {
+	$('#imgTema3MenuTopo').click(function () {
 		changeTema('3');
 		initLinkHelp();
 	})
-	$('#imgTema3WhiteApresentacao').click(function () {
-		changeTema('3');
-		initLinkHelp();
-	})
-	$('#imgTema1Black').click(function () {
-		changeTema('1');
-		initLinkHelp();
-	})
-	$('#imgTema1BlackApresentacao').click(function () {
-		changeTema('1');
-		initLinkHelp();
-	})
-	$('#imgTema2Black').click(function () {
-		changeTema('2');
-		initLinkHelp();
-	})
-	$('#imgTema2BlackApresentacao').click(function () {
-		changeTema('2');
-		initLinkHelp();
-	})
-	$('#imgTema3Black').click(function () {
-		changeTema('3');
-		initLinkHelp();
-	})
-	$('#imgTema3BlackApresentacao').click(function () {
-		changeTema('3');
-		initLinkHelp();
-	})
-/*	$('#tdCategory2').click(function () {
-		radCategory[0].checked = true;
-	})
-	$('#tdCategory4').click(function () {
-		radCategory[1].checked = true;
-	})
-*/
 }
 
 async function initConfigGeneral() {
@@ -633,31 +602,18 @@ async function getConfigGeneral() {
 }
 
 async function setConfigGeneral(textcolor, background, buttoncolor) {
+	var src = '';
+	if (background != 'white') {
+		src = '-b';
+	}
 	//apresentação tela inicial
-	if (background == 'white') {
-		if (document.getElementById('tdTemaWhiteApresentacao') != null) { document.getElementById('tdTemaWhiteApresentacao').style.display=''; }
-		if (document.getElementById('tdTemaBlackApresentacao') != null) { document.getElementById('tdTemaBlackApresentacao').style.display='none'; }
-	} else {
-		if (document.getElementById('tdTemaWhiteApresentacao') != null) { document.getElementById('tdTemaWhiteApresentacao').style.display='none'; }
-		if (document.getElementById('tdTemaBlackApresentacao') != null) { document.getElementById('tdTemaBlackApresentacao').style.display=''; }
-	}
-		
+	document.getElementById('imgTema1Apresentacao').src = 'clf-c01' + src + '.png';
+	document.getElementById('imgTema2Apresentacao').src = 'az-900' + src + '.png';
+	document.getElementById('imgTema3Apresentacao').src = '1z0-1085-22' + src + '.png';
 	//menu lateral direito
-	if (background == 'white') {
-		if (document.getElementById('imgTema1White') != null) { document.getElementById('imgTema1White').style.display=''; }
-		if (document.getElementById('imgTema1Black') != null) { document.getElementById('imgTema1Black').style.display='none'; }
-		if (document.getElementById('imgTema2White') != null) { document.getElementById('imgTema2White').style.display=''; }
-		if (document.getElementById('imgTema2Black') != null) { document.getElementById('imgTema2Black').style.display='none'; }
-		if (document.getElementById('imgTema3White') != null) { document.getElementById('imgTema3White').style.display=''; }
-		if (document.getElementById('imgTema3Black') != null) { document.getElementById('imgTema3Black').style.display='none'; }
-	} else {
-		if (document.getElementById('imgTema1White') != null) { document.getElementById('imgTema1White').style.display='none'; }
-		if (document.getElementById('imgTema1Black') != null) { document.getElementById('imgTema1Black').style.display=''; }
-		if (document.getElementById('imgTema2White') != null) { document.getElementById('imgTema2White').style.display='none'; }
-		if (document.getElementById('imgTema2Black') != null) { document.getElementById('imgTema2Black').style.display=''; }
-		if (document.getElementById('imgTema3White') != null) { document.getElementById('imgTema3White').style.display='none'; }
-		if (document.getElementById('imgTema3Black') != null) { document.getElementById('imgTema3Black').style.display=''; }
-	}
+	document.getElementById('imgTema1MenuTopo').src = 'clf-c01' + src + '.png';
+	document.getElementById('imgTema2MenuTopo').src = 'az-900' + src + '.png';
+	document.getElementById('imgTema3MenuTopo').src = '1z0-1085-22' + src + '.png';
 
 	document.getElementById('myBody').style.background = background;
 	document.getElementById('menudireito').style.color = 'white';
@@ -1167,6 +1123,7 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 //				document.getElementById('mytextSim').innerHTML = '<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">26%</div></div>'
 				document.getElementById('mytextSim').innerHTML = '<font color=' + GLOBAL_textcolor + '>' + student.mycode + '/' + totalperguntas + '. ' + student.mytext + '</font>';
 
+				var valorIndice = '';
 				var myorder = student.myorder;
 				myorder = myorder.replaceAll('\,', '');
 				for (var index=0; index<=8; index++) {
@@ -1325,6 +1282,28 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 						}
 					}
 				}
+				
+				for (var index=0; index<=4; index++) {
+					//se está checado então coloca a cor de fundo vermelho=incorreta ou verde=correta
+					if (document.getElementById('chkMycorrect' + index + 'answer') != null) {
+						if (document.getElementById('chkMycorrect' + index + 'answer').checked == true) {
+							document.getElementById('chkMycorrect' + index + 'answer').style.backgroundColor='#DDFFDD';
+						} else {
+							document.getElementById('chkMycorrect' + index + 'answer').style.backgroundColor='#FFFFFF';
+						}
+					}
+				}
+				for (var index=5; index<=8; index++) {
+					//se está checado então coloca a cor de fundo vermelho=incorreta ou verde=correta
+					if (document.getElementById('chkMycorrect' + index + 'answer') != null) {
+						if (document.getElementById('chkMycorrect' + index + 'answer').checked == true) {
+							document.getElementById('chkMycorrect' + index + 'answer').style.backgroundColor='#FFDDDD';
+						} else {
+							document.getElementById('chkMycorrect' + index + 'answer').style.backgroundColor='#FFFFFF';
+						}
+					}
+				}
+				
 			})
 		}
 		
@@ -3032,6 +3011,15 @@ async function initLinkHelp_clfc01(mytema, mycategory, contadorMygroup, contador
 }
 
 function showCorrect(valorindice, myid, mygroup, mycode) {
+	
+	if (document.getElementById('chkMycorrect'+valorindice+'answer').checked != true) {
+		if (valorindice < 5) { //1 a 4 = corretas. 5 a 8 = incorretas
+			document.getElementById('chkMycorrect'+valorindice+'answer').style.backgroundColor='#DDFFDD';
+		} else {
+			document.getElementById('chkMycorrect'+valorindice+'answer').style.backgroundColor='#FFDDDD';
+		}
+	}
+	
 	if (document.getElementById('chkMycorrect'+valorindice+'answer').checked == true) {
 		document.getElementById('lblcorrect' + valorindice).style.display='block';
 		document.getElementById('chkMycorrect'+valorindice+'answer').disabled = true;
