@@ -521,7 +521,6 @@ function registerEvents() {
 		initLinkHelp();
 	})
 	$('#imgTema3Apresentacao').click(function () {
-		alert('imgTema3Apresentacao');
 		changeTema('3');
 		initLinkHelp();
 	})
@@ -618,7 +617,6 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 
 	document.getElementById('myBody').style.background = background;
 	document.getElementById('menudireito').style.color = 'white';
-alert('Configurado');
 
 	if(document.getElementById('FormularioEditorConfiguracoes') != null) {
 		document.getElementById('FormularioEditorConfiguracoes').style.color = textcolor;
