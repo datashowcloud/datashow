@@ -498,6 +498,19 @@ function registerEvents() {
 		refreshTableData(mytema, mycategory, '0', '', '', ''); // botão btnCategory1 carrega essa opção
 		setTimeout(() => { location.reload() }, 4000); // Executa após alguns segundos para esperar o término do processo
     });
+	$('#btnEnd2').click(function () {
+		var params = new URLSearchParams(window.location.search);
+		var mytema = params.get('tem');
+		var mycategory = params.get('cat');
+		var myid = document.getElementById('myidSim').value;
+		var mygroup = document.getElementById('mygroupSim').value;
+		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
+		changeFaseNivel(mytema, mycategory, myid, mygroup, mycode);
+		savePoints(mytema, mycategory, myid, mygroup, mycode);
+		showGridAndHideForms();
+		refreshTableData(mytema, mycategory, '0', '', '', ''); // botão btnCategory1 carrega essa opção
+		setTimeout(() => { location.reload() }, 4000); // Executa após alguns segundos para esperar o término do processo
+    });
 	$('#btnGear').click(function () {
 		if (document.getElementById('divGear').style.display == 'none') {
 			showFormGear();
@@ -1117,9 +1130,11 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 		if (students == '') {
 			if (document.getElementById('btnEnd').style.display == 'none') {
 				document.getElementById('btnEnd').style.display = '';
+				document.getElementById('btnEnd2').style.display = '';
 //				alert('Use o botão FIM quando terminar.');
 			}
 			document.getElementById('btnEnd').focus();
+			document.getElementById('btnEnd2').focus();
 		} else {
 			students.forEach(function (student) {
 				document.getElementById('myorderSim').style.display='none';
@@ -1309,21 +1324,16 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 					if (document.getElementById('chkMycorrect' + index + 'answer') != null) {
 						if (document.getElementById('chkMycorrect' + index + 'answer').checked == true) {
 							document.getElementById('chkMycorrect' + index + 'answer').style.backgroundColor=CONST_MEDIUM_SEA_GREEN;
-						} else {
-							document.getElementById('chkMycorrect' + index + 'answer').style.backgroundColor='#FFFFFF';
 						}
 					}
 				}
-/*				for (var index=5; index<=8; index++) {
+				for (var index=5; index<=8; index++) {
 					if (document.getElementById('chkMycorrect' + index + 'answer') != null) {
 						if (document.getElementById('chkMycorrect' + index + 'answer').checked == true) {
 							document.getElementById('chkMycorrect' + index + 'answer').style.backgroundColor='#FF4444';
-						} else {
-							document.getElementById('chkMycorrect' + index + 'answer').style.backgroundColor='#FFFFFF';
 						}
 					}
 				}
-*/
 			})
 		}
 		
