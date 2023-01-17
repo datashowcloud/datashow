@@ -461,44 +461,10 @@ function registerEvents() {
 		refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode);
 		savePoints(mytema, mycategory, myid, mygroup, mycode);
     })
-    $('#btnPrevious2').click(function () {
-		var params = new URLSearchParams(window.location.search);
-		var mytema = params.get('tem');
-		var mycategory = params.get('cat');
-		var myid = document.getElementById('myidSim').value;
-		var mygroup = document.getElementById('mygroupSim').value;
-		var mycode = parseInt(document.getElementById('mycodeSim').value) - 1;
-		if (mycode > 0) {
-			refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode);
-		}
-    })
-    $('#btnNext2').click(function () {
-		var params = new URLSearchParams(window.location.search);
-		var mytema = params.get('tem');
-		var mycategory = params.get('cat');
-		var myid = document.getElementById('myidSim').value;
-		var mygroup = document.getElementById('mygroupSim').value;
-		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
-		refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode);
-		savePoints(mytema, mycategory, myid, mygroup, mycode);
-    })
 	$('#btnPause').click(function () {
 		exitQuestions();
     });
 	$('#btnEnd').click(function () {
-		var params = new URLSearchParams(window.location.search);
-		var mytema = params.get('tem');
-		var mycategory = params.get('cat');
-		var myid = document.getElementById('myidSim').value;
-		var mygroup = document.getElementById('mygroupSim').value;
-		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
-		changeFaseNivel(mytema, mycategory, myid, mygroup, mycode);
-		savePoints(mytema, mycategory, myid, mygroup, mycode);
-		showGridAndHideForms();
-		refreshTableData(mytema, mycategory, '0', '', '', ''); // botão btnCategory1 carrega essa opção
-		setTimeout(() => { location.reload() }, 4000); // Executa após alguns segundos para esperar o término do processo
-    });
-	$('#btnEnd2').click(function () {
 		var params = new URLSearchParams(window.location.search);
 		var mytema = params.get('tem');
 		var mycategory = params.get('cat');
@@ -651,14 +617,10 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 
 	document.getElementById('myBody').style.background = background;
 	document.getElementById('menutopodireito').style.color = 'white';
-
+/*
 	document.getElementById('txtCalculo').style.background = background;
 	document.getElementById('txtIncorretas').style.background = background;
 	document.getElementById('txtCorretas').style.background = background;
-/*
-	document.getElementById('fontIndice').style.background = background;
-	document.getElementById('iIncorretas').style.background = background;
-	document.getElementById('iCorretas').style.background = background;
 */
 	if(document.getElementById('FormularioEditorConfiguracoes') != null) {
 		document.getElementById('FormularioEditorConfiguracoes').style.color = textcolor;
@@ -3095,7 +3057,7 @@ function showFormSim() {
 //	$('#myCarousel').show();	
 	$('#divbuttons').hide();
 	$('#tblCategory').hide();
-//document.getElementById('navBottom').style.display='';
+	document.getElementById('navBottom').style.display='';
 }
 
 function showFormAddUpdate() {

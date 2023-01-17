@@ -87,7 +87,7 @@ input:checked[type="checkbox"]::before{
 .prev, .next, .end, .calculos {
   cursor: pointer;
   position: absolute;
-  top: 95%;
+  top: 85%;
   margin-top: -30px;
   padding: 1px;
   color: #888;
@@ -190,15 +190,14 @@ input:checked[type="checkbox"]::before{
 		<div class="container-fluid">
 			<span>&nbsp;</span>
 			<div>
-<!--				<input type="text" id="txtCalculo" value="0" title="índice de acerto" style="width:30px; background-color:#000000; color:white; text-align:right; border-width:0px;" readonly /><font title="índice de acerto" color=white><b>%</b></font>
-				<input type="text" id="txtIncorretas" value="0" title="respostas incorretas" style="width:22px; background-color:#000000; color:white; text-align:right; border-width:0px;" readonly /><i class="fa fa-remove" style="color:red;" title="respostas incorretas"></i>
-				<input type="text" id="txtCorretas" value="0" title="respostas corretas" style="width:22px; background-color:#000000; color:white; text-align:right; border-width:0px;" readonly /><i class="fa fa-check" style="color:#3CB371;" title="respostas corretas"></i>
--->
+				<input type="text" id="txtCalculo" value="0" title="índice de acerto" style="width:30px; background-color:#222222; color:gray; text-align:right; border-width:0px;" readonly /><font title="índice de acerto" color=white><b>%</b></font>
+				<input type="text" id="txtIncorretas" value="0" title="respostas incorretas" style="width:22px; background-color:#222222; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-remove" style="color:red;" title="respostas incorretas"></i>
+				<input type="text" id="txtCorretas" value="0" title="respostas corretas" style="width:22px; background-color:#222222; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-check" style="color:#3CB371;" title="respostas corretas"></i>
 				<!-- &nbsp;<input type="text" id="txtNaoRespondidas" value="0" style="width:25px; background-color:#FFFAFA; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-envelope" style="color:gray;"></i> -->
 				<!-- &nbsp;<input type="text" id="txtTotal" value="0" style="width:30px; background-color:#FFFAFA; color:gray; text-align:right; border-width:0px;" readonly /> -->
-				<button id="btnPrevious2" class="btn btn-sm btn-outline-secondary ZZZme-2" title="Exibe a pergunta anterior" style="color:white;"><i class="fa fa-chevron-left"></i></button>
-				<button id="btnEnd2" class="btn btn-sm btn-info" title="Conclui a fase" style="display:none;">Fim</button>
-				<button id="btnNext2" class="btn btn-sm btn-success" title="Exibe a próxima pergunta">Próxima <i class="fa fa-chevron-right"></i></button>
+				<!-- button id="btnPrevious2" class="btn btn-sm btn-outline-secondary ZZZme-2" title="Exibe a pergunta anterior" style="color:white;"><i class="fa fa-chevron-left"></i></button -->
+				<button id="btnEnd" class="btn btn-success" title="Termina a fase" style="display:none;"><i class="fa fa-check" style="Xcolor:red;"></i> Fim</button>
+				<!-- button id="btnNext2" class="btn btn-sm btn-success" title="Exibe a próxima pergunta">Próxima <i class="fa fa-chevron-right"></i></button -->
 				<!-- button id="btnPause" class="btn btn-outline-secondary" title="Sair da fase" style="color:white;"><i class="fa fa-remove"></i></button -->
 			</div>
 		</div>
@@ -261,15 +260,6 @@ input:checked[type="checkbox"]::before{
 
 				<a id="top"></a>
 				<label id="btnPrevious" class="prev" title="Exibe a pergunta anterior">&nbsp;<i class="fa fa-chevron-left"></i></label>
-				<div class="calculos" style="background-color:black;">
-					<input type="text" id="txtCalculo" value="0" style="width:30px; color:gray; text-align:right; border-width:0px;" title="índice de acerto" readonly />
-						<span id="fontIndice" style="color:gray; background-color:black;" title="índice de acerto">%</span>
-					<input type="text" id="txtIncorretas" value="0" style="width:20px; color:gray; text-align:right; border-width:0px;" title="respostas incorretas" readonly />
-						<i id="iIncorretas" class="fa fa-remove" style="color:red; background-color:black;" title="respostas incorretas"></i>
-					<input type="text" id="txtCorretas" value="0" style="width:20px; color:gray; text-align:right; border-width:0px;" title="respostas corretas" readonly />
-						<i id="iCorretas" class="fa fa-check" style="color:#3CB371; background-color:black;" title="respostas corretas"></i>
-				</div>
-				<label id="btnEnd" class="end" title="Termina a fase" style="display:none;"> Fim</label>
 				<label id="btnNext" class="next" title="Exibe a próxima pergunta">&nbsp;<i class="fa fa-chevron-right"></i></label>
 
 				<table border=0 width="98%" align=center style="border-color:#EEEEEE;">
@@ -318,27 +308,6 @@ input:checked[type="checkbox"]::before{
 						<button id="btnBackward" class="btn btn-danger" style="display:none;"> <i class="fa fa-refresh"></i> </button>
 					</td></tr>
 				</table>
-
-<!-- 			<table id="tableFormSimDashboard" border=0 align=center width="320px" style="display:'none';">
-					<tr><td><hr/></td></tr>
-					<tr><td nowrap id="txtCalculo"></td></tr>
-					<tr>
-						<td nowrap>
-							<input type="text" id="txtIncorretas" value="Incorretas" class="btn btn-default" style="width:250px; color:gray;" readonly />
-							<i class="fa fa-remove" style="color:red;"></i>
-							<br/>
-							<input type="text" id="txtCorretas" value="Corretas" class="btn btn-default" style="width:250px; color:gray;" readonly />
-							<i class="fa fa-check" style="color:#3CB371;"></i>
-							<br/>
-							<input type="text" id="txtNaoRespondidas" value="Não Respondidas" class="btn btn-default" style="width:250px; color:gray;" readonly />
-							<i class="fa fa-star" style="color:gray;"></i>
-							<br/>
-							<input type="text" id="txtTotal" value="Total" class="btn btn-primary" style="width:250px; display:none;" readonly >
-						</td>
-					</tr>
-					<tr><td><hr/></td></tr>
-				</table> -->
-				
 				<table id="tableLinkhelp" border=0 align=center style="display:'none';">
 					<tr>
 						<td id="help" style="display:none; text-align:justify;">
