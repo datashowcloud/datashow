@@ -636,7 +636,7 @@ async function getConfigGeneral() {
 }
 
 async function setConfigGeneral(textcolor, background, buttoncolor) {
-	var src = '';
+	var b = '';
 	if (background != 'white') {
 		b = '-b';
 	}
@@ -651,6 +651,14 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 
 	document.getElementById('myBody').style.background = background;
 	document.getElementById('menutopodireito').style.color = 'white';
+
+	document.getElementById('txtCalculo').style.background = background;
+	document.getElementById('txtIncorretas').style.background = background;
+	document.getElementById('txtCorretas').style.background = background;
+
+	document.getElementById('fontIndice').style.background = background;
+	document.getElementById('iIncorretas').style.background = background;
+	document.getElementById('iCorretas').style.background = background;
 
 	if(document.getElementById('FormularioEditorConfiguracoes') != null) {
 		document.getElementById('FormularioEditorConfiguracoes').style.color = textcolor;
