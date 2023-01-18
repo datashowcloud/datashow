@@ -976,9 +976,9 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 						varRestart = '';
 						varCount = '<button class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '; text-align:right; ">fazer</button>';
 					} else if (student.mypoints < 70) {
-						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + ' text-align:right; \"><button class="btn btn-danger">refazer</button></a>';
+						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + ' text-align:right; \"><button class="btn btn-danger flutuante">refazer</button></a>';
 					} else if (student.mypoints < 100) {
-						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + ' text-align:right; \"><button class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + ';">refazer</button></a>';
+						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + ' text-align:right; \"><button class="btn btn-success flutuante" style="background-color:' + CONST_MEDIUM_SEA_GREEN + ';">refazer</button></a>';
 					} else {
 						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + ' text-align:right; \"><button class="btn btn-light">refazer</button></a>';
 					}
@@ -3104,6 +3104,7 @@ function showGridAndHideForms() {
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
 	$('#tblCategory').hide();
+	document.getElementById('navBottom').style.display='none';	
 }
 
 function showAddNewManual() {
