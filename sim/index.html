@@ -76,7 +76,7 @@ input:checked[type="checkbox"]::before{
   box-shadow: 0px 4px 2px 0px rgba(98, 98, 98, 0.69);
 }  
       
-.flutuante:hover {  
+.flutuante:hover, .deletefase:hover, .playsim:hover {
   -webkit-transform: translateY(-5px);  
   -ms-transform: translateY(-5px);  
   transform: translateY(-5px);
@@ -91,7 +91,7 @@ input:checked[type="checkbox"]::before{
   margin-top: -30px;
   padding: 1px;
   color: #888;
-  background-color: #DCDCDC;
+  background-color: #333333;
   font-weight: bold;
   font-size: 30px;
   border-radius: 0 3px 3px 0;
@@ -141,18 +141,18 @@ input:checked[type="checkbox"]::before{
   <div class="container-fluid">
     <div>
 		<a class="navbar-brand" href="index.html" title="Página Inicial">SuperHelp</a>
-		<button id="btnNightDay" class="btn Zbtn-sm btn-outline-secondary" title="Dia e noite" style="color:white;"><i class="fa fa-adjust"></i> </button>
-		<button id="btnDropDb" class="btn Zbtn-sm btn-outline-secondary" title="Restaurar padrão de fábrica" style="color:white;"><i class="fa fa-trash"></i></font></button>
-		<!--button id="btnLanguage" class="btn Zbtn-sm btn-outline-secondary" title="Trocar língua: Inglês e Português" style="color:white;" disabled><i class="fa fa-globe"></i></font></button-->
+		<button id="btnNightDay" class="btn Zbtn-sm btn-outline-secondary flutuante" title="Dia e noite" style="color:white;"><i class="fa fa-adjust"></i> </button>
+		<!-- button id="btnDropDb" class="btn Zbtn-sm btn-outline-secondary" title="Restaurar padrão de fábrica" style="color:white;"><i class="fa fa-trash"></i></font></button -->
+		<!--button id="btnLanguage" class="btn Zbtn-sm btn-outline-secondary" title="Trocar língua: Inglês e Português" style="color:white;" disabled><i class="fa fa-globe"></i></button-->
 	</div>
 	<button class="navbar-toggler" type="button" title="Menu" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
-      <span class="navbar-toggler-icon"></span>
-<button id="btnPause" class="btn btn-outline-secondary" title="Sair da fase" style="color:white; display:none;"><i class="fa fa-remove"></i></button>
+		<span class="navbar-toggler-icon flutuante"></span>
+		<button id="btnPause" class="btn btn-outline-secondary flutuante" title="Sair da fase" style="color:white; display:none;"><i class="fa fa-remove"></i></button>
     </button>
-    <div class="offcanvas offcanvas-top text-bg-dark bg-dark" style="height:260px;" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+    <div class="offcanvas offcanvas-top text-bg-dark bg-dark" style="height:330px;" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Escolha um tema:</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <button type="button" class="btn-close btn-close-white flutuante" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
@@ -160,21 +160,25 @@ input:checked[type="checkbox"]::before{
 			<table align=center>
 				<tr>
 					<td>
-						<img id="imgTema1MenuTopo" src="clf-c01-b.png" class="btn btn-outline-secondary" width="110px" style="cursor:pointer; display:'none';" title="AWS CLF-C01"></img>
+						<img id="imgTema1MenuTopo" src="clf-c01-b.png" class="btn btn-outline-secondary flutuante" width="110px" style="cursor:pointer; display:'none';" title="AWS CLF-C01"></img>
 						<br/>AWS <br/>CLF-C01
 					</td>
 					<td>&nbsp;</td>
 					<td>
-						<img id="imgTema2MenuTopo" src="az-900-b.png" class="btn btn-outline-secondary" width="110px" style="cursor:pointer; display:'none';" title="AZURE AZ-900"></img>
+						<img id="imgTema2MenuTopo" src="az-900-b.png" class="btn btn-outline-secondary flutuante" width="110px" style="cursor:pointer; display:'none';" title="AZURE AZ-900"></img>
 						<br/>AZURE <br/>AZ-900
 					</td>
 					<td>&nbsp;</td>
 					<td>
-						<img id="imgTema3MenuTopo" src="1z0-1085-22-b.png" class="btn btn-outline-secondary" width="110px" style="cursor:pointer; display:'none';" title="ORACLE 1Z0-1085-22"></img>
+						<img id="imgTema3MenuTopo" src="1z0-1085-22.png" class="btn btn-outline-secondary flutuante" style="cursor:pointer; display:'none'; width:110px;" title="ORACLE 1Z0-1085-22"></img>
 						<br/>ORACLE <br/>1Z0-1085-22
 					</td>
 				</tr/>
 			</table>
+          </li>
+		  <li class="nav-item" align=left>
+				<br/>
+				<button id="btnDropDb" class="btn Zbtn-sm btn-outline-secondary flutuante" title="Restaurar padrão de fábrica" style="color:white;"><i class="fa fa-trash"></i> Restaurar Padrão de Fábrica</button>
           </li>
         </ul>
         <!-- form class="d-flex mt-3" role="search">
@@ -193,12 +197,10 @@ input:checked[type="checkbox"]::before{
 				<input type="text" id="txtCalculo" value="0" title="índice de acerto" style="width:30px; background-color:#222222; color:gray; text-align:right; border-width:0px;" readonly /><font title="índice de acerto" color=white><b>%</b></font>
 				<input type="text" id="txtIncorretas" value="0" title="respostas incorretas" style="width:22px; background-color:#222222; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-remove" style="color:red;" title="respostas incorretas"></i>
 				<input type="text" id="txtCorretas" value="0" title="respostas corretas" style="width:22px; background-color:#222222; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-check" style="color:#3CB371;" title="respostas corretas"></i>
-				<!-- &nbsp;<input type="text" id="txtNaoRespondidas" value="0" style="width:25px; background-color:#FFFAFA; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-envelope" style="color:gray;"></i> -->
-				<!-- &nbsp;<input type="text" id="txtTotal" value="0" style="width:30px; background-color:#FFFAFA; color:gray; text-align:right; border-width:0px;" readonly /> -->
-				<!-- button id="btnPrevious2" class="btn btn-sm btn-outline-secondary ZZZme-2" title="Exibe a pergunta anterior" style="color:white;"><i class="fa fa-chevron-left"></i></button -->
-				<button id="btnEnd" class="btn btn-success" title="Termina a fase" style="display:none;"><i class="fa fa-check" style="Xcolor:red;"></i> Fim</button>
-				<!-- button id="btnNext2" class="btn btn-sm btn-success" title="Exibe a próxima pergunta">Próxima <i class="fa fa-chevron-right"></i></button -->
-				<!-- button id="btnPause" class="btn btn-outline-secondary" title="Sair da fase" style="color:white;"><i class="fa fa-remove"></i></button -->
+				<input type="text" id="txtNaoRespondidas" value="0" title="perguntas não respondidas" style="width:22px; background-color:#222222; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-envelope" style="color:gray;" title="perguntas não respondidas"></i>
+				<!-- <input type="text" id="txtTotal" value="0" style="width:30px; background-color:#FFFAFA; color:gray; text-align:right; border-width:0px;" readonly /> -->
+				&nbsp;
+				<button id="btnEnd" class="btn btn-success flutuante" title="Termina a fase" style="display:none;"><i class="fa fa-check" style="Xcolor:red;"></i> Fim</button>
 			</div>
 		</div>
 	</nav>
@@ -225,14 +227,14 @@ input:checked[type="checkbox"]::before{
 			<tr><td style="color:gray; font-size:22px;">Escolha o tema:</td></tr>
 			<tr>
 				<td style="color:gray;">
-					<img  src="clf-c01.png" id="imgTema1Apresentacao" class="btn btn-outline-secondary" width="140px" style="cursor:pointer; display:'none';" title="AWS CLF-C01"></img>
+					<img  src="clf-c01.png" id="imgTema1Apresentacao" class="btn btn-outline-secondary flutuante" width="140px" style="cursor:pointer; display:'none';" title="AWS CLF-C01"></img>
 					<br/><br/>
-					<img src="az-900.png" id="imgTema2Apresentacao" class="btn btn-outline-secondary" width="140px" style="cursor:pointer; display:'none';" title="AZURE AZ-900"></img>
+					<img src="az-900.png" id="imgTema2Apresentacao" class="btn btn-outline-secondary flutuante" width="140px" style="cursor:pointer; display:'none';" title="AZURE AZ-900"></img>
 					<br/><br/>
-					<img src="1z0-1085-22.png" id="imgTema3Apresentacao" class="btn btn-outline-secondary" width="140px" border=1 style="cursor:pointer; display:'none';" title="ORACLE 1Z0-1085-22"></img>
+					<img src="1z0-1085-22.png" id="imgTema3Apresentacao" class="btn btn-outline-secondary flutuante" border=1 style="cursor:pointer; display:'none'; height:140px;" title="ORACLE 1Z0-1085-22"></img>
 				</td>
 			</tr>
-			<tr> <td> <font size=1><i>versão 16.21.25 &copy; datashowcloud2022@gmail.com</i></font> </td> </tr>
+			<tr> <td> <font size=1><i>versão 18.20.38 &copy; datashowcloud2022@gmail.com</i></font> </td> </tr>
 		</table>
                         		
 		<table id="tblMenuCategrias" border=0 align="center" width="100%" style="display:none;" Xclass="table table-hover">
@@ -259,10 +261,10 @@ input:checked[type="checkbox"]::before{
 			<font size=4.9 style="text-align:justify">
 
 				<a id="top"></a>
-				<label id="btnPrevious" class="prev" title="Exibe a pergunta anterior">&nbsp;<i class="fa fa-chevron-left"></i></label>
-				<label id="btnNext" class="next" title="Exibe a próxima pergunta">&nbsp;<i class="fa fa-chevron-right"></i></label>
+				<label id="btnPrevious" class="prev flutuante" title="Exibe a pergunta anterior">&nbsp;<i class="fa fa-chevron-left"></i></label>
+				<label id="btnNext" class="next flutuante" title="Exibe a próxima pergunta">&nbsp;<i class="fa fa-chevron-right"></i></label>
 
-				<table border=0 width="98%" align=center style="border-color:#EEEEEE;">
+				<table border=0 width="95%" align=center style="border-color:#EEEEEE;">
 					<tr><td id="mytextSim" style="display:'none'; text-align:justify;"></tr>
 				</table>
 				<table id="tableFormSimQuestions" border=0 align=center style="display:'none'; width:85%;" Zclass="table table-hover">
@@ -295,7 +297,6 @@ input:checked[type="checkbox"]::before{
 								</td></tr>
 								<tr>
 									<td>
-										<input type="text" id="loading" value="CARREGANDO..." hidden=""> <!-- essa mensagem aparecerá toda vez que estiver carregando uma página com lentidão -->
 										<input type="text" id="mygroupSim" value="" style="display:none;">
 										<input type="text" id="mycodeSim" value="" style="display:none;">
 										<input type="text" id="myorderSim" value="" style="display:none;">
@@ -316,6 +317,10 @@ input:checked[type="checkbox"]::before{
 					</tr>
 				</table>
 			</font>
+		</div>
+
+		<div id="divloading" style="display:none;">
+			Carregando...
 		</div>
 		
 		<div class="form-group" id="divFormAddUpdate" style="display:none;">
@@ -535,6 +540,7 @@ input:checked[type="checkbox"]::before{
 	<footer>
 		<br/><br/><br/>
 		<br/><br/><br/>
+		<br/><br/><br/>
 <!-- <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" style="display:'none';">
 			<div class="carousel-indicators">
 				<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" aria-label="AWS" class="active" aria-current="true"></button>
@@ -567,7 +573,7 @@ input:checked[type="checkbox"]::before{
 					<div class="container">
 						<div class="carousel-caption text-start">
 							<img id="imgTema3White" src="1z0-1085-22.png" class="btn btn-outline-secondary" width="222px" style="cursor:pointer; display:'none';" title="ORACLE 1Z0-1085-22">
-							<img id="imgTema3Black" src="1z0-1085-22-b.png" class="btn btn-outline-secondary" width="140px" style="cursor:pointer; display:none;" title="ORACLE 1Z0-1085-22">
+							<img id="imgTema3Black" src="1z0-1085-22.png" class="btn btn-outline-secondary" width="140px" style="cursor:pointer; display:none;" title="ORACLE 1Z0-1085-22">
 							<p>ORACLE</p>
 						</div>
 					</div>
