@@ -142,14 +142,14 @@ input:checked[type="checkbox"]::before{
     <div>
 		<a class="navbar-brand" href="index.html" title="Página Inicial">SuperHelp</a>
 		<button id="btnNightDay" class="btn Zbtn-sm btn-outline-secondary flutuante" title="Dia e noite" style="color:white;"><i class="fa fa-adjust"></i> </button>
-		<button id="btnDropDb" class="btn Zbtn-sm btn-outline-secondary" title="Restaurar padrão de fábrica" style="color:white;"><i class="fa fa-trash"></i></font></button>
+		<button id="btnDropDb" class="btn Zbtn-sm btn-outline-secondary flutuante" title="Restaurar padrão de fábrica" style="color:white;"><i class="fa fa-trash"></i></font></button>
 		<!--button id="btnLanguage" class="btn Zbtn-sm btn-outline-secondary" title="Trocar língua: Inglês e Português" style="color:white;" disabled><i class="fa fa-globe"></i></button-->
 	</div>
 	<button class="navbar-toggler" type="button" title="Menu" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
 		<span class="navbar-toggler-icon flutuante"></span>
 		<button id="btnPause" class="btn btn-outline-secondary flutuante" title="Sair da fase" style="color:white; display:none;"><i class="fa fa-remove"></i></button>
     </button>
-    <div class="offcanvas offcanvas-top text-bg-dark bg-dark" style="height:330px;" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+    <div class="offcanvas offcanvas-top text-bg-dark bg-dark" style="height:260px;" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Escolha um tema:</h5>
         <button type="button" class="btn-close btn-close-white flutuante" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -176,10 +176,6 @@ input:checked[type="checkbox"]::before{
 				</tr/>
 			</table>
           </li>
-		  <li class="nav-item" align=left>
-				<br/>
-				<button id="btnDropDb" class="btn Zbtn-sm btn-outline-secondary flutuante" title="Restaurar padrão de fábrica" style="color:white;"><i class="fa fa-trash"></i> Restaurar Padrão de Fábrica</button>
-          </li>
         </ul>
         <!-- form class="d-flex mt-3" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -190,20 +186,6 @@ input:checked[type="checkbox"]::before{
   </div>
 </nav>
 
-	<nav id="navBottom" style="display:none;" class="navbar navbar-dark bg-dark fixed-bottom">
-		<div class="container-fluid">
-			<span>&nbsp;</span>
-			<div>
-				<input type="text" id="txtCalculo" value="0" title="índice de acerto" style="width:30px; background-color:#222222; color:gray; text-align:right; border-width:0px;" readonly /><font title="índice de acerto" color=white><b>%</b></font>
-				<input type="text" id="txtIncorretas" value="0" title="respostas incorretas" style="width:22px; background-color:#222222; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-remove" style="color:red;" title="respostas incorretas"></i>
-				<input type="text" id="txtCorretas" value="0" title="respostas corretas" style="width:22px; background-color:#222222; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-check" style="color:#3CB371;" title="respostas corretas"></i>
-				<input type="text" id="txtNaoRespondidas" value="0" title="perguntas não respondidas" style="width:22px; background-color:#222222; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-envelope" style="color:gray;" title="perguntas não respondidas"></i>
-				<!-- <input type="text" id="txtTotal" value="0" style="width:30px; background-color:#FFFAFA; color:gray; text-align:right; border-width:0px;" readonly /> -->
-				&nbsp;
-				<button id="btnEnd" class="btn btn-success flutuante" title="Termina a fase" style="display:none;"><i class="fa fa-check" style="Xcolor:red;"></i> Fim</button>
-			</div>
-		</div>
-	</nav>
 
     <!-- div class="row row-centered " style="margin-top:0px;" -->
 		<div id="divconfig" style="display:none;">
@@ -234,7 +216,7 @@ input:checked[type="checkbox"]::before{
 					<img src="1z0-1085-22.png" id="imgTema3Apresentacao" class="btn btn-outline-secondary flutuante" border=1 style="cursor:pointer; display:'none'; height:140px;" title="ORACLE 1Z0-1085-22"></img>
 				</td>
 			</tr>
-			<tr> <td> <font size=1><i>versão 18.21.06 &copy; datashowcloud2022@gmail.com</i></font> </td> </tr>
+			<tr> <td> <font size=1><i>versão 19.12.29 &copy; datashowcloud2022@gmail.com</i></font> </td> </tr>
 		</table>
                         		
 		<table id="tblMenuCategrias" border=0 align="center" width="100%" style="display:none;" Xclass="table table-hover">
@@ -268,41 +250,59 @@ input:checked[type="checkbox"]::before{
 					<tr><td id="mytextSim" style="display:'none'; text-align:justify;"></tr>
 				</table>
 				<table id="tableFormSimQuestions" border=0 align=center style="display:'none'; width:85%;" Zclass="table table-hover">
-								<!--tr><td id="mytextSim" style="display:'none'; text-align:justify;">
-								</td></tr-->
-								<tr><td id="mycorrect1Sim" style="display:none; text-align:justify;">
-									<div id="mycorrect1answer"></div>
-								</td></tr>
-								<tr><td id="mycorrect2Sim" style="display:none; text-align:justify;">
-									<div id="mycorrect2answer"></div>
-								</td></tr>
-								<tr><td id="mycorrect3Sim" style="display:none; text-align:justify;">
-									<div id="mycorrect3answer"></div>
-								</td></tr>
-								<tr><td id="mycorrect4Sim" style="display:none; text-align:justify;">
-									<div id="mycorrect4answer"></div>
-								</td></tr>
+					<!--tr><td id="mytextSim" style="display:'none'; text-align:justify;">
+					</td></tr-->
+					<tr><td id="mycorrect1Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect1answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect2Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect2answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect3Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect3answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect4Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect4answer"></div>
+					</td></tr>
 
-								<tr><td id="mycorrect5Sim" style="display:none; text-align:justify;">
-									<div id="mycorrect5answer"></div>
-								</td></tr>
-								<tr><td id="mycorrect6Sim" style="display:none; text-align:justify;">
-									<div id="mycorrect6answer"></div>
-								</td></tr>
-								<tr><td id="mycorrect7Sim" style="display:none; text-align:justify;">
-									<div id="mycorrect7answer"></div>
-								</td></tr>
-								<tr><td id="mycorrect8Sim" style="display:none; text-align:justify;">
-									<div id="mycorrect8answer"></div>
-								</td></tr>
-								<tr>
-									<td>
-										<input type="text" id="mygroupSim" value="" style="display:none;">
-										<input type="text" id="mycodeSim" value="" style="display:none;">
-										<input type="text" id="myorderSim" value="" style="display:none;">
-										<input type="text" id="myidSim" value="" style="display:none;">
-									</td>
-								</tr>
+					<tr><td id="mycorrect5Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect5answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect6Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect6answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect7Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect7answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect8Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect8answer"></div>
+					</td></tr>
+					<tr>
+						<td>
+							<input type="text" id="mygroupSim" value="" style="display:none;">
+							<input type="text" id="mycodeSim" value="" style="display:none;">
+							<input type="text" id="myorderSim" value="" style="display:none;">
+							<input type="text" id="myidSim" value="" style="display:none;">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<nav id="navBottom" style="display:'none';" class="navbar navbar-dark bg-dark fixed-bottom">
+								<div class="container-fluid">
+									<span>&nbsp;</span>
+									<div>
+										<input type="text" id="txtCalculo" value="0" title="índice de acerto" style="width:30px; background-color:#222222; color:gray; text-align:right; border-width:0px;" readonly /><font title="índice de acerto" color=gray><b>%</b></font>
+										<input type="text" id="txtNaoRespondidas" value="0" title="perguntas não respondidas" style="width:50px; background-color:#222222; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-check-square-o" style="color:gray;" title="perguntas não respondidas"></i>
+										<input type="text" id="txtIncorretas" value="0" title="respostas incorretas" style="width:22px; background-color:#222222; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-remove" style="color:red;" title="respostas incorretas"></i>
+										<input type="text" id="txtCorretas" value="0" title="respostas corretas" style="width:22px; background-color:#222222; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-check" style="color:#3CB371;" title="respostas corretas"></i>
+										<!-- input type="text" id="txtTotal" value="0" title="total de perguntas" style="width:22px; background-color:#222222; color:gray; text-align:right; border-width:0px;" readonly / -->
+										&nbsp;
+										<button id="btnEnd" class="btn btn-success flutuante" title="Termina a fase" style="display:'none';"><i class="fa fa-envelope"></i> Terminar</button>
+									</div>
+								</div>
+							</nav>
+						</td>
+					</tr>
 				</table>
 				<table id="tableFormSimButtons" border=0 align=center width="100%" style="display:'none';">
 					<tr><td>
@@ -397,7 +397,6 @@ input:checked[type="checkbox"]::before{
 				<tr>
 					<td>
 						<br/>
-						<!-- button id="btnDropDb" class="btn btn-default"> <font color=#3CB371><i class="fa fa-trash"></i></font> Restaurar Padrão de Fábrica</button -->
 						&nbsp;
 						<button id="btnCancelImport" class="btn btn-danger" style="display:'none';"> <i class="fa fa-times"></i> </button>
 					</td>
@@ -438,7 +437,6 @@ input:checked[type="checkbox"]::before{
 					<option value="btn-primary">Cor Botão: Azul Escuro</option>
 					<option value="btn-link">Cor Botão: Link</option>
 				</select>
-				<!-- p/><p/><button id="btnDropDb" class="btn btn-default" style="padding:9px 15px 9px 15px; width:250px;"> <font color=red><i class="fa fa-trash"></i></font> Restaurar Padrão de Fábrica</button -->
 				<p/><p/><button id="btnAddNewManual" class="btn btn-default" style="padding:9px 15px 9px 15px; width:250px; display:none;"><i class="fa fa-plus"></i> Adicionar Nova Pergunta</button>
 				<p/><p/><button id="btnShowHelp" class="btn btn-default" style="padding:9px 15px 9px 15px; width:250px; display:none;"> <i class="fa fa-book"></i> Tutorial</button>
 				<p/><p/><button id="btnSelectCountAll" class="btn btn-default" style="display:none; width:250px;"> <i class="fa fa-asterisk"></i> Count All</button>

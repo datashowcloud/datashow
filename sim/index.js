@@ -671,10 +671,10 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 		});
 //alert('mytema='+mytema + ' mycategory='+mycategory + ' myid='+myid + ' mygroup='+mygroup + ' mycode='+mycode);
 		if (students == '') {
-			if (document.getElementById('btnEnd').style.display == 'none') {
+/*			if (document.getElementById('btnEnd').style.display == 'none') {
 				document.getElementById('btnEnd').style.display = '';
-//				alert('Use o botão FIM quando terminar.');
 			}
+*/
 			document.getElementById('btnEnd').focus();
 		} else {
 			students.forEach(function (student) {
@@ -1115,7 +1115,7 @@ function exitQuestions() {
 	var mygroup = document.getElementById('mygroupSim').value;
 	var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
 	savePoints(mytema, mycategory, myid, mygroup, mycode);
-	document.getElementById('navBottom').style.display='none';
+//	document.getElementById('navBottom').style.display='none';
 	setTimeout(() => { location.reload() }, 500); // Executa após 1 segundo para esperar o processo
 }
 
@@ -1489,10 +1489,10 @@ async function setDashboard(mytema, mycategory, myid, mygroup, mycode) {
 
 //	alert('totalperguntas='+totalperguntas + ' totalCorretas='+totalCorretas + ' totalIncorretas='+totalIncorretas);
 
-//		document.getElementById('txtTotal').value = totalperguntas;
+//		document.getElementById('txtTotal').value = '' + totalperguntas;
 		document.getElementById('txtIncorretas').value = '' + totalIncorretas;
 		document.getElementById('txtCorretas').value = '' + totalCorretas;
-		document.getElementById('txtNaoRespondidas').value = '' + totalNaoRespondidas;
+		document.getElementById('txtNaoRespondidas').value = '' + totalNaoRespondidas + '/' + totalperguntas;
 		document.getElementById('txtCalculo').value = '' + calculo;
 //		document.getElementById('txtIncorretas').value = 'Incorretas: ' + totalIncorretas;
 //		document.getElementById('txtCorretas').value = 'Corretas: ' + totalCorretas;
@@ -3078,7 +3078,7 @@ function showFormSim() {
 //	$('#myCarousel').show();	
 	$('#divbuttons').hide();
 	$('#tblCategory').hide();
-	document.getElementById('navBottom').style.display='';
+//	document.getElementById('navBottom').style.display='';
 }
 
 function showFormAddUpdate() {
@@ -3104,7 +3104,7 @@ function showGridAndHideForms() {
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
 	$('#tblCategory').hide();
-	document.getElementById('navBottom').style.display='none';	
+//	document.getElementById('navBottom').style.display='none';	
 }
 
 function showAddNewManual() {
