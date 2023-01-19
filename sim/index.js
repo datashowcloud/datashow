@@ -1492,7 +1492,7 @@ async function setDashboard(mytema, mycategory, myid, mygroup, mycode) {
 //		document.getElementById('txtTotal').value = totalperguntas;
 		document.getElementById('txtIncorretas').value = '' + totalIncorretas;
 		document.getElementById('txtCorretas').value = '' + totalCorretas;
-		//document.getElementById('txtNaoRespondidas').value = '' + totalNaoRespondidas;
+		document.getElementById('txtNaoRespondidas').value = '' + totalNaoRespondidas;
 		document.getElementById('txtCalculo').value = '' + calculo;
 //		document.getElementById('txtIncorretas').value = 'Incorretas: ' + totalIncorretas;
 //		document.getElementById('txtCorretas').value = 'Corretas: ' + totalCorretas;
