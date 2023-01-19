@@ -2426,7 +2426,7 @@ async function initLinkHelp() {
 
 
 
-	//CLF-C01 FUNDAMENTOS
+	//Treino CLF-C01
 	mytema = '1';
 	mycategory = '2';
 	var students = await jsstoreCon.select({
@@ -2446,7 +2446,7 @@ async function initLinkHelp() {
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', false, 'Não Se Aplica', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', '', 'Não Se Aplica');
 	
 	//título
-	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Fundamentos');
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Treino CLF-C01');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'ECS', 'EKS', 'ECR', 'S3', save, 'EC2', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', 'computação escalável na Nuvem da Amazon Web Services (AWS)', 'O Amazon EC2 (Elastic Compute Cloud) --> Oferece uma <b>capacidade de computação escalável na Nuvem da Amazon Web Services (AWS)</b>. <br/>O uso dele <b>elimina a necessidade de investir em hardware inicialmente</b>, portanto, você pode desenvolver e implantar aplicativos com mais rapidez.');
@@ -2471,7 +2471,7 @@ async function initLinkHelp() {
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'S3', 'EC2', 'Opções de Compra de Instância', 'EBS', save, 'Modelo de uso', 'https://aws.amazon.com/pt/free/free-tier-faqs/', 'composto por três tipos', 'Modelo de uso --> O <b>nível gratuito</b> da AWS oferece aos clientes a capacidade de explorar e testar gratuitamente serviços da AWS até os limites especificados para cada serviço. <br/>O nível gratuito é <b>composto por três tipos diferentes de ofertas</b>: <br/>Um nível gratuito de 12 meses (750 horas/mês), <br/>Uma oferta Always Free, <br/>Testes de curto prazo.');
 
-	//CLF-C01 DESAFIOS
+	//Desafio CLF-C01
 	mytema = '1';
 	mycategory = '4';
 	var students = await jsstoreCon.select({
@@ -2487,7 +2487,7 @@ async function initLinkHelp() {
 	}
 	contadorMycode = 0;
 	//título
-	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Desafios');
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Desafio CLF-C01');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Organizations', 'Billing', 'Cost Explorer', 'Princing Calculator', save, 'Budgets', 'https://docs.aws.amazon.com/pt_br/cost-management/latest/userguide/budgets-managing-costs.html', '', 'AWS Budgets --> É para rastreamento de uso e custo da AWS. <br/>Monitorar métricas agregadas de utilização e cobertura para suas Instâncias Reservadas (RIs) ou Savings Plans - Planos de Poupança. <br/>Envia mensagem quando o consumo vai atingir o percentual pré-configurado ou pré-definido.');
@@ -2511,7 +2511,7 @@ async function initLinkHelp() {
 
 
 
-	//AZ-900 FUNDAMENTOS
+	//Treino AZ-900
 	mytema = '2';
 	mycategory = '2';
 	students = await jsstoreCon.select({
@@ -2528,7 +2528,7 @@ async function initLinkHelp() {
 	contadorMygroup = 10;
 	contadorMycode = 0;
 	//título
-	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Fundamentos');
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Treino AZ-900');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Nuvem Privada --> AZ-900', 'Nuvem Híbrida --> AZ-900', 'Multinuvem --> AZ-900', 'AZ-900: --> Nenhuma das alternativas', save, 'Nuvem Pública --> AZ-900', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-a-public-cloud/', '', 'AZ-900: Nuvem Pública --> Definida como uma série de serviços de computação oferecidos por terceiros à Internet pública, os quais são disponibilizados a qualquer pessoa que queira utilizá-los ou comprá-los. Eles podem ser gratuitos ou vendidos sob demanda, permitindo que os clientes paguem apenas pelo seu consumo de ciclos de CPU, armazenamento ou largura de banda.');
@@ -2540,7 +2540,7 @@ async function initLinkHelp() {
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Nuvem Privada --> AZ-900', 'Nuvem Híbrida --> AZ-900', 'Nuvem Pública --> AZ-900', 'AZ-900: --> Nenhuma das alternativas', save, 'Multinuvem --> AZ-900', 'https://azure.microsoft.com/pt-br/solutions/hybrid-cloud-app/#overview', '', 'AZ-900: Multinuvem --> Uma parte da sua empresa está no Microsoft Azure e outra parte está em outra nuvem, como: AWS, Google Cloud Platform, aplicativos SaaS baseados em nuvem e até ambientes de colocation.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 
-	//AZ-900 DESAFIOS
+	//Desafio AZ-900
 	mytema = '2';
 	mycategory = '4';
 	students = await jsstoreCon.select({
@@ -2557,7 +2557,7 @@ async function initLinkHelp() {
 	contadorMygroup = 10;
 	contadorMycode = 0;
 	//título
-	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Desafios');
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Desafio AZ-900');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'PAAS --> AZ-900', 'SAAS --> AZ-900', 'Computação Sem Servidor --> AZ-900', 'BAAS', save, 'IAAS --> AZ-900', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-iaas/', '', 'AZ-900 IAAS (Infraestrutura como Serviço) --> Um tipo de serviço de computação em nuvem que oferece recursos fundamentais de computação, armazenamento e rede sob demanda e pagos conforme o uso.');
@@ -2571,7 +2571,7 @@ async function initLinkHelp() {
 
 
 
-	//ORACLE FUNDAMENTOS
+	//Treino Oracle
 	mytema = '3';
 	mycategory = '2';
 	students = await jsstoreCon.select({
@@ -2588,7 +2588,7 @@ async function initLinkHelp() {
 	contadorMygroup = 10;
 	contadorMycode = 0;
 	//título
-	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Fundamentos');
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Treino Oracle');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Nuvem Privada --> AZ-900', 'Nuvem Híbrida --> AZ-900', 'HCM (Oracle Fusion Cloud Human Capital Management) --> Oracle', '', save, 'OCI (Oracle Cloud Infrastructure) --> Oracle', 'https://docs.oracle.com/pt-br/iaas/Content/GSG/Concepts/baremetalintro.htm', '', 'Oracle: OCI (Oracle Cloud Infrastructure) --> Conjunto complementar de serviços de nuvem que permite criar e executar uma variedade de aplicativos e serviços em um ambiente hospedado altamente disponível.');
@@ -2596,7 +2596,7 @@ async function initLinkHelp() {
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'OCI (Oracle Cloud Infrastructure) --> Oracle', 'Nuvem Híbrida --> AZ-900', 'Multinuvem --> AZ-900', '', save, 'HCM (Oracle Fusion Cloud Human Capital Management) --> Oracle', 'https://www.oracle.com/br/cloud/', '', 'Oracle: HCM (Oracle Fusion Cloud Human Capital Management)  --> Solução de RH nativa em nuvem completa que conecta todos os processos de recursos humanos, desde a contratação até a aposentadoria.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 
-	//ORACLE DESAFIOS
+	//Desafio Oracle
 	mytema = '3';
 	mycategory = '4';
 	students = await jsstoreCon.select({
@@ -2613,7 +2613,7 @@ async function initLinkHelp() {
 	contadorMygroup = 10;
 	contadorMycode = 0;
 	//título
-	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Desafios');
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Desafio Oracle');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Vertical Scaling', 'Parallel Scaling', 'Manual Scaling', '', save, 'Autoscaling', 'https://docs.oracle.com/pt-br/iaas/Content/Compute/Tasks/autoscalinginstancepools.htm', '', 'You have a web application that receives 5X more traffic on the weekends than weekdays. You need to automatically match capacity to demand, keep the application always up and running, and save cost. <br/>Which Oracle Cloud Infrastructure (OCI) compute feature can be used to meet these requirements?');
