@@ -473,8 +473,10 @@ function registerEvents() {
 		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
 		changeFaseNivel(mytema, mycategory, myid, mygroup, mycode);
 		savePoints(mytema, mycategory, myid, mygroup, mycode);
-		showGridAndHideForms();
+		exitQuestions();
+/*		showGridAndHideForms();
 		refreshTableData(mytema, mycategory, '0', '', '', ''); // botão btnCategory1 carrega essa opção
+*/
 //		setTimeout(() => { location.reload() }, 4000); // Executa após alguns segundos para esperar o término do processo
     });
 	$('#btnGear').click(function () {
@@ -1034,7 +1036,15 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 //			varNivelLinha = varNivelLinha + '<tr><td colspan=99><font color="gray" style="font-size:15px;"><i class=\"fa fa-lock\"></i> NÍVEL ' + item + '</font></td></tr>';
 //		}
 
-		htmlString = varNivelLinha + htmlString;
+		var varMenuNivelFase = '';
+		varMenuNivelFase = varMenuNivelFase + '<table>';
+		varMenuNivelFase = varMenuNivelFase + '<tr>';
+		varMenuNivelFase = varMenuNivelFase + '<td nowrap colspan=3 align=right> <button class="botao flutuante" onclick="changeCategory(\'2\');"><i class="fa fa-book"></i> Treino</button></td>';
+		varMenuNivelFase = varMenuNivelFase + '<td nowrap colspan=2> <button class="botao flutuante" onclick="changeCategory(\'4\');"><i class="fa fa-road"></i> Desafio</button></td>';
+		varMenuNivelFase = varMenuNivelFase + '</tr>';
+		varMenuNivelFase = varMenuNivelFase + '</table>';
+
+		htmlString = varMenuNivelFase + varNivelLinha + htmlString;
 		
 		if (htmlString.length > 0) {
 			htmlString += "</tr>"
@@ -3053,7 +3063,7 @@ function showCorrect(valorindice, myid, mygroup, mycode) {
 
 function showFormCategory() {
     $('#tblGrid').hide();
-	$('#tblMenuCategrias').hide();
+//	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
 	$('#divcontent').hide();
@@ -3067,7 +3077,7 @@ function showFormCategory() {
 
 function showFormSim() {
     $('#tblGrid').hide();
-	$('#tblMenuCategrias').hide();
+//	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
 	$('#divcontent').hide();
@@ -3083,7 +3093,7 @@ function showFormSim() {
 
 function showFormAddUpdate() {
     $('#tblGrid').hide();
-	$('#tblMenuCategrias').hide();
+//	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').show();
 	$('#divGear').hide();
 	$('#divcontent').hide();
@@ -3109,7 +3119,7 @@ function showGridAndHideForms() {
 
 function showAddNewManual() {
 	$('#divGearAddNewLiryc').show();
-	$('#tblMenuCategrias').hide();
+//	$('#tblMenuCategrias').hide();
     $('#tblGrid').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
@@ -3122,7 +3132,7 @@ function showAddNewManual() {
 
 function showFormGear() {
     $('#tblGrid').hide();
-	$('#tblMenuCategrias').hide();
+//	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').show();
 	$('#divcontent').hide();
@@ -3134,7 +3144,7 @@ function showFormGear() {
 
 function showFormImport() {
     $('#tblGrid').hide();
-	$('#tblMenuCategrias').hide();
+//	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
 	$('#divcontent').show();
@@ -3147,7 +3157,7 @@ function showFormImport() {
 
 function showBible() {
     $('#tblGrid').hide();
-	$('#tblMenuCategrias').hide();
+//	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
 	$('#divcontent').hide();
@@ -3160,7 +3170,7 @@ function showBible() {
 
 function showIniciarConfiguracao() {
     $('#tblGrid').hide();
-	$('#tblMenuCategrias').hide();
+//	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
 	$('#divcontent').hide();
