@@ -967,7 +967,7 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 		var varNivelLinha = '';
 		var varNivelMax = '';
 		var varButtonLineStyle = 'color:gray; font-size:18px;';
-		var varButtonLine = '<i class=\"fa fa-play\" style="color:' + CONST_DEEP_SKY_BLUE + '; font-size:20px;"></i>';
+		var varButtonLine = '<i class=\"fa fa-play\" style="color:' + CONST_MEDIUM_SEA_GREEN + '; font-size:20px;"></i>';
 		var varRestart = '';
 		
 		students.forEach(function (student) {
@@ -1010,7 +1010,7 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 				
 				//texto
 				+ "<" + varTdTh + " style=\"text-align:left;\" id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " ZZZonClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
-					+ '&nbsp; <a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + student.mytext + '</a> ' + varButtonLine + '</' + varTdTh + '>'
+					+ '&nbsp; <a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + student.mytext + '</a> ' + '</' + varTdTh + '>'
 				
 				//botão delete e refresh fase
 //				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + '<a href=\"#\" class=\"deletefase\" style=\"' + varButtonLineStyle + '\">' + '<i class=\"fa fa-refresh\" title="Atualizar fase" style=\"color:gray; font-size:20px;\"></i> </a>'
@@ -1020,7 +1020,21 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + student.mypoints + '%</' + varTdTh + '>'
 				
 				//botão playsim ou link refazer
-				+ '<' + varTdTh + ' style="text-align:right;">' + varRestart + '<a href=\"#\" class=\"playsim flutuante\" style=\"' + varButtonLineStyle + '\">' + ' ' + varCount +  '</a>' + "</" + varTdTh + ">"
+				+ '<' + varTdTh + ' style="text-align:right;">' + varRestart + varButtonLine + '<button class=\"playsim avatarflutuante\" style=\"' + varButtonLineStyle + '\">' + ' ' + varCount +  '</a>' + "</" + varTdTh + ">"
+
+
+/*
+				+ '<' + varTdTh + ' style="text-align:right;">' 
+				+ varRestart 
+				+ varButtonLine 
+				+ '<button class=\"playsim avatarflutuante\" style=\"' + varButtonLineStyle + '\">' + ' '
+				+ '<a href=\"#\" class=\"playsim flutuante\" style=\"' + varButtonLineStyle + '\">' + ' ' 
+				+ varCount +  '</a>' 
+				+ "</" + varTdTh + ">"
+*/
+
+
+				+ "</" + varTdTh + ">"
 				+ '<td>&nbsp;&nbsp;</td>'
 				;
 				
