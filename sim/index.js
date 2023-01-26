@@ -362,9 +362,6 @@ function registerEvents() {
 		var mycode = child.eq(1).text();
 		var result = confirm('Vou limpar e organizar as respostas dessa fase, ok?');
 		if (result) {
-			var params = new URLSearchParams(window.location.search);
-			var mytema = params.get('tem');
-			var mycategory = params.get('cat');
 			restartFase(mytema, mycategory, myid, mygroup, mycode);
 			savePoints(mytema, mycategory, myid, mygroup, mycode);
 			var id = row.attr('itemid');
@@ -407,10 +404,11 @@ function registerEvents() {
 		var mycode = child.eq(1).text();
 		refreshTableQuestion(mytema, mycategory, id, mygroup, '1');
 		showFormSim();
-		if (document.getElementById('btnPrevious') != null) {document.getElementById('btnPrevious').disabled = false; }
+/*		if (document.getElementById('btnPrevious') != null) {document.getElementById('btnPrevious').disabled = false; }
 		if (document.getElementById('btnNext') != null) {document.getElementById('btnNext').disabled = false; }
 		if (document.getElementById('btnPause') != null) {document.getElementById('btnPause').style.display = ''; }
 		if (document.getElementById('btnFormCategory') != null) {document.getElementById('btnFormCategory').style.display = 'none'; }
+*/
     });	
     $('#tblGrid tbody').on('click', '.freeze', function () {
 		freezeDataShow(localStorage.getItem('valueAoVivo'));
@@ -952,7 +950,7 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 		}
 		
 		var varButtonRestart = 'color:gray; font-size:20px;';
-		var varCount = '<div class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '">' + parseInt(students_count - 1) + '</div>';
+		var varCount = '<div class="playsim btn btn-success avatarflutuante" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '">' + parseInt(students_count - 1) + '</div>';
 		if (parseInt(students_count - 1) == 0) {
 			varCount = '';
 			varButtonRestart = 'color:' + CONST_MEDIUM_SEA_GREEN + '; font-size:20px;';
@@ -967,7 +965,7 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 		var varNivelLinha = '';
 		var varNivelMax = '';
 		var varButtonLineStyle = 'color:gray; font-size:18px;';
-		var varButtonLine = '<i class=\"fa fa-play\" style="color:' + CONST_MEDIUM_SEA_GREEN + '; font-size:20px;"></i>';
+		var varButtonLine = '<i class=\"fa fa-play\" style="color:' + CONST_MEDIUM_SEA_GREEN + '; font-size:15px;"></i>';
 		var varRestart = '';
 		
 		students.forEach(function (student) {
@@ -976,7 +974,7 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 				if (varCount == '') {
 					if (student.mypoints <= 0) {
 						varRestart = '';
-						varCount = '<button class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '; text-align:right; ">fazer</button>';
+						varCount = '<button class="playsim btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '; text-align:right; ">fazer</button>';
 					} else if (student.mypoints < 70) {
 						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + ' text-align:right; \"><button class="btn btn-danger flutuante">refazer</button></a>';
 					} else if (student.mypoints < 100) {
@@ -1020,18 +1018,8 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + student.mypoints + '%</' + varTdTh + '>'
 				
 				//botão playsim ou link refazer
-				+ '<' + varTdTh + ' style="text-align:right;">' + varRestart + varButtonLine + '<button class=\"playsim avatarflutuante\" style=\"' + varButtonLineStyle + '\">' + ' ' + varCount +  '</a>' + "</" + varTdTh + ">"
-
-
-/*
-				+ '<' + varTdTh + ' style="text-align:right;">' 
-				+ varRestart 
-				+ varButtonLine 
-				+ '<button class=\"playsim avatarflutuante\" style=\"' + varButtonLineStyle + '\">' + ' '
-				+ '<a href=\"#\" class=\"playsim flutuante\" style=\"' + varButtonLineStyle + '\">' + ' ' 
-				+ varCount +  '</a>' 
-				+ "</" + varTdTh + ">"
-*/
+				+ '<' + varTdTh + ' style="text-align:right;">' + varRestart + varButtonLine + ' ' + varCount +  '</a>' + "</" + varTdTh + ">"
+//				+ '<' + varTdTh + ' style="text-align:right;">' + varRestart + varButtonLine + '<a href=\"#\" class=\"playsim flutuante\" style=\"' + varButtonLineStyle + '\">' + ' ' + varCount +  '</a>' + "</" + varTdTh + ">"
 
 
 				+ "</" + varTdTh + ">"
