@@ -404,11 +404,6 @@ function registerEvents() {
 		var mycode = child.eq(1).text();
 		refreshTableQuestion(mytema, mycategory, id, mygroup, '1');
 		showFormSim();
-/*		if (document.getElementById('btnPrevious') != null) {document.getElementById('btnPrevious').disabled = false; }
-		if (document.getElementById('btnNext') != null) {document.getElementById('btnNext').disabled = false; }
-		if (document.getElementById('btnPause') != null) {document.getElementById('btnPause').style.display = ''; }
-		if (document.getElementById('btnFormCategory') != null) {document.getElementById('btnFormCategory').style.display = 'none'; }
-*/
     });	
     $('#tblGrid tbody').on('click', '.freeze', function () {
 		freezeDataShow(localStorage.getItem('valueAoVivo'));
@@ -3091,6 +3086,10 @@ function showFormSim() {
 	$('#divbuttons').hide();
 	$('#tblCategory').hide();
 //	document.getElementById('navBottom').style.display='';
+	if (document.getElementById('btnPrevious') != null) {document.getElementById('btnPrevious').disabled = false; }
+	if (document.getElementById('btnNext') != null) {document.getElementById('btnNext').disabled = false; }
+	if (document.getElementById('btnPause') != null) {document.getElementById('btnPause').style.display = ''; }
+	if (document.getElementById('btnFormCategory') != null) {document.getElementById('btnFormCategory').style.display = 'none'; }
 }
 
 function showFormAddUpdate() {
