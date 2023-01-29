@@ -49,7 +49,9 @@ function getDbSchema() {
 			mycategory: { Null: false, dataType: 'string' }, //sub nível de agrupamento, exemplo: Apresentação, Treinamento, Experiência, Simulado, Desafios...
 			mygroup: { notNull: true, dataType: 'string' }, //qual grupo a pergunta pertence, exemplo: domínio 1, domínio 2, domínio 3...
 			mycode: { Null: false, dataType: 'string' }, //código único numérico da pergunta
-			mytext: { notNull: true, dataType: 'string' }, //uma pergunta
+			mytext: { notNull: true, dataType: 'string' }, //uma pergunta na língua 1
+			mytext2: { Null: false, dataType: 'string' }, //uma pergunta na língua 2
+			mytext3: { Null: false, dataType: 'string' }, //uma pergunta na língua 3
 			mysearch: { Null: false, dataType: 'string' }, //pergunta ou texto sem os caracteres especiais para fazer o search com maior precisão
 			myoption1: { Null: false, dataType: 'string' }, //texto da resposta correta 1
 			myoption2: { Null: false, dataType: 'string' }, //texto da resposta correta 2
@@ -151,7 +153,9 @@ function registerEvents() {
 			var myorder = document.getElementById('myorder').value;
 			var mygroup = document.getElementById('mygroup').value;
 			var mytext = document.getElementById('mytext').value.trim();
-			refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext);
+			var mytext2 = document.getElementById('mytext2').value.trim();
+			var mytext3 = document.getElementById('mytext3').value.trim();
+			refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext, mytext2, mytext3);
 			if (document.getElementById('txtSearch').value.length <= 1) { // pesquisa somente com mais de 1 caracter preenchido no campo search
 				if (document.getElementById('selectMygroup').selectedIndex == '1') {
 					showBible();
@@ -198,7 +202,9 @@ function registerEvents() {
 		var mycode = document.getElementById('mycode').value;
 		var myorder = document.getElementById('myorder').value;
 		var mytext = document.getElementById('mytext').value.trim();
-		refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext);
+		var mytext2 = document.getElementById('mytext2').value.trim();
+		var mytext3 = document.getElementById('mytext3').value.trim();
+		refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext, mytext2, mytext3);
 		showGridAndHideForms();
 //		$('#txtSearch').focus();
 //		$('#txtSearch').select();
@@ -215,11 +221,13 @@ function registerEvents() {
 		var mygroup = selectMygroup.value.trim();
 		var mycode = '';
 		var mytext = '';
+		var mytext2 = '';
+		var mytext3 = '';
 		var myorder = '';
 		if (mygroup != '00') {
 			mycode = '0';
 		}
-		refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext);
+		refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext, mytext2, mytext3);
 		showGridAndHideForms();
 		$('#selectMygroup').focus();
 		$('#selectMygroup').select();
@@ -255,6 +263,8 @@ function registerEvents() {
 				var myorder = document.getElementById('myorder').value;
 				var mygroup = document.getElementById('mygroup').value;
 				var mytext = document.getElementById('mytext').value.trim();
+				var mytext2 = document.getElementById('mytext2').value.trim();
+				var mytext3 = document.getElementById('mytext3').value.trim();
 				var myoption1 = document.getElementById('myoption1').value.trim();
 				var myoption2 = document.getElementById('myoption2').value.trim();
 				var myoption3 = document.getElementById('myoption3').value.trim();
@@ -266,7 +276,7 @@ function registerEvents() {
 				
 				//console.log('mycode='+mycode + ' myorder='+myorder + ' mygroup='+mygroup + ' mytext='+mytext + ' myoption1='+myoption1 + ' myoption5='+myoption5);
 				
-				confirmImportManual(mytema, mycategory, mycode, myorder, mygroup, mytext, myoption1, myoption2, myoption3, myoption4, myoption5, myoption6, myoption7, myoption8);
+				confirmImportManual(mytema, mycategory, mycode, myorder, mygroup, mytext, mytext2, mytext3, myoption1, myoption2, myoption3, myoption4, myoption5, myoption6, myoption7, myoption8);
 //				console.log('Clique em "Go back". \nClique em "Go back".');
 //				document.getElementById("formAdd").submit();
 			} catch (ex) {
@@ -479,22 +489,15 @@ function registerEvents() {
 			showGridAndHideForms();
 		}
     })
-	$('#selTextColor').change(function () {
+//	$('#selTextColor').change(function () {
 //		updateConfigGeneral();
-    })
-	$('#selBackground').change(function () {
+//    })
+//	$('#selBackground').change(function () {
 //		updateConfigGeneral();
-    })
-	$('#selButtonColor').change(function () {
+//    })
+//	$('#selButtonColor').change(function () {
 //		updateConfigGeneral();
-    })
-	$('#btnVersions').click(function () {
-		var versions = 'Atualizações:';
-		versions = versions + '\n' + '25.09.22 botão fechar x vermelho';
-		versions = versions + '\n' + '25.09.22 coluna com porcentagem';
-		versions = versions + '\n' + '26.09.22 navegação botões';
-		alert(versions);
-	})
+//    })
 	$('#btnRefresh').click(function () {
 		var params = new URLSearchParams(window.location.search);
 		var mytema = params.get('tem');
@@ -530,6 +533,18 @@ function registerEvents() {
 	$('#imgTema3MenuTopo').click(function () {
 		changeTema('3');
 		initLinkHelp();
+	})
+	$('#mytextSim').click(function () {
+		if (document.getElementById('mytextSim2') != null && document.getElementById('mytextSim2').innerHTML.length > 0) {
+			document.getElementById('mytextSim2').style.display='';
+			document.getElementById('mytextSim').style.display='none';
+		}
+	})
+	$('#mytextSim2').click(function () {
+		if (document.getElementById('mytextSim') != null && document.getElementById('mytextSim').innerHTML.length > 0) {
+			document.getElementById('mytextSim').style.display='';
+			document.getElementById('mytextSim2').style.display='none';
+		}
 	})
 }
 
@@ -602,16 +617,24 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		b = '-b';
 	}
 	//apresentação tela inicial
-	document.getElementById('imgTema1Apresentacao').src = 'clf-c01' + b + '.png';
-	document.getElementById('imgTema2Apresentacao').src = 'az-900' + b + '.png';
-	document.getElementById('imgTema3Apresentacao').src = '1z0-1085-22' + '.png';
+	if (document.getElementById('imgTema1Apresentacao') != null) {
+		document.getElementById('imgTema1Apresentacao').src = 'clf-c01' + b + '.png';
+		document.getElementById('imgTema2Apresentacao').src = 'az-900' + b + '.png';
+		document.getElementById('imgTema3Apresentacao').src = '1z0-1085-22' + b + '.png';
+	}
 	//menu lateral direito
-	document.getElementById('imgTema1MenuTopo').src = 'clf-c01' + b + '.png';
-	document.getElementById('imgTema2MenuTopo').src = 'az-900' + b + '.png';
-	document.getElementById('imgTema3MenuTopo').src = '1z0-1085-22' + b + '.png';
-
-	document.getElementById('myBody').style.background = background;
-	document.getElementById('menutopodireito').style.color = 'white';
+	if (document.getElementById('imgTema1MenuTopo') != null) {
+		document.getElementById('imgTema1MenuTopo').src = 'clf-c01' + b + '.png';
+		document.getElementById('imgTema2MenuTopo').src = 'az-900' + b + '.png';
+		document.getElementById('imgTema3MenuTopo').src = '1z0-1085-22' + b + '.png';
+	}
+	
+	if (document.getElementById('myBody') != null) {
+		document.getElementById('myBody').style.background = background;
+	}
+	if (document.getElementById('menutopodireito') != null) {
+		document.getElementById('menutopodireito').style.color = 'white';
+	}
 /*
 	document.getElementById('txtCalculo').style.background = background;
 	document.getElementById('txtIncorretas').style.background = background;
@@ -622,7 +645,7 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 	}
 	
 	var classe = '';
-
+/*
 	if(document.getElementById('btnBackward') != null) {
 		classe = document.getElementById('btnBackward').classList.value;
 		classe = classe.substring(4, classe.length);
@@ -638,8 +661,11 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 			document.getElementById('selButtonColor').classList.add('btn-primary');
 		}
 	} else {
-		document.getElementById('btnBackward').classList.add(buttoncolor);
+		if(document.getElementById('btnBackward') != null) {
+			document.getElementById('btnBackward').classList.add(buttoncolor);
+		}
 	}
+*/
 }
 
 //This function select table play
@@ -694,6 +720,7 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 
 //				document.getElementById('mytextSim').innerHTML = '<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">26%</div></div>'
 				document.getElementById('mytextSim').innerHTML = '<font color=' + GLOBAL_textcolor + '>' + student.mycode + '/' + totalperguntas + '. ' + student.mytext + '</font>';
+				document.getElementById('mytextSim2').innerHTML = '<font color=' + GLOBAL_textcolor + '>' + student.mycode + '/' + totalperguntas + '. ' + student.mytext2 + '</font>';
 
 				var valorIndice = '';
 				var myorder = student.myorder;
@@ -886,7 +913,7 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 }
 
 //This function refreshes the table
-async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext) {
+async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext, mytext2, mytext3) {
 //    try {
 //alert('mytema='+mytema + ' mycategory='+mycategory + ' mycode='+mycode + ' myorder='+myorder + ' mygroup='+mygroup);
 		if (mygroup == '' && mycode == '') {
@@ -1174,6 +1201,8 @@ function getStudentFromForm(mytema, mycategory, studentId, mygroup, mycode) {
         mycode: $('#mycode').val(),
 		mygroup: $('#mygroup').val(),
         mytext: $('#mytext').val(),
+        mytext2: $('#mytext2').val(),
+        mytext3: $('#mytext3').val(),
 		mysearch: removeSpecials($('#mytext').val())
     };
     return student;
@@ -1552,6 +1581,8 @@ async function getFromTable(id, mygroup, mycode) {
 		$('#mycode').val(student.mycode);
 		$('#myorder').val(student.myorder);
 		$('#mytext').val(student.mytext);
+		$('#mytext2').val(student.mytext2);
+		$('#mytext3').val(student.mytext3);
 		$('#myoption1').val(student.myoption1);
 		$('#myoption2').val(student.myoption2);
 		$('#myoption3').val(student.myoption3);
@@ -1590,6 +1621,8 @@ async function loadMygroup(name) {
 async function clearForm() {
 	$('form').attr('data-student-id', null);
 	$('#mytext').val('');
+	$('#mytext2').val('');
+	$('#mytext3').val('');
 	$('#myoption1').val('');
 	$('#myoption2').val('');
 	$('#myoption3').val('');
@@ -1616,7 +1649,9 @@ async function deleteTable() {
 			var myorder = document.getElementById('myorder').value;
 			var mygroup = document.getElementById('mygroup').value;
 			var mytext = document.getElementById('mytext').value.trim();
-			refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext);
+			var mytext2 = document.getElementById('mytext2').value.trim();
+			var mytext3 = document.getElementById('mytext3').value.trim();
+			refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext, mytext2, mytext3);
 			console.log('successfull');
 		}
     } catch (ex) {
@@ -1641,7 +1676,9 @@ async function dropdb() {
 					var myorder = document.getElementById('myorder').value;
 					var mygroup = document.getElementById('mygroup').value;
 					var mytext = document.getElementById('mytext').value.trim();
-					refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext);
+					var mytext2 = document.getElementById('mytext2').value.trim();
+					var mytext3 = document.getElementById('mytext3').value.trim();
+					refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext, mytext2, mytext3);
 					location.reload();
 		//			console.log('successfull');
 				}).catch(function(error) {
@@ -1716,16 +1753,18 @@ async function searchComplete() {
 		var myorder = document.getElementById('myorder').value;
 		var mygroup = document.getElementById('mygroup').value;
 		var mytext = document.getElementById('mytext').value.trim();
+		var mytext2 = document.getElementById('mytext2').value.trim();
+		var mytext3 = document.getElementById('mytext3').value.trim();
 		if (localStorage.getItem('valueComplete') == 'true') {
 			localStorage.setItem('valueComplete', 'false');
 			document.getElementById('btnCompleteTop').innerHTML = '<i class=\"fa fa-minus\"></i>';
-			refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext);
+			refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext, mytext2, mytext3);
 //			document.getElementById('btnCompleteTop').classList.remove('btn-warning');
 //			document.getElementById('btnCompleteTop').classList.add('btn-default');
 		} else {
 			localStorage.setItem('valueComplete', 'true');
 			document.getElementById('btnCompleteTop').innerHTML = '<i class=\"fa fa-list\"></i>';
-			refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext);
+			refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext, mytext2, mytext3);
 //			document.getElementById('btnCompleteTop').classList.remove('btn-default');
 //			document.getElementById('btnCompleteTop').classList.add('btn-warning');
 		}
@@ -1766,7 +1805,9 @@ async function searchSimples() {
 		var myorder = document.getElementById('myorder').value;
 		var mygroup = document.getElementById('mygroup').value;
 		var mytext = document.getElementById('mytext').value.trim();
-		refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext);
+		var mytext2 = document.getElementById('mytext2').value.trim();
+		var mytext3 = document.getElementById('mytext3').value.trim();
+		refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext, mytext2, mytext3);
     } catch (ex) {
         console.log(ex.message);
     }
@@ -1884,19 +1925,56 @@ function getArrayAnswers(valor) {
 	return array;
 }
 
-async function salvarRegistro(mytema, mycategory, mygroup, mycode, myorder, mytext) {
+function getLanguage(language, mytext) {
+	var retorno = '';
+	var posicaoini=0;
+	var posicaofim=0;
+	var languageini = '<'+language+'>';
+	var languagefim = '</'+language+'>';
+	var englishini = '<english>';
+	var spanishini = '<spanish>';
+	
+	mytext = mytext.replaceAll('<p>\n', ''); //remove <p>ENTER
+	mytext = mytext.replaceAll('<p>', ''); //remove <p>
+	if (language == '' || language == 'portugues') {
+		posicaofim = mytext.indexOf(englishini, posicaoini);
+		if (posicaofim == -1) {
+			posicaofim = mytext.indexOf(spanishini, posicaoini);
+			if (posicaofim == -1) {
+				return retorno = mytext.substring(posicaoini, mytext.length);
+			} else {
+				return retorno = mytext.substring(posicaoini, posicaofim);
+			}
+		} else {
+			return retorno = mytext.substring(posicaoini, posicaofim);
+		}
+	} else {
+		posicaoini = mytext.indexOf(languageini, posicaoini);
+		if (posicaoini == -1) {
+			return retorno = '';
+		} else {
+			posicaoini = posicaoini + languageini.length;
+			posicaofim = mytext.indexOf(languagefim, posicaoini);
+			if (posicaofim == -1) {
+				return retorno = '';
+			} else {
+				return retorno = mytext.substring(posicaoini, posicaofim);
+			}
+		}
+	}
+	return retorno;
+}
+
+async function salvarRegistro(mytema, mycategory, mygroup, mycode, myorder, valor, mytext1, mytext2, mytext3) {
 	var posicao=0;
 	var nextpos = 0;
-	nextpos = mytext.indexOf('\n\n', posicao);
-	var question = mytext.substring(posicao, nextpos).replaceAll('<p>', ''); //remove separador <p>
-	question = question.substring(posicao, nextpos).trim(); //remove espaços
-//	console.log('question='+question);
-	var aswers = mytext.substring(nextpos, mytext.length).trim();
-//	console.log('aswers= \n'+aswers);
+	nextpos = valor.indexOf('\n\n', posicao);
+//	var question = valor.substring(posicao, nextpos).replaceAll('<p>', ''); //remove separador <p>
+//	question = question.substring(posicao, nextpos).trim(); //remove espaços
+	var aswers = valor.substring(nextpos, valor.length).trim();
 	var array = getArrayAnswers(aswers);
-
 //	alert(':\n'+array[0]+', '+array[1] + '\n '+array[2]+', '+array[3] + '\n '+array[4]+', '+array[5] + '\n '+array[6]+', '+array[7] + '\n '+array[8]+', '+array[9] + '\n '+array[10]+', '+array[11] + '\n '+array[12]+', '+array[13] + '\n '+array[14]+', '+array[15]);
-	setStudentFromImport(mytema, mycategory, mygroup, mycode, myorder, question, array[0], array[1], array[2], array[3], array[4], array[5], array[6], array[7], array[8], array[9], array[10], array[11], array[12], array[13], array[14], array[15]);
+	setStudentFromImport(mytema, mycategory, mygroup, mycode, myorder, mytext1, mytext2, mytext3, array[0], array[1], array[2], array[3], array[4], array[5], array[6], array[7], array[8], array[9], array[10], array[11], array[12], array[13], array[14], array[15]);
 	var studentId = $('form').attr('data-student-id');
 	addStudentImportConfig(mytema, mycategory, studentId, mygroup, mycode);
 }
@@ -1920,8 +1998,11 @@ async function confirmImport(mytema, mycategory, contents, group) {
 			}
 //			console.log(' posicao='+posicao + ' nextp='+nextp + '\n [' + mytext.substring(posicao, nextp) + ']');
 			var valor = mytext.substring(posicao, nextp);
+			var mytext1 = getLanguage('', mytext.substring(posicao, nextp)); //original
+			var mytext2 = getLanguage('english', mytext.substring(posicao, nextp)); //espanhol
+			var mytext3 = getLanguage('espanish', mytext.substring(posicao, nextp)); //inglês
 //			alert(': ' + '\n mytema='+mytema + '\n mycategory='+mycategory + '\n mygroup='+mygroup + '\n mycode='+mycode + '\n myorder='+myorder + '\n\n [' + valor + ']');
-			salvarRegistro(mytema+'', mycategory+'', mygroup+'', mycode+'', myorder+'', valor);
+			salvarRegistro(mytema+'', mycategory+'', mygroup+'', mycode+'', myorder+'', valor, mytext1, mytext2, mytext3);
 			
 			posicao = nextp;
 			mycode = parseInt(mycode) + parseInt(1);
@@ -1934,32 +2015,34 @@ async function confirmImport(mytema, mycategory, contents, group) {
 }
 
 //This function confirm import
-async function confirmImportManual(mytema, mycategory, mycode, myorder, mygroup, mytext, myoption1, myoption2, myoption3, myoption4, myoption5, myoption6, myoption7, myoption8) {
-		try {
+async function confirmImportManual(mytema, mycategory, mycode, myorder, mygroup, mytext1, mytext2, mytext3, myoption1, myoption2, myoption3, myoption4, myoption5, myoption6, myoption7, myoption8) {
+	try {
 			
-//console.log(' mygroup='+mygroup + ' mycode='+mycode + ' myorder='+myorder + ' mytext='+mytext + ' myoption1='+myoption1 + ' myoption5='+myoption5);
+//console.log(' mygroup='+mygroup + ' mycode='+mycode + ' myorder='+myorder + ' mytext1='+mytext1 + ' myoption1='+myoption1 + ' myoption5='+myoption5);
 				
-				setStudentFromImport(mytema, mycategory, mygroup, mycode, myorder, mytext, myoption1, '', myoption2, '', myoption3, '', myoption4, '', myoption5, '', myoption6, '', myoption7, '', myoption8, '');
+		setStudentFromImport(mytema, mycategory, mygroup, mycode, myorder, mytext1, mytext2, mytext3, myoption1, '', myoption2, '', myoption3, '', myoption4, '', myoption5, '', myoption6, '', myoption7, '', myoption8, '');
 
-				var studentId = $('form').attr('data-student-id');
-				addStudentImport(mytema, mycategory, studentId, mygroup, mycode);
-				
-				var params = new URLSearchParams(window.location.search);
-				var mytema = params.get('tem');
-				var mycategory = params.get('cat');
-				var mycode = document.getElementById('mycode').value;
-				var myorder = document.getElementById('myorder').value;
-				var mygroup = document.getElementById('mygroup').value;
-				var mytext = document.getElementById('mytext').value.trim();
-				setTimeout(() => { refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext) }, 1000); // Executa novamente a cada 500 milisegundos
-				
-				showGridAndHideForms();
-			document.getElementById('divcontent').style.display='none';
-			$('#txtSearch').focus();
-			$('#txtSearch').select();
-		} catch (ex) {
-			console.log('erro \n\n\n' + ex.message + '\n\n\n' + mytext);
-		}
+		var studentId = $('form').attr('data-student-id');
+		addStudentImport(mytema, mycategory, studentId, mygroup, mycode);
+		
+		var params = new URLSearchParams(window.location.search);
+		var mytema = params.get('tem');
+		var mycategory = params.get('cat');
+		var mycode = document.getElementById('mycode').value;
+		var myorder = document.getElementById('myorder').value;
+		var mygroup = document.getElementById('mygroup').value;
+		var mytext = document.getElementById('mytext').value.trim();
+		var mytext2 = document.getElementById('mytext2').value.trim();
+		var mytext3 = document.getElementById('mytext3').value.trim();
+		setTimeout(() => { refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext, mytext2, mytext3) }, 1000); // Executa novamente a cada 500 milisegundos
+		
+		showGridAndHideForms();
+		document.getElementById('divcontent').style.display='none';
+		$('#txtSearch').focus();
+		$('#txtSearch').select();
+	} catch (ex) {
+		console.log('erro \n\n\n' + ex.message + '\n\n\n' + mytext);
+	}
 }
 
 //This function refreshes the table
@@ -2021,7 +2104,9 @@ async function addStudentImport(mytema, mycategory, studentId, mygroup, mycode) 
 			var myorder = document.getElementById('myorder').value;
 			var mygroup = document.getElementById('mygroup').value;
 			var mytext = document.getElementById('mytext').value.trim();
-			refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext);
+			var mytext2 = document.getElementById('mytext2').value.trim();
+			var mytext3 = document.getElementById('mytext3').value.trim();
+			refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext, mytext2, mytext3);
 			showGridAndHideForms();
 		}
 		setTimeout(() => { updateStudentPlayOrder(mytema, mycategory, mygroup) }, 1000); // Executa após 5 segundos para esperar o processo de update/insert terminar
@@ -2191,6 +2276,8 @@ async function updateStudent(mytema, mycategory, studentId, mygroup, mycode) {
 				mygroup: student.mygroup,
 				mycode: student.mycode,
 				mytext: student.mytext,
+				mytext2: student.mytext2,
+				mytext3: student.mytext3,
 //				myorder: student.myorder,
 				mysearch: student.mysearch,
 				myoption1: student.myoption1,
@@ -2213,8 +2300,10 @@ async function updateStudent(mytema, mycategory, studentId, mygroup, mycode) {
 		var mygroup = document.getElementById('mygroup').value;
 		var mycode = '';
 		var mytext = '';
+		var mytext2 = '';
+		var mytext3 = '';
 		var myorder = '';
-		refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext);
+		refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext, mytext2, mytext3);
         refreshFormData({});
     } catch (ex) {
         console.log(ex.message);
@@ -2237,7 +2326,9 @@ async function deleteStudent(id) {
 		var myorder = document.getElementById('myorder').value;
 		var mygroup = document.getElementById('mygroup').value;
 		var mytext = document.getElementById('mytext').value.trim();
-		refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext);
+		var mytext2 = document.getElementById('mytext2').value.trim();
+		var mytext3 = document.getElementById('mytext3').value.trim();
+		refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext, mytext2, mytext3);
     } catch (ex) {
         console.log(ex.message);
     }
@@ -2290,6 +2381,8 @@ function getStudentFromForm(mytema, mycategory, studentId, mygroup, mycode) {
 //		myorder: myorderFormated,
 		mygroup: $('#mygroup').val(),
         mytext: $('#mytext').val(),
+        mytext2: $('#mytext2').val(),
+        mytext3: $('#mytext3').val(),
 		mysearch: removeSpecials($('#mytext').val()),
 		myoption1: $('#myoption1').val(),
 		myoption2: $('#myoption2').val(),
@@ -2323,13 +2416,15 @@ function getStudentFromForm(mytema, mycategory, studentId, mygroup, mycode) {
     return student;
 }
 
-function setStudentFromImport(mytema, mycategory, mygroup, mycode, myorder, mytext, myoption1, myoptionkey1, myoption2, myoptionkey2, myoption3, myoptionkey3, myoption4, myoptionkey4, myoption5, myoptionkey5, myoption6, myoptionkey6, myoption7, myoptionkey7, myoption8, myoptionkey8) {
+function setStudentFromImport(mytema, mycategory, mygroup, mycode, myorder, mytext1, mytext2, mytext3, myoption1, myoptionkey1, myoption2, myoptionkey2, myoption3, myoptionkey3, myoption4, myoptionkey4, myoption5, myoptionkey5, myoption6, myoptionkey6, myoption7, myoptionkey7, myoption8, myoptionkey8) {
 //	document.getElementById('mytema').value = mytema;
 //	document.getElementById('mycategory').value = mycategory;
 	document.getElementById('mygroup').value = mygroup;
 	document.getElementById('mycode').value = mycode;
 	document.getElementById('myorder').value = myorder;
-	document.getElementById('mytext').value = mytext;
+	document.getElementById('mytext').value = mytext1;
+	document.getElementById('mytext2').value = mytext2;
+	document.getElementById('mytext3').value = mytext3;
 	document.getElementById('myoption1').value = myoption1;
 	document.getElementById('myoption2').value = myoption2;
 	document.getElementById('myoption3').value = myoption3;
@@ -2391,7 +2486,7 @@ async function salvarLinkHelp(mytema, mycategory, mygroup, mycode, myorder, answ
 	valor += '\n\n' + answerincorrect3;
 	valor += '\n<key>' + answerincorrect3 + '</key>';
 
-	salvarRegistro(mytema, mycategory, mygroup, mycode, myorder, valor);
+	salvarRegistro(mytema, mycategory, mygroup, mycode, myorder, valor, withoutkeylink, '', '');
 //	alert(': \n mytema='+mytema + '\n mycategory='+mycategory + '\n mygroup='+mygroup + '\n mycode='+mycode + '\n myorder='+myorder + '\n\n [' + valor + ']');
 }
 
@@ -3211,6 +3306,8 @@ function refreshFormData(student) {
     $('#mycode').val(student.mycode);
     $('#myorder').val(student.myorder);
     $('#mytext').val(student.mytext);
+    $('#mytext2').val(student.mytext2);
+    $('#mytext3').val(student.mytext3);
     $('#mysearch').val(student.mysearch);
     $('#myoption1').val(student.myoption1);
     $('#myoption2').val(student.myoption2);
@@ -3392,7 +3489,9 @@ function moveCursor(mycode, col, evento, index) {
 			var myorder = document.getElementById('myorder').value;
 			var mygroup = document.getElementById('mygroup').value;
 			var mytext = document.getElementById('mytext').value.trim();
-			refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext);
+			var mytext2 = document.getElementById('mytext2').value.trim();
+			var mytext3 = document.getElementById('mytext3').value.trim();
+			refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext, mytext2, mytext3);
 		}
     } else if (evento.keyCode == 27 || event.which == 27) { //ESC
 		if (localStorage.getItem('valueAoVivo') == 'false') {
@@ -3445,7 +3544,9 @@ function datashow(index, col, code) {
 			var myorder = document.getElementById('myorder').value;
 			var mygroup = document.getElementById('mygroup').value;
 			var mytext = document.getElementById('mytext').value.trim();
-			refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext);
+			var mytext2 = document.getElementById('mytext2').value.trim();
+			var mytext3 = document.getElementById('mytext3').value.trim();
+			refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext, mytext2, mytext3);
 		}
 		localStorage.setItem('valueAutor', ' ');
 		if (localStorage.getItem('valueArt') == '2') {
@@ -3501,7 +3602,9 @@ function chooseChapter(content) {
 		var myorder = document.getElementById('myorder').value;
 		var mygroup = document.getElementById('mygroup').value;
 		var mytext = document.getElementById('mytext').value.trim();
-		refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext);
+		var mytext2 = document.getElementById('mytext2').value.trim();
+		var mytext3 = document.getElementById('mytext3').value.trim();
+		refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext, mytext2, mytext3);
 		if (document.getElementById('txtSearch').value.length <= 1) { // pesquisa somente com mais de 1 caracter preenchido no campo search
 			if (document.getElementById('selectMygroup').selectedIndex == '1') {
 				showBible();
