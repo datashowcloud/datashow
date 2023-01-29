@@ -222,15 +222,15 @@ input:checked[type="checkbox"]::before{
 		<span class="navbar-toggler-icon flutuante"></span>
 		<button id="btnPause" class="btn btn-outline-secondary flutuante" title="Sair da fase" style="color:white; display:none;"><i class="fa fa-remove"></i></button>
     </button>
-    <div class="offcanvas offcanvas-top text-bg-dark bg-dark" style="height:260px;" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+    <div class="offcanvas offcanvas-top text-bg-dark bg-dark" style="height:290px;" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Escolha um tema:</h5>
+        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Escolha o tema:</h5>
         <button type="button" class="btn-close btn-close-white flutuante" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 		  <li class="nav-item">
-			<table align=center>
+			<table border=1 align=center>
 				<tr>
 					<td>
 						<img id="imgTema1MenuTopo" src="clf-c01-b.png" class="btn btn-outline-secondary flutuante" width="110px" style="cursor:pointer; display:'none';" title="AWS CLF-C01"></img>
@@ -247,6 +247,7 @@ input:checked[type="checkbox"]::before{
 						<br/>ORACLE <br/>1Z0-1085-22
 					</td>
 				</tr/>
+				<tr> <td colspan=5> <font size=1><i>versão 29.20.56 &copy; contato@tamastigadu.com.br</i></font> </td> </tr> <!-- datashowcloud2022@gmail.com -->
 			</table>
           </li>
         </ul>
@@ -279,17 +280,19 @@ input:checked[type="checkbox"]::before{
 		</div>
 		
 		<table border=0 id="tblCategory" style="width:310px; color:gray;" align=center cellspacing=10 cellpadding=10>
-			<tr><td style="color:gray; font-size:22px;">Escolha o tema:</td></tr>
+			<tr><td style="color:gray; font-size:22px;">Escolha um tema:</td></tr>
 			<tr>
 				<td style="color:gray;">
-					<img  src="clf-c01.png" id="imgTema1Apresentacao" class="btn btn-outline-secondary flutuante" width="140px" style="cursor:pointer; display:'none';" title="AWS CLF-C01"></img>
+					<i class="fa fa-play" style="color:#3CB371; font-size:15px;"></i>
+					<img src="clf-c01.png" id="imgTema1Apresentacao" class="btn btn-outline-secondary avatarflutuante" width="140px" style="cursor:pointer; display:'none'; border-radius:50%;" title="AWS CLF-C01"></img>
 					<br/><br/>
-					<img src="az-900.png" id="imgTema2Apresentacao" class="btn btn-outline-secondary flutuante" width="140px" style="cursor:pointer; display:'none';" title="AZURE AZ-900"></img>
+					<i class="fa fa-play" style="color:#3CB371; font-size:15px;"></i>
+					<img src="az-900.png" id="imgTema2Apresentacao" class="btn btn-outline-secondary avatarflutuante" width="140px" style="cursor:pointer; display:'none'; border-radius:50%;" title="AZURE AZ-900"></img>
 					<br/><br/>
-					<img src="1z0-1085-22.png" id="imgTema3Apresentacao" class="btn btn-outline-secondary flutuante" border=1 style="cursor:pointer; display:'none'; height:140px;" title="ORACLE 1Z0-1085-22"></img>
+					<i class="fa fa-play" style="color:#3CB371; font-size:15px;"></i>
+					<img src="1z0-1085-22.png" id="imgTema3Apresentacao" class="btn btn-outline-secondary avatarflutuante" border=1 style="cursor:pointer; display:'none'; border-radius:50%; height:140px;" title="ORACLE 1Z0-1085-22"></img>
 				</td>
 			</tr>
-			<tr> <td> <font size=1><i>versão 29.00.52 &copy; datashowcloud2022@gmail.com</i></font> </td> </tr>
 		</table>
 
 		<table id="tblGrid" border=0 style="width:98%; display:none;" align=center>
@@ -313,8 +316,8 @@ input:checked[type="checkbox"]::before{
 				<label id="btnNext" class="next flutuante" title="Exibe a próxima pergunta">&nbsp;<i class="fa fa-chevron-right"></i></label>
 
 				<table border=0 width="95%" align=center style="border-color:#EEEEEE;">
-					<tr><td id="mytextSim" style="display:'none'; text-align:justify; width:1%;" colspan=4></td></tr>
-					<tr><td id="mytextSim2" style="display:none; text-align:justify; width:1%;" colspan=4></td></tr>
+					<tr><td id="mytextSim" style="display:'none'; text-align:justify; width:1%;"></td></tr>
+					<tr><td id="mytextSim2" style="display:none; text-align:justify; width:1%;"></td></tr>
 				</table>
 				<table id="tableFormSimQuestions" border=0 align=center style="display:'none'; width:85%;" Zclass="table table-hover">
 					<tr><td id="mycorrect1Sim" style="display:none; text-align:justify;">
