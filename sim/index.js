@@ -970,7 +970,7 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 		}
 		
 		var varButtonRestart = 'color:gray; font-size:20px;';
-		var varCount = '<div class="playsim btn btn-success avatarflutuante" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '; ">' + parseInt(students_count - 1) + '</div>';
+		var varCount = '<div class="playsim btn btn-success flutuante" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '; ">' + parseInt(students_count - 1) + '</div>';
 		if (parseInt(students_count - 1) == 0) {
 			varCount = '';
 			varButtonRestart = 'color:' + CONST_MEDIUM_SEA_GREEN + '; font-size:20px;';
@@ -985,7 +985,7 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 		var varNivelLinha = '';
 		var varNivelMax = '';
 		var varButtonLineStyle = 'color:gray; font-size:18px;';
-		var varButtonLine = '<i class=\"fa fa-play\" style="color:' + CONST_MEDIUM_SEA_GREEN + '; font-size:15px;"></i>';
+		var varButtonLine = '<i class=\"fa fa-play avatarflutuante\" style="color:' + CONST_MEDIUM_SEA_GREEN + '; font-size:15px;"></i>';
 		var varRestart = '';
 		
 		students.forEach(function (student) {
@@ -1037,7 +1037,7 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + student.mypoints + '%</' + varTdTh + '>'
 				
 				//botão playsim ou link refazer
-				+ '<' + varTdTh + ' style="text-align:right;">' + varRestart + varButtonLine + ' ' + varCount + '</a>' + "</" + varTdTh + ">"
+				+ '<' + varTdTh + ' style="text-align:right;">' + varButtonLine + ' ' + varRestart + varCount + '</a>' + "</" + varTdTh + ">"
 
 
 				+ "</" + varTdTh + ">"
