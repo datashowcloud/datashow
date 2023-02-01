@@ -476,8 +476,8 @@ function registerEvents() {
 		var myid = document.getElementById('myidSim').value;
 		var mygroup = document.getElementById('mygroupSim').value;
 		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
-//		savePoints(mytema, mycategory, myid, mygroup, mycode);
-		setTimeout(() => { savePoints(mytema, mycategory, myid, mygroup, mycode) }, 2000); // espera salvar antes de atualizar a Fase do Nível
+		savePoints(mytema, mycategory, myid, mygroup, mycode);
+//		setTimeout(() => { savePoints(mytema, mycategory, myid, mygroup, mycode) }, 2000); // espera salvar antes de atualizar a Fase do Nível
 		changeFaseNivel(mytema, mycategory, myid, mygroup, mycode);
 		exitQuestions();
 /*		showGridAndHideForms();
