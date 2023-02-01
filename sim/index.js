@@ -477,7 +477,6 @@ function registerEvents() {
 		var mygroup = document.getElementById('mygroupSim').value;
 		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
 		savePoints(mytema, mycategory, myid, mygroup, mycode);
-//		setTimeout(() => { savePoints(mytema, mycategory, myid, mygroup, mycode) }, 2000); // espera salvar antes de atualizar a Fase do Nível
 		changeFaseNivel(mytema, mycategory, myid, mygroup, mycode);
 		exitQuestions();
 /*		showGridAndHideForms();
@@ -548,7 +547,7 @@ function registerEvents() {
 
 async function initConfigGeneral() {
 	GLOBAL_textcolor = 'gray';
-	GLOBAL_background = 'white';
+	GLOBAL_background = 'black';
 	GLOBAL_buttoncolor = 'btn-colors';
 	try {
 		var configgeneral = {
