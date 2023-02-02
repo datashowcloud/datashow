@@ -6,6 +6,8 @@ var CONST_FASE_MAX = 99; //6;
 var CONST_ORANGE = '#FF4700';
 var CONST_MEDIUM_SEA_GREEN = '#3CB371';
 var CONST_DEEP_SKY_BLUE = '#00BFFF';
+var CONST_ORANGE_DESTAK = '#ff9955';
+var CONST_GRAY = 'gray';
 var GLOBAL_textcolor = '';
 var GLOBAL_background = '';
 var GLOBAL_buttoncolor = '';
@@ -47,9 +49,9 @@ function getDbSchema() {
         name: 'Student',
         columns: {
 			id: { primaryKey: true, autoIncrement: true },
-			mytema: { Null: false, dataType: 'string' }, //nível de agrupamento, exemplo: AWS Practitioner, AZURE...
-			mycategory: { Null: false, dataType: 'string' }, //sub nível de agrupamento, exemplo: Apresentação, Treinamento, Experiência, Simulado, Desafios...
-			mygroup: { notNull: true, dataType: 'string' }, //qual grupo a pergunta pertence, exemplo: domínio 1, domínio 2, domínio 3...
+			mytema: { Null: false, dataType: 'string' }, //nível de agrupamento, exemplo: AWS Practitioner, AZURE
+			mycategory: { Null: false, dataType: 'string' }, //sub nível de agrupamento, exemplo: Apresentação, Treinamento, Experiência, Simulado, Desafios
+			mygroup: { notNull: true, dataType: 'string' }, //qual grupo a pergunta pertence, exemplo: domínio 1, domínio 2, domínio 3
 			mycode: { Null: false, dataType: 'string' }, //código único numérico da pergunta
 			mytext: { notNull: true, dataType: 'string' }, //uma pergunta na língua 1
 			mytext2: { Null: false, dataType: 'string' }, //uma pergunta na língua 2
@@ -80,7 +82,7 @@ function getDbSchema() {
 			myoptionkey6: { Null: false, dataType: 'string' }, //idem
 			myoptionkey7: { Null: false, dataType: 'string' }, //idem
 			myoptionkey8: { Null: false, dataType: 'string' }, //idem
-			mypoints: { Null: false, dataType: 'string' }, //porcentagem ou índice de acerto na tentativa 4, 5, 6, 7... exemplo: 85,50,10,100 (todas separadas por vírgula)
+			mypoints: { Null: false, dataType: 'string' }, //porcentagem ou índice de acerto na tentativa 4, 5, 6, 7, exemplo: 85,50,10,100 (todas separadas por vírgula)
 			mycorretas: { Null: false, dataType: 'string' }, //quantidade de corretas
 			myincorretas: { Null: false, dataType: 'string' }, //quantidade de incorretas
 			mynaorespondidas: { Null: false, dataType: 'string' }, //quantidade de não respondidas
@@ -125,12 +127,12 @@ function getDbSchema() {
 			id: { primaryKey: true, autoIncrement: true }, //identificação única
 			mygroup: { notNull: true, dataType: 'string' }, //valor idêntico à tabela Student
 			mycode: { notNull: true, dataType: 'string' }, //valor único idêntico à tabela Student
-			mypoints: { Null: false, dataType: 'string' }, //índice de acerto na tentativa 4, 5, 6, 7... exemplo: 85,50,10,100 (todas separadas por vírgula)
-			mytry: { notNull: true, dataType: 'string' }, //quantidade de tentativas, exemplo: 1, 2, 3...; tentativa 1, tentativa 2, tentativa 3...
+			mypoints: { Null: false, dataType: 'string' }, //índice de acerto na tentativa 4, 5, 6, 7, exemplo: 85,50,10,100 (todas separadas por vírgula)
+			mytry: { notNull: true, dataType: 'string' }, //quantidade de tentativas, exemplo: 1, 2, 3; tentativa 1, tentativa 2, tentativa 3
 			mypercent: { notNull: true, dataType: 'string' }, //porcentagem que conseguiu
 			mycorrects: { notNull: true, dataType: 'string' }, //quantidade de perguntas com respostas corretas
 			myincorrects: { notNull: true, dataType: 'string' }, //quantidade de perguntas com respostas erradas
-			myanswers: { notNull: true, dataType: 'string' }, //todas respostas separadas por vírgula, exemplo: "01a,02bc,03d,05a...". Exemplo com a resposta 04 não foi respondida.
+			myanswers: { notNull: true, dataType: 'string' }, //todas respostas separadas por vírgula, exemplo: "01a,02bc,03d,05a". Exemplo com a resposta 04 não foi respondida.
 			mytotal: { notNull: true, dataType: 'string' } //quantidade de perguntas
         }
     }
@@ -532,7 +534,7 @@ function registerEvents() {
 			document.getElementById('mytextSim2').style.display='';
 			document.getElementById('mytextSim').style.display='none';
 		} else {
-			alert('Ainda sem tradução nessa fase.');
+			alert('Fase ainda sem tradução.');
 		}
 	})
 	$('#mytextSim2').click(function () {
@@ -727,131 +729,103 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 				
 					for (var index=0; index<=8; index++) {
 						valorIndice = myorder.substring(index,index+1);
-						if (valorIndice == '1') {
-							var textlink = ''; var linkhref = '';
-							if (document.getElementById(student.myoptionkey1) != null) {
-								textlink = document.getElementById(student.myoptionkey1).innerHTML;
-								linkhref = document.getElementById('link_' + student.myoptionkey1);
+						var textlink = '';
+						var linkhref = '';
+						if (valorIndice == '1') { textlink = student.myoptionkey1; }
+						else if (valorIndice == '2') { textlink = student.myoptionkey2; }
+						else if (valorIndice == '3') { textlink = student.myoptionkey3; }
+						else if (valorIndice == '4') { textlink = student.myoptionkey4; }
+						else if (valorIndice == '5') { textlink = student.myoptionkey5; }
+						else if (valorIndice == '6') { textlink = student.myoptionkey6; }
+						else if (valorIndice == '7') { textlink = student.myoptionkey7; }
+						else if (valorIndice == '8') { textlink = student.myoptionkey8; }
+						if (textlink.substring(0, 4) == 'tip:') {
+							textlink = '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink.substring(4) + ' </font>' + '</zzz>';
+							linkhref = '';
+						} else {
+							if (document.getElementById(textlink) != null && textlink.length > 0) {
+								textlink = '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + document.getElementById(textlink).innerHTML + ' </font>' + '</zzz>';;
+								linkhref = '<br/><a href=' + document.getElementById('link_' + textlink) + ' target="_blank" style="color:gray;">veja mais na internet</a>';
 							}
+						}
+
+						if (valorIndice == '1') {
 							document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-							' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+							' <input type=checkbox onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" value=' + valorIndice + ' '
 							+ student.mycorrect1answer + ' class="flutuante" style="border-radius: 50%;"> ' + '<font color=' + GLOBAL_textcolor + '>' +selectKeyMyoption(student.myoption1) + ' </font>'
-							+ '<a href="#"><i class="fa fa-flag" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"> (cola)</i></a>'
-							+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:' + CONST_MEDIUM_SEA_GREEN + '; display:none"><i class="fa fa-check"></i> <b>correta</b>'
-							+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
-							+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
+							+ '<a href="#"><i class="fa fa-plus" style="color:' + CONST_MEDIUM_SEA_GREEN + ';" onclick="showTip(' + valorIndice + ');" > <font color=gray>(cola)</i></a>'
+							+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:' + CONST_GRAY + '; display:none">'
+							+ textlink + linkhref;
 							if (student.myoption1 != '') {
 								document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 							}
 						} else if (valorIndice == '2') {
-							var textlink = ''; var linkhref = '';
-							if (document.getElementById(student.myoptionkey2) != null) {
-								textlink = document.getElementById(student.myoptionkey2).innerHTML;
-								linkhref = document.getElementById('link_' + student.myoptionkey2);
-							}
 							document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-							' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+							' <input type=checkbox onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" value=' + valorIndice + ' '
 							+ student.mycorrect2answer + ' class="flutuante" style="border-radius: 50%;"> ' + '<font color=' + GLOBAL_textcolor + '>' +selectKeyMyoption(student.myoption2) + ' </font>'
-							+ '<a href="#"><i class="fa fa-flag" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"> (cola)</i></a>'
-							+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:' + CONST_MEDIUM_SEA_GREEN + '; display:none"><i class="fa fa-check"></i> <b>correta</b>'
-							+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
-							+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
+							+ '<a href="#"><i class="fa fa-plus" style="color:' + CONST_MEDIUM_SEA_GREEN + ';" onclick="showTip(' + valorIndice + ');> <font color=gray>(cola)</font></i></a>'
+							+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:' + CONST_GRAY + '; display:none">' //<i class="fa fa-check"></i> correta
+							+ textlink + linkhref;
 							if (student.myoption2 != '') {
 								document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 							}
 						} else if (valorIndice == '3') {
-							var textlink = ''; var linkhref = '';
-							if (document.getElementById(student.myoptionkey3) != null) {
-								textlink = document.getElementById(student.myoptionkey3).innerHTML;
-								linkhref = document.getElementById('link_' + student.myoptionkey3);
-							}
 							document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-							' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+							' <input type=checkbox onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" value=' + valorIndice + ' '
 							+ student.mycorrect3answer + ' class="flutuante" style="border-radius: 50%;"> ' + '<font color=' + GLOBAL_textcolor + '>' +selectKeyMyoption(student.myoption3) + ' </font>'
-							+ '<a href="#"><i class="fa fa-flag" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"> (cola)</i></a>'
-							+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:' + CONST_MEDIUM_SEA_GREEN + '; display:none"><i class="fa fa-check"></i> <b>correta</b>'
-							+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
-							+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
+							+ '<a href="#"><i class="fa fa-plus" style="color:' + CONST_MEDIUM_SEA_GREEN + ';" onclick="showTip(' + valorIndice + ');"> <font color=gray>(cola)</font></i></a>'
+							+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:' + CONST_GRAY + '; display:none">' //<i class="fa fa-check"></i> correta
+							+ textlink + linkhref;
 							if (student.myoption3 != '') {
 								document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 							}
 						} else if (valorIndice == '4') {
-							var textlink = ''; var linkhref = '';
-							if (document.getElementById(student.myoptionkey4) != null) {
-								textlink = document.getElementById(student.myoptionkey4).innerHTML;
-								linkhref = document.getElementById('link_' + student.myoptionkey4);
-							}
 							document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-							' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+							' <input type=checkbox onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" value=' + valorIndice + ' '
 							+ student.mycorrect4answer + ' class="flutuante" style="border-radius: 50%;"> ' + '<font color=' + GLOBAL_textcolor + '>' +selectKeyMyoption(student.myoption4) + ' </font>'
-							+ '<a href="#"><i class="fa fa-flag" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"> (cola)</i></a>'
-							+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:' + CONST_MEDIUM_SEA_GREEN + '; display:none"><i class="fa fa-check"></i> <b>correta</b>'
-							+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
-							+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
+							+ '<a href="#"><i class="fa fa-plus" style="color:' + CONST_MEDIUM_SEA_GREEN + ';" onclick="showTip(' + valorIndice + ');"> <font color=gray>(cola)</font></i></a>'
+							+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:' + CONST_GRAY + '; display:none">' //<i class="fa fa-check"></i> correta
+							+ textlink + linkhref;
 							if (student.myoption4 != '') {
 								document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 							}
 						} else if (valorIndice == '5') {
-							var textlink = ''; var linkhref = '';
-							if (document.getElementById(student.myoptionkey5) != null) {
-								textlink = document.getElementById(student.myoptionkey5).innerHTML;
-								linkhref = document.getElementById('link_' + student.myoptionkey5);
-							}
 							document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-							' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+							' <input type=checkbox onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" value=' + valorIndice + ' '
 							+ student.mycorrect5answer + ' class="flutuante" style="border-radius: 50%;"> ' + '<font color=' + GLOBAL_textcolor + '>' +selectKeyMyoption(student.myoption5) + ' </font>'
-							+ '<a href="#"><i class="fa fa-flag" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"> (cola)</i></a>'
-							+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
-							+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
-							+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
+							+ '<a href="#"><i class="fa fa-plus" style="color:' + CONST_MEDIUM_SEA_GREEN + ';" onclick="showTip(' + valorIndice + ');"> <font color=gray>(cola)</font></i></a>'
+							+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:' + CONST_GRAY + '; display:none">' //<i class="fa fa-remove"></i> incorreta
+							+ textlink + linkhref;
 							if (student.myoption5 != '') {
 								document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 							}
 						} else if (valorIndice == '6') {
-							var textlink = ''; var linkhref = '';
-							if (document.getElementById(student.myoptionkey6) != null) {
-								textlink = document.getElementById(student.myoptionkey6).innerHTML;
-								linkhref = document.getElementById('link_' + student.myoptionkey6);
-							}
 							document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-							' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+							' <input type=checkbox onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" value=' + valorIndice + ' '
 							+ student.mycorrect6answer + ' class="flutuante" style="border-radius: 50%;"> ' + '<font color=' + GLOBAL_textcolor + '>' +selectKeyMyoption(student.myoption6) + ' </font>'
-							+ '<a href="#"><i class="fa fa-flag" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"> (cola)</i></a>'
-							+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
-							+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
-							+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
+							+ '<a href="#"><i class="fa fa-plus" style="color:' + CONST_MEDIUM_SEA_GREEN + ';" onclick="showTip(' + valorIndice + ');"> <font color=gray>(cola)</font></i></a>'
+							+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:' + CONST_GRAY + '; display:none">' //<i class="fa fa-remove"></i> incorreta
+							+ textlink + linkhref;
 							if (student.myoption6 != '') {
 								document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 							}
 						} else if (valorIndice == '7') {
-							var textlink = ''; var linkhref = '';
-							if (document.getElementById(student.myoptionkey7) != null) {
-								textlink = document.getElementById(student.myoptionkey7).innerHTML;
-								linkhref = document.getElementById('link_' + student.myoptionkey7);
-							}
 							document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-							' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+							' <input type=checkbox onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" value=' + valorIndice + ' '
 							+ student.mycorrect7answer + ' class="flutuante" style="border-radius: 50%;"> ' + '<font color=' + GLOBAL_textcolor + '>' +selectKeyMyoption(student.myoption7) + ' </font>'
-							+ '<a href="#"><i class="fa fa-flag" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"> (cola)</i></a>'
-							+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
-							+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
-							+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
+							+ '<a href="#"><i class="fa fa-plus" style="color:' + CONST_MEDIUM_SEA_GREEN + ';" onclick="showTip(' + valorIndice + ');"> <font color=gray>(cola)</font></i></a>'
+							+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:' + CONST_GRAY + '; display:none">' //<i class="fa fa-remove"></i> incorreta
+							+ textlink + linkhref;
 							if (student.myoption7 != '') {
 								document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 							}
 						} else if (valorIndice == '8') {
-							var textlink = ''; var linkhref = '';
-							if (document.getElementById(student.myoptionkey8) != null) {
-								textlink = document.getElementById(student.myoptionkey8).innerHTML;
-								linkhref = document.getElementById('link_' + student.myoptionkey8);
-							}
 							document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-							' <input onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" type=checkbox value=' + valorIndice + ' '
+							' <input type=checkbox onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" value=' + valorIndice + ' '
 							+ student.mycorrect8answer + ' class="flutuante" style="border-radius: 50%;"> ' + '<font color=' + GLOBAL_textcolor + '>' +selectKeyMyoption(student.myoption8) + ' </font>'
-							+ '<a href="#"><i class="fa fa-flag" style="color:#ff9955;" onclick="alert(\'' + textlink.trim().replaceAll('<b>', '').replaceAll('</b>', '') + '\')"> (cola)</i></a>'
-							+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:red; display:none"><i class="fa fa-remove"></i> <b>incorreta</b>'
-							+ '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink + '... </font>' + '</zzz>'
-							+ '<br/><a href=' + linkhref + ' target="_blank">veja mais na internet</a>';
+							+ '<a href="#"><i class="fa fa-plus" style="color:' + CONST_MEDIUM_SEA_GREEN + ';" onclick="showTip(' + valorIndice + ');"> <font color=gray>(cola)</font></i></a>'
+							+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:' + CONST_GRAY + '; display:none">' //<i class="fa fa-remove"></i> incorreta
+							+ textlink + linkhref;
 							if (student.myoption8 != '') {
 								document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
 							}
@@ -1820,7 +1794,7 @@ function getArrayAnswers(valor) {
 	nextpos = valor.indexOf('\n\n', posicao);
 //	console.log(valor);
 	for (index=0; index<=4; index++) {
-		var valorkey = '';
+		var valorkey = ''; var valortip = '';
 		var valorsemkey = '';
 		
 		var ok = valor.substring(posicao, posicao+5).trim();
@@ -1831,22 +1805,35 @@ function getArrayAnswers(valor) {
 			valorok = valor.substring(posicao, nextpos).replaceAll('<ok>', '');
 
 			valorsemkey = removeTags(valorok, 'key');
+			valorsemkey = removeTags(valorok, 'tip');
 			arrayok.push(valorsemkey.trim());
 //			alert('valorok_semtag: [' + valorsemkey.trim() + ']');
 
 			valorkey = buscaValorTag(valorok, 'key');
-			arrayok.push(valorkey.trim());
+			valortip = buscaValorTag(valorok, 'tip');
+			if (valorkey.length > 0) {
+				arrayok.push(valorkey.trim());
+			} else {
+				arrayok.push('tip:'+valortip.trim());
+			}
+//		alert('valorkey='+valorkey.length + ' valortip='+valortip.length);
 //			alert('arrayok: [' + arrayok + ']');
 		//KO
 		} else {
 			valorKO = valor.substring(posicao, nextpos).replaceAll('<ok>', '');
 
 			valorsemkey = removeTags(valorKO, 'key');
+			valorsemkey = removeTags(valorKO, 'tip');
 			arrayKO.push(valorsemkey.trim());
 //			alert('valorKO_semkey: [' + valorsemkey.trim() + ']');
 
 			valorkey = buscaValorTag(valorKO, 'key');
-			arrayKO.push(valorkey.trim());
+			valortip = buscaValorTag(valorKO, 'tip');
+			if (valorkey.length > 0) {
+				arrayKO.push(valorkey.trim());
+			} else {
+				arrayKO.push('tip:'+valortip.trim());
+			}
 //			alert('array_KO: [' + arrayKO + ']');
 		}
 		//limpa variáveis
@@ -1905,28 +1892,60 @@ function getLanguage(language, mytext) {
 		if (posicaofim == -1) {
 			posicaofim = mytext.indexOf(spanishini, posicaoini);
 			if (posicaofim == -1) {
-				return retorno = mytext.substring(posicaoini, mytext.length);
+				posicaofim = mytext.indexOf('\n\n', posicaoini);
+				if (posicaofim == -1) {
+					posicaofim = mytext.length;
+				}
+				return mytext.substring(posicaoini, posicaofim);
 			} else {
-				return retorno = mytext.substring(posicaoini, posicaofim);
+				return mytext.substring(posicaoini, posicaofim);
 			}
 		} else {
-			return retorno = mytext.substring(posicaoini, posicaofim);
+			return mytext.substring(posicaoini, posicaofim);
 		}
 	} else {
 		posicaoini = mytext.indexOf(languageini, posicaoini);
 		if (posicaoini == -1) {
-			return retorno = '';
+			return '';
 		} else {
 			posicaoini = posicaoini + languageini.length;
 			posicaofim = mytext.indexOf(languagefim, posicaoini);
 			if (posicaofim == -1) {
-				return retorno = '';
+				return '';
 			} else {
-				return retorno = mytext.substring(posicaoini, posicaofim);
+				return mytext.substring(posicaoini, posicaofim);
 			}
 		}
 	}
 	return retorno;
+}
+
+function setStudentFromImport(mytema, mycategory, mygroup, mycode, myorder, mytext1, mytext2, mytext3, myoption1, myoptionkey1, myoption2, myoptionkey2, myoption3, myoptionkey3, myoption4, myoptionkey4, myoption5, myoptionkey5, myoption6, myoptionkey6, myoption7, myoptionkey7, myoption8, myoptionkey8) {
+//	document.getElementById('mytema').value = mytema;
+//	document.getElementById('mycategory').value = mycategory;
+	document.getElementById('mygroup').value = mygroup;
+	document.getElementById('mycode').value = mycode;
+	document.getElementById('myorder').value = myorder;
+	document.getElementById('mytext').value = mytext1;
+	document.getElementById('mytext2').value = mytext2;
+	document.getElementById('mytext3').value = mytext3;
+	document.getElementById('myoption1').value = myoption1;
+	document.getElementById('myoption2').value = myoption2;
+	document.getElementById('myoption3').value = myoption3;
+	document.getElementById('myoption4').value = myoption4;
+	document.getElementById('myoption5').value = myoption5;
+	document.getElementById('myoption6').value = myoption6;
+	document.getElementById('myoption7').value = myoption7;
+	document.getElementById('myoption8').value = myoption8;
+	document.getElementById('myoptionkey1').value = myoptionkey1;
+	document.getElementById('myoptionkey2').value = myoptionkey2;
+	document.getElementById('myoptionkey3').value = myoptionkey3;
+	document.getElementById('myoptionkey4').value = myoptionkey4;
+	document.getElementById('myoptionkey5').value = myoptionkey5;
+	document.getElementById('myoptionkey6').value = myoptionkey6;
+	document.getElementById('myoptionkey7').value = myoptionkey7;
+	document.getElementById('myoptionkey8').value = myoptionkey8;
+//	alert(' mygroup='+document.getElementById('mygroup').value + '\n mycode='+document.getElementById('mycode').value + '\n myorder='+myorder + '\n mytext=[' +mytext+']\n' + '\n '+myoption1 + ', '+myoptionkey1 + '\n '+myoption2 + ', '+myoptionkey2 + '\n '+myoption3 + ', '+myoptionkey3 + '\n '+myoption4 + ', '+myoptionkey4 + '\n '+myoption5 + ', '+myoptionkey5 + '\n '+myoption6 + ', '+myoptionkey6 + '\n '+myoption7 + ', '+myoptionkey7 + '\n '+myoption8 + ', '+myoptionkey8);
 }
 
 async function salvarRegistro(mytema, mycategory, mygroup, mycode, myorder, valor, mytext1, mytext2, mytext3) {
@@ -2380,50 +2399,6 @@ function getStudentFromForm(mytema, mycategory, studentId, mygroup, mycode) {
     return student;
 }
 
-function setStudentFromImport(mytema, mycategory, mygroup, mycode, myorder, mytext1, mytext2, mytext3, myoption1, myoptionkey1, myoption2, myoptionkey2, myoption3, myoptionkey3, myoption4, myoptionkey4, myoption5, myoptionkey5, myoption6, myoptionkey6, myoption7, myoptionkey7, myoption8, myoptionkey8) {
-//	document.getElementById('mytema').value = mytema;
-//	document.getElementById('mycategory').value = mycategory;
-	document.getElementById('mygroup').value = mygroup;
-	document.getElementById('mycode').value = mycode;
-	document.getElementById('myorder').value = myorder;
-	document.getElementById('mytext').value = mytext1;
-	document.getElementById('mytext2').value = mytext2;
-	document.getElementById('mytext3').value = mytext3;
-	document.getElementById('myoption1').value = myoption1;
-	document.getElementById('myoption2').value = myoption2;
-	document.getElementById('myoption3').value = myoption3;
-	document.getElementById('myoption4').value = myoption4;
-	document.getElementById('myoption5').value = myoption5;
-	document.getElementById('myoption6').value = myoption6;
-	document.getElementById('myoption7').value = myoption7;
-	document.getElementById('myoption8').value = myoption8;
-	document.getElementById('myoptionkey1').value = myoptionkey1;
-	document.getElementById('myoptionkey2').value = myoptionkey2;
-	document.getElementById('myoptionkey3').value = myoptionkey3;
-	document.getElementById('myoptionkey4').value = myoptionkey4;
-	document.getElementById('myoptionkey5').value = myoptionkey5;
-	document.getElementById('myoptionkey6').value = myoptionkey6;
-	document.getElementById('myoptionkey7').value = myoptionkey7;
-	document.getElementById('myoptionkey8').value = myoptionkey8;
-//	alert(' mygroup='+document.getElementById('mygroup').value + '\n mycode='+document.getElementById('mycode').value + '\n myorder='+myorder + '\n mytext=[' +mytext+']\n' + '\n '+myoption1 + ', '+myoptionkey1 + '\n '+myoption2 + ', '+myoptionkey2 + '\n '+myoption3 + ', '+myoptionkey3 + '\n '+myoption4 + ', '+myoptionkey4 + '\n '+myoption5 + ', '+myoptionkey5 + '\n '+myoption6 + ', '+myoptionkey6 + '\n '+myoption7 + ', '+myoptionkey7 + '\n '+myoption8 + ', '+myoptionkey8);
-//    $('#divFormAddUpdate').show();
-}
-
-async function refreshLinkHelp() {
-	var students = await jsstoreCon.select({
-		from: 'Student'
-		  , where: { mygroup: {like: '00' + ''} 
-		  }
-	});
-
-	var linkhelp = '<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/> <b>MINHA AJUDA</b> <br/><br/>';
-	students.forEach(function (student) {
-		linkhelp = linkhelp + getLinkHelp(student.mytext, student.myoption2, student.myoption1); //mytext=key, myoption2=href, myoption1=texto
-	})
-	linkhelp = linkhelp + '<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>';
-	document.getElementById('divlinkhelp').innerHTML = linkhelp;
-}
-
 async function salvarLinkHelp(mytema, mycategory, mygroup, mycode, myorder, answerincorrect1, answerincorrect2, answerincorrect3, answerincorrect4, save, keylink, hreflink, boldlink, textlink, textlink2, textlink3) {
 	
 	//remove separador --> da pergunta original
@@ -2530,7 +2505,7 @@ async function initLinkHelp() {
 	}
 	contadorMygroup = 10;
 	contadorMycode = 0;
-	//não se aplica
+	//Não Se Aplica
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', false, 'Não Se Aplica', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', '', 'Não Se Aplica', 'Not applicable', '');
 	
 	//título
@@ -2721,11 +2696,18 @@ async function initLinkHelp() {
 	
 	
 	
+	
+	
+	
+	
 	//não precisa gravar o restante na tabela porque já estão nos arquivos, exemplo: T3C4G16.html
 	var save = false;
 
 
-return;
+
+
+
+
 
 	//////////////////////////
 	// AZURE AZ-900 - LINKHELP
@@ -2736,6 +2718,11 @@ return;
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Não --> AZ-900: Não Se Aplica', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-cloud-computing', '', 'AZ-900: --> Não Se Aplica');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
+
+	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'AZ-900 Tip 001', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-cloud-computing', '', 'AZ-900 Tip 001 --> If you delete a resource group, all of the underlying resources also get deleted. Sim, se você excluir um grupo de recursos, todos os recursos subjacentes também serão excluídos.');
+	contadorMycode = String(parseInt(contadorMycode) + 1);
+
+
 
 
 
@@ -3101,23 +3088,6 @@ return;
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 
 	document.getElementById('divlinkhelp').innerHTML = linkhelp;
-
-
-
-	//preenche divlinkhelp se ainda estiver vazia
-	if (mytema == '1') {
-		initLinkHelp_clfc01(mytema, mycategory, contadorMygroup, contadorMycode);
-	} else {
-		initLinkHelp_az900(mytema, mycategory, contadorMygroup, contadorMycode);
-	}	
-}
-
-async function initLinkHelp_az900(mytema, mycategory, contadorMygroup, contadorMycode) {
-	var save = false; //não precisa gravar o restante na tabela porque já estão nos arquivos, exemplo: T1C1G11.html
-}
-
-async function initLinkHelp_clfc01(mytema, mycategory, contadorMygroup, contadorMycode) {
-	var save = false; //não precisa gravar o restante na tabela porque já estão nos arquivos, exemplo: T1C1G11.html
 }
 
 function showCorrect(valorindice, myid, mygroup, mycode) {
@@ -3129,15 +3099,23 @@ function showCorrect(valorindice, myid, mygroup, mycode) {
 	}
 	
 	if (document.getElementById('chkMycorrect'+valorindice+'answer').checked == true) {
-		document.getElementById('lblcorrect' + valorindice).style.display='block';
+//		document.getElementById('lblcorrect' + valorindice).style.display='block';
 		document.getElementById('chkMycorrect'+valorindice+'answer').disabled = true;
 	} else {
-		document.getElementById('lblcorrect' + valorindice).style.display='none';
+//		document.getElementById('lblcorrect' + valorindice).style.display='none';
 	}
 	var params = new URLSearchParams(window.location.search);
 	var mytema = params.get('tem');
 	var mycategory = params.get('cat');
 	updateStudentPlay(mytema, mycategory, myid, mygroup, mycode);
+}
+
+function showTip(valorindice) {
+	if (document.getElementById('lblcorrect' + valorindice).style.display == 'none') {
+		document.getElementById('lblcorrect' + valorindice).style.display='block';
+	} else {
+		document.getElementById('lblcorrect' + valorindice).style.display='none';
+	}
 }
 
 function showFormCategory() {
