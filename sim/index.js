@@ -8,9 +8,9 @@ var CONST_MEDIUM_SEA_GREEN = '#3CB371';
 var CONST_DEEP_SKY_BLUE = '#00BFFF';
 var CONST_ORANGE_DESTAK = '#ff9955';
 var CONST_GRAY = 'gray';
-var GLOBAL_textcolor = '';
-var GLOBAL_background = '';
-var GLOBAL_buttoncolor = '';
+var GLOBAL_textcolor = 'white';
+var GLOBAL_background = 'black';
+var GLOBAL_buttoncolor = 'btn-colors';
 var COL_LOGOTIPO = 5;
 var linkhelp = '';
 var CONTS_languagebra = '<img src="bandeirabra.png" class="flutuante" width="25px" style="cursor:pointer; border-radius:50%;" title="Traduzir para Português">';
@@ -545,10 +545,50 @@ function registerEvents() {
 			alert('Ainda sem tradução nessa fase.');
 		}
 	})
+	$('#chkMycorrect1answer').click(function () {
+		var index = '1';
+		setBackgroundColor(index, CONST_MEDIUM_SEA_GREEN);
+		showCorrect(index, '', '', '');
+	})
+	$('#chkMycorrect2answer').click(function () {
+		var index = '2';
+		setBackgroundColor(index, CONST_MEDIUM_SEA_GREEN);
+		showCorrect(index, '', '', '');
+	})
+	$('#chkMycorrect3answer').click(function () {
+		var index = '3';
+		setBackgroundColor(index, CONST_MEDIUM_SEA_GREEN);
+		showCorrect(index, '', '', '');
+	})
+	$('#chkMycorrect4answer').click(function () {
+		var index = '4';
+		setBackgroundColor(index, CONST_MEDIUM_SEA_GREEN);
+		showCorrect(index, '', '', '');
+	})
+	$('#chkMycorrect5answer').click(function () {
+		var index = '5';
+		setBackgroundColor(index, '#FF5555');
+		showCorrect(index, '', '', '');
+	})
+	$('#chkMycorrect6answer').click(function () {
+		var index = '6';
+		setBackgroundColor(index, '#FF5555');
+		showCorrect(index, '', '', '');
+	})
+	$('#chkMycorrect7answer').click(function () {
+		var index = '7';
+		setBackgroundColor(index, '#FF5555');
+		showCorrect(index, '', '', '');
+	})
+	$('#chkMycorrect8answer').click(function () {
+		var index = '8';
+		setBackgroundColor(index, '#FF5555');
+		showCorrect(index, '', '', '');
+	})
 }
 
 async function initConfigGeneral() {
-	GLOBAL_textcolor = 'gray';
+	GLOBAL_textcolor = 'white';
 	GLOBAL_background = 'black';
 	GLOBAL_buttoncolor = 'btn-colors';
 	try {
@@ -574,12 +614,12 @@ async function initConfigGeneral() {
 
 async function updateConfigGeneral() {	
 	if (GLOBAL_background == 'white') {
-		GLOBAL_textcolor = 'gray';
 		GLOBAL_background = 'black';
+		GLOBAL_textcolor = 'white';
 		GLOBAL_buttoncolor = 'btn-primary';
 	} else {
-		GLOBAL_textcolor = 'gray';
 		GLOBAL_background = 'white';
+		GLOBAL_textcolor = 'gray';
 		GLOBAL_buttoncolor = 'btn-colors';
 	}
 	
@@ -627,7 +667,48 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		document.getElementById('imgTema2MenuTopo').src = 'az-900' + b + '.png';
 		document.getElementById('imgTema3MenuTopo').src = '1z0-1085-22' + b + '.png';
 	}
-	
+
+	if (document.getElementById('mytextSim') != null) {
+		document.getElementById('mytextSim').style.color = textcolor;
+	}
+	if (document.getElementById('mytextSim2') != null) {
+		document.getElementById('mytextSim2').style.color = textcolor;
+	}
+
+	for (var index=1; index<9; index++) {
+		if (document.getElementById('mycorrect' + index + 'answer') != null) {
+			document.getElementById('mycorrect' + index + 'answer').style.color = textcolor;
+		}
+	}
+/*
+	if (document.getElementById('mycorrect1answer') != null) {
+		document.getElementById('mycorrect1answer').style.color = textcolor;
+	}
+	if (document.getElementById('mycorrect2answer') != null) {
+		document.getElementById('mycorrect2answer').style.color = textcolor;
+	}
+	if (document.getElementById('mycorrect3answer') != null) {
+		document.getElementById('mycorrect3answer').style.color = textcolor;
+	}
+	if (document.getElementById('mycorrect4answer') != null) {
+		document.getElementById('mycorrect4answer').style.color = textcolor;
+	}
+	if (document.getElementById('mycorrect4answer') != null) {
+		document.getElementById('mycorrect5answer').style.color = textcolor;
+	}
+	document.getElementById('mycorrect6answer').style.color = textcolor;
+	document.getElementById('mycorrect7answer').style.color = textcolor;
+	document.getElementById('mycorrect8answer').style.color = textcolor;
+*/
+/*	document.getElementById('mytip1').style.color = textcolor;
+	document.getElementById('mytip2').style.color = textcolor;
+	document.getElementById('mytip3').style.color = textcolor;
+	document.getElementById('mytip4').style.color = textcolor;
+	document.getElementById('mytip5').style.color = textcolor;
+	document.getElementById('mytip6').style.color = textcolor;
+	document.getElementById('mytip7').style.color = textcolor;
+	document.getElementById('mytip8').style.color = textcolor;
+*/
 	if (document.getElementById('myBody') != null) {
 		document.getElementById('myBody').style.background = background;
 	}
@@ -675,8 +756,6 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 				, where: { mytema: mytema + ''
 				, mycategory: mycategory + ''
 				, mygroup: mygroup + ''
-//			  , where: {
-//				  mygroup: mygroup
 			  }
 		});
 		totalperguntas = parseInt(totalperguntas) - 1;
@@ -689,31 +768,25 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 				, mycode: mycode + ''
 			  }
 		});
-//alert('mytema='+mytema + ' mycategory='+mycategory + ' myid='+myid + ' mygroup='+mygroup + ' mycode='+mycode);
+		//alert('mytema='+mytema + ' mycategory='+mycategory + ' myid='+myid + ' mygroup='+mygroup + ' mycode='+mycode);
 		if (students == '') {
 			document.getElementById('btnTerminar').focus();
-		} else {
+			return;
+		}
+			limpaInputbox(students);
 			students.forEach(function (student) {
 				document.getElementById('myorderSim').style.display='none';
 				document.getElementById('myidSim').style.display='none';
 				document.getElementById('mygroupSim').style.display='none';
 				document.getElementById('mycodeSim').style.display='none';
-
+//				for (var index=1; index<9; index++) {
+//					document.getElementById('mycorrect' + parseInt(index) + 'Sim').style.display='none';
+//				}
 				$('#myidSim').val(student.id);
 				$('#mygroupSim').val(student.mygroup);
 				$('#mycodeSim').val(student.mycode);
 				$('#myorderSim').val(student.myorder);
 				
-				document.getElementById('mycorrect1Sim').style.display='none';
-				document.getElementById('mycorrect2Sim').style.display='none';
-				document.getElementById('mycorrect3Sim').style.display='none';
-				document.getElementById('mycorrect4Sim').style.display='none';
-				document.getElementById('mycorrect5Sim').style.display='none';
-				document.getElementById('mycorrect6Sim').style.display='none';
-				document.getElementById('mycorrect7Sim').style.display='none';
-				document.getElementById('mycorrect8Sim').style.display='none';
-
-
 //				document.getElementById('mytextSim').innerHTML = '<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">26%</div></div>'
 				document.getElementById('mytextSim').innerHTML = CONTS_languageusa + ' ' + student.mycode + '/' + totalperguntas + '. ' + student.mytext;
 				document.getElementById('mytextSim2').innerHTML = CONTS_languagebra + ' ' + student.mycode + '/' + totalperguntas + '. ' + student.mytext2;
@@ -727,129 +800,60 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 				} else {
 					myorder = myorder.replaceAll('\,', '');
 				
-					for (var index=0; index<=8; index++) {
-						valorIndice = myorder.substring(index,index+1);
+					for (var index=0; index<8; index++) {
+						varMyorder = myorder.substring(index,index+1);
 						var textlink = '';
 						var linkhref = '';
-						if (valorIndice == '1') { textlink = student.myoptionkey1; }
-						else if (valorIndice == '2') { textlink = student.myoptionkey2; }
-						else if (valorIndice == '3') { textlink = student.myoptionkey3; }
-						else if (valorIndice == '4') { textlink = student.myoptionkey4; }
-						else if (valorIndice == '5') { textlink = student.myoptionkey5; }
-						else if (valorIndice == '6') { textlink = student.myoptionkey6; }
-						else if (valorIndice == '7') { textlink = student.myoptionkey7; }
-						else if (valorIndice == '8') { textlink = student.myoptionkey8; }
+						var myoption = '';
+						var mycorrect = '';
+							 if (varMyorder == '1') { textlink = student.myoptionkey1; myoption = selectKeyMyoption(student.myoption1); mycorrect = student.mycorrect1answer; }
+						else if (varMyorder == '2') { textlink = student.myoptionkey2; myoption = selectKeyMyoption(student.myoption2); mycorrect = student.mycorrect2answer; }
+						else if (varMyorder == '3') { textlink = student.myoptionkey3; myoption = selectKeyMyoption(student.myoption3); mycorrect = student.mycorrect3answer; }
+						else if (varMyorder == '4') { textlink = student.myoptionkey4; myoption = selectKeyMyoption(student.myoption4); mycorrect = student.mycorrect4answer; }
+						else if (varMyorder == '5') { textlink = student.myoptionkey5; myoption = selectKeyMyoption(student.myoption5); mycorrect = student.mycorrect5answer; }
+						else if (varMyorder == '6') { textlink = student.myoptionkey6; myoption = selectKeyMyoption(student.myoption6); mycorrect = student.mycorrect6answer; }
+						else if (varMyorder == '7') { textlink = student.myoptionkey7; myoption = selectKeyMyoption(student.myoption7); mycorrect = student.mycorrect7answer; }
+						else if (varMyorder == '8') { textlink = student.myoptionkey8; myoption = selectKeyMyoption(student.myoption8); mycorrect = student.mycorrect8answer; }
 						if (textlink.substring(0, 4) == 'tip:') {
-							textlink = '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + textlink.substring(4) + ' </font>' + '</zzz>';
+							textlink = '<p/>' + textlink.substring(4);
 							linkhref = '';
 						} else {
 							if (document.getElementById(textlink) != null && textlink.length > 0) {
-								textlink = '<p/>' + '<font color=' + GLOBAL_textcolor + '>' + document.getElementById(textlink).innerHTML + ' </font>' + '</zzz>';;
-								linkhref = '<br/><a href=' + document.getElementById('link_' + textlink) + ' target="_blank" style="color:gray;">veja mais na internet</a>';
+								textlink = '<p/>' + document.getElementById(textlink).innerHTML;
+								linkhref = '<br/><a href=' + document.getElementById('link_' + textlink) + ' target="_blank" style="color:' + 'gray' + ';">veja mais na internet</a>';
 							}
 						}
+						document.getElementById('chkMycorrect' + parseInt(index+1) + 'answer').value = varMyorder;
+						$('chkMycorrect' + parseInt(index+1) + 'answer').attr('data-myorder', varMyorder);
+						$('form').attr('data-student-id', student.id); //alert($('form').attr('data-student-id'));
+						
+						//document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = selectKeyMyoption(myoption) + ' <a href="#"><i class="fa fa-plus" style="color:' + CONST_MEDIUM_SEA_GREEN + ';" onclick="showTip(' + parseInt(index+1) + ');" > <font color=gray>(cola'+ varMyorder +')</i></a>';
+						document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = selectKeyMyoption(myoption) + ' <a href="#"><i class="fa fa-plus" style="color:' + CONST_MEDIUM_SEA_GREEN + ';" onclick="showTip(' + parseInt(index+1) + ');" > <font color=' + CONST_GRAY + '>(cola)</font)</i></a>';
+						document.getElementById('mytip' + parseInt(index+1)).innerHTML = textlink + linkhref
 
-						if (valorIndice == '1') {
-							document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-							' <input type=checkbox onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" value=' + valorIndice + ' '
-							+ student.mycorrect1answer + ' class="flutuante" style="border-radius: 50%;"> ' + '<font color=' + GLOBAL_textcolor + '>' +selectKeyMyoption(student.myoption1) + ' </font>'
-							+ '<a href="#"><i class="fa fa-plus" style="color:' + CONST_MEDIUM_SEA_GREEN + ';" onclick="showTip(' + valorIndice + ');" > <font color=gray>(cola)</i></a>'
-							+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:' + CONST_GRAY + '; display:none">'
-							+ textlink + linkhref;
-							if (student.myoption1 != '') {
-								document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
-							}
-						} else if (valorIndice == '2') {
-							document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-							' <input type=checkbox onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" value=' + valorIndice + ' '
-							+ student.mycorrect2answer + ' class="flutuante" style="border-radius: 50%;"> ' + '<font color=' + GLOBAL_textcolor + '>' +selectKeyMyoption(student.myoption2) + ' </font>'
-							+ '<a href="#"><i class="fa fa-plus" style="color:' + CONST_MEDIUM_SEA_GREEN + ';" onclick="showTip(' + valorIndice + ');> <font color=gray>(cola)</font></i></a>'
-							+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:' + CONST_GRAY + '; display:none">' //<i class="fa fa-check"></i> correta
-							+ textlink + linkhref;
-							if (student.myoption2 != '') {
-								document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
-							}
-						} else if (valorIndice == '3') {
-							document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-							' <input type=checkbox onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" value=' + valorIndice + ' '
-							+ student.mycorrect3answer + ' class="flutuante" style="border-radius: 50%;"> ' + '<font color=' + GLOBAL_textcolor + '>' +selectKeyMyoption(student.myoption3) + ' </font>'
-							+ '<a href="#"><i class="fa fa-plus" style="color:' + CONST_MEDIUM_SEA_GREEN + ';" onclick="showTip(' + valorIndice + ');"> <font color=gray>(cola)</font></i></a>'
-							+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:' + CONST_GRAY + '; display:none">' //<i class="fa fa-check"></i> correta
-							+ textlink + linkhref;
-							if (student.myoption3 != '') {
-								document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
-							}
-						} else if (valorIndice == '4') {
-							document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-							' <input type=checkbox onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" value=' + valorIndice + ' '
-							+ student.mycorrect4answer + ' class="flutuante" style="border-radius: 50%;"> ' + '<font color=' + GLOBAL_textcolor + '>' +selectKeyMyoption(student.myoption4) + ' </font>'
-							+ '<a href="#"><i class="fa fa-plus" style="color:' + CONST_MEDIUM_SEA_GREEN + ';" onclick="showTip(' + valorIndice + ');"> <font color=gray>(cola)</font></i></a>'
-							+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:' + CONST_GRAY + '; display:none">' //<i class="fa fa-check"></i> correta
-							+ textlink + linkhref;
-							if (student.myoption4 != '') {
-								document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
-							}
-						} else if (valorIndice == '5') {
-							document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-							' <input type=checkbox onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" value=' + valorIndice + ' '
-							+ student.mycorrect5answer + ' class="flutuante" style="border-radius: 50%;"> ' + '<font color=' + GLOBAL_textcolor + '>' +selectKeyMyoption(student.myoption5) + ' </font>'
-							+ '<a href="#"><i class="fa fa-plus" style="color:' + CONST_MEDIUM_SEA_GREEN + ';" onclick="showTip(' + valorIndice + ');"> <font color=gray>(cola)</font></i></a>'
-							+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:' + CONST_GRAY + '; display:none">' //<i class="fa fa-remove"></i> incorreta
-							+ textlink + linkhref;
-							if (student.myoption5 != '') {
-								document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
-							}
-						} else if (valorIndice == '6') {
-							document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-							' <input type=checkbox onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" value=' + valorIndice + ' '
-							+ student.mycorrect6answer + ' class="flutuante" style="border-radius: 50%;"> ' + '<font color=' + GLOBAL_textcolor + '>' +selectKeyMyoption(student.myoption6) + ' </font>'
-							+ '<a href="#"><i class="fa fa-plus" style="color:' + CONST_MEDIUM_SEA_GREEN + ';" onclick="showTip(' + valorIndice + ');"> <font color=gray>(cola)</font></i></a>'
-							+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:' + CONST_GRAY + '; display:none">' //<i class="fa fa-remove"></i> incorreta
-							+ textlink + linkhref;
-							if (student.myoption6 != '') {
-								document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
-							}
-						} else if (valorIndice == '7') {
-							document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-							' <input type=checkbox onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" value=' + valorIndice + ' '
-							+ student.mycorrect7answer + ' class="flutuante" style="border-radius: 50%;"> ' + '<font color=' + GLOBAL_textcolor + '>' +selectKeyMyoption(student.myoption7) + ' </font>'
-							+ '<a href="#"><i class="fa fa-plus" style="color:' + CONST_MEDIUM_SEA_GREEN + ';" onclick="showTip(' + valorIndice + ');"> <font color=gray>(cola)</font></i></a>'
-							+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:' + CONST_GRAY + '; display:none">' //<i class="fa fa-remove"></i> incorreta
-							+ textlink + linkhref;
-							if (student.myoption7 != '') {
-								document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
-							}
-						} else if (valorIndice == '8') {
-							document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = 
-							' <input type=checkbox onclick="showCorrect(' + valorIndice + ', ' + student.id + ', ' + student.mygroup + ', ' + student.mycode + ');" id="chkMycorrect' + valorIndice + 'answer" value=' + valorIndice + ' '
-							+ student.mycorrect8answer + ' class="flutuante" style="border-radius: 50%;"> ' + '<font color=' + GLOBAL_textcolor + '>' +selectKeyMyoption(student.myoption8) + ' </font>'
-							+ '<a href="#"><i class="fa fa-plus" style="color:' + CONST_MEDIUM_SEA_GREEN + ';" onclick="showTip(' + valorIndice + ');"> <font color=gray>(cola)</font></i></a>'
-							+ ' <zzz id=lblcorrect' + valorIndice + ' style="color:' + CONST_GRAY + '; display:none">' //<i class="fa fa-remove"></i> incorreta
-							+ textlink + linkhref;
-							if (student.myoption8 != '') {
-								document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='block';
+						//checa as respostas já selecionadas anteriormente
+						if (mycorrect == 'checked') {
+							for (var indexchk=1; indexchk<9; indexchk++) {
+								//alert('mycorrect='+mycorrect + ' varMyorder='+varMyorder + ' chkMycorrectanswer'+indexchk + '= '+document.getElementById('chkMycorrect'+ indexchk + 'answer').value);
+								if (document.getElementById('chkMycorrect'+ indexchk + 'answer').value == varMyorder) {
+									document.getElementById('chkMycorrect' + indexchk + 'answer').checked = true;
+									if (varMyorder < 5) {
+										setBackgroundColor(indexchk, CONST_MEDIUM_SEA_GREEN);
+									} else {
+										setBackgroundColor(indexchk, '#FF5555');
+									}
+								}
 							}
 						}
-					}
-					
-					//se está checado então coloca a cor de fundo vermelho=incorreta ou verde=correta
-					for (var index=0; index<=4; index++) {
-						if (document.getElementById('chkMycorrect' + index + 'answer') != null) {
-							if (document.getElementById('chkMycorrect' + index + 'answer').checked == true) {
-								document.getElementById('chkMycorrect' + index + 'answer').style.backgroundColor=CONST_MEDIUM_SEA_GREEN;
-							}
-						}
-					}
-					for (var index=5; index<=8; index++) {
-						if (document.getElementById('chkMycorrect' + index + 'answer') != null) {
-							if (document.getElementById('chkMycorrect' + index + 'answer').checked == true) {
-								document.getElementById('chkMycorrect' + index + 'answer').style.backgroundColor='#FF4444';
-							}
+						if (myoption.length > 0) {
+							//alert('myoption=['+myoption+']');
+							document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='';
+						} else {
+							document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='none';
 						}
 					}
 				}
 			})
-		}
 		
 //    } catch (ex) {
 //        console.log(ex.message)
@@ -1081,6 +1085,26 @@ async function deletefase(mytema, mycategory, mygroup, mycode, myid) {
     } catch (ex) {
         console.log(ex.message);
     }
+}
+
+function limpaInputbox(students) {
+	for (var index = 1; index < 9; index++) {
+		document.getElementById('chkMycorrect' + index + 'answer').checked = false;
+		document.getElementById('chkMycorrect' + index + 'answer').style.backgroundColor = 'transparent';
+		document.getElementById('chkMycorrect' + index + 'answer').disabled = false;
+		document.getElementById('chkMycorrect' + index + 'answer').value = '';
+		
+		document.getElementById('mytip' + index).style.display='none';
+	}
+}
+
+function setBackgroundColor(index, color) {
+	//se está checado então coloca a cor de fundo vermelho=incorreta ou verde=correta
+	if (document.getElementById('chkMycorrect' + index + 'answer') != null) {
+//		if (document.getElementById('chkMycorrect' + index + 'answer').checked == true) {
+			document.getElementById('chkMycorrect' + index + 'answer').style.backgroundColor = color;
+//		}
+	}
 }
 
 function exitQuestions() {
@@ -2098,40 +2122,6 @@ async function addStudentImport(mytema, mycategory, studentId, mygroup, mycode) 
     }
 }
 
-async function updateStudentPlay(mytema, mycategory, studentId, mygroup, mycode) {
-    var student = getStudentFromFormPlay(mytema, mycategory, studentId, mygroup, mycode);
-//	try {
-/*
-	alert('student.mycorrect1answer='+student.mycorrect1answer);
-	alert('student.mycorrect2answer='+student.mycorrect2answer);
-	alert('student.mycorrect3answer='+student.mycorrect3answer);
-	alert('student.mycorrect4answer='+student.mycorrect4answer);
-	alert('student.mycorrect5answer='+student.mycorrect5answer);
-	alert('student.mycorrect6answer='+student.mycorrect6answer);
-	alert('student.mycorrect7answer='+student.mycorrect7answer);
-	alert('student.mycorrect8answer='+student.mycorrect8answer);
-*/
-		var noOfDataUpdated = await jsstoreCon.update({
-			in: 'Student',
-			set: {
-				mycorrect1answer: student.mycorrect1answer,
-				mycorrect2answer: student.mycorrect2answer,
-				mycorrect3answer: student.mycorrect3answer,
-				mycorrect4answer: student.mycorrect4answer,
-				mycorrect5answer: student.mycorrect5answer,
-				mycorrect6answer: student.mycorrect6answer,
-				mycorrect7answer: student.mycorrect7answer,
-				mycorrect8answer: student.mycorrect8answer
-			},
-			where: {
-				id: student.id
-			}
-		});
-//    } catch (ex) {
-//        console.log(ex.message);
-//    }
-}
-
 async function updateStudentPlayClear(mytema, mycategory, mygroup) {
 //	try {
 		var noOfDataUpdated = await jsstoreCon.update({
@@ -2155,49 +2145,6 @@ async function updateStudentPlayClear(mytema, mycategory, mygroup) {
 //    } catch (ex) {
 //        console.log(ex.message);
 //    }
-}
-
-function getStudentFromFormPlay(mytema, mycategory, studentId, mygroup, mycode) {
-	var chkMycorrect1answer = '';
-	if (document.getElementById('chkMycorrect1answer').checked == true) { chkMycorrect1answer = 'checked'; }
-	var chkMycorrect2answer = '';
-	if (document.getElementById('chkMycorrect2answer').checked == true) { chkMycorrect2answer = 'checked'; }
-	var chkMycorrect3answer = '';
-	if (document.getElementById('chkMycorrect3answer').checked == true) { chkMycorrect3answer = 'checked'; }
-	var chkMycorrect4answer = '';
-	if (document.getElementById('chkMycorrect4answer').checked == true) { chkMycorrect4answer = 'checked'; }
-	var chkMycorrect5answer = '';
-	if (document.getElementById('chkMycorrect5answer').checked == true) { chkMycorrect5answer = 'checked'; }
-	var chkMycorrect6answer = '';
-	if (document.getElementById('chkMycorrect6answer').checked == true) { chkMycorrect6answer = 'checked'; }
-	var chkMycorrect7answer = '';
-	if (document.getElementById('chkMycorrect7answer').checked == true) { chkMycorrect7answer = 'checked'; }
-	var chkMycorrect8answer = '';
-	if (document.getElementById('chkMycorrect8answer').checked == true) { chkMycorrect8answer = 'checked'; }
-/*
-console.log('mygroup='+mygroup + ' mycode='+mycode + ' chkMycorrect1answer=' + chkMycorrect1answer);
-console.log('mygroup='+mygroup + ' mycode='+mycode + ' chkMycorrect2answer=' + chkMycorrect2answer);
-console.log('mygroup='+mygroup + ' mycode='+mycode + ' chkMycorrect3answer=' + chkMycorrect3answer);
-console.log('mygroup='+mygroup + ' mycode='+mycode + ' chkMycorrect4answer=' + chkMycorrect4answer);
-console.log('mygroup='+mygroup + ' mycode='+mycode + ' chkMycorrect5answer=' + chkMycorrect5answer);
-console.log('mygroup='+mygroup + ' mycode='+mycode + ' chkMycorrect6answer=' + chkMycorrect6answer);
-console.log('mygroup='+mygroup + ' mycode='+mycode + ' chkMycorrect7answer=' + chkMycorrect7answer);
-console.log('mygroup='+mygroup + ' mycode='+mycode + ' chkMycorrect8answer=' + chkMycorrect8answer);
-*/
-	var student = {
-        id: Number(studentId),
-		mygroup: $('#mygroup').val(),
-        mycode: $('#mycode').val(),
-		mycorrect1answer: chkMycorrect1answer,
-		mycorrect2answer: chkMycorrect2answer,
-		mycorrect3answer: chkMycorrect3answer,
-		mycorrect4answer: chkMycorrect4answer,
-		mycorrect5answer: chkMycorrect5answer,
-		mycorrect6answer: chkMycorrect6answer,
-		mycorrect7answer: chkMycorrect7answer,
-		mycorrect8answer: chkMycorrect8answer
-    };
-	return student;
 }
 
 function shuffle(o) {
@@ -2467,7 +2414,7 @@ function getLinkHelp(mytema, mycategory, mygroup, mycode, myorder, answerincorre
 	linkhelp = linkhelp + '<p/><a href="#top" class="btn btn-default"><i class="fa fa-arrow-up"></i></a>';
 	linkhelp = linkhelp + '<b> ' + keylink + '</b>';
 	linkhelp = linkhelp + '<br/><i id="' + keylink + '" value="' + hreflink + '"> ' + withbold + '</i>';
-	linkhelp = linkhelp + '<br/><a id="link_' + keylink + '" href=' + hreflink + ' target="_blank">veja mais na internet</a>';
+	linkhelp = linkhelp + '<br/><a id="link_' + keylink + '" href=' + hreflink + ' target="_blank" style="color:' + 'gray' + ';">veja mais na internet</a>';
 
 	if (keylink == '') {
 		return '';
@@ -3090,31 +3037,81 @@ async function initLinkHelp() {
 	document.getElementById('divlinkhelp').innerHTML = linkhelp;
 }
 
-function showCorrect(valorindice, myid, mygroup, mycode) {
-	
-	if (valorindice < 5) { //1 a 4 = corretas. 5 a 8 = incorretas
-		document.getElementById('chkMycorrect'+valorindice+'answer').style.backgroundColor=CONST_MEDIUM_SEA_GREEN;
+async function showCorrect(index, myid, mygroup, mycode) {
+	if (document.getElementById('chkMycorrect' + index + 'answer').value < 5) { //1 a 4 = corretas. 5 a 8 = incorretas
+		document.getElementById('chkMycorrect'+index+'answer').style.backgroundColor=CONST_MEDIUM_SEA_GREEN;
 	} else {
-		document.getElementById('chkMycorrect'+valorindice+'answer').style.backgroundColor='#FF5555';
+		document.getElementById('chkMycorrect'+index+'answer').style.backgroundColor='#FF5555';
 	}
 	
-	if (document.getElementById('chkMycorrect'+valorindice+'answer').checked == true) {
-//		document.getElementById('lblcorrect' + valorindice).style.display='block';
-		document.getElementById('chkMycorrect'+valorindice+'answer').disabled = true;
-	} else {
-//		document.getElementById('lblcorrect' + valorindice).style.display='none';
+	if (document.getElementById('chkMycorrect'+index+'answer').checked == true) {
+		document.getElementById('chkMycorrect'+index+'answer').disabled = true;
+	}
+
+	var answer1 = ''; var answer2 = ''; var answer3 = ''; var answer4 = ''; var answer5 = ''; var answer6 = ''; var answer7 = ''; var answer8 = ''; var array = [];
+	for (var index=1; index<9; index++) {
+		if (document.getElementById('chkMycorrect' + index + 'answer').checked == true) {
+			if (document.getElementById('chkMycorrect' + index + 'answer').value == '1') {
+				answer1 = 'checked';
+			} else if (document.getElementById('chkMycorrect' + index + 'answer').value == '2') {
+				answer2 = 'checked';
+			} else if (document.getElementById('chkMycorrect' + index + 'answer').value == '3') {
+				answer3 = 'checked';
+			} else if (document.getElementById('chkMycorrect' + index + 'answer').value == '4') {
+				answer4 = 'checked';
+			} else if (document.getElementById('chkMycorrect' + index + 'answer').value == '5') {
+				answer5 = 'checked';
+			} else if (document.getElementById('chkMycorrect' + index + 'answer').value == '6') {
+				answer6 = 'checked';
+			} else if (document.getElementById('chkMycorrect' + index + 'answer').value == '7') {
+				answer7 = 'checked';
+			} else if (document.getElementById('chkMycorrect' + index + 'answer').value == '8') {
+				answer8 = 'checked';
+			}
+		}
 	}
 	var params = new URLSearchParams(window.location.search);
 	var mytema = params.get('tem');
 	var mycategory = params.get('cat');
-	updateStudentPlay(mytema, mycategory, myid, mygroup, mycode);
+	var myid = $('form').attr('data-student-id');
+	var mygroup = document.getElementById('mygroupSim').value;
+	var mycode = parseInt(document.getElementById('mycodeSim').value);
+	updateAnswers(mytema, mycategory, myid, mygroup, mycode, answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8);
+}
+
+async function updateAnswers(mytema, mycategory, myid, mygroup, mycode, answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8) {
+//alert('mytema='+mytema + ' mycategory='+mycategory + ' mygroup='+mygroup + ' mycode='+mycode + ' answer1='+answer1 + ' answer2='+answer2 + ' answer3='+answer3 + ' answer4='+answer4 + ' answer5='+answer5 + ' answer6='+answer6 + ' answer7='+answer7 + ' answer8='+answer8);
+//	try {
+		var noOfDataUpdated = await jsstoreCon.update({
+			in: 'Student',
+			set: {
+				mycorrect1answer: answer1,
+				mycorrect2answer: answer2,
+				mycorrect3answer: answer3,
+				mycorrect4answer: answer4,
+				mycorrect5answer: answer5,
+				mycorrect6answer: answer6,
+				mycorrect7answer: answer7,
+				mycorrect8answer: answer8
+			}
+			  , where: {
+//				 id: myid + ''
+				  mytema: mytema + ''
+				, mycategory: mycategory + ''
+				, mygroup: mygroup + ''
+				, mycode: mycode + ''
+			}
+		});
+//    } catch (ex) {
+//        console.log(ex.message);
+//    }
 }
 
 function showTip(valorindice) {
-	if (document.getElementById('lblcorrect' + valorindice).style.display == 'none') {
-		document.getElementById('lblcorrect' + valorindice).style.display='block';
+	if (document.getElementById('mytip' + valorindice).style.display == 'none') {
+		document.getElementById('mytip' + valorindice).style.display='';
 	} else {
-		document.getElementById('lblcorrect' + valorindice).style.display='none';
+		document.getElementById('mytip' + valorindice).style.display='none';
 	}
 }
 
