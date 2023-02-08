@@ -64,7 +64,7 @@ input:checked[type="checkbox"]::before{
     text-decoration: none;  
     color: #ffffff;
     border-radius:50px;
-    Xfont-family:'open_sansregular';  
+    ZZZfont-family:'open_sansregular';  
 } 
 
 
@@ -93,7 +93,7 @@ input:checked[type="checkbox"]::before{
 .prev, .next, .end {
   cursor: pointer;
   position: absolute;
-  top: 85%;
+  top: 90%;
   margin-top: -30px;
   padding: 1px;
   color: #BBB;
@@ -118,7 +118,7 @@ input:checked[type="checkbox"]::before{
 }
 .end {
   position: fixed;
-  right: 15%;
+  right: 25%;
   border-radius: 3px 0 0 3px;
 }
 /* On hover, add a black background color with a little bit see-through */
@@ -217,7 +217,7 @@ input:checked[type="checkbox"]::before{
     </button>
     <div class="offcanvas offcanvas-top text-bg-dark bg-dark" style="height:290px;" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Escolha o tema:</h5>
+        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Escolha abaixo:</h5>
         <button type="button" class="btn-close btn-close-white flutuante" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
@@ -242,8 +242,8 @@ input:checked[type="checkbox"]::before{
 				</tr/>
 				<tr>
 					<td colspan=5> <!-- datashowcloud2022@gmail.com -->
-						<input type="text" id="version" value="23.02.07.22.50" style="font-size:10px; width:45px; display:none;"/>
-						<font size=1><i>atualizado em Nov/2023 &copy; contato@tamastigadu.com.br</i></font>
+						<input type="text" id="version" value="23.02.07.20.28" style="font-size:10px; width:45px; display:none;"/>
+						<font size=1><i>atualizado em Nov/2023 <p/>contato@tamastigadu.com.br</i></font>
 					</td>
 				</tr>
 			</table>
@@ -277,8 +277,8 @@ input:checked[type="checkbox"]::before{
 			<br/><br/><br/>
 		</div>
 		
-		<table border=0 id="tblCategory" style="width:310px; color:gray;" align=center cellspacing=10 cellpadding=10>
-			<tr><td style="color:gray; font-size:22px;">Escolha um tema abaixo:</td></tr>
+		<table border=0 id="tblCategory" style="width:310px; color:gray; display:none;" align=center cellspacing=10 cellpadding=10>
+			<tr><td style="color:gray; font-size:22px;">Escolha:</td></tr>
 			<tr>
 				<td style="color:gray;">
 					<i class="fa fa-play avatarflutuante" style="color:#3CB371; font-size:15px;"></i>
@@ -293,9 +293,14 @@ input:checked[type="checkbox"]::before{
 			</tr>
 		</table>
 
+
 		<table id="tblGrid" border=0 style="width:98%; display:none;" align=center>
 			<tbody>
-				<!-- div id="botoes" style="display:none; text-align:center;"> </div -->
+				<div id="divbotoes" style="display:none; text-align:center;">
+					<button id="btntreino" class="botao flutuante" onclick="changeCategory('2');"><i class="fa fa-book"></i> Treino</button>
+					&nbsp;&nbsp;</td>
+					<button id="btndesafio" class="botao flutuante" onclick="changeCategory('4');"><i class="fa fa-road"></i> Desafio</button>
+				</div>
 			</tbody>
 		</table>
 
@@ -437,11 +442,7 @@ input:checked[type="checkbox"]::before{
 						</td>
 					</tr>
 					<tr>
-						<td>
-
-										<button id="btnTerminar" class="btn btn-success end flutuante" title="Termina a fase" style="display:'none';">&nbsp;<i class="fa fa-envelope"></i>&nbsp;Terminar&nbsp;</button>
-
-						</td>
+						<td><button id="btnTerminar" class="btn btn-success end flutuante" title="Termina a fase" style="display:'none';">&nbsp;<i class="fa fa-envelope"></i>&nbsp;Terminar&nbsp;</button></td>
 					</tr>
 				</table>
 				<!-- table id="tableFormSimButtons" border=0 align=center width="100%" style="display:'none';">

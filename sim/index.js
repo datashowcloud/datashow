@@ -15,6 +15,8 @@ var COL_LOGOTIPO = 5;
 var linkhelp = '';
 var CONTS_languagebra = '<img src="bandeirabra.png" class="flutuante" width="25px" style="cursor:pointer; border-radius:50%;" title="Traduzir para Português">';
 var CONTS_languageusa = '<img src="bandeirausa.png" class="flutuante" width="25px" style="cursor:pointer; border-radius:50%;" title="Translate to English">';
+var CONST_CATEGORIA_TREINO = 2;
+var CONST_CATEGORIA_DESAFIO = 4;
 
 window.onload = function () {
     registerEvents();
@@ -478,9 +480,9 @@ function registerEvents() {
 		var myid = document.getElementById('myidSim').value;
 		var mygroup = document.getElementById('mygroupSim').value;
 		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
-		savePoints(mytema, mycategory, myid, mygroup, mycode);
-		changeFaseNivel(mytema, mycategory, myid, mygroup, mycode);
-		exitQuestions();
+		setTimeout(() => { savePoints(mytema, mycategory, myid, mygroup, mycode) }, 1000); // Executa após alguns segundos para esperar o término do processo
+		setTimeout(() => { changeFaseNivel(mytema, mycategory, myid, mygroup, mycode) }, 2000); // Executa após alguns segundos para esperar o término do processo
+//		setTimeout(() => { exitQuestions() }, 1500); // Executa após alguns segundos para esperar o término do processo
 /*		showGridAndHideForms();
 		refreshTableData(mytema, mycategory, '0', '', '', ''); // botão btnCategory1 carrega essa opção
 */
@@ -926,7 +928,14 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 			varButtonRestart = 'color:' + CONST_MEDIUM_SEA_GREEN + '; font-size:20px;';
 		}
 
-
+		//exibe a cor de ativado ou desativado dos botões
+		if (mycategory == CONST_CATEGORIA_TREINO) {
+			document.getElementById('btntreino').style.backgroundColor = '#AAAAAA';
+			document.getElementById('btndesafio').style.backgroundColor = 'black';
+		} else if (mycategory == CONST_CATEGORIA_DESAFIO) {
+			document.getElementById('btndesafio').style.backgroundColor = '#AAAAAA';
+			document.getElementById('btntreino').style.backgroundColor = 'black';
+		}
 
 		var htmlString = "";
 		var varTdTh = '';
@@ -1006,15 +1015,16 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 //			varNivelLinha = varNivelLinha + '<tr><td colspan=99><font color="gray" style="font-size:15px;"><i class=\"fa fa-lock\"></i> NÍVEL ' + item + '</font></td></tr>';
 //		}
 
-		var varMenuNivelFase = '';
+/*		var varMenuNivelFase = '';
 		varMenuNivelFase = varMenuNivelFase + '<table>';
 		varMenuNivelFase = varMenuNivelFase + '<tr>';
 		varMenuNivelFase = varMenuNivelFase + '<td nowrap colspan=3 align=right> <button class="botao flutuante" onclick="changeCategory(\'2\');"><i class="fa fa-book"></i> Treino</button></td>';
 		varMenuNivelFase = varMenuNivelFase + '<td nowrap colspan=2> <button class="botao flutuante" onclick="changeCategory(\'4\');"><i class="fa fa-road"></i> Desafio</button></td>';
 		varMenuNivelFase = varMenuNivelFase + '</tr>';
 		varMenuNivelFase = varMenuNivelFase + '</table>';
-
 		htmlString = varMenuNivelFase + varNivelLinha + htmlString;
+*/
+		htmlString = varNivelLinha + htmlString;
 		
 		if (htmlString.length > 0) {
 			htmlString += "</tr>"
@@ -1116,7 +1126,7 @@ function exitQuestions() {
 	var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
 	savePoints(mytema, mycategory, myid, mygroup, mycode);
 //	document.getElementById('navBottom').style.display='none';
-	setTimeout(() => { location.reload() }, 500); // Executa após 1 segundo para esperar o processo
+	setTimeout(() => { location.reload() }, 1000); // Executa após 1 segundo para esperar o processo ser completamente executado
 }
 
 function changeTema(mytema) {
@@ -1148,7 +1158,8 @@ function openForm() {
 	if ((mytema != null && mycategory != null)) {
 		refreshTableData(mytema, mycategory, '0', '', '', '');
 		showGridAndHideForms();
-//		if (document.getElementById('btnFormCategory') != null) {document.getElementById('btnFormCategory').disabled = false; }
+	} else {
+		showFormCategory();
 	}
 }
 
@@ -3124,6 +3135,7 @@ function showTip(valorindice) {
 
 function showFormCategory() {
     $('#tblGrid').hide();
+    $('#divbotoes').hide();
 //	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
@@ -3138,6 +3150,7 @@ function showFormCategory() {
 
 function showFormSim() {
     $('#tblGrid').hide();
+    $('#divbotoes').hide();
 //	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
@@ -3158,6 +3171,7 @@ function showFormSim() {
 
 function showFormAddUpdate() {
     $('#tblGrid').hide();
+    $('#divbotoes').hide();
 //	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').show();
 	$('#divGear').hide();
@@ -3171,6 +3185,7 @@ function showFormAddUpdate() {
 
 function showGridAndHideForms() {
     $('#tblGrid').show();
+    $('#divbotoes').show();
 	$('#tblMenuCategrias').show();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
@@ -3184,6 +3199,7 @@ function showGridAndHideForms() {
 
 function showAddNewManual() {
 	$('#divGearAddNewLiryc').show();
+    $('#divbotoes').hide();
 //	$('#tblMenuCategrias').hide();
     $('#tblGrid').hide();
     $('#divFormAddUpdate').hide();
@@ -3197,6 +3213,7 @@ function showAddNewManual() {
 
 function showFormGear() {
     $('#tblGrid').hide();
+    $('#divbotoes').hide();
 //	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').show();
@@ -3209,6 +3226,7 @@ function showFormGear() {
 
 function showFormImport() {
     $('#tblGrid').hide();
+    $('#divbotoes').hide();
 //	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
@@ -3222,6 +3240,7 @@ function showFormImport() {
 
 function showBible() {
     $('#tblGrid').hide();
+    $('#divbotoes').hide();
 //	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
@@ -3235,6 +3254,7 @@ function showBible() {
 
 function showIniciarConfiguracao() {
     $('#tblGrid').hide();
+    $('#divbotoes').hide();
 //	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
