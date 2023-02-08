@@ -22,6 +22,7 @@
   background-attachment: fixed;
   background-position: top; 
   background-repeat: no-repeat;
+  background-color:black;
 }
 
 
@@ -201,14 +202,14 @@ input:checked[type="checkbox"]::before{
 	</style>
 </head>
 
-<body id="myBody" bgcolor="white">
+<body id="myBody" bgcolor="black">
 
 <nav id="menutopodireito" class="navbar sticky-top navbar-dark bg-dark">
   <div class="container-fluid">
     <div>
 		<a class="navbar-brand" href="index.html" title="Página Inicial">TAMASTIGADU</a>
 		<button id="btnNightDay" class="btn Zbtn-sm btn-outline-secondary flutuante" title="Dia e noite" style="color:white;"><i class="fa fa-adjust"></i> </button>
-		<button id="btnDropDb" class="btn Zbtn-sm btn-outline-secondary flutuante" title="Restaurar padrão de fábrica" style="color:white;"><i class="fa fa-trash"></i></font></button>
+		<button id="btnDropDb" class="btn Zbtn-sm btn-outline-secondary flutuante" title="Restaurar padrão de fábrica" style="color:white; display:none;"><i class="fa fa-trash"></i></font></button>
 		<!--button id="btnLanguage" class="btn Zbtn-sm btn-outline-secondary" title="Trocar língua: Inglês e Português" style="color:white;" disabled><i class="fa fa-globe"></i></button-->
 	</div>
 	<button class="navbar-toggler" type="button" title="Menu" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
@@ -240,7 +241,12 @@ input:checked[type="checkbox"]::before{
 						<br/>ORACLE <br/>1Z0-1085-22
 					</td>
 				</tr/>
-				<tr> <td colspan=5> <font size=1><i>versão 06.12.51 &copy; contato@tamastigadu.com.br</i></font> </td> </tr> <!-- datashowcloud2022@gmail.com -->
+				<tr>
+					<td colspan=5> <!-- datashowcloud2022@gmail.com -->
+						<input type="text" id="version" value="23.02.07.31.33" style="font-size:10px; width:45px; display:none;"/>
+						<font size=1><i>atualizado em Nov/2023 &copy; contato@tamastigadu.com.br</i></font>
+					</td>
+				</tr>
 			</table>
           </li>
         </ul>
@@ -453,7 +459,7 @@ input:checked[type="checkbox"]::before{
 				</table -->
 				<table id="ZZZtableLinkhelp" border=0 align=center style="display:'none';">
 					<tr>
-						<td id="help" style="display:none; text-align:justify;">
+						<td id="help" style="display:'none'; text-align:justify;">
 							<div id="divlinkhelp"></div>
 						</td>
 					</tr>

@@ -815,12 +815,12 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 						else if (varMyorder == '7') { textlink = student.myoptionkey7; myoption = selectKeyMyoption(student.myoption7); mycorrect = student.mycorrect7answer; }
 						else if (varMyorder == '8') { textlink = student.myoptionkey8; myoption = selectKeyMyoption(student.myoption8); mycorrect = student.mycorrect8answer; }
 						if (textlink.substring(0, 4) == 'tip:') {
-							textlink = '<p/>' + textlink.substring(4);
+							textlink = textlink.substring(4);
 							linkhref = '';
 						} else {
 							if (document.getElementById(textlink) != null && textlink.length > 0) {
-								textlink = '<p/>' + document.getElementById(textlink).innerHTML;
-								linkhref = '<br/><a href=' + document.getElementById('link_' + textlink) + ' target="_blank" style="color:' + 'gray' + ';">veja mais na internet</a>';
+								textlink = document.getElementById(textlink).innerHTML;
+								linkhref = '<br/><a href=' + document.getElementById('link_' + 'EC2').href + ' target="_blank" style="color:' + 'gray' + ';">veja mais na internet</a>';
 							}
 						}
 						document.getElementById('chkMycorrect' + parseInt(index+1) + 'answer').value = varMyorder;
@@ -1506,11 +1506,19 @@ async function setDashboard(mytema, mycategory, myid, mygroup, mycode) {
 }
 
 function selectKeyMyoption(myoption) {
-	var posini = myoption.indexOf('-->', 0);
+	myoption = removeTags(myoption, 'key');
+	myoption = removeTags(myoption, 'tip');
+
+	var posini = myoption.indexOf('--&gt;', 0);
 	if (posini > 0) {
 		myoption = myoption.substring(0, posini).trim();
 	} else {
-		myoption = myoption.substring(0, myoption.length).trim();
+		posini = myoption.indexOf('-->', 0);
+		if (posini > 0) {
+			myoption = myoption.substring(0, posini).trim();
+		} else {
+			myoption = myoption.substring(0, myoption.length).trim();
+		}
 	}
 	return myoption;
 }
@@ -2415,7 +2423,6 @@ function getLinkHelp(mytema, mycategory, mygroup, mycode, myorder, answerincorre
 	linkhelp = linkhelp + '<b> ' + keylink + '</b>';
 	linkhelp = linkhelp + '<br/><i id="' + keylink + '" value="' + hreflink + '"> ' + withbold + '</i>';
 	linkhelp = linkhelp + '<br/><a id="link_' + keylink + '" href=' + hreflink + ' target="_blank" style="color:' + 'gray' + ';">veja mais na internet</a>';
-
 	if (keylink == '') {
 		return '';
 	} else {
