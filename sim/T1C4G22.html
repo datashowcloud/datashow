@@ -31,7 +31,7 @@
 				<br/>
 				<div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">As perguntas estão instaladas.</div>
 				<br/><br/>
-				<button class="btn btn-info" onclick="window.open('index.html?tem=1&cat=4', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Fechar</button>
+				<button class="btn btn-info" onclick="window.open('index.html?tem=1&cat=4', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Vamos lá!</button>
 				
 				<label id="bSearch" style="display:none;">
 					<input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:200px; height:34px;">
@@ -40,10 +40,11 @@
 
 		<table id="tblGrid" style="width:98%" class="table table-hover ">
 			<tbody>
-					<!--
-				<div id="botoes" style="display:none; text-align:center;">
+				<div id="divbotoes" style="display:none; text-align:center;">
+					<button id="btntreino" class="botao flutuante" onclick="changeCategory('2');" style="background-color:gray; display:none;">Treino</button>
+					&nbsp;&nbsp;</td>
+					<button id="btndesafio" class="botao flutuante" onclick="changeCategory('4');" style="background-color:black; display:none;">Desafio</button>
 				</div>
-					-->
 			</tbody>
 		</table>
 
