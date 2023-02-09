@@ -930,11 +930,23 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 
 		//exibe a cor de ativado ou desativado dos botões
 		if (mycategory == CONST_CATEGORIA_TREINO) {
-			document.getElementById('btntreino').style.backgroundColor = '#AAAAAA';
-			document.getElementById('btndesafio').style.backgroundColor = 'black';
+			document.getElementById('btntreino').style.backgroundColor = CONST_GRAY;
+			//document.getElementById('btntreino').style.color = GLOBAL_textcolor;
+			document.getElementById('btntreino').style.textDecoration = 'underline';
+			//document.getElementById('btntreino').style.fontWeight = 'bold';
+			document.getElementById('btndesafio').style.backgroundColor = GLOBAL_background;
+			//document.getElementById('btndesafio').style.color = CONST_GRAY;
+			document.getElementById('btndesafio').style.textDecoration = 'none';
+			//document.getElementById('btndesafio').style.fontWeight = 'normal';
 		} else if (mycategory == CONST_CATEGORIA_DESAFIO) {
-			document.getElementById('btndesafio').style.backgroundColor = '#AAAAAA';
-			document.getElementById('btntreino').style.backgroundColor = 'black';
+			document.getElementById('btndesafio').style.backgroundColor = CONST_GRAY;
+			//document.getElementById('btndesafio').style.color = GLOBAL_textcolor;
+			document.getElementById('btndesafio').style.textDecoration = 'underline';
+			//document.getElementById('btndesafio').style.fontWeight = 'bold';
+			document.getElementById('btntreino').style.backgroundColor = GLOBAL_background;
+			//document.getElementById('btntreino').style.color = CONST_GRAY;
+			document.getElementById('btntreino').style.textDecoration = 'none';
+			//document.getElementById('btntreino').style.fontWeight = 'normal';
 		}
 
 		var htmlString = "";
