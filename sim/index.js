@@ -8,9 +8,11 @@ var CONST_MEDIUM_SEA_GREEN = '#3CB371';
 var CONST_DEEP_SKY_BLUE = '#00BFFF';
 var CONST_ORANGE_DESTAK = '#ff9955';
 var CONST_GRAY = 'gray';
+var GLOBAL_White = 'white';
 var GLOBAL_textcolor = 'white';
 var GLOBAL_background = 'black';
 var GLOBAL_buttoncolor = 'btn-colors';
+var GLOBAL_background_black = 'black';
 var COL_LOGOTIPO = 5;
 var linkhelp = '';
 var CONTS_languagebra = '<img src="bandeirabra.png" class="flutuante" width="25px" style="cursor:pointer; border-radius:50%;" title="Traduzir para Português">';
@@ -503,6 +505,7 @@ function registerEvents() {
 	})
 	$('#btnNightDay').click(function () {
 		updateConfigGeneral();
+		setConfigBotoes();
 	})
 	$('#btnFormCategory').click(function () {
 		var DataShow_Config = window.open("index.html", "_self");
@@ -927,23 +930,8 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 			varCount = '';
 			varButtonRestart = 'color:' + CONST_MEDIUM_SEA_GREEN + '; font-size:20px;';
 		}
-
-		//exibe a cor de ativado ou desativado dos botões
-		if (mycategory == CONST_CATEGORIA_TREINO) {
-			document.getElementById('btntreino').style.backgroundColor = CONST_GRAY;
-			document.getElementById('btntreino').style.color = GLOBAL_textcolor;
-			document.getElementById('btntreino').style.textDecoration = 'underline';
-			document.getElementById('btndesafio').style.backgroundColor = GLOBAL_background;
-			document.getElementById('btndesafio').style.color = CONST_GRAY;
-			document.getElementById('btndesafio').style.textDecoration = 'none';
-		} else if (mycategory == CONST_CATEGORIA_DESAFIO) {
-			document.getElementById('btndesafio').style.backgroundColor = CONST_GRAY;
-			document.getElementById('btndesafio').style.color = GLOBAL_textcolor;
-			document.getElementById('btndesafio').style.textDecoration = 'underline';
-			document.getElementById('btntreino').style.backgroundColor = GLOBAL_background;
-			document.getElementById('btntreino').style.color = CONST_GRAY;
-			document.getElementById('btntreino').style.textDecoration = 'none';
-		}
+		
+		setConfigBotoes();
 
 		var htmlString = "";
 		var varTdTh = '';
@@ -1103,6 +1091,33 @@ async function deletefase(mytema, mycategory, mygroup, mycode, myid) {
     } catch (ex) {
         console.log(ex.message);
     }
+}
+
+function setConfigBotoes() {
+	//exibe a cor de ativado ou desativado dos botões
+	var params = new URLSearchParams(window.location.search);
+	var mycategory = params.get('cat');
+	if (mycategory == CONST_CATEGORIA_TREINO) {
+		document.getElementById('btntreino').style.backgroundColor = CONST_GRAY;
+		document.getElementById('btntreino').style.color = GLOBAL_White;
+		document.getElementById('btntreino').style.textDecoration = 'underline';
+		document.getElementById('btntreino').style.fontWeight = 'bold';
+
+		document.getElementById('btndesafio').style.backgroundColor = GLOBAL_background;
+		document.getElementById('btndesafio').style.color = GLOBAL_textcolor;
+		document.getElementById('btndesafio').style.textDecoration = 'none';
+		document.getElementById('btndesafio').style.fontWeight = 'normal';
+	} else if (mycategory == CONST_CATEGORIA_DESAFIO) {
+		document.getElementById('btndesafio').style.backgroundColor = CONST_GRAY;
+		document.getElementById('btndesafio').style.color = GLOBAL_White;
+		document.getElementById('btndesafio').style.textDecoration = 'underline';
+		document.getElementById('btndesafio').style.fontWeight = 'bold';
+		
+		document.getElementById('btntreino').style.backgroundColor = GLOBAL_background;
+		document.getElementById('btntreino').style.color = GLOBAL_textcolor;
+		document.getElementById('btntreino').style.textDecoration = 'none';
+		document.getElementById('btntreino').style.fontWeight = 'normal';
+	}
 }
 
 function limpaInputbox(students) {
@@ -2692,8 +2707,6 @@ async function initLinkHelp() {
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Não --> AZ-900: Não Se Aplica', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-cloud-computing', '', 'AZ-900: --> Não Se Aplica');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'AZ-900 Tip 001', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-cloud-computing', '', 'AZ-900 Tip 001 --> If you delete a resource group, all of the underlying resources also get deleted. Sim, se você excluir um grupo de recursos, todos os recursos subjacentes também serão excluídos.');
-	contadorMycode = String(parseInt(contadorMycode) + 1);
 
 
 
