@@ -57,9 +57,12 @@ function getDbSchema() {
 			mycategory: { Null: false, dataType: 'string' }, //sub nível de agrupamento, exemplo: Apresentação, Treinamento, Experiência, Simulado, Desafios
 			mygroup: { notNull: true, dataType: 'string' }, //qual grupo a pergunta pertence, exemplo: domínio 1, domínio 2, domínio 3
 			mycode: { Null: false, dataType: 'string' }, //código único numérico da pergunta
-			mytext: { notNull: true, dataType: 'string' }, //uma pergunta na língua 1
-			mytext2: { Null: false, dataType: 'string' }, //uma pergunta na língua 2
-			mytext3: { Null: false, dataType: 'string' }, //uma pergunta na língua 3
+			mytext: { notNull: true, dataType: 'string' }, //pergunta em português
+			mytext2: { Null: false, dataType: 'string' }, //pergunta em inglês
+			mytext3: { Null: false, dataType: 'string' }, //pergunta em espanhol
+			mytext4: { Null: false, dataType: 'string' }, //pergunta em francês
+			mytext5: { Null: false, dataType: 'string' }, //pergunta em hindi
+			mytext6: { Null: false, dataType: 'string' }, //pergunta em mandarim
 			mysearch: { Null: false, dataType: 'string' }, //pergunta ou texto sem os caracteres especiais para fazer o search com maior precisão
 			myoption1: { Null: false, dataType: 'string' }, //texto da resposta correta 1
 			myoption2: { Null: false, dataType: 'string' }, //texto da resposta correta 2
@@ -1103,7 +1106,7 @@ function setConfigBotoes() {
 		document.getElementById('btntreino').style.textDecoration = 'underline';
 		document.getElementById('btntreino').style.fontWeight = 'bold';
 
-		document.getElementById('btndesafio').style.backgroundColor = GLOBAL_background;
+		document.getElementById('btndesafio').style.backgroundColor = 'transparent';
 		document.getElementById('btndesafio').style.color = GLOBAL_textcolor;
 		document.getElementById('btndesafio').style.textDecoration = 'none';
 		document.getElementById('btndesafio').style.fontWeight = 'normal';
@@ -1113,7 +1116,7 @@ function setConfigBotoes() {
 		document.getElementById('btndesafio').style.textDecoration = 'underline';
 		document.getElementById('btndesafio').style.fontWeight = 'bold';
 		
-		document.getElementById('btntreino').style.backgroundColor = GLOBAL_background;
+		document.getElementById('btntreino').style.backgroundColor = 'transparent';
 		document.getElementById('btntreino').style.color = GLOBAL_textcolor;
 		document.getElementById('btntreino').style.textDecoration = 'none';
 		document.getElementById('btntreino').style.fontWeight = 'normal';
@@ -1948,15 +1951,19 @@ function getLanguage(language, mytext) {
 	var posicaofim=0;
 	var languageini = '<'+language+'>';
 	var languagefim = '</'+language+'>';
-	var englishini = '<english>';
-	var spanishini = '<spanish>';
+	var iniEnglish = '<english>';
+	var iniSpanish = '<spanish>';
+	var iniMandarim = '<mandarim>';
+	var iniArabe = '<arabe>';
+	var iniHindi = '<hindi>';
+	var iniFrancais = '<francais>';
 	
 	mytext = mytext.replaceAll('<p>\n', ''); //remove <p>ENTER
 	mytext = mytext.replaceAll('<p>', ''); //remove <p>
 	if (language == '' || language == 'portugues') {
-		posicaofim = mytext.indexOf(englishini, posicaoini);
+		posicaofim = mytext.indexOf(iniEnglish, posicaoini);
 		if (posicaofim == -1) {
-			posicaofim = mytext.indexOf(spanishini, posicaoini);
+			posicaofim = mytext.indexOf(iniSpanish, posicaoini);
 			if (posicaofim == -1) {
 				posicaofim = mytext.indexOf('\n\n', posicaoini);
 				if (posicaofim == -1) {
@@ -3155,7 +3162,7 @@ function showTip(valorindice) {
 }
 
 function showFormCategory() {
-    $('#tblGrid').hide();
+    $('#tblGrid').show();
     $('#divbotoes').hide();
 //	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').hide();
@@ -3171,7 +3178,7 @@ function showFormCategory() {
 
 function showFormSim() {
     $('#tblGrid').hide();
-    $('#divbotoes').hide();
+    $('#divbotoes').show();
 //	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
@@ -3192,7 +3199,7 @@ function showFormSim() {
 
 function showFormAddUpdate() {
     $('#tblGrid').hide();
-    $('#divbotoes').hide();
+    $('#divbotoes').show();
 //	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').show();
 	$('#divGear').hide();
@@ -3220,7 +3227,7 @@ function showGridAndHideForms() {
 
 function showAddNewManual() {
 	$('#divGearAddNewLiryc').show();
-    $('#divbotoes').hide();
+    $('#divbotoes').show();
 //	$('#tblMenuCategrias').hide();
     $('#tblGrid').hide();
     $('#divFormAddUpdate').hide();
@@ -3234,7 +3241,7 @@ function showAddNewManual() {
 
 function showFormGear() {
     $('#tblGrid').hide();
-    $('#divbotoes').hide();
+    $('#divbotoes').show();
 //	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').show();
@@ -3247,7 +3254,7 @@ function showFormGear() {
 
 function showFormImport() {
     $('#tblGrid').hide();
-    $('#divbotoes').hide();
+    $('#divbotoes').show();
 //	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
@@ -3261,7 +3268,7 @@ function showFormImport() {
 
 function showBible() {
     $('#tblGrid').hide();
-    $('#divbotoes').hide();
+    $('#divbotoes').show();
 //	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
@@ -3275,7 +3282,7 @@ function showBible() {
 
 function showIniciarConfiguracao() {
     $('#tblGrid').hide();
-    $('#divbotoes').hide();
+    $('#divbotoes').show();
 //	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
