@@ -1,0 +1,241 @@
+
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+  <meta charset="UTF-8">
+  
+
+  <meta name="apple-mobile-web-app-title" content="CodePen">
+
+
+
+  
+  <title>CodePen - Offcanvas sidebar menu with a twist</title>
+<script src="scripts/jquery-3.6.3.js"></script>  
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="style/font-awesome.min.css" />
+  
+<style>
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+.page {
+  height: 100%;
+  background-color: #584E4A;
+}
+
+.content {
+  height: 200%;
+  transform-origin: top left;
+  transition: transform 0.7s cubic-bezier(1, 0.005, 0.24, 1);
+  background-color: #f0f0f0;
+}
+
+.content_inner {
+  height: 50%;
+  overflow-y: auto;
+  padding: 50px 20%;
+}
+
+/* basically all styling from now on */
+.menu_toggle {
+  z-index: 900;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: block;
+  cursor: pointer;
+  width: 100px;
+  height: 80px;
+  background-color: #000000; //#F37272;
+  border-bottom-right-radius: 100%;
+}
+.menu_toggle:active i {
+  opacity: 0.8;
+}
+.menu_toggle i {
+  color: #f0f0f0;
+}
+.menu_toggle .menu_open,
+.menu_toggle .menu_close {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -15px;
+  margin-left: -12px;
+  transition: transform 0.7s cubic-bezier(1, 0.005, 0.24, 1);
+}
+.menu_toggle .menu_open {
+  transform-origin: -100px -100px;
+}
+.menu_toggle .menu_close {
+  transform: rotate(20deg);
+  transform-origin: -100px -160px;
+}
+
+.menu_items {
+  position: fixed;
+  bottom: 0;
+  left: 50px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.menu_items li {
+  height: 60px;
+  margin-bottom: 30px;
+  transform: translateX(-300px);
+  transition: transform 0.7s 0s cubic-bezier(1, 0.005, 0.24, 1);
+}
+.menu_items li:nth-child(2) {
+  margin-left: 40px;
+}
+.menu_items li:nth-child(3) {
+  margin-left: 80px;
+}
+.menu_items a {
+  display: block;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #a4a4a4;
+  transition: color 0.2s;
+}
+.menu_items a .icon {
+  position: relative;
+  display: inline-block;
+  margin-right: 25px;
+  color: #f0f0f0;
+}
+.menu_items a .icon:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  content: "";
+  display: block;
+  width: 60px;
+  height: 60px;
+  margin-left: -33px;
+  margin-top: -32px;
+  border-radius: 100%;
+  border: 2px solid #f0f0f0;
+  transition: border-color 0.2s;
+}
+.menu_items a:hover {
+  color: #f0f0f0;
+}
+.menu_items a:hover .icon:after {
+  border-color: #F37272;
+}
+.menu_items a:active .icon {
+  color: #F37272;
+}
+
+/* Let's open up the menu */
+.efeitogirar {
+  /*.content_inner {
+    height: 100%;
+  }*/
+}
+.efeitogirar .content {
+  transform: rotate(-30deg);
+}
+.efeitogirar .menu_open {
+  transform: rotate(-20deg);
+}
+.efeitogirar .menu_close {
+  transform: rotate(0);
+}
+.efeitogirar .menu_items li {
+  transform: translateX(0);
+  transition: transform 0.35s 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.efeitogirar .menu_items li:nth-child(2) {
+  transition-delay: 0.47s;
+}
+.efeitogirar .menu_items li:nth-child(3) {
+  transition-delay: 0.48s;
+}
+
+h1 {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+body {
+  color: #584E4A;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
+</head>
+
+<body translate="no" >
+  <div class="page">
+  <span class="menu_toggle">
+    <i class="menu_open fa fa-list"></i>
+    <i class="menu_close fa fa-times"></i>
+  </span>
+  <ul class="menu_items">
+	<li><a href="#"><img src="clf-c01.png" id="imgTema1Apresentacao" class="btn btn-outline-secondary" width="70px" style="cursor:pointer; border-radius:50%;" title="AWS CLF-C01"></img> <br/>AWS CLF-C01</a></li>
+    <li><a href="#"><img src="az-900.png" id="imgTema2Apresentacao" class="btn btn-outline-secondary" width="70px" style="cursor:pointer; border-radius:50%;" title="AZURE AZ-900"></img> <br/>AZURE AZ-900</a></li>
+    <li><a href="#"><img src="1z0-1085-22.png" id="imgTema3Apresentacao" class="btn btn-outline-secondary" width="70px" style="cursor:pointer; border-radius:50%;" title="ORACLE 1Z0-1085-22"></img> <br/>ORACLE 1Z0-1085</a></li>
+  </ul>
+  <main class="content">
+    <div class="content_inner">
+      <h1>The mysterious red button of doom</h1>
+      <p>Do <strong>not</strong> push that big, red button in the corner. People will die. You have been warned. Do&hellip; not do it.</p>
+        
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel dolorem, ducimus laudantium, earum eos natus sint voluptatum dolores fuga quibusdam consectetur dicta. Laudantium enim inventore iusto ducimus est velit aperiam tempora quibusdam id dolore natus perferendis, debitis distinctio optio repellendus, repellat molestias delectus harum eius, reiciendis dicta ipsum architecto! Eligendi expedita in beatae, placeat unde voluptatibus voluptates consectetur explicabo laudantium, officiis ad nihil. Beatae similique voluptate sequi voluptatem delectus iure in omnis, fuga ipsam nulla ipsum architecto, iste debitis nisi labore quisquam odio accusantium corporis sint perspiciatis. Excepturi earum nobis soluta, doloremque nihil dolorum illum quaerat magnam nemo non sed!</p>
+      
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel dolorem, ducimus laudantium, earum eos natus sint voluptatum dolores fuga quibusdam consectetur dicta. Laudantium enim inventore iusto ducimus est velit aperiam tempora quibusdam id dolore natus perferendis, debitis distinctio optio repellendus, repellat molestias delectus harum eius, reiciendis dicta ipsum architecto! Eligendi expedita in beatae, placeat unde voluptatibus voluptates consectetur explicabo laudantium, officiis ad nihil. Beatae similique voluptate sequi voluptatem delectus iure in omnis, fuga ipsam nulla ipsum architecto, iste debitis nisi labore quisquam odio accusantium corporis sint perspiciatis. Excepturi earum nobis soluta, doloremque nihil dolorum illum quaerat magnam nemo non sed!</p>
+      
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel dolorem, ducimus laudantium, earum eos natus sint voluptatum dolores fuga quibusdam consectetur dicta. Laudantium enim inventore iusto ducimus est velit aperiam tempora quibusdam id dolore natus perferendis, debitis distinctio optio repellendus, repellat molestias delectus harum eius, reiciendis dicta ipsum architecto! Eligendi expedita in beatae, placeat unde voluptatibus voluptates consectetur explicabo laudantium, officiis ad nihil. Beatae similique voluptate sequi voluptatem delectus iure in omnis, fuga ipsam nulla ipsum architecto, iste debitis nisi labore quisquam odio accusantium corporis sint perspiciatis. Excepturi earum nobis soluta, doloremque nihil dolorum illum quaerat magnam nemo non sed!</p>
+    </div>
+  </main>
+</div>
+    <!-- script src="script/stopExecutionOnTimeout.js"></script -->
+
+  <!-- script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script -->
+
+      <script id="rendered-js" >
+// elements
+var $page = $('.page');
+
+$('.menu_toggle').on('click', function () {
+  $page.toggleClass('efeitogirar');
+});
+$('.content').on('click', function () {
+  $page.removeClass('efeitogirar');
+});
+//# sourceURL=pen.js
+    </script>
+
+  
+
+</body>
+
+</html>
+ 
