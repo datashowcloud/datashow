@@ -214,9 +214,11 @@ input:checked[type="checkbox"]::before{
 		<span class="navbar-toggler-icon flutuante"></span>
 		<button id="btnPause" class="btn btn-outline-secondary flutuante" title="Sair da fase" style="color:white; display:none;"><i class="fa fa-remove"></i></button>
     </button>
-    <div class="offcanvas offcanvas-top text-bg-dark bg-dark" style="height:333px;" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+    <div class="offcanvas offcanvas-top text-bg-dark bg-dark" style="height:390px;" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Escolha abaixo:</h5>
+        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Escolha:</h5>
+						<button id="btntreino" class="botao flutuante" onclick="changeCategory('2');">Treino</button>
+						<button id="btndesafio" class="botao flutuante" onclick="changeCategory('4');">Desafio</button>
         <button type="button" class="btn-close btn-close-white flutuante" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
@@ -225,24 +227,24 @@ input:checked[type="checkbox"]::before{
 			<table border=1 align=center>
 				<tr>
 					<td>
-						<img id="imgTema1MenuTopo" src="clf-c01-b.png" class="btn btn-outline-secondary flutuante" width="110px" style="cursor:pointer; display:'none';" title="AWS CLF-C01"></img>
+						<img id="imgTema1MenuTopo" src="clf-c01-b.png" class="btn btn-outline-secondary flutuante" width="100px" style="cursor:pointer; border-radius:50%; display:'none';" title="AWS CLF-C01"></img>
 						<br/>AWS <br/>CLF-C01
 					</td>
 					<td>&nbsp;</td>
 					<td>
-						<img id="imgTema2MenuTopo" src="az-900-b.png" class="btn btn-outline-secondary flutuante" width="110px" style="cursor:pointer; display:'none';" title="AZURE AZ-900"></img>
+						<img id="imgTema2MenuTopo" src="az-900-b.png" class="btn btn-outline-secondary flutuante" width="100px" style="cursor:pointer; border-radius:50%; display:'none';" title="AZURE AZ-900"></img>
 						<br/>AZURE <br/>AZ-900
 					</td>
 					<td>&nbsp;</td>
 					<td>
-						<img id="imgTema3MenuTopo" src="1z0-1085-22.png" class="btn btn-outline-secondary flutuante" style="cursor:pointer; display:'none'; width:110px;" title="ORACLE 1Z0-1085-22"></img>
+						<img id="imgTema3MenuTopo" src="1z0-1085-22.png" class="btn btn-outline-secondary flutuante" width="100px" style="cursor:pointer; border-radius:50%; display:'none';" title="ORACLE 1Z0-1085-22"></img>
 						<br/>ORACLE <br/>1Z0-1085-22
 					</td>
-				</tr/>
+				</tr>
 				<tr>
 					<td colspan=5> <!-- datashowcloud2022@gmail.com -->
-						<input type="text" id="version" value="12.00.00" style="font-size:10px; width:45px; display:none;"/>
-						<font size=2><i>v12.00.00 atualizado em Novembro/2023 <p/>contato@tamastigadu.com.br</i></font>
+						<input type="text" id="version" value="14.00.00" style="font-size:10px; width:45px; display:none;"/>
+						<font size=2><i>v14.00.00 atualizado em Fevereiro/2023 <p/>contato@tamastigadu.com.br</i></font>
 					</td>
 				</tr>
 			</table>
@@ -278,15 +280,124 @@ input:checked[type="checkbox"]::before{
 		
 		<table id="tblGrid" border=0 style="width:98%; display:none;" align=center>
 			<tbody>
+				<!--
 				<div id="divbotoes" style="display:none; text-align:center;">
-					<button id="btntreino" class="botao flutuante" onclick="changeCategory('2');">Treino</button>
-					&nbsp;&nbsp;</td>
-					<button id="btndesafio" class="botao flutuante" onclick="changeCategory('4');">Desafio</button>
 				</div>
+				-->
 			</tbody>
 		</table>
 
-		<table border=0 id="tblCategory" style="width:310px; color:gray; display:none;" align=center cellspacing=10 cellpadding=10>
+		<div id="tblCategory" style="text-align:center; color:white;">
+			<div style="font-weight:bold; background-color:#6959CD; border-radius:10%; width:90%; margin-left:auto; margin-right:auto;">
+				<br/>
+				<div style="font-size:35px; background-color:white; color:#6959CD; border-radius:40%; width:95%;  margin-left:auto; margin-right:auto;">
+					<br/>Quer conquistar tudo isso em 2023?<br/><br/>
+				</div>
+				<br/><br/><a id="queroentrar"></a>
+				<div style="font-size:25px;">
+					<i class="fa fa-play avatarflutuante" style="color:#3CB371; font-size:15px;"></i>
+					<img src="clf-c01.png" id="imgTema1Apresentacao" class="btn btn-outline-secondary" width="200px" style="cursor:pointer; display:'none'; border-radius:50%;" title="AWS CLF-C01"></img>
+					<br/>Certificação AWS
+					<br/>CLF-C01
+				</div>
+				<div>
+					<button class="btn btn-success flutuante" onclick="changeTema('1');" style="font-size:30px; color:black; font-weight:bold; background-color:#00FF7F;">QUERO TESTAR</button>
+					<br/><br/><br/>
+				</div>
+				<div style="font-size:25px;">
+					<i class="fa fa-play avatarflutuante" style="color:#3CB371; font-size:15px;"></i>
+					<img src="az-900.png" id="imgTema2Apresentacao" class="btn btn-outline-secondary" width="200px" style="cursor:pointer; display:'none'; border-radius:50%;" title="AZURE AZ-900"></img>
+					<br/>Certificação AZURE
+					<br/>AZ-900
+				</div>
+				<div>
+					<button class="btn btn-success flutuante" onclick="changeTema('2');" style="font-size:30px; color:black; font-weight:bold; background-color:#00FF7F;">QUERO TESTAR</button>
+					<br/><br/><br/>
+				</div>
+				<div style="font-size:25px;">
+					<i class="fa fa-play avatarflutuante" style="color:#3CB371; font-size:15px;"></i>
+					<img src="1z0-1085-22.png" id="imgTema3Apresentacao" class="btn btn-outline-secondary" width="200px" border=1 style="cursor:pointer; display:'none'; border-radius:50%;" title="ORACLE 1Z0-1085-22"></img>
+					<br/>Certificação ORACLE
+					<br/>1Z0-1085-22
+				</div>
+				<div>
+					<button class="btn btn-success flutuante" onclick="changeTema('3');" style="font-size:30px; color:black; font-weight:bold; background-color:#00FF7F;">QUERO TESTAR</button>
+				</div>
+				<br/>
+			</div>
+			
+			<br/><br/><br/><br/><br/>
+			<div style="margin-left:auto; margin-right:auto; text-align:center;">
+				<div style="width:95%; margin-left:auto; margin-right:auto; color:#FFFFFF; background-color:#FF8C00;">
+					<div style="width:90%; margin-left:auto; margin-right:auto;">
+						<br/><h1><b>Aprenda fundamentos de forma rápida e descomplicada, apenas fazendo testes:</b><h1>
+						<br/>
+						<h3 style="text-align:left;"><b>1. Inteligência Artificial</b><h3>
+						<h6 style="text-align:justify;">TÁ MASTIGADU. Mais de 400 perguntas criadas com inteligência artificial. A ferramenta também monta novos testes com perguntas que você errou a resposta.<h6>
+						<br/>
+						<h3 style="text-align:left;"><b>2. Tradutor Simultâneo</b><h3>
+						<h6 style="text-align:justify;">Tradução simultânea para outras línguas, como: Português, Inglês, Espanhol, Mandarim, Árabe e Indiano<h6>
+						<br/>
+						<h3 style="text-align:left;"><b>3. Categoria Treino</b><h3>
+						<h6 style="text-align:justify;">Estude treinando as perguntas com cobertura completa para todos os temas e tópicos abordados em uma das certificações de sua escolha. Você estudará todos os assuntos em forma de perguntas assim que terminar o treino.<h6>
+						<br/>
+						<h3 style="text-align:left;"><b>4. Categoria Desafio</b><h3>
+						<h6 style="text-align:justify;">Aproveite todas as perguntas coletadas na internet. Veja o seu índice de pontuação para saber se você já está pronto para fazer o exame oficial.<h6>
+						<br/>
+						<h3 style="text-align:left;"><b>5. Tomar Um Café</b><h3>
+						<h6 style="text-align:justify;">Você consegue terminar uma fase para tomar um café ou ir ao banheiro. Os testes estão separados por assunto e em pequenos blocos com média de 10 perguntas que podem ser respondidas em aproximadamente 10 minutos.<h6>
+						<br/>
+						<h3 style="text-align:left;"><b>6. No Celular e Outros Dispositivos</b><h3>
+						<h6 style="text-align:justify;">Funciona em diversos dispositivos e no seu celular facilitando o estudo na viagem, no descanso, antes de dormir, nos intervalos.<h6>
+						<br/>
+						<h3 style="text-align:left;"><b>7. Funciona Sem Internet</b><h3>
+						<h6 style="text-align:justify;">Funciona sem internet depois da primeira instalação de uma fase. É bom para viagens para lugares cm sinal fraco de internet.<h6>
+						<br/>
+						<h3 style="text-align:left;"><b>8. Função Dia e Noite</b><h3>
+						<h6 style="text-align:justify;">A função dia e noite permite continuar estudando em ambientes escuros sem incomodar quem está ao lado com a iluminação. Também economiza bateria do celular.<h6>
+						<div style="width:90%; margin-left:auto; margin-right:auto;">
+							<br/><a href="#queroentrar" class="btn btn-success flutuante" style="border-radius:50%; font-size:20px; color:black; font-weight:bold; background-color:#00FF7F;">QUERO ESTUDAR</a>
+						</div>
+						<br/><br/>
+					</div>
+				</div>
+			</div>
+
+			<div style="width:100%; margin-left:auto; margin-right:auto; background-color:white; color:black; font-size:30px; font-weight:bold;">
+				<br/><br/><br/><br/><br/>
+				Supere todas as barreiras com esta ferramenta que vai lhe ajudar ainda mais a alcançar a tão sonhada certificação em 2023.
+				<br/><a href="#queroentrar" class="btn btn-success flutuante" style="font-size:16px; color:black; font-weight:bold; background-color:#00FF7F;">clique aqui e estude já</a>
+				<br/><br/><br/><br/><br/>
+			</div>
+
+			<div style="width:90%; margin-left:auto; margin-right:auto; color:#EEEEEE;">
+				<div style="font-size:30px; font-weight:bold; background-color:transparent;">
+					<br/><br/>
+					Queremos que você tome essa decisão com tranquilidade. 
+				</div>
+				<div>
+					<img src="garantias.png" width="100%"></img>			
+				</div>
+				<div style="text-align:justify;">
+					<br/>
+					<h1><b>1ª GARANTIA</b></h1>
+					<h4 style="text-align:left;">15 dias grátis de treino!</h4>
+					<h6>Você pode testar a categoria Treino livremente por 15 dias, de graça, com todas perguntas personalizadas.</h6>
+				</div>
+				<div style="text-align:justify;">
+					<br/>
+					<h1><b>2ª GARANTIA</b></h1>
+					<h4 style="text-align:left;">Devolução do investimento!</h4>
+					<h6>Se sentir que a categoria Desafio não é para você, devolveremos 100% do seu investimento, sem nenhuma burocracia.</h6>
+					<br/>
+				</div>
+				<div style="width:90%; margin-left:auto; margin-right:auto;">
+					<a href="#queroentrar" class="btn btn-success flutuante" style="font-size:16px; color:black; font-weight:bold; background-color:#00FF7F;">QUERO GARANTIR MEU ESTUDO</a>
+				</div>
+			</div>
+		</div>
+<!--
+		<table border=0 id="tblCategory" style="width:90%; color:gray; background-color:#005599; border-radius:5%; display:none;" align=center cellspacing=10 cellpadding=10>
 			<tr><td style="font-size:22px;">&nbsp;&nbsp;&nbsp;&nbsp;Escolha:</td></tr>
 			<tr>
 				<td>
@@ -310,7 +421,7 @@ input:checked[type="checkbox"]::before{
 				</td>
 			</tr>
 		</table>
-
+-->
 		<div id="divcontent" style="display:'none';">
 		</div>
 

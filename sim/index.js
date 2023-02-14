@@ -515,27 +515,21 @@ function registerEvents() {
 	})
 	$('#imgTema1Apresentacao').click(function () {
 		changeTema('1');
-		initLinkHelp();
 	})
 	$('#imgTema2Apresentacao').click(function () {
 		changeTema('2');
-		initLinkHelp();
 	})
 	$('#imgTema3Apresentacao').click(function () {
 		changeTema('3');
-		initLinkHelp();
 	})
 	$('#imgTema1MenuTopo').click(function () {
 		changeTema('1');
-		initLinkHelp();
 	})
 	$('#imgTema2MenuTopo').click(function () {
 		changeTema('2');
-		initLinkHelp();
 	})
 	$('#imgTema3MenuTopo').click(function () {
 		changeTema('3');
-		initLinkHelp();
 	})
 	$('#mytextSim').click(function () {
 		if (document.getElementById('mytextSim2') != null && document.getElementById('mytextSim2').innerText.length > 10) {
@@ -3193,7 +3187,7 @@ function showFormSim() {
 //	document.getElementById('navBottom').style.display='';
 	if (document.getElementById('btnPrevious') != null) {document.getElementById('btnPrevious').disabled = false; }
 	if (document.getElementById('btnNext') != null) {document.getElementById('btnNext').disabled = false; }
-	if (document.getElementById('btnPause') != null) {document.getElementById('btnPause').style.display = ''; }
+//	if (document.getElementById('btnPause') != null) {document.getElementById('btnPause').style.display = ''; }
 	if (document.getElementById('btnFormCategory') != null) {document.getElementById('btnFormCategory').style.display = 'none'; }
 }
 
