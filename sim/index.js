@@ -17,6 +17,9 @@ var COL_LOGOTIPO = 5;
 var linkhelp = '';
 var CONTS_languagebra = '<img src="bandeirabra.png" class="flutuante" width="25px" style="cursor:pointer; border-radius:50%;" title="Traduzir para Português">';
 var CONTS_languageusa = '<img src="bandeirausa.png" class="flutuante" width="25px" style="cursor:pointer; border-radius:50%;" title="Translate to English">';
+var CONST_TEMA_AWS_CLFC01 = 1;
+var CONST_TEMA_AZURE_AZ900 = 2;
+var CONST_TEMA_ORACLE_1ZO108522 = 3;
 var CONST_CATEGORIA_TREINO = 2;
 var CONST_CATEGORIA_DESAFIO = 4;
 
@@ -486,12 +489,7 @@ function registerEvents() {
 		var mygroup = document.getElementById('mygroupSim').value;
 		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
 		setTimeout(() => { savePoints(mytema, mycategory, myid, mygroup, mycode) }, 1000); // Executa após alguns segundos para esperar o término do processo
-		setTimeout(() => { changeFaseNivel(mytema, mycategory, myid, mygroup, mycode) }, 2000); // Executa após alguns segundos para esperar o término do processo
-//		setTimeout(() => { exitQuestions() }, 1500); // Executa após alguns segundos para esperar o término do processo
-/*		showGridAndHideForms();
-		refreshTableData(mytema, mycategory, '0', '', '', ''); // botão btnCategory1 carrega essa opção
-*/
-//		setTimeout(() => { location.reload() }, 4000); // Executa após alguns segundos para esperar o término do processo
+		setTimeout(() => { changeFaseNivel(mytema, mycategory, myid, mygroup, mycode) }, 1000); // Executa após alguns segundos para esperar o término do processo
     });
 	$('#btnGear').click(function () {
 		if (document.getElementById('divGear').style.display == 'none') {
@@ -772,6 +770,7 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 		});
 		//alert('mytema='+mytema + ' mycategory='+mycategory + ' myid='+myid + ' mygroup='+mygroup + ' mycode='+mycode);
 		if (students == '') {
+			document.getElementById('btnTerminar').style.display = '';
 			document.getElementById('btnTerminar').focus();
 			return;
 		}
@@ -965,7 +964,7 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 			if (varNivel != student.mygroup.substring(0, 1)) {
 				varNivel = student.mygroup.substring(0, 1);
 //				varNivelLinha = '<tr><td></td><th nowrap><font color="gray" style="font-size:20px;"><i class=\"fa fa-unlock\"></i> NÍVEL ' + student.mygroup.substring(0, 1) + ' de ' + parseInt(CONST_NIVEL_MAX) + '</font></th></tr>';
-				varNivelLinha = '<tr style="border-bottom: 1px solid #ddd; border-top: 1px solid #ddd;"><td></td><td nowrap style="text-align:left;" colspan=99><font color="gray"  style="font-size:20px;"> &nbsp; <b>NÍVEL ' + student.mygroup.substring(0, 1) + '</b></font></td></tr>';
+				varNivelLinha = '<tr style="border-bottom: 1px solid #ddd; border-top: 1px solid #ddd;"><td></td><td nowrap style="text-align:left;" colspan=99><font color="gray"  style="font-size:20px;"> &nbsp; <b>' + getTemaCategoria() + ' <i class="fa fa-chevron-right"></i> &nbsp;Nível ' + student.mygroup.substring(0, 1) + '</b></font></td></tr>';
 			} else {
 				varNivelLinha = '';
 			}
@@ -1088,6 +1087,29 @@ async function deletefase(mytema, mycategory, mygroup, mycode, myid) {
     } catch (ex) {
         console.log(ex.message);
     }
+}
+
+function getTemaCategoria() {
+	//exibe a cor de ativado ou desativado dos botões
+	var params = new URLSearchParams(window.location.search);
+	var mytema = params.get('tem');
+	var mycategory = params.get('cat');
+
+	if (mytema == CONST_TEMA_AWS_CLFC01) {
+		mytema = 'CLF-C01';
+	} else if (mytema == CONST_TEMA_AZURE_AZ900) {
+		mytema = 'AZ-900';
+	} else if (mytema == CONST_TEMA_ORACLE_1ZO108522) {
+		mytema = '1ZO-1085-22';
+	}
+
+	if (mycategory == CONST_CATEGORIA_TREINO) {
+		mycategory = 'Treino';
+	} else if (mycategory == CONST_CATEGORIA_DESAFIO) {
+		mycategory = 'Desafio';
+	}
+	
+	return mytema + ' &nbsp;<i class="fa fa-chevron-right"></i>&nbsp; ' + mycategory + '&nbsp;';
 }
 
 function setConfigBotoes() {
@@ -1389,6 +1411,9 @@ async function changeFaseNivel(mytema, mycategory, myid, mygroup, mycode) {
 			});
 			if (students == '') {
 				var DataShow_Config = window.open("T"+mytema + "C"+mycategory+ "G"+mygroupNext + ".html?sim=" + mygroupNext + "&tem=" + mytema + "&cat=" + mycategory, "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
+			} else {
+				refreshTableData(mytema, mycategory, '0', '', '', '');
+				showGridAndHideForms();				
 			}
 		}
 	}
@@ -2498,7 +2523,7 @@ async function initLinkHelp() {
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', false, 'Não Se Aplica', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', '', 'Não Se Aplica', 'Not applicable', '');
 	
 	//título
-	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Treino CLF-C01', 'Training CLF-C01', '');
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Fase 1.0', 'Phase 1.0', '');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'ECS', 'EKS', 'ECR', 'S3', save, 'EC2', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', 'computação escalável na Nuvem da Amazon Web Services (AWS)', 'O Amazon EC2 (Elastic Compute Cloud) --> Oferece uma <b>capacidade de computação escalável na Nuvem da Amazon Web Services (AWS)</b>. <br/>O uso dele <b>elimina a necessidade de investir em hardware inicialmente</b>, portanto, você pode desenvolver e implantar aplicativos com mais rapidez.', 'Amazon EC2 (Elastic Compute Cloud) --> Provides <b>scalable computing power on the Amazon Web Services (AWS) Cloud</b>. <br/>Using it <b>eliminates the need to invest in hardware up front</b>, so you can develop and deploy applications faster.', '');
@@ -2539,7 +2564,7 @@ async function initLinkHelp() {
 	}
 	contadorMycode = 0;
 	//título
-	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Desafio CLF-C01', 'Challenge CLF-C01', '');
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Fase 1.0', 'Phase 1.0', '');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Organizations', 'Billing', 'Cost Explorer', 'Princing Calculator', save, 'Budgets', 'https://docs.aws.amazon.com/pt_br/cost-management/latest/userguide/budgets-managing-costs.html', '', 'AWS Budgets --> É para rastreamento de uso e custo da AWS. <br/>Monitorar métricas agregadas de utilização e cobertura para suas Instâncias Reservadas (RIs) ou Savings Plans - Planos de Poupança. <br/>Envia mensagem quando o consumo vai atingir o percentual pré-configurado ou pré-definido.', 'AWS Budgets --> It is for tracking AWS usage and cost. <br/>Monitor aggregated usage and coverage metrics for your Reserved Instances (RIs) or Savings Plans. <br/>Sends a message when the consumption will reach the pre-configured or pre-defined percentage.', '');
@@ -2580,7 +2605,7 @@ async function initLinkHelp() {
 	contadorMygroup = 10;
 	contadorMycode = 0;
 	//título
-	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Treino AZ-900', 'Training AZ-900', '');
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Fase 1.0', 'Phase 1.0', '');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Nuvem Privada --> AZ-900', 'Nuvem Híbrida --> AZ-900', 'Multinuvem --> AZ-900', 'AZ-900: --> Nenhuma das alternativas', save, 'Nuvem Pública --> AZ-900', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-a-public-cloud/', '', 'AZ-900: Nuvem Pública --> Definida como uma série de serviços de computação oferecidos por terceiros à Internet pública, os quais são disponibilizados a qualquer pessoa que queira utilizá-los ou comprá-los. Eles podem ser gratuitos ou vendidos sob demanda, permitindo que os clientes paguem apenas pelo seu consumo de ciclos de CPU, armazenamento ou largura de banda.', 'AZ-900: Public Cloud --> Defined as a series of computing services offered by third parties to the public Internet, which are made available to anyone who wants to use or purchase them. They can be free or sold on demand, allowing customers to pay only for their consumption of CPU cycles, storage or bandwidth.', '');
@@ -2609,7 +2634,7 @@ async function initLinkHelp() {
 	contadorMygroup = 10;
 	contadorMycode = 0;
 	//título
-	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Desafio AZ-900', 'Challenge AZ-900', '');
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Fase 1.0', 'Phase 1.0', '');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'PAAS --> AZ-900', 'SAAS --> AZ-900', 'Computação Sem Servidor --> AZ-900', 'BAAS', save, 'IAAS --> AZ-900', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-iaas/', '', 'AZ-900 IAAS (Infraestrutura como Serviço) --> Um tipo de serviço de computação em nuvem que oferece recursos fundamentais de computação, armazenamento e rede sob demanda e pagos conforme o uso.', 'AZ-900 IAAS (Infrastructure as a Service) --> A type of cloud computing service that delivers core compute, storage, and network resources on demand and on a pay-as-you-go basis.', '');
@@ -2640,7 +2665,7 @@ async function initLinkHelp() {
 	contadorMygroup = 10;
 	contadorMycode = 0;
 	//título
-	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Treino Oracle', 'Training Oracle', '');
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Fase 1.0', 'Phase 1.0', '');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Nuvem Privada --> AZ-900', 'Nuvem Híbrida --> AZ-900', 'HCM (Oracle Fusion Cloud Human Capital Management) --> Oracle', '', save, 'OCI (Oracle Cloud Infrastructure) --> Oracle', 'https://docs.oracle.com/pt-br/iaas/Content/GSG/Concepts/baremetalintro.htm', '', 'Oracle: OCI (Oracle Cloud Infrastructure) --> Conjunto complementar de serviços de nuvem que permite criar e executar uma variedade de aplicativos e serviços em um ambiente hospedado altamente disponível.', 'Oracle: OCI (Oracle Cloud Infrastructure) --> Complementary set of cloud services that enable you to build and run a variety of applications and services in a highly available hosted environment.', '');
@@ -2665,7 +2690,7 @@ async function initLinkHelp() {
 	contadorMygroup = 10;
 	contadorMycode = 0;
 	//título
-	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Desafio Oracle', 'Challenge Oracle', '');
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Fase 1.0', 'Phase 1.0', '');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Vertical Scaling', 'Parallel Scaling', 'Manual Scaling', '', save, 'Autoscaling', 'https://docs.oracle.com/pt-br/iaas/Content/Compute/Tasks/autoscalinginstancepools.htm', '', 'Você tem um aplicativo da Web que recebe 5 vezes mais tráfego nos finais de semana do que nos dias de semana. Você precisa corresponder automaticamente a capacidade à demanda, manter o aplicativo sempre em funcionamento e economizar custos. <br/>Qual recurso de computação do Oracle Cloud Infrastructure (OCI) pode ser usado para atender a esses requisitos?', 'You have a web application that receives 5X more traffic on the weekends than weekdays. You need to automatically match capacity to demand, keep the application always up and running, and save cost. <br/>Which Oracle Cloud Infrastructure (OCI) compute feature can be used to meet these requirements?', '');
@@ -3158,7 +3183,6 @@ function showTip(valorindice) {
 function showFormCategory() {
     $('#tblGrid').show();
     $('#divbotoes').hide();
-//	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
 	$('#divcontent').hide();
@@ -3173,7 +3197,6 @@ function showFormCategory() {
 function showFormSim() {
     $('#tblGrid').hide();
     $('#divbotoes').show();
-//	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
 	$('#divcontent').hide();
@@ -3194,7 +3217,6 @@ function showFormSim() {
 function showFormAddUpdate() {
     $('#tblGrid').hide();
     $('#divbotoes').show();
-//	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').show();
 	$('#divGear').hide();
 	$('#divcontent').hide();
@@ -3208,7 +3230,6 @@ function showFormAddUpdate() {
 function showGridAndHideForms() {
     $('#tblGrid').show();
     $('#divbotoes').show();
-	$('#tblMenuCategrias').show();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
 	$('#divcontent').hide();
@@ -3216,13 +3237,14 @@ function showGridAndHideForms() {
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
 	$('#tblCategory').hide();
-//	document.getElementById('navBottom').style.display='none';	
+	if (document.getElementById('btnTerminar') != null) {
+		document.getElementById('btnTerminar').style.display='none';	
+	}
 }
 
 function showAddNewManual() {
 	$('#divGearAddNewLiryc').show();
     $('#divbotoes').show();
-//	$('#tblMenuCategrias').hide();
     $('#tblGrid').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
@@ -3236,7 +3258,6 @@ function showAddNewManual() {
 function showFormGear() {
     $('#tblGrid').hide();
     $('#divbotoes').show();
-//	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').show();
 	$('#divcontent').hide();
@@ -3249,7 +3270,6 @@ function showFormGear() {
 function showFormImport() {
     $('#tblGrid').hide();
     $('#divbotoes').show();
-//	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
 	$('#divcontent').show();
@@ -3263,7 +3283,6 @@ function showFormImport() {
 function showBible() {
     $('#tblGrid').hide();
     $('#divbotoes').show();
-//	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
 	$('#divcontent').hide();
@@ -3277,7 +3296,6 @@ function showBible() {
 function showIniciarConfiguracao() {
     $('#tblGrid').hide();
     $('#divbotoes').show();
-//	$('#tblMenuCategrias').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
 	$('#divcontent').hide();
