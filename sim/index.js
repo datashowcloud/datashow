@@ -15,8 +15,8 @@ var GLOBAL_buttoncolor = 'btn-colors';
 var GLOBAL_background_black = 'black';
 var COL_LOGOTIPO = 5;
 var linkhelp = '';
-var CONTS_languagebra = '<img src="bandeirabra.png" class="flutuante" width="25px" style="cursor:pointer; border-radius:50%;" title="Traduzir para Português">';
-var CONTS_languageusa = '<img src="bandeirausa.png" class="flutuante" width="25px" style="cursor:pointer; border-radius:50%;" title="Translate to English">';
+var CONTS_languagebra = '<img src="img/bandeirabra.png" class="flutuante" width="25px" style="cursor:pointer; border-radius:50%;" title="Traduzir para Português">';
+var CONTS_languageusa = '<img src="img/bandeirausa.png" class="flutuante" width="25px" style="cursor:pointer; border-radius:50%;" title="Translate to English">';
 var CONST_TEMA_AWS_CLFC01 = 1;
 var CONST_TEMA_AZURE_AZ900 = 2;
 var CONST_TEMA_ORACLE_1ZO108522 = 3;
@@ -657,15 +657,15 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 	}
 	//apresentação tela inicial
 	if (document.getElementById('imgTema1Apresentacao') != null) {
-		document.getElementById('imgTema1Apresentacao').src = 'clf-c01' + b + '.png';
-		document.getElementById('imgTema2Apresentacao').src = 'az-900' + b + '.png';
-		document.getElementById('imgTema3Apresentacao').src = '1z0-1085-22' + b + '.png';
+		document.getElementById('imgTema1Apresentacao').src = 'img/clf-c01' + b + '.png';
+		document.getElementById('imgTema2Apresentacao').src = 'img/az-900' + b + '.png';
+		document.getElementById('imgTema3Apresentacao').src = 'img/1z0-1085-22' + b + '.png';
 	}
 	//menu lateral direito
 	if (document.getElementById('imgTema1MenuTopo') != null) {
-		document.getElementById('imgTema1MenuTopo').src = 'clf-c01' + b + '.png';
-		document.getElementById('imgTema2MenuTopo').src = 'az-900' + b + '.png';
-		document.getElementById('imgTema3MenuTopo').src = '1z0-1085-22' + b + '.png';
+		document.getElementById('imgTema1MenuTopo').src = 'img/clf-c01' + b + '.png';
+		document.getElementById('imgTema2MenuTopo').src = 'img/az-900' + b + '.png';
+		document.getElementById('imgTema3MenuTopo').src = 'img/1z0-1085-22' + b + '.png';
 	}
 
 	if (document.getElementById('mytextSim') != null) {
