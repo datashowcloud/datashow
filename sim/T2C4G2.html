@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Configuração Sim</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/bootstrap.css" />
+    <link rel="stylesheet" href="style/font-awesome.min.css" />
+    <script src="scripts/jsstore.js"></script>
+    <script src="scripts/jsstore.worker.js"></script>
+    <script src="index.js"></script>
+	<style>
+#myBody {
+  border: 0px dashed blue;
+  padding: 25px;
+  background-attachment: fixed;
+  background-position: top; 
+  background-repeat: no-repeat;
+} 
+	</style>
+</head>
+
+<body id="myBody" ZZZbackground="gallery/paper.jpeg">
+		
+			<div style="display:'none'; text-align:center; ">
+				<!-- br/>Aguarde o resultado na janela da configuração -->
+				<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Está tudo pronto!</div>
+				<br/>
+				<div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">As perguntas estão instaladas.</div>
+				<br/><br/>
+				<button class="btn btn-info" onclick="window.open('index.html?tem=2&cat=4', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Vamos lá</button>
+				
+				<label id="bSearch" style="display:none;">
+					<input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:200px; height:34px;">
+				</label>
+			</div>
+
+		<table id="tblGrid" style="width:98%" class="table table-hover ">
+			<tbody>
+				<div id="divbotoes" style="display:none; text-align:center;">
+					<button id="btntreino" class="botao flutuante" onclick="changeCategory('2');" style="background-color:gray; display:none;">Treino</button>
+					&nbsp;&nbsp;</td>
+					<button id="btndesafio" class="botao flutuante" onclick="changeCategory('4');" style="background-color:black; display:none;">Desafio</button>
+				</div>
+			</tbody>
+		</table>
+
+		<!-- form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post" -->
+		<!-- /form -->
+		
+		<div class="form-group" id="divFormSim" style="display:none;">
+			<font size=4.9 style=text-align:justify>
+				<table border=0 align=center width="100%">
+					<tr><td>
+						<button id="btnBackward" class="btn btn-danger" style="display:none;"> <i class="fa fa-remove"></i> </button>
+						<button id="btnPrevious" class="btn btn-default" style="display:none;"> <i class="fa fa-chevron-left"></i></button>
+						<button id="btnNext" class="btn btn-success" style="display:none;">Próximo <i class="fa fa-chevron-right"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-signal"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-pause"></i></button>
+						<button class="btn btn-warning" style="display:none;"><i class="fa fa-check"></i> Fim</button>
+					</td></tr>
+					<tr><td id="mytextSim" style="display:none; text-align:justify;">
+					</td></tr>
+					<tr><td id="mycorrect1Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect1answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect2Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect2answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect3Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect3answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect4Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect4answer"></div>
+					</td></tr>
+
+					<tr><td id="myincorrect1Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect1answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect2Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect2answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect3Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect3answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect4Sim" style="display:none; text-align:justify;">
+						<div id="myincorrecta4answer"></div>
+					</td></tr>
+					<tr><td>
+						<br/><input type="text" id="mygroupSim" value="" Zhidden="">
+						<br/><input type="text" id="mycodeSim" value="" Zhidden="">
+						<br/><input type="text" id="myorderSim" value="" Zhidden="">
+						<br/><input type="text" id="myidSim" value="" Zhidden="">
+					</td></tr>
+				</table>
+				<table id="tableFormSimDashboard" border=0 align=center width="60%" style="display:'none';">
+					<tr><td nowrap id="txtCalculo"></td></tr>
+					<tr><td nowrap><input type="text" id="txtIncorretas" value="Incorretas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:red;" readonly /></td></tr>
+					<tr><td nowrap><input type="text" id="txtCorretas" value="Corretas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:green;" readonly /></td></tr>
+					<tr><td nowrap><input type="text" id="txtNaoRespondidas" value="Não Respondidas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:blue;" readonly /></td></tr>
+					<tr><td nowrap><br/><input type="text" id="txtTotal" value="Total" class="btn btn-default" style="padding:9px 15px 9px 15px; display:'none';" hidden=""></td></tr>
+				</table>
+				<table id="tableLinkhelp" border=0 align=center style="display:'none';">
+					<tr><td id="help" style="display:none; text-align:justify;">
+						<div id="divlinkhelp"></div>
+					</td></tr>
+				</table>
+			</font>
+		</div>
+
+		<div class="form-group" id="divFormAddUpdate" style="display:none;">
+			<table border=0 align=center width="98%" style="display:none;"><tr><td>
+				<b>Formulário Editor de Perguntas</b>
+				<p/><p/>
+				<select id="mygroup" name="mygroup" style="height:35px; display:none;">
+					<!-- option value="00">Configurações</option -->
+					<option value="10">Nível 1.0</option>
+					<option value="11">Nível 1.1</option>
+					<option value="12">Nível 1.2</option>
+					<option value="13">Nível 1.3</option>
+					<option value="14">Nível 1.4</option>
+					<option value="20">Nível 2.0</option>
+					<option value="21">Nível 2.1</option>
+					<option value="22">Nível 2.2</option>
+					<option value="23">Nível 2.3</option>
+					<option value="30">Nível 3.0</option>
+					<option value="31">Nível 3.1</option>
+					<option value="32">Nível 3.2</option>
+					<option value="33">Nível 3.3</option>
+					<option value="40">Nível 4.0</option>
+					<option value="41">Nível 4.1</option>
+					<option value="42">Nível 4.2</option>
+					<option value="43">Nível 4.3</option>
+					<option value="44">Nível 4.4</option>
+					<option value="45">Nível 4.5</option>
+					<option value="46">Nível 4.6</option>
+					<option value="50">Nível 5.0</option>
+
+				</select>
+				<select id="mycode" name="mycode" style="height:35px; display:none;"></select>
+				<select id="myorder" name="myorder" style="height:35px; display:none;"></select>
+				<p/>
+				<p/><textarea name="mytext" id="mytext" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui..."></textarea>
+				<p/><textarea name="mytext2" id="mytext2" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui em Inglês..."></textarea>
+				<p/><textarea name="mytext3" id="mytext3" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui em Espanhol..."></textarea>
+				<font style="color:green;">
+					Corretas:
+					<textarea name="myoption1" id="myoption1" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey1" id="myoptionkey1" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption2" id="myoption2" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey2" id="myoptionkey2" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption3" id="myoption3" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey3" id="myoptionkey3" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption4" id="myoption4" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey4" id="myoptionkey4" rows=1 placeholder="explicação..."></textarea>
+				</font>
+				
+				<font style="color:red; text-align:left;">
+					Incorretas:
+					<textarea name="myoption5" id="myoption5" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey5" id="myoptionkey5" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption6" id="myoption6" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey6" id="myoptionkey6" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption7" id="myoption7" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey7" id="myoptionkey7" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption8" id="myoption8" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey8" id="myoptionkey8" rows=1 placeholder="explicação..."></textarea>
+				</font>
+				<p/><p/>
+				<button id="btnSubmit" type="button" class="btn btn-primary" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-check"></i> Salvar</button>
+				<p/><p/>
+				<button id="btnCancel" type="button" class="btn btn-default" style="padding:9px 15px 9px 15px;margin-left:10px; width:110px;"> <i class="fa fa-times"></i> Não Salvar</button>
+			</td></tr></table>
+		</div>
+		
+		<div id="divcontent" style="display:none;">
+
+<!-- Configuração: 1 -->
+<br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
+<p>
+Fase 1.1
+
+<p>
+Sua empresa tem um conjunto de recursos definidos como parte de uma assinatura. Se eles excluírem um grupo de recursos, os recursos no grupo de recursos também serão excluídos?
+<english>Your company has a set of resources defined as part of a subscription. Is it TRUE that Azure resources can only access other resources in the same resource group?</english>
+
+<ok>
+Sim. <i>(Yes)</i>
+<key>AZ-900 Tip 001</key>
+
+Não. <i>(No)</i>
+<key>Não Se Aplica</key>
+
+<p>
+Uma empresa acaba de definir uma conta do Azure Free. É VERDADE que apenas as máquinas virtuais do Azure e as contas de armazenamento do Azure podem ser implantadas na Conta Gratuita do Azure?
+<english>A company has just set an Azure Free account. Is it TRUE that only Azure virtual machines and Azure storage accounts can be deployed to the Azure Free Account?</english>
+
+<ok>
+Não. <i>(No)</i>
+<key></key>
+
+Sim. <i>(Yes)</i>
+<key>Não Se Aplica</key>
+
+<p>
+Sua empresa possui um conjunto de recursos definidos como parte de uma assinatura. É VERDADE que os recursos do Azure só podem acessar outros recursos no mesmo grupo de recursos?
+<english>Your company has a set of resources defined as part of a subscription. Is it TRUE that Azure resources can only access other resources in the same resource group?</english>
+
+<ok>
+Não. <i>(No)</i>
+<key></key>
+
+Sim. <i>(Yes)</i>
+<key>Não Se Aplica</key>
+
+<p>
+Uma empresa deseja criar uma máquina virtual do Azure como parte de sua assinatura. A máquina virtual do Azure pode fazer parte de vários grupos de recursos?
+<english>A company wants to create an Azure virtual machine as part of their subscription. Can the Azure virtual machine be a part of multiple resource groups?</english>
+
+<ok>
+Não. <i>(No)</i>
+<key></key>
+
+Sim. <i>(Yes)</i>
+<key>Não Se Aplica</key>
+
+<p>
+Sua empresa tem um conjunto de recursos e grupos de recursos definidos como parte de uma assinatura. Você pode aninhar grupos de recursos no Azure?
+<english>Your company has a set of resources and resource groups defined as part of a subscription. Can you nest resource groups in Azure?</english>
+
+<ok>
+Não. <i>(No)</i>
+<key></key>
+
+Sim. <i>(Yes)</i>
+<key>Não Se Aplica</key>
+
+<p>
+Você deve especificar se a seguinte afirmação é VERDADEIRA ou FALSA "Regulamento Geral de Proteção de Dados (GDPR) define regras de proteção e privacidade de dados".
+<english>You have to specify whether the following statement is TRUE or FALSE "General Data Protection Regulation (GDPR) define data protection and privacy rules".)</english>
+
+<ok>
+Verdadeiro. <i>(True)</i>
+<key></key>
+
+Falso. <i>(False)</i>
+<key>Não Se Aplica</key>
+
+<p>
+Você tem dados armazenados na camada de acesso de arquivo de uma conta de armazenamento do Azure. Qual das opções a seguir deve ser feita antes que você possa acessar os dados na conta de armazenamento?
+<english>You have data that is stored in the Archive access tier of an Azure Storage account. Which of the following must be done before you can access the data in the storage account?</english>
+
+<ok>
+Os dados precisam ser reidratados. <i>(The data needs to be rehydrated)</i>
+<key></key>
+
+Os dados devem ser restaurados. <i>(The data must be restored)</i>
+<key></key>
+
+Os dados devem ser copiados com o Backup do Azure. <i>(The data must be backed up with Azure Backup)</i>
+<key></key>
+
+Os dados precisam ser copiados usando a ferramenta azcopy.exe. <i>(The data needs to be copied by using the azcopy.exe tool)</i>
+<key></key>
+
+<p>
+Em qual dos seguintes serviços você ativaria o "acesso à VM just-in-time"?
+<english>In which of the following services would you enable "just-in-time VM access"?</english>
+
+<ok>
+Centro de Segurança do Azure. <i>(Azure Security Center)</i>
+<key></key>
+
+Bastião Azure. <i>(Azure Bastion)</i>
+<key></key>
+
+Firewall do Azure. <i>(Azure Firewall)</i>
+<key></key>
+
+Porta frontal do Azure. <i>(Azure Front Door)</i>
+<key></key>
+
+<p>
+Qual das seguintes opções é de responsabilidade do cliente?
+<english>Which of the following is the responsibility of the customer?</english>
+
+<ok>
+Segurança de dados hospedados em máquinas virtuais do Azure. <i>(Security of data hosted on Azure virtual machines)</i>
+<key></key>
+
+Manutenção dos servidores físicos subjacentes. <i>(Maintaining the underlying physical servers)</i>
+<key></key>
+
+Tempo de atividade do serviço de Máquina Virtual. <i>(Uptime of the Virtual Machine service)</i>
+<key></key>
+
+Resfriamento no data center. <i>(Cooling in the data center)</i>
+<key></key>
+
+<p>
+Uma empresa está planejando hospedar máquinas virtuais em várias zonas de disponibilidade. Qual das opções a seguir a empresa está tentando alcançar com essa implementação?
+<english>A company is planning on hosting virtual machines across multiple Availability zones. Which of the following is the company trying to achieve with this implementation?</english>
+
+<ok>
+Melhor disponibilidade. <i>(Better Availability)</i>
+<key></key>
+
+Melhor elasticidade. <i>(Better elasticity)</i>
+<key></key>
+
+Redução de custos. <i>(Reduction in costs)</i>
+<key></key>
+
+Recuperação de desastres. <i>(Disaster Recovery)</i>
+<key></key>
+
+<p>
+
+</textarea>
+
+		</div>
+
+    <link href="style/main.css " rel="stylesheet " type="text/css " />
+</body>
+
+</html>
+
+<script type="text/javascript">
+	onLoadConfig();
+</script>

@@ -142,8 +142,16 @@ input:checked[type="checkbox"]::before{
   }
 }
 .avatarflutuante {
-  //width: 50px;
-  //height: 50px;
+  box-sizing: border-box;
+  border: 0px white solid;
+  //border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+  transform: translatey(0px);
+  -webkit-animation: float 3s ease-in-out infinite;
+          animation: float 3s ease-in-out infinite;
+}
+.avatarflutuantevertical {
   box-sizing: border-box;
   border: 0px white solid;
   //border-radius: 50%;
@@ -201,586 +209,672 @@ input:checked[type="checkbox"]::before{
 
 <body id="myBody" bgcolor="black">
 
-<nav id="menutopodireito" class="navbar sticky-top navbar-dark bg-dark">
-  <div class="container-fluid">
-    <div>
-		<a class="navbar-brand" href="index.html" title="Página Inicial">TAMASTIGADU</a>
-		<button id="btnNightDay" class="btn Zbtn-sm btn-outline-secondary flutuante" title="Dia e noite" style="color:white;"><i class="fa fa-adjust"></i> </button>
-		<button id="btnDropDb" class="btn Zbtn-sm btn-outline-secondary flutuante" title="Restaurar padrão de fábrica" style="color:white; display:'none';"><i class="fa fa-refresh"></i></font></button>
-		<button id="btnTerminar" class="btn btn-outline-secondary flutuante end" title="Terminar a fase" style="color:white; display:none;"><i class="fa fa-check"></i> Fim</button>
-		<!--button id="btnLanguage" class="btn Zbtn-sm btn-outline-secondary" title="Trocar língua: Inglês e Português" style="color:white;" disabled><i class="fa fa-globe"></i></button-->
+	<a id="querocomecar"></a>
+
+	<nav id="menutopodireito" class="navbar sticky-top navbar-dark bg-dark" style="display:'none';">
+	  <div class="container-fluid">
+		<div>
+			<a class="navbar-brand" href="index.html" title="Página Inicial">
+			</a>
+			<button id="btnPaginaInicial" class="btn btn-sm btn-outline-primary" title="Início" style="border-radius:50%;color:white;"><i class="fa fa-home"></i> </button>
+			<button id="btnNightDay" class="btn btn-sm btn-outline-primary" title="Dia e noite" style="border-radius:50%; color:white;"><i class="fa fa-adjust"></i> </button>
+			<button id="btnDropDb" class="btn btn-sm btn-outline-primary" title="Restaurar padrão de fábrica" style="border-radius:50%;color:white; display:'none';"><i class="fa fa-refresh"></i></font></button>
+			<button id="btnLogin" class="btn btn-sm btn-outline-primary" title="Você" style="border-radius:50%; color:white;"><i class="fa fa-user"></i> </button>
+			<button id="btnTerminar" class="btn btn-sm btn-outline-primary end" title="Terminar a fase" style="border-radius:50%;color:white; display:none;">Fim</button>
+			<!--button id="btnLanguage" class="btn Zbtn-sm btn-outline-primary" title="Trocar língua: Inglês e Português" style="border-radius:50%; color:white;" disabled><i class="fa fa-globe"></i></button-->
+		</div>
+		<button class="navbar-toggler" type="button" title="Menu" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+			<span class="navbar-toggler-icon"></span>
+			<button id="btnPause" class="btn btn-sm btn-outline-danger flutuante" style="border-radius:50%; color:white; display:'none';"><i class="fa fa-remove"></i></button>
+		</button>
+		<div class="offcanvas offcanvas-top text-bg-dark bg-dark" style="border-radius:50%; height:330px;" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+		  <div class="offcanvas-header">
+			<h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Escolha:</h5>
+			<button type="button" class="btn-close btn-close-white flutuante" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+		  </div>
+		  <div class="offcanvas-body">
+			<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+			  <li class="nav-item">
+					<br/>
+					<div align=center>
+						<button id="btntreino" class="botao flutuante" style="border-radius:50%;" onclick="changeCategory('2');"><i class="fa fa-book"></i> Treino</button>
+						<button id="btndesafio" class="botao flutuante" style="border-radius:50%;" onclick="changeCategory('4');"><i class="fa fa-road"></i> Desafio</button>
+					</div>
+					<!-- tr>
+						<td>
+							<img id="imgTema1MenuTopo" src="img/clf-c01-b.png" class="btn btn-outline-secondary flutuante" width="100px" style="cursor:pointer; border-radius:50%; display:'none';" title="AWS CLF-C01"></img>
+							<br/>AWS <br/>CLF-C01
+						</td>
+						<td>&nbsp;</td>
+						<td>
+							<img id="imgTema2MenuTopo" src="img/az-900-b.png" class="btn btn-outline-secondary flutuante" width="100px" style="cursor:pointer; border-radius:50%; display:'none';" title="AZURE AZ-900"></img>
+							<br/>AZURE <br/>AZ-900
+						</td>
+						<td>&nbsp;</td>
+						<td>
+							<img id="imgTema3MenuTopo" src="img/1z0-1085-22.png" class="btn btn-outline-secondary flutuante" width="100px" style="cursor:pointer; border-radius:50%; display:'none';" title="ORACLE 1Z0-1085-22"></img>
+							<br/>ORACLE <br/>1Z0-1085-22
+						</td>
+					</tr -->
+					<!-- datashowcloud2022@gmail.com -->
+					<div align=center>
+						<input type="text" id="version" value="202302282326" style="font-size:10px; width:45px; display:none;"/>
+					</div>
+					<div align=center>
+						<font size=2>
+							<i><p/><p/>atualizado em Fev de 2023 <p/>contato@tamastigadu.com.br <p/>v28.23.26 </i>
+						</font>
+					</div>
+			  </li>
+			</ul>
+			<!-- form class="d-flex mt-3" role="search">
+			  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+			  <button class="btn btn-success" type="submit">Search</button>
+			</form -->
+		  </div>
+		</div>
+	  </div>
+	</nav>
+
+	<div id="divconfig" style="display:none;">
+		<label id="lei13709" class="btn btn-default" style="cursor:default; width:300px; display:none;">
+			Em conformidade com a Lei 13.709/18
+			<br/>- Lei Geral de Proteção de Dados Pessoais,
+			<br/>concordo, autorizo, reconheço e declaro
+			<br/>que não farei cópia da ferramenta.
+		</label>
+		<br/>
+		<!-- input type="text" name="config_myowner" size="16" id="config_myowner" maxlength="6" style="width:300px;" value="" placeholder="digite sua chave ou licença... (opcional)" -->
+		<!-- br/><br/ -->
+		<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px;">Primeiro vamos configurar</div>
+		<br/><br/>
+		<button id="btnIndexConfigurar" class="btn btn-info" style="padding:9px 15px 9px 15px; width:150px;">Começar</button>
+		<br/><br/><br/>
 	</div>
-	<button class="navbar-toggler" type="button" title="Menu" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
-		<span class="navbar-toggler-icon flutuante"></span>
-		<button id="btnPause" class="btn btn-outline-secondary flutuante" title="Sair da fase" style="color:white; display:none;"><i class="fa fa-remove"></i></button>
-    </button>
-    <div class="offcanvas offcanvas-top text-bg-dark bg-dark" style="height:330px;" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Escolha:</h5>
-        <button type="button" class="btn-close btn-close-white flutuante" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-		  <li class="nav-item">
-			<table border=1 align=center>
-				<tr>
-					<td>
-						<img id="imgTema1MenuTopo" src="img/clf-c01-b.png" class="btn btn-outline-secondary flutuante" width="100px" style="cursor:pointer; border-radius:50%; display:'none';" title="AWS CLF-C01"></img>
-						<br/>AWS <br/>CLF-C01
-					</td>
-					<td>&nbsp;</td>
-					<td>
-						<img id="imgTema2MenuTopo" src="img/az-900-b.png" class="btn btn-outline-secondary flutuante" width="100px" style="cursor:pointer; border-radius:50%; display:'none';" title="AZURE AZ-900"></img>
-						<br/>AZURE <br/>AZ-900
-					</td>
-					<td>&nbsp;</td>
-					<td>
-						<img id="imgTema3MenuTopo" src="img/1z0-1085-22.png" class="btn btn-outline-secondary flutuante" width="100px" style="cursor:pointer; border-radius:50%; display:'none';" title="ORACLE 1Z0-1085-22"></img>
-						<br/>ORACLE <br/>1Z0-1085-22
-					</td>
-				</tr>
-				<tr>
-					<td colspan=5> <!-- datashowcloud2022@gmail.com -->
-						<input type="text" id="version" value="27.00.19" style="font-size:10px; width:45px; display:none;"/>
-						<font size=2><i>v27.00.19 atualizado em Fevereiro/2023 <p/>contato@tamastigadu.com.br</i></font>
-					</td>
-				</tr>
-			</table>
-          </li>
-        </ul>
-        <!-- form class="d-flex mt-3" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-success" type="submit">Search</button>
-        </form -->
-      </div>
-    </div>
-  </div>
-</nav>
-
-
-    <!-- div class="row row-centered " style="margin-top:0px;" -->
-		<div id="divconfig" style="display:none;">
-			<label id="lei13709" class="btn btn-default" style="cursor:default; width:300px; display:none;">
-				Em conformidade com a Lei 13.709/18
-				<br/>- Lei Geral de Proteção de Dados Pessoais,
-				<br/>concordo, autorizo, reconheço e declaro
-				<br/>que não farei cópia da ferramenta
-				<br/>DataShowCloud.
-			</label>
+		
+	<div id="tblCategory" style="text-align:center; color:white; display:none; font-size:35px;">
+		
+		<br/>
+		<div style="font-weight:bold; background-color:#7B68EE; border-radius:2.18vw; width:90%; margin-left:auto; margin-right:auto;">
 			<br/>
-			<!-- input type="text" name="config_myowner" size="16" id="config_myowner" maxlength="6" style="width:300px;" value="" placeholder="digite sua chave ou licença... (opcional)" -->
-			<!-- br/><br/ -->
-			<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px;">Primeiro vamos configurar</div>
-			<br/><br/>
-			<button id="btnIndexConfigurar" class="btn btn-info" style="padding:9px 15px 9px 15px; width:150px;">Começar</button>
-			<br/><br/><br/>
+
+			<div>
+				<label style="border-radius:10px; font-size:25px; font-weight:bold; box-shadow:5px 4px 2px 5px rgba(98, 98, 98, 0.69);">
+					<img src="img/pacmanfundoroxo.png" style="width:41px;"/><label style="border-radius:10px; font-size:25px; font-family:'Imprint MT Shadow'; color:#FFFFFF; background-color:#00FF00; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: #000;">TÁ
+						<label style="border-radius:10px; font-size:25px; font-family:'Imprint MT Shadow'; color:#FFFFFF; background-color:#0080FF;">MASTIGADU!
+						</label>
+					</label>
+				</label>
+			</div>
+			
+			<br/>
+			<div style="width:90%; background-color:white; color:#7B68EE; margin-left:auto; margin-right:auto;">
+				<b>Quer conquistar tudo isso em 2023?</b>
+			</div>
+			
+			<div>
+				<label>
+					Certificação Cloud<br/>
+					<label>
+						<img src="img/clf-c01.png" id="imgTema1Apresentacao" class="btn btn-outline-secondary avatarflutuante" width="200px" style="cursor:pointer; display:'none'; border-radius:50%;" title="AWS CLF-C01"></img>
+						<br/>CLF-C01
+						<br/>
+						<button id="btnTema1Apresentacao" class="btn btn-success" style="border-radius:5vw; font-size:30px; color:black; font-weight:bold; background-color:#00FF7F;">
+							QUERO ESSE
+						</button>
+						<br/><br/>
+					</label>
+					<label>
+						<label>
+							<img src="img/1z0-1085-22.png" id="imgTema3Apresentacao" class="btn btn-outline-secondary avatarflutuante" width="200px" border=1 style="cursor:pointer; display:'none'; border-radius:50%;" title="ORACLE 1Z0-1085-22"></img>
+							<br/>1Z0-1085-22
+							<br/>
+							<button id="btnTema3Apresentacao" class="btn btn-success" style="border-radius:5vw; font-size:30px; color:black; font-weight:bold; background-color:#00FF7F;">
+								QUERO ESSE
+							</button>
+							<br/><br/>
+						</label>
+						<label>
+							<label>
+								<img src="img/az-900.png" id="imgTema2Apresentacao" class="btn btn-outline-secondary avatarflutuante" width="200px" style="cursor:pointer; display:'none'; border-radius:50%;" title="AZURE AZ-900"></img>
+								<br/>AZ-900
+								<br/>
+								<button id="btnTema2Apresentacao" class="btn btn-success" style="border-radius:5vw; font-size:30px; color:black; font-weight:bold; background-color:#00FF7F;">
+									QUERO ESSE
+								</button>
+								<br/><br/>
+							</label>
+						</label>
+					</label>
+				</label>
+			</div>
+			
+			<div style="width:90%; font-size:35px; background-color:white; color:#7B68EE; margin-left:auto; margin-right:auto;">
+				<b>Conquiste em poucas horas!</b>
+			</div>
+			<br/>
 		</div>
 		
-		<table id="tblGrid" border=0 style="width:98%; display:none;" align=center>
-			<tbody>
-				<div id="divbotoes" style="display:none; text-align:center;">
-						<button id="btntreino" class="botao flutuante" onclick="changeCategory('2');"><i class="fa fa-book"></i> Treino</button>
-						<button id="btndesafio" class="botao flutuante" onclick="changeCategory('4');"><i class="fa fa-road"></i> Desafio</button>
+		<br/>
+		
+		<div style="font-weight:bold; background-color:#7B68EE; border-radius:2.18vw; width:90%; margin-left:auto; margin-right:auto;">
+			<div style="width:90%; font-size:35px; border-radius:2.18vw; margin-left:auto; margin-right:auto; color:#FFFFFF; background-color:#7B68EE;">
+				<br/>
+				<div style="background-color:white; color:#7B68EE;">
+					<b>Aprenda conceitos e fundamentos</b>
 				</div>
+				<div style="margin-left:auto; margin-right:auto;">
+					<label>
+						<label style="width:300px; text-align:left;">
+							<label style="font-size:50px;"><i class="fa fa-italic"></i><i class="fa fa-font"></i></label>
+							<br/><b>1. Inteligência Artificial</b>
+							<br/><h6 style="text-align:justify;">TÁ MASTIGADU. Mais de <u>400 perguntas</u> criadas com inteligência artificial. A ferramenta também monta novos testes com os assuntos que você demonstrou maior dificuldade.</h6>
+						</label>
+						<label style="width:300px; text-align:left;">
+							<label>
+								<label style="font-size:50px;"><i class="fa fa-plus"></i></label>
+								<br/><b>2. Dicas e Atalhos</b>
+								<br/><h6 style="text-align:justify;">TÁ MASTIGADU. Colar no estudo é bom para decorar. Aproveite as dicas da resposta. Cada resposta também tem um atalho direto para a página oficial com mais detalhes. Você ganha tempo porque já pesquisamos para você.</h6>
+							</label>
+						</label>
+					</label>
+				</div>
+				<br/>
+				<a href="#querocomecar" class="btn btn-success flutuante" style="border-radius:5vw; font-size:30px; color:black; font-weight:bold; background-color:#00FF7F;">
+					EU QUERO
+				</a>
+				<br/>
+				<br/>
+			</div>
+		</div>
+		<br/>
+
+		<div style="font-weight:bold; background-color:#7B68EE; border-radius:2.18vw; width:90%; margin-left:auto; margin-right:auto;">
+			<div style="width:90%; font-size:35px; border-radius:2.18vw; margin-left:auto; margin-right:auto; color:#FFFFFF; background-color:#7B68EE;">
+				<br/>
+				<div style="background-color:white; color:#7B68EE;">
+					<b>Aprenda apenas fazendo testes</b>
+				</div>
+
+				<div style="margin-left:auto; margin-right:auto;">
+					<label>
+						<label style="width:300px; text-align:left;">
+							<label style="font-size:50px;"><i class="fa fa-book"></i></label>
+							<br/><b>3. Categoria Treino</b>
+							<br/><h6 style="text-align:justify;">TÁ MASTIGADU. Aqui você estuda os assuntos em forma de testes ao invés de tentar decorar uma apostila. No final você irá decorar todas palavras chave para a certificação e ficará pronto para a categoria Desafio. É muito mais simples e divertido.
+							<br/>É só apertar o botão. <i class="fa fa-book"></i></h6>
+						</label>
+						<label style="width:300px; text-align:left;">
+							<label>
+								<label style="font-size:50px;"><i class="fa fa-road"></i></label>
+								<br/><b>4. Categoria Desafio</b>
+								<br/><h6 style="text-align:justify;">TÁ MASTIGADU. Algumas perguntas coletadas da internet estão reunidas aqui. A Inteligência Artificial consegue mostrar se você já está pronto para fazer o exame oficial através do índice de pontuação geral.
+								<br/>É só apertar o botão. <i class="fa fa-road"></i></h6>
+							</label>
+						</label>
+					</label>
+				</div>
+				<br/>
+				<a href="#querocomecar" class="btn btn-success flutuante" style="border-radius:5vw; font-size:30px; color:black; font-weight:bold; background-color:#00FF7F;">
+					EU QUERO
+				</a>
+				<br/>
+				<br/>
+			</div>
+		</div>
+		<br/>
+
+		<div style="font-weight:bold; background-color:#7B68EE; border-radius:2.18vw; width:90%; margin-left:auto; margin-right:auto;">
+			<div style="width:90%; font-size:35px; border-radius:2.18vw; margin-left:auto; margin-right:auto; color:#FFFFFF; background-color:#7B68EE;">
+				<br/>
+				<div style="background-color:white; color:#7B68EE;">
+					<b>Aprenda de forma rápida e descomplicada</b>
+				</div>
+
+				<div style="margin-left:auto; margin-right:auto;">
+					<label>
+						<label style="width:300px; text-align:left;">
+							<label style="font-size:50px;"><i class="fa fa-globe"></i></label>
+							<br/><b>5. Tradutor Offline</b>
+							<br/><h6 style="text-align:justify;">TÁ MASTIGADU. Você pode estudar em Inglês ou Português conforme sua afinidade com a língua. Também pode estudar em Espanhol, Mandarim, Árabe e Indiano.
+							<br/>É só apertar o botão. <i class="fa fa-globe"></i></h6>
+						</label>
+						<label style="width:300px; text-align:left;">
+							<label>
+								<label style="font-size:50px;"><i class="fa fa-check"></i></label>
+								<br/><b>6. Tomar Um Café</b>
+								<br/><h6 style="text-align:justify;">TÁ MASTIGADU. Você pode parar ou bloquear um teste para tomar um café, ir ao banheiro ou dar atenção para a família. Você termina uma fase rapidamente. Os testes estão separados por assunto e em pequenos blocos que podem ser respondidos em média de 10 minutos.
+								<br/>É só apertar o botão. <i class="fa fa-check"></i></h6>
+							</label>
+						</label>
+					</label>
+				</div>
+				<br/>
+				<a href="#querocomecar" class="btn btn-success flutuante" style="border-radius:5vw; font-size:30px; color:black; font-weight:bold; background-color:#00FF7F;">
+					EU QUERO
+				</a>
+				<br/>
+				<br/>
+			</div>
+		</div>
+		<br/>
+
+		<div style="font-weight:bold; background-color:#7B68EE; border-radius:2.18vw; width:90%; margin-left:auto; margin-right:auto;">
+			<div style="width:90%; font-size:35px; border-radius:2.18vw; margin-left:auto; margin-right:auto; color:#FFFFFF; background-color:#7B68EE;">
+				<br/>
+				<div style="font-size:35px; background-color:white; color:#7B68EE;">
+					<b>Aprenda em qualquer lugar</b>
+				</div>
+				<p/>
+				<div style="margin-left:auto; margin-right:auto;">
+					<div style="text-align:left; font-size:50px;"><i class="fa fa-home"></i></div>
+					<div style="text-align:left;"><b>7. Em Casa e no Celular</b></div>
+					<h6 style="text-align:justify;">TÁ MASTIGADU. Funciona no seu celular e em diversos dispositivos facilitando o estudo em qualquer lugar.</h6>
+					<p/>
+					<div style="text-align:left; font-size:50px;"><i class="fa fa-remove"></i></div>
+					<div style="text-align:left;"><b>8. Funciona Sem Internet</b></div>
+					<h6 style="text-align:justify;">TÁ MASTIGADU. Funciona sem internet depois que você instala a fase. É bom quando você viaja para lugares sem internet ou com sinal muito fraco.</h6>
+					<p/>
+					<div style="text-align:left; font-size:50px;"><i class="fa fa-adjust"></i></div>
+					<div style="text-align:left;"><b>9. Função Dia e Noite</b></div>
+					<h6 style="text-align:justify;">TÁ MASTIGADU. A função dia e noite permite continuar estudando em momentos que exigem pouca luz: no avião, na cama. Ah! Também economiza a bateria do celular.
+					<br/>É só apertar o botão. <i class="fa fa-adjust"></i></h6>
+					<p/>
+					<div style="text-align:left; font-size:50px;"><i class="fa fa-refresh"></i></div>
+					<div style="text-align:left;"><b>10. Atualização Semanal</b></div>
+					<h6 style="text-align:justify;">TÁ MASTIGADU. Perguntas atualizadas e disponibilizadas pela Inteligência Artificial. Você decide se quer receber as atualizações ou não.
+					<br/>É só apertar o botão. <i class="fa fa-refresh"></i></h6>
+					<br/>
+					<a href="#querocomecar" class="btn btn-success flutuante" style="border-radius:5vw; font-size:30px; color:black; font-weight:bold; background-color:#00FF7F;">
+						EU QUERO
+					</a>
+					<br/>
+					<br/>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+	<div id="divNivel" align=center style="margin-left:auto; margin-right:auto; display:none;">
+		<br/><br/><br/><br/>
+		<div>
+			<label style="border-radius:10px; font-size:25px; font-weight:bold; box-shadow:5px 4px 2px 5px rgba(98, 98, 98, 0.69);">
+				<img src="img/pacmanfundopreto.png" style="width:41px;"/><label style="border-radius:10px; font-size:25px; font-family:'Imprint MT Shadow'; color:#FFFFFF; background-color:#00FF00; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: #000;">TÁ
+					<label style="border-radius:10px; font-size:25px; font-family:'Imprint MT Shadow'; color:#FFFFFF; background-color:#0080FF;">MASTIGADU!
+					</label>
+				</label>
+			</label>
+		</div>
+
+		<br/><br/><br/><br/><br/><br/>
+		<table id="tblNivel" border=0 style="width:95%;" align=center>
+			<tbody>
+				<!--i class="fa fa-play avatarflutuante" style="color:#00FF7F; font-size:15px;"></i>
+				<label style="border-radius:30px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
+					<button id="btnNivel" style="font-size:30px; color:#555555; background-color:#00FF7F; font-family:'Helvetica'; font-weight:bold; border-radius:30px; border-width:0px; -webkit-text-stroke-width: 1px; ">
+						<font style="color:#FFFFFF; background-color:#00FF7F; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: #000;">
+							&nbsp;&nbsp;NÍVEL 1&nbsp;&nbsp;
+						</font>
+					</button>
+				</label-->
 			</tbody>
 		</table>
-
-		<div id="tblCategory" style="text-align:center; color:white; display:none; font-size:35px;">
-			<div style="font-weight:bold; background-color:#7B68EE; border-radius:2.18vw; width:90%; margin-left:auto; margin-right:auto;">
-				<br/>
-				<a id="queroentrar"></a>
-				<div style="width:90%; background-color:white; color:#7B68EE; margin-left:auto; margin-right:auto;">
-					<b>Quer conquistar tudo isso em 2023?</b>
-				</div>
-				<br/>
-				
-				<div style="font-size:35px;">
-					<img src="img/clf-c01.png" id="imgTema1Apresentacao" class="btn btn-outline-secondary avatarflutuante" width="200px" style="cursor:pointer; display:'none'; border-radius:50%;" title="AWS CLF-C01"></img>
-					<br/>Certificação Cloud
-					<br/>CLF-C01
-					<br/>
-					<button class="btn btn-success flutuante" onclick="changeTema('1');" style="border-radius:5vw; font-size:30px; color:black; font-weight:bold; background-color:#00FF7F;">
-						QUERO ESSE
-					</button>
-					<br/>
-					<br/>
-				</div>
-				<div style="font-size:35px;">
-					<img src="img/1z0-1085-22.png" id="imgTema3Apresentacao" class="btn btn-outline-secondary avatarflutuante" width="200px" border=1 style="cursor:pointer; display:'none'; border-radius:50%;" title="ORACLE 1Z0-1085-22"></img>
-					<br/>Certificação Cloud
-					<br/>1Z0-1085-22
-					<br/>
-					<button class="btn btn-success flutuante" onclick="changeTema('3');" style="border-radius:5vw; font-size:30px; color:black; font-weight:bold; background-color:#00FF7F;">
-						QUERO ESSE
-					</button>
-					<br/>
-					<br/>
-				</div>
-
-				<div style="font-size:35px;">
-					<img src="img/az-900.png" id="imgTema2Apresentacao" class="btn btn-outline-secondary avatarflutuante" width="200px" style="cursor:pointer; display:'none'; border-radius:50%;" title="AZURE AZ-900"></img>
-					<br/>Certificação Cloud
-					<br/>AZ-900
-					<br/>
-					<button class="btn btn-success flutuante" onclick="changeTema('2');" style="border-radius:5vw; font-size:30px; color:black; font-weight:bold; background-color:#00FF7F;">
-						QUERO ESSE
-					</button>
-					<br/>
-					<br/>
-				</div>
-				<div style="width:90%; font-size:35px; background-color:white; color:#7B68EE; margin-left:auto; margin-right:auto;">
-					<b>Conquiste em poucas horas!</b>
-				</div>
-				<br/>
-			</div>
-			
-			<br/>
-			
-			<div style="font-weight:bold; background-color:#7B68EE; border-radius:2.18vw; width:90%; margin-left:auto; margin-right:auto;">
-				<div style="width:90%; font-size:35px; border-radius:2.18vw; margin-left:auto; margin-right:auto; color:#FFFFFF; background-color:#7B68EE;">
-					<br/>
-					<div style="background-color:white; color:#7B68EE;">
-						<b>Aprenda conceitos e fundamentos</b>
-					</div>
-					<div style="margin-left:auto; margin-right:auto;">
-						<div style="text-align:left; font-size:50px;"><i class="fa fa-italic"></i><i class="fa fa-font"></i></div>
-						<div style="text-align:left;"><b>1. Inteligência Artificial</b></div>
-						<h6 style="text-align:justify;">TÁ MASTIGADU. Mais de <u>400 perguntas</u> criadas com inteligência artificial. A ferramenta também monta novos testes com os assuntos que você demonstrou maior dificuldade.</h6>
-						<p/>
-						<div style="text-align:left; font-size:50px;"><i class="fa fa-plus"></i></div>
-						<div style="text-align:left;"><b>2. Mais Dicas</b></div>
-						<h6 style="text-align:justify;">TÁ MASTIGADU. Colar no estudo é bom para decorar. Aproveite as dicas da resposta. Cada resposta também tem um atalho direto para a página oficial com mais detalhes. Você ganha tempo porque já pesquisamos para você.
-						<br/>É só apertar o botão. <i class="fa fa-plus"></i></h6>
-					</div>
-					<br/>
-					<div style="background-color:white; color:#7B68EE;">
-						<b>Aprenda apenas fazendo testes</b>
-					</div>
-					<div style="margin-left:auto; margin-right:auto;">
-						<div style="text-align:left; font-size:50px;"><i class="fa fa-book"></i></div>
-						<div style="text-align:left;"><b>3. Categoria Treino</b></div>
-						<h6 style="text-align:justify;">TÁ MASTIGADU. Aqui você estuda os assuntos em forma de testes ao invés de tentar decorar uma apostila. No final você irá decorar todas palavras chave para a certificação e ficará pronto para a categoria Desafio. É muito mais simples e divertido.
-						<br/>É só apertar o botão. <i class="fa fa-book"></i></h6>
-						<p/>
-						<div style="text-align:left; font-size:50px;"><i class="fa fa-road"></i></div>
-						<div style="text-align:left;"><b>4. Categoria Desafio</b></div>
-						<h6 style="text-align:justify;">TÁ MASTIGADU. Algumas perguntas coletadas da internet estão reunidas aqui. A Inteligência Artificial consegue mostrar se você já está pronto para fazer o exame oficial através do índice de pontuação geral.
-						<br/>É só apertar o botão. <i class="fa fa-road"></i></h6>
-						<br/>
-					</div>
-
-					<div style="font-size:35px; background-color:white; color:#7B68EE;">
-						<b>Aprenda de forma rápida e descomplicada</b>
-					</div>
-					<p/>
-					<div style="margin-left:auto; margin-right:auto;">
-						<div style="text-align:left; font-size:50px;"><i class="fa fa-globe"></i></div>
-						<div style="text-align:left;"><b>5. Tradutor Simultâneo</b></div>
-						<h6 style="text-align:justify;">TÁ MASTIGADU. Você pode estudar em Inglês ou Português conforme sua afinidade com a língua. Também pode estudar em Espanhol, Mandarim, Árabe e Indiano.
-						<br/>É só apertar o botão. <i class="fa fa-globe"></i></h6>
-						<p/>
-						<div style="text-align:left; font-size:50px;"><i class="fa fa-adjust"></i></div>
-						<div style="text-align:left;"><b>6. Função Dia e Noite</b></div>
-						<h6 style="text-align:justify;">TÁ MASTIGADU. A função dia e noite permite continuar estudando em momentos que exigem pouca luz: no avião, na cama. Ah! Também economiza a bateria do celular.
-						<br/>É só apertar o botão. <i class="fa fa-adjust"></i></h6>
-						<p/>
-						<div style="text-align:left; font-size:50px;"><i class="fa fa-refresh"></i></div>
-						<div style="text-align:left;"><b>7. Atualização Diária</b></div>
-						<h6 style="text-align:justify;">TÁ MASTIGADU. Perguntas atualizadas e disponibilizadas diariamente pela Inteligência Artificial. Você decide se quer receber as atualizações diárias ou não.
-						<br/>É só apertar o botão. <i class="fa fa-refresh"></i></h6>
-						<p/>
-						<div style="text-align:left; font-size:50px;"><i class="fa fa-check"></i></div>
-						<div style="text-align:left;"><b>8. Tomar Um Café</b></div>
-						<h6 style="text-align:justify;">TÁ MASTIGADU. Você pode parar ou bloquear um teste para tomar um café, ir ao banheiro ou dar atenção para a família. Você termina uma fase rapidamente. Os testes estão separados por assunto e em pequenos blocos que podem ser respondidos em média de 10 minutos.
-						<br/>É só apertar o botão. <i class="fa fa-check"></i></h6>
-						<p/>
-						<div style="text-align:left; font-size:50px;"><i class="fa fa-remove"></i></div>
-						<div style="text-align:left;"><b>9. Funciona Sem Internet</b></div>
-						<h6 style="text-align:justify;">TÁ MASTIGADU. Funciona sem internet depois que você instala a fase. É bom quando você viaja para lugares sem internet ou com sinal muito fraco.</h6>
-						<p/>
-						<div style="text-align:left; font-size:50px;"><i class="fa fa-home"></i></div>
-						<div style="text-align:left;"><b>10. Em Casa e no Celular</b></div>
-						<h6 style="text-align:justify;">TÁ MASTIGADU. Funciona no seu celular e em diversos dispositivos facilitando o estudo em qualquer lugar.</h6>
-						<br/>
-						<a href="#queroentrar" class="btn btn-success flutuante" style="border-radius:5vw; font-size:30px; color:black; font-weight:bold; background-color:#00FF7F;">
-							EU QUERO
-						</a>
-						<br/><br/>
-					</div>
-				</div>
-			</div>
-			
-		</div>
-
-		<div id="divcontent" style="display:'none';">
-		</div>
-
-		<!-- form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post" -->
-		<!-- /form -->
+	
+		<br/><br/><br/><br/><br/><br/>
+		<label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
+			<button id="btnListaPerguntas" class="btn btn-primary"><i class="fa fa-list" style="font-size:35px;"></i></button>
+		</label>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
+			<button id="btnEstatisticas" class="btn btn-primary"><i class="fa fa-signal" style="font-size:35px;"></i></button>
+		</label>
+	</div>
 		
+	<table id="tblEstatisticas" border=0 style="width:98%; display:none;" align=center>
+		<tbody>
+			<div id="divbotoes" style="display:none; text-align:center;">
+					<!--
+					<button id="btntreino" class="botao flutuante" onclick="changeCategory('2');"><i class="fa fa-book"></i> Treino</button>
+					<button id="btndesafio" class="botao flutuante" onclick="changeCategory('4');"><i class="fa fa-road"></i> Desafio</button>
+					-->
+			</div>
+		</tbody>
+	</table>
 
-		<div class="form-group" id="divFormSim" style="display:none;">
-			<font size=4.9 style="text-align:justify">
+	<div id="divcontent" style="display:'none';">
+	</div>
 
-				<a id="top"></a>
-				<label id="btnPrevious" class="prev flutuante" title="Exibe a pergunta anterior">&nbsp;<i class="fa fa-chevron-left"></i></label>
-				<label id="btnNext" class="next flutuante" title="Exibe a próxima pergunta">&nbsp;<i class="fa fa-chevron-right"></i></label>
+	<!-- form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post" -->
+	<!-- /form -->
 
-				<table border=0 width="95%" align=center style="border-color:#EEEEEE;">
-					<tr><td id="mytextSim" style="display:'none'; text-align:justify; width:1%; color:white;"></td></tr>
-					<tr><td id="mytextSim2" style="display:none; text-align:justify; width:1%; color:white;"></td></tr>
-				</table>
-				
-				<table id="tableFormSimQuestions" border=0 align=center style="display:'none'; width:95%;" Zclass="table table-hover">
-					<tr><td id="mycorrect1Sim" style="display:none; text-align:left;"><!--1-->
-						<table border=0><tr>
-							<td valign=top>
-								<input type=checkbox id="chkMycorrect1answer" value="" class="flutuante" style="border-radius:50%; color:white;"></input>
-							</td>
-							<td>&nbsp;</td>
-							<td style="text-align:justify;">
-								<label id="mycorrect1answer" style="color:white; backgroundColor:black; display:'';"></label>
-								<label id="mytip1" style="color:gray; backgroundColor:black; display:none; text-align:justify;"></label>
-							</td>
-						</tr></table>
-					</td></tr>
-					<tr><td id="mycorrect2Sim" style="display:none; text-align:left;"><!--2-->
-						<table border=0><tr>
-							<td valign=top>
-								<input type=checkbox id="chkMycorrect2answer" value="" class="flutuante" style="border-radius:50%; color:white;"></input>
-							</td>
-							<td>&nbsp;</td>
-							<td style="text-align:justify;">
-								<label id="mycorrect2answer" style="color:white; backgroundColor:black; display:'';"></label>
-								<label id="mytip2" style="color:gray; backgroundColor:black; display:none; text-align:justify;"></label>
-							</td>
-						</tr></table>
-					</td></tr>
-					<tr><td id="mycorrect3Sim" style="display:none; text-align:left;"><!--3-->
-						<table border=0><tr>
-							<td valign=top>
-								<input type=checkbox id="chkMycorrect3answer" value="" class="flutuante" style="border-radius:50%; color:white;"></input>
-							</td>
-							<td>&nbsp;</td>
-							<td style="text-align:justify;">
-								<label id="mycorrect3answer" style="color:white; backgroundColor:black; display:'';"></label>
-								<label id="mytip3" style="color:gray; backgroundColor:black; display:none; text-align:justify;"></label>
-							</td>
-						</tr></table>
-					</td></tr>
-					<tr><td id="mycorrect4Sim" style="display:none; text-align:left;"><!--4-->
-						<table border=0><tr>
-							<td valign=top>
-								<input type=checkbox id="chkMycorrect4answer" value="" class="flutuante" style="border-radius:50%; color:white;"></input>
-							</td>
-							<td>&nbsp;</td>
-							<td style="text-align:justify;">
-								<label id="mycorrect4answer" style="color:white; backgroundColor:black; display:'';"></label>
-								<label id="mytip4" style="color:gray; backgroundColor:black; display:none; text-align:justify;"></label>
-							</td>
-						</tr></table>
-					</td></tr>
+	<div id="divFormSim" class="form-group" style="display:none;">
+		<font size=4.9 style="text-align:justify">
 
-					<tr><td id="mycorrect5Sim" style="display:none; text-align:left;"><!--5-->
-						<table border=0><tr>
-							<td valign=top>
-								<input type=checkbox id="chkMycorrect5answer" value="" class="flutuante" style="border-radius:50%; color:white;"></input>
-							</td>
-							<td>&nbsp;</td>
-							<td style="text-align:justify;">
-								<label id="mycorrect5answer" style="color:white; backgroundColor:black; display:'';"></label>
-								<label id="mytip5" style="color:gray; backgroundColor:black; display:none; text-align:justify;"></label>
-							</td>
-						</tr></table>
-					</td></tr>
-					<tr><td id="mycorrect6Sim" style="display:none; text-align:left;"><!--6-->
-						<table border=0><tr>
-							<td valign=top>
-								<input type=checkbox id="chkMycorrect6answer" value="" class="flutuante" style="border-radius:50%; color:white;"></input>
-							</td>
-							<td>&nbsp;</td>
-							<td style="text-align:justify;">
-								<label id="mycorrect6answer" style="color:white; backgroundColor:black; display:'';"></label>
-								<label id="mytip6" style="color:gray; backgroundColor:black; display:none; text-align:justify;"></label>
-							</td>
-						</tr></table>
-					</td></tr>
-					<tr><td id="mycorrect7Sim" style="display:none; text-align:left;"><!--7-->
-						<table border=0><tr>
-							<td valign=top>
-								<input type=checkbox id="chkMycorrect7answer" value="" class="flutuante" style="border-radius:50%; color:white;"></input>
-							</td>
-							<td>&nbsp;</td>
-							<td style="text-align:justify;">
-								<label id="mycorrect7answer" style="color:white; backgroundColor:black; display:'';"></label>
-								<label id="mytip7" style="color:gray; backgroundColor:black; display:none; text-align:justify;"></label>
-							</td>
-						</tr></table>
-					</td></tr>
-					<tr><td id="mycorrect8Sim" style="display:none; text-align:left;"><!--8-->
-						<table border=0><tr>
-							<td valign=top>
-								<input type=checkbox id="chkMycorrect8answer" value="" class="flutuante" style="border-radius:50%; color:white;"></input>
-							</td>
-							<td>&nbsp;</td>
-							<td style="text-align:justify;">
-								<label id="mycorrect8answer" style="color:white; backgroundColor:black; display:'';"></label>
-								<label id="mytip8" style="color:gray; backgroundColor:black; display:none; text-align:justify;"></label>
-							</td>
-						</tr></table>
-					</td></tr>
-					<tr>
-						<td>
-							<input type="text" id="mygroupSim" value="" style="display:none;">
-							<input type="text" id="mycodeSim" value="" style="display:none;">
-							<input type="text" id="myorderSim" value="" style="display:none;">
-							<input type="text" id="myidSim" value="" style="display:none;">
+			<a id="top"></a>
+			<label id="btnPrevious" class="prev flutuante" title="Exibe a pergunta anterior">&nbsp;<i class="fa fa-chevron-left"></i></label>
+			<label id="btnNext" class="next flutuante" title="Exibe a próxima pergunta">&nbsp;<i class="fa fa-chevron-right"></i></label>
+
+			<table border=0 width="95%" align=center style="border-color:#EEEEEE;">
+				<tr><td id="mytextSim" style="display:'none'; text-align:justify; width:1%; color:white;"></td></tr>
+				<tr><td id="mytextSim2" style="display:none; text-align:justify; width:1%; color:white;"></td></tr>
+			</table>
+			
+			<table id="tableFormSimQuestions" border=0 align=center style="display:'none'; width:95%;" Zclass="table table-hover">
+				<tr><td id="mycorrect1Sim" style="display:none; text-align:left;"><!--1-->
+					<table border=0><tr>
+						<td valign=top>
+							<input type=checkbox id="chkMycorrect1answer" value="" class="flutuante" style="border-radius:50%; color:white;"></input>
 						</td>
-					</tr>
-				</table>
-
-				<table border=0 width="100%">
-					<tr>
-						<td>
-							<input type="text" id="txtCalculo" value="0" title="índice de acerto" style="width:33px; background-color:transparent; color:gray; text-align:right; border-width:0px;" readonly /><font title="índice de acerto" color=gray><b>%</b></font>
-							<input type="text" id="txtNaoRespondidas" value="0" title="perguntas não respondidas" style="width:50px; background-color:transparent; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-check-square-o" style="color:gray;" title="perguntas não respondidas"></i>
-							<input type="text" id="txtIncorretas" value="0" title="respostas incorretas" style="width:22px; background-color:transparent; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-remove" style="xcolor:red;" title="respostas incorretas"></i>
-							<input type="text" id="txtCorretas" value="0" title="respostas corretas" style="width:22px; background-color:transparent; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-check" style="xcolor:#3CB371;" title="respostas corretas"></i>
-							<!-- input type="text" id="txtTotal" value="0" title="total de perguntas" style="width:22px; background-color:transparent; color:gray; text-align:right; border-width:0px;" readonly / -->
+						<td>&nbsp;</td>
+						<td style="text-align:justify;">
+							<label id="mycorrect1answer" style="color:white; backgroundColor:black; display:'';"></label>
+							<label id="mytip1" style="color:gray; backgroundColor:black; display:none; text-align:justify;"></label>
 						</td>
-					</tr>
-				</table>
-
-				<!-- table id="tableFormSimButtons" border=0 align=center width="100%" style="display:'none';">
-					<tr><td>
-						<button id="btnBackward" class="btn btn-danger" style="display:'none';">xxxxxxxxxxxxxxxxxxx <i class="fa fa-refresh"></i> </button>
-					</td></tr>
-				</table -->
-				<table id="ZZZtableLinkhelp" border=0 align=center style="display:'none';">
-					<tr>
-						<td id="help" style="display:none; text-align:justify;">
-							<div id="divlinkhelp"></div>
+					</tr></table>
+				</td></tr>
+				<tr><td id="mycorrect2Sim" style="display:none; text-align:left;"><!--2-->
+					<table border=0><tr>
+						<td valign=top>
+							<input type=checkbox id="chkMycorrect2answer" value="" class="flutuante" style="border-radius:50%; color:white;"></input>
 						</td>
-					</tr>
-				</table>
-			</font>
-		</div>
+						<td>&nbsp;</td>
+						<td style="text-align:justify;">
+							<label id="mycorrect2answer" style="color:white; backgroundColor:black; display:'';"></label>
+							<label id="mytip2" style="color:gray; backgroundColor:black; display:none; text-align:justify;"></label>
+						</td>
+					</tr></table>
+				</td></tr>
+				<tr><td id="mycorrect3Sim" style="display:none; text-align:left;"><!--3-->
+					<table border=0><tr>
+						<td valign=top>
+							<input type=checkbox id="chkMycorrect3answer" value="" class="flutuante" style="border-radius:50%; color:white;"></input>
+						</td>
+						<td>&nbsp;</td>
+						<td style="text-align:justify;">
+							<label id="mycorrect3answer" style="color:white; backgroundColor:black; display:'';"></label>
+							<label id="mytip3" style="color:gray; backgroundColor:black; display:none; text-align:justify;"></label>
+						</td>
+					</tr></table>
+				</td></tr>
+				<tr><td id="mycorrect4Sim" style="display:none; text-align:left;"><!--4-->
+					<table border=0><tr>
+						<td valign=top>
+							<input type=checkbox id="chkMycorrect4answer" value="" class="flutuante" style="border-radius:50%; color:white;"></input>
+						</td>
+						<td>&nbsp;</td>
+						<td style="text-align:justify;">
+							<label id="mycorrect4answer" style="color:white; backgroundColor:black; display:'';"></label>
+							<label id="mytip4" style="color:gray; backgroundColor:black; display:none; text-align:justify;"></label>
+						</td>
+					</tr></table>
+				</td></tr>
 
-		<div class="form-group" id="divFormAddUpdate" style="display:none;">
-			<table border=0 align=center width="98%"><tr><td>
-				&nbsp;
-				<b id="FormularioEditorPerguntas">Formulário Editor de Perguntas</b>
-				<button id="btnCancel" class="btn btn-danger" style="display:'none';"> <i class="fa fa-times"></i> </button>
-				&nbsp;
-				<p/><p/>
-				<!-- p/><p/><button id="btnCancel" type="button" class="btn btn-info" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-times"></i> Fechar</button -->
-				<p/><button id="btnSubmit" type="button" class="btn btn-success" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-check"></i> Salvar</button>
-				<select id="mytema" name="mytema" style="height:35px; display:'none';"></select>
-				<select id="mycategory" name="mycategory" style="height:35px; display:'none';"></select>
-				<p/><p/><select id="mygroup" name="mygroup" style="height:35px; display:'none';">
-					<!-- option value="00">Configurações</option -->
-					<option value="10" selected>Nível 1.0</option>
-					<option value="11">Nível 1.1</option>
-					<option value="12">Nível 1.2</option>
-					<option value="13">Nível 1.3</option>
-					<option value="14">Nível 1.4</option>
-					<option value="20">Nível 2.0</option>
-					<option value="21">Nível 2.1</option>
-					<option value="22">Nível 2.2</option>
-					<option value="23">Nível 2.3</option>
-					<option value="30">Nível 3.0</option>
-					<option value="31">Nível 3.1</option>
-					<option value="32">Nível 3.2</option>
-					<option value="33">Nível 3.3</option>
-					<option value="40">Nível 4.0</option>
-					<option value="41">Nível 4.1</option>
-					<option value="42">Nível 4.2</option>
-					<option value="43">Nível 4.3</option>
-					<option value="44">Nível 4.4</option>
-					<option value="45">Nível 4.5</option>
-					<option value="46">Nível 4.6</option>
-					<option value="50">Nível 5.0</option>
-					<option value="51">Nível 5.1</option>
-					<option value="52">Nível 5.2</option>
-				</select>
-				<select id="mycode" name="mycode" style="height:35px; display:'none';"></select>
-				<select id="myorder" name="myorder" style="height:35px; display:'none';"></select>
-				<p/>
-				<p/><textarea name="mytext" id="mytext" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui em Português..."></textarea>
-				<p/><textarea name="mytext2" id="mytext2" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui em Inglês..."></textarea>
-				<p/><textarea name="mytext3" id="mytext3" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui em Espanhol..."></textarea>
-				<font style="color:#3CB371;">
-					Corretas:
-					<br/>
-					<textarea name="myoption1" id="myoption1" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
-					<br/><textarea name="myoptionkey1" id="myoptionkey1" style="width:95%;" rows=1 placeholder="chave explicação 1..."></textarea>
-					<br/><textarea name="myoption2" id="myoption2" style="width:100%;" rows=1 placeholder="2..."></textarea>
-					<br/><textarea name="myoptionkey2" id="myoptionkey2" style="width:95%;" rows=1 placeholder="explicação 2..."></textarea>
-					<br/><textarea name="myoption3" id="myoption3" style="width:100%;" rows=1 placeholder="3..."></textarea>
-					<br/><textarea name="myoptionkey3" id="myoptionkey3" style="width:95%;" rows=1 placeholder="explicação 3..."></textarea>
-					<br/><textarea name="myoption4" id="myoption4" style="width:100%;" rows=1 placeholder="4..."></textarea>
-					<br/><textarea name="myoptionkey4" id="myoptionkey4" style="width:95%;" rows=1 placeholder="explicação 4..."></textarea>
-				</font>
-				
-				<font style="color:red; text-align:left;">
-					<br/>
-					Incorretas:
-					<textarea name="myoption5" id="myoption5" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
-					<br/><textarea name="myoptionkey5" id="myoptionkey5" style="width:95%;" rows=1 placeholder="explicação 5..."></textarea>
-					<br/><textarea name="myoption6" id="myoption6" style="width:100%;" rows=1 placeholder="2..."></textarea>
-					<br/><textarea name="myoptionkey6" id="myoptionkey6" style="width:95%;" rows=1 placeholder="explicação 6..."></textarea>
-					<br/><textarea name="myoption7" id="myoption7" style="width:100%;" rows=1 placeholder="3..."></textarea>
-					<br/><textarea name="myoptionkey7" id="myoptionkey7" style="width:95%;" rows=1 placeholder="explicação 7..."></textarea>
-					<br/><textarea name="myoption8" id="myoption8" style="width:100%;" rows=1 placeholder="4..."></textarea>
-					<br/><textarea name="myoptionkey8" id="myoptionkey8" style="width:95%;" rows=1 placeholder="explicação 8..."></textarea>
-				</font>
-			</td></tr></table>
-		</div>
-		
-		<div class="form-group" id="divGear" style="display:none;">
-			<table border=0 align=center style="display:'none';">
+				<tr><td id="mycorrect5Sim" style="display:none; text-align:left;"><!--5-->
+					<table border=0><tr>
+						<td valign=top>
+							<input type=checkbox id="chkMycorrect5answer" value="" class="flutuante" style="border-radius:50%; color:white;"></input>
+						</td>
+						<td>&nbsp;</td>
+						<td style="text-align:justify;">
+							<label id="mycorrect5answer" style="color:white; backgroundColor:black; display:'';"></label>
+							<label id="mytip5" style="color:gray; backgroundColor:black; display:none; text-align:justify;"></label>
+						</td>
+					</tr></table>
+				</td></tr>
+				<tr><td id="mycorrect6Sim" style="display:none; text-align:left;"><!--6-->
+					<table border=0><tr>
+						<td valign=top>
+							<input type=checkbox id="chkMycorrect6answer" value="" class="flutuante" style="border-radius:50%; color:white;"></input>
+						</td>
+						<td>&nbsp;</td>
+						<td style="text-align:justify;">
+							<label id="mycorrect6answer" style="color:white; backgroundColor:black; display:'';"></label>
+							<label id="mytip6" style="color:gray; backgroundColor:black; display:none; text-align:justify;"></label>
+						</td>
+					</tr></table>
+				</td></tr>
+				<tr><td id="mycorrect7Sim" style="display:none; text-align:left;"><!--7-->
+					<table border=0><tr>
+						<td valign=top>
+							<input type=checkbox id="chkMycorrect7answer" value="" class="flutuante" style="border-radius:50%; color:white;"></input>
+						</td>
+						<td>&nbsp;</td>
+						<td style="text-align:justify;">
+							<label id="mycorrect7answer" style="color:white; backgroundColor:black; display:'';"></label>
+							<label id="mytip7" style="color:gray; backgroundColor:black; display:none; text-align:justify;"></label>
+						</td>
+					</tr></table>
+				</td></tr>
+				<tr><td id="mycorrect8Sim" style="display:none; text-align:left;"><!--8-->
+					<table border=0><tr>
+						<td valign=top>
+							<input type=checkbox id="chkMycorrect8answer" value="" class="flutuante" style="border-radius:50%; color:white;"></input>
+						</td>
+						<td>&nbsp;</td>
+						<td style="text-align:justify;">
+							<label id="mycorrect8answer" style="color:white; backgroundColor:black; display:'';"></label>
+							<label id="mytip8" style="color:gray; backgroundColor:black; display:none; text-align:justify;"></label>
+						</td>
+					</tr></table>
+				</td></tr>
 				<tr>
 					<td>
-						<br/>
-						&nbsp;
-						<button id="btnCancelImport" class="btn btn-danger" style="display:'none';"> <i class="fa fa-times"></i> </button>
+						<input type="text" id="mygroupSim" value="" style="display:none;">
+						<input type="text" id="mycodeSim" value="" style="display:none;">
+						<input type="text" id="myorderSim" value="" style="display:none;">
+						<input type="text" id="myidSim" value="" style="display:none;">
 					</td>
 				</tr>
 			</table>
-			<table border=1 align=center style="display:none;"><tr><td nowrap>
-				&nbsp;
-				<b id="FormularioEditorConfiguracoes">Formulário Editor de Configurações</b>
-				<button id="btnCancelImport" class="btn btn-danger" style="display:'none';"> <i class="fa fa-times"></i> </button>
-				&nbsp;
-				<p/><p/>
-			<!-- form id="formAdd" ZZZaction="https://formspree.io/f/xrgjojko" method="post" -->
-			<!-- /form -->
-<!--
-				<select id="selTextColor" name="selTextColor" class="btn btn-info" style="padding:9px 15px 9px 15px; width:250px; height:35px; display:'none';">
-					<option value="gray" selected>Cor Letra: Cinza</option>
-					<option value="white">Cor Letra: Branca</option>
-					<option value="black">Cor Letra: Preta</option>
-					<option value="green">Cor Letra: Verde</option>
-					<option value="yellow">Cor Letra: Amarela</option>
-					<option value="blue">Cor Letra: Azul</option>
-				</select>
-				<p/><p/>
-				<select id="selBackground" name="selBackground" class="btn btn-info" style="padding:9px 15px 9px 15px; width:250px; height:35px; display:'none';">
-					<option value="white" selected>Cor Fundo: Branco</option>
-					<option value="black">Cor Fundo: Preto</option>
-					<option value="yellow">Cor Fundo: Amarelo</option>
-					<option value="blue">Cor Fundo: Azul</option>
-					<option value="gray">Cor Fundo: Cinza</option>
-				</select>
-				<p/><p/>
-				<select id="selButtonColor" name="selButtonColor" class="btn btn-default" style="padding:9px 15px 9px 15px; width:250px; height:35px; display:'none';">
-					<option value="btn-colors" selected>Cor Botão: Padrão</option>
-					<option value="btn-info">Cor Botão: Azul</option>
-					<option value="btn-default">Cor Botão: Branco</option>
-					<option value="btn-warning">Cor Botão: Laranja</option>
-					<option value="btn-danger">Cor Botão: Vermelho</option>
-					<option value="btn-success">Cor Botão: Verde</option>
-					<option value="btn-primary">Cor Botão: Azul Escuro</option>
-					<option value="btn-link">Cor Botão: Link</option>
-				</select>
--->
-				<p/><p/><button id="btnAddNewManual" class="btn btn-default" style="padding:9px 15px 9px 15px; width:250px; display:none;"><i class="fa fa-plus"></i> Adicionar Nova Pergunta</button>
-				<p/><p/><button id="btnShowHelp" class="btn btn-default" style="padding:9px 15px 9px 15px; width:250px; display:none;"> <i class="fa fa-book"></i> Tutorial</button>
-				<p/><p/><button id="btnSelectCountAll" class="btn btn-default" style="display:none; width:250px;"> <i class="fa fa-asterisk"></i> Count All</button>
-				<p/><p/><button id="btnDeleteLirics" class="btn btn-default" style="display:none; width:250px;"> <i class="fa fa-minus"></i> Clear Lirycs</button>
 
-			</td></tr></table>
+			<table border=0 width="100%">
+				<tr>
+					<td>
+						<input type="text" id="txtCalculo" value="0" title="índice de acerto" style="width:33px; background-color:transparent; color:gray; text-align:right; border-width:0px;" readonly /><font title="índice de acerto" color=gray><b>%</b></font>
+						<input type="text" id="txtNaoRespondidas" value="0" title="perguntas não respondidas" style="width:50px; background-color:transparent; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-check-square-o" style="color:gray;" title="perguntas não respondidas"></i>
+						<input type="text" id="txtIncorretas" value="0" title="respostas incorretas" style="width:22px; background-color:transparent; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-remove" style="xcolor:red;" title="respostas incorretas"></i>
+						<input type="text" id="txtCorretas" value="0" title="respostas corretas" style="width:22px; background-color:transparent; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-check" style="xcolor:#3CB371;" title="respostas corretas"></i>
+						<!-- input type="text" id="txtTotal" value="0" title="total de perguntas" style="width:22px; background-color:transparent; color:gray; text-align:right; border-width:0px;" readonly / -->
+					</td>
+				</tr>
+			</table>
+
+			<!-- table id="tableFormSimButtons" border=0 align=center width="100%" style="display:'none';">
+				<tr><td>
+					<button id="btnBackward" class="btn btn-danger" style="display:'none';">xxxxxxxxxxxxxxxxxxx <i class="fa fa-refresh"></i> </button>
+				</td></tr>
+			</table -->
+			<table id="ZZZtableLinkhelp" border=0 align=center style="display:'none';">
+				<tr>
+					<td id="help" style="display:none; text-align:justify;">
+						<div id="divlinkhelp"></div>
+					</td>
+				</tr>
+			</table>
+		</font>
+	</div>
+
+	<div class="form-group" id="divFormAddUpdate" style="display:none;">
+		<table border=0 align=center width="98%"><tr><td>
+			&nbsp;
+			<b id="FormularioEditorPerguntas">Formulário Editor de Perguntas</b>
+			<button id="btnCancel" class="btn btn-danger" style="display:'none';"> <i class="fa fa-times"></i> </button>
+			&nbsp;
+			<p/><p/>
+			<!-- p/><p/><button id="btnCancel" type="button" class="btn btn-info" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-times"></i> Fechar</button -->
+			<p/><button id="btnSubmit" type="button" class="btn btn-success" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-check"></i> Salvar</button>
+			<select id="mytema" name="mytema" style="height:35px; display:'none';"></select>
+			<select id="mycategory" name="mycategory" style="height:35px; display:'none';"></select>
+			<p/><p/><select id="mygroup" name="mygroup" style="height:35px; display:'none';">
+				<!-- option value="00">Configurações</option -->
+				<option value="10" selected>Nível 1.0</option>
+				<option value="11">Nível 1.1</option>
+				<option value="12">Nível 1.2</option>
+				<option value="13">Nível 1.3</option>
+				<option value="14">Nível 1.4</option>
+				<option value="20">Nível 2.0</option>
+				<option value="21">Nível 2.1</option>
+				<option value="22">Nível 2.2</option>
+				<option value="23">Nível 2.3</option>
+				<option value="30">Nível 3.0</option>
+				<option value="31">Nível 3.1</option>
+				<option value="32">Nível 3.2</option>
+				<option value="33">Nível 3.3</option>
+				<option value="40">Nível 4.0</option>
+				<option value="41">Nível 4.1</option>
+				<option value="42">Nível 4.2</option>
+				<option value="43">Nível 4.3</option>
+				<option value="44">Nível 4.4</option>
+				<option value="45">Nível 4.5</option>
+				<option value="46">Nível 4.6</option>
+				<option value="50">Nível 5.0</option>
+				<option value="51">Nível 5.1</option>
+				<option value="52">Nível 5.2</option>
+			</select>
+			<select id="mycode" name="mycode" style="height:35px; display:'none';"></select>
+			<select id="myorder" name="myorder" style="height:35px; display:'none';"></select>
+			<p/>
+			<p/><textarea name="mytext" id="mytext" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui em Português..."></textarea>
+			<p/><textarea name="mytext2" id="mytext2" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui em Inglês..."></textarea>
+			<p/><textarea name="mytext3" id="mytext3" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui em Espanhol..."></textarea>
+			<font style="color:#3CB371;">
+				Corretas:
+				<br/>
+				<textarea name="myoption1" id="myoption1" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+				<br/><textarea name="myoptionkey1" id="myoptionkey1" style="width:95%;" rows=1 placeholder="chave explicação 1..."></textarea>
+				<br/><textarea name="myoption2" id="myoption2" style="width:100%;" rows=1 placeholder="2..."></textarea>
+				<br/><textarea name="myoptionkey2" id="myoptionkey2" style="width:95%;" rows=1 placeholder="explicação 2..."></textarea>
+				<br/><textarea name="myoption3" id="myoption3" style="width:100%;" rows=1 placeholder="3..."></textarea>
+				<br/><textarea name="myoptionkey3" id="myoptionkey3" style="width:95%;" rows=1 placeholder="explicação 3..."></textarea>
+				<br/><textarea name="myoption4" id="myoption4" style="width:100%;" rows=1 placeholder="4..."></textarea>
+				<br/><textarea name="myoptionkey4" id="myoptionkey4" style="width:95%;" rows=1 placeholder="explicação 4..."></textarea>
+			</font>
 			
-		</div>
-		
-
-
-		<div style="display:none;"> <!-- ícones, https://www.w3schools.com/bootstrap/bootstrap_ref_comp_glyphs.asp -->
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-envelope"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-star"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-user"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-film"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-check"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-check-square-o"></i> </button>
-			<br/>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-remove"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-signal"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-cog"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-trash"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-home"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-file"></i> </button>
-			<br/>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-road"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-download"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-inbox"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-play"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-repeat"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-refresh"></i> </button>
-			<br/>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-list"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-lock"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-unlock"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-flag"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-off"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-down"></i> </button>
-			<br/>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-up"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-qrcode"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-barcode"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-tag"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-tags"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-book"></i> </button>
-			<br/>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-bookmark"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-print"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-camera"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-font"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-bold"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-italic"></i> </button>
-			<br/>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-text-height"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-text-width"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-left"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-center"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-right"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-justify"></i> </button>
-			<br/>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-list"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-dedent"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-outdent"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-indent"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-video-camera"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-photo"></i> </button>
-			<br/>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-pencil"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-map-marker"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-adjust"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-tint"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-edit"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-share-square-o"></i> </button>
-			<br/>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-arrows"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-step-backward"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-fast-backward"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-backward"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-play"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-th"></i> </button>
-			<br/>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-pause"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-pencil-square-o"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-forward"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-fast-forward"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-step-forward"></i> </button>
-			<br/>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-eject"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-chevron-left"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-chevron-right"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
-			<button id="btnTest" class="btn btn-default" > <i class="fa fa-headphones"></i> </button>
-		</div>
-
-	<!-- /div -->
+			<font style="color:red; text-align:left;">
+				<br/>
+				Incorretas:
+				<textarea name="myoption5" id="myoption5" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+				<br/><textarea name="myoptionkey5" id="myoptionkey5" style="width:95%;" rows=1 placeholder="explicação 5..."></textarea>
+				<br/><textarea name="myoption6" id="myoption6" style="width:100%;" rows=1 placeholder="2..."></textarea>
+				<br/><textarea name="myoptionkey6" id="myoptionkey6" style="width:95%;" rows=1 placeholder="explicação 6..."></textarea>
+				<br/><textarea name="myoption7" id="myoption7" style="width:100%;" rows=1 placeholder="3..."></textarea>
+				<br/><textarea name="myoptionkey7" id="myoptionkey7" style="width:95%;" rows=1 placeholder="explicação 7..."></textarea>
+				<br/><textarea name="myoption8" id="myoption8" style="width:100%;" rows=1 placeholder="4..."></textarea>
+				<br/><textarea name="myoptionkey8" id="myoptionkey8" style="width:95%;" rows=1 placeholder="explicação 8..."></textarea>
+			</font>
+		</td></tr></table>
+	</div>
+	
+	<div class="form-group" id="divGear" style="display:none;">
+		<table border=0 align=center style="display:'none';">
+			<tr>
+				<td>
+					<br/>
+					&nbsp;
+					<button id="btnCancelImport" class="btn btn-danger" style="display:'none';"> <i class="fa fa-times"></i> </button>
+				</td>
+			</tr>
+		</table>
+		<table border=1 align=center style="display:none;"><tr><td nowrap>
+			&nbsp;
+			<b id="FormularioEditorConfiguracoes">Formulário Editor de Configurações</b>
+			<button id="btnCancelImport" class="btn btn-danger" style="display:'none';"> <i class="fa fa-times"></i> </button>
+			&nbsp;
+			<p/><p/>
+		<!-- form id="formAdd" ZZZaction="https://formspree.io/f/xrgjojko" method="post" -->
+		<!-- /form -->
+			<p/><p/><button id="btnAddNewManual" class="btn btn-default" style="padding:9px 15px 9px 15px; width:250px; display:none;"><i class="fa fa-plus"></i> Adicionar Nova Pergunta</button>
+			<p/><p/><button id="btnShowHelp" class="btn btn-default" style="padding:9px 15px 9px 15px; width:250px; display:none;"> <i class="fa fa-book"></i> Tutorial</button>
+			<p/><p/><button id="btnSelectCountAll" class="btn btn-default" style="display:none; width:250px;"> <i class="fa fa-asterisk"></i> Count All</button>
+			<p/><p/><button id="btnDeleteLirics" class="btn btn-default" style="display:none; width:250px;"> <i class="fa fa-minus"></i> Clear Lirycs</button>
+		</td></tr></table>
+	</div>
+	
+	<!-- ícones, https://www.w3schools.com/bootstrap/bootstrap_ref_comp_glyphs.asp -->
+	<div style="display:none;"> <button id="btnTest" class="btn btn-default" > <i class="fa fa-envelope"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-star"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-user"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-film"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-check"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-check-square-o"></i> </button>
+		<br/>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-remove"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-signal"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-cog"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-trash"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-home"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-file"></i> </button>
+		<br/>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-road"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-download"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-inbox"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-play"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-repeat"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-refresh"></i> </button>
+		<br/>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-list"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-lock"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-unlock"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-flag"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-off"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-down"></i> </button>
+		<br/>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-up"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-qrcode"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-barcode"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-tag"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-tags"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-book"></i> </button>
+		<br/>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-bookmark"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-print"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-camera"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-font"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-bold"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-italic"></i> </button>
+		<br/>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-text-height"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-text-width"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-left"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-center"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-right"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-justify"></i> </button>
+		<br/>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-list"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-dedent"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-outdent"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-indent"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-video-camera"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-photo"></i> </button>
+		<br/>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-pencil"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-map-marker"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-adjust"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-tint"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-edit"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-share-square-o"></i> </button>
+		<br/>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-arrows"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-step-backward"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-fast-backward"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-backward"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-play"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-th"></i> </button>
+		<br/>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-pause"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-pencil-square-o"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-forward"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-fast-forward"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-step-forward"></i> </button>
+		<br/>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-eject"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-chevron-left"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-chevron-right"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-headphones"></i> </button>
+	</div>
 
 	<footer>
 		<br/><br/><br/>

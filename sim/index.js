@@ -366,7 +366,7 @@ function registerEvents() {
 			showGridAndHideForms();
 		}
     });	
-    $('#tblGrid tbody').on('click', '.edit', function () {
+    $('#tblEstatisticas tbody').on('click', '.edit', function () {
 		var row = $(this).parents().eq(1);
         var child = row.children();
 		var id = row.attr('itemid');
@@ -375,7 +375,7 @@ function registerEvents() {
 		getFromTable(id, mygroup, mycode);
 		showFormAddUpdate();
     });
-    $('#tblGrid tbody').on('click', '.restart', function () {
+    $('#tblEstatisticas tbody').on('click', '.restart', function () {
 		var params = new URLSearchParams(window.location.search);
 		var mytema = params.get('tem');
 		var mycategory = params.get('cat');
@@ -394,14 +394,14 @@ function registerEvents() {
 			showFormSim();
 		}
     });
-    $('#tblGrid tbody').on('click', '.delete', function () {
+    $('#tblEstatisticas tbody').on('click', '.delete', function () {
         var result = confirm('Excluir, ok?');
         if (result) {
             var studentId = $(this).parents().eq(1).attr('itemid');
             deleteStudent(Number(studentId));
         }
     });
-    $('#tblGrid tbody').on('click', '.deletefase', function () {
+    $('#tblEstatisticas tbody').on('click', '.deletefase', function () {
 		var result = confirm('Não faça nada durante a atualização. \n\nAguarde o botão azul aparecer na próxima página.');
 		if (result) {
 			var params = new URLSearchParams(window.location.search);
@@ -417,7 +417,7 @@ function registerEvents() {
 			setTimeout(() => { var DataShow_Config = window.open("T"+mytema + "C"+mycategory+ "G"+mygroup + ".html?sim=" + mygroup + "&tem=" + mytema + "&cat=" + mycategory, "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no"); }, 3000); // Executa após 1 segundo para esperar o processo
 		}
     });
-    $('#tblGrid tbody').on('click', '.playsim', function () {
+    $('#tblEstatisticas tbody').on('click', '.playsim', function () {
 		var params = new URLSearchParams(window.location.search);
 		var mytema = params.get('tem');
 		var mycategory = params.get('cat');
@@ -429,20 +429,20 @@ function registerEvents() {
 		refreshTableQuestion(mytema, mycategory, id, mygroup, '1');
 		showFormSim();
     });	
-    $('#tblGrid tbody').on('click', '.freeze', function () {
+    $('#tblEstatisticas tbody').on('click', '.freeze', function () {
 		freezeDataShow(localStorage.getItem('valueAoVivo'));
     });
-    $('#tblGrid tbody').on('click', '.logo', function () {
+    $('#tblEstatisticas tbody').on('click', '.logo', function () {
 		showLogo();
 //		freezeDataShow('false');
     });
-    $('#tblGrid tbody').on('click', '.complete', function () {
+    $('#tblEstatisticas tbody').on('click', '.complete', function () {
 		searchComplete();
     });
-    $('#tblGrid tbody').on('click', '.videoplaypause', function () {
+    $('#tblEstatisticas tbody').on('click', '.videoplaypause', function () {
 		videoPlayPause();
     });
-    $('#tblGrid tbody').on('click', '.simulator', function () {
+    $('#tblEstatisticas tbody').on('click', '.simulator', function () {
 		var row = $(this).parents().eq(1);
         var child = row.children();
 		var id = row.attr('itemid');
@@ -479,7 +479,8 @@ function registerEvents() {
 		savePoints(mytema, mycategory, myid, mygroup, mycode);
     })
 	$('#btnPause').click(function () {
-		exitQuestions();
+		showFormApresentacao();
+		//exitQuestions();
     });
 	$('#btnTerminar').click(function () {
 		var params = new URLSearchParams(window.location.search);
@@ -504,6 +505,9 @@ function registerEvents() {
 		var mycategory = params.get('cat');
 		refreshTableData(mytema, mycategory, '0', '', '', '');
 	})
+	$('#btnPaginaInicial').click(function () {
+		showFormCategory();
+	})
 	$('#btnNightDay').click(function () {
 		updateConfigGeneral();
 		setConfigBotoes();
@@ -511,6 +515,7 @@ function registerEvents() {
 	$('#btnFormCategory').click(function () {
 		var DataShow_Config = window.open("index.html", "_self");
 	})
+
 	$('#imgTema1Apresentacao').click(function () {
 		changeTema('1');
 	})
@@ -520,6 +525,17 @@ function registerEvents() {
 	$('#imgTema3Apresentacao').click(function () {
 		changeTema('3');
 	})
+
+	$('#btnTema1Apresentacao').click(function () {
+		changeTema('1');
+	})
+	$('#btnTema2Apresentacao').click(function () {
+		changeTema('2');
+	})
+	$('#btnTema3Apresentacao').click(function () {
+		changeTema('3');
+	})
+
 	$('#imgTema1MenuTopo').click(function () {
 		changeTema('1');
 	})
@@ -529,6 +545,7 @@ function registerEvents() {
 	$('#imgTema3MenuTopo').click(function () {
 		changeTema('3');
 	})
+
 	$('#mytextSim').click(function () {
 		if (document.getElementById('mytextSim2') != null && document.getElementById('mytextSim2').innerText.length > 10) {
 			document.getElementById('mytextSim2').style.display='';
@@ -585,6 +602,14 @@ function registerEvents() {
 		setBackgroundColor(index, '#FF5555');
 		showCorrect(index, '', '', '');
 	})
+	$('#btnEstatisticas').click(function () {
+		var params = new URLSearchParams(window.location.search);
+		var mytema = params.get('tem');
+		var mycategory = params.get('cat');
+		refreshTableData(mytema, mycategory, '0', '', '', '');
+		showGridAndHideForms();
+	})
+
 }
 
 async function initConfigGeneral() {
@@ -1036,10 +1061,48 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 			//showIniciarConfiguracao();
 //			document.getElementById('btnPlay').style.display='none';
 		}
-        $('#tblGrid tbody').html(htmlString);
+        $('#tblEstatisticas tbody').html(htmlString);
 //    } catch (ex) {
 //        console.log(ex.message)
 //    }
+}
+
+//This function refreshes the table
+async function refreshTableNivel(mytema, mycategory, mycode, myorder, mygroup, mytext, mytext2, mytext3) {
+		var students = await jsstoreCon.select({
+			from: 'Student'
+				, where: { mytema: mytema + ''
+				, mycategory: mycategory + ''
+			}
+			, order: [ {by: 'mygroup', type: 'asc'} ]
+		});
+
+		setConfigBotoes(); //atualiza o destaque de cor dos botões de modo de jogo
+
+		var htmlString = "";
+		var varNivel = '1';
+		var myid = '1'; //não é usado
+		mycode = '1';
+		students.forEach(function (student) {
+			varNivel = student.mygroup;
+			mygroup = student.mygroup;
+		})
+		
+		htmlString = '';
+		htmlString = htmlString + '<tr>';
+		htmlString = htmlString + '<td>';
+		htmlString = htmlString + '<i class="fa fa-play avatarflutuante" style="color:#00FF7F; font-size:15px;"></i>';
+		htmlString = htmlString + '<label style="border-radius:30px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">';
+		htmlString = htmlString + '<button id="btnNivel" onclick="refreshTableQuestion(' + mytema + ', ' + mycategory + ', ' + myid + ', ' + mygroup + ', ' + mycode + '); showFormSim();" style="font-size:30px; color:#555555; background-color:#00FF7F; font-family:Helvetica; font-weight:bold; border-radius:30px; border-width:0px; -webkit-text-stroke-width: 1px; ">';
+		htmlString = htmlString + '<font style="color:#FFFFFF; background-color:#00FF00; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: #000;">';
+		htmlString = htmlString + '&nbsp;&nbsp;NÍVEL ' + varNivel + '&nbsp;&nbsp;';
+		htmlString = htmlString + '</font>';
+		htmlString = htmlString + '</button>';
+		htmlString = htmlString + '</label>';
+		htmlString = htmlString + '</td>';
+		htmlString = htmlString + '</tr>';
+
+        $('#tblNivel tbody').html(htmlString);
 }
 
 //This function refreshes the table
@@ -1066,7 +1129,7 @@ async function refreshTableResult() {
 //			console.log('Pronto! Fim da configuração.');
 		}
 		//Resultado
-		$('#tblGrid tbody').html(labelStudents + '<br/>' + '<br/>' + buttonFechar);
+		$('#tblEstatisticas tbody').html(labelStudents + '<br/>' + '<br/>' + buttonFechar);
 	} catch (ex) {
         console.log(ex.message)
     }
@@ -1087,6 +1150,19 @@ async function deletefase(mytema, mycategory, mygroup, mycode, myid) {
     } catch (ex) {
         console.log(ex.message);
     }
+}
+
+function showTableQuestions() {
+	var params = new URLSearchParams(window.location.search);
+	var mytema = params.get('tem');
+	var mycategory = params.get('cat');
+	var row = $(this).parents().eq(1);
+	var child = row.children();
+	var id = row.attr('itemid');
+	var mygroup = child.eq(0).text();
+	var mycode = child.eq(1).text();
+	refreshTableQuestion(mytema, mycategory, id, mygroup, '1');
+	showFormSim();
 }
 
 function getTemaCategoria() {
@@ -1198,8 +1274,8 @@ function openForm() {
 	var mytema = params.get('tem');
 	var mycategory = params.get('cat');
 	if ((mytema != null && mycategory != null)) {
-		refreshTableData(mytema, mycategory, '0', '', '', '');
-		showGridAndHideForms();
+		refreshTableNivel(mytema, mycategory, '0', '', '', '');
+		showFormApresentacao();
 	} else {
 		showFormCategory();
 	}
@@ -1847,7 +1923,7 @@ function onLoadConfig() {
 	loadCombobox('mycode', '0', '200', 'Número');
 	loadCombobox('myorder', '0', '200', 'Ordem');
 	confirmImport(mytema, mycategory, 'contents1', '0');
-	setTimeout(() => { document.getElementById('tblGrid').style.display='none'; }, 1000); // Executa após 1 segundo para esperar o processo terminar
+//	setTimeout(() => { document.getElementById('tblEstatisticas').style.display='none'; }, 1000); // Executa após 1 segundo para esperar o processo terminar
 }
 
 function buscaValorTag(valor, key) {	
@@ -2139,7 +2215,7 @@ async function selectCountAll() {
 			aux=aux+1;
 		})
 		htmlString += "<td colspan=99>" + aux + " itens</td>"
-        $('#tblGrid tbody').html(htmlString);
+        $('#tblEstatisticas tbody').html(htmlString);
 		document.getElementById('txtSearch').value = aux + " itens";
     } catch (ex) {
         console.log(ex.message)
@@ -2517,7 +2593,7 @@ async function initLinkHelp() {
 	} else {
 		save = false;
 	}
-	contadorMygroup = 10;
+	contadorMygroup = 1; //10
 	contadorMycode = 0;
 	//Não Se Aplica
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', false, 'Não Se Aplica', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', '', 'Não Se Aplica', 'Not applicable', '');
@@ -2602,7 +2678,7 @@ async function initLinkHelp() {
 	} else {
 		save = false;
 	}
-	contadorMygroup = 10;
+	contadorMygroup = 1; //10
 	contadorMycode = 0;
 	//título
 	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Fase 1.0', 'Phase 1.0', '');
@@ -2631,7 +2707,7 @@ async function initLinkHelp() {
 	} else {
 		save = false;
 	}
-	contadorMygroup = 10;
+	contadorMygroup = 1; //10
 	contadorMycode = 0;
 	//título
 	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Fase 1.0', 'Phase 1.0', '');
@@ -2662,7 +2738,7 @@ async function initLinkHelp() {
 	} else {
 		save = false;
 	}
-	contadorMygroup = 10;
+	contadorMygroup = 1; //10
 	contadorMycode = 0;
 	//título
 	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Fase 1.0', 'Phase 1.0', '');
@@ -2687,7 +2763,7 @@ async function initLinkHelp() {
 	} else {
 		save = false;
 	}
-	contadorMygroup = 10;
+	contadorMygroup = 1; //10
 	contadorMycode = 0;
 	//título
 	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Fase 1.0', 'Phase 1.0', '');
@@ -2704,7 +2780,7 @@ async function initLinkHelp() {
 	//Esse registro é o último a ser inserido na tabela. Quando ele aparece indica que todos foram inseridos também.
 	mytema = '0';
 	mycategory = '0';
-	contadorMygroup = 10;
+	contadorMygroup = 1; //10
 	contadorMycode = String(parseInt('0') + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'FIM', 'https://', '', 'FIM', 'THE END', '');
 	
@@ -3180,8 +3256,23 @@ function showTip(valorindice) {
 	}
 }
 
+function showFormApresentacao() {
+    $('#tblEstatisticas').hide();
+    $('#divbotoes').hide();
+    $('#divFormAddUpdate').hide();
+	$('#divGear').hide();
+	$('#divcontent').hide();
+	$('#formBible').hide();
+	$('#divconfig').hide();
+	$('#divGearAddNewLiryc').hide();
+	$('#divFormSim').hide();
+	$('#divbuttons').hide();
+	$('#tblCategory').hide();
+	$('#divNivel').show();
+}
+
 function showFormCategory() {
-    $('#tblGrid').show();
+    $('#tblEstatisticas').show();
     $('#divbotoes').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
@@ -3192,10 +3283,11 @@ function showFormCategory() {
 	$('#divFormSim').hide();
 	$('#divbuttons').hide();
 	$('#tblCategory').show();
+	$('#divNivel').hide();
 }
 
 function showFormSim() {
-    $('#tblGrid').hide();
+    $('#tblEstatisticas').hide();
     $('#divbotoes').show();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
@@ -3207,6 +3299,7 @@ function showFormSim() {
 //	$('#myCarousel').show();	
 	$('#divbuttons').hide();
 	$('#tblCategory').hide();
+	$('#divNivel').hide();
 //	document.getElementById('navBottom').style.display='';
 	if (document.getElementById('btnPrevious') != null) {document.getElementById('btnPrevious').disabled = false; }
 	if (document.getElementById('btnNext') != null) {document.getElementById('btnNext').disabled = false; }
@@ -3215,7 +3308,7 @@ function showFormSim() {
 }
 
 function showFormAddUpdate() {
-    $('#tblGrid').hide();
+    $('#tblEstatisticas').hide();
     $('#divbotoes').show();
     $('#divFormAddUpdate').show();
 	$('#divGear').hide();
@@ -3225,10 +3318,11 @@ function showFormAddUpdate() {
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
 	$('#tblCategory').hide();
+	$('#divNivel').hide();
 }
 
 function showGridAndHideForms() {
-    $('#tblGrid').show();
+    $('#tblEstatisticas').show();
     $('#divbotoes').show();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
@@ -3237,6 +3331,7 @@ function showGridAndHideForms() {
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
 	$('#tblCategory').hide();
+	$('#divNivel').hide();
 	if (document.getElementById('btnTerminar') != null) {
 		document.getElementById('btnTerminar').style.display='none';	
 	}
@@ -3245,7 +3340,7 @@ function showGridAndHideForms() {
 function showAddNewManual() {
 	$('#divGearAddNewLiryc').show();
     $('#divbotoes').show();
-    $('#tblGrid').hide();
+    $('#tblEstatisticas').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
 	$('#divcontent').hide();
@@ -3253,10 +3348,11 @@ function showAddNewManual() {
 	$('#divconfig').hide();
 	$('#divFormSim').hide();
 	$('#tblCategory').hide();
+	$('#divNivel').hide();
 }
 
 function showFormGear() {
-    $('#tblGrid').hide();
+    $('#tblEstatisticas').hide();
     $('#divbotoes').show();
     $('#divFormAddUpdate').hide();
 	$('#divGear').show();
@@ -3265,10 +3361,11 @@ function showFormGear() {
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
 	$('#tblCategory').hide();
+	$('#divNivel').hide();
 }
 
 function showFormImport() {
-    $('#tblGrid').hide();
+    $('#tblEstatisticas').hide();
     $('#divbotoes').show();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
@@ -3278,10 +3375,11 @@ function showFormImport() {
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
 	$('#tblCategory').hide();
+	$('#divNivel').hide();
 }
 
 function showBible() {
-    $('#tblGrid').hide();
+    $('#tblEstatisticas').hide();
     $('#divbotoes').show();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
@@ -3291,10 +3389,11 @@ function showBible() {
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
 	$('#tblCategory').hide();
+	$('#divNivel').hide();
 }
 
 function showIniciarConfiguracao() {
-    $('#tblGrid').hide();
+    $('#tblEstatisticas').hide();
     $('#divbotoes').show();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
@@ -3304,6 +3403,7 @@ function showIniciarConfiguracao() {
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').hide();
 	$('#tblCategory').hide();
+	$('#divNivel').hide();
 }
 
 function showForm1Form2() {
