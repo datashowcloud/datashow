@@ -693,6 +693,21 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 		document.getElementById('imgTema3MenuTopo').src = 'img/1z0-1085-22' + b + '.png';
 	}
 
+	//imagem do tema na tela de nível
+	var params = new URLSearchParams(window.location.search);
+	var mytema = params.get('tem');
+	if (document.getElementById('imgNivelTema') != null) {
+		if (mytema == '1') {
+			document.getElementById('imgNivelTema').src = 'img/clf-c01' + b + '.png';
+		} else if (mytema == '2') {
+			document.getElementById('imgNivelTema').src = 'img/az-900' + b + '.png';
+		} else if (mytema == '3') {
+			document.getElementById('imgNivelTema').src = 'img/1z0-1085-22' + b + '.png';
+		} else if (mytema == '3') {
+			document.getElementById('imgNivelTema').src = 'img/clf-c01' + b + '.png';
+		}
+	}
+
 	if (document.getElementById('mytextSim') != null) {
 		document.getElementById('mytextSim').style.color = textcolor;
 	}
@@ -1260,6 +1275,7 @@ function changeTema(mytema) {
 		}
 */
 	}
+
 	var DataShow_Config = window.open("index.html?tem="+ mytema +"&cat="+ mycategory, "_self");
 }
 
