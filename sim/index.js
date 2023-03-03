@@ -602,14 +602,34 @@ function registerEvents() {
 		setBackgroundColor(index, '#FF5555');
 		showCorrect(index, '', '', '');
 	})
-	$('#btnEstatisticas').click(function () {
+	$('#btnListaPerguntas').click(function () {
 		var params = new URLSearchParams(window.location.search);
 		var mytema = params.get('tem');
 		var mycategory = params.get('cat');
 		refreshTableData(mytema, mycategory, '0', '', '', '');
 		showGridAndHideForms();
 	})
-
+	$('#btnEstatisticas').click(function () {
+	})
+	$('#btnUser').click(function () {
+		showFormUser();
+	})
+	$('#btnEntrar').click(function () {
+		var id = document.getElementById('txtId').value;
+		var pass = document.getElementById('txtPass').value;
+		var key = localStorage.getItem('key');
+		login(id, pass, key);
+	})
+	$('#btnSair').click(function () {
+			//var result = confirm('Desconectar?');
+			//if (result) {
+				localStorage.setItem('id', '');
+				var DataShow_Config = window.open("index.html", "_self");
+			//}
+	})
+	$('#btnFecharFormUser').click(function () {
+		showFormApresentacao();
+	})
 }
 
 async function initConfigGeneral() {
@@ -1167,6 +1187,33 @@ async function deletefase(mytema, mycategory, mygroup, mycode, myid) {
     }
 }
 
+function login(id, pass, key) {
+	if (validalogin(id, pass) == true) {
+		if (localStorage.getItem('key') != null) {
+			if (localStorage.getItem('key') == '202303010000') {
+				document.getElementById('divCamposEntrar').style.display='none';
+				showFormApresentacao();
+			}
+			return;
+		}
+		localStorage.setItem('id', '202303010000');
+		localStorage.setItem('key', '202303010000');
+		alert('Parabéns! Você tem licença para 1 dispositivo até o final do ciclo mensal.');
+		showFormCategory();
+		return;
+	}
+}
+
+function validalogin(id, pass) {
+	if (id.toLowerCase() == 'a' && pass.toLowerCase() == 'a') {
+		return true;
+	} else if (id.toLowerCase() == 'santiago' || pass.toLowerCase() == 'santiago') {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 function showTableQuestions() {
 	var params = new URLSearchParams(window.location.search);
 	var mytema = params.get('tem');
@@ -1275,7 +1322,6 @@ function changeTema(mytema) {
 		}
 */
 	}
-
 	var DataShow_Config = window.open("index.html?tem="+ mytema +"&cat="+ mycategory, "_self");
 }
 
@@ -1285,6 +1331,40 @@ function changeCategory(mycategory) {
 	var DataShow_Config = window.open("index.html?tem="+ mytema +"&cat="+ mycategory, "_self");
 }
 
+function showPaginaAtual() {
+	var params = new URLSearchParams(window.location.search);
+	var mytema = params.get('tem');
+	var mycategory = params.get('cat');
+
+	if (mytema != null) {
+		mytema = '?tem=' + mytema;
+	}
+	if (mycategory != null) {
+		mycategory = '&cat=' + mycategory;
+	}
+	
+	var DataShow_Config = window.open("index.html" + mytema + mycategory, "_self");
+}
+
+function showNextPage() {
+	var params = new URLSearchParams(window.location.search);
+	var mytema = params.get('tem');
+	var mycategory = params.get('cat');
+	
+	if (mycategory == '2') {
+		mytema = '?tem=' + mytema;
+		mycategory = '&cat=4';
+	} else if (mycategory == '4') {
+		mytema = '';
+		mycategory = '';
+	} else {
+		mytema = '';
+		mycategory = '';
+	}
+	
+	var DataShow_Config = window.open("index.html" + mytema + mycategory, "_self");
+}
+
 function openForm() {
 	var params = new URLSearchParams(window.location.search);
 	var mytema = params.get('tem');
@@ -1292,6 +1372,7 @@ function openForm() {
 	if ((mytema != null && mycategory != null)) {
 		refreshTableNivel(mytema, mycategory, '0', '', '', '');
 		showFormApresentacao();
+		document.getElementById('menutopodireito').style.display=''; //exibe menu topo
 	} else {
 		showFormCategory();
 	}
@@ -3272,6 +3353,22 @@ function showTip(valorindice) {
 	}
 }
 
+function showFormUser() {
+    $('#tblEstatisticas').hide();
+    $('#divbotoes').hide();
+    $('#divFormAddUpdate').hide();
+	$('#divGear').hide();
+	$('#divcontent').hide();
+	$('#formBible').hide();
+	$('#divconfig').hide();
+	$('#divGearAddNewLiryc').hide();
+	$('#divFormSim').hide();
+	$('#divbuttons').hide();
+	$('#tblCategory').hide();
+	$('#divNivel').hide();
+    $('#divFormUser').show();
+}
+
 function showFormApresentacao() {
     $('#tblEstatisticas').hide();
     $('#divbotoes').hide();
@@ -3285,6 +3382,7 @@ function showFormApresentacao() {
 	$('#divbuttons').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').show();
+    $('#divFormUser').hide();
 }
 
 function showFormCategory() {
@@ -3300,6 +3398,7 @@ function showFormCategory() {
 	$('#divbuttons').hide();
 	$('#tblCategory').show();
 	$('#divNivel').hide();
+    $('#divFormUser').hide();
 }
 
 function showFormSim() {
@@ -3316,6 +3415,7 @@ function showFormSim() {
 	$('#divbuttons').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
+    $('#divFormUser').hide();
 //	document.getElementById('navBottom').style.display='';
 	if (document.getElementById('btnPrevious') != null) {document.getElementById('btnPrevious').disabled = false; }
 	if (document.getElementById('btnNext') != null) {document.getElementById('btnNext').disabled = false; }
@@ -3335,6 +3435,7 @@ function showFormAddUpdate() {
 	$('#divFormSim').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
+    $('#divFormUser').hide();
 }
 
 function showGridAndHideForms() {
@@ -3348,6 +3449,7 @@ function showGridAndHideForms() {
 	$('#divFormSim').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
+    $('#divFormUser').hide();
 	if (document.getElementById('btnTerminar') != null) {
 		document.getElementById('btnTerminar').style.display='none';	
 	}
@@ -3365,6 +3467,7 @@ function showAddNewManual() {
 	$('#divFormSim').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
+    $('#divFormUser').hide();
 }
 
 function showFormGear() {
@@ -3378,6 +3481,7 @@ function showFormGear() {
 	$('#divFormSim').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
+    $('#divFormUser').hide();
 }
 
 function showFormImport() {
@@ -3392,6 +3496,7 @@ function showFormImport() {
 	$('#divFormSim').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
+    $('#divFormUser').hide();
 }
 
 function showBible() {
@@ -3406,6 +3511,7 @@ function showBible() {
 	$('#divFormSim').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
+    $('#divFormUser').hide();
 }
 
 function showIniciarConfiguracao() {
@@ -3420,6 +3526,7 @@ function showIniciarConfiguracao() {
 	$('#divFormSim').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
+    $('#divFormUser').hide();
 }
 
 function showForm1Form2() {
