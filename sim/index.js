@@ -621,11 +621,14 @@ function registerEvents() {
 		login(id, pass, key);
 	})
 	$('#btnSair').click(function () {
-			//var result = confirm('Desconectar?');
-			//if (result) {
-				localStorage.setItem('id', '');
-				var DataShow_Config = window.open("index.html", "_self");
-			//}
+		//var result = confirm('Desconectar?');
+		//if (result) {
+			localStorage.setItem('id', '');
+			var params = new URLSearchParams(window.location.search);
+			var mycategory = params.get('cat');
+			var mytema = params.get('tem');
+			var DataShow_Config = window.open("index.html?tem="+ mytema +"&cat="+ mycategory, "_self");
+		//}
 	})
 	$('#btnFecharFormUser').click(function () {
 		showFormApresentacao();
@@ -1127,11 +1130,9 @@ async function refreshTableNivel(mytema, mycategory, mycode, myorder, mygroup, m
 		htmlString = htmlString + '<tr>';
 		htmlString = htmlString + '<td>';
 		htmlString = htmlString + '<i class="fa fa-play avatarflutuante" style="color:#00FF7F; font-size:15px;"></i>';
-		htmlString = htmlString + '<label style="border-radius:30px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">';
-		htmlString = htmlString + '<button id="btnNivel" onclick="refreshTableQuestion(' + mytema + ', ' + mycategory + ', ' + myid + ', ' + mygroup + ', ' + mycode + '); showFormSim();" style="font-size:30px; color:#555555; background-color:#00FF7F; font-family:Helvetica; font-weight:bold; border-radius:30px; border-width:0px; -webkit-text-stroke-width: 1px; ">';
-		htmlString = htmlString + '<font style="color:#FFFFFF; background-color:#00FF00; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: #000;">';
+		htmlString = htmlString + '<label class="flutuante" style="border-radius:30px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">';
+		htmlString = htmlString + '<button id="btnNivel" class="btn btn-success" onclick="refreshTableQuestion(' + mytema + ', ' + mycategory + ', ' + myid + ', ' + mygroup + ', ' + mycode + '); showFormSim();" style="border-radius:30px; font-size:30px; font-family:Helvetica; font-weight:bold; border-width:0px; -webkit-text-stroke-width: 1px; ">';
 		htmlString = htmlString + '&nbsp;&nbsp;NÍVEL ' + varNivel + '&nbsp;&nbsp;';
-		htmlString = htmlString + '</font>';
 		htmlString = htmlString + '</button>';
 		htmlString = htmlString + '</label>';
 		htmlString = htmlString + '</td>';
@@ -1191,14 +1192,16 @@ function login(id, pass, key) {
 	if (validalogin(id, pass) == true) {
 		if (localStorage.getItem('key') != null) {
 			if (localStorage.getItem('key') == '202303010000') {
-				document.getElementById('divCamposEntrar').style.display='none';
+				document.getElementById('txtPass').style.display='none';
+				document.getElementById('lblEntrar').style.display='none';
+				document.getElementById('divCamposSair').style.display='';
 				showFormApresentacao();
 			}
 			return;
 		}
 		localStorage.setItem('id', '202303010000');
 		localStorage.setItem('key', '202303010000');
-		alert('Parabéns! Você tem licença para 1 dispositivo até o final do ciclo mensal.');
+		alert('Parabéns! Você tem licença para 1 dispositivo até o final do próximo mês.');
 		showFormCategory();
 		return;
 	}
