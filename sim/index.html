@@ -214,6 +214,11 @@ input:checked[type="checkbox"]::before{
 	<nav id="menutopodireito" class="navbar sticky-top navbar-dark bg-dark" style="display:none;">
 	  <div class="container-fluid">
 		<div>
+			<!-- button class="navbar-toggler" type="button" style="border-radius:50%; color:white;" title="Menu" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" -->
+				<span class="btn btn-outline-primary navbar-toggler navbar-toggler-icon" style="border-radius:50%;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+				</span>
+			<!-- /button -->
+			
 			<!--a class="navbar-brand" href="index.html" title="Página Inicial"></a>
 			<button  class="btn btn-outline-primary" title="Início" style="border-radius:50%; color:white;">
 				<img src="img/clf-c01.png" width="22px" height="22px" style="cursor:pointer; border-radius:50%;" title="AWS CLF-C01"></img>
@@ -221,14 +226,13 @@ input:checked[type="checkbox"]::before{
 			<!--button id="btnPaginaInicial" class="btn btn-outline-primary" title="Página Inicial" style="border-radius:50%; color:white; display:'none';"><i class="fa fa-home"></i> </button-->
 			<button id="btnNightDay" class="btn btn-outline-primary" title="Dia e noite" style="border-radius:50%; color:white; display:'none';"><i class="fa fa-adjust"></i> </button>
 			<button id="btnDropDb" class="btn btn-outline-primary" title="Restaurar padrão de fábrica" style="border-radius:50%;color:white; display:none;"><i class="fa fa-trash"></i></font></button>
-			<button id="btnUser" class="btn btn-outline-primary" title="Você" style="border-radius:50%; color:white; display:'none';"><i class="fa fa-user"></i> </button>
+			<button id="btnUser" class="btn btn-outline-primary" title="Você" style="border-radius:50%; color:white; display:'none';"><i class="fa fa-user"></i>
+				<input id="txtUser" type="text" value="" style="font-size:10px; position:absolute; background-color:transparent; color:white; width:15px; border-width:0px; font-family:Helvetica; font-weight:bold; cursor:pointer;"></input>
+			</button>
 			<button id="btnTerminar" class="btn btn-outline-primary end" title="Terminar a fase" style="border-radius:50%; color:white; display:none;">Fim</button>
 			<!--button id="btnLanguage" class="btn Zbtn-sm btn-outline-primary" title="Trocar língua: Inglês e Português" style="border-radius:50%; color:white;" disabled><i class="fa fa-globe"></i></button-->
 		</div>
-		<button class="navbar-toggler" type="button" title="Menu" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
-			<span class="navbar-toggler-icon"></span>
-			<!-- button id="btnPause" class="btn btn-outline-danger flutuante" style="border-radius:50%; color:white; display:'none';"><i class="fa fa-remove"></i></button -->
-		</button>
+		<button id="btnPause" class="btn btn-outline-danger flutuante" onclick="showFormApresentacao();" style="border-radius:50%; color:white; display:'none';"><i class="fa fa-remove"></i></button>
 		<div class="offcanvas offcanvas-top text-bg-dark bg-dark" style="height:250px;" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
 		  <div class="offcanvas-header">
 			<h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Modo:</h5>
@@ -238,8 +242,8 @@ input:checked[type="checkbox"]::before{
 			<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 			  <li class="nav-item">
 					<div align=center>
-						<button id="btntreino" class="botao flutuante" style="border-radius:50%;" onclick="changeCategory('2');"><i class="fa fa-book"></i> Treino</button>
-						<button id="btndesafio" class="botao flutuante" style="border-radius:50%;" onclick="changeCategory('4');"><i class="fa fa-road"></i> Desafio</button>
+						<button id="btntreino" class="botao flutuante" style="border-radius:30px;" onclick="changeCategory('2');"><i class="fa fa-book"></i> Treino</button>
+						<button id="btndesafio" class="botao flutuante" style="border-radius:30px;" onclick="changeCategory('4');"><i class="fa fa-road"></i> Desafio</button>
 					</div>
 					<!-- datashowcloud2022@gmail.com -->
 					<div align=center>
@@ -247,7 +251,7 @@ input:checked[type="checkbox"]::before{
 					</div>
 					<div align=center>
 						<font size=2>
-							<i><p/><p/>contato@tamastigadu.com.br <br/>atualizado em 03/2023 versão 00.00.05</i>
+							<i><p/><p/>contato@tamastigadu.com.br <br/>atualizado em 03/2023 versão 00.00.06</i>
 						</font>
 					</div>
 			  </li>
@@ -501,52 +505,6 @@ input:checked[type="checkbox"]::before{
 		</label>
 	</div>
 	
-	<!-- form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post" -->
-		<br/><br/>
-		<div id="divFormUser" align=center style="display:'none'; border-radius:2.18vw; margin-left:auto; margin-right:auto;">
-			<label align=center style="width:290px; border-radius:10px; border-style:solid; border-color:gray; border-width:3px; color:#000000; background-color:transparent;">
-				<label class="flutuante" style="border-radius:50%; position:relative; top:-20px; left:200px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
-					<button id="btnFecharFormUser" class="btn btn-danger" style="border-radius:50%;"><i class="fa fa-remove"></i></button>
-				</label>
-				<label style="border-radius:30px; position:relative; top:-25px; left:-25px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
-					<label id="btnFecharFormUser" class="btn btn-primary" style="border-radius:30px; font-size:20px;"><b>CONEXÃO</b></label>
-				</label>
-
-				<div id="divCamposEntrar" style="display:'none';">
-					<label><input id="txtId" type="text" class="flutuante" value="" placeholder="e-mail ou celular" style="width:200px; border-radius:10px; text-align:center;"></input></label>
-					<br/>
-					<label><input id="txtPass" type="password" class="flutuante" value="" placeholder="Senha" style="width:200px; border-radius:10px; text-align:center;"></input></label>
-					<br/>
-					<p/>
-					<p/>
-				
-					<label id="lblEntrar" class="flutuante" style="border-radius:30px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
-						<button id="btnEntrar" class="btn btn-primary" style="width:200px; border-radius:30px;"> <i class="fa fa-user"></i> ENTRAR</button>
-					</label>
-				</div>
-
-				<div id="divCamposSair" style="display:none;">
-					<label id="lblSair" class="flutuante" style="display:'none'; border-radius:30px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
-						<button id="btnSair" class="btn btn-default" style="width:200px; border-radius:30px;">DESCONECTAR</button>
-					</label>
-				</div>
-				<br/>
-				<br/>
-			</label>
-		</div>
-	<!-- /form -->
-
-	<table id="tblEstatisticas" border=0 style="width:98%; display:none;" align=center>
-		<tbody>
-			<div id="divbotoes" style="display:none; text-align:center;">
-					<!--
-					<button id="btntreino" class="botao flutuante" onclick="changeCategory('2');"><i class="fa fa-book"></i> Treino</button>
-					<button id="btndesafio" class="botao flutuante" onclick="changeCategory('4');"><i class="fa fa-road"></i> Desafio</button>
-					-->
-			</div>
-		</tbody>
-	</table>
-
 	<div id="divcontent" style="display:'none';">
 	</div>
 
@@ -696,6 +654,52 @@ input:checked[type="checkbox"]::before{
 			</table>
 		</font>
 	</div>
+
+	<!-- form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post" -->
+		<br/><br/>
+		<div id="divFormUser" align=center style="display:'none'; border-radius:2.18vw; margin-left:auto; margin-right:auto;">
+			<label align=center style="width:290px; border-radius:10px; border-style:solid; border-color:gray; border-width:3px; color:#000000; background-color:transparent;">
+				<label class="flutuante" style="border-radius:50%; position:relative; top:-20px; left:200px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+					<button class="btn btn-danger" style="border-radius:50%;" onclick="showFormApresentacao();"><i class="fa fa-remove"></i></button>
+				</label>
+				<label style="border-radius:30px; position:relative; top:-25px; left:-25px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+					<label id="btnFecharFormUser" class="btn btn-primary" style="border-radius:30px; font-size:20px; cursor:default;"><b>CONEXÃO</b></label>
+				</label>
+
+				<div id="divCamposEntrar" style="display:'none';">
+					<label><input id="txtId" type="text" class="flutuante" value="" placeholder="e-mail ou celular" style="width:200px; border-radius:10px; text-align:center;"></input></label>
+					<br/>
+					<label><input id="txtPass" type="password" class="flutuante" value="" placeholder="Senha" style="width:200px; border-radius:10px; text-align:center;"></input></label>
+					<br/>
+					<p/>
+					<p/>
+				
+					<label id="lblEntrar" class="flutuante" style="border-radius:30px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+						<button id="btnEntrar" class="btn btn-primary" style="width:200px; border-radius:30px;"> <i class="fa fa-user"></i> ENTRAR</button>
+					</label>
+				</div>
+
+				<div id="divCamposSair" style="display:none;">
+					<label id="lblSair" class="flutuante" style="display:'none'; border-radius:30px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+						<button id="btnSair" class="btn btn-default" style="width:200px; border-radius:30px;">DESCONECTAR</button>
+					</label>
+				</div>
+				<br/>
+				<br/>
+			</label>
+		</div>
+	<!-- /form -->
+
+	<table id="tblEstatisticas" border=0 style="width:98%; display:none;" align=center>
+		<tbody>
+			<div id="divbotoes" style="display:none; text-align:center;">
+					<!--
+					<button id="btntreino" class="botao flutuante" onclick="changeCategory('2');"><i class="fa fa-book"></i> Treino</button>
+					<button id="btndesafio" class="botao flutuante" onclick="changeCategory('4');"><i class="fa fa-road"></i> Desafio</button>
+					-->
+			</div>
+		</tbody>
+	</table>
 
 	<div class="form-group" id="divFormAddUpdate" style="display:none;">
 		<table border=0 align=center width="98%"><tr><td>

@@ -1195,6 +1195,7 @@ function login(id, pass, key) {
 				document.getElementById('txtPass').style.display='none';
 				document.getElementById('lblEntrar').style.display='none';
 				document.getElementById('divCamposSair').style.display='';
+				document.getElementById('txtUser').value='1';
 				showFormApresentacao();
 			}
 			return;
