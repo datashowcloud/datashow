@@ -214,20 +214,12 @@ input:checked[type="checkbox"]::before{
 	<nav id="menutopodireito" class="navbar sticky-top navbar-dark bg-dark" style="display:none;">
 	  <div class="container-fluid">
 		<div>
-			<!-- button class="navbar-toggler" type="button" style="border-radius:50%; color:white;" title="Menu" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" -->
-				<span class="btn btn-outline-primary navbar-toggler navbar-toggler-icon" style="border-radius:50%;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
-				</span>
-			<!-- /button -->
-			
-			<!--a class="navbar-brand" href="index.html" title="Página Inicial"></a>
-			<button  class="btn btn-outline-primary" title="Início" style="border-radius:50%; color:white;">
-				<img src="img/clf-c01.png" width="22px" height="22px" style="cursor:pointer; border-radius:50%;" title="AWS CLF-C01"></img>
-			</button-->
+			<span class="btn btn-outline-primary navbar-toggler navbar-toggler-icon" style="border-radius:50%;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"></span>
 			<!--button id="btnPaginaInicial" class="btn btn-outline-primary" title="Página Inicial" style="border-radius:50%; color:white; display:'none';"><i class="fa fa-home"></i> </button-->
 			<button id="btnNightDay" class="btn btn-outline-primary" title="Dia e noite" style="border-radius:50%; color:white; display:'none';"><i class="fa fa-adjust"></i> </button>
 			<button id="btnDropDb" class="btn btn-outline-primary" title="Restaurar padrão de fábrica" style="border-radius:50%;color:white; display:none;"><i class="fa fa-trash"></i></font></button>
 			<button id="btnUser" class="btn btn-outline-primary" title="Você" style="border-radius:50%; color:white; display:'none';"><i class="fa fa-user"></i>
-				<input id="txtUser" type="text" value="" style="font-size:10px; position:absolute; background-color:transparent; color:white; width:15px; border-width:0px; font-family:Helvetica; font-weight:bold; cursor:pointer;"></input>
+				<input id="txtUser" type="text" value="" readonly style="font-size:10px; position:absolute; background-color:transparent; color:white; width:15px; border-width:0px; font-family:Helvetica; font-weight:bold; cursor:pointer;"></input>
 			</button>
 			<button id="btnTerminar" class="btn btn-outline-primary end" title="Terminar a fase" style="border-radius:50%; color:white; display:none;">Fim</button>
 			<!--button id="btnLanguage" class="btn Zbtn-sm btn-outline-primary" title="Trocar língua: Inglês e Português" style="border-radius:50%; color:white;" disabled><i class="fa fa-globe"></i></button-->
@@ -247,11 +239,11 @@ input:checked[type="checkbox"]::before{
 					</div>
 					<!-- datashowcloud2022@gmail.com -->
 					<div align=center>
-						<input type="text" id="version" value="20230303" style="font-size:10px; width:45px; display:none;"/>
+						<input type="text" id="version" value="20230304" style="font-size:10px; width:45px; display:none;"/>
 					</div>
 					<div align=center>
 						<font size=2>
-							<i><p/><p/>contato@tamastigadu.com.br <br/>atualizado em 03/2023 versão 00.00.06</i>
+							<i><p/><p/>contato@tamastigadu.com.br <br/>atualizado em 03/2023 versão 00.00.07</i>
 						</font>
 					</div>
 			  </li>
@@ -514,10 +506,10 @@ input:checked[type="checkbox"]::before{
 			<a id="top"></a>
 			<label id="btnPrevious" class="prev flutuante" title="Exibe a pergunta anterior">&nbsp;<i class="fa fa-chevron-left"></i></label>
 			<label id="btnNext" class="next flutuante" title="Exibe a próxima pergunta">&nbsp;<i class="fa fa-chevron-right"></i></label>
-
-			<table border=0 width="95%" align=center style="border-color:#EEEEEE;">
-				<tr><td id="mytextSim" style="display:'none'; text-align:justify; width:1%; color:white;"></td></tr>
-				<tr><td id="mytextSim2" style="display:none; text-align:justify; width:1%; color:white;"></td></tr>
+			
+			<table border=0 width="95%" align=center style="border-color:gray; border-radius:30px; border-style:solid; border-color:white; border-width:3px;">
+				<tr><td id="mytextSim" style="display:'none'; text-align:justify; width:1%;"></td></tr>
+				<tr><td id="mytextSim2" style="display:none; text-align:justify; width:1%;"></td></tr>
 			</table>
 			
 			<table id="tableFormSimQuestions" border=0 align=center style="display:'none'; width:95%;" Zclass="table table-hover">
@@ -667,7 +659,7 @@ input:checked[type="checkbox"]::before{
 				</label>
 
 				<div id="divCamposEntrar" style="display:'none';">
-					<label><input id="txtId" type="text" class="flutuante" value="" placeholder="e-mail ou celular" style="width:200px; border-radius:10px; text-align:center;"></input></label>
+					<label><input id="txtId" type="text" class="flutuante" value="" placeholder="e-mail" style="width:200px; border-radius:10px; text-align:center;"></input></label>
 					<br/>
 					<label><input id="txtPass" type="password" class="flutuante" value="" placeholder="Senha" style="width:200px; border-radius:10px; text-align:center;"></input></label>
 					<br/>
