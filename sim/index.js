@@ -127,6 +127,10 @@ function getDbSchema() {
             textcolor: { Null: false, dataType: 'string' },
             buttoncolor: { Null: false, dataType: 'string' },
             textalign: { Null: false, dataType: 'string' },
+            id: { Null: false, dataType: 'string' },
+            key: { Null: false, dataType: 'string' },
+            pas: { Null: false, dataType: 'string' },
+            version: { Null: false, dataType: 'string' },
             camporeserva: { Null: false, dataType: 'string' }
         }
     }
@@ -506,7 +510,7 @@ function registerEvents() {
 		refreshTableData(mytema, mycategory, '0', '', '', '');
 	})
 	$('#btnPaginaInicial').click(function () {
-		showFormCategory();
+		var DataShow_Config = window.open("index.html", "_self");
 	})
 	$('#btnNightDay').click(function () {
 		updateConfigGeneral();
@@ -851,7 +855,6 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 				$('#mycodeSim').val(student.mycode);
 				$('#myorderSim').val(student.myorder);
 				
-//				document.getElementById('mytextSim').innerHTML = '<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">26%</div></div>'
 				document.getElementById('mytextSim').innerHTML = CONTS_languageusa + ' ' + student.mycode + '/' + totalperguntas + '. ' + student.mytext;
 				document.getElementById('mytextSim2').innerHTML = CONTS_languagebra + ' ' + student.mycode + '/' + totalperguntas + '. ' + student.mytext2;
 
@@ -3982,3 +3985,4 @@ function getCookie(cname) {
 //search	consulta parte de um URL
 //https://jsstore.net/tutorial/get-started/
 //https://velhobit.com.br/design/fab-botao-flutuante-com-css3-e-html-sem-javascript.html
+//https://triangulo.dev/posts/atomo-como-criar-cubo-css/
