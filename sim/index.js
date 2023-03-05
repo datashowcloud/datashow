@@ -612,7 +612,11 @@ function registerEvents() {
 	$('#btnEstatisticas').click(function () {
 	})
 	$('#btnUser').click(function () {
-		showFormUser();
+		if (document.getElementById('divFormUser').style.display == 'none') {
+			showFormUser();
+		} else {
+			showFormApresentacao();
+		}
 	})
 	$('#btnEntrar').click(function () {
 		var id = document.getElementById('txtId').value;
@@ -1247,11 +1251,13 @@ function conectaUsuarioValido(id) {
 
 
 function validalogin(id, pass, key) {
-	if (id.toLowerCase() == 'a' && pass.toLowerCase() == 'a') {
+	if (id.toLowerCase() == 'a' && pass == 'a') {
 		return true;
-	} else if (id.toLowerCase() == 'admin' || pass.toLowerCase() == 'admin') {
+	} else if (id.toLowerCase() == 'admin' || pass == 'admin') {
 		return true;
-	} else if (id.toLowerCase() == 'santiago' || pass.toLowerCase() == 'santiago') {
+	} else if (id.toLowerCase() == 'enio' || pass == 'enio') {
+		return true;
+	} else if (id.toLowerCase() == 'santiago' || pass == 'santiago') {
 		return true;
 	} else {
 		return false;
@@ -3412,7 +3418,7 @@ function showFormUser() {
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
     $('#divFormUser').show();
-	document.getElementById('txtPass').focus;
+	$('#txtId').focus();
 }
 
 function showFormApresentacao() {
@@ -3445,6 +3451,7 @@ function showFormCategory() {
 	$('#tblCategory').show();
 	$('#divNivel').hide();
     $('#divFormUser').hide();
+	document.getElementById('menutopodireito').style.display='none'; //não exibe menu topo
 }
 
 function showFormSim() {
