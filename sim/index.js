@@ -1195,7 +1195,9 @@ function initForm() {
 	if ((mytema == null || mycategory == null)) {
 		showFormCategory();
 	} else {
-		document.getElementById('menutopodireito').style.display=''; //exibe menu topo
+		if (document.getElementById('menutopodireito') != null) {
+			document.getElementById('menutopodireito').style.display=''; //exibe menu topo
+		}
 		refreshTableNivel(mytema, mycategory, '0', '', '', '');
 		showFormApresentacao();
 		if (validaLicenca() == false) {
@@ -1242,11 +1244,21 @@ function login(id, pass, key) {
 }
 
 function conectaUsuarioValido(id) {
-	document.getElementById('txtPass').style.display='none';
-	document.getElementById('lblEntrar').style.display='none';
-	document.getElementById('divCamposSair').style.display='';
-	document.getElementById('txtUser').value='1';
-	document.getElementById('txtId').value=id;
+	if (document.getElementById('txtPass') != null) {
+		document.getElementById('txtPass').style.display='none';
+	}
+	if (document.getElementById('lblEntrar') != null) {
+		document.getElementById('lblEntrar').style.display='none';
+	}
+	if (document.getElementById('divCamposSair') != null) {
+		document.getElementById('divCamposSair').style.display='';
+	}
+	if (document.getElementById('txtUser') != null) {
+		document.getElementById('txtUser').value='1';
+	}
+	if (document.getElementById('txtId') != null) {
+		document.getElementById('txtId').value=id;
+	}
 }
 
 
@@ -1929,8 +1941,9 @@ async function dropdb() {
 					var mytext3 = document.getElementById('mytext3').value.trim();
 					refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext, mytext2, mytext3);
 					limpaLogin();
-					location.reload();
-		//			console.log('successfull');
+					var DataShow_Config = window.open("index.html", "_self");
+//					location.reload();
+//					console.log('successfull');
 				}).catch(function(error) {
 					console.log(error);
 				});
