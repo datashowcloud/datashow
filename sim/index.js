@@ -32,7 +32,7 @@ window.onload = function () {
 	loadCombobox('mygroup', '0', '100', 'Teste');
 	loadCombobox('mycode', '0', '100', 'Número');
 	loadCombobox('myorder', '0', '100', 'Ordem');
-	openForm();
+	initForm();
 	$('#selectMygroup').focus();
 	$('#selectMygroup').select();
 //	localStorage.setItem('valueText1', document.getElementById('selectMygroup').selectedIndex);
@@ -620,14 +620,10 @@ function registerEvents() {
 		var key = localStorage.getItem('key');
 		login(id, pass, key);
 	})
-	$('#btnSair').click(function () {
+	$('#btnDesconectar').click(function () {
 		//var result = confirm('Desconectar?');
 		//if (result) {
-			localStorage.setItem('id', '');
-			var params = new URLSearchParams(window.location.search);
-			var mycategory = params.get('cat');
-			var mytema = params.get('tem');
-			var DataShow_Config = window.open("index.html?tem="+ mytema +"&cat="+ mycategory, "_self");
+			logout();
 		//}
 	})
 	$('#btnFecharFormUser').click(function () {
@@ -1188,25 +1184,67 @@ async function deletefase(mytema, mycategory, mygroup, mycode, myid) {
     }
 }
 
-function login(id, pass, key) {
-	if (validalogin(id, pass, key) == true) {
-		if (localStorage.getItem('key') != null) {
-			if (localStorage.getItem('key') == '202303010000') {
-				document.getElementById('txtPass').style.display='none';
-				document.getElementById('lblEntrar').style.display='none';
-				document.getElementById('divCamposSair').style.display='';
-				document.getElementById('txtUser').value='1';
-				showFormApresentacao();
-			}
-			return;
-		}
-		localStorage.setItem('id', '202303010000');
-		localStorage.setItem('key', '202303010000');
-		alert('Parabéns! Você tem licença para 1 dispositivo até o final do próximo mês.');
+function initForm() {
+	var params = new URLSearchParams(window.location.search);
+	var mytema = params.get('tem');
+	var mycategory = params.get('cat');
+	if ((mytema == null || mycategory == null)) {
 		showFormCategory();
-		return;
+	} else {
+		document.getElementById('menutopodireito').style.display=''; //exibe menu topo
+		refreshTableNivel(mytema, mycategory, '0', '', '', '');
+		showFormApresentacao();
+		if (validaLicenca() == false) {
+			console.log('Lembre-se de conectar.')
+		}
 	}
 }
+
+function validaLicenca() {
+	var id = localStorage.getItem('id');
+	var key = localStorage.getItem('key');
+
+	var valido = false;
+	if (id != null && key != null) {
+//alert('validaLicenca: '+localStorage.getItem('id') + ' key='+localStorage.getItem('key'));
+		if (id.toLowerCase() == 'a' && key == '202303010000') {
+			valido = true;
+		} else if (id.toLowerCase() == 'admin' && key == '202303010000') {
+			valido = true;
+		} else if (id.toLowerCase() == 'santiago' && key == '202303010000') {
+			valido = true;
+		}
+	}
+	if (valido == true) {
+		conectaUsuarioValido(id);
+	}
+	return valido;
+}
+
+function login(id, pass, key) {
+	if (validalogin(id, pass, key) == true) {
+		localStorage.setItem('id', id);
+		localStorage.setItem('key', '202303010000');
+		conectaUsuarioValido(id);
+		showFormApresentacao();
+		alert('Parabéns! \nVocê tem 1 licença mensal para 1 dispositivo.');
+		return;
+	} else {
+		document.getElementById('txtId').value='';
+		document.getElementById('txtId').placeholder='e-mail incorreto';
+		document.getElementById('txtPass').value='';
+		document.getElementById('txtPass').placeholder='senha incorreta';
+	}
+}
+
+function conectaUsuarioValido(id) {
+	document.getElementById('txtPass').style.display='none';
+	document.getElementById('lblEntrar').style.display='none';
+	document.getElementById('divCamposSair').style.display='';
+	document.getElementById('txtUser').value='1';
+	document.getElementById('txtId').value=id;
+}
+
 
 function validalogin(id, pass, key) {
 	if (id.toLowerCase() == 'a' && pass.toLowerCase() == 'a') {
@@ -1218,6 +1256,19 @@ function validalogin(id, pass, key) {
 	} else {
 		return false;
 	}
+}
+
+function logout() {
+	limpaLogin();
+	var params = new URLSearchParams(window.location.search);
+	var mycategory = params.get('cat');
+	var mytema = params.get('tem');
+	var DataShow_Config = window.open("index.html?tem="+ mytema +"&cat="+ mycategory, "_self");
+}
+
+function limpaLogin() {
+	localStorage.setItem('id', '');
+	localStorage.setItem('key', '');
 }
 
 function showTableQuestions() {
@@ -1371,22 +1422,9 @@ function showNextPage() {
 	var DataShow_Config = window.open("index.html" + mytema + mycategory, "_self");
 }
 
-function openForm() {
-	var params = new URLSearchParams(window.location.search);
-	var mytema = params.get('tem');
-	var mycategory = params.get('cat');
-	if ((mytema != null && mycategory != null)) {
-		refreshTableNivel(mytema, mycategory, '0', '', '', '');
-		showFormApresentacao();
-		document.getElementById('menutopodireito').style.display=''; //exibe menu topo
-	} else {
-		showFormCategory();
-	}
-}
-
 function restartFase(mytema, mycategory, myid, mygroup, mycode) {
-		updateStudentPlayOrder(mytema, mycategory, mygroup);
-		updateStudentPlayClear(mytema, mycategory, mygroup);
+	updateStudentPlayOrder(mytema, mycategory, mygroup);
+	updateStudentPlayClear(mytema, mycategory, mygroup);
 }
 
 function getStudentFromForm(mytema, mycategory, studentId, mygroup, mycode) {
@@ -1884,6 +1922,7 @@ async function dropdb() {
 					var mytext2 = document.getElementById('mytext2').value.trim();
 					var mytext3 = document.getElementById('mytext3').value.trim();
 					refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext, mytext2, mytext3);
+					limpaLogin();
 					location.reload();
 		//			console.log('successfull');
 				}).catch(function(error) {
