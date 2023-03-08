@@ -1155,14 +1155,13 @@ async function refreshTableNivel(mytema, mycategory, mycode, myorder, mygroup, m
 		htmlString = htmlString + '<tr>';
 		htmlString = htmlString + '<td>';
 
-		htmlString = htmlString + '<label style="border-radius:10px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">';
-		htmlString = htmlString + '<label id="btnNivel" class="btn btn-default" style="border-radius:10px; font-size:15px; font-family:Helvetica; border-width:0px; -webkit-text-stroke-width: 1px; cursor:default; ">';
+		htmlString = htmlString + '<label style="border-radius:10px; border-style:double; border-color:gray; border-width:2px; color:#000000; background-color:#FFFFFF;">';
+		htmlString = htmlString + '<label id="btnNivel" class="btn btn-dark" style="border-radius:10px; font-size:15px; font-family:Helvetica; border-width:0px; -webkit-text-stroke-width: 1px; cursor:default; ">';
 		htmlString = htmlString + 'Nível ' + varNivel
 //		htmlString = htmlString + '<label style="border-radius:50%; font-size:20px; position:absolute; background-color:transparent; color:white; width:70px; border-width:0px; font-family:Helvetica; cursor:pointer; color:gray;">Nível ' + varNivel + '</label>';
 
 		htmlString = htmlString + '</label>';
 		htmlString = htmlString + '</label>';
-		htmlString = htmlString + '<br/>';
 
 		htmlString = htmlString + '</td>';
 		htmlString = htmlString + '</tr>';
