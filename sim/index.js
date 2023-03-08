@@ -1158,8 +1158,8 @@ async function refreshTableNivel(mytema, mycategory, mycode, myorder, mygroup, m
 //		htmlString = htmlString + '<label style="border-radius:10px; border-style:double; border-color:gray; border-width:2px; color:#000000; background-color:#FFFFFF;">';
 //		htmlString = htmlString + '<label id="btnNivel" class="btn btn-dark" style="border-radius:10px; font-size:15px; font-family:Helvetica; border-width:0px; -webkit-text-stroke-width: 1px; cursor:default; ">';
 //		htmlString = htmlString + 'Nível ' + varNivel;
-		htmlString = htmlString + '<label style="border-radius:10px; font-size:20px; position:absolute; background-color:white; color:gray; width:70px; border-width:0px; font-family:Helvetica; cursor:pointer;">Nível ' + varNivel + '</label>';
-		htmlString = htmlString + '<br/>';
+//		htmlString = htmlString + '<label style="border-radius:10px; font-size:20px; position:absolute; background-color:white; color:gray; width:70px; border-width:0px; font-family:Helvetica; cursor:pointer;">Nível ' + varNivel + '</label>';
+//		htmlString = htmlString + '<br/>';
 
 //		htmlString = htmlString + '</label>';
 //		htmlString = htmlString + '</label>';
@@ -1172,6 +1172,9 @@ async function refreshTableNivel(mytema, mycategory, mycode, myorder, mygroup, m
 
 		htmlString = htmlString + '<i class="fa fa-play avatarflutuante" style="color:#00FF7F; font-size:15px;"></i>';
 		htmlString = htmlString + '<label class="flutuante" style="border-radius:30px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">';
+
+		htmlString = htmlString + '<label style="border-radius:10px; font-size:20px; background-color:white; color:green; position:absolute; top:-18px; left:90px; width:70px; border-width:0px; font-family:Helvetica; cursor:default;">Nível ' + varNivel + '</label>';
+
 		htmlString = htmlString + '<button id="btnNivel" class="btn btn-success" onclick="refreshTableQuestion(' + mytema + ', ' + mycategory + ', ' + myid + ', ' + mygroup + ', ' + mycode + '); showFormSim();" style="border-radius:30px; font-size:30px; font-family:Helvetica; font-weight:bold; border-width:0px; -webkit-text-stroke-width: 1px; ">';
 		htmlString = htmlString + '&nbsp;&nbsp;FASE ' + varFase + '&nbsp;&nbsp;';
 		htmlString = htmlString + '</button>';
