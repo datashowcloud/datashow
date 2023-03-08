@@ -20,8 +20,10 @@ var CONTS_languageusa = '<img src="img/bandeirausa.png" class="flutuante" width=
 var CONST_TEMA_AWS_CLFC01 = 1;
 var CONST_TEMA_AZURE_AZ900 = 2;
 var CONST_TEMA_ORACLE_1ZO108522 = 3;
-var CONST_CATEGORIA_TREINO = 2;
-var CONST_CATEGORIA_DESAFIO = 4;
+//var CONST_CATEGORIA_TREINO = 2;
+//var CONST_CATEGORIA_DESAFIO = 4;
+var CONST_MYCATEGORY_1 = '1';
+var CONST_MYCATEGORY_2 = '2';
 
 window.onload = function () {
     registerEvents();
@@ -127,9 +129,6 @@ function getDbSchema() {
             textcolor: { Null: false, dataType: 'string' },
             buttoncolor: { Null: false, dataType: 'string' },
             textalign: { Null: false, dataType: 'string' },
-            id: { Null: false, dataType: 'string' },
-            key: { Null: false, dataType: 'string' },
-            pas: { Null: false, dataType: 'string' },
             version: { Null: false, dataType: 'string' },
             camporeserva: { Null: false, dataType: 'string' }
         }
@@ -151,9 +150,18 @@ function getDbSchema() {
         }
     }
 
+	var tableUser = {
+        name: 'User',
+        columns: {
+            id: { Null: false, dataType: 'string' },
+            pass: { Null: false, dataType: 'string' },
+            key: { Null: false, dataType: 'string' }
+        }
+    }
+
     var db = {
         name: 'mydbsim',
-        tables: [table, tableConfigGeneral, tableDashboard]
+        tables: [table, tableConfigGeneral, tableDashboard, tableUser]
     }
     return db;
 }
@@ -626,13 +634,13 @@ function registerEvents() {
 		var id = document.getElementById('txtId').value;
 		var pass = document.getElementById('txtPass').value;
 		var key = localStorage.getItem('key');
+//alert('id='+id + ' pass='+pass + ' key='+key);
 		login(id, pass, key);
+		//alert('Clique em "Go back".');
+		//document.getElementById("formAdd").submit();
 	})
 	$('#btnDesconectar').click(function () {
-		//var result = confirm('Desconectar?');
-		//if (result) {
-			logout();
-		//}
+		desconectar();
 	})
 	$('#btnFecharFormUser').click(function () {
 		showFormApresentacao();
@@ -895,7 +903,7 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 						$('form').attr('data-student-id', student.id); //alert($('form').attr('data-student-id'));
 						
 						//document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = selectKeyMyoption(myoption) + ' <a href="#"><i class="fa fa-plus" style="color:' + CONST_MEDIUM_SEA_GREEN + ';" onclick="showTip(' + parseInt(index+1) + ');" > <font color=gray>(cola'+ varMyorder +')</i></a>';
-						document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = selectKeyMyoption(myoption) + ' <a href="#"><i class="fa fa-plus" style="color:' + CONST_MEDIUM_SEA_GREEN + ';" onclick="showTip(' + parseInt(index+1) + ');" > <font color=' + CONST_GRAY + '>(cola)</font)</i></a>';
+						document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = selectKeyMyoption(myoption) + ' <a href="#"><i class="fa fa-plus" style="color:' + CONST_MEDIUM_SEA_GREEN + ';" onclick="showTip(' + parseInt(index+1) + ');" > <font color=' + CONST_GRAY + '>(dica)</font)</i></a>';
 						document.getElementById('mytip' + parseInt(index+1)).innerHTML = textlink + linkhref
 
 						//checa as respostas já selecionadas anteriormente
@@ -931,6 +939,15 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext, mytext2, mytext3) {
 //    try {
 //alert('mytema='+mytema + ' mycategory='+mycategory + ' mycode='+mycode + ' myorder='+myorder + ' mygroup='+mygroup);
+		
+		var students = await jsstoreCon.select({
+			from: 'Student'
+				, where: { mytema: mytema + ''
+					, mycode: '0'
+			}
+			, order: [ {by: 'mycategory', type: 'desc'}, {by: 'mygroup', type: 'desc'} ]
+		});
+/*
 		if (mygroup == '' && mycode == '') {
 			var students = await jsstoreCon.select({
 				from: 'Student'
@@ -968,7 +985,7 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 				, order: [ {by: 'mygroup', type: 'desc'}, {by: 'mycode'} ]
 			});
 		}
-
+*/
 		var students_count = 0;
 		if (students != '') { //calcula students_count de todas perguntas da fase e categoria e grupo selecionado
 			var students_group = await jsstoreCon.select({
@@ -1027,10 +1044,9 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 				varRestart = '<a href=\"#\" class=\"restart\"><i class=\"fa fa-refresh\" style=\"height:25px; ' + 'color:gray; font-size:20px;' + '\"></i></a>';
 			}
 			
-			if (varNivel != student.mygroup.substring(0, 1)) {
-				varNivel = student.mygroup.substring(0, 1);
-//				varNivelLinha = '<tr><td></td><th nowrap><font color="gray" style="font-size:20px;"><i class=\"fa fa-unlock\"></i> NÍVEL ' + student.mygroup.substring(0, 1) + ' de ' + parseInt(CONST_NIVEL_MAX) + '</font></th></tr>';
-				varNivelLinha = '<tr style="border-bottom: 1px solid #ddd; border-top: 1px solid #ddd;"><td></td><td nowrap style="text-align:left;" colspan=99><font color="gray"  style="font-size:20px;"> &nbsp; <b>' + getTemaCategoria() + ' <i class="fa fa-chevron-right"></i> &nbsp;Nível ' + student.mygroup.substring(0, 1) + '</b></font></td></tr>';
+			if (varNivel != student.mycategory) {
+				varNivel = student.mycategory;
+				varNivelLinha = '<tr style="border-bottom: 1px solid #ddd; border-top: 1px solid #ddd;"><td></td><td nowrap style="text-align:left;" colspan=99><font color="gray"  style="font-size:20px;"> &nbsp; <b>' + getTemaCategoria(student.mytema, student.mycategory) + '</b></font></td></tr>';
 			} else {
 				varNivelLinha = '';
 			}
@@ -1068,7 +1084,7 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 		})
 
 
-		varNivelLinha = '';
+//		varNivelLinha = '';
 //		for (var item=CONST_NIVEL_MAX; item>=parseInt(varNivelMax)+1; item--) {
 //			varNivelLinha = varNivelLinha + '<tr><td colspan=99><font color="gray" style="font-size:15px;"><i class=\"fa fa-lock\"></i> NÍVEL ' + item + '</font></td></tr>';
 //		}
@@ -1082,7 +1098,7 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 		varMenuNivelFase = varMenuNivelFase + '</table>';
 		htmlString = varMenuNivelFase + varNivelLinha + htmlString;
 */
-		htmlString = varNivelLinha + htmlString;
+//		htmlString = varNivelLinha + htmlString;
 		
 		if (htmlString.length > 0) {
 			htmlString += "</tr>"
@@ -1122,22 +1138,30 @@ async function refreshTableNivel(mytema, mycategory, mycode, myorder, mygroup, m
 
 		var htmlString = "";
 		var varNivel = '1';
+		var varFase = '1';
 		var myid = '1'; //não é usado
 		mycode = '1';
 		students.forEach(function (student) {
-			varNivel = student.mygroup;
+			varNivel = student.mycategory;
+			varFase = student.mygroup;
 			mygroup = student.mygroup;
 		})
+//alert('mytema='+mytema + ' mycategory='+mycategory + ' varNivel='+varNivel + ' varFase='+varFase);
 		
 		htmlString = '';
 		htmlString = htmlString + '<tr>';
 		htmlString = htmlString + '<td>';
+
+		htmlString = htmlString + '<label style="border-radius:50%; font-size:15px; position:absolute; background-color:transparent; color:white; width:70px; border-width:0px; font-family:Helvetica; cursor:pointer;">Nível ' + varNivel + '</label>';
+		htmlString = htmlString + '<br/>';
+
 		htmlString = htmlString + '<i class="fa fa-play avatarflutuante" style="color:#00FF7F; font-size:15px;"></i>';
 		htmlString = htmlString + '<label class="flutuante" style="border-radius:30px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">';
 		htmlString = htmlString + '<button id="btnNivel" class="btn btn-success" onclick="refreshTableQuestion(' + mytema + ', ' + mycategory + ', ' + myid + ', ' + mygroup + ', ' + mycode + '); showFormSim();" style="border-radius:30px; font-size:30px; font-family:Helvetica; font-weight:bold; border-width:0px; -webkit-text-stroke-width: 1px; ">';
-		htmlString = htmlString + '&nbsp;&nbsp;NÍVEL ' + varNivel + '&nbsp;&nbsp;';
+		htmlString = htmlString + '&nbsp;&nbsp;FASE ' + varFase + '&nbsp;&nbsp;';
 		htmlString = htmlString + '</button>';
 		htmlString = htmlString + '</label>';
+
 		htmlString = htmlString + '</td>';
 		htmlString = htmlString + '</tr>';
 
@@ -1222,6 +1246,8 @@ function validaLicenca() {
 			valido = true;
 		} else if (id.toLowerCase() == 'santiago' && key == '202303010000') {
 			valido = true;
+		} else if (id.toLowerCase() == 'eni' && key == '202303010000') {
+			valido = true;
 		}
 	}
 	if (valido == true) {
@@ -1232,12 +1258,12 @@ function validaLicenca() {
 
 function login(id, pass, key) {
 	if (validalogin(id, pass, key) == true) {
+		key = '202303010000';
 		localStorage.setItem('id', id);
 		localStorage.setItem('key', '202303010000');
 		conectaUsuarioValido(id);
+		gravaUsuario(id, pass, key);
 		showFormApresentacao();
-		alert('Parabéns! \nVocê tem 1 licença mensal para 1 dispositivo.');
-		return;
 	} else {
 		document.getElementById('txtId').value='';
 		document.getElementById('txtId').placeholder='e-mail incorreto';
@@ -1264,6 +1290,25 @@ function conectaUsuarioValido(id) {
 	}
 }
 
+async function gravaUsuario(id, pass, key) {
+    try {
+		var user = {
+			id: id,
+			pass: pass,
+			key: key
+		};
+		var noOfDataInserted = await jsstoreCon.insert({
+			into: 'User',
+			values: [user]
+		});
+		console.log('Sucesso \n\n Id='+id + '\n Pass='+pass + '\n key='+key);
+		if (noOfDataInserted === 1) {
+		}
+    } catch (ex) {
+        console.log(ex.message + ' error Id='+id + '\n Pass='+pass + '\n key='+key);
+    }
+
+}
 
 function validalogin(id, pass, key) {
 	if (id.toLowerCase() == 'a' && pass == 'a') {
@@ -1274,12 +1319,14 @@ function validalogin(id, pass, key) {
 		return true;
 	} else if (id.toLowerCase() == 'santiago' || pass == 'santiago') {
 		return true;
+	} else if (id.toLowerCase() == 'eni' || pass == 'eni') {
+		return true;
 	} else {
 		return false;
 	}
 }
 
-function logout() {
+function desconectar() {
 	limpaLogin();
 	var params = new URLSearchParams(window.location.search);
 	var mycategory = params.get('cat');
@@ -1305,12 +1352,7 @@ function showTableQuestions() {
 	showFormSim();
 }
 
-function getTemaCategoria() {
-	//exibe a cor de ativado ou desativado dos botões
-	var params = new URLSearchParams(window.location.search);
-	var mytema = params.get('tem');
-	var mycategory = params.get('cat');
-
+function getTemaCategoria(mytema, mycategory) {
 	if (mytema == CONST_TEMA_AWS_CLFC01) {
 		mytema = 'CLF-C01';
 	} else if (mytema == CONST_TEMA_AZURE_AZ900) {
@@ -1318,21 +1360,21 @@ function getTemaCategoria() {
 	} else if (mytema == CONST_TEMA_ORACLE_1ZO108522) {
 		mytema = '1ZO-1085-22';
 	}
-
-	if (mycategory == CONST_CATEGORIA_TREINO) {
+/*
+	if (mycategory == CONST_MYCATEGORY_1) {
 		mycategory = 'Treino';
-	} else if (mycategory == CONST_CATEGORIA_DESAFIO) {
+	} else if (mycategory == CONST_MYCATEGORY_2) {
 		mycategory = 'Desafio';
 	}
-	
-	return mytema + ' &nbsp;<i class="fa fa-chevron-right"></i>&nbsp; ' + mycategory + '&nbsp;';
+*/	
+	return mytema + ' <i class="fa fa-chevron-right"></i> Nível ' + mycategory;
 }
 
 function setConfigBotoes() {
 	//exibe a cor de ativado ou desativado dos botões
 	var params = new URLSearchParams(window.location.search);
 	var mycategory = params.get('cat');
-	if (mycategory == CONST_CATEGORIA_TREINO) {
+	if (mycategory == CONST_MYCATEGORY_1) {
 		document.getElementById('btntreino').style.backgroundColor = CONST_GRAY;
 		document.getElementById('btntreino').style.color = GLOBAL_White;
 		document.getElementById('btntreino').style.textDecoration = 'underline';
@@ -1342,7 +1384,7 @@ function setConfigBotoes() {
 		document.getElementById('btndesafio').style.color = GLOBAL_textcolor;
 		document.getElementById('btndesafio').style.textDecoration = 'none';
 		document.getElementById('btndesafio').style.fontWeight = 'normal';
-	} else if (mycategory == CONST_CATEGORIA_DESAFIO) {
+	} else if (mycategory == CONST_MYCATEGORY_2) {
 		document.getElementById('btndesafio').style.backgroundColor = CONST_GRAY;
 		document.getElementById('btndesafio').style.color = GLOBAL_White;
 		document.getElementById('btndesafio').style.textDecoration = 'underline';
@@ -1391,7 +1433,7 @@ function changeTema(mytema) {
 	var params = new URLSearchParams(window.location.search);
 	var mycategory = params.get('cat');
 	if (mycategory == null) {
-		mycategory = '2';
+		mycategory = CONST_MYCATEGORY_1; //'2';
 /*		for (var i = 0; i < radCategory.length; i++) {
 			if (radCategory[i].checked == true) {
 				mycategory = radCategory[i].value;
@@ -1429,17 +1471,20 @@ function showNextPage() {
 	var mytema = params.get('tem');
 	var mycategory = params.get('cat');
 	
-	if (mycategory == '2') {
+	mytema = '?tem=' + mytema;
+	mycategory = '&cat=' + (parseInt(mycategory) + 1);
+/*
+	if (mycategory == CONST_MYCATEGORY_1) {
 		mytema = '?tem=' + mytema;
-		mycategory = '&cat=4';
-	} else if (mycategory == '4') {
+		mycategory = '&cat=2';
+	} else if (mycategory == CONST_MYCATEGORY_2) {
 		mytema = '';
 		mycategory = '';
 	} else {
 		mytema = '';
 		mycategory = '';
 	}
-	
+*/	
 	var DataShow_Config = window.open("index.html" + mytema + mycategory, "_self");
 }
 
@@ -1638,17 +1683,17 @@ async function changeFaseNivel(mytema, mycategory, myid, mygroup, mycode) {
 	var calculo = calculaPercentualAcerto(mytema, mycategory, mygroup, mycode, totalCorretas, totalperguntas);
 	
 	if (calculo >= 70) {
-		var mygroupNext = getProximaFaseNivel(myid, mygroup, mycode);
-		if (mygroupNext != 'false') {
+		var myNextCategory = getProximaFaseNivel(myid, mygroup, mycode);
+		if (myNextCategory != 'false') {
 			var students = await jsstoreCon.select({
 				from: 'Student'
 			  , where: { mytema: mytema + ''
 				, mycategory: mycategory + ''
-				, mygroup: mygroupNext + ''
+				, mygroup: myNextCategory + ''
 				}
 			});
 			if (students == '') {
-				var DataShow_Config = window.open("T"+mytema + "C"+mycategory+ "G"+mygroupNext + ".html?sim=" + mygroupNext + "&tem=" + mytema + "&cat=" + mycategory, "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
+				var DataShow_Config = window.open("T"+mytema + "C"+mycategory+ "G"+myNextCategory + ".html?sim=" + myNextCategory + "&tem=" + mytema + "&cat=" + mycategory, "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
 			} else {
 				refreshTableData(mytema, mycategory, '0', '', '', '');
 				showGridAndHideForms();				
@@ -2316,7 +2361,7 @@ async function confirmImport(mytema, mycategory, contents, group) {
 			var mytext1 = getLanguage('', mytext.substring(posicao, nextp)); //original
 			var mytext2 = getLanguage('english', mytext.substring(posicao, nextp)); //espanhol
 			var mytext3 = getLanguage('espanish', mytext.substring(posicao, nextp)); //inglês
-//			alert(': ' + '\n mytema='+mytema + '\n mycategory='+mycategory + '\n mygroup='+mygroup + '\n mycode='+mycode + '\n myorder='+myorder + '\n\n [' + valor + ']');
+//alert(': ' + '\n mytema='+mytema + '\n mycategory='+mycategory + '\n mygroup='+mygroup + '\n mycode='+mycode + '\n myorder='+myorder + '\n\n [' + valor + ']');
 			salvarRegistro(mytema+'', mycategory+'', mygroup+'', mycode+'', myorder+'', valor, mytext1, mytext2, mytext3);
 			
 			posicao = nextp;
@@ -2734,7 +2779,7 @@ async function initLinkHelp() {
 	var params = new URLSearchParams(window.location.search);
 	var mytema = params.get('tem');
 	var mytema = '1';
-	var mycategory = '2';
+	var mycategory = CONST_MYCATEGORY_1;
 	var save = false;
 	var contadorMygroup = 10;
 	var contadorMycode = 0;
@@ -2745,7 +2790,7 @@ async function initLinkHelp() {
 
 	//Treino CLF-C01
 	mytema = '1';
-	mycategory = '2';
+	mycategory = CONST_MYCATEGORY_1;
 	var students = await jsstoreCon.select({
 		from: 'Student'
 		  , where: { mytema: '' + mytema + ''
@@ -2763,7 +2808,7 @@ async function initLinkHelp() {
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', false, 'Não Se Aplica', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', '', 'Não Se Aplica', 'Not applicable', '');
 	
 	//título
-	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Fase 1.0', 'Phase 1.0', '');
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'FASE 1', 'Phase 1.0', '');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'ECS', 'EKS', 'ECR', 'S3', save, 'EC2', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/concepts.html', 'computação escalável na Nuvem da Amazon Web Services (AWS)', 'O Amazon EC2 (Elastic Compute Cloud) --> Oferece uma <b>capacidade de computação escalável na Nuvem da Amazon Web Services (AWS)</b>. <br/>O uso dele <b>elimina a necessidade de investir em hardware inicialmente</b>, portanto, você pode desenvolver e implantar aplicativos com mais rapidez.', 'Amazon EC2 (Elastic Compute Cloud) --> Provides <b>scalable computing power on the Amazon Web Services (AWS) Cloud</b>. <br/>Using it <b>eliminates the need to invest in hardware up front</b>, so you can develop and deploy applications faster.', '');
@@ -2790,7 +2835,7 @@ async function initLinkHelp() {
 
 	//Desafio CLF-C01
 	mytema = '1';
-	mycategory = '4';
+	mycategory = CONST_MYCATEGORY_2;
 	var students = await jsstoreCon.select({
 		from: 'Student'
 		  , where: { mytema: '' + mytema + ''
@@ -2804,7 +2849,7 @@ async function initLinkHelp() {
 	}
 	contadorMycode = 0;
 	//título
-	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Fase 1.0', 'Phase 1.0', '');
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'FASE 1', 'Phase 1.0', '');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Organizations', 'Billing', 'Cost Explorer', 'Princing Calculator', save, 'Budgets', 'https://docs.aws.amazon.com/pt_br/cost-management/latest/userguide/budgets-managing-costs.html', '', 'AWS Budgets --> É para rastreamento de uso e custo da AWS. <br/>Monitorar métricas agregadas de utilização e cobertura para suas Instâncias Reservadas (RIs) ou Savings Plans - Planos de Poupança. <br/>Envia mensagem quando o consumo vai atingir o percentual pré-configurado ou pré-definido.', 'AWS Budgets --> It is for tracking AWS usage and cost. <br/>Monitor aggregated usage and coverage metrics for your Reserved Instances (RIs) or Savings Plans. <br/>Sends a message when the consumption will reach the pre-configured or pre-defined percentage.', '');
@@ -2830,7 +2875,7 @@ async function initLinkHelp() {
 
 	//Treino AZ-900
 	mytema = '2';
-	mycategory = '2';
+	mycategory = CONST_MYCATEGORY_1;
 	students = await jsstoreCon.select({
 		from: 'Student'
 		  , where: { mytema: '' + mytema + ''
@@ -2845,7 +2890,7 @@ async function initLinkHelp() {
 	contadorMygroup = 1; //10
 	contadorMycode = 0;
 	//título
-	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Fase 1.0', 'Phase 1.0', '');
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'FASE 1', 'Phase 1.0', '');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Nuvem Privada --> AZ-900', 'Nuvem Híbrida --> AZ-900', 'Multinuvem --> AZ-900', 'AZ-900: --> Nenhuma das alternativas', save, 'Nuvem Pública --> AZ-900', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-a-public-cloud/', '', 'AZ-900: Nuvem Pública --> Definida como uma série de serviços de computação oferecidos por terceiros à Internet pública, os quais são disponibilizados a qualquer pessoa que queira utilizá-los ou comprá-los. Eles podem ser gratuitos ou vendidos sob demanda, permitindo que os clientes paguem apenas pelo seu consumo de ciclos de CPU, armazenamento ou largura de banda.', 'AZ-900: Public Cloud --> Defined as a series of computing services offered by third parties to the public Internet, which are made available to anyone who wants to use or purchase them. They can be free or sold on demand, allowing customers to pay only for their consumption of CPU cycles, storage or bandwidth.', '');
@@ -2859,7 +2904,7 @@ async function initLinkHelp() {
 
 	//Desafio AZ-900
 	mytema = '2';
-	mycategory = '4';
+	mycategory = CONST_MYCATEGORY_2;
 	students = await jsstoreCon.select({
 		from: 'Student'
 		  , where: { mytema: '' + mytema + ''
@@ -2874,7 +2919,7 @@ async function initLinkHelp() {
 	contadorMygroup = 1; //10
 	contadorMycode = 0;
 	//título
-	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Fase 1.0', 'Phase 1.0', '');
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'FASE 1', 'Phase 1.0', '');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'PAAS --> AZ-900', 'SAAS --> AZ-900', 'Computação Sem Servidor --> AZ-900', 'BAAS', save, 'IAAS --> AZ-900', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-iaas/', '', 'AZ-900 IAAS (Infraestrutura como Serviço) --> Um tipo de serviço de computação em nuvem que oferece recursos fundamentais de computação, armazenamento e rede sob demanda e pagos conforme o uso.', 'AZ-900 IAAS (Infrastructure as a Service) --> A type of cloud computing service that delivers core compute, storage, and network resources on demand and on a pay-as-you-go basis.', '');
@@ -2890,7 +2935,7 @@ async function initLinkHelp() {
 
 	//Treino Oracle
 	mytema = '3';
-	mycategory = '2';
+	mycategory = CONST_MYCATEGORY_1;
 	students = await jsstoreCon.select({
 		from: 'Student'
 		  , where: { mytema: '' + mytema + ''
@@ -2905,7 +2950,7 @@ async function initLinkHelp() {
 	contadorMygroup = 1; //10
 	contadorMycode = 0;
 	//título
-	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Fase 1.0', 'Phase 1.0', '');
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'FASE 1', 'Phase 1.0', '');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Nuvem Privada --> AZ-900', 'Nuvem Híbrida --> AZ-900', 'HCM (Oracle Fusion Cloud Human Capital Management) --> Oracle', '', save, 'OCI (Oracle Cloud Infrastructure) --> Oracle', 'https://docs.oracle.com/pt-br/iaas/Content/GSG/Concepts/baremetalintro.htm', '', 'Oracle: OCI (Oracle Cloud Infrastructure) --> Conjunto complementar de serviços de nuvem que permite criar e executar uma variedade de aplicativos e serviços em um ambiente hospedado altamente disponível.', 'Oracle: OCI (Oracle Cloud Infrastructure) --> Complementary set of cloud services that enable you to build and run a variety of applications and services in a highly available hosted environment.', '');
@@ -2915,7 +2960,7 @@ async function initLinkHelp() {
 
 	//Desafio Oracle
 	mytema = '3';
-	mycategory = '4';
+	mycategory = CONST_MYCATEGORY_2;
 	students = await jsstoreCon.select({
 		from: 'Student'
 		  , where: { mytema: '' + mytema + ''
@@ -2930,7 +2975,7 @@ async function initLinkHelp() {
 	contadorMygroup = 1; //10
 	contadorMycode = 0;
 	//título
-	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'Fase 1.0', 'Phase 1.0', '');
+	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'FASE 1', 'Phase 1.0', '');
 	//perguntas
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Vertical Scaling', 'Parallel Scaling', 'Manual Scaling', '', save, 'Autoscaling', 'https://docs.oracle.com/pt-br/iaas/Content/Compute/Tasks/autoscalinginstancepools.htm', '', 'Você tem um aplicativo da Web que recebe 5 vezes mais tráfego nos finais de semana do que nos dias de semana. Você precisa corresponder automaticamente a capacidade à demanda, manter o aplicativo sempre em funcionamento e economizar custos. <br/>Qual recurso de computação do Oracle Cloud Infrastructure (OCI) pode ser usado para atender a esses requisitos?', 'You have a web application that receives 5X more traffic on the weekends than weekdays. You need to automatically match capacity to demand, keep the application always up and running, and save cost. <br/>Which Oracle Cloud Infrastructure (OCI) compute feature can be used to meet these requirements?', '');
