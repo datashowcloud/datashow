@@ -947,8 +947,7 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 			}
 			, order: [ {by: 'mycategory', type: 'desc'}, {by: 'mygroup', type: 'desc'} ]
 		});
-/*
-		if (mygroup == '' && mycode == '') {
+/*		if (mygroup == '' && mycode == '') {
 			var students = await jsstoreCon.select({
 				from: 'Student'
 					, where: { mytema: mytema + ''
@@ -986,7 +985,7 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 			});
 		}
 */
-		var students_count = 0;
+/*		var students_count = 0;
 		if (students != '') { //calcula students_count de todas perguntas da fase e categoria e grupo selecionado
 			var students_group = await jsstoreCon.select({
 				from: 'Student'
@@ -1002,14 +1001,16 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 				}
 			})
 		}
-		
+*/		
 		var varButtonRestart = 'color:gray; font-size:20px;';
-		var varCount = '<div class="playsim btn btn-success flutuante" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '; ">' + parseInt(students_count - 1) + '</div>';
+//		var varCount = '<div class="playsim btn btn-success flutuante" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '; ">' + parseInt(students_count - 1) + '</div>';
+		var varCount = '';
+/*
 		if (parseInt(students_count - 1) == 0) {
 			varCount = '';
 			varButtonRestart = 'color:' + CONST_MEDIUM_SEA_GREEN + '; font-size:20px;';
 		}
-		
+*/
 		setConfigBotoes();
 
 		var htmlString = "";
@@ -1019,7 +1020,7 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 		var varNivelLinha = '';
 		var varNivelMax = '';
 		var varButtonLineStyle = 'color:gray; font-size:18px;';
-		var varButtonLine = '<i class=\"fa fa-play avatarflutuante\" style="color:' + CONST_MEDIUM_SEA_GREEN + '; font-size:15px;"></i>';
+//		var varButtonLine = '<i class=\"fa fa-play avatarflutuante\" style="color:' + CONST_MEDIUM_SEA_GREEN + '; font-size:15px;"></i>';
 		var varRestart = '';
 		
 		students.forEach(function (student) {
@@ -1028,11 +1029,12 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 				if (varCount == '') {
 					if (student.mypoints <= 0) {
 						varRestart = '';
-						varCount = '<button class="playsim btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '; text-align:right;">fazer</button>';
+//						varCount = '<button class="playsim btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '; text-align:right;">fazer</button>';
+						varCount = '<button class="btn btn-success" onclick="window.open(\'index.html?tem=' + student.mytema + '&cat=' + student.mycategory + '\', \'_self\');" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '; text-align:right;">fazer</button>';
 					} else if (student.mypoints < 70) {
-						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + ' text-align:right; \"><button class="btn btn-danger flutuante">refazer</button></a>';
+						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + ' text-align:right; \"><button class="btn btn-danger">refazer</button></a>';
 					} else if (student.mypoints < 100) {
-						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + ' text-align:right; \"><button class="btn btn-success flutuante" style="background-color:' + CONST_MEDIUM_SEA_GREEN + ';">refazer</button></a>';
+						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + ' text-align:right; \"><button class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + ';">refazer</button></a>';
 					} else {
 						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + ' text-align:right; \"><button class="btn btn-light">refazer</button></a>';
 					}
@@ -1064,13 +1066,14 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 					+ '&nbsp; <a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + student.mytext + '</a> ' + '</' + varTdTh + '>'
 				
 				//botão delete e refresh fase
-				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + '<button class=\"deletefase flutuante\" style=\"color:white; font-size:20px; border: 1px solid gray; background-color:gray; border-radius:50%; \" title=\"Atualizar fase\"> <i class=\"fa fa-refresh\"></i> </button>'
+				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + '<button class=\"deletefase\" style=\"color:white; font-size:20px; border: 1px solid gray; background-color:gray; border-radius:50%; \" title=\"Atualizar fase\"> <i class=\"fa fa-refresh\"></i> </button>'
 				
 				//porcentagem
 				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + student.mypoints + '%</' + varTdTh + '>'
 				
 				//botão playsim ou link refazer
-				+ '<' + varTdTh + ' style="text-align:right;">' + varButtonLine + ' ' + varRestart + varCount + '</a>' + "</" + varTdTh + ">"
+				+ '<' + varTdTh + ' style="text-align:right;">' + ' ' + varRestart + varCount + '</a>' + "</" + varTdTh + ">"
+//				+ '<' + varTdTh + ' style="text-align:right;">' + varButtonLine + ' ' + varRestart + varCount + '</a>' + "</" + varTdTh + ">"
 
 
 				+ "</" + varTdTh + ">"
@@ -1078,7 +1081,7 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 				;
 				
 				varButtonLineStyle = 'color:gray;  font-size:18px;';
-				varButtonLine = ''; //				varButtonLine = '<i class=\"fa fa-check\" style="color:' + CONST_DEEP_SKY_BLUE + '; font-size:20px;"></i>';
+//				varButtonLine = ''; //				varButtonLine = '<i class=\"fa fa-check\" style="color:' + CONST_DEEP_SKY_BLUE + '; font-size:20px;"></i>';
 				varButtonRestart = 'color:gray; font-size:20px;';
 				varCount = '';
 		})
@@ -1152,8 +1155,20 @@ async function refreshTableNivel(mytema, mycategory, mycode, myorder, mygroup, m
 		htmlString = htmlString + '<tr>';
 		htmlString = htmlString + '<td>';
 
-		htmlString = htmlString + '<label style="border-radius:50%; font-size:15px; position:absolute; background-color:transparent; color:white; width:70px; border-width:0px; font-family:Helvetica; cursor:pointer;">Nível ' + varNivel + '</label>';
+		htmlString = htmlString + '<label style="border-radius:10px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">';
+		htmlString = htmlString + '<label id="btnNivel" class="btn btn-default" style="border-radius:10px; font-size:15px; font-family:Helvetica; border-width:0px; -webkit-text-stroke-width: 1px; cursor:default; ">';
+		htmlString = htmlString + 'Nível ' + varNivel
+//		htmlString = htmlString + '<label style="border-radius:50%; font-size:20px; position:absolute; background-color:transparent; color:white; width:70px; border-width:0px; font-family:Helvetica; cursor:pointer; color:gray;">Nível ' + varNivel + '</label>';
+
+		htmlString = htmlString + '</label>';
+		htmlString = htmlString + '</label>';
 		htmlString = htmlString + '<br/>';
+
+		htmlString = htmlString + '</td>';
+		htmlString = htmlString + '</tr>';
+
+		htmlString = htmlString + '<tr>';
+		htmlString = htmlString + '<td>';
 
 		htmlString = htmlString + '<i class="fa fa-play avatarflutuante" style="color:#00FF7F; font-size:15px;"></i>';
 		htmlString = htmlString + '<label class="flutuante" style="border-radius:30px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">';
