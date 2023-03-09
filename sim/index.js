@@ -58,6 +58,7 @@ function getDbSchema() {
         name: 'Student',
         columns: {
 			id: { primaryKey: true, autoIncrement: true },
+			myemail: { Null: false, dataType: 'string' }, //e-mail para identificar o usuário
 			mytema: { Null: false, dataType: 'string' }, //nível de agrupamento, exemplo: AWS Practitioner, AZURE
 			mycategory: { Null: false, dataType: 'string' }, //sub nível de agrupamento, exemplo: Apresentação, Treinamento, Experiência, Simulado, Desafios
 			mygroup: { notNull: true, dataType: 'string' }, //qual grupo a pergunta pertence, exemplo: domínio 1, domínio 2, domínio 3
