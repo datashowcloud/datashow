@@ -1262,9 +1262,17 @@ function validaLicenca() {
 			valido = true;
 		} else if (id.toLowerCase() == 'admin' && key == '202303010000') {
 			valido = true;
+		} else if (id.toLowerCase() == 'enio' && key == '202303010000') {
+			valido = true;
 		} else if (id.toLowerCase() == 'santiago' && key == '202303010000') {
 			valido = true;
 		} else if (id.toLowerCase() == 'eni' && key == '202303010000') {
+			valido = true;
+		} else if (id.toLowerCase() == 'gi' && key == '202303010000') {
+			valido = true;
+		} else if (id.toLowerCase() == 'rodrigo' && key == '202303010000') {
+			valido = true;
+		} else if (id.toLowerCase() == 'cicero' && key == '202303010000') {
 			valido = true;
 		}
 	}
@@ -1287,6 +1295,7 @@ function login(id, pass, key) {
 		document.getElementById('txtId').placeholder='e-mail incorreto';
 		document.getElementById('txtPass').value='';
 		document.getElementById('txtPass').placeholder='senha incorreta';
+		document.getElementById('txtId').focus();
 	}
 }
 
@@ -1331,13 +1340,19 @@ async function gravaUsuario(id, pass, key) {
 function validalogin(id, pass, key) {
 	if (id.toLowerCase() == 'a' && pass == 'a') {
 		return true;
-	} else if (id.toLowerCase() == 'admin' || pass == 'admin') {
+	} else if (id.toLowerCase() == 'admin' && pass == 'admin') {
 		return true;
-	} else if (id.toLowerCase() == 'enio' || pass == 'enio') {
+	} else if (id.toLowerCase() == 'enio' && pass == 'enio') {
 		return true;
-	} else if (id.toLowerCase() == 'santiago' || pass == 'santiago') {
+	} else if (id.toLowerCase() == 'santiago' && pass == 'santiago') {
 		return true;
-	} else if (id.toLowerCase() == 'eni' || pass == 'eni') {
+	} else if (id.toLowerCase() == 'eni' && pass == 'eni') {
+		return true;
+	} else if (id.toLowerCase() == 'gi' && pass == 'gi') {
+		return true;
+	} else if (id.toLowerCase() == 'rodrigo' && pass == 'rodrigo') {
+		return true;
+	} else if (id.toLowerCase() == 'cicero' && pass == 'cicero') {
 		return true;
 	} else {
 		return false;
