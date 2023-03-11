@@ -1500,26 +1500,20 @@ function showPaginaAtual() {
 	var DataShow_Config = window.open("index.html" + mytema + mycategory, "_self");
 }
 
-function showNextPage() {
+function loadNextLevel() {
 	var params = new URLSearchParams(window.location.search);
 	var mytema = params.get('tem');
 	var mycategory = params.get('cat');
+
+	mycategory = parseInt(mycategory) + 1;
 	
-	mytema = '?tem=' + mytema;
-	mycategory = '&cat=' + (parseInt(mycategory) + 1);
-/*
-	if (mycategory == CONST_MYCATEGORY_1) {
-		mytema = '?tem=' + mytema;
-		mycategory = '&cat=2';
-	} else if (mycategory == CONST_MYCATEGORY_2) {
-		mytema = '';
-		mycategory = '';
-	} else {
-		mytema = '';
-		mycategory = '';
-	}
-*/	
-	var DataShow_Config = window.open("index.html" + mytema + mycategory, "_self");
+	var DataShow_Config = window.open("T"+mytema + "C"+mycategory+ "G1" + ".html?sim=1" + "&tem=" + mytema + "&cat=" + mycategory, "_self");
+}
+
+function showFirstPage() {
+	var params = new URLSearchParams(window.location.search);
+	var mytema = params.get('tem');
+	var DataShow_Config = window.open("index.html?tem=" + mytema + '&cat=1', "_self");
 }
 
 function restartFase(mytema, mycategory, myid, mygroup, mycode) {
@@ -2868,7 +2862,7 @@ async function initLinkHelp() {
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'S3', 'EC2', 'Opções de Compra de Instância', 'EBS', save, 'Modelo de uso', 'https://aws.amazon.com/pt/free/free-tier-faqs/', 'composto por três tipos', 'Modelo de uso --> O <b>nível gratuito</b> da AWS oferece aos clientes a capacidade de explorar e testar gratuitamente serviços da AWS até os limites especificados para cada serviço. <br/>O nível gratuito é <b>composto por três tipos diferentes de ofertas</b>: <br/>Um nível gratuito de 12 meses (750 horas/mês), <br/>Uma oferta Always Free, <br/>Testes de curto prazo.', 'Usage model --> The <b>AWS Free Tier</b> provides customers with the ability to explore and test AWS services for free up to specified limits for each service. <br/>The free tier is <b>composed of three different types of offers</b>: <br/>A 12-month free tier (750 hours/month), <br/>An Always Free offer, < br/>Short-term tests.', '');
 
 	//Desafio CLF-C01
-	mytema = '1';
+/*	mytema = '1';
 	mycategory = CONST_MYCATEGORY_2;
 	var students = await jsstoreCon.select({
 		from: 'Student'
@@ -2904,7 +2898,7 @@ async function initLinkHelp() {
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Well-Architected Framework', 'EC2', 'S3', 'Excelência Operacional', save, 'Cargas de trabalho (Workload)', 'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/userguide/workloads.html', '', 'Carga de trabalho (Workload) --> É um conjunto de códigos e recursos que fornece valor empresarial, como um aplicativo voltado ao cliente ou um processo de back-end. Pode consistir em um subconjunto de recursos em uma Conta da AWS ou ser uma coleção de vários recursos abrangendo várias Contas da AWS.', 'Workload --> A set of code and resources that provide business value, such as a customer-facing application or back-end process. It may consist of a subset of resources within an AWS Account, or it may be a collection of multiple resources spanning multiple AWS Accounts.', '');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-
+*/
 
 
 	//Treino AZ-900
@@ -2937,7 +2931,7 @@ async function initLinkHelp() {
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 
 	//Desafio AZ-900
-	mytema = '2';
+/*	mytema = '2';
 	mycategory = CONST_MYCATEGORY_2;
 	students = await jsstoreCon.select({
 		from: 'Student'
@@ -2964,7 +2958,7 @@ async function initLinkHelp() {
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'PAAS --> AZ-900', 'SAAS --> AZ-900', 'IAAS --> AZ-900', 'BAAS', save, 'Computação Sem Servidor --> AZ-900', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-serverless-computing/', '', 'AZ-900 Computação Sem Servidor --> Elimina a necessidade de gerenciar a infraestrutura, permite que os desenvolvedores criem aplicativos de forma mais rápida. Com aplicativos nessa computação, o provedor de serviços de nuvem provisiona, dimensiona e gerencia automaticamente a infraestrutura necessária para executar o código.', 'AZ-900 Serverless Computing --> Eliminates the need to manage infrastructure, allows developers to build applications faster. With applications on that compute, the cloud service provider automatically provisions, scales, and manages the infrastructure needed to run the code.', '');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-
+*/
 
 
 	//Treino Oracle
@@ -2993,7 +2987,7 @@ async function initLinkHelp() {
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 
 	//Desafio Oracle
-	mytema = '3';
+/*	mytema = '3';
 	mycategory = CONST_MYCATEGORY_2;
 	students = await jsstoreCon.select({
 		from: 'Student'
@@ -3016,7 +3010,7 @@ async function initLinkHelp() {
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Monitoring', 'Events', 'Cost Analysis', '', save, 'Budget', 'https://docs.oracle.com/pt-br/iaas/Content/Billing/Concepts/budgetsoverview.htm', '', 'Qual recurso do Oracle Cloud Infrastructure (OCI) permite que você configure alertas para notificá-lo se uma previsão de orçamento for excedida ou se o gasto ultrapassar um determinado valor?', 'Which Oracle Cloud Infrastructure (OCI) capability allows you to set up alerts to notify you if a budget forecast is to be exceeded or spending surpasses a certain amount?', '');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-
+*/
 
 
 	//Último registro para testar se o loading está completo e já pode liberar a página para uso. 
