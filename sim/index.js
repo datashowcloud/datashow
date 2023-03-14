@@ -15,8 +15,6 @@ var GLOBAL_buttoncolor = 'btn-colors';
 var GLOBAL_background_black = 'black';
 var COL_LOGOTIPO = 5;
 var linkhelp = '';
-var CONTS_languagebra = '<img src="img/bandeirabra.png" class="flutuante" width="25px" style="cursor:pointer; border-radius:50%;" title="Traduzir para Português">';
-var CONTS_languageusa = '<img src="img/bandeirausa.png" class="flutuante" width="25px" style="cursor:pointer; border-radius:50%;" title="Translate to English">';
 var CONST_TEMA_AWS_CLFC01 = 1;
 var CONST_TEMA_AZURE_AZ900 = 2;
 var CONST_TEMA_ORACLE_1ZO108522 = 3;
@@ -30,7 +28,7 @@ window.onload = function () {
     initDb();
 	getConfigGeneral();	
 	initLinkHelp();
-	document.getElementById('myBody').style.background = GLOBAL_background;
+//	document.getElementById('myBody').style.background = GLOBAL_background;
 	loadCombobox('mygroup', '0', '100', 'Teste');
 	loadCombobox('mycode', '0', '100', 'Número');
 	loadCombobox('myorder', '0', '100', 'Ordem');
@@ -528,52 +526,57 @@ function registerEvents() {
 	$('#btnFormCategory').click(function () {
 		var DataShow_Config = window.open("index.html", "_self");
 	})
-
 	$('#imgTema1Apresentacao').click(function () {
-		changeTema('1');
+		loadNextLevel('1');
 	})
 	$('#imgTema2Apresentacao').click(function () {
-		changeTema('2');
+		loadNextLevel('2');
 	})
 	$('#imgTema3Apresentacao').click(function () {
-		changeTema('3');
+		loadNextLevel('3');
 	})
-
 	$('#btnTema1Apresentacao').click(function () {
-		changeTema('1');
+		loadNextLevel('1');
 	})
 	$('#btnTema2Apresentacao').click(function () {
-		changeTema('2');
+		loadNextLevel('2');
 	})
 	$('#btnTema3Apresentacao').click(function () {
-		changeTema('3');
+		loadNextLevel('3');
 	})
-
 	$('#imgTema1MenuTopo').click(function () {
-		changeTema('1');
+		loadNextLevel('1');
 	})
 	$('#imgTema2MenuTopo').click(function () {
-		changeTema('2');
+		loadNextLevel('2');
 	})
 	$('#imgTema3MenuTopo').click(function () {
-		changeTema('3');
+		loadNextLevel('3');
 	})
-
+	$('#imgLanguage').click(function () {
+		var lingua = getLanguageFile(document.getElementById('imgLanguage').src);
+		if (lingua == 'english') {
+			document.getElementById('imgLanguage').src = 'img/portugues.jpg';
+		} else if (lingua == 'portugues') {
+			document.getElementById('imgLanguage').src = 'img/espanhol.jpg';
+		} else if (lingua == 'espanhol') {
+			document.getElementById('imgLanguage').src = 'img/english.jpg';
+		} else {
+			document.getElementById('imgLanguage').src = 'img/portugues.jpg';
+		}
+		var params = new URLSearchParams(window.location.search);
+		var mytema = params.get('tem');
+		var mycategory = params.get('cat');
+		var myid = document.getElementById('myidSim').value;
+		var mygroup = document.getElementById('mygroupSim').value;
+		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
+		refreshTableQuestion(mytema, mycategory, myid, mygroup, parseInt(mycode)-1);
+	})
 	$('#mytextSim').click(function () {
-		if (document.getElementById('mytextSim2') != null && document.getElementById('mytextSim2').innerText.length > 10) {
-			document.getElementById('mytextSim2').style.display='';
-			document.getElementById('mytextSim').style.display='none';
-		} else {
-			alert('Fase ainda sem tradução.');
-		}
+		document.getElementById('imgLanguage').focus();
 	})
-	$('#mytextSim2').click(function () {
-		if (document.getElementById('mytextSim') != null && document.getElementById('mytextSim').innerText.length > 10) {
-			document.getElementById('mytextSim').style.display='';
-			document.getElementById('mytextSim2').style.display='none';
-		} else {
-			alert('Ainda sem tradução nessa fase.');
-		}
+	$('#mytextSim').dblclick(function () {
+		document.getElementById('imgLanguage').focus();
 	})
 	$('#chkMycorrect1answer').click(function () {
 		var index = '1';
@@ -747,10 +750,10 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 	if (document.getElementById('mytextSim') != null) {
 		document.getElementById('mytextSim').style.color = textcolor;
 	}
-	if (document.getElementById('mytextSim2') != null) {
+/*	if (document.getElementById('mytextSim2') != null) {
 		document.getElementById('mytextSim2').style.color = textcolor;
 	}
-
+*/
 	for (var index=1; index<9; index++) {
 		if (document.getElementById('mycorrect' + index + 'answer') != null) {
 			document.getElementById('mycorrect' + index + 'answer').style.color = textcolor;
@@ -785,9 +788,10 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 	document.getElementById('mytip7').style.color = textcolor;
 	document.getElementById('mytip8').style.color = textcolor;
 */
-	if (document.getElementById('myBody') != null) {
+/*	if (document.getElementById('myBody') != null) {
 		document.getElementById('myBody').style.background = background;
 	}
+*/
 	if (document.getElementById('menutopodireito') != null) {
 		document.getElementById('menutopodireito').style.color = 'white';
 	}
@@ -856,16 +860,13 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 				document.getElementById('myidSim').style.display='none';
 				document.getElementById('mygroupSim').style.display='none';
 				document.getElementById('mycodeSim').style.display='none';
-//				for (var index=1; index<9; index++) {
-//					document.getElementById('mycorrect' + parseInt(index) + 'Sim').style.display='none';
-//				}
 				$('#myidSim').val(student.id);
 				$('#mygroupSim').val(student.mygroup);
 				$('#mycodeSim').val(student.mycode);
 				$('#myorderSim').val(student.myorder);
 				
-				document.getElementById('mytextSim').innerHTML = CONTS_languageusa + ' ' + student.mycode + '/' + totalperguntas + '. ' + student.mytext;
-				document.getElementById('mytextSim2').innerHTML = CONTS_languagebra + ' ' + student.mycode + '/' + totalperguntas + '. ' + student.mytext2;
+				var lingua = getLanguageFile(document.getElementById('imgLanguage').src);
+				document.getElementById('mytextSim').innerHTML = student.mycode + '/' + totalperguntas + '. ' + buscaValorTag(student.mytext, lingua);
 
 				var valorIndice = '';
 				var myorder = student.myorder;
@@ -875,21 +876,22 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 					showGridAndHideForms();
 				} else {
 					myorder = myorder.replaceAll('\,', '');
-				
+
 					for (var index=0; index<8; index++) {
 						varMyorder = myorder.substring(index,index+1);
 						var textlink = '';
 						var linkhref = '';
 						var myoption = '';
 						var mycorrect = '';
-							 if (varMyorder == '1') { textlink = student.myoptionkey1; myoption = selectKeyMyoption(student.myoption1); mycorrect = student.mycorrect1answer; }
-						else if (varMyorder == '2') { textlink = student.myoptionkey2; myoption = selectKeyMyoption(student.myoption2); mycorrect = student.mycorrect2answer; }
-						else if (varMyorder == '3') { textlink = student.myoptionkey3; myoption = selectKeyMyoption(student.myoption3); mycorrect = student.mycorrect3answer; }
-						else if (varMyorder == '4') { textlink = student.myoptionkey4; myoption = selectKeyMyoption(student.myoption4); mycorrect = student.mycorrect4answer; }
-						else if (varMyorder == '5') { textlink = student.myoptionkey5; myoption = selectKeyMyoption(student.myoption5); mycorrect = student.mycorrect5answer; }
-						else if (varMyorder == '6') { textlink = student.myoptionkey6; myoption = selectKeyMyoption(student.myoption6); mycorrect = student.mycorrect6answer; }
-						else if (varMyorder == '7') { textlink = student.myoptionkey7; myoption = selectKeyMyoption(student.myoption7); mycorrect = student.mycorrect7answer; }
-						else if (varMyorder == '8') { textlink = student.myoptionkey8; myoption = selectKeyMyoption(student.myoption8); mycorrect = student.mycorrect8answer; }
+						
+							 if (varMyorder == '1') { textlink = student.myoptionkey1; myoption = selectKeyMyoption(buscaValorTag(student.myoption1, lingua)); mycorrect = student.mycorrect1answer; }
+						else if (varMyorder == '2') { textlink = student.myoptionkey2; myoption = selectKeyMyoption(buscaValorTag(student.myoption2, lingua)); mycorrect = student.mycorrect2answer; }
+						else if (varMyorder == '3') { textlink = student.myoptionkey3; myoption = selectKeyMyoption(buscaValorTag(student.myoption3, lingua)); mycorrect = student.mycorrect3answer; }
+						else if (varMyorder == '4') { textlink = student.myoptionkey4; myoption = selectKeyMyoption(buscaValorTag(student.myoption4, lingua)); mycorrect = student.mycorrect4answer; }
+						else if (varMyorder == '5') { textlink = student.myoptionkey5; myoption = selectKeyMyoption(buscaValorTag(student.myoption5, lingua)); mycorrect = student.mycorrect5answer; }
+						else if (varMyorder == '6') { textlink = student.myoptionkey6; myoption = selectKeyMyoption(buscaValorTag(student.myoption6, lingua)); mycorrect = student.mycorrect6answer; }
+						else if (varMyorder == '7') { textlink = student.myoptionkey7; myoption = selectKeyMyoption(buscaValorTag(student.myoption7, lingua)); mycorrect = student.mycorrect7answer; }
+						else if (varMyorder == '8') { textlink = student.myoptionkey8; myoption = selectKeyMyoption(buscaValorTag(student.myoption8, lingua)); mycorrect = student.mycorrect8answer; }
 						if (textlink.substring(0, 4) == 'tip:') {
 							textlink = textlink.substring(4);
 							linkhref = '';
@@ -939,8 +941,6 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 //This function refreshes the table
 async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext, mytext2, mytext3) {
 //    try {
-//alert('mytema='+mytema + ' mycategory='+mycategory + ' mycode='+mycode + ' myorder='+myorder + ' mygroup='+mygroup);
-		
 		var students = await jsstoreCon.select({
 			from: 'Student'
 				, where: { mytema: mytema + ''
@@ -948,70 +948,8 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 			}
 			, order: [ {by: 'mycategory', type: 'desc'}, {by: 'mygroup', type: 'desc'} ]
 		});
-/*		if (mygroup == '' && mycode == '') {
-			var students = await jsstoreCon.select({
-				from: 'Student'
-					, where: { mytema: mytema + ''
-					, mycategory: mycategory + ''
-				}
-				, order: [ {by: 'mygroup', type: 'desc'}, {by: 'mycode'} ]
-			});
-		} else if (mygroup != '' && mycode != '') {
-			var students = await jsstoreCon.select({
-				from: 'Student'
-					, where: { mytema: mytema + ''
-					, mycategory: mycategory + ''
-					, mygroup: mygroup + ''
-					, mycode: mycode + ''
-				}
-				, order: [ {by: 'mygroup', type: 'desc'}, {by: 'mycode'} ]
-			});
-		} else if (mygroup != '' && mycode == '') {
-			var students = await jsstoreCon.select({
-				from: 'Student'
-					, where: { mytema: mytema + ''
-					, mycategory: mycategory + ''
-					, mygroup: mygroup + ''
-				}
-				, order: [ {by: 'mygroup', type: 'desc'}, {by: 'mycode'} ]
-			});
-		} else if (mygroup == '' && mycode != '') {
-			var students = await jsstoreCon.select({
-				from: 'Student'
-					, where: { mytema: mytema + ''
-					, mycategory: mycategory + ''
-					, mycode: mycode + ''
-				}
-				, order: [ {by: 'mygroup', type: 'desc'}, {by: 'mycode'} ]
-			});
-		}
-*/
-/*		var students_count = 0;
-		if (students != '') { //calcula students_count de todas perguntas da fase e categoria e grupo selecionado
-			var students_group = await jsstoreCon.select({
-				from: 'Student'
-					, where: { mytema: mytema + ''
-					, mycategory: mycategory + ''
-					, mygroup: '' + students[0].mygroup + ''
-				}
-			});
-			students_group.forEach(function (student) {
-				if (student.mycorrect1answer == '' && student.mycorrect2answer == '' && student.mycorrect3answer == '' && student.mycorrect4answer == ''
-				 && student.mycorrect5answer == '' && student.mycorrect6answer == '' && student.mycorrect7answer == '' && student.mycorrect8answer == '') {
-					students_count = parseInt(students_count + 1);
-				}
-			})
-		}
-*/		
 		var varButtonRestart = 'color:gray; font-size:20px;';
-//		var varCount = '<div class="playsim btn btn-success flutuante" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '; ">' + parseInt(students_count - 1) + '</div>';
 		var varCount = '';
-/*
-		if (parseInt(students_count - 1) == 0) {
-			varCount = '';
-			varButtonRestart = 'color:' + CONST_MEDIUM_SEA_GREEN + '; font-size:20px;';
-		}
-*/
 		setConfigBotoes();
 
 		var htmlString = "";
@@ -1021,8 +959,9 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 		var varNivelLinha = '';
 		var varNivelMax = '';
 		var varButtonLineStyle = 'color:gray; font-size:18px;';
-//		var varButtonLine = '<i class=\"fa fa-play avatarflutuante\" style="color:' + CONST_MEDIUM_SEA_GREEN + '; font-size:15px;"></i>';
 		var varRestart = '';
+		
+		var lingua = getLanguageFile(document.getElementById('imgLanguage').src);
 		
 		students.forEach(function (student) {
 			if (student.mycode == '0') {
@@ -1030,7 +969,6 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 				if (varCount == '') {
 					if (student.mypoints <= 0) {
 						varRestart = '';
-//						varCount = '<button class="playsim btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '; text-align:right;">fazer</button>';
 						varCount = '<button class="btn btn-success" onclick="window.open(\'index.html?tem=' + student.mytema + '&cat=' + student.mycategory + '\', \'_self\');" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '; text-align:right;">fazer</button>';
 					} else if (student.mypoints < 70) {
 						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + ' text-align:right; \"><button class="btn btn-danger">refazer</button></a>';
@@ -1064,7 +1002,7 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 				
 				//texto
 				+ "<" + varTdTh + " style=\"text-align:left;\" id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " ZZZonClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
-					+ '&nbsp; <a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + student.mytext + '</a> ' + '</' + varTdTh + '>'
+					+ '&nbsp; <a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + buscaValorTag(student.mytext, lingua) + '</a> ' + '</' + varTdTh + '>'
 				
 				//botão delete e refresh fase
 				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + '<button class=\"deletefase\" style=\"color:white; font-size:20px; border: 1px solid gray; background-color:gray; border-radius:50%; \" title=\"Atualizar fase\"> <i class=\"fa fa-refresh\"></i> </button>'
@@ -1232,6 +1170,19 @@ async function deletefase(mytema, mycategory, mygroup, mycode, myid) {
     } catch (ex) {
         console.log(ex.message);
     }
+}
+
+//A língua é o nome do arquivo.
+function getLanguageFile(arquivo) {
+	var pasta = 'img/'; //valor completo: file:///C:/DataShow/sim/img/english.jpg
+	var extensao = '.'; //exemplo: .jpg
+	var posini = arquivo.indexOf(pasta, 0); 
+	var posfim = arquivo.indexOf(extensao, 0);
+	lingua = arquivo.substring(posini + pasta.length, posfim).trim();
+	if (lingua.length < 1) {
+		lingua = 'portugues';
+	}
+	return lingua;
 }
 
 function initForm() {
@@ -1500,14 +1451,30 @@ function showPaginaAtual() {
 	var DataShow_Config = window.open("index.html" + mytema + mycategory, "_self");
 }
 
-function loadNextLevel() {
+async function loadNextLevel(temapaginaindex) {
 	var params = new URLSearchParams(window.location.search);
 	var mytema = params.get('tem');
 	var mycategory = params.get('cat');
-
-	mycategory = parseInt(mycategory) + 1;
 	
-	var DataShow_Config = window.open("T"+mytema + "C"+mycategory+ "G1" + ".html?sim=1" + "&tem=" + mytema + "&cat=" + mycategory, "_self");
+	if (temapaginaindex.length>0) {
+		mytema = temapaginaindex;
+		mycategory = '1';
+	} else {
+		mycategory = parseInt(mycategory) + 1;
+	}
+
+	var students = await jsstoreCon.select({
+		from: 'Student'
+			, where: { mytema: mytema + ''
+			, mycategory: mycategory + ''
+			, mygroup: '1'
+		  }
+	});
+	if (students == '') {
+		var DataShow_Config = window.open("T"+mytema + "C"+mycategory+ "G1" + ".html?sim=1" + "&tem=" + mytema + "&cat=" + mycategory, "_self");
+	} else {
+		var DataShow_Config = window.open("index.html?tem=" + mytema + "&cat=" + mycategory, "_self");
+	}
 }
 
 function showFirstPage() {
@@ -2197,14 +2164,16 @@ function getArrayAnswers(valor) {
 	for (index=0; index<=4; index++) {
 		var valorkey = ''; var valortip = '';
 		var valorsemkey = '';
+		var valorlanguage2 = '';
 		
 		var ok = valor.substring(posicao, posicao+5).trim();
 //		console.log('ok=' + ok + ' posicao='+posicao + ' nextpos=' + nextpos + ' index=' + index + ' \n\n' + valor.substring(posicao, nextpos).trim());
-		
+
 		//ok
 		if (ok == '<ok>' ) {
 			valorok = valor.substring(posicao, nextpos).replaceAll('<ok>', '');
 
+			valorlanguage2 = buscaValorTag(valorok, 'english');
 			valorsemkey = removeTags(valorok, 'key');
 			valorsemkey = removeTags(valorok, 'tip');
 			arrayok.push(valorsemkey.trim());
@@ -2223,6 +2192,7 @@ function getArrayAnswers(valor) {
 		} else {
 			valorKO = valor.substring(posicao, nextpos).replaceAll('<ok>', '');
 
+			valorlanguage2 = buscaValorTag(valorok, 'english');
 			valorsemkey = removeTags(valorKO, 'key');
 			valorsemkey = removeTags(valorKO, 'tip');
 			arrayKO.push(valorsemkey.trim());
@@ -2237,6 +2207,7 @@ function getArrayAnswers(valor) {
 			}
 //			alert('array_KO: [' + arrayKO + ']');
 		}
+//alert('valorlanguage2='+valorlanguage2);
 		//limpa variáveis
 		posicao = nextpos+1;
 		nextpos = valor.indexOf('\n\n', posicao);		
@@ -2278,9 +2249,8 @@ function getArrayAnswers(valor) {
 }
 
 function getLanguage(language, mytext) {
-	var retorno = '';
+/*	var retorno = '';
 	var posicaoini=0;
-	var posicaofim=0;
 	var languageini = '<'+language+'>';
 	var languagefim = '</'+language+'>';
 	var iniEnglish = '<english>';
@@ -2289,8 +2259,13 @@ function getLanguage(language, mytext) {
 	var iniArabe = '<arabe>';
 	var iniHindi = '<hindi>';
 	var iniFrancais = '<francais>';
-	
+*/	
+	var posicaofim=0;
 	mytext = mytext.replaceAll('<p>\n', ''); //remove <p>ENTER
+	mytext = mytext.replaceAll('<p>', ''); //remove <p>
+	posicaofim = mytext.indexOf('\n\n', 0);
+	return mytext.substring(0, posicaofim);
+/*	mytext = mytext.replaceAll('<p>\n', ''); //remove <p>ENTER
 	mytext = mytext.replaceAll('<p>', ''); //remove <p>
 	if (language == '' || language == 'portugues') {
 		posicaofim = mytext.indexOf(iniEnglish, posicaoini);
@@ -2323,6 +2298,7 @@ function getLanguage(language, mytext) {
 		}
 	}
 	return retorno;
+*/
 }
 
 function setStudentFromImport(mytema, mycategory, mygroup, mycode, myorder, mytext1, mytext2, mytext3, myoption1, myoptionkey1, myoption2, myoptionkey2, myoption3, myoptionkey3, myoption4, myoptionkey4, myoption5, myoptionkey5, myoption6, myoptionkey6, myoption7, myoptionkey7, myoption8, myoptionkey8) {
@@ -2357,8 +2333,6 @@ async function salvarRegistro(mytema, mycategory, mygroup, mycode, myorder, valo
 	var posicao=0;
 	var nextpos = 0;
 	nextpos = valor.indexOf('\n\n', posicao);
-//	var question = valor.substring(posicao, nextpos).replaceAll('<p>', ''); //remove separador <p>
-//	question = question.substring(posicao, nextpos).trim(); //remove espaços
 	var aswers = valor.substring(nextpos, valor.length).trim();
 	var array = getArrayAnswers(aswers);
 //	alert(':\n'+array[0]+', '+array[1] + '\n '+array[2]+', '+array[3] + '\n '+array[4]+', '+array[5] + '\n '+array[6]+', '+array[7] + '\n '+array[8]+', '+array[9] + '\n '+array[10]+', '+array[11] + '\n '+array[12]+', '+array[13] + '\n '+array[14]+', '+array[15]);
@@ -2381,16 +2355,14 @@ async function confirmImport(mytema, mycategory, contents, group) {
 		for (index=0; index<=mytext.length; index++) {
 			nextp = mytext.indexOf('<p>', posicao + '<p>'.length);
 			if (nextp == -1) {
-//				console.log('index break='+index);
 				break;
 			}
-//			console.log(' posicao='+posicao + ' nextp='+nextp + '\n [' + mytext.substring(posicao, nextp) + ']');
 			var valor = mytext.substring(posicao, nextp);
+			
 			var mytext1 = getLanguage('', mytext.substring(posicao, nextp)); //original
-			var mytext2 = getLanguage('english', mytext.substring(posicao, nextp)); //espanhol
-			var mytext3 = getLanguage('espanish', mytext.substring(posicao, nextp)); //inglês
+
 //alert(': ' + '\n mytema='+mytema + '\n mycategory='+mycategory + '\n mygroup='+mygroup + '\n mycode='+mycode + '\n myorder='+myorder + '\n\n [' + valor + ']');
-			salvarRegistro(mytema+'', mycategory+'', mygroup+'', mycode+'', myorder+'', valor, mytext1, mytext2, mytext3);
+			salvarRegistro(mytema+'', mycategory+'', mygroup+'', mycode+'', myorder+'', valor, mytext1, '', '');
 			
 			posicao = nextp;
 			mycode = parseInt(mycode) + parseInt(1);
@@ -2817,7 +2789,7 @@ async function initLinkHelp() {
 
 
 	//Treino CLF-C01
-	mytema = '1';
+/*	mytema = '1';
 	mycategory = CONST_MYCATEGORY_1;
 	var students = await jsstoreCon.select({
 		from: 'Student'
@@ -2860,7 +2832,7 @@ async function initLinkHelp() {
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Savings Plans', 'Instâncias Spot', 'Instâncias Reservadas', 'Instâncias Sob Demanda', save, 'Hosts Dedicados', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html', 'servidor físico com capacidade de instância do EC2', 'AWS Hosts Dedicados do Amazon EC2 --> É um <b>servidor físico com capacidade de instância do EC2 totalmente dedicado para seu uso</b>. Permitem que você use suas licenças de software existentes por soquete, por núcleo ou por VM, incluindo o Windows Server, o Microsoft SQL Server, o SUSE e o Linux Enterprise Server.', 'AWS Dedicated Amazon EC2 Hosts --> It is a <b>physical server with EC2 instance capacity fully dedicated for your use</b>. Allow you to use your existing per-socket, per-core, or per-VM software licenses, including Windows Server, Microsoft SQL Server, SUSE, and Linux Enterprise Server.', '');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'S3', 'EC2', 'Opções de Compra de Instância', 'EBS', save, 'Modelo de uso', 'https://aws.amazon.com/pt/free/free-tier-faqs/', 'composto por três tipos', 'Modelo de uso --> O <b>nível gratuito</b> da AWS oferece aos clientes a capacidade de explorar e testar gratuitamente serviços da AWS até os limites especificados para cada serviço. <br/>O nível gratuito é <b>composto por três tipos diferentes de ofertas</b>: <br/>Um nível gratuito de 12 meses (750 horas/mês), <br/>Uma oferta Always Free, <br/>Testes de curto prazo.', 'Usage model --> The <b>AWS Free Tier</b> provides customers with the ability to explore and test AWS services for free up to specified limits for each service. <br/>The free tier is <b>composed of three different types of offers</b>: <br/>A 12-month free tier (750 hours/month), <br/>An Always Free offer, < br/>Short-term tests.', '');
-
+*/
 	//Desafio CLF-C01
 /*	mytema = '1';
 	mycategory = CONST_MYCATEGORY_2;
@@ -2902,7 +2874,7 @@ async function initLinkHelp() {
 
 
 	//Treino AZ-900
-	mytema = '2';
+/*	mytema = '2';
 	mycategory = CONST_MYCATEGORY_1;
 	students = await jsstoreCon.select({
 		from: 'Student'
@@ -2929,7 +2901,7 @@ async function initLinkHelp() {
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Nuvem Privada --> AZ-900', 'Nuvem Híbrida --> AZ-900', 'Nuvem Pública --> AZ-900', 'AZ-900: --> Nenhuma das alternativas', save, 'Multinuvem --> AZ-900', 'https://azure.microsoft.com/pt-br/solutions/hybrid-cloud-app/#overview', '', 'AZ-900: Multinuvem --> Uma parte da sua empresa está no Microsoft Azure e outra parte está em outra nuvem, como: AWS, Google Cloud Platform, aplicativos SaaS baseados em nuvem e até ambientes de colocation.', 'AZ-900: Multicloud --> One part of your business is in Microsoft Azure and another part is in another cloud such as: AWS, Google Cloud Platform, cloud-based SaaS applications and even colocation environments.', '');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-
+*/
 	//Desafio AZ-900
 /*	mytema = '2';
 	mycategory = CONST_MYCATEGORY_2;
@@ -2962,7 +2934,7 @@ async function initLinkHelp() {
 
 
 	//Treino Oracle
-	mytema = '3';
+/*	mytema = '3';
 	mycategory = CONST_MYCATEGORY_1;
 	students = await jsstoreCon.select({
 		from: 'Student'
@@ -2985,7 +2957,7 @@ async function initLinkHelp() {
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'OCI (Oracle Cloud Infrastructure) --> Oracle', 'Nuvem Híbrida --> AZ-900', 'Multinuvem --> AZ-900', '', save, 'HCM (Oracle Fusion Cloud Human Capital Management) --> Oracle', 'https://www.oracle.com/br/cloud/', '', 'Oracle: HCM (Oracle Fusion Cloud Human Capital Management)  --> Solução de RH nativa em nuvem completa que conecta todos os processos de recursos humanos, desde a contratação até a aposentadoria.', 'Oracle: HCM (Oracle Fusion Cloud Human Capital Management) --> Complete cloud-native HR solution that connects all human resource processes from hiring to retirement.', '');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-
+*/
 	//Desafio Oracle
 /*	mytema = '3';
 	mycategory = CONST_MYCATEGORY_2;
@@ -3015,24 +2987,17 @@ async function initLinkHelp() {
 
 	//Último registro para testar se o loading está completo e já pode liberar a página para uso. 
 	//Esse registro é o último a ser inserido na tabela. Quando ele aparece indica que todos foram inseridos também.
-	mytema = '0';
+/*	mytema = '0';
 	mycategory = '0';
 	contadorMygroup = 1; //10
 	contadorMycode = String(parseInt('0') + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'FIM', 'https://', '', 'FIM', 'THE END', '');
-	
-	
-	
-	
-	
-	
-	
+*/
+
+
+
 	//não precisa gravar o restante na tabela porque já estão nos arquivos, exemplo: T3C4G16.html
 	var save = false;
-
-
-
-
 
 
 

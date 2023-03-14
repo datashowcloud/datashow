@@ -31,8 +31,7 @@
 				<br/>
 				<div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">As perguntas estão instaladas.</div>
 				<br/><br/>
-				<!-- button class="btn btn-info" onclick="window.open('index.html?tem=2&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Vamos lá</button -->
-				<button class="btn btn-info" onclick="window.open('index.html?tem=2&cat=1', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Vamos lá</button>
+				<button class="btn btn-info" onclick="window.open('index.html?tem=1&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Vamos lá!</button>
 				
 				<label id="bSearch" style="display:none;">
 					<input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:200px; height:34px;">
@@ -182,19 +181,172 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-<portugues>CONCLUÍDO!</portugues>
-<english>CONCLUDED!</english>
-<espanhol>¡CONCLUIDO!</espanhol>
+<portugues>FASE 1.2</portugues>
 
 <p>
-<portugues>Parabéns! Você concluiu este treinamento. Clique em CONTINUAR.</portugues>
-<english>Congratulations! You complete this training. Click CONTINUE.</english>
-<espanhol>¡Felicidades! Has completado esta formación. Haga clic en CONTINUAR.</espanhol>
+<portugues>Quais são os cinco planos de suporte ofertados pela AWS?</portugues>
+
+Bronze, Silver, Gold, Diamond, Ruby
+<key>Não Se Aplica</key>
+
+Basic, Developer, Business, Advanced, Enterprise On-Ramp
+<key>Suporte</key>
 
 <ok>
-<portugues><button class="btn btn-outline-primary" onclick="loadNextLevel('');" style="color:white;">CONTINUAR <i class="fa fa-chevron-right"></i> </button></portugues>
-<english><button class="btn btn-outline-primary" onclick="loadNextLevel('');" style="color:white;">CONTINUE <i class="fa fa-chevron-right"></i> </button></english>
-<espanhol><button class="btn btn-outline-primary" onclick="loadNextLevel('');" style="color:white;">CONTINUAR <i class="fa fa-chevron-right"></i> </button></espanhol>
+Basic, Developer, Business, Enterprise On-Ramp, Enterprise
+<key>Suporte</key>
+
+Standard, Developer, Business, Enterprise, Enterprise On-Ramp
+<key>Suporte</key>
+
+<p>
+<portugues>Você precisa implementar uma estratégia de DR (Recuperação de Desastre) na sua empresa, qual é a recomendação de melhor uso do AWS RDS?</portugues>
+
+<ok>
+Multi Regions (Distribuir em regiões diferentes)
+<key>Multi Regions</key>
+
+Multi A-Z (Distribuir em zonas de disponibilidade diferentes)
+<key>Multi-AZ</key>
+
+Read Replicas (Fazer cópias de leitura)
+<key>Read Replicas</key>
+
+Implementar uma cópia do banco numa instância EC2
+<key>EC2</key>
+
+<p>
+<portugues>Qual é o usuário utilizado para acessar o AWS Console pela primeira vez e que possui acesso a todos os recursos da conta? (Não sendo recomendado o uso no dia a dia.)</portugues>
+
+AWS IAM
+<key>IAM</key>
+
+AWS Administrator
+<key>Não Se Aplica</key>
+
+<ok>
+AWS account root user
+<key>IAM</key>
+
+AWS full user
+<key>Não Se Aplica</key>
+
+<p>
+<portugues>Qual opção abaixo descreve o serviço Elastic Load Balancer?</portugues>
+
+Distribui o tráfego de entrada entre instâncias em diferentes regiões
+<key>ELB</key>
+
+Instancia uma nova máquina quando uma das máquinas apresenta falha
+<key>EC2</key>
+
+<ok>
+Distribui o tráfego de entrada entre suas instâncias
+<key>ELB</key>
+
+Cria um cluster de máquinas dentro da mesma zona de disponibilidade
+<key>Clusters</key>
+
+<p>
+<portugues>Você lidera um time de desenvolvimento pequeno e que não tem tempo de se envolver com muitas questões de infraestrutura AWS, porém você gostaria de fazer o uso de container, pois acredita que esse modelo de arquitetura tem muitas vantagens. Qual serviço da Amazon permite que você crie e use container sem precisar se preocupar com questões de infraestrutura e que usa uma infraestrutura sem servidor (servless)?</portugues>
+
+EKS
+<key>EKS</key>
+
+ECS
+<key>ECS</key>
+
+ECR
+<key>ECR</key>
+
+<ok>
+Fargate
+<key>Fargate</key>
+
+<p>
+<portugues>Sua empresa iniciou um processo de transformação digital de todas as suas plataformas e decidiu utilizar uma arquitetura de sistemas orientada a eventos para desacoplar os sistemas. Qual dos serviços abaixo pode ser utilizado como um barramento escalável de eventos para facilitar a criação dessa arquitetura?</portugues>
+
+Amazon SQS (Simple Queue Service)
+<key>SQS</key>
+
+Amazon EventSync
+<key>EventSync</key>
+
+Amazon Lambda
+<key>Lambda</key>
+
+<ok>
+Amazon EventBridge
+<key>EventBridge</key>
+
+<p>
+<portugues>Qual é o banco de dados relacional que é totalmente gerenciado pela AWS e pode ser 5 x mais rápido que o MySQL?</portugues>
+
+<ok>
+Aurora
+<key>Aurora</key>
+
+DynamoDB
+<key>DynamoDB</key>
+
+MariaDB
+<key>MariaDB</key>
+
+Neptune
+<key>Neptune</key>
+
+<p>
+<portugues>Quais itens fazem parte dos pilares do Well-Architected Framework?
+<br/>(Selecione 2)</portugues>
+
+<ok>
+Segurança
+<key>Well-Architected Framework</key>
+
+<ok>
+Excelência Operacional
+<key>Well-Architected Framework</key>
+
+Desacoplamento
+<key>Não Se Aplica</key>
+
+Monitoramento
+<key>Não Se Aplica</key>
+
+Escalabilidade
+<key>Não Se Aplica</key>
+
+<p>
+<portugues>Qual é o serviço que garante que você tenha o correto número de instâncias EC2 disponíveis para lidar com a carga da sua aplicação?</portugues>
+
+<ok>
+EC2 Auto Scaling
+<key>Auto Scaling</key>
+
+Route53
+<key>Route53</key>
+
+ELB
+<key>ELB</key>
+
+VPC
+<key>VPC</key>
+
+<p>
+<portugues>Qual serviço permite a criação de uma rede virtual totalmente isolada para alocar diversos recursos computacionais na AWS?</portugues>
+
+AWS Hosts Dedicados
+<key>Hosts Dedicados</key>
+
+AWS Reserved
+<key>Não Se Aplica</key>
+
+<ok>
+AWS VPC
+<key>VPC</key>
+
+AWS Gateway
+<key>Não Se Aplica</key>
 
 <p>
 

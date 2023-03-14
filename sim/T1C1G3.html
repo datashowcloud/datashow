@@ -24,15 +24,14 @@
 </head>
 
 <body id="myBody" ZZZbackground="gallery/paper.jpeg">
-
+		
 			<div style="display:'none'; text-align:center; ">
 				<!-- br/>Aguarde o resultado na janela da configuração -->
 				<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Está tudo pronto!</div>
 				<br/>
 				<div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">As perguntas estão instaladas.</div>
 				<br/><br/>
-				<!-- button class="btn btn-info" onclick="window.open('index.html?tem=2&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Vamos lá</button -->
-				<button class="btn btn-info" onclick="window.open('index.html?tem=2&cat=1', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Vamos lá</button>
+				<button class="btn btn-info" onclick="window.open('index.html?tem=1&cat=1', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Vamos lá</button>
 				
 				<label id="bSearch" style="display:none;">
 					<input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:200px; height:34px;">
@@ -182,19 +181,151 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-<portugues>CONCLUÍDO!</portugues>
-<english>CONCLUDED!</english>
-<espanhol>¡CONCLUIDO!</espanhol>
+<portugues>FASE 1.2</portugues>
 
 <p>
-<portugues>Parabéns! Você concluiu este treinamento. Clique em CONTINUAR.</portugues>
-<english>Congratulations! You complete this training. Click CONTINUE.</english>
-<espanhol>¡Felicidades! Has completado esta formación. Haga clic en CONTINUAR.</espanhol>
+<portugues>É um <b>serviço de mensagens totalmente gerenciado pela AWS</b> para a comunicação de aplicação para aplicação (A2A) e de aplicação para pessoa (A2P). A funcionalidade pub/sub de A2A fornece tópicos para sistemas de mensagens de alta taxa de transferência <b>baseados em push</b>.</portugues>
 
 <ok>
-<portugues><button class="btn btn-outline-primary" onclick="loadNextLevel('');" style="color:white;">CONTINUAR <i class="fa fa-chevron-right"></i> </button></portugues>
-<english><button class="btn btn-outline-primary" onclick="loadNextLevel('');" style="color:white;">CONTINUE <i class="fa fa-chevron-right"></i> </button></english>
-<espanhol><button class="btn btn-outline-primary" onclick="loadNextLevel('');" style="color:white;">CONTINUAR <i class="fa fa-chevron-right"></i> </button></espanhol>
+SNS
+<key>SNS</key>
+
+SES
+<key>SES</key>
+
+SQS
+<key>SQS</key>
+
+AWS STS
+<key>STS</key>
+
+<p>
+<portugues>É uma <b>plataforma de e-mail</b> que oferece uma forma fácil e econômica para você enviar e receber e-mail usando seus próprios endereços de e-mail e domínios.</portugues>
+
+<ok>
+SES
+<key>SES</key>
+
+SQS
+<key>SQS</key>
+
+SNS
+<key>SNS</key>
+
+Well-Architected Framework
+<key>Well-Architected Framework</key>
+
+<p>
+<portugues>Oferece uma <b>fila hospedada (queue)</b> segura, durável e disponível que <b>permite integrar e desacoplar sistemas de software e componentes distribuídos</b>. Oferece construções comuns, como filas de mensagens mortas e tags de alocação de custos.</portugues>
+
+<ok>
+SQS
+<key>SQS</key>
+
+SNS
+<key>SNS</key>
+
+SES
+<key>SES</key>
+
+Amazon MQ
+<key>MQ</key>
+
+<p>
+<portugues>É um serviço gerenciado pela AWS. É um <b><u>agente</u> de mensagens para o Apache ActiveMQ e RabbitMQ</b> que facilita a configuração e a operação de agentes de mensagens na AWS. Reduz suas responsabilidades operacionais gerenciando o provisionamento, a configuração e a manutenção dos agentes de mensagem para você.</portugues>
+
+<ok>
+Amazon MQ
+<key>MQ</key>
+
+SQS
+<key>SQS</key>
+
+SNS
+<key>SNS</key>
+
+SES
+<key>SES</key>
+
+<p>
+<portugues>É uma <b>coleção de serviços gerenciados que facilita a configuração, operação e escalabilidade de bancos de dados na nuvem</b>. Uma instância de banco de dados dele reside em uma única região. Escolha entre sete opções de mecanismos bastante utilizados: Amazon Aurora compatível com PostgreSQL, MySQL, MariaDB, PostgreSQL, Oracle e SQL Server.</portugues>
+
+<ok>
+RDS
+<key>RDS</key>
+
+DynamoDB
+<key>DynamoDB</key>
+
+DynamoDB Accelerator DAX
+<key>DynamoDB Accelerator DAX</key>
+
+DMS
+<key>DMS</key>
+
+<p>
+<portugues>É um <b>banco de dados de chave-valor NoSQL (não é um banco de dados relacional), sem servidor e totalmente gerenciado</b>, projetado para executar aplicações de alta performance em qualquer escala. <b>Usa API do serviço e o Json</b>.</portugues>
+
+<ok>
+DynamoDB
+<key>DynamoDB</key>
+
+RDS
+<key>RDS</key>
+
+DynamoDB Accelerator DAX
+<key>DynamoDB Accelerator DAX</key>
+
+MySql
+<key>MySql</key>
+
+<p>
+<portugues>É um <b>serviço de armazenamento em cache compatível com o DynamoDB</b> no qual você pode se beneficiar da rápida performance em memória para aplicações exigentes. <b>Não foi concebido para hospedagem de sites estáticos</b>.</portugues>
+
+<ok>
+DynamoDB Accelerator DAX
+<key>DynamoDB Accelerator DAX</key>
+
+RDS
+<key>RDS</key>
+
+Redis
+<key>Redis</key>
+
+DynamoDB
+<key>DynamoDB</key>
+
+<p>
+<portugues>Ajuda você a <b>migrar bancos de dados para a AWS</b> de modo rápido e seguro. O banco de dados de origem permanece totalmente operacional durante a migração, minimizando o tempo de inatividade de aplicações que dependem do banco de dados.</portugues>
+
+<ok>
+DMS
+<key>DMS</key>
+
+RDS
+<key>RDS</key>
+
+DynamoDB
+<key>DynamoDB</key>
+
+Aurora
+<key>Aurora</key>
+
+<p>
+<portugues>É um mecanismo de <b>banco de dados relacional gerenciado</b> compatível com o MySQL e o PostgreSQL. Pode oferecer <b>até cinco vezes a taxa de processamento do MySQL</b> e até três vezes a taxa de processamento do PostgreSQL. Oferecer <b>disponibilidade superior a 99,99%</b> replicando seis cópias dos seus dados em três zonas diferentes.</portugues>
+
+<ok>
+Amazon Aurora
+<key>Aurora</key>
+
+DynamoDB
+<key>DynamoDB</key>
+
+DMS
+<key>DMS</key>
+
+RDS
+<key>RDS</key>
 
 <p>
 

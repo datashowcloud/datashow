@@ -31,15 +31,14 @@
 				<br/>
 				<div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">As perguntas estão instaladas.</div>
 				<br/><br/>
-				<!-- button class="btn btn-info" onclick="window.open('index.html?tem=2&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Vamos lá</button -->
-				<button class="btn btn-info" onclick="window.open('index.html?tem=2&cat=1', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Vamos lá</button>
+				<button class="btn btn-info" onclick="window.open('index.html?tem=1&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Vamos lá</button>
 				
 				<label id="bSearch" style="display:none;">
 					<input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:200px; height:34px;">
 				</label>
 			</div>
 
-		<table id="tblGrid" style="width:98%" class="table table-hover ">
+		<table id="tblGrid" style="width:98%; display:none;" class="table table-hover">
 			<tbody>
 				<div id="divbotoes" style="display:none; text-align:center;">
 					<button id="btntreino" class="botao flutuante" onclick="changeCategory('2');" style="background-color:gray; display:none;">Treino</button>
@@ -91,6 +90,7 @@
 						<div id="myincorrecta4answer"></div>
 					</td></tr>
 					<tr><td>
+						<input type="text" id="loading" value="CARREGANDO..." hidden=""> <!-- essa mensgem aparecerá toda vez que estiver carregando uma página com lentidão -->
 						<br/><input type="text" id="mygroupSim" value="" Zhidden="">
 						<br/><input type="text" id="mycodeSim" value="" Zhidden="">
 						<br/><input type="text" id="myorderSim" value="" Zhidden="">
@@ -116,6 +116,8 @@
 			<table border=0 align=center width="98%" style="display:none;"><tr><td>
 				<b>Formulário Editor de Perguntas</b>
 				<p/><p/>
+				<select id="mytema" name="mytema" style="height:35px; display:'none';"></select>
+				<select id="mycategory" name="mycategory" style="height:35px; display:'none';"></select>
 				<select id="mygroup" name="mygroup" style="height:35px; display:none;">
 					<!-- option value="00">Configurações</option -->
 					<option value="10">Nível 1.0</option>
@@ -139,7 +141,6 @@
 					<option value="45">Nível 4.5</option>
 					<option value="46">Nível 4.6</option>
 					<option value="50">Nível 5.0</option>
-
 				</select>
 				<select id="mycode" name="mycode" style="height:35px; display:none;"></select>
 				<select id="myorder" name="myorder" style="height:35px; display:none;"></select>
@@ -177,24 +178,152 @@
 			</td></tr></table>
 		</div>
 		
+		<div class="form-group" id="divGear" style="display:none;">
+			<table border=0 align=center width="100%"><tr><td>
+				<b id="FormularioEditorConfiguracoes">Formulário Editor de Configurações</b>
+				<p><button id="btnCancelImport" class="btn btn-default" style="padding:9px 15px 9px 15px; width:220px; display:'none';"> <i class="fa fa-times"></i> Fechar</button>
+			<!-- form id="formAdd" ZZZaction="https://formspree.io/f/xrgjojko" method="post" -->
+				<p/><p/><button id="btnDropDb" class="btn btn-default" style="padding:9px 15px 9px 15px; width:220px;"> <i class="fa fa-trash"></i> Restaurar Padrão de Fábrica</button>
+			<!-- /form -->
+				<p/><p/><button id="btnAddNewManual" class="btn btn-default" style="padding:9px 15px 9px 15px; width:220px; display:none;"><i class="fa fa-plus"></i> Adicionar Nova Pergunta</button>
+				<p/><p/><button id="btnShowHelp" class="btn btn-default" style="padding:9px 15px 9px 15px; width:220px; display:none;"> <i class="fa fa-book"></i> Tutorial</button>
+				<p/><p/>
+				<select id="selTextColor" name="selTextColor" class="btn btn-info" style="padding:9px 15px 9px 15px; width:220px; height:35px; display:'none';">
+					<option value="white" selected>Cor Letra: Padrão</option>
+					<option value="gray">Cor Letra: Cinza</option>
+					<option value="black">Cor Letra: Preta</option>
+					<option value="green">Cor Letra: Verde</option>
+					<option value="yellow">Cor Letra: Amarela</option>
+					<option value="blue">Cor Letra: Azul</option>
+				</select>
+				<p/><p/>
+				<select id="selBackground" name="selBackground" class="btn btn-info" style="padding:9px 15px 9px 15px; width:220px; height:35px; display:'none';">
+					<option value="black" selected>Cor Fundo: Padrão</option>
+					<option value="white">Cor Fundo: Branco</option>
+					<option value="yellow">Cor Fundo: Amarelo</option>
+					<option value="blue">Cor Fundo: Azul</option>
+					<option value="gray">Cor Fundo: Cinza</option>
+				</select>
+				<p/><p/>
+				<select id="selButtonColor" name="selButtonColor" class="btn btn-default" style="padding:9px 15px 9px 15px; width:220px; height:35px; display:'none';">
+					<option value="btn-colors" selected>Cor Botão: Padrão</option>
+					<option value="btn-info">Cor Botão: Azul</option>
+					<option value="btn-default">Cor Botão: Branco</option>
+					<option value="btn-warning">Cor Botão: Laranja</option>
+					<option value="btn-danger">Cor Botão: Vermelho</option>
+					<option value="btn-success">Cor Botão: Verde</option>
+					<option value="btn-primary">Cor Botão: Azul Escuro</option>
+				</select>
+				<div style="display:none;">
+					<br/><button id="btnSelectCountAll" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-asterisk"></i> Count All</button>
+					<br/><button id="btnDeleteLirics" class="btn btn-default" style="display:'none'; width:111px;"> <i class="fa fa-minus"></i> Clear Lirycs</button>
+				</div>
+			</td></tr></table>
+		</div>
+	</div>
+
 		<div id="divcontent" style="display:none;">
 
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-<portugues>CONCLUÍDO!</portugues>
-<english>CONCLUDED!</english>
-<espanhol>¡CONCLUIDO!</espanhol>
+<portugues>FASE 1.1</portugues>
 
 <p>
-<portugues>Parabéns! Você concluiu este treinamento. Clique em CONTINUAR.</portugues>
-<english>Congratulations! You complete this training. Click CONTINUE.</english>
-<espanhol>¡Felicidades! Has completado esta formación. Haga clic en CONTINUAR.</espanhol>
+<portugues>Qual serviço da AWS é recomendado para estimar o custo de implementação dos serviços de Cloud para o seu negócio?</portugues>
 
 <ok>
-<portugues><button class="btn btn-outline-primary" onclick="loadNextLevel('');" style="color:white;">CONTINUAR <i class="fa fa-chevron-right"></i> </button></portugues>
-<english><button class="btn btn-outline-primary" onclick="loadNextLevel('');" style="color:white;">CONTINUE <i class="fa fa-chevron-right"></i> </button></english>
-<espanhol><button class="btn btn-outline-primary" onclick="loadNextLevel('');" style="color:white;">CONTINUAR <i class="fa fa-chevron-right"></i> </button></espanhol>
+AWS Princing Calculator
+<key>Princing Calculator</key>
+
+AWS Organizations
+<key>Organizations</key>
+
+AWS Billing
+<key>Billing</key>
+
+AWS Cost Explorer
+<key>Cost Explorer</key>
+
+<p>
+<portugues>Analise o serviço abaixo: <br/>Serviço permite que aplicativos enviem mensagens críticas, em termos de tempo, para vários assinantes através de um mecanismo de “push”, eliminando a necessidade de verificar periodicamente ou “pesquisar” por atualizações.</portugues>
+
+Amazon S3
+<key>S3</key>
+
+Amazon SQS
+<key>SQS</key>
+
+Amazon SES
+<key>SES</key>
+
+<ok>
+Amazon SNS
+<key>SNS</key>
+
+<p>
+<portugues>Analise o serviço abaixo: <br/>Serviço de fila de mensagens, usado por aplicativos distribuídos para trocar mensagens através de um modelo de sondagem e pode ser usado para desacoplar componentes de envio e recebimento. Qual é a sequência abaixo que informa corretamente os dois serviços?</portugues>
+
+AWS Athena
+<key>Athena</key>
+
+Amazon SNS
+<key>SNS</key>
+
+Amazon SES
+<key>SES</key>
+
+<ok>
+Amazon SQS
+<key>SQS</key>
+
+<p>
+<portugues>Qual é a opção de armazenamento default do serviço S3?</portugues>
+
+<ok>
+Standard
+<key>Standard</key>
+
+Frequent Access
+<key>Frequent Access</key>
+
+Infrequent Access
+<key>Infrequent Access</key>
+
+Glacier
+<key>Glacier</key>
+
+<p>
+<portugues>Você trabalha numa agência de viagens online e precisa armazenar, analisar e correlacionar dados de logs de seus aplicativos para identificar e resolver gargalos de desempenho e problemas de disponibilidade para garantir uma experiência de reserva otimizada para os seus clientes. Qual serviço da AWS abaixo é o mais indicado?</portugues>
+
+Amazon CloudSearch
+<key>CloudSearch</key>
+
+Amazon EMR
+<key>EMR</key>
+
+Amazon Athena
+<key>Athena</key>
+
+<ok>
+Amazon ElasticSearch
+<key>ElasticSearch</key>
+
+<p>
+<portugues>Você está migrando parte de uma aplicação que trabalha com sistema de arquivos para armazenar e manipular alguns dados. Qual das opções abaixo indica o serviço que pode ser utilizado para atender essa parte da aplicação na AWS?</portugues>
+
+EC2
+<key>EC2</key>
+
+KMS
+<key>KMS</key>
+
+<ok>
+EFS
+<key>EFS</key>
+
+AWS Config
+<key>Config</key>
 
 <p>
 
