@@ -28,7 +28,7 @@ window.onload = function () {
     initDb();
 	getConfigGeneral();	
 	initLinkHelp();
-//	document.getElementById('myBody').style.background = GLOBAL_background;
+	document.getElementById('myBody').style.background = GLOBAL_background;
 	loadCombobox('mygroup', '0', '100', 'Teste');
 	loadCombobox('mycode', '0', '100', 'Número');
 	loadCombobox('myorder', '0', '100', 'Ordem');
@@ -572,12 +572,24 @@ function registerEvents() {
 		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
 		refreshTableQuestion(mytema, mycategory, myid, mygroup, parseInt(mycode)-1);
 	})
-	$('#mytextSim').click(function () {
-		document.getElementById('imgLanguage').focus();
+/*	$('#mytextSim').click(function () {
+		if (document.getElementById('mytextSim2') != null && document.getElementById('mytextSim2').innerText.length > 10) {
+			document.getElementById('mytextSim2').style.display='';
+			document.getElementById('mytextSim').style.display='none';
+		} else {
+			alert('Fase ainda sem tradução.');
+		}
 	})
-	$('#mytextSim').dblclick(function () {
-		document.getElementById('imgLanguage').focus();
+*/
+/*	$('#mytextSim2').click(function () {
+		if (document.getElementById('mytextSim') != null && document.getElementById('mytextSim').innerText.length > 10) {
+			document.getElementById('mytextSim').style.display='';
+			document.getElementById('mytextSim2').style.display='none';
+		} else {
+			alert('Ainda sem tradução nessa fase.');
+		}
 	})
+*/
 	$('#chkMycorrect1answer').click(function () {
 		var index = '1';
 		setBackgroundColor(index, CONST_MEDIUM_SEA_GREEN);
@@ -788,10 +800,9 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 	document.getElementById('mytip7').style.color = textcolor;
 	document.getElementById('mytip8').style.color = textcolor;
 */
-/*	if (document.getElementById('myBody') != null) {
+	if (document.getElementById('myBody') != null) {
 		document.getElementById('myBody').style.background = background;
 	}
-*/
 	if (document.getElementById('menutopodireito') != null) {
 		document.getElementById('menutopodireito').style.color = 'white';
 	}
@@ -2360,6 +2371,8 @@ async function confirmImport(mytema, mycategory, contents, group) {
 			var valor = mytext.substring(posicao, nextp);
 			
 			var mytext1 = getLanguage('', mytext.substring(posicao, nextp)); //original
+//			var mytext2 = '';//getLanguage('english', mytext.substring(posicao, nextp)); //espanhol
+//			var mytext3 = '';//getLanguage('espanish', mytext.substring(posicao, nextp)); //inglês
 
 //alert(': ' + '\n mytema='+mytema + '\n mycategory='+mycategory + '\n mygroup='+mygroup + '\n mycode='+mycode + '\n myorder='+myorder + '\n\n [' + valor + ']');
 			salvarRegistro(mytema+'', mycategory+'', mygroup+'', mycode+'', myorder+'', valor, mytext1, '', '');
