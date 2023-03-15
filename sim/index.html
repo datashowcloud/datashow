@@ -21,8 +21,9 @@
   padding: 0px;
   background-attachment: fixed;
   background-position: top; 
-  background-repeat: no-repeat;
   background-color:black;
+  //background-repeat: repeat;
+  //background-image: url(img/fundonoite.jpg);
 }
 
 
@@ -203,27 +204,27 @@ input:checked[type="checkbox"]::before{
 #switch{
 	display: 'none';
 }
-
 	</style>
 </head>
 
-<body id="myBody" bgcolor="black">
+<body id="myBody" ZZZbackground="img/fundonoite.jpg">
 
 	<a id="querocomecar"></a>
 
 	<nav id="menutopodireito" class="navbar sticky-top navbar-dark bg-dark" style="display:none;">
 	  <div class="container-fluid">
 		<div>
-			<span class="btn btn-outline-primary navbar-toggler navbar-toggler-icon flutuante" style="border-radius:50%;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"></span>
+			<span class="btn btn-outline-primary navbar-toggler navbar-toggler-icon flutuante" style="border-radius:50%;" title="Menu" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"></span>
 			<!--button id="btnPaginaInicial" class="btn btn-outline-primary" title="Página Inicial" style="border-radius:50%; color:white; display:'none';"><i class="fa fa-home"></i> </button-->
-			<button id="btnNightDay" class="btn btn-outline-primary flutuante" title="Dia e noite" style="border-radius:50%; color:white; display:'none';"><i class="fa fa-adjust"></i> </button>
+			<button id="btnNightDay" class="btn btn-outline-primary flutuante" title="Dia e noite" style="border-radius:50%; color:white; display:'none';" title="Dia e Noite"><i class="fa fa-adjust"></i> </button>
 			<button id="btnUser" class="btn btn-outline-primary flutuante" title="Você" style="border-radius:50%; color:white; display:'none';"><i class="fa fa-user"></i>
 				<input id="txtUser" type="text" value="" readonly style="border-radius:50%; font-size:10px; position:absolute; background-color:transparent; color:white; width:15px; border-width:0px; font-family:Helvetica; font-weight:bold; cursor:pointer;"></input>
 			</button>
+			<img id="imgLanguage" src="img/english.jpg" class="flutuante" width="38px" style="cursor:pointer; border-radius:50%; display:'none';" title="Translate/Traduzir/Traducir"></img>
 			<button id="btnTerminar" class="btn btn-outline-primary end flutuante" title="Terminar a fase" style="border-radius:50%; color:white; display:none;">Fim</button>
-			<!--button id="btnLanguage" class="btn Zbtn-sm btn-outline-primary" title="Trocar língua: Inglês e Português" style="border-radius:50%; color:white;" disabled><i class="fa fa-globe"></i></button-->
+			<!-- button id="btnLanguage" class="btn btn-outline-primary flutuante" title="Trocar língua: Inglês e Português" style="border-radius:50%; color:white;" ><i class="fa fa-globe"></i></button -->
 		</div>
-		<button id="btnPause" class="btn btn-outline-danger flutuante" onclick="showFormApresentacao();" style="border-radius:50%; color:white; display:'none';"><i class="fa fa-remove"></i></button>
+		<button id="btnPause" class="btn btn-outline-danger flutuante" onclick="showFormApresentacao();" style="border-radius:50%; color:white; display:'none';" title="Fechar"><i class="fa fa-remove"></i></button>
 		<div class="offcanvas offcanvas-top text-bg-dark bg-dark" style="height:250px;" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
 		  <div class="offcanvas-header">
 			<h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menu:</h5>
@@ -240,11 +241,11 @@ input:checked[type="checkbox"]::before{
 					</div>
 					<!-- datashowcloud2022@gmail.com -->
 					<div align=center>
-						<input type="text" id="version" value="20230308" style="font-size:10px; width:45px; display:none;"/>
+						<input type="text" id="version" value="20230314" style="font-size:10px; width:45px; display:none;"/>
 					</div>
 					<div align=center>
 						<font size=2>
-							<i><p/><p/>contato@tamastigadu.com.br <br/>atualizado em 03/2023 versão 00.40.21</i>
+							<i><p/><p/>contato@tamastigadu.com.br <br/>atualizado em 03/2023 versão 00.00.00</i>
 						</font>
 					</div>
 			  </li>
@@ -480,7 +481,7 @@ input:checked[type="checkbox"]::before{
 
 	<div id="divNivel" align=center style="margin-left:auto; margin-right:auto; display:none;">
 		<br/>
-		<img id="imgNivelTema" style="width:150px;"></img>
+		<img id="imgNivelTema" style="width:150px; border-radius:50%;" title="Tema"></img>
 
 		<br/><br/><br/>
 		<table id="tblNivel" border=0 style="width:95%;" align=center>
@@ -490,14 +491,14 @@ input:checked[type="checkbox"]::before{
 	
 		<br/><br/><br/>
 		<label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-			<button id="btnListaPerguntas" class="btn btn-primary"><i class="fa fa-list" style="font-size:35px;"></i></button>
+			<button id="btnListaPerguntas" class="btn btn-primary"><i class="fa fa-list" style="font-size:35px;" title="Lista de perguntas"></i></button>
 		</label>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-			<button id="btnEstatisticas" class="btn btn-primary"><i class="fa fa-signal" style="font-size:35px;"></i></button>
+			<button id="btnEstatisticas" class="btn btn-primary"><i class="fa fa-signal" style="font-size:35px;" title="Estatísticas"></i></button>
 		</label>
 	</div>
-	
+
 	<div id="divcontent" style="display:'none';">
 	</div>
 
@@ -510,7 +511,7 @@ input:checked[type="checkbox"]::before{
 			
 			<table border=0 width="95%" align=center style="border-color:gray; border-radius:30px; border-style:solid; border-color:white; border-width:3px;">
 				<tr><td id="mytextSim" style="display:'none'; text-align:justify; width:1%;"></td></tr>
-				<tr><td id="mytextSim2" style="display:none; text-align:justify; width:1%;"></td></tr>
+				<!-- tr><td id="mytextSim2" style="display:none; text-align:justify; width:1%;"></td></tr -->
 			</table>
 			
 			<table id="tableFormSimQuestions" border=0 align=center style="display:'none'; width:95%;" Zclass="table table-hover">
