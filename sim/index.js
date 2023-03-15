@@ -15,13 +15,9 @@ var GLOBAL_buttoncolor = 'btn-colors';
 var GLOBAL_background_black = 'black';
 var COL_LOGOTIPO = 5;
 var linkhelp = '';
-//var CONTS_languagebra = '<img src="img/bandeirabra.png" class="flutuante" width="25px" style="cursor:pointer; border-radius:50%;" title="Traduzir para Português">';
-//var CONTS_languageusa = '<img src="img/bandeirausa.png" class="flutuante" width="25px" style="cursor:pointer; border-radius:50%;" title="Translate to English">';
 var CONST_TEMA_AWS_CLFC01 = 1;
 var CONST_TEMA_AZURE_AZ900 = 2;
 var CONST_TEMA_ORACLE_1ZO108522 = 3;
-//var CONST_CATEGORIA_TREINO = 2;
-//var CONST_CATEGORIA_DESAFIO = 4;
 var CONST_MYCATEGORY_1 = '1';
 var CONST_MYCATEGORY_2 = '2';
 
@@ -574,7 +570,6 @@ function registerEvents() {
 			var mygroup = document.getElementById('mygroupSim').value;
 			var mycode = parseInt(document.getElementById('mycodeSim').value) + 0;
 			refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode);
-//loading();
 		} catch (ex) {
 			alert('imgLanguage ' + ex.message)
 		}
@@ -666,17 +661,6 @@ function registerEvents() {
 	$('#btnFecharFormUser').click(function () {
 		showFormApresentacao();
 	})
-}
-
-async function loading() {
-	var params = new URLSearchParams(window.location.search);
-	var mytema = params.get('tem');
-	var totalperguntas = await jsstoreCon.count({
-		from: 'Student'
-			, where: { mytema: mytema + ''
-		  }
-	});
-	alert('loading tema ' + mytema + ': ' + totalperguntas);
 }
 
 async function initConfigGeneral() {
@@ -1117,20 +1101,10 @@ async function refreshTableNivel(mytema, mycategory, mycode, myorder, mygroup, m
 			varFase = student.mygroup;
 			mygroup = student.mygroup;
 		})
-//alert('mytema='+mytema + ' mycategory='+mycategory + ' varNivel='+varNivel + ' varFase='+varFase);
 		
 		htmlString = '';
 		htmlString = htmlString + '<tr>';
 		htmlString = htmlString + '<td>';
-
-//		htmlString = htmlString + '<label style="border-radius:10px; border-style:double; border-color:gray; border-width:2px; color:#000000; background-color:#FFFFFF;">';
-//		htmlString = htmlString + '<label id="btnNivel" class="btn btn-dark" style="border-radius:10px; font-size:15px; font-family:Helvetica; border-width:0px; -webkit-text-stroke-width: 1px; cursor:default; ">';
-//		htmlString = htmlString + 'Nível ' + varNivel;
-//		htmlString = htmlString + '<label style="border-radius:10px; font-size:20px; position:absolute; background-color:white; color:gray; width:70px; border-width:0px; font-family:Helvetica; cursor:pointer;">Nível ' + varNivel + '</label>';
-//		htmlString = htmlString + '<br/>';
-
-//		htmlString = htmlString + '</label>';
-//		htmlString = htmlString + '</label>';
 
 		htmlString = htmlString + '</td>';
 		htmlString = htmlString + '</tr>';
@@ -1152,36 +1126,6 @@ async function refreshTableNivel(mytema, mycategory, mycode, myorder, mygroup, m
 		htmlString = htmlString + '</tr>';
 //alert('mytema='+mytema + ' mycategory='+mycategory + ' myid='+myid + ' mygroup=' + mygroup + ' mycode=' + mycode);
         $('#tblNivel tbody').html(htmlString);
-}
-
-//This function refreshes the table
-async function refreshTableResult() {
-    try {
-		//Perguntas
-		var students = await jsstoreCon.count({
-			from: 'Student'
-		});
-		if (students == '0') {
-			var labelStudents = "<label class=\"btn btn-default\" style=\"width:200px; \"> Letras: " + students + "</label>";
-		} else if (students > '0' && students < '10830') {
-			var labelStudents = "<label class=\"btn btn-default\" style=\"width:200px; \"> Letras: " + students + " de ~10892 </label>";
-		} else {
-			var labelStudents = "<label class=\"btn btn-info\" style=\"width:200px; \"> Letras: " + students + " <i class=\"fa fa-check\"></i></label>";
-		}
-		
-		var buttonFechar = "";
-		if (students == '0') {
-			buttonFechar = '<button class="btn btn-default" style="padding:9px 15px 9px 15px; width:200px;"> Aguarde o botão continuar...</button>';
-		} else {
-			buttonFechar = '<button class="btn btn-danger" onclick="showIndex();" style="padding:9px 15px 9px 15px; width:200px;"> Continuar <i class="fa fa-forward"></i> </button>';
-			showIndex();
-//			console.log('Pronto! Fim da configuração.');
-		}
-		//Resultado
-		$('#tblEstatisticas tbody').html(labelStudents + '<br/>' + '<br/>' + buttonFechar);
-	} catch (ex) {
-        console.log(ex.message)
-    }
 }
 
 async function deletefase(mytema, mycategory, mygroup, mycode, myid) {
@@ -2161,9 +2105,27 @@ function onLoadConfig() {
 		loadCombobox('mycode', '0', '200', 'Número');
 		loadCombobox('myorder', '0', '200', 'Ordem');
 		confirmImport(mytema, mycategory, 'contents1', '0');
-//	setTimeout(() => { document.getElementById('tblEstatisticas').style.display='none'; }, 1000); // Executa após 1 segundo para esperar o processo terminar
 	} catch (ex) {
         alert('onLoadConfig ' + ex.message);
+    }
+}
+
+//This function refreshes the table
+async function refreshTableResult(total) {
+    try {
+		var students = await jsstoreCon.count({
+			from: 'Student'
+		});
+//alert('students='+students + ' total='+total);
+		if (parseInt(students) >= parseInt(total)) {
+			document.getElementById('divContinuar').style.display='';
+			document.getElementById('divLoading').style.display='none';
+		} else {
+			document.getElementById('divContinuar').style.display='none';
+			document.getElementById('divLoading').style.display='';
+		}
+	} catch (ex) {
+        console.log(ex.message)
     }
 }
 
@@ -2174,7 +2136,7 @@ function buscaValorTag(valor, key) {
 		var result = valor.substring(posini, posfim).trim();
 		result = result.replaceAll('<' + key + '>', '');
 		result = result.replaceAll('</' + key + '>', '');
-//	alert('posini: '+posini + ' posfim: '+posfim + ' result: ['+result+']');
+//alert('posini: '+posini + ' posfim: '+posfim + ' result: ['+result+']');
 		return result;
     } catch (ex) {
         alert('buscaValorTag ' + ex.message);
@@ -2185,11 +2147,11 @@ function removeTags(valor, key) {
 	var posini = valor.indexOf('<' + key + '>', 0);
 	var posfim = valor.indexOf('</' + key + '>', 0);
 	if (posini == -1 || posfim == -1) {
-//		alert('posini: '+posini + ' posfim: '+posfim + ' vazio: ' + valor);
+//alert('posini: '+posini + ' posfim: '+posfim + ' vazio: ' + valor);
 		return valor;
 	} else {
 		var result = valor.substring(0, posini).trim() + '' + valor.substring(posfim+key.length+3, valor.length).trim();
-//		alert('posini: '+posini + ' posfim: '+posfim + ' result: [' + result + ']');
+//alert('posini: '+posini + ' posfim: '+posfim + ' result: [' + result + ']');
 		return result;
 	}
 }
@@ -2291,56 +2253,11 @@ function getArrayAnswers(valor) {
 
 function getLanguage(language, mytext) {
     try {
-/*	var retorno = '';
-	var posicaoini=0;
-	var languageini = '<'+language+'>';
-	var languagefim = '</'+language+'>';
-	var iniEnglish = '<english>';
-	var iniSpanish = '<spanish>';
-	var iniMandarim = '<mandarim>';
-	var iniArabe = '<arabe>';
-	var iniHindi = '<hindi>';
-	var iniFrancais = '<francais>';
-*/	
-	var posicaofim=0;
-	mytext = mytext.replaceAll('<p>\n', ''); //remove <p>ENTER
-	mytext = mytext.replaceAll('<p>', ''); //remove <p>
-	posicaofim = mytext.indexOf('\n\n', 0);
-	return mytext.substring(0, posicaofim);
-/*	mytext = mytext.replaceAll('<p>\n', ''); //remove <p>ENTER
-	mytext = mytext.replaceAll('<p>', ''); //remove <p>
-	if (language == '' || language == 'portugues') {
-		posicaofim = mytext.indexOf(iniEnglish, posicaoini);
-		if (posicaofim == -1) {
-			posicaofim = mytext.indexOf(iniSpanish, posicaoini);
-			if (posicaofim == -1) {
-				posicaofim = mytext.indexOf('\n\n', posicaoini);
-				if (posicaofim == -1) {
-					posicaofim = mytext.length;
-				}
-				return mytext.substring(posicaoini, posicaofim);
-			} else {
-				return mytext.substring(posicaoini, posicaofim);
-			}
-		} else {
-			return mytext.substring(posicaoini, posicaofim);
-		}
-	} else {
-		posicaoini = mytext.indexOf(languageini, posicaoini);
-		if (posicaoini == -1) {
-			return '';
-		} else {
-			posicaoini = posicaoini + languageini.length;
-			posicaofim = mytext.indexOf(languagefim, posicaoini);
-			if (posicaofim == -1) {
-				return '';
-			} else {
-				return mytext.substring(posicaoini, posicaofim);
-			}
-		}
-	}
-	return retorno;
-*/
+		var posicaofim=0;
+		mytext = mytext.replaceAll('<p>\n', ''); //remove <p>ENTER
+		mytext = mytext.replaceAll('<p>', ''); //remove <p>
+		posicaofim = mytext.indexOf('\n\n', 0);
+		return mytext.substring(0, posicaofim);
     } catch (ex) {
         alert('getLanguage ' + ex.message);
     }

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Configuração Sim</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/bootstrap.css" />
+    <link rel="stylesheet" href="style/font-awesome.min.css" />
+    <script src="scripts/jsstore.js"></script>
+    <script src="scripts/jsstore.worker.js"></script>
+    <script src="index.js"></script>
+	<style>
+#myBody {
+  border: 0px dashed blue;
+  padding: 25px;
+  background-attachment: fixed;
+  background-position: top; 
+  background-repeat: no-repeat;
+} 
+	</style>
+</head>
+
+<body id="myBody" ZZZbackground="gallery/paper.jpeg">
+		
+			<div style="display:'none'; text-align:center; ">
+				<div id="divContinuar" style="display:none;">
+					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Está tudo pronto</div>
+					<br/><div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">Já pode continuar</div>
+					<br/><button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=2&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
+				</div>
+				<div id="divLoading" style="display:'none';">
+					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Aguarde...</div>
+					<br/><div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">Estamos preparando tudo para você</div>
+					<video id="vdoLoaging" ZZZposter="img/fundonoite.jpg" width="320" height="240" autoplay muted loop>
+						<source src="video/loading.mp4" type="video/mp4">
+						<source src="video/loading.ogg" type="video/ogg">
+						Formato não suportado. Your browser does not support the video tag.
+					</video>
+				</div>
+				
+				<label id="bSearch" style="display:none;">
+					<input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:200px; height:34px;">
+				</label>
+			</div>
+
+		<table id="tblGrid" style="width:98%" class="table table-hover ">
+			<tbody>
+				<div id="divbotoes" style="display:none; text-align:center;">
+					<button id="btntreino" class="botao flutuante" onclick="changeCategory('2');" style="background-color:gray; display:none;">Treino</button>
+					&nbsp;&nbsp;</td>
+					<button id="btndesafio" class="botao flutuante" onclick="changeCategory('4');" style="background-color:black; display:none;">Desafio</button>
+				</div>
+			</tbody>
+		</table>
+
+		<!-- form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post" -->
+		<!-- /form -->
+		
+		<div class="form-group" id="divFormSim" style="display:none;">
+			<font size=4.9 style=text-align:justify>
+				<table border=0 align=center width="100%">
+					<tr><td>
+						<button id="btnBackward" class="btn btn-danger" style="display:none;"> <i class="fa fa-remove"></i> </button>
+						<button id="btnPrevious" class="btn btn-default" style="display:none;"> <i class="fa fa-chevron-left"></i></button>
+						<button id="btnNext" class="btn btn-success" style="display:none;">Próximo <i class="fa fa-chevron-right"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-signal"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-pause"></i></button>
+						<button class="btn btn-warning" style="display:none;"><i class="fa fa-check"></i> Fim</button>
+					</td></tr>
+					<tr><td id="mytextSim" style="display:none; text-align:justify;">
+					</td></tr>
+					<tr><td id="mycorrect1Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect1answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect2Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect2answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect3Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect3answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect4Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect4answer"></div>
+					</td></tr>
+
+					<tr><td id="myincorrect1Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect1answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect2Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect2answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect3Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect3answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect4Sim" style="display:none; text-align:justify;">
+						<div id="myincorrecta4answer"></div>
+					</td></tr>
+					<tr><td>
+						<br/><input type="text" id="mygroupSim" value="" Zhidden="">
+						<br/><input type="text" id="mycodeSim" value="" Zhidden="">
+						<br/><input type="text" id="myorderSim" value="" Zhidden="">
+						<br/><input type="text" id="myidSim" value="" Zhidden="">
+					</td></tr>
+				</table>
+				<table id="tableFormSimDashboard" border=0 align=center width="60%" style="display:'none';">
+					<tr><td nowrap id="txtCalculo"></td></tr>
+					<tr><td nowrap><input type="text" id="txtIncorretas" value="Incorretas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:red;" readonly /></td></tr>
+					<tr><td nowrap><input type="text" id="txtCorretas" value="Corretas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:green;" readonly /></td></tr>
+					<tr><td nowrap><input type="text" id="txtNaoRespondidas" value="Não Respondidas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:blue;" readonly /></td></tr>
+					<tr><td nowrap><br/><input type="text" id="txtTotal" value="Total" class="btn btn-default" style="padding:9px 15px 9px 15px; display:'none';" hidden=""></td></tr>
+				</table>
+				<table id="tableLinkhelp" border=0 align=center style="display:'none';">
+					<tr><td id="help" style="display:none; text-align:justify;">
+						<div id="divlinkhelp"></div>
+					</td></tr>
+				</table>
+			</font>
+		</div>
+
+		<div class="form-group" id="divFormAddUpdate" style="display:none;">
+			<table border=0 align=center width="98%" style="display:none;"><tr><td>
+				<b>Formulário Editor de Perguntas</b>
+				<p/><p/>
+				<select id="mygroup" name="mygroup" style="height:35px; display:none;">
+					<!-- option value="00">Configurações</option -->
+					<option value="10">Nível 1.0</option>
+					<option value="11">Nível 1.1</option>
+					<option value="12">Nível 1.2</option>
+					<option value="13">Nível 1.3</option>
+					<option value="14">Nível 1.4</option>
+					<option value="20">Nível 2.0</option>
+					<option value="21">Nível 2.1</option>
+					<option value="22">Nível 2.2</option>
+					<option value="23">Nível 2.3</option>
+					<option value="30">Nível 3.0</option>
+					<option value="31">Nível 3.1</option>
+					<option value="32">Nível 3.2</option>
+					<option value="33">Nível 3.3</option>
+					<option value="40">Nível 4.0</option>
+					<option value="41">Nível 4.1</option>
+					<option value="42">Nível 4.2</option>
+					<option value="43">Nível 4.3</option>
+					<option value="44">Nível 4.4</option>
+					<option value="45">Nível 4.5</option>
+					<option value="46">Nível 4.6</option>
+					<option value="50">Nível 5.0</option>
+
+				</select>
+				<select id="mycode" name="mycode" style="height:35px; display:none;"></select>
+				<select id="myorder" name="myorder" style="height:35px; display:none;"></select>
+				<p/>
+				<p/><textarea name="mytext" id="mytext" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui..."></textarea>
+				<p/><textarea name="mytext2" id="mytext2" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui em Inglês..."></textarea>
+				<p/><textarea name="mytext3" id="mytext3" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui em Espanhol..."></textarea>
+				<font style="color:green;">
+					Corretas:
+					<textarea name="myoption1" id="myoption1" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey1" id="myoptionkey1" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption2" id="myoption2" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey2" id="myoptionkey2" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption3" id="myoption3" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey3" id="myoptionkey3" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption4" id="myoption4" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey4" id="myoptionkey4" rows=1 placeholder="explicação..."></textarea>
+				</font>
+				
+				<font style="color:red; text-align:left;">
+					Incorretas:
+					<textarea name="myoption5" id="myoption5" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey5" id="myoptionkey5" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption6" id="myoption6" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey6" id="myoptionkey6" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption7" id="myoption7" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey7" id="myoptionkey7" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption8" id="myoption8" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey8" id="myoptionkey8" rows=1 placeholder="explicação..."></textarea>
+				</font>
+				<p/><p/>
+				<button id="btnSubmit" type="button" class="btn btn-primary" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-check"></i> Salvar</button>
+				<p/><p/>
+				<button id="btnCancel" type="button" class="btn btn-default" style="padding:9px 15px 9px 15px;margin-left:10px; width:110px;"> <i class="fa fa-times"></i> Não Salvar</button>
+			</td></tr></table>
+		</div>
+		
+		<div id="divcontent" style="display:none;">
+
+<!-- Configuração: 1 -->
+<br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
+<p>
+<portugues>FASE 4</portugues>
+<english>PHASE 4</english>
+<espanhol>FASE 4</espanhol>
+
+<p>
+<portugues>Sua empresa está planejando hospedar recursos usando os serviços do Azure. Você tem que decidir sobre o serviço certo para usar para o requisito desejado. Qual dos seguintes você usaria para o seguinte requisito? "Fornecer um serviço que pode ser usado para hospedar um data warehouse".</portugues>
+<english>Your company is planning on hosting resources using Azure services. You have to decide on the right service to use for the desired requirement. Which of the following would you use for the following requirement? "Provide a service that can be used to host a data warehouse".</english>
+<espanhol>Su empresa planea hospedar recursos mediante los servicios de Azure. Tienes que decidir sobre el servicio adecuado para utilizar para su requisito deseado. ¿Cuál de los siguientes usaría para el siguiente requisito? "Proporcionar un servicio que se pueda utilizar para alojar un almacén de datos".</espanhol>
+
+<ok>
+<portugues>Análise de Sinapse do Azure</portugues>
+<english>Azure Synapse Analytics</english>
+<espanhol>Análisis de Azure Synapse</espanhol>
+<tip>Análise de Sinapse do Azure pode ser para hospedar um data warehouse. Pode hospedar um armazém de Big Data e também executar Big Data Analytics.
+<br/><a href="https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Serviço Cognitivo do Azure</portugues>
+<english>Azure Cognitive Service</english>
+<espanhol>Servicio Cognitivo de Azure</espanhol>
+<tip>Serviço Cognitivo do Azure é para criar inteligência cognitiva em aplicativos.
+<br/><a href="https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Azure DevOps</portugues>
+<english>Azure DevOps</english>
+<espanhol>Azure DevOps</espanhol>
+<tip>Azure DevOps é um conjunto de ferramentas usadas para implementar o DevOps.
+<br/><a href="https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Serviço de Bot do Azure</portugues>
+<english>Azure Bot Service</english>
+<espanhol>Servicio de Bots de Azure</espanhol>
+<tip>Serviço de Bot do Azure é para criar bots inteligentes em aplicativos.
+<br/><a href="https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Sua empresa está planejando hospedar recursos usando os serviços do Azure. Você tem que decidir sobre o serviço certo para usar para o requisito desejado. Qual dos seguintes você usaria para o seguinte requisito? "Fornecer um serviço que seja usado para adicionar recursos de inteligência artificial a aplicativos".</portugues>
+<english>Your company is planning on hosting resources using Azure services. You have to decide on the right service to use for the desired requirement. Which of the following would you use for the following requirement? "Provide a service that be used to add artificial intelligence features to applications".</english>
+<espanhol>Su empresa planea hospedar recursos mediante los servicios de Azure. Tienes que decidir sobre el servicio adecuado para utilizar para su requisito deseado. ¿Cuál de los siguientes usaría para el siguiente requisito? "Proporcionar un servicio que se utiliza para agregar capacidades de inteligencia artificial a las aplicaciones".</espanhol>
+
+<ok>
+<portugues>Serviço Cognitivo do Azure</portugues>
+<english>Azure Cognitive Service</english>
+<espanhol>Servicio Cognitivo de Azure</espanhol>
+<tip>Serviço Cognitivo do Azure pode usar o serviço Cognitivo do Azure para criar aplicativos com recursos de inteligência artificial. <br/>Há vários serviços disponíveis nos serviços cognitivos do Azure com base nas seguintes categorias: <br/>Visão, Fala, Idioma, Decisão, Pesquisar.
+<br/><a href="https://docs.microsoft.com/en-us/azure/cognitive-services/what-are-cognitive-services" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Azure DevOps</portugues>
+<english>Azure DevOps</english>
+<espanhol>Azure DevOps</espanhol>
+<tip>Azure DevOps é um conjunto de ferramentas usadas para implementar o DevOps.
+<br/><a href="https://docs.microsoft.com/en-us/azure/cognitive-services/what-are-cognitive-services" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Serviço de Bot do Azure</portugues>
+<english>Azure Bot Service</english>
+<espanhol>Servicio de Bots de Azure</espanhol>
+<tip>Serviço de Bot do Azure é para criar bots inteligentes em aplicativos.
+<br/><a href="https://docs.microsoft.com/en-us/azure/cognitive-services/what-are-cognitive-services" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Análise de Sinapse do Azure</portugues>
+<english>Azure Synapse Analytics</english>
+<espanhol>Análisis de Azure Synapse</espanhol>
+<tip>Análise de Sinapse do Azure é para hospedar um data warehouse.
+<br/><a href="https://docs.microsoft.com/en-us/azure/cognitive-services/what-are-cognitive-services" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Sua empresa está planejando hospedar recursos usando os serviços do Azure. Você tem que decidir sobre o serviço certo para usar para o requisito desejado. Qual dos seguintes você usaria para o seguinte requisito? "Fornecer um serviço que seja usado para integrar bots com aplicativos".</portugues>
+<english>Your company is planning on hosting resources using Azure services. You have to decide on the right service to use for the desired requirement. Which of the following would you use for the following requirement? "Provide a service that be used to integrate bots with applications".</english>
+<espanhol>Su empresa planea hospedar recursos mediante los servicios de Azure. Tienes que decidir sobre el servicio adecuado para utilizar para su requisito deseado. ¿Cuál de los siguientes usaría para el siguiente requisito? "Proporcionar un servicio que se utiliza para integrar bots con aplicaciones".</espanhol>
+
+<ok>
+<portugues>Serviço de Bot do Azure</portugues>
+<english>Azure Bot Service</english>
+<espanhol>Servicio de Bots de Azure</espanhol>
+<tip>Serviço de Bot do Azure pode usar o serviço Azure Bot para criar bots em aplicativos.
+<br/><a href="https://docs.microsoft.com/en-us/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Serviço Cognitivo do Azure</portugues>
+<english>Azure Cognitive Service</english>
+<espanhol>Servicio Cognitivo de Azure</espanhol>
+<tip>Serviço Cognitivo do Azure é para criar inteligência cognitiva em aplicativos.
+<br/><a href="https://docs.microsoft.com/en-us/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Azure DevOps</portugues>
+<english>Azure DevOps</english>
+<espanhol>Azure DevOps</espanhol>
+<tip>Azure DevOps é um conjunto de ferramentas usadas para implementar o DevOps.
+<br/><a href="https://docs.microsoft.com/en-us/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Análise de Sinapse do Azure</portugues>
+<english>Azure Synapse Analytics</english>
+<espanhol>Análisis de Azure Synapse</espanhol>
+<tip>Análise de Sinapse do Azure é para hospedar um Data Warehouse.
+<br/><a href="https://docs.microsoft.com/en-us/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Sua empresa está planejando hospedar recursos usando os serviços do Azure. Você tem que decidir sobre o serviço certo para usar para o requisito desejado. Qual dos seguintes você usaria para o seguinte requisito? "Fornecer um conjunto de ferramentas que podem ser usadas para implementar o DevOps".</portugues>
+<english>Your company is planning on hosting resources using Azure services. You have to decide on the right service to use for the desired requirement. Which of the following would you use for the following requirement? "Provide a set of tools that can be used for implementing DevOps".</english>
+<espanhol>Su empresa planea hospedar recursos mediante los servicios de Azure. Tienes que decidir sobre el servicio adecuado para utilizar para su requisito deseado. ¿Cuál de los siguientes usaría para el siguiente requisito? "Proporcione un conjunto de herramientas que se puedan usar para implementar DevOps".</espanhol>
+
+<ok>
+<portugues>Azure DevOps</portugues>
+<english>Azure DevOps</english>
+<espanhol>Azure DevOps</espanhol>
+<tip>Azure DevOps pode usar o conjunto de serviços do Azure DevOps para implementar o DevOps. Os serviços do Azure DevOps têm os seguintes serviços em vigor:<br/> Repositórios do Azure, Pipelines do Azure, Placas Azure, Planos de teste do Azure, Artefatos do Azure.
+<br/><a href="https://azure.microsoft.com/en-us/services/devops/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Serviço Cognitivo do Azure</portugues>
+<english>Azure Cognitive Service</english>
+<espanhol>Servicio Cognitivo de Azure</espanhol>
+<tip>Serviço Cognitivo do Azure é para criar inteligência cognitiva em aplicativos.
+<br/><a href="https://azure.microsoft.com/en-us/services/devops/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Serviço de Bot do Azure</portugues>
+<english>Azure Bot Service</english>
+<espanhol>Servicio de Bots de Azure</espanhol>
+<tip>Serviço de Bot do Azure é para criar bots inteligentes em aplicativos.
+<br/><a href="https://azure.microsoft.com/en-us/services/devops/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Análise de Sinapse do Azure</portugues>
+<english>Azure Synapse Analytics</english>
+<espanhol>Análisis de Azure Synapse</espanhol>
+<tip>Análise de Sinapse do Azure é para hospedar um data warehouse.
+<br/><a href="https://azure.microsoft.com/en-us/services/devops/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Sua empresa deseja começar a trabalhar com o Azure. Eles querem criar e gerenciar recursos no Azure. Você seria capaz de criar recursos usando a CLI do Azure?</portugues>
+<english>Your company wants to start working with Azure. They want to create and manage resources in Azure. Would you be able to create resources using the Azure CLI?</english>
+<espanhol>Su empresa quiere comenzar con Azure. Quieren crear y administrar recursos en Azure. ¿Sería capaz de crear recursos mediante la CLI de Azure?</espanhol>
+
+<ok>
+<portugues>Sim</portugues>
+<english>Yes</english>
+<espanhol>Sí</espanhol>
+<tip>A interface de linha de comando do Azure destina-se a criar e gerenciar recursos no Azure.
+<br/><a href="https://docs.microsoft.com/en-us/cli/azure/what-is-azure-cli" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Não</portugues>
+<english>No</english>
+<espanhol>No</espanhol>
+<tip>Não se aplica para esta reposta.
+<br/><a href="https://docs.microsoft.com/en-us/cli/azure/what-is-azure-cli" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Sua empresa deseja começar a trabalhar com o Azure. Eles querem criar e gerenciar recursos no Azure. Você seria capaz de criar recursos usando o PowerShell?</portugues>
+<english>Your company wants to start working with Azure. They want to create and manage resources in Azure. Would you be able to create resources using the PowerShell?</english>
+<espanhol>Su empresa quiere comenzar con Azure. Quieren crear y administrar recursos en Azure. ¿Sería capaz de crear recursos usando PowerShell?</espanhol>
+
+<ok>
+<portugues>Sim</portugues>
+<english>Yes</english>
+<espanhol>Sí</espanhol>
+<tip>O PowerShell pode instalar os módulos do Azure PowerShell e trabalhar com recursos no Azure.
+<br/><a href="https://docs.microsoft.com/en-us/powershell/azure/?view=azps-5.1.0" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Não</portugues>
+<english>No</english>
+<espanhol>No</espanhol>
+<tip>Não se aplica para esta reposta.
+<br/><a href="https://docs.microsoft.com/en-us/powershell/azure/?view=azps-5.1.0" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Sua empresa deseja hospedar um conjunto de máquinas virtuais do Azure. Mas eles querem garantir que apenas suas máquinas virtuais sejam hospedadas no servidor físico subjacente. Qual dos seguintes você faria uso para este requisito?</portugues>
+<english>Your company wants to host a set of Azure virtual machines. But they want to ensure that only their virtual machines are hosted on the underlying physical server. Which of the following would you make use of for this requirement?</english>
+<espanhol>Su empresa desea alojar un conjunto de máquinas virtuales de Azure. Pero quieren asegurarse de que solo sus máquinas virtuales estén alojadas en el servidor físico subyacente. ¿Cuál de los siguientes usaría para este requisito?</espanhol>
+
+<ok>
+<portugues>Hosts Dedicados do Azure</portugues>
+<english>Azure Dedicated Hosts</english>
+<espanhol>Hosts Dedicados de Azure</espanhol>
+<tip>Hosts Dedicados do Azure podem receber o servidor físico subjacente como um recurso. Pode hospedar máquinas virtuais no servidor físico subjacente.
+<br/><a href="https://docs.microsoft.com/en-us/azure/virtual-machines/dedicated-hosts" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Serviço de Aplicativo do Azure</portugues>
+<english>Azure App Service</english>
+<espanhol>Servicio de aplicaciones de Azure</espanhol>
+<tip>Serviço de Aplicativo do Azure é usada para hospedar aplicativos da web.
+<br/><a href="https://docs.microsoft.com/en-us/azure/virtual-machines/dedicated-hosts" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Azure Kubernetes</portugues>
+<english>Azure Kubernetes</english>
+<espanhol>Azure Kubernetes</espanhol>
+<tip>Azure Kubernetes é usada para hospedar aplicativos baseados em contêiner.
+<br/><a href="https://docs.microsoft.com/en-us/azure/virtual-machines/dedicated-hosts" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Funções do Azure.</portugues>
+<english>Azure Functions.</english>
+<espanhol>Funciones de Azure.</espanhol>
+<tip>Funções do Azure é usada como um serviço de computação sem servidor.
+<br/><a href="https://docs.microsoft.com/en-us/azure/virtual-machines/dedicated-hosts" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Uma empresa deseja usar os vários serviços de segurança no Azure. Eles querem ter a capacidade de armazenar segredos e certificados na nuvem do Azure.
+Eles decidem usar o serviço Cofre da Chave do Azure.
+Isso cumpriria o requisito?</portugues>
+<english>A company wants to make use of the various security services in Azure. They want to have the ability to store secrets and certificates in Azure cloud.
+They decide to use the Azure Key Vault service.
+Would this fulfil the requirement?</english>
+<espanhol>Una empresa desea utilizar los diversos servicios de seguridad de Azure. Quieren la capacidad de almacenar secretos y certificados en la nube de Azure.
+Deciden usar el servicio Azure Key Vault.
+¿Esto cumpliría con el requisito?</espanhol>
+
+<ok>
+<portugues>Sim</portugues>
+<english>Yes</english>
+<espanhol>Sí</espanhol>
+<tip>O serviço Cofre da Chave do Azure também pode armazenar segredos, chaves de criptografia e certificados.
+<br/><a href="https://docs.microsoft.com/en-us/azure/key-vault/secrets/quick-create-portal" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Não</portugues>
+<english>No</english>
+<espanhol>No</espanhol>
+<tip>Não se aplica para esta reposta.
+<br/><a href="https://docs.microsoft.com/en-us/azure/key-vault/secrets/quick-create-portal" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Uma empresa deseja usar os vários serviços de segurança no Azure. Eles querem obter recomendações de segurança para os recursos implantados em sua assinatura do Azure.
+<br/>Eles decidem usar o serviço Cofre da Chave do Azure. Isso cumpriria o requisito?</portugues>
+<english>A company wants to make use of the various security services in Azure. They want get security recommendations for resources deployed to their Azure subscription.
+<br/>They decide to use the Azure Key Vault service. Would this fulfil the requirement?</english>
+<espanhol>Una empresa desea utilizar los diversos servicios de seguridad de Azure. Quieren obtener recomendaciones de seguridad para los recursos implementados en su suscripción de Azure.
+<br/>Deciden usar el servicio Azure Key Vault. ¿Esto cumpliría con el requisito?</espanhol>
+
+<ok>
+<portugues>Não</portugues>
+<english>No</english>
+<espanhol>No</espanhol>
+<tip>O Cofre da Chave do Azure é um serviço de nuvem para armazenar segredos, chaves de criptografia e certificados. Usam o "Microsoft Defender for Cloud".
+<br/><a href="https://docs.microsoft.com/en-us/azure/key-vault/secrets/quick-create-portal" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Sim</portugues>
+<english>Yes</english>
+<espanhol>Sí</espanhol>
+<tip>Não se aplica para esta resposta.
+<br/><a href="https://docs.microsoft.com/en-us/azure/key-vault/secrets/quick-create-portal" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Uma empresa deseja usar os vários serviços de segurança no Azure. Eles querem restringir o tráfego de entrada para máquinas virtuais do Azure.
+<br/>Eles decidem usar o serviço da Central de Segurança do Azure. Isso cumpriria o requisito?</portugues>
+<english>A company wants to make use of the various security services in Azure. They want to restrict the Inbound traffic to Azure virtual machines.
+<br/>They decide to use the Azure Security Center service. Would this fulfil the requirement?</english>
+<espanhol>Una empresa desea utilizar los diversos servicios de seguridad de Azure. Quieren restringir el tráfico entrante a las máquinas virtuales de Azure.
+<br/>Deciden utilizar el servicio Azure Security Center. ¿Esto cumpliría con el requisito?</espanhol>
+
+<ok>
+<portugues>Não</portugues>
+<english>No</english>
+<espanhol>No</espanhol>
+<tip>Nessa situação é necessário usar Grupos de Segurança de Rede para adicionar regras de Entrada para restringir o tráfego de Entrada a máquinas virtuais. O serviço da Central de Segurança do Azure é usado para fortalecer a postura de segurança dos recursos criados como parte de sua assinatura do Azure.
+<br/><a href="https://docs.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Sim</portugues>
+<english>Yes</english>
+<espanhol>Sí</espanhol>
+<tip>Não se aplica para essa resposta.
+<br/><a href="https://docs.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+
+</textarea>
+
+		</div>
+
+    <link href="style/main.css " rel="stylesheet " type="text/css " />
+</body>
+
+</html>
+
+<script type="text/javascript">
+	onLoadConfig();
+</script>
