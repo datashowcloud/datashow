@@ -463,4 +463,14 @@
 
 <script type="text/javascript">
 	onLoadConfig();
+	
+	var quantidadeRegistrosP = '11'; // <p>
+	refreshTableResult(quantidadeRegistrosP);
+	function callback() {
+		setTimeout (function () {
+			refreshTableResult(quantidadeRegistrosP);
+			callback();
+		}, 100);
+	}
+	callback();
 </script>
