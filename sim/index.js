@@ -15,8 +15,8 @@ var GLOBAL_buttoncolor = 'btn-colors';
 var GLOBAL_background_black = 'black';
 var COL_LOGOTIPO = 5;
 var linkhelp = '';
-var CONTS_languagebra = '<img src="img/bandeirabra.png" class="flutuante" width="25px" style="cursor:pointer; border-radius:50%;" title="Traduzir para Português">';
-var CONTS_languageusa = '<img src="img/bandeirausa.png" class="flutuante" width="25px" style="cursor:pointer; border-radius:50%;" title="Translate to English">';
+//var CONTS_languagebra = '<img src="img/bandeirabra.png" class="flutuante" width="25px" style="cursor:pointer; border-radius:50%;" title="Traduzir para Português">';
+//var CONTS_languageusa = '<img src="img/bandeirausa.png" class="flutuante" width="25px" style="cursor:pointer; border-radius:50%;" title="Translate to English">';
 var CONST_TEMA_AWS_CLFC01 = 1;
 var CONST_TEMA_AZURE_AZ900 = 2;
 var CONST_TEMA_ORACLE_1ZO108522 = 3;
@@ -528,31 +528,24 @@ function registerEvents() {
 	$('#btnFormCategory').click(function () {
 		var DataShow_Config = window.open("index.html", "_self");
 	})
-
 	$('#imgTema1Apresentacao').click(function () {
 		loadNextLevel('1');
 	})
-
 	$('#imgTema2Apresentacao').click(function () {
 		loadNextLevel('2');
 	})
-
 	$('#imgTema3Apresentacao').click(function () {
 		loadNextLevel('3');
 	})
-
 	$('#btnTema1Apresentacao').click(function () {
 		loadNextLevel('1');
 	})
-
 	$('#btnTema2Apresentacao').click(function () {
 		loadNextLevel('2');
 	})
-
 	$('#btnTema3Apresentacao').click(function () {
 		loadNextLevel('3');
 	})
-
 	$('#imgTema1MenuTopo').click(function () {
 		loadNextLevel('1');
 	})
@@ -562,7 +555,25 @@ function registerEvents() {
 	$('#imgTema3MenuTopo').click(function () {
 		loadNextLevel('3');
 	})
-
+	$('#imgLanguage').click(function () {
+		var lingua = getLanguageFile(document.getElementById('imgLanguage').src);
+		if (lingua == 'english') {
+			document.getElementById('imgLanguage').src = 'img/portugues.jpg';
+		} else if (lingua == 'portugues') {
+			document.getElementById('imgLanguage').src = 'img/espanhol.jpg';
+		} else if (lingua == 'espanhol') {
+			document.getElementById('imgLanguage').src = 'img/english.jpg';
+		} else {
+			document.getElementById('imgLanguage').src = 'img/portugues.jpg';
+		}
+		var params = new URLSearchParams(window.location.search);
+		var mytema = params.get('tem');
+		var mycategory = params.get('cat');
+		var myid = document.getElementById('myidSim').value;
+		var mygroup = document.getElementById('mygroupSim').value;
+		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
+		refreshTableQuestion(mytema, mycategory, myid, mygroup, parseInt(mycode)-1);
+	})
 	$('#mytextSim').click(function () {
 		if (document.getElementById('mytextSim2') != null && document.getElementById('mytextSim2').innerText.length > 10) {
 			document.getElementById('mytextSim2').style.display='';
@@ -868,8 +879,8 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 				$('#mycodeSim').val(student.mycode);
 				$('#myorderSim').val(student.myorder);
 				
-				document.getElementById('mytextSim').innerHTML = CONTS_languageusa + ' ' + student.mycode + '/' + totalperguntas + '. ' + student.mytext;
-				document.getElementById('mytextSim2').innerHTML = CONTS_languagebra + ' ' + student.mycode + '/' + totalperguntas + '. ' + student.mytext2;
+				var lingua = getLanguageFile(document.getElementById('imgLanguage').src);
+				document.getElementById('mytextSim').innerHTML = student.mycode + '/' + totalperguntas + '. ' + buscaValorTag(student.mytext, lingua);
 
 				var valorIndice = '';
 				var myorder = student.myorder;
@@ -879,21 +890,22 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 					showGridAndHideForms();
 				} else {
 					myorder = myorder.replaceAll('\,', '');
-				
+
 					for (var index=0; index<8; index++) {
 						varMyorder = myorder.substring(index,index+1);
 						var textlink = '';
 						var linkhref = '';
 						var myoption = '';
 						var mycorrect = '';
-							 if (varMyorder == '1') { textlink = student.myoptionkey1; myoption = selectKeyMyoption(student.myoption1); mycorrect = student.mycorrect1answer; }
-						else if (varMyorder == '2') { textlink = student.myoptionkey2; myoption = selectKeyMyoption(student.myoption2); mycorrect = student.mycorrect2answer; }
-						else if (varMyorder == '3') { textlink = student.myoptionkey3; myoption = selectKeyMyoption(student.myoption3); mycorrect = student.mycorrect3answer; }
-						else if (varMyorder == '4') { textlink = student.myoptionkey4; myoption = selectKeyMyoption(student.myoption4); mycorrect = student.mycorrect4answer; }
-						else if (varMyorder == '5') { textlink = student.myoptionkey5; myoption = selectKeyMyoption(student.myoption5); mycorrect = student.mycorrect5answer; }
-						else if (varMyorder == '6') { textlink = student.myoptionkey6; myoption = selectKeyMyoption(student.myoption6); mycorrect = student.mycorrect6answer; }
-						else if (varMyorder == '7') { textlink = student.myoptionkey7; myoption = selectKeyMyoption(student.myoption7); mycorrect = student.mycorrect7answer; }
-						else if (varMyorder == '8') { textlink = student.myoptionkey8; myoption = selectKeyMyoption(student.myoption8); mycorrect = student.mycorrect8answer; }
+						
+							 if (varMyorder == '1') { textlink = student.myoptionkey1; myoption = selectKeyMyoption(buscaValorTag(student.myoption1, lingua)); mycorrect = student.mycorrect1answer; }
+						else if (varMyorder == '2') { textlink = student.myoptionkey2; myoption = selectKeyMyoption(buscaValorTag(student.myoption2, lingua)); mycorrect = student.mycorrect2answer; }
+						else if (varMyorder == '3') { textlink = student.myoptionkey3; myoption = selectKeyMyoption(buscaValorTag(student.myoption3, lingua)); mycorrect = student.mycorrect3answer; }
+						else if (varMyorder == '4') { textlink = student.myoptionkey4; myoption = selectKeyMyoption(buscaValorTag(student.myoption4, lingua)); mycorrect = student.mycorrect4answer; }
+						else if (varMyorder == '5') { textlink = student.myoptionkey5; myoption = selectKeyMyoption(buscaValorTag(student.myoption5, lingua)); mycorrect = student.mycorrect5answer; }
+						else if (varMyorder == '6') { textlink = student.myoptionkey6; myoption = selectKeyMyoption(buscaValorTag(student.myoption6, lingua)); mycorrect = student.mycorrect6answer; }
+						else if (varMyorder == '7') { textlink = student.myoptionkey7; myoption = selectKeyMyoption(buscaValorTag(student.myoption7, lingua)); mycorrect = student.mycorrect7answer; }
+						else if (varMyorder == '8') { textlink = student.myoptionkey8; myoption = selectKeyMyoption(buscaValorTag(student.myoption8, lingua)); mycorrect = student.mycorrect8answer; }
 						if (textlink.substring(0, 4) == 'tip:') {
 							textlink = textlink.substring(4);
 							linkhref = '';
@@ -943,8 +955,6 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 //This function refreshes the table
 async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, mytext, mytext2, mytext3) {
 //    try {
-//alert('mytema='+mytema + ' mycategory='+mycategory + ' mycode='+mycode + ' myorder='+myorder + ' mygroup='+mygroup);
-		
 		var students = await jsstoreCon.select({
 			from: 'Student'
 				, where: { mytema: mytema + ''
@@ -952,70 +962,8 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 			}
 			, order: [ {by: 'mycategory', type: 'desc'}, {by: 'mygroup', type: 'desc'} ]
 		});
-/*		if (mygroup == '' && mycode == '') {
-			var students = await jsstoreCon.select({
-				from: 'Student'
-					, where: { mytema: mytema + ''
-					, mycategory: mycategory + ''
-				}
-				, order: [ {by: 'mygroup', type: 'desc'}, {by: 'mycode'} ]
-			});
-		} else if (mygroup != '' && mycode != '') {
-			var students = await jsstoreCon.select({
-				from: 'Student'
-					, where: { mytema: mytema + ''
-					, mycategory: mycategory + ''
-					, mygroup: mygroup + ''
-					, mycode: mycode + ''
-				}
-				, order: [ {by: 'mygroup', type: 'desc'}, {by: 'mycode'} ]
-			});
-		} else if (mygroup != '' && mycode == '') {
-			var students = await jsstoreCon.select({
-				from: 'Student'
-					, where: { mytema: mytema + ''
-					, mycategory: mycategory + ''
-					, mygroup: mygroup + ''
-				}
-				, order: [ {by: 'mygroup', type: 'desc'}, {by: 'mycode'} ]
-			});
-		} else if (mygroup == '' && mycode != '') {
-			var students = await jsstoreCon.select({
-				from: 'Student'
-					, where: { mytema: mytema + ''
-					, mycategory: mycategory + ''
-					, mycode: mycode + ''
-				}
-				, order: [ {by: 'mygroup', type: 'desc'}, {by: 'mycode'} ]
-			});
-		}
-*/
-/*		var students_count = 0;
-		if (students != '') { //calcula students_count de todas perguntas da fase e categoria e grupo selecionado
-			var students_group = await jsstoreCon.select({
-				from: 'Student'
-					, where: { mytema: mytema + ''
-					, mycategory: mycategory + ''
-					, mygroup: '' + students[0].mygroup + ''
-				}
-			});
-			students_group.forEach(function (student) {
-				if (student.mycorrect1answer == '' && student.mycorrect2answer == '' && student.mycorrect3answer == '' && student.mycorrect4answer == ''
-				 && student.mycorrect5answer == '' && student.mycorrect6answer == '' && student.mycorrect7answer == '' && student.mycorrect8answer == '') {
-					students_count = parseInt(students_count + 1);
-				}
-			})
-		}
-*/		
 		var varButtonRestart = 'color:gray; font-size:20px;';
-//		var varCount = '<div class="playsim btn btn-success flutuante" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '; ">' + parseInt(students_count - 1) + '</div>';
 		var varCount = '';
-/*
-		if (parseInt(students_count - 1) == 0) {
-			varCount = '';
-			varButtonRestart = 'color:' + CONST_MEDIUM_SEA_GREEN + '; font-size:20px;';
-		}
-*/
 		setConfigBotoes();
 
 		var htmlString = "";
@@ -1025,8 +973,9 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 		var varNivelLinha = '';
 		var varNivelMax = '';
 		var varButtonLineStyle = 'color:gray; font-size:18px;';
-//		var varButtonLine = '<i class=\"fa fa-play avatarflutuante\" style="color:' + CONST_MEDIUM_SEA_GREEN + '; font-size:15px;"></i>';
 		var varRestart = '';
+		
+		var lingua = getLanguageFile(document.getElementById('imgLanguage').src);
 		
 		students.forEach(function (student) {
 			if (student.mycode == '0') {
@@ -1034,7 +983,6 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 				if (varCount == '') {
 					if (student.mypoints <= 0) {
 						varRestart = '';
-//						varCount = '<button class="playsim btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '; text-align:right;">fazer</button>';
 						varCount = '<button class="btn btn-success" onclick="window.open(\'index.html?tem=' + student.mytema + '&cat=' + student.mycategory + '\', \'_self\');" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '; text-align:right;">fazer</button>';
 					} else if (student.mypoints < 70) {
 						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + ' text-align:right; \"><button class="btn btn-danger">refazer</button></a>';
@@ -1068,7 +1016,7 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 				
 				//texto
 				+ "<" + varTdTh + " style=\"text-align:left;\" id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " ZZZonClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
-					+ '&nbsp; <a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + student.mytext + '</a> ' + '</' + varTdTh + '>'
+					+ '&nbsp; <a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + buscaValorTag(student.mytext, lingua) + '</a> ' + '</' + varTdTh + '>'
 				
 				//botão delete e refresh fase
 				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + '<button class=\"deletefase\" style=\"color:white; font-size:20px; border: 1px solid gray; background-color:gray; border-radius:50%; \" title=\"Atualizar fase\"> <i class=\"fa fa-refresh\"></i> </button>'
@@ -1236,6 +1184,19 @@ async function deletefase(mytema, mycategory, mygroup, mycode, myid) {
     } catch (ex) {
         console.log(ex.message);
     }
+}
+
+//A língua é o nome do arquivo.
+function getLanguageFile(arquivo) {
+	var pasta = 'img/'; //valor completo: file:///C:/DataShow/sim/img/english.jpg
+	var extensao = '.'; //exemplo: .jpg
+	var posini = arquivo.indexOf(pasta, 0); 
+	var posfim = arquivo.indexOf(extensao, 0);
+	lingua = arquivo.substring(posini + pasta.length, posfim).trim();
+	if (lingua.length < 1) {
+		lingua = 'portugues';
+	}
+	return lingua;
 }
 
 function initForm() {
@@ -1509,7 +1470,7 @@ async function loadNextLevel(temapaginaindex) {
 	var mytema = params.get('tem');
 	var mycategory = params.get('cat');
 	
-	if (temapaginaindex != '') {
+	if (temapaginaindex.length>0) {
 		mytema = temapaginaindex;
 		mycategory = '1';
 	} else {
@@ -1519,7 +1480,7 @@ async function loadNextLevel(temapaginaindex) {
 	var students = await jsstoreCon.select({
 		from: 'Student'
 			, where: { mytema: mytema + ''
-			, mycategory: '1'
+			, mycategory: mycategory + ''
 			, mygroup: '1'
 		  }
 	});
@@ -2260,7 +2221,7 @@ function getArrayAnswers(valor) {
 			}
 //			alert('array_KO: [' + arrayKO + ']');
 		}
-alert('valorlanguage2='+valorlanguage2);
+//alert('valorlanguage2='+valorlanguage2);
 		//limpa variáveis
 		posicao = nextpos+1;
 		nextpos = valor.indexOf('\n\n', posicao);		
@@ -2302,9 +2263,8 @@ alert('valorlanguage2='+valorlanguage2);
 }
 
 function getLanguage(language, mytext) {
-	var retorno = '';
+/*	var retorno = '';
 	var posicaoini=0;
-	var posicaofim=0;
 	var languageini = '<'+language+'>';
 	var languagefim = '</'+language+'>';
 	var iniEnglish = '<english>';
@@ -2313,8 +2273,13 @@ function getLanguage(language, mytext) {
 	var iniArabe = '<arabe>';
 	var iniHindi = '<hindi>';
 	var iniFrancais = '<francais>';
-	
+*/	
+	var posicaofim=0;
 	mytext = mytext.replaceAll('<p>\n', ''); //remove <p>ENTER
+	mytext = mytext.replaceAll('<p>', ''); //remove <p>
+	posicaofim = mytext.indexOf('\n\n', 0);
+	return mytext.substring(0, posicaofim);
+/*	mytext = mytext.replaceAll('<p>\n', ''); //remove <p>ENTER
 	mytext = mytext.replaceAll('<p>', ''); //remove <p>
 	if (language == '' || language == 'portugues') {
 		posicaofim = mytext.indexOf(iniEnglish, posicaoini);
@@ -2347,6 +2312,7 @@ function getLanguage(language, mytext) {
 		}
 	}
 	return retorno;
+*/
 }
 
 function setStudentFromImport(mytema, mycategory, mygroup, mycode, myorder, mytext1, mytext2, mytext3, myoption1, myoptionkey1, myoption2, myoptionkey2, myoption3, myoptionkey3, myoption4, myoptionkey4, myoption5, myoptionkey5, myoption6, myoptionkey6, myoption7, myoptionkey7, myoption8, myoptionkey8) {
@@ -2403,16 +2369,16 @@ async function confirmImport(mytema, mycategory, contents, group) {
 		for (index=0; index<=mytext.length; index++) {
 			nextp = mytext.indexOf('<p>', posicao + '<p>'.length);
 			if (nextp == -1) {
-//				console.log('index break='+index);
 				break;
 			}
-//			console.log(' posicao='+posicao + ' nextp='+nextp + '\n [' + mytext.substring(posicao, nextp) + ']');
 			var valor = mytext.substring(posicao, nextp);
+
 			var mytext1 = getLanguage('', mytext.substring(posicao, nextp)); //original
-			var mytext2 = getLanguage('english', mytext.substring(posicao, nextp)); //espanhol
-			var mytext3 = getLanguage('espanish', mytext.substring(posicao, nextp)); //inglês
+//			var mytext2 = '';//getLanguage('english', mytext.substring(posicao, nextp)); //espanhol
+//			var mytext3 = '';//getLanguage('espanish', mytext.substring(posicao, nextp)); //inglês
+
 //alert(': ' + '\n mytema='+mytema + '\n mycategory='+mycategory + '\n mygroup='+mygroup + '\n mycode='+mycode + '\n myorder='+myorder + '\n\n [' + valor + ']');
-			salvarRegistro(mytema+'', mycategory+'', mygroup+'', mycode+'', myorder+'', valor, mytext1, mytext2, mytext3);
+			salvarRegistro(mytema+'', mycategory+'', mygroup+'', mycode+'', myorder+'', valor, mytext1, '', '');
 			
 			posicao = nextp;
 			mycode = parseInt(mycode) + parseInt(1);
