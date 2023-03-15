@@ -558,7 +558,7 @@ function registerEvents() {
 	$('#imgLanguage').click(function () {
 		try {
 			
-			alert('imgLanguage 23:48');
+			alert('imgLanguage 00:03');
 			
 			var lingua = getLanguageFile(document.getElementById('imgLanguage').src);
 			if (lingua == 'english') {
@@ -2156,13 +2156,17 @@ function onLoadConfig() {
 }
 
 function buscaValorTag(valor, key) {	
-	var posini = valor.indexOf('<' + key + '>', 0);
-	var posfim = valor.indexOf('</' + key + '>', 0);
-	var result = valor.substring(posini, posfim).trim();
-	result = result.replaceAll('<' + key + '>', '');
-	result = result.replaceAll('</' + key + '>', '');
+    try {
+		var posini = valor.indexOf('<' + key + '>', 0);
+		var posfim = valor.indexOf('</' + key + '>', 0);
+		var result = valor.substring(posini, posfim).trim();
+		result = result.replaceAll('<' + key + '>', '');
+		result = result.replaceAll('</' + key + '>', '');
 //	alert('posini: '+posini + ' posfim: '+posfim + ' result: ['+result+']');
-	return result;
+		return result;
+    } catch (ex) {
+        alert('buscaValorTag ' + ex.message);
+    }
 }
 
 function removeTags(valor, key) {
@@ -2274,6 +2278,7 @@ function getArrayAnswers(valor) {
 }
 
 function getLanguage(language, mytext) {
+    try {
 /*	var retorno = '';
 	var posicaoini=0;
 	var languageini = '<'+language+'>';
@@ -2324,6 +2329,9 @@ function getLanguage(language, mytext) {
 	}
 	return retorno;
 */
+    } catch (ex) {
+        alert('getLanguage ' + ex.message);
+    }
 }
 
 function setStudentFromImport(mytema, mycategory, mygroup, mycode, myorder, mytext1, mytext2, mytext3, myoption1, myoptionkey1, myoption2, myoptionkey2, myoption3, myoptionkey3, myoption4, myoptionkey4, myoption5, myoptionkey5, myoption6, myoptionkey6, myoption7, myoptionkey7, myoption8, myoptionkey8) {
@@ -2814,11 +2822,13 @@ async function initLinkHelp() {
 	linkhelp = ' <b>MINHA AJUDA</b> <br/><br/>';
 
 
+	//não precisa gravar o restante na tabela porque já estão nos arquivos, exemplo: T3C4G16.html
+	var save = false;
 
 	//Treino CLF-C01
-/*	mytema = '1';
+	mytema = '1';
 	mycategory = CONST_MYCATEGORY_1;
-	var students = await jsstoreCon.select({
+/*	var students = await jsstoreCon.select({
 		from: 'Student'
 		  , where: { mytema: '' + mytema + ''
 				   , mycategory: '' + mycategory + ''
@@ -2829,6 +2839,7 @@ async function initLinkHelp() {
 	} else {
 		save = false;
 	}
+*/
 	contadorMygroup = 1; //10
 	contadorMycode = 0;
 	//Não Se Aplica
@@ -2859,11 +2870,11 @@ async function initLinkHelp() {
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Savings Plans', 'Instâncias Spot', 'Instâncias Reservadas', 'Instâncias Sob Demanda', save, 'Hosts Dedicados', 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html', 'servidor físico com capacidade de instância do EC2', 'AWS Hosts Dedicados do Amazon EC2 --> É um <b>servidor físico com capacidade de instância do EC2 totalmente dedicado para seu uso</b>. Permitem que você use suas licenças de software existentes por soquete, por núcleo ou por VM, incluindo o Windows Server, o Microsoft SQL Server, o SUSE e o Linux Enterprise Server.', 'AWS Dedicated Amazon EC2 Hosts --> It is a <b>physical server with EC2 instance capacity fully dedicated for your use</b>. Allow you to use your existing per-socket, per-core, or per-VM software licenses, including Windows Server, Microsoft SQL Server, SUSE, and Linux Enterprise Server.', '');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'S3', 'EC2', 'Opções de Compra de Instância', 'EBS', save, 'Modelo de uso', 'https://aws.amazon.com/pt/free/free-tier-faqs/', 'composto por três tipos', 'Modelo de uso --> O <b>nível gratuito</b> da AWS oferece aos clientes a capacidade de explorar e testar gratuitamente serviços da AWS até os limites especificados para cada serviço. <br/>O nível gratuito é <b>composto por três tipos diferentes de ofertas</b>: <br/>Um nível gratuito de 12 meses (750 horas/mês), <br/>Uma oferta Always Free, <br/>Testes de curto prazo.', 'Usage model --> The <b>AWS Free Tier</b> provides customers with the ability to explore and test AWS services for free up to specified limits for each service. <br/>The free tier is <b>composed of three different types of offers</b>: <br/>A 12-month free tier (750 hours/month), <br/>An Always Free offer, < br/>Short-term tests.', '');
-*/
+
 	//Desafio CLF-C01
-/*	mytema = '1';
+	mytema = '1';
 	mycategory = CONST_MYCATEGORY_2;
-	var students = await jsstoreCon.select({
+/*	var students = await jsstoreCon.select({
 		from: 'Student'
 		  , where: { mytema: '' + mytema + ''
 				   , mycategory: '' + mycategory + ''
@@ -2874,6 +2885,7 @@ async function initLinkHelp() {
 	} else {
 		save = false;
 	}
+*/
 	contadorMycode = 0;
 	//título
 	linkhelp = linkhelp + getLinkHelp(mytema+'', mycategory+'', contadorMygroup+'', contadorMycode+'', contadorMycode+'', '', '', '', '', save, '', '', '', 'FASE 1', 'Phase 1.0', '');
@@ -2897,13 +2909,13 @@ async function initLinkHelp() {
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Well-Architected Framework', 'EC2', 'S3', 'Excelência Operacional', save, 'Cargas de trabalho (Workload)', 'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/userguide/workloads.html', '', 'Carga de trabalho (Workload) --> É um conjunto de códigos e recursos que fornece valor empresarial, como um aplicativo voltado ao cliente ou um processo de back-end. Pode consistir em um subconjunto de recursos em uma Conta da AWS ou ser uma coleção de vários recursos abrangendo várias Contas da AWS.', 'Workload --> A set of code and resources that provide business value, such as a customer-facing application or back-end process. It may consist of a subset of resources within an AWS Account, or it may be a collection of multiple resources spanning multiple AWS Accounts.', '');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-*/
+
 
 
 	//Treino AZ-900
-/*	mytema = '2';
+	mytema = '2';
 	mycategory = CONST_MYCATEGORY_1;
-	students = await jsstoreCon.select({
+/*	students = await jsstoreCon.select({
 		from: 'Student'
 		  , where: { mytema: '' + mytema + ''
 				   , mycategory: '' + mycategory + ''
@@ -2914,6 +2926,7 @@ async function initLinkHelp() {
 	} else {
 		save = false;
 	}
+*/
 	contadorMygroup = 1; //10
 	contadorMycode = 0;
 	//título
@@ -2928,11 +2941,11 @@ async function initLinkHelp() {
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Nuvem Privada --> AZ-900', 'Nuvem Híbrida --> AZ-900', 'Nuvem Pública --> AZ-900', 'AZ-900: --> Nenhuma das alternativas', save, 'Multinuvem --> AZ-900', 'https://azure.microsoft.com/pt-br/solutions/hybrid-cloud-app/#overview', '', 'AZ-900: Multinuvem --> Uma parte da sua empresa está no Microsoft Azure e outra parte está em outra nuvem, como: AWS, Google Cloud Platform, aplicativos SaaS baseados em nuvem e até ambientes de colocation.', 'AZ-900: Multicloud --> One part of your business is in Microsoft Azure and another part is in another cloud such as: AWS, Google Cloud Platform, cloud-based SaaS applications and even colocation environments.', '');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-*/
+
 	//Desafio AZ-900
-/*	mytema = '2';
+	mytema = '2';
 	mycategory = CONST_MYCATEGORY_2;
-	students = await jsstoreCon.select({
+/*	students = await jsstoreCon.select({
 		from: 'Student'
 		  , where: { mytema: '' + mytema + ''
 				   , mycategory: '' + mycategory + ''
@@ -2943,6 +2956,7 @@ async function initLinkHelp() {
 	} else {
 		save = false;
 	}
+*/
 	contadorMygroup = 1; //10
 	contadorMycode = 0;
 	//título
@@ -2957,13 +2971,13 @@ async function initLinkHelp() {
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'PAAS --> AZ-900', 'SAAS --> AZ-900', 'IAAS --> AZ-900', 'BAAS', save, 'Computação Sem Servidor --> AZ-900', 'https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-serverless-computing/', '', 'AZ-900 Computação Sem Servidor --> Elimina a necessidade de gerenciar a infraestrutura, permite que os desenvolvedores criem aplicativos de forma mais rápida. Com aplicativos nessa computação, o provedor de serviços de nuvem provisiona, dimensiona e gerencia automaticamente a infraestrutura necessária para executar o código.', 'AZ-900 Serverless Computing --> Eliminates the need to manage infrastructure, allows developers to build applications faster. With applications on that compute, the cloud service provider automatically provisions, scales, and manages the infrastructure needed to run the code.', '');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-*/
+
 
 
 	//Treino Oracle
-/*	mytema = '3';
+	mytema = '3';
 	mycategory = CONST_MYCATEGORY_1;
-	students = await jsstoreCon.select({
+/*	students = await jsstoreCon.select({
 		from: 'Student'
 		  , where: { mytema: '' + mytema + ''
 				   , mycategory: '' + mycategory + ''
@@ -2974,6 +2988,7 @@ async function initLinkHelp() {
 	} else {
 		save = false;
 	}
+*/
 	contadorMygroup = 1; //10
 	contadorMycode = 0;
 	//título
@@ -2984,11 +2999,11 @@ async function initLinkHelp() {
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'OCI (Oracle Cloud Infrastructure) --> Oracle', 'Nuvem Híbrida --> AZ-900', 'Multinuvem --> AZ-900', '', save, 'HCM (Oracle Fusion Cloud Human Capital Management) --> Oracle', 'https://www.oracle.com/br/cloud/', '', 'Oracle: HCM (Oracle Fusion Cloud Human Capital Management)  --> Solução de RH nativa em nuvem completa que conecta todos os processos de recursos humanos, desde a contratação até a aposentadoria.', 'Oracle: HCM (Oracle Fusion Cloud Human Capital Management) --> Complete cloud-native HR solution that connects all human resource processes from hiring to retirement.', '');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-*/
+
 	//Desafio Oracle
-/*	mytema = '3';
+	mytema = '3';
 	mycategory = CONST_MYCATEGORY_2;
-	students = await jsstoreCon.select({
+/*	students = await jsstoreCon.select({
 		from: 'Student'
 		  , where: { mytema: '' + mytema + ''
 				   , mycategory: '' + mycategory + ''
@@ -2999,6 +3014,7 @@ async function initLinkHelp() {
 	} else {
 		save = false;
 	}
+*/
 	contadorMygroup = 1; //10
 	contadorMycode = 0;
 	//título
@@ -3009,22 +3025,22 @@ async function initLinkHelp() {
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, 'Monitoring', 'Events', 'Cost Analysis', '', save, 'Budget', 'https://docs.oracle.com/pt-br/iaas/Content/Billing/Concepts/budgetsoverview.htm', '', 'Qual recurso do Oracle Cloud Infrastructure (OCI) permite que você configure alertas para notificá-lo se uma previsão de orçamento for excedida ou se o gasto ultrapassar um determinado valor?', 'Which Oracle Cloud Infrastructure (OCI) capability allows you to set up alerts to notify you if a budget forecast is to be exceeded or spending surpasses a certain amount?', '');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-*/
+
 
 
 	//Último registro para testar se o loading está completo e já pode liberar a página para uso. 
 	//Esse registro é o último a ser inserido na tabela. Quando ele aparece indica que todos foram inseridos também.
-/*	mytema = '0';
+	mytema = '0';
 	mycategory = '0';
 	contadorMygroup = 1; //10
 	contadorMycode = String(parseInt('0') + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'FIM', 'https://', '', 'FIM', 'THE END', '');
-*/
 
 
 
-	//não precisa gravar o restante na tabela porque já estão nos arquivos, exemplo: T3C4G16.html
-	var save = false;
+
+//	//não precisa gravar o restante na tabela porque já estão nos arquivos, exemplo: T3C4G16.html
+//	var save = false;
 
 
 
