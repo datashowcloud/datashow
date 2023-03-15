@@ -670,6 +670,17 @@ function registerEvents() {
 	})
 }
 
+async function loading() {
+	var params = new URLSearchParams(window.location.search);
+	var mytema = params.get('tem');
+	var totalperguntas = await jsstoreCon.count({
+		from: 'Student'
+			, where: { mytema: mytema + ''
+		  }
+	});
+	alert('loading tema ' + mytema + ': ' + totalperguntas);
+}
+
 async function initConfigGeneral() {
 	GLOBAL_textcolor = 'white';
 	GLOBAL_background = 'black';
@@ -2150,7 +2161,7 @@ function onLoadConfig() {
 		loadCombobox('myorder', '0', '200', 'Ordem');
 		confirmImport(mytema, mycategory, 'contents1', '0');
 //	setTimeout(() => { document.getElementById('tblEstatisticas').style.display='none'; }, 1000); // Executa após 1 segundo para esperar o processo terminar
-    } catch (ex) {
+	} catch (ex) {
         alert('onLoadConfig ' + ex.message);
     }
 }
