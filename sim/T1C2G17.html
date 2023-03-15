@@ -24,13 +24,13 @@
 </head>
 
 <body id="myBody" ZZZbackground="gallery/paper.jpeg">
-
+		
 			<div style="display:'none'; text-align:center; ">
 				<div id="divContinuar" style="display:none;">
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Está tudo pronto</div>
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">Já pode continuar</div>
 					<br/><label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=3&cat=1', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
+						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=1&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
 					</label>
 				</div>
 				<div id="divLoading" style="display:'none';">
@@ -191,40 +191,174 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1
+<portugues>FASE 2.6</portugues>
 
 <p>
-Conjunto complementar de serviços de nuvem que permite criar e executar uma variedade de aplicativos e serviços em um ambiente hospedado altamente disponível.
-<english>Complementary set of cloud services that enable you to build and run a variety of applications and services in a highly available hosted environment.</english>
+<portugues>Qual serviço da AWS é recomendado na implementação e no gerenciamento de banco de dados relacionais?</portugues>
 
 <ok>
-OCI (Oracle Cloud Infrastructure)
+RDS
+<key>RDS</key>
 
-Nuvem Privada
-<key></key>
+DMS
+<key>DMS</key>
 
-Nuvem Híbrida
-<key></key>
+KMS
+<key>KMS</key>
 
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+DynamoDB
+<key>DynamoDB</key>
 
 <p>
-Solução de RH nativa em nuvem completa que conecta todos os processos de recursos humanos, desde a contratação até a aposentadoria.
-<english>Complete cloud-native HR solution that connects all human resources processes from hiring to retirement.</english>
+<portugues>Qual é o documento que fornece uma declaração formal de uma ou mais permissões no IAM?</portugues>
+
+Users
+<key>IAM Users</key>
+
+Groups
+<key>IAM Groups</key>
+
+Role
+<key>IAM Roles</key>
 
 <ok>
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+Policies
+<key>IAM Policies</key>
 
-OCI (Oracle Cloud Infrastructure)
-<key></key>
+<p>
+<portugues>Você vai lançar uma aplicação que precisa de 5 a 10 instâncias EC2 ativas de acordo com a quantidade de usuários logados. Qual é o serviço da AWS que possui um mecanismo para direcionar as requisições de forma distribuída entre esses servidores?</portugues>
 
-Nuvem Híbrida
-<key></key>
+<ok>
+ELB
+<key>ELB</key>
 
-Multinuvem
-<key></key>
+Route53
+<key>Route53</key>
+
+Securit Group
+<key>Securit Group</key>
+
+Auto Scalling
+<key>Auto Scaling</key>
+
+<p>
+<portugues>Quais dos itens abaixo fazem parte dos pilares do Well-Architected Framework?
+<br/>(Selecione 4)</portugues>
+
+<ok>
+Performance Eficiente
+<key>Well-Architected Framework</key>
+
+<ok>
+Confiabilidade
+<key>Well-Architected Framework</key>
+
+<ok>
+Sustentabilidade
+<key>Well-Architected Framework</key>
+
+Agilidade
+<key>Não Se Aplica</key>
+
+<ok>
+Otimização de Custos
+<key>Well-Architected Framework</key>
+
+<p>
+<portugues>Quais dos seguintes serviços permitem a criação de scripts e automação a partir da linha de comando?</portugues>
+
+<ok>
+AWS CLI
+<key>CLI</key>
+
+AWS SDK
+<key>SDK</key>
+
+AWS Console
+<key>Console Manager</key>
+
+AWS Run
+<key>Não Se Aplica</key>
+
+<p>
+<portugues>Qual é o serviço de integração, totalmente gerenciado pela AWS, que permite transferir dados com segurança entre aplicativos de Software como Serviço (SaaS) como: Salesforce, Zendesk, Slack e ServiceNow, Amazon S3 e Amazon Redshift?</portugues>
+
+Amazon DMS
+<key>DMS</key>
+
+Amazon SNS
+<key>SNS</key>
+
+<ok>
+Amazon AppFlow
+<key>AppFlow</key>
+
+Amazon EventBridge
+<key>EventBridge</key>
+
+<p>
+<portugues>Qual não é uma característica do Amazon Cognito?</portugues>
+
+Adiciona autenticação em aplicativo web e móveis
+<key>Cognito</key>
+
+Integra com a autenticação de mídias sociais como Apple, Facebook, Google e Amazon
+<key>Cognito</key>
+
+<ok>
+Permite autenticação de APIs pela linha de comando
+<key>Cognito</key>
+
+Integra com SAML 2.0 e OpenID
+<key>Cognito</key>
+
+<p>
+<portugues>Qual é a maneira mais fácil de lançar rapidamente milhares de containers em uma ampla variedade de opções de computação da AWS, usando o seu CI/CD e ferramentas de automação de sua preferência?</portugues>
+
+<ok>
+Com o Amazon ECS
+<key>ECS</key>
+
+Com o Amazon EC2
+<key>EC2</key>
+
+Com o Amazon CodePipeline
+<key>CodePipeline</key>
+
+Com o Amazon Lambda
+<key>Lambda</key>
+
+<p>
+<portugues>Você precisa implementar na sua conta, uma forma de facilitar a liberação de acessos para o seu time de desenvolvimento e para colaboradores que ingressarem nele. Como você pode realizar isso?</portugues>
+
+<ok>
+Fazendo uso do AWS IAM Grupos para criar um grupo de desenvolvedores e para fazer a gestão de acessos.
+<key>IAM Groups</key>
+
+Fazendo uso AWS Federation para criar um grupo de desenvolvedores e para fazer a gestão de acessos.
+<key>Federation</key>
+
+Fazendo o uso da AWS SDK que permite o gerenciamento de todos os desenvolvedores de forma automática
+<key>SDK</key>
+
+Fazendo o uso de Roles para criar um grupo de desenvolvedores e para fazer a gestão de acessos.
+<key>IAM Roles</key>
+
+<p>
+<portugues>Qual dos serviços abaixo é uma solução para a criação de conteiners na AWS?</portugues>
+
+Auto Scaling
+<key>Auto Scaling</key>
+
+<ok>
+ECS
+<key>ECS</key>
+
+ECR
+<key>ECR</key>
+
+EC2
+<key>EC2</key>
 
 <p>
 
@@ -240,7 +374,7 @@ Multinuvem
 <script type="text/javascript">
 	onLoadConfig();
 	
-	var quantidadeRegistrosP = '3'; // <p>
+	var quantidadeRegistrosP = '11'; // <p>
 	refreshTableResult(quantidadeRegistrosP);
 	function callback() {
 		setTimeout (function () {

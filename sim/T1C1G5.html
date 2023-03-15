@@ -24,13 +24,13 @@
 </head>
 
 <body id="myBody" ZZZbackground="gallery/paper.jpeg">
-
+		
 			<div style="display:'none'; text-align:center; ">
 				<div id="divContinuar" style="display:none;">
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Está tudo pronto</div>
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">Já pode continuar</div>
 					<br/><label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=3&cat=1', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
+						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=1&cat=1', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
 					</label>
 				</div>
 				<div id="divLoading" style="display:'none';">
@@ -191,40 +191,167 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1
+<portugues>FASE 1.4</portugues>
 
 <p>
-Conjunto complementar de serviços de nuvem que permite criar e executar uma variedade de aplicativos e serviços em um ambiente hospedado altamente disponível.
-<english>Complementary set of cloud services that enable you to build and run a variety of applications and services in a highly available hosted environment.</english>
+<portugues>É um <b>sistema de arquivos simples (não armazena como objetos igual o S3: html, js, css)</b>. Sem servidor para definição única que facilita a configuração, a escalabilidade e a otimização de custos do armazenamento de arquivos na AWS. Fornece uma solução de armazenamento de arquivos compartilhado.</portugues>
 
 <ok>
-OCI (Oracle Cloud Infrastructure)
+AWS EFS
+<key>EFS</key>
 
-Nuvem Privada
-<key></key>
+Classes de armazenamento
+<key>Classes de armazenamento</key>
 
-Nuvem Híbrida
-<key></key>
+Amazon EBS
+<key>EBS</key>
 
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+S3
+<key>S3</key>
 
 <p>
-Solução de RH nativa em nuvem completa que conecta todos os processos de recursos humanos, desde a contratação até a aposentadoria.
-<english>Complete cloud-native HR solution that connects all human resources processes from hiring to retirement.</english>
+<portugues><b>São backups incrementais</b>, o que significa que somente os blocos no dispositivo que tiverem mudado depois do backup incremental mais recente serão salvos. Isso minimiza o tempo necessário para criar o backup incremental e economiza em custos de armazenamento ao não duplicar os dados.<br/>Os limites de <b>backup incremental manual (100 por região)</b> não se aplicam a backups automáticos.</portugues>
 
 <ok>
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+EBS Snapshots
+<key>EBS Snapshots</key>
 
-OCI (Oracle Cloud Infrastructure)
-<key></key>
+AWS EFS
+<key>EFS</key>
 
-Nuvem Híbrida
-<key></key>
+S3
+<key>S3</key>
 
-Multinuvem
-<key></key>
+AWS Backup
+<key>Backup</key>
+
+<p>
+<portugues>É um <b>serviço de armazenamento em blocos</b>, escalável e de alta performance projetado para o Amazon Elastic Compute Cloud (Amazon EC2). <br/>Replica dados automaticamente em uma zona de disponibilidade. <br/>É <b>necessário associá-lo a uma instância EC2 para garantir a persistência dos dados quando a instância é desligada</b>. <br/>Essa arquitetura de banco de dados <b>pode ser gerenciada pelo time do Cliente</b>. Não pode ser compartilhado por se comportarem como dispositivos de blocos brutos e não formatados.</portugues>
+
+<ok>
+Amazon EBS
+<key>EBS</key>
+
+S3
+<key>S3</key>
+
+AWS EFS
+<key>EFS</key>
+
+AWS DynamoDB
+<key>DynamoDB</key>
+
+<p>
+<portugues>É um <b>dispositivo de armazenamento em blocos</b> durável que é possível anexar às suas instâncias. <br/>Depois de anexá-lo a uma instância, será possível usá-lo como você usaria um disco rígido físico.</portugues>
+
+<ok>
+EBS Volumes
+<key>EBS Volumes</key>
+
+AWS EFS
+<key>EFS</key>
+
+Amazon EBS
+<key>EBS</key>
+
+DataSync
+<key>DataSync</key>
+
+<p>
+<portugues>Fornece <b>armazenamento temporário em nível de bloco para a instância</b>. <br/>Esse armazenamento está localizado em discos que estão anexados fisicamente ao computador host. <br/>É ideal para o armazenamento temporário de informações que são alteradas frequentemente, <b>como buffers, caches, dados de rascunho e outros conteúdos temporários</b> ou para dados replicados em toda a frota de instâncias, como um grupo com balanceamento de carga de servidores Web.</portugues>
+
+<ok>
+Armazenamento de instâncias EC2
+<key>EC2 Armazenamento de instâncias</key>
+
+AWS EFS
+<key>EFS</key>
+
+AWS Storage Gateway
+<key>Storage Gateway</key>
+
+Amazon EBS
+<key>EBS</key>
+
+<p>
+<portugues>É um <b>serviço de banco de dados de grafos</b> rápido, confiável e totalmente gerenciado que facilita a criação e a execução de aplicativos na AWS. <br/>O núcleo dele é um mecanismo de banco de dados gráfico com projeto específico e alta performance.</portugues>
+
+<ok>
+Amazon Neptune
+<key>Neptune</key>
+
+Amazon Graph
+<key>Graph</key>
+
+Amazon Neo4j
+<key>Neo4j</key>
+
+Amazon JanusGraph
+<key>JanusGraph</key>
+
+<p>
+<portugues>É <b>apenas um conceito para traçar gráficos</b> de funções matemáticas e outras curvas de natureza similar, em um sistema de coordenadas.</portugues>
+
+<ok>
+Amazon Graph
+<key>Graph</key>
+
+Amazon Neptune
+<key>Neptune</key>
+
+Amazon Neo4j
+<key>Neo4j</key>
+
+Amazon JanusGraph
+<key>JanusGraph</key>
+
+<p>
+<portugues>Trabalha com a AWS <b>(partner)</b>. <br/>Capacita desenvolvedores e cientistas de dados a <b>criar rapidamente aplicativos escaláveis ​​e orientados por IA ou analisar big data com algoritmos</b>. <br/>Como um banco de dados gráfico nativo criado para armazenar dados e conectar os relacionamentos, permite insights rápidos e profundamente contextuais.</portugues>
+
+<ok>
+Amazon Neo4j
+<key>Neo4j</key>
+
+Amazon Graph
+<key>Graph</key>
+
+Amazon Neptune
+<key>Neptune</key>
+
+Amazon JanusGraph
+<key>JanusGraph</key>
+
+<p>
+<portugues>Trabalha com a AWS <b>(partner)</b>. <br/>É um <b>banco de dados (open source) gráfico</b> escalável otimizado para armazenar e consultar gráficos contendo centenas de bilhões de vértices e arestas distribuídos em um cluster de várias máquinas.</portugues>
+
+<ok>
+Amazon JanusGraph
+<key>JanusGraph</key>
+
+Amazon Neo4j
+<key>Neo4j</key>
+
+Amazon Graph
+<key>Graph</key>
+
+Amazon Neptune
+<key>Neptune</key>
+
+<p>
+<portugues>É um <b>serviço de consultas interativas usando SQL padrão</b> que facilita a análise de dados no Amazon S3. <br/>Não precisa de servidor. Portanto, não há infraestrutura para gerenciar e você paga apenas pelas consultas executadas.</portugues>
+
+<ok>
+AWS Athena
+<key>Athena</key>
+
+RDS
+<key>RDS</key>
+
+Aurora
+<key>Aurora</key>
+
+Lambda
+<key>Lambda</key>
 
 <p>
 
@@ -240,7 +367,7 @@ Multinuvem
 <script type="text/javascript">
 	onLoadConfig();
 	
-	var quantidadeRegistrosP = '3'; // <p>
+	var quantidadeRegistrosP = '11'; // <p>
 	refreshTableResult(quantidadeRegistrosP);
 	function callback() {
 		setTimeout (function () {

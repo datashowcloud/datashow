@@ -24,13 +24,13 @@
 </head>
 
 <body id="myBody" ZZZbackground="gallery/paper.jpeg">
-
+		
 			<div style="display:'none'; text-align:center; ">
 				<div id="divContinuar" style="display:none;">
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Está tudo pronto</div>
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">Já pode continuar</div>
 					<br/><label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=3&cat=1', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
+						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=2&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
 					</label>
 				</div>
 				<div id="divLoading" style="display:'none';">
@@ -191,40 +191,123 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1
+FASE 7
 
 <p>
-Conjunto complementar de serviços de nuvem que permite criar e executar uma variedade de aplicativos e serviços em um ambiente hospedado altamente disponível.
-<english>Complementary set of cloud services that enable you to build and run a variety of applications and services in a highly available hosted environment.</english>
+Um administrador de TI de uma empresa recebeu um script do PowerShell. Esse script do PowerShell será usado para criar várias Máquinas Virtuais no Azure. Você precisa fornecer uma máquina ao administrador de TI para executar o script do PowerShell.
+Você decide fornecer uma máquina Linux que tenha as ferramentas da CLI do Azure com o PowerShell 5.x instalado.
+Essa solução se encaixaria no requisito?
+<english>An IT administrator for a company has been given a PowerShell script. This PowerShell script will be used to create several Virtual Machines in Azure. You have to provide a machine to the IT administrator for running the PowerShell script.
+You decide to provide a Linux machine which has the Azure CLI tools with PowerShell 5.x installed.
+Would this solution fit the requirement?</english>
 
 <ok>
-OCI (Oracle Cloud Infrastructure)
+No.
+<tip>O PowerShell do Azure funciona com o PowerShell 5.1 no Windows. Em outras plataformas, como o Linux, o Azure PowerShell 6.2.4 e versões posteriores são compatíveis. A Microsoft recomenda o PowerShell 7.x e superior em todas as plataformas.
+<br/>O PowerShell 6.2.4 e posterior é compatível em todas as plataformas de sistema operacional. No entanto, a Microsoft recomenda o PowerShell 7.x.
+<br/><a href="https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-5.4.0" target="_blank" style="color:gray;">veja mais na internet</a>
+<br/><a href="https://docs.microsoft.com/en-us/azure/virtual-machines/linux/run-command" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
-Nuvem Privada
-<key></key>
-
-Nuvem Híbrida
-<key></key>
-
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+Yes.
+<tip>Não se aplica para essa resposta.
+<br/><a href="https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-5.4.0" target="_blank" style="color:gray;">veja mais na internet</a>
+<br/><a href="https://docs.microsoft.com/en-us/azure/virtual-machines/linux/run-command" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
 <p>
-Solução de RH nativa em nuvem completa que conecta todos os processos de recursos humanos, desde a contratação até a aposentadoria.
-<english>Complete cloud-native HR solution that connects all human resources processes from hiring to retirement.</english>
+Um administrador de TI de uma empresa recebeu um script do PowerShell. Esse script do PowerShell será usado para criar várias Máquinas Virtuais no Azure. Você precisa fornecer uma máquina ao administrador de TI para executar o script do PowerShell.
+<br/>Você decide fornecer uma CLI do Azure instalada em um computador que tenha o MacOS 10.13 e o PowerShell 7.0.3 também instalados.
+<br/>Essa solução se encaixaria no requisito?
+<english>An IT administrator for a company has been given a PowerShell script. This PowerShell script will be used to create several Virtual Machines in Azure. You have to provide a machine to the IT administrator for running the PowerShell script.
+<br/>You decide to provide an Azure CLI installed on a computer that has MacOS 10.13 and PowerShell 7.0.3 also installed.
+<br/>Would this solution fit the requirement?</english>
 
 <ok>
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+Yes.
+<tip>Pode instalar o Powershell no MacOS e em seguida executar os scripts do PowerShell.
+<br/><a href="https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-macos?view=powershell-6" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
-OCI (Oracle Cloud Infrastructure)
-<key></key>
+No.
+<tip>Não se aplica para essa resposta.
+<br/><a href="https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-macos?view=powershell-6" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
-Nuvem Híbrida
-<key></key>
+<p>
+Uma empresa está planejando configurar uma solução no Azure. A solução teria o seguinte requisito chave.
+<br/>Uma ferramenta que fornece orientação e recomendações para melhorar um ambiente do Azure.
+<br/>Qual das seguintes opções seria mais adequada para este requisito?
+<english>A company is planning to set up a solution in Azure. The solution would have the following key requirement.
+<br/>A tool that provides guidance and recommendations to improve an Azure environment.
+<br/>Which of the following would be best suited for this requirement?</english>
 
-Multinuvem
-<key></key>
+<ok>
+Azure Advisor.
+<tip>Azure Advisor é um consultor de nuvem personalizado que ajuda a seguir as práticas recomendadas para otimizar suas implantações do Azure. Ele analisa a configuração de recursos e a telemetria de uso e, em seguida, recomenda soluções que podem ajudá-lo a melhorar a relação custo-benefício, o desempenho, a Confiabilidade (anteriormente chamada de Alta disponibilidade) e a segurança de seus recursos do Azure.
+<br/><a href="https://docs.microsoft.com/en-us/azure/advisor/advisor-overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+Azure Cognitive Services.
+<tip>Serviços Cognitivos do Azure são serviços de IA (inteligência artificial) baseados em nuvem que ajudam os desenvolvedores a criar inteligência cognitiva em aplicativos sem ter habilidades ou conhecimentos diretos de IA ou ciência de dados.
+<br/><a href="https://docs.microsoft.com/en-us/azure/advisor/advisor-overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+Azure Application Insights.
+<tip>Azure Application Insights é uma extensão do Azure Monitor e fornece recursos de Monitoramento de Desempenho de Aplicativos (também conhecido como "APM").
+<br/><a href="https://docs.microsoft.com/en-us/azure/advisor/advisor-overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+Azure Devops.
+<tip>Azure Devops é um composto de Dev (desenvolvimento) e Ops (operações), o DevOps é a união de pessoas, processos e tecnologias para fornecer continuamente valor aos clientes.
+<br/>Permite que funções anteriormente isoladas atuem de forma coordenada e colaborativa para gerar produtos melhores e mais confiáveis.
+<br/><a href="https://docs.microsoft.com/en-us/azure/advisor/advisor-overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+Uma empresa está planejando configurar uma solução no Azure. A solução teria o seguinte requisito chave.
+<br/>Uma ferramenta simplificada para construir aplicações inteligentes de Inteligência Artificial.
+<br/>Qual das seguintes opções seria mais adequada para este requisito?
+<english>A company is planning to set up a solution in Azure. The solution would have the following key requirement.
+<br/>A simplified tool to build intelligent Artificial Intelligence applications.
+<br/>Which of the following would be best suited for this requirement?</english>
+
+<ok>
+Azure Cognitive Services.
+<tip>Serviços Cognitivos do Azure têm uma lista completa de recursos que podem ser usados para criar aplicativos baseados em Inteligência Artificial.
+<br/><a href="https://azure.microsoft.com/en-us/services/cognitive-services/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+Azure Advisor.
+<tip>Azure Advisor é um consultor de nuvem personalizado que ajuda a seguir as práticas recomendadas para otimizar suas implantações do Azure. Ele analisa a configuração de recursos e a telemetria de uso e, em seguida, recomenda soluções que podem ajudá-lo a melhorar a relação custo-benefício, o desempenho, a Confiabilidade (anteriormente chamada de Alta disponibilidade) e a segurança de seus recursos do Azure.
+<br/><a href="https://docs.microsoft.com/en-us/azure/advisor/advisor-overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+Azure Application Insights.
+<tip>Azure Application Insights é uma extensão do Azure Monitor e fornece recursos de Monitoramento de Desempenho de Aplicativos (também conhecido como "APM").
+<br/><a href="https://docs.microsoft.com/en-us/azure/advisor/advisor-overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+Azure Devops.
+<tip>Azure Devops é um composto de Dev (desenvolvimento) e Ops (operações), o DevOps é a união de pessoas, processos e tecnologias para fornecer continuamente valor aos clientes.
+<br/>Permite que funções anteriormente isoladas atuem de forma coordenada e colaborativa para gerar produtos melhores e mais confiáveis.
+<br/><a href="https://docs.microsoft.com/en-us/azure/advisor/advisor-overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+Sua empresa está planejando hospedar um conjunto de máquinas virtuais no Azure. Eles querem economizar nos custos de computação em execução para as máquinas virtuais. Eles podem considerar o uso de instâncias reservadas para esse requisito?
+<english>Your company is planning on hosting a set of virtual machines in Azure. They want to save on the running compute costs for the virtual machines. Can they consider using reserved instances for this requirement?</english>
+
+<ok>
+Yes.
+<tip>Com instâncias reservadas é possível obter descontos quando se trata de custos para máquinas virtuais do Azure.
+<br/><a href="https://azure.microsoft.com/en-us/pricing/reserved-vm-instances/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+No.
+<tip>Não se aplica para essa resposta.
+<br/><a href="https://azure.microsoft.com/en-us/pricing/reserved-vm-instances/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
 <p>
 
@@ -240,7 +323,7 @@ Multinuvem
 <script type="text/javascript">
 	onLoadConfig();
 	
-	var quantidadeRegistrosP = '3'; // <p>
+	var quantidadeRegistrosP = '6'; // <p>
 	refreshTableResult(quantidadeRegistrosP);
 	function callback() {
 		setTimeout (function () {

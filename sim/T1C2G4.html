@@ -30,7 +30,7 @@
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Está tudo pronto</div>
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">Já pode continuar</div>
 					<br/><label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=3&cat=1', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
+						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=1&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
 					</label>
 				</div>
 				<div id="divLoading" style="display:'none';">
@@ -191,40 +191,167 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1
+<portugues>FASE 1.3</portugues>
 
 <p>
-Conjunto complementar de serviços de nuvem que permite criar e executar uma variedade de aplicativos e serviços em um ambiente hospedado altamente disponível.
-<english>Complementary set of cloud services that enable you to build and run a variety of applications and services in a highly available hosted environment.</english>
+<portugues>Recentemente você implementou uma aplicação piloto na sua empresa que foi um sucesso. Para realizar o rollout do projeto, a direção pediu que você apresente os gastos com infraestrutura AWS durante o período para avaliarem e aprovarem a expansão. Qual é o serviço da AWS que fornece essas informações?</portugues>
+
+AWS Budgets
+<key>Budgets</key>
 
 <ok>
-OCI (Oracle Cloud Infrastructure)
+AWS Cost Explorer
+<key>Cost Explorer</key>
 
-Nuvem Privada
-<key></key>
+AWS Inspector
+<key>Inspector</key>
 
-Nuvem Híbrida
-<key></key>
-
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+AWS Trusted Advisor
+<key>Trusted Advisor</key>
 
 <p>
-Solução de RH nativa em nuvem completa que conecta todos os processos de recursos humanos, desde a contratação até a aposentadoria.
-<english>Complete cloud-native HR solution that connects all human resources processes from hiring to retirement.</english>
+<portugues>Seu time de desenvolvimento identificou que devido ao grande volume de consultas que são realizadas e a concorrência com outras funções de acesso, a performance de um banco de dados relacional está comprometida. Qual é a indicação mais econômica para resolver esse cenário?</portugues>
+
+Atualizar a role de acesso ao banco
+<key>IAM</key>
+
+Criar novas instâncias do RDS em outra zona de disponibilidade.
+<key>Multi-AZ</key>
 
 <ok>
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+Fazer o uso de Read Replicas
+<key>Read Replicas</key>
 
-OCI (Oracle Cloud Infrastructure)
-<key></key>
+Substituir o RDS pelo Dynamo
+<key>RDS</key>
 
-Nuvem Híbrida
-<key></key>
+<p>
+<portugues>Qual é a forma de permitir que seus serviços sejam expostos sempre no mesmo endereço IP e de possibilitar que os hosts associados a ele sejam substituídos de forma simples na sua infraestrutura?</portugues>
 
-Multinuvem
-<key></key>
+Utilizando um IPV4
+<key>IPV4</key>
+
+<ok>
+Utilizando um IP Elástico
+<key>IP Elástico</key>
+
+Utilizando um IPV6
+<key>IPV6</key>
+
+Utilizando o Route 53
+<key>Route53</key>
+
+<p>
+<portugues>Qual dos seguintes serviços de bancos de dados é totalmente gerenciado pela AWS?</portugues>
+
+MySql
+<key>MySql</key>
+
+SQL Server
+<key>SQL Server</key>
+
+MariaDB
+<key>MariaDB</key>
+
+<ok>
+DynamoDB
+<key>DynamoDB</key>
+
+<p>
+<portugues>Você está desenvolvendo uma aplicação mobile e precisa implementar o armazenamento e sincronismo de dados para vários dispositivos. Qual é o serviço AWS que pode ser utilizado para esse fim?</portugues>
+
+AWS Elastic Cache
+<key>Elastic Cache</key>
+
+AWS DynamoDB
+<key>DynamoDB</key>
+
+AWS Redis
+<key>Redis</key>
+
+<ok>
+AWS Cognito
+<key>Cognito</key>
+
+<p>
+<portugues>Qual é a quantidade de dados que podemos armazenar no S3?</portugues>
+
+5 Gigabytes
+<key>Não Se Aplica</key>
+
+50 Gigabytes
+<key>Não Se Aplica</key>
+
+<ok>
+A capacidade é virtualmente ilimitada
+<key>S3</key>
+
+1 Terabyte
+<key>Não Se Aplica</key>
+
+<p>
+<portugues>Utilização de recursos de rede, computadores virtuais e armazenamento de dados com alto nível de flexibilidade, gerenciamento e controle sobre os recursos de TI são características de qual tipo de uso de cloud?</portugues>
+
+<ok>
+IAAS
+<key>IAAS</key>
+
+SAAS
+<key>SAAS</key>
+
+BAAS
+<key>BAAS</key>
+
+PAAS
+<key>PAAS</key>
+
+<p>
+<portugues>Qual é o serviço utilizado para permitir que aplicações acessem recursos restritos de serviços dentro da AWS?</portugues>
+
+IAM Policies
+<key>IAM Policies</key>
+
+IAM Groups
+<key>IAM Groups</key>
+
+IAM Users
+<key>IAM Users</key>
+
+<ok>
+IAM Roles
+<key>IAM Roles</key>
+
+<p>
+<portugues>Você precisa implementar no seu site uma funcionalidade para realizar pesquisas em todas as páginas e arquivos para facilitar a navegação e experiência dos seus usuários. Qual SAAS disponível na AWS fornece ferramentas robustas para cumprir essa finalidade e que pode ser facilmente utilizada na sua aplicação?</portugues>
+
+Amazon ElasticSearch
+<key>ElasticSearch</key>
+
+Amazon CloudWatch
+<key>CloudWatch</key>
+
+Amazon Athena
+<key>Athena</key>
+
+<ok>
+Amazon CloudSearch
+<key>CloudSearch</key>
+
+<p>
+<portugues>Você irá disponibilizar uma aplicação crítica e com dados sensíveis na Internet. Qual é o serviço que te ajuda a identificar vulnerabilidades de segurança e risco de exposição de acordo com as melhores práticas e compliance?</portugues>
+
+<ok>
+AWS Inspector
+<key>Inspector</key>
+
+AWS GuardDuty
+<key>GuardDuty</key>
+
+AWS KMS
+<key>KMS</key>
+
+AWS Macie
+<key>Macie</key>
 
 <p>
 
@@ -240,7 +367,7 @@ Multinuvem
 <script type="text/javascript">
 	onLoadConfig();
 	
-	var quantidadeRegistrosP = '3'; // <p>
+	var quantidadeRegistrosP = '11'; // <p>
 	refreshTableResult(quantidadeRegistrosP);
 	function callback() {
 		setTimeout (function () {

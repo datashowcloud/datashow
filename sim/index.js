@@ -574,7 +574,7 @@ function registerEvents() {
 			alert('imgLanguage ' + ex.message)
 		}
 	})
-	$('#mytextSim').click(function () {
+/*	$('#mytextSim').click(function () {
 		if (document.getElementById('mytextSim2') != null && document.getElementById('mytextSim2').innerText.length > 10) {
 			document.getElementById('mytextSim2').style.display='';
 			document.getElementById('mytextSim').style.display='none';
@@ -582,7 +582,8 @@ function registerEvents() {
 			alert('Fase ainda sem tradução.');
 		}
 	})
-	$('#mytextSim2').click(function () {
+*/
+/*	$('#mytextSim2').click(function () {
 		if (document.getElementById('mytextSim') != null && document.getElementById('mytextSim').innerText.length > 10) {
 			document.getElementById('mytextSim').style.display='';
 			document.getElementById('mytextSim2').style.display='none';
@@ -590,6 +591,7 @@ function registerEvents() {
 			alert('Ainda sem tradução nessa fase.');
 		}
 	})
+*/	
 	$('#chkMycorrect1answer').click(function () {
 		var index = '1';
 		setBackgroundColor(index, CONST_MEDIUM_SEA_GREEN);
@@ -762,10 +764,10 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 	if (document.getElementById('mytextSim') != null) {
 		document.getElementById('mytextSim').style.color = textcolor;
 	}
-	if (document.getElementById('mytextSim2') != null) {
+/*	if (document.getElementById('mytextSim2') != null) {
 		document.getElementById('mytextSim2').style.color = textcolor;
 	}
-
+*/
 	for (var index=1; index<9; index++) {
 		if (document.getElementById('mycorrect' + index + 'answer') != null) {
 			document.getElementById('mycorrect' + index + 'answer').style.color = textcolor;

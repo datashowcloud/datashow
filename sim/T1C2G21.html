@@ -24,13 +24,13 @@
 </head>
 
 <body id="myBody" ZZZbackground="gallery/paper.jpeg">
-
+		
 			<div style="display:'none'; text-align:center; ">
 				<div id="divContinuar" style="display:none;">
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Está tudo pronto</div>
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">Já pode continuar</div>
 					<br/><label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=3&cat=1', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
+						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=1&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
 					</label>
 				</div>
 				<div id="divLoading" style="display:'none';">
@@ -191,40 +191,167 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1
+<portugues>FASE 3.0<portugues>
 
 <p>
-Conjunto complementar de serviços de nuvem que permite criar e executar uma variedade de aplicativos e serviços em um ambiente hospedado altamente disponível.
-<english>Complementary set of cloud services that enable you to build and run a variety of applications and services in a highly available hosted environment.</english>
+<portugues>Qual é a melhor maneira de manter aplicações resilientes na infraestrutura AWS?</portugues>
 
 <ok>
-OCI (Oracle Cloud Infrastructure)
+Distribuir as instâncias em mais de uma zona de disponibilidade
+<key>Multi-AZ</key>
 
-Nuvem Privada
-<key></key>
+Distribuir as instâncias em duas VPCs diferentes e dentro da mesma zona de disponibilidade
+<key>Multi-AZ</key>
 
-Nuvem Híbrida
-<key></key>
+Fazer uso do CloudFront
+<key>CloudFront</key>
 
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+Utilizar o Auto Scaling para subir uma máquina sempre que a outra cair
+<key>Auto Scaling</key>
 
 <p>
-Solução de RH nativa em nuvem completa que conecta todos os processos de recursos humanos, desde a contratação até a aposentadoria.
-<english>Complete cloud-native HR solution that connects all human resources processes from hiring to retirement.</english>
+<portugues>Qual dos itens abaixo não faz parte dos tipos de uso Free Tier (nível gratuito)?</portugues>
+
+Testes - Experimentação (Trial)
+<key>Modelo de uso</key>
 
 <ok>
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+Reserved
+<key>Opções de Compra de Instância</key>
 
-OCI (Oracle Cloud Infrastructure)
-<key></key>
+Sempre gratuito
+<key>Modelo de uso</key>
 
-Nuvem Híbrida
-<key></key>
+12 Meses gratuitos
+<key>Modelo de uso</key>
 
-Multinuvem
-<key></key>
+<p>
+<portugues>Qual é o serviço da AWS que permite que os desenvolvedores foquem apenas na codificação, enquanto realiza automaticamente o provisionamento de toda a infraestrutura para a aplicação ser executada, o balanceamento das cargas,  a implementação de monitoramento e a implantação. Além disso, esse serviço permite a codificação em .Net, Java, PHP, Node.js, Python, Ruby e Go entre outras.</portugues>
+
+AWS ECS
+<key>ECS</key>
+
+Fargate
+<key>Fargate</key>
+
+<ok>
+AWS ElasticBeanStalk
+<key>Elastic Beanstalk</key>
+
+AWS CodeDeploy
+<key>CodeDeploy</key>
+
+<p>
+<portugues>Qual plano de suporte abaixo oferece acesso aos engenheiros do Cloud Suporte por telefone, e-mail e chat 24 horas por dia, 7 dias por semana?</portugues>
+
+Standard
+<key>Standard</key>
+
+Basic
+<key>Suporte</key>
+
+Developer
+<key>Suporte</key>
+
+<ok>
+Business
+<key>Suporte</key>
+
+<p>
+<portugues>Após validar alguns cenários, sua empresa não autorizou o uso de computação compartilhada, mas gostaria de encontrar uma solução da AWS que apresente as mesmas características de simplicidade, agilidade e elasticidade e que faça uso de servidores físicos dedicados. Qual é o serviço que pode atender essa necessidade?</portugues>
+
+EC2 dedicados
+<key>Não Se Aplica</key>
+
+Hosts reservados
+<key>Não Se Aplica</key>
+
+<ok>
+Hosts dedicados
+<key>Hosts Dedicados</key>
+
+EC2 reservados
+<key>Opções de Compra de Instância</key>
+
+<p>
+<portugues>A migração dos serviços da sua empresa para a AWS vai precisar movimentar uma quantidade muito grande de dados e a localização da sua infraestrutura atual não permite que essa migração seja feita virtualmente devido a conectividade de rede muito instável. Qual serviço da AWS oferece uma família de produtos para sua empresa conseguir realizar essa migração de forma física?</portugues>
+
+AWS DataSync
+<key>DataSync</key>
+
+<ok>
+AWS Snowball
+<key>Snowball</key>
+
+AWS DMS
+<key>DMS</key>
+
+AWS DirectConnect
+<key>Direct Connect</key>
+
+<p>
+<portugues>Qual serviço utiliza Inteligência Artificial e analisa dados gerados por eventos de diversos serviços e armazenados no S3, evitando que atividades maliciosas sejam realizadas?</portugues>
+
+<ok>
+AWS GuardDuty
+<key>GuardDuty</key>
+
+AWS Macie
+<key>Macie</key>
+
+AWS Shield
+<key>Shield</key>
+
+AWS Malicious
+<key>Não Se Aplica</key>
+
+<p>
+<portugues>Qual é o serviço utilizado para integrar contas AWS?</portugues>
+
+AWS Cost Explorer
+<key>Cost Explorer</key>
+
+AWS CloudFormation
+<key>CloudFormation</key>
+
+<ok>
+AWS Organizations
+<key>Organizations</key>
+
+AWS MFA
+<key>MFA</key>
+
+<p>
+<portugues>Qual conhecimento o seu time precisa para criar aplicações que façam uso do banco de dados DynamoDB?</portugues>
+
+Athena
+<key>Athena</key>
+
+<ok>
+API do serviço e o Json com atributos e comandos
+<key>DynamoDB APIS e JSON</key>
+
+GraphQl
+<key>GraphQl</key>
+
+Comandos SQL
+<key>Não Se Aplica</key>
+
+<p>
+<portugues>Você desenvolveu um sistema de workflow orientado a eventos e gostaria que uma função sem servidor gravasse uma log num banco de dados ao término do processo. Qual serviço abaixo é o mais indicado para essa finalidade?</portugues>
+
+<ok>
+Lambda
+<key>Lambda</key>
+
+SQS
+<key>SQS</key>
+
+SNS
+<key>SNS</key>
+
+SES
+<key>SES</key>
 
 <p>
 
@@ -240,7 +367,7 @@ Multinuvem
 <script type="text/javascript">
 	onLoadConfig();
 	
-	var quantidadeRegistrosP = '3'; // <p>
+	var quantidadeRegistrosP = '11'; // <p>
 	refreshTableResult(quantidadeRegistrosP);
 	function callback() {
 		setTimeout (function () {

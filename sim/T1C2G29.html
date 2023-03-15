@@ -30,7 +30,7 @@
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Está tudo pronto</div>
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">Já pode continuar</div>
 					<br/><label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=3&cat=1', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
+						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=1&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
 					</label>
 				</div>
 				<div id="divLoading" style="display:'none';">
@@ -148,7 +148,6 @@
 					<option value="45">Nível 4.5</option>
 					<option value="46">Nível 4.6</option>
 					<option value="50">Nível 5.0</option>
-
 				</select>
 				<select id="mycode" name="mycode" style="height:35px; display:none;"></select>
 				<select id="myorder" name="myorder" style="height:35px; display:none;"></select>
@@ -191,40 +190,167 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1
+<portugues>FASE 3.8</portugues>
 
 <p>
-Conjunto complementar de serviços de nuvem que permite criar e executar uma variedade de aplicativos e serviços em um ambiente hospedado altamente disponível.
-<english>Complementary set of cloud services that enable you to build and run a variety of applications and services in a highly available hosted environment.</english>
+<portugues>Qual categoria abaixo não faz parte das ofertadas para instâncias EC2?</portugues>
+
+Computação Acelerada
+<key>Tipos de instância EC2</key>
 
 <ok>
-OCI (Oracle Cloud Infrastructure)
+Propósitos Específicos
+<key>Não Se Aplica</key>
 
-Nuvem Privada
-<key></key>
+Propósitos Gerais
+<key>Tipos de instância EC2</key>
 
-Nuvem Híbrida
-<key></key>
-
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+Computação Otimizada
+<key>Tipos de instância EC2</key>
 
 <p>
-Solução de RH nativa em nuvem completa que conecta todos os processos de recursos humanos, desde a contratação até a aposentadoria.
-<english>Complete cloud-native HR solution that connects all human resources processes from hiring to retirement.</english>
+<portugues>Qual é o serviço da AWS recomendado para armazenar arquivos de dados, filmes e  música como objetos?</portugues>
+
+DynamoDB
+<key>DynamoDB</key>
+
+EC2
+<key>EC2</key>
+
+Amazon Elastic Cache
+<key>Elastic Cache</key>
 
 <ok>
-HCM (Oracle Fusion Cloud Human Capital Management)
+S3
+<key>S3</key>
+
+<p>
+<portugues>Qual plano de suporte é recomendado se você tem cargas de trabalho empresariais e/ou de missão crítica na AWS?</portugues>
+
+<ok>
+Enterprise
+<key>Suporte</key>
+
+Basic
+<key>Suporte</key>
+
+Business
+<key>Suporte</key>
+
+Developer
+<key>Suporte</key>
+
+<p>
+<portugues>Decidi implementar na minha arquitetura um banco de dados totalmente gerenciado pelo meu time rodando numa instância EC2. Qual é o serviço que será utilizado para armazenar os dados deste banco?</portugues>
+
+DynamoDB
+<key>DynamoDB</key>
+
+RDS
+<key>RDS</key>
+
+<ok>
+EBS
+<key>EBS</key>
+
+Aurora
+<key>Aurora</key>
+
+<p>
+<portugues>Qual serviço da AWS pode ser utilizado se você deseja hospedar aplicações web de várias camadas e estabelecer o acesso e as restrições de segurança entre seus servidores web, aplicações e bancos de dados?</portugues>
+
+Security Group
+<key>Security Group</key>
+
+<ok>
+VPC
+<key>VPC</key>
+
+NACL
+<key>NACL</key>
+
+VPN
+<key>VPN</key>
+
+<p>
+<portugues>Qual é o firewall da AWS que protege suas aplicações web de bots e outras ameaças comuns que podem afetar a disponibilidade e a performance dos seus serviços?</portugues>
+
+AWS Certificate Manager
+<key>Certificate Manager</key>
+
+<ok>
+AWS WAF
+<key>WAF</key>
+
+AWS CloudFront
+<key>CloudFront</key>
+
+AWS Shield
+<key>Shield</key>
+
+<p>
+<portugues>Qual é o serviço da AWS que permite criar uma imagem a partir de uma EC2 configurada para ser utilizada em serviços como Auto Scaling, DR, entre outros ?</portugues>
+
+AWS Workspaces
+<key>Workspaces</key>
+
+<ok>
+AMI
+<key>AMI</key>
+
+AWS Image
+<key>Não Se Aplica</key>
+
+AWS Config
+<key>Config</key>
+
+<p>
+<portugues>No modelo de Responsabilidade Compartilhada, qual é o papel do cliente?</portugues>
+
+<ok>
+proteger e configurar instâncias EC2 contra invasões
+<key>Responsabilidade Compartilhada</key>
+
+proteger os hardwares que executam os serviços da nuvem
+<key>Responsabilidade Compartilhada</key>
+
+proteger os data centers físicos
+<key>Responsabilidade Compartilhada</key>
+
+proteger os softwares que executam os serviços da nuvem
+<key>Responsabilidade Compartilhada</key>
+
+<p>
+<portugues>Sua empresa implementou alguns serviços que identificam problemas de segurança na sua infraestrutura da AWS. Qual é o serviço que, através de visualização interativa e unificada de seus recursos, usuários e interações,  facilita a investigação e a identificação rápida da causa raiz dos problemas de segurança ou atividades suspeitas na sua rede?</portugues>
+
+Amazon Macie
+<key>Macie</key>
+
+AWS Security Hub
 <key></key>
 
-OCI (Oracle Cloud Infrastructure)
-<key></key>
+Amazon GuardDuty
+<key>GuardDuty</key>
 
-Nuvem Híbrida
-<key></key>
+<ok>
+Amazon Detective
+<key>Detective</key>
 
-Multinuvem
-<key></key>
+<p>
+<portugues>Você precisa migrar uma grande quantidade de dados do seu ambiente on-premise para armazenamento no S3 de forma automática e periódica, liberando a capacidade da sua infraestrutra particular. Qual serviço que pode ser utilizado para essa finalidade?</portugues>
+
+AWS DMS
+<key>DMS</key>
+
+AWS VPN
+<key>VPN</key>
+
+<ok>
+AWS DataSync
+<key>DataSync</key>
+
+AWS DirectConnect
+<key>Direct Connect</key>
 
 <p>
 
@@ -240,7 +366,7 @@ Multinuvem
 <script type="text/javascript">
 	onLoadConfig();
 	
-	var quantidadeRegistrosP = '3'; // <p>
+	var quantidadeRegistrosP = '11'; // <p>
 	refreshTableResult(quantidadeRegistrosP);
 	function callback() {
 		setTimeout (function () {

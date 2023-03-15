@@ -30,7 +30,7 @@
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Está tudo pronto</div>
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">Já pode continuar</div>
 					<br/><label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=3&cat=1', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
+						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=1&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
 					</label>
 				</div>
 				<div id="divLoading" style="display:'none';">
@@ -191,40 +191,175 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1
+<portugues>FASE 3.5</portugues>
 
 <p>
-Conjunto complementar de serviços de nuvem que permite criar e executar uma variedade de aplicativos e serviços em um ambiente hospedado altamente disponível.
-<english>Complementary set of cloud services that enable you to build and run a variety of applications and services in a highly available hosted environment.</english>
+<portugues>Qual é o plano recomendado se você está experimentando ou testando na AWS?</portugues>
+
+Enterprise
+<key>Suporte</key>
+
+Business
+<key>Suporte</key>
 
 <ok>
-OCI (Oracle Cloud Infrastructure)
+Developer
+<key>Suporte</key>
 
-Nuvem Privada
-<key></key>
-
-Nuvem Híbrida
-<key></key>
-
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+Basic
+<key>Suporte</key>
 
 <p>
-Solução de RH nativa em nuvem completa que conecta todos os processos de recursos humanos, desde a contratação até a aposentadoria.
-<english>Complete cloud-native HR solution that connects all human resources processes from hiring to retirement.</english>
+<portugues>Qual é a ferramenta feita para desenvolvedores e cientistas de dados prepararem, construirem, treinarem e implantarem seus modelos de aprendizado de máquina na AWS (ML-Machine Learning)?</portugues>
+
+Amazon Step Function
+<key>Step Functions</key>
+
+Amazon RedShift
+<key>RedShift</key>
+
+EMR
+<key>EMR</key>
 
 <ok>
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+Amazon SageMaker
+<key>SageMaker</key>
 
-OCI (Oracle Cloud Infrastructure)
-<key></key>
+<p>
+<portugues>Qual das opções abaixo é uma ferramenta para proteger instâncias EC2?</portugues>
 
-Nuvem Híbrida
-<key></key>
+AWS User Groups
+<key>IAM Groups</key>
 
-Multinuvem
-<key></key>
+AWS IAM
+<key>IAM</key>
+
+<ok>
+AWS Security Groups
+<key>Security Group</key>
+
+AWS CloudWatch
+<key>CloudWatch</key>
+
+<p>
+<portugues>Todos os objetos do S3 são privados por default. Qual das opções abaixo é uma forma de permitir que pessoas ou aplicações consigam acessar esses objetos durante um período pré-determinado de tempo?</portugues>
+
+Alterando a propriedade do objeto para público
+<key>S3 pre-signed URL</key>
+
+Migrando o objeto para a classe Glacier do S3
+<key>Glacier</key>
+
+<ok>
+Gerando URLs pré assinadas
+<key>S3 pre-signed URL</key>
+
+Utilizando o Transfer Accelerator do S3
+<key>Transfer Acceleration</key>
+
+<p>
+<portugues>Sobre o gerenciamento de Grupos no AWS IAM, podemos afirmar que:
+<br>(Selecione 3)</portugues>
+
+<ok>
+Um usuário pode pertencer a vários grupos
+<key>IAM Groups</key>
+
+<ok>
+Um Grupo pode conter diversos usuários
+<key>IAM Groups</key>
+
+Você pode criar grupos de usuário padrão e incluir todos os usuários da conta da AWS
+<key>Não Se Aplica</key>
+
+O número e o tamanho dos grupos do AWS IAM são virtualmente ilimitados.
+<key>Não Se Aplica</key>
+
+<ok>
+Os grupos não podem ser aninhados, eles só podem conter usuários
+<key>IAM Groups</key>
+
+<p>
+<portugues>Qual é o serviço que coleta dados de monitoramento e operações na forma de logs, métricas e eventos e os exibe usando painéis automatizados para que você tenha uma visão unificada dos recursos, aplicativos e serviços executados na AWS e em servidores locais?</portugues>
+
+<ok>
+AWS CloudWatch
+<key>CloudWatch</key>
+
+AWS GuardDuty
+<key>GuardDuty</key>
+
+AWS Macie
+<key>Macie</key>
+
+AWS Inspector
+<key>Inspector</key>
+
+<p>
+<portugues>Você descobriu que o seu website vem apresentando muita indisponibilidade devido a ataques DDoS. Quais serviços listados abaixo podem ser utilizados para evitá-los?
+<br>(Selecione 2)</portugues>
+
+AWS GuardDuty
+<key>GuardDuty</key>
+
+<ok>
+AWS Shield
+<key>Shield</key>
+
+<ok>
+AWS CloudFront
+<key>CloudFront</key>
+
+AWS CLI
+<key>CLI</key>
+
+<p>
+<portugues>Quais mecanismos de bancos de dados são suportados no RDS?</portugues>
+
+<ok>
+Amazon Aurora, PostgreSQL, MySQL, MariaDB, Oracle Database e SQL Server
+<key>RDS</key>
+
+Dynamo, Cassandra, Neptune
+<key>Não Se Aplilca</key>
+
+JanusGraph, MongoDB
+<key>Não Se Aplilca</key>
+
+DB2
+<key>Não Se Aplilca</key>
+
+<p>
+<portugues>No modelo de Responsabilidade Compartilhada, qual dos itens abaixo não é papel das duas partes (AWS e cliente)?</portugues>
+
+Gerenciamento de configuração
+<key>Responsabilidade Compartilhada</key>
+
+Gerenciamento de patches
+<key>Responsabilidade Compartilhada</key>
+
+Conhecimentos e treinamento
+<key>Responsabilidade Compartilhada</key>
+
+<ok>
+Gerenciamento de permissão de acesso a dados de aplicativos dos clientes.
+<key>Responsabilidade Compartilhada</key>
+
+<p>
+<portugues>Sua empresa precisa realizar backups de diversos serviços de sua infraestrutura virtual e do seu ambiente on premises. Qual é o serviço que, através da CLI, APIs e Console, permite automatizar e consolidar tarefas de backup e remove a necessidade de criar scripts personalizados e processos manuais?</portugues>
+
+AWS Storage Gateway
+<key>Storage Gateway</key>
+
+Amazon S3
+<key>S3</key>
+
+<ok>
+AWS Backups
+<key>Backup</key>
+
+Amazon EBS
+<key>EBS</key>
 
 <p>
 
@@ -240,7 +375,7 @@ Multinuvem
 <script type="text/javascript">
 	onLoadConfig();
 	
-	var quantidadeRegistrosP = '3'; // <p>
+	var quantidadeRegistrosP = '11'; // <p>
 	refreshTableResult(quantidadeRegistrosP);
 	function callback() {
 		setTimeout (function () {

@@ -24,13 +24,13 @@
 </head>
 
 <body id="myBody" ZZZbackground="gallery/paper.jpeg">
-
+		
 			<div style="display:'none'; text-align:center; ">
 				<div id="divContinuar" style="display:none;">
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Está tudo pronto</div>
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">Já pode continuar</div>
 					<br/><label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=3&cat=1', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
+						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=1&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
 					</label>
 				</div>
 				<div id="divLoading" style="display:'none';">
@@ -191,40 +191,167 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1
+<portugues>FASE 3.3</portugues>
 
 <p>
-Conjunto complementar de serviços de nuvem que permite criar e executar uma variedade de aplicativos e serviços em um ambiente hospedado altamente disponível.
-<english>Complementary set of cloud services that enable you to build and run a variety of applications and services in a highly available hosted environment.</english>
+<portugues>Qual é o serviço que realiza a transferência de dados, em dispositivo físico, conduzidos por meios de transportes pertinentes para a infraestrutura da AWS?</portugues>
+
+AWS Transport
+<key>Não Se Aplica</key>
+
+AWS DataSync
+<key>DataSync</key>
+
+AWS DMS
+<key>DMS</key>
 
 <ok>
-OCI (Oracle Cloud Infrastructure)
-
-Nuvem Privada
-<key></key>
-
-Nuvem Híbrida
-<key></key>
-
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+AWS Snowball
+<key>Snowball</key>
 
 <p>
-Solução de RH nativa em nuvem completa que conecta todos os processos de recursos humanos, desde a contratação até a aposentadoria.
-<english>Complete cloud-native HR solution that connects all human resources processes from hiring to retirement.</english>
+<portugues>Qual é o serviço que monitora os aplicativos e que ajusta automaticamente a capacidade de instâncias para manter um desempenho constante e previsível pelo menor custo possível?</portugues>
+
+AWS Fargate
+<key>Fargate</key>
+
+AWS ELB
+<key>ELB</key>
 
 <ok>
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+AWS Auto Scaling
+<key>Auto Scaling</key>
 
-OCI (Oracle Cloud Infrastructure)
-<key></key>
+AWS ECS
+<key>ECS</key>
 
-Nuvem Híbrida
-<key></key>
+<p>
+<portugues>Qual das opções abaixo é um serviço Amazon para gerenciar pacotes de softwares e suas dependências?</portugues>
 
-Multinuvem
-<key></key>
+<ok>
+AWS CodeArtifact
+<key>CodeArtifact</key>
+
+AWS CodeBuild
+<key>CodeBuild</key>
+
+AWS CodeDeploy
+<key>CodeDeploy</key>
+
+AWS CodeCommit
+<key>CodeCommit</key>
+
+<p>
+<portugues>Qual é o serviço gerenciado na nuvem AWS com o qual é possível configurar, gerenciar e dimensionar uma solução de pesquisa, de forma simples e econômica, para o seu site ou aplicativo?</portugues>
+
+Amazon ElasticSearchService
+<key>ElasticSearch</key>
+
+Amazon ElasticCache
+<key>Elastic Cache</key>
+
+Amazon Athena
+<key>Athena</key>
+
+<ok>
+Amazon CloudSearch
+<key>CloudSearch</key>
+
+<p>
+<portugues>Qual componente da infraestrutura global da AWS o Amazon CloudFront utiliza para garantir a baixa latência na distribuição de conteúdo?</portugues>
+
+Regiões (Regions)
+<key>Region</key>
+
+Amazon ECS
+<key>ECS</key>
+
+Amazon VPC
+<key>VPC</key>
+
+<ok>
+Redes de Borda (Edge Locations)
+<key>Edge Location</key>
+
+<p>
+<portugues>A utilização de 750h por mês do EC2 faz parte de qual tipo de uso do nível gratuito (Free Tier)?</portugues>
+
+Spot
+<key>Opções de Compra de Instância</key>
+
+Always free (sempre livre)
+<key>Modelo de uso</key>
+
+<ok>
+12 months free (12 meses livre)
+<key>Modelo de uso</key>
+
+Trial (Experimentação Livre)
+<key>Modelo de uso</key>
+
+<p>
+<portugues>A inclusão e retirada de máquinas de forma automática para executar as aplicações de acordo com a demanda é denominada por?</portugues>
+
+Desacoplamento
+<key>SQS</key>
+
+<ok>
+Elasticidade
+<key>Elasticidade</key>
+
+Performance
+<key>Performance Eficiente</key>
+
+Disponibilidade
+<key>Confiabilidade</key>
+
+<p>
+<portugues>O que o Amazon EKS adiciona ao Amazon ECS?</portugues>
+
+Computação sem servidor
+<key>Não Se Aplica</key>
+
+Distribuição de Carga
+<key>Não Se Aplica</key>
+
+Registro de imagem
+<key>AMI</key>
+
+<ok>
+Orquestração
+<key>EKS</key>
+
+<p>
+<portugues>Sua equipe desenvolveu uma aplicação para enviar um e-mail para os seus clientes avisando que a assinatura de um serviço anual que irá vencer nos próximos 2 meses. Essa aplicação não precisa de alta disponibilidade e pode ser executada em qualquer horário do dia. Qual é a forma de uso de instâncias EC2 mais indicada para economizar custos?</portugues>
+
+<ok>
+Spot
+<key>Opções de Compra de Instância</key>
+
+On-Demand
+<key>Opções de Compra de Instância</key>
+
+Reserved
+<key>Opções de Compra de Instância</key>
+
+Dedicated Hosts
+<key>Opções de Compra de Instância</key>
+
+<p>
+<portugues>O que o AWS Fargate adiciona ao Amazon ECS?</portugues>
+
+Orquestração
+<key>EKS</key>
+
+Balanceamento de Carga
+<key>ELB</key>
+
+<ok>
+Execução de conteiner sem servidor
+<key>Fargate</key>
+
+Registro de Imagem
+<key>AMI</key>
 
 <p>
 
@@ -240,7 +367,7 @@ Multinuvem
 <script type="text/javascript">
 	onLoadConfig();
 	
-	var quantidadeRegistrosP = '3'; // <p>
+	var quantidadeRegistrosP = '11'; // <p>
 	refreshTableResult(quantidadeRegistrosP);
 	function callback() {
 		setTimeout (function () {

@@ -30,7 +30,7 @@
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Está tudo pronto</div>
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">Já pode continuar</div>
 					<br/><label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=3&cat=1', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
+						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
 					</label>
 				</div>
 				<div id="divLoading" style="display:'none';">
@@ -191,39 +191,205 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1
+FASE 8
 
 <p>
-Conjunto complementar de serviços de nuvem que permite criar e executar uma variedade de aplicativos e serviços em um ambiente hospedado altamente disponível.
-<english>Complementary set of cloud services that enable you to build and run a variety of applications and services in a highly available hosted environment.</english>
+Você está configurando um sistema de banco de dados Oracle Real Application Cluster (RAC) de 2 nós para alta disponibilidade. Essas instâncias precisam de latência quase zero para comunicação entre instâncias.
+<br/>Qual é a configuração correta para este cenário?
+<english>You are configuring a 2-node Oracle Real Application Cluster (RAC) DB System for high availability. These instances need near zero latency for inter-instance communication.
+<br/>What is the correct configuration for this scenario?</english>
 
 <ok>
-OCI (Oracle Cloud Infrastructure)
-
-Nuvem Privada
+Configure instances across multiple availability domains.
 <key></key>
 
-Nuvem Híbrida
+Configure instances inside single VCN using multiple availability domains.
 <key></key>
 
-HCM (Oracle Fusion Cloud Human Capital Management)
+Configure instances across multiple fault domains.
+<key></key>
+
+Configure instances across multiple regions.
 <key></key>
 
 <p>
-Solução de RH nativa em nuvem completa que conecta todos os processos de recursos humanos, desde a contratação até a aposentadoria.
-<english>Complete cloud-native HR solution that connects all human resources processes from hiring to retirement.</english>
+Quais são as três afirmações corretas sobre os Compartimentos do Oracle Cloud Infrastructure?
+<br/>Selecione 3.
+<english>Which three statements are correct about Oracle Cloud Infrastructure Compartments?
+<br/>Select 3.</english>
 
 <ok>
-HCM (Oracle Fusion Cloud Human Capital Management)
+Compartments can have sub-compartments.
 <key></key>
 
-OCI (Oracle Cloud Infrastructure)
+<ok>
+Compartments are logical entities.
 <key></key>
 
-Nuvem Híbrida
+<ok>
+Compartments can be nested.
 <key></key>
 
-Multinuvem
+Compartments can be used for authentication services.
+<key></key>
+
+Each compartment is local to a region.
+<key></key>
+
+Resources inside the compartments cannot be moved to another compartment.
+<key></key>
+
+<p>
+Quais DUAS declarações descrevem corretamente o Oracle Cloud Infrastructure Accelerated Data Science SDK?
+<br/>Selecione 2.
+<english>Which TWO statements correctly describe the Oracle Cloud Infrastructure Accelerated Data Science SDK?
+<br/>Select 2.</english>
+
+<ok>
+It is included as part of the Data Science service.
+<key></key>
+
+<ok>
+It is a Python library that makes common tasks faster, easier, and less error prone.
+<key></key>
+
+It is a JavaScript library that makes common tasks faster, easier, and less error prone.
+<key></key>
+
+It is an additional cost to the Data Science service.
+<key></key>
+
+It is a PHP library that makes common tasks faster, easier, and less error prone.
+<key></key>
+
+<p>
+Que tipo de transferência de dados incorre em custos no Oracle Cloud Infrastructure (OCI)?
+<english>Which type of data transfer incur costs within Oracle Cloud Infrastructure (OCI)?</english>
+
+<ok>
+Data egress to the Internet
+<key></key>
+
+Data transfer from one instance to another within the same Availability Domain
+<key></key>
+
+Data ingress from the Internet
+<key></key>
+
+Data transfer from one instance to another across different Availability Domains in a region
+<key></key>
+
+<p>
+Quais são as duas afirmações corretas em relação aos Domínios de Falha do Oracle Cloud Infrastructure?
+<br/>Selecione 2.
+<english>Which two statements are correct regarding Oracle Cloud Infrastructure Fault Domains?
+<br/>Select 2.</english>
+
+<ok>
+Fault domains are used to mitigate hardware failures.
+<key></key>
+
+<ok>
+Fault domains are logical data center within regions.
+<key></key>
+
+Fault domains are physical data centers with availability domains.
+<key></key>
+
+Fault domains are physical data centers within regions.
+<key></key>
+
+Fault domains are logical data centers with availability domains.
+<key></key>
+
+<p>
+Você deseja editar uma instância de computação em estado de execução para oferecer suporte a alterações na carga de trabalho do aplicativo.
+<br/>Qual parâmetro NÃO é modificável?
+<english>You want to edit a compute instance in a running state to support changes in your application workload.
+<br/>Which parameter is NOT modifiable?</english>
+
+<ok>
+Primary Private IP address
+<key></key>
+
+Amount of Memory
+<key></key>
+
+Number of OCPUs
+<key></key>
+
+Fault Domain
+<key></key>
+
+<p>
+Qual NÃO é uma opção de forma de computação válida no serviço de computação Oracle Cloud Infrastructure (OCI)?
+<english>Which is NOT a valid compute shape option within the Oracle Cloud Infrastructure (OCI) compute service?</english>
+
+<ok>
+Container Instance.
+<key></key>
+
+Bare Metal.
+<key></key>
+
+Dedicated Virtual Machine Host.
+<key></key>
+
+Virtual Machine.
+<key></key>
+
+<p>
+Qual é uma sintaxe válida para uma Política de Gerenciamento de Identidade e Acesso (IAM) da Oracle Cloud Infrastructure (OCI)?
+<english>Which is a valid syntax for an Oracle Cloud Infrastructure (OCI) Identity and Access Management (IAM) Policy?</english>
+
+<ok>
+Allow group <group_name> to <verb> <resource-type> in tenancy
+<key></key>
+
+Deny group <group_name> to <verb> <resource-type> in tenancy
+<key></key>
+
+Deny user <user_name> to <verb> <resource-type> in tenancy
+<key></key>
+
+Allow user <user_name> to <verb> <resource-type> in tenancy
+<key></key>
+
+<p>
+Qual declaração descreve corretamente o Oracle Cloud Manageability SLA?
+<english>Which statement correctly describes Oracle Cloud Manageability SLA?</english>
+
+<ok>
+Ability to manage, monitor, and modify OCI resources.
+<key></key>
+
+Access to the console is guaranteed.
+<key></key>
+
+Services are in operation with uptime and connectivity requirements.
+<key></key>
+
+100% availability to manage resources.
+<key></key>
+
+Services consistently perform as expected.
+<key></key>
+
+<p>
+Qual recurso permite que você pesquise, adquira e comece a usar software em sua locação Oracle Cloud Infrastructure (OCI)?
+<english>Which capability enables you to search, purchase, and start using software in your Oracle Cloud Infrastructure (OCI) tenancy?</english>
+
+<ok>
+Marketplace
+<key></key>
+
+Resource Manager
+<key></key>
+
+Container Registry
+<key></key>
+
+OS Management
 <key></key>
 
 <p>
@@ -240,7 +406,7 @@ Multinuvem
 <script type="text/javascript">
 	onLoadConfig();
 	
-	var quantidadeRegistrosP = '3'; // <p>
+	var quantidadeRegistrosP = '11'; // <p>
 	refreshTableResult(quantidadeRegistrosP);
 	function callback() {
 		setTimeout (function () {

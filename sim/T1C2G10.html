@@ -30,7 +30,7 @@
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Está tudo pronto</div>
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">Já pode continuar</div>
 					<br/><label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=3&cat=1', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
+						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=1&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
 					</label>
 				</div>
 				<div id="divLoading" style="display:'none';">
@@ -191,40 +191,170 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1
+<portugues>FASE 1.9</portugues>
 
 <p>
-Conjunto complementar de serviços de nuvem que permite criar e executar uma variedade de aplicativos e serviços em um ambiente hospedado altamente disponível.
-<english>Complementary set of cloud services that enable you to build and run a variety of applications and services in a highly available hosted environment.</english>
+<portugues>Qual é o serviço capaz de coletar e processar, em tempo real, um grande volume de streams de dados oriundos de diversos dispositivos, gerando novas informações para rápidas reações e direções?</portugues>
 
 <ok>
-OCI (Oracle Cloud Infrastructure)
+Kinesis
+<key>Kinesis</key>
 
-Nuvem Privada
-<key></key>
+SQS
+<key>SQS</key>
 
-Nuvem Híbrida
-<key></key>
+SNS
+<key>SNS</key>
 
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+EventBridge
+<key>EventBridge</key>
 
 <p>
-Solução de RH nativa em nuvem completa que conecta todos os processos de recursos humanos, desde a contratação até a aposentadoria.
-<english>Complete cloud-native HR solution that connects all human resources processes from hiring to retirement.</english>
+<portugues>Sua equipe de desenvolvimento está montando uma pipeline de CI/CD para uma nova aplicação na AWS, qual serviço eles precisam incluir no final da esteira para implantar a aplicação nos servidores de forma automatizada?</portugues>
+
+AWS Deploy
+<key>Não Se Aplica</key>
 
 <ok>
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+AWS CodeDeploy
+<key>CodeDeploy</key>
 
-OCI (Oracle Cloud Infrastructure)
-<key></key>
+AWS CodeCommit
+<key>CodeCommit</key>
 
-Nuvem Híbrida
-<key></key>
+AWS Git
+<key>Não Se Aplica</key>
 
-Multinuvem
-<key></key>
+<p>
+<portugues>Qual serviço da AWS que, além de ajudar na visualização dos cinco serviços que mais aumentam os custos de uma conta, disponibiliza um detalhamento minucioso sobre todos os recursos utilizados?</portugues>
+
+<ok>
+AWS Cost Explorer
+<key>Cost Explorer</key>
+
+AWS Billing
+<key>Billing</key>
+
+AWS Pricing
+<key>Pricing Calculator</key>
+
+AWS Budget
+<key>Budgets</key>
+
+<p>
+<portugues>Sua empresa precisa executar centenas de batch para atualizar diversas informações dos seus clientes sem ter a dimensão dos recursos tecnológicos que precisará utilizar, qual é a melhor solução a ser utilizada?</portugues>
+
+AWS EC2 Reserved
+<key>Opções de Compra de Instância</key>
+
+AWS Step Functions
+<key>Step Functions</key>
+
+<ok>
+AWS Batch
+<key>Batch</key>
+
+AWS OnDemand
+<key>Opções de Compra de Instância</key>
+
+<p>
+<portugues>Sobre o AWS Budget e suas finalidades podemos afirmar que:
+<br/>(Selecione 3)</portugues>
+
+<ok>
+Podem ser utilizados para enviar alertas para te ajudar no controle do uso dos serviços da sua conta
+<key>Budgets</key>
+
+Podem enviar notificações para até 5 destinatários por email
+<key>Budgets Destinatários por Email</key>
+
+<ok>
+Podem ser usados para criar e gerenciar orçamentos
+<key>Budgets</key>
+
+<ok>
+Podem ser usados para refinar e filtrar orçamentos
+<key>Budgets</key>
+
+<p>
+<portugues>Qual é a melhor prática para atender o princípio: "desenvolver para falhar e nada vai falhar"?</portugues>
+
+Implantar a aplicação sempre com o CodeDeploy
+<key>CodeDeploy</key>
+
+Monitorar o ambiente pare enviar alertas com o CloudWatch
+<key>CloudWatch</key>
+
+Utilizar CloudFront para fazer o cache do conteúdo
+<key>CloudFront</key>
+
+<ok>
+Implantar a aplicação em múltiplas zonas de disponibilidade
+<key>Multi-AZ</key>
+
+<p>
+<portugues>Qual serviço da AWS pode ser utilizado para gerenciar todos os custos dos recursos utilizados na AWS?</portugues>
+
+AWS Price
+<key>Não Se Aplica</key>
+
+AWS Budget
+<key>Budgets</key>
+
+<ok>
+AWS Cost Explorer
+<key>Cost Explorer</key>
+
+AWS Pricing Calculator
+<key>Pricing Calculator</key>
+
+<p>
+<portugues>Você trabalha num escritório jurídico que lida com um volume muito grande de contratos. Esses documentos são alterados muitas vezes e requerem um processo de gerenciamento de versões. Qual serviço da AWS é indicado para armazenar esses documentos e atender tal requisito?</portugues>
+
+<ok>
+S3
+<key>S3</key>
+
+EBS
+<key>EBS</key>
+
+Git
+<key>Git</key>
+
+CodeCommit
+<key>CodeCommit</key>
+
+<p>
+<portugues>Você está criando uma rede virtual isolada para os seus recursos dentro da AWS e deseja separar a camada de servidores de dados da camada de servidores de aplicação. A solução é criar duas sub-redes (subnets), uma para dados e uma para a aplicação. Qual é o serviço que permite esse tipo de organização?</portugues>
+
+AWS Organizations
+<key>Organizations</key>
+
+ELB
+<key>ELB</key>
+
+AWS Budget
+<key>Budgets</key>
+
+<ok>
+VPC
+<key>VPC</key>
+
+<p>
+<portugues>Sua empresa deseja implementar governança nos serviços de TI que estejam aprovados para uso na AWS acompanhando o custo, desempenho, segurança e status operacional dos mesmos. Qual é o serviço que permite a criação de catálogos de serviços de TI para essa finalidade?</portugues>
+
+AWS Catalog
+<key>Não Se Aplica</key>
+
+AWS Console Manager
+<key>Console Manager</key>
+
+AWS IT Service
+<key>Não Se Aplica</key>
+
+<ok>
+AWS Service Catalog
+<key>Service Catalog</key>
 
 <p>
 
@@ -240,7 +370,7 @@ Multinuvem
 <script type="text/javascript">
 	onLoadConfig();
 	
-	var quantidadeRegistrosP = '3'; // <p>
+	var quantidadeRegistrosP = '11'; // <p>
 	refreshTableResult(quantidadeRegistrosP);
 	function callback() {
 		setTimeout (function () {

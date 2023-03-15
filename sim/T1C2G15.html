@@ -24,13 +24,13 @@
 </head>
 
 <body id="myBody" ZZZbackground="gallery/paper.jpeg">
-
+		
 			<div style="display:'none'; text-align:center; ">
 				<div id="divContinuar" style="display:none;">
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Está tudo pronto</div>
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">Já pode continuar</div>
 					<br/><label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=3&cat=1', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
+						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=1&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
 					</label>
 				</div>
 				<div id="divLoading" style="display:'none';">
@@ -191,40 +191,167 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1
+<portugues>FASE 2.4</portugues>
 
 <p>
-Conjunto complementar de serviços de nuvem que permite criar e executar uma variedade de aplicativos e serviços em um ambiente hospedado altamente disponível.
-<english>Complementary set of cloud services that enable you to build and run a variety of applications and services in a highly available hosted environment.</english>
+<portugues>Qual serviço é utilizado para logar as ações dos seus usuários dentro da AWS?</portugues>
+
+IAM
+<key>IAM</key>
+
+S3
+<key>S3</key>
+
+CloudWatch logs
+<key>CloudWatch</key>
 
 <ok>
-OCI (Oracle Cloud Infrastructure)
-
-Nuvem Privada
-<key></key>
-
-Nuvem Híbrida
-<key></key>
-
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+CloudTrail
+<key>CloudTrail</key>
 
 <p>
-Solução de RH nativa em nuvem completa que conecta todos os processos de recursos humanos, desde a contratação até a aposentadoria.
-<english>Complete cloud-native HR solution that connects all human resources processes from hiring to retirement.</english>
+<portugues>Sua empresa precisa implementar a integração rápida entre escritórios em São Paulo, Moscow e 2 mil funcionários ao redor do mundo. Qual é o serviço da AWS que permite realizar essa integração de forma ágil e escalável?</portugues>
+
+AWS VPC
+<key>VPC</key>
+
+AWS DataSync
+<key>DataSync</key>
+
+AWS Link
+<key>Não Se Aplica</key>
 
 <ok>
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+AWS VPN
+<key>VPN</key>
 
-OCI (Oracle Cloud Infrastructure)
-<key></key>
+<p>
+<portugues>Você precisa garantir a alta disponibilidade de uma aplicação que será lançada na sua empresa no Brasil. Qual é a melhor estratégia de uso do AWS RDS para esse requisito?</portugues>
 
-Nuvem Híbrida
-<key></key>
+Criar um Security Group para isolar apenas os bancos de dados e aumentar a performance
+<key>Security Group</key>
 
-Multinuvem
-<key></key>
+Read Replicas (Utilizar cópias de leitura)
+<key>Read Replicas</key>
+
+<ok>
+Multi-AZ  (Distribuir os bancos em mais de uma zona de disponibilidade)
+<key>Multi-AZ</key>
+
+Multi Regions (Distribuir os banco em mais de uma região)
+<key>Multi Regions</key>
+
+<p>
+<portugues>Uma das grandes vantagens no uso da AWS está nas formas de pagamentos dos seus serviços. Qual é forma de pagamentos padrão utilizada na maior parte dos seus serviços?</portugues>
+
+Pagamento conforme a compra
+<key>TCO</key>
+
+Pagamento conforme o contrato
+<key>TCO</key>
+
+Pagamento conforme o licenciamento
+<key>TCO</key>
+
+<ok>
+Pagamento conforme o uso
+<key>TCO</key>
+
+<p>
+<portugues>Sua empresa fez um contrato para obter um pacote com 50 licenças do Microsoft SQL Server. Os softwares serão instalados em novos servidores à medida que a empresa expandir seus negócios ao redor do mundo. A empresa passa por auditorias frequentes e precisa garantir que só existem softwares licenciados na sua rede. Qual serviço da AWS facilita essa conformidade?</portugues>
+
+CloudFormation
+<key>CloudFormation</key>
+
+Config
+<key>Config</key>
+
+Certificate Manager
+<key>Certificate Manager</key>
+
+<ok>
+License Manager
+<key>License Manager</key>
+
+<p>
+<portugues>Sua empresa está desenhando uma nova plataforma para distribuição de vídeos em nível global. Qual é o serviço que pode diminuir a latência entre a requisição e entrega do serviço?</portugues>
+
+<ok>
+Amazon CloudFront
+<key>CloudFront</key>
+
+Amazon ElasticCache
+<key>Elastic Cache</key>
+
+Amazon Redis
+<key>Redis</key>
+
+Amazon S3
+<key>S3</key>
+
+<p>
+<portugues>Qual é o serviço da AWS utilizado para migrar banco de dados de forma rápida e segura?</portugues>
+
+AWS Glue
+<key>Glue</key>
+
+AWS Snow
+<key>Snow</key>
+
+AWS Connect
+<key>Connect</key>
+
+<ok>
+AWS DMS
+<key>DMS</key>
+
+<p>
+<portugues>Com a AWS você pode obter descontos baseados em volume e obter economias substanciais à medida que o seu uso aumenta. Em qual serviço abaixo a definição de preço é feita em camadas e quanto mais você usar, menor será o preço por GB?</portugues>
+
+Lambda
+<key>Lambda</key>
+
+EKS
+<key>EKS</key>
+
+ECS
+<key>ECS</key>
+
+<ok>
+S3
+<key>S3</key>
+
+<p>
+<portugues>Qual serviço da AWS deve ser usado se você deseja configurar alarme de cobrança? (AWS billing alarm)</portugues>
+
+CloudTrail
+<key>CloudTrail</key>
+
+CloudMonitor
+<key>Não Se Aplica</key>
+
+<ok>
+CloudWatch
+<key>CloudWatch</key>
+
+CloudBilling
+<key>Não Se Aplica</key>
+
+<p>
+<portugues>Qual é o serviço de mensagens desenvolvido para Apache Active MQ e Rabbit MQ que torna a migração mais fácil e permite arquiteturas híbridas?</portugues>
+
+SNS
+<key>SNS</key>
+
+<ok>
+Amazon MQ
+<key>MQ</key>
+
+SQS
+<key>SQS</key>
+
+Kafka
+<key>Kafka</key>
 
 <p>
 
@@ -240,7 +367,7 @@ Multinuvem
 <script type="text/javascript">
 	onLoadConfig();
 	
-	var quantidadeRegistrosP = '3'; // <p>
+	var quantidadeRegistrosP = '11'; // <p>
 	refreshTableResult(quantidadeRegistrosP);
 	function callback() {
 		setTimeout (function () {

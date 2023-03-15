@@ -24,13 +24,13 @@
 </head>
 
 <body id="myBody" ZZZbackground="gallery/paper.jpeg">
-
+		
 			<div style="display:'none'; text-align:center; ">
 				<div id="divContinuar" style="display:none;">
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Está tudo pronto</div>
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">Já pode continuar</div>
 					<br/><label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=3&cat=1', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
+						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=1&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
 					</label>
 				</div>
 				<div id="divLoading" style="display:'none';">
@@ -191,40 +191,167 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1
+<portugues>FASE 3.1</portugues>
 
 <p>
-Conjunto complementar de serviços de nuvem que permite criar e executar uma variedade de aplicativos e serviços em um ambiente hospedado altamente disponível.
-<english>Complementary set of cloud services that enable you to build and run a variety of applications and services in a highly available hosted environment.</english>
+<portugues>Qual é o serviço de DNS da AWS que entre outras coisas transforma nomes de urls em código IP para acessar os recursos da Cloud.</portugues>
+
+AWS Auto Scaling
+<key>Auto Scaling</key>
 
 <ok>
-OCI (Oracle Cloud Infrastructure)
+Route53
+<key>Route53</key>
 
-Nuvem Privada
-<key></key>
+ACL
+<key>ACL</key>
 
-Nuvem Híbrida
-<key></key>
-
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+ELB
+<key>ELB</key>
 
 <p>
-Solução de RH nativa em nuvem completa que conecta todos os processos de recursos humanos, desde a contratação até a aposentadoria.
-<english>Complete cloud-native HR solution that connects all human resources processes from hiring to retirement.</english>
+<portugues>A área de marketing da sua empresa está planejando fazer uma campanha que durará 12 meses, em vista disso, você foi avisado que haverá um aumento no número de clientes no site e viu que será necessário subir mais 3  instâncias EC2 para atender a demanda durante esse período. Qual tipo de instância terá um melhor custo nesse cenário?</portugues>
+
+Dedicated Hosts
+<key>Opções de Compra de Instância</key>
+
+On Demand
+<key>Opções de Compra de Instância</key>
 
 <ok>
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+Reserved
+<key>Opções de Compra de Instância</key>
 
-OCI (Oracle Cloud Infrastructure)
-<key></key>
+Spot
+<key>Opções de Compra de Instância</key>
 
-Nuvem Híbrida
-<key></key>
+<p>
+<portugues>Sua empresa precisa implementar mais segurança em seus recursos na AWS. Qual é o serviço que permite provisionar, gerenciar e implantar facilmente certificados Secure Sockets Layer (SSL)/Transport Layer Security (TLS) para que sejam usados com os serviços da AWS e os recursos internos conectados?</portugues>
 
-Multinuvem
-<key></key>
+<ok>
+AWS Certificate Manager
+<key>Certificate Manager</key>
+
+AWS Protocols
+<key>Não Se Aplica</key>
+
+AWS Security
+<key>Não Se Aplica</key>
+
+AWS KMS
+<key>KMS</key>
+
+<p>
+<portugues>Para atender uma área de auditoria e compliance, você precisa garantir que as configurações iniciais dos serviços e sistemas sejam mantidas e monitoradas. Qual serviço da AWS você pode utilizar para esse tipo de gerenciamento?</portugues>
+
+<ok>
+AWS Config
+<key>Config</key>
+
+AWS Setup
+<key>Não Se Aplica</key>
+
+AWS Audit
+<key>Não Se Aplica</key>
+
+AWS Compliance
+<key>Não Se Aplica</key>
+
+<p>
+<portugues>Qual é o serviço de data warehouse da Amazon utilizado pelas áreas de BI, que permite o cruzamento de vários dados estruturados e semi estruturados para gerar conhecimento para o negócio?</portugues>
+
+EMR
+<key>EMR</key>
+
+<ok>
+Amazon RedShift
+<key>RedShift</key>
+
+Kinesis
+<key>Kinesis</key>
+
+Power BI
+<key>Não Se Aplica</key>
+
+<p>
+<portugues>Qual item abaixo é de responsabilidade dos clientes quando é preciso garantir que dados em volumes EBS estejam seguros e com seus backups realizados?</portugues>
+
+<ok>
+Criar a EBS snapshot
+<key>EBS Snapshots</key>
+
+Criar copias dos EBS Volumes
+<key>EBS Volumes</key>
+
+Anexar volumes em instâncias EC2
+<key>Não Se Aplica</key>
+
+Deletar o dado quando o dispositivo é destruído
+<key>Não Se Aplica</key>
+
+<p>
+<portugues>Sua empresa criou diversas funções Lambdas para consultar informações e compor processos de avaliação de crédito. Qual serviço da AWS, orientado a eventos, pode ser utilizado com pouca codificação para expressar lógicas de negócios complexas na forma de fluxos de trabalho para construir esses processos?</portugues>
+
+AWS SQS
+<key>SQS</key>
+
+<ok>
+AWS Step Functions
+<key>Step Functions</key>
+
+AWS BPM
+<key>Não Se Aplica</key>
+
+AWS SNS
+<key>SNS</key>
+
+<p>
+<portugues>Você deseja disponibilizar sua aplicação no endereço www.simuladoudemy.com. Qual serviço pode ser utilizada para essa finalidade?</portugues>
+
+S3
+<key>S3</key>
+
+API Gateway
+<key>API Gateway</key>
+
+AutoScaling
+<key>Auto Scaling</key>
+
+<ok>
+Route 53
+<key>Route53</key>
+
+<p>
+<portugues>Qual serviço da AWS abaixo deve ser utilizado para liberar acesso na conta para 3 desenvolvedores novos que chegaram no seu time?</portugues>
+
+CloudFront
+<key>CloudFront</key>
+
+S3
+<key>S3</key>
+
+<ok>
+IAM
+<key>IAM</key>
+
+EC2
+<key>EC2</key>
+
+<p>
+<portugues>Sua aplicação precisa que os dados estejam estruturados e distribuídos em tabelas, relacionadas por chaves, para atender um requisito de uma funcionalidade. Qual banco de dados abaixo não é indicado para esse fim?</portugues>
+
+MariaDB
+<key>MariaDB</key>
+
+Aurora
+<key>Aurora</key>
+
+<ok>
+DynamoDB
+<key>DynamoDB</key>
+
+MySql
+<key>MySql</key>
 
 <p>
 
@@ -240,7 +367,7 @@ Multinuvem
 <script type="text/javascript">
 	onLoadConfig();
 	
-	var quantidadeRegistrosP = '3'; // <p>
+	var quantidadeRegistrosP = '11'; // <p>
 	refreshTableResult(quantidadeRegistrosP);
 	function callback() {
 		setTimeout (function () {

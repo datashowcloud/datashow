@@ -24,13 +24,13 @@
 </head>
 
 <body id="myBody" ZZZbackground="gallery/paper.jpeg">
-
+		
 			<div style="display:'none'; text-align:center; ">
 				<div id="divContinuar" style="display:none;">
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Está tudo pronto</div>
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">Já pode continuar</div>
 					<br/><label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=3&cat=1', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
+						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=1&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
 					</label>
 				</div>
 				<div id="divLoading" style="display:'none';">
@@ -191,40 +191,87 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1
+<portugues>FASE 3.2</portugues>
 
 <p>
-Conjunto complementar de serviços de nuvem que permite criar e executar uma variedade de aplicativos e serviços em um ambiente hospedado altamente disponível.
-<english>Complementary set of cloud services that enable you to build and run a variety of applications and services in a highly available hosted environment.</english>
+<portugues>Qual serviço da AWS permite que você acompanhe os custos do que está consumindo e disponibiliza uma ferramenta para te notificar quando os custos excederem um valor pré-definido?</portugues>
+
+AWS Cost Explorer
+<key>Cost Explorer</key>
+
+AWS Pricing
+<key>Não Se Aplica</key>
+
+AWS Organization
+<key>Organizations</key>
 
 <ok>
-OCI (Oracle Cloud Infrastructure)
-
-Nuvem Privada
-<key></key>
-
-Nuvem Híbrida
-<key></key>
-
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+AWS Budget
+<key>Budgets</key>
 
 <p>
-Solução de RH nativa em nuvem completa que conecta todos os processos de recursos humanos, desde a contratação até a aposentadoria.
-<english>Complete cloud-native HR solution that connects all human resources processes from hiring to retirement.</english>
+<portugues>Você iniciou um trabalho de estimativa de custos de uma infraestrutura que precisa implementar para sua empresa. Qual dos serviços abaixo pode te apoiar?</portugues>
+
+AWS Budget
+<key>Budgets</key>
+
+AWS Organizations
+<key>Organizations</key>
 
 <ok>
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+AWS Pricing Calculator
+<key>Princing Calculator</key>
 
-OCI (Oracle Cloud Infrastructure)
-<key></key>
+AWS Cost Explorer
+<key>Cost Explorer</key>
 
-Nuvem Híbrida
-<key></key>
+<p>
+<portugues>Por que na AWS temos mais economia do que em data centers tradicionais, quando executamos aplicações que tem necessidades computacionais variadas, ao longo de um determinado período?</portugues>
 
-Multinuvem
-<key></key>
+Porque a aplicação pode ser projetada em mais de uma zona de disponibilidade para atender essa variação
+<key>Multi-AZ</key>
+
+<ok>
+Porque podemos instanciar máquinas EC2 no modelo de pagamento On-demand e pagarmos somente pelo uso.
+<key>Opções de Compra de Instância</key>
+
+Porque o custo de processamento é compartilhado com os demais clientes.
+<key>Não Se Aplica</key>
+
+Porque o hardware da AWS é muito barato.
+<key>Não Se Aplica</key>
+
+<p>
+<portugues>Qual é a plataforma de big data, em nuvem líder do setor, para processamento de dados, análise interativa e machine learning que usa estruturas de código aberto na AWS?</portugues>
+
+Amazon Redshift
+<key>Redshift</key>
+
+Amazon DMS
+<key>DMS</key>
+
+Amazon DataSync
+<key>DataSync</key>
+
+<ok>
+Amazon EMR
+<key>EMR</key>
+
+<p>
+<portugues>Sobre a utilização de IPV4 público na AWS podemos afirmar que:</portugues>
+
+Sao virtualmente ilimitados
+<key>Não Se Aplica</key>
+
+São ilimitados por conta
+<key>Não Se Aplica</key>
+
+<ok>
+São limitados a 5 por região
+<key>IPV4</key>
+
+São limitados a 5 por conta
+<key>Não Se Aplica</key>
 
 <p>
 
@@ -240,7 +287,7 @@ Multinuvem
 <script type="text/javascript">
 	onLoadConfig();
 	
-	var quantidadeRegistrosP = '3'; // <p>
+	var quantidadeRegistrosP = '6'; // <p>
 	refreshTableResult(quantidadeRegistrosP);
 	function callback() {
 		setTimeout (function () {

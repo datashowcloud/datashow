@@ -30,7 +30,7 @@
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Está tudo pronto</div>
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">Já pode continuar</div>
 					<br/><label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=3&cat=1', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
+						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=1&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
 					</label>
 				</div>
 				<div id="divLoading" style="display:'none';">
@@ -191,40 +191,180 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1
+<portugues>FASE 1.6</portugues>
 
 <p>
-Conjunto complementar de serviços de nuvem que permite criar e executar uma variedade de aplicativos e serviços em um ambiente hospedado altamente disponível.
-<english>Complementary set of cloud services that enable you to build and run a variety of applications and services in a highly available hosted environment.</english>
+<portugues>Qual opção abaixo melhor descreve o modelo de Responsabilidade Compartilhada da AWS (Shared Responsability)?</portugues>
+
+O cliente protege as aplicações, enquanto usuário protege sua senha
+<key>Responsabilidade Compartilhada</key>
+
+O desenvolvedor é responsável por implantar a aplicação, enquanto o gestor faz a aprovação
+<key>Responsabilidade Compartilhada</key>
 
 <ok>
-OCI (Oracle Cloud Infrastructure)
+A AWS protege o data center, enquanto o cliente protege as aplicações.
+<key>Responsabilidade Compartilhada</key>
 
-Nuvem Privada
-<key></key>
-
-Nuvem Híbrida
-<key></key>
-
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+A AWS protege o data center, enquanto a Microsoft protege o windows
+<key>Responsabilidade Compartilhada</key>
 
 <p>
-Solução de RH nativa em nuvem completa que conecta todos os processos de recursos humanos, desde a contratação até a aposentadoria.
-<english>Complete cloud-native HR solution that connects all human resources processes from hiring to retirement.</english>
+<portugues>A sua empresa decidiu migrar algumas aplicações monolíticas legadas, sem refatoração, para o ECS. O que pode-se afirmar sobre essa estratégia?</portugues>
 
 <ok>
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+É possível, porém não trará grandes benefícios de otimização no uso dos recursos
+<key>Refatoração</key>
 
-OCI (Oracle Cloud Infrastructure)
-<key></key>
+É possível e recomendado
+<key>Refatoração</key>
 
-Nuvem Híbrida
-<key></key>
+É possível e trará mais velocidade para a migração e implementação de novas funcionalidades
+<key>Refatoração</key>
 
-Multinuvem
-<key></key>
+Não é possível, pois o serviço não aceita aplicações monolíticas
+<key>Refatoração</key>
+
+<p>
+<portugues>Qual é a melhor descrição para o conceito de tolerância a falha?</portugues>
+
+A habilidade de um sistema nunca falhar
+<key>Tolerância a Falha</key>
+
+A habilidade de um sistema crescer e provisionar novos recursos para continuar executando
+<key>Tolerância a Falha</key>
+
+A habilidade de um sistema exibir mensagens de falhas para os usuários
+<key>Tolerância a Falha</key>
+
+<ok>
+A habilidade de um sistema permanecer em funcionamento, mesmo se um dos seus componentes falhar
+<key>Tolerância a Falha</key>
+
+<p>
+<portugues>Sua empresa deseja padronizar e versionar as configurações para a criação de todos os bancos de dados, além disso, deseja que esses serviços sejam implementados e atualizados em toda a infraestrutura de servidores de forma automatizada e utilizando pipelines de CI/CD. Qual é o serviço recomendado para esse requisito?</portugues>
+
+AWS RDS
+<key>RDS</key>
+
+AWS IAC
+<key>Não Se Aplica</key>
+
+AWS CodePipeline
+<key>CodePipeline</key>
+
+<ok>
+AWS CloudFormation
+<key>CloudFormation</key>
+
+<p>
+<portugues>Uma arquitetura de sistemas, baseada em computação sem servidor, utiliza S3, API Gateway, Lambda, SQS, SNS e precisa de um serviço que orquestre parte destas peças definindo e controlando os possíveis workflows. Qual dos serviços abaixo é utilizado para isso?</portugues>
+
+AWS Workflow
+<key>Não Se Aplica</key>
+
+AWS EventBridge
+<key>EventBridge</key>
+
+AWS Service Mesh
+<key>Não Se Aplica</key>
+
+<ok>
+AWS Step Functions
+<key>Step Functions</key>
+
+<p>
+<portugues>O que é possível fazer com o Amazon QuickSight?</portugues>
+
+Executar Map reduce em dados distribuídos
+<key>EMR</key>
+
+<ok>
+Criar DashBoards de BI com uso de Aprendizado de Máquina (Machine Learning)
+<key>QuickSight</key>
+
+Capturar dados de diversos dispositivos através e streaming de dados de forma rápida
+<key>Kinesis</key>
+
+Realizar consultas em objetos armazenados no S3
+<key>Athena</key>
+
+<p>
+<portugues>Quais das opções abaixo são formas de pagamento de instâncias EC2?
+<br/>(Selecione 3)</portugues>
+
+On premise
+<key>On Premises</key>
+
+<ok>
+Spot
+<key>Instâncias Spot</key>
+
+<ok>
+Reserved
+<key>Instâncias Reservadas</key>
+
+<ok>
+On-demand
+<key>Instâncias Sob Demanda</key>
+
+Tailor Made
+<key>Não Se Aplica</key>
+
+<p>
+<portugues>Quais afirmações abaixo se referem ao Amazon S3?
+<br/>(Selecione 2)</portugues>
+
+<ok>
+Objeto é um arquivo ou meta dado que descreve o arquivo
+<key>S3</key>
+
+<ok>
+Bucket é um conteiner de objetos
+<key>S3</key>
+
+Elastic Load Balancer são balanceadores de carga
+<key>ELB</key>
+
+Lambdas são funções sem servidores
+<key>Lambda</key>
+
+<p>
+<portugues>O AWS Trusted Advisor é um serviço de monitoramento e recomendação que auxilia o cliente a utilizar os recursos de sua conta de maneira alinhada com as melhores práticas para trazer muitos benefícios. Quais itens abaixo representam tais benefícios?
+<br/>(Selecione 3)</portugues>
+
+<ok>
+Otimização de Custos
+<key>Trusted Advisor</key>
+
+<ok>
+Segurança
+<key>Trusted Advisor</key>
+
+<ok>
+Performance
+<key>Trusted Advisor</key>
+
+Proteção de Hardware
+<key>Não Se Aplica</key>
+
+<p>
+<portugues>Quais dos seguintes planos de suporte oferecem acesso ao atendimento ao cliente, whitepapers, documentações e fóruns de suporte 24x7?
+<br/>(Selecione 2)</portugues>
+
+Reserved
+<key>Instâncias Reservadas</key>
+
+<ok>
+Basic
+<key>Suporte</key>
+
+Full
+<key>Não Se Aplica</key>
+
+<ok>
+Enterprise
+<key>Suporte</key>
 
 <p>
 
@@ -240,7 +380,7 @@ Multinuvem
 <script type="text/javascript">
 	onLoadConfig();
 	
-	var quantidadeRegistrosP = '3'; // <p>
+	var quantidadeRegistrosP = '11'; // <p>
 	refreshTableResult(quantidadeRegistrosP);
 	function callback() {
 		setTimeout (function () {

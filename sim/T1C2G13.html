@@ -24,13 +24,13 @@
 </head>
 
 <body id="myBody" ZZZbackground="gallery/paper.jpeg">
-
+		
 			<div style="display:'none'; text-align:center; ">
 				<div id="divContinuar" style="display:none;">
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Está tudo pronto</div>
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">Já pode continuar</div>
 					<br/><label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=3&cat=1', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
+						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=1&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
 					</label>
 				</div>
 				<div id="divLoading" style="display:'none';">
@@ -191,40 +191,173 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1
+<portugues>FASE 2.2</portugues>
 
 <p>
-Conjunto complementar de serviços de nuvem que permite criar e executar uma variedade de aplicativos e serviços em um ambiente hospedado altamente disponível.
-<english>Complementary set of cloud services that enable you to build and run a variety of applications and services in a highly available hosted environment.</english>
+<portugues>Sua empresa recentemente foi auditada e autuada, pois mantinha arquivos com dados sensíveis do cliente expostos na sua rede interna, colocando em risco a imagem do cliente e da empresa. Qual serviço da AWS pode ser utilizado para monitorar os dados e evitar esse tipo de ocorrência?</portugues>
+
+AWS Sensitive
+<key>Não Se Aplica</key>
 
 <ok>
-OCI (Oracle Cloud Infrastructure)
+AWS Macie
+<key>Macie</key>
 
-Nuvem Privada
-<key></key>
+AWS GuardDuty
+<key>GuardDuty</key>
 
-Nuvem Híbrida
-<key></key>
-
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+AWS KMS
+<key>KMS</key>
 
 <p>
-Solução de RH nativa em nuvem completa que conecta todos os processos de recursos humanos, desde a contratação até a aposentadoria.
-<english>Complete cloud-native HR solution that connects all human resources processes from hiring to retirement.</english>
+<portugues>Qual é o banco de dados sem servidor (serverless) ofertado pela AWS?</portugues>
 
 <ok>
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+DynamoDB
+<key>DynamoDB</key>
 
-OCI (Oracle Cloud Infrastructure)
-<key></key>
+MySql
+<key>MySql</key>
 
-Nuvem Híbrida
-<key></key>
+MariaDB
+<key>MariaDB</key>
 
-Multinuvem
-<key></key>
+Aurora
+<key>Aurora</key>
+
+<p>
+<portugues>Sua empresa está analisando o banco de dados DynamoDB para conhecer oportunidades em seu uso. Qual opção abaixo não é uma característica do serviço?</portugues>
+
+É um banco de dados sem servidor
+<key>DynamoDB</key>
+
+É um banco de dados de valores-chave e documentos
+<key>DynamoDB</key>
+
+<ok>
+É um banco de dados cobrado por MB na solicitação de gravação e leitura
+<key>DynamoDB</key>
+
+É um banco de dados totalmente gerenciado
+<key>DynamoDB</key>
+
+<p>
+<portugues>Qual plano de suporte oferece o AWS Trusted Advisor, serviço que fornece recomendações para ajudar na utilização das melhores práticas de uso?</portugues>
+
+Developer
+<key>Trusted Advisor</key>
+
+Enterprise
+<key>Trusted Advisor</key>
+
+<ok>
+Todos
+<key>Trusted Advisor</key>
+
+Business
+<key>Trusted Advisor</key>
+
+<p>
+<portugues>Qual é o banco de dados NoSql do tipo chave e valor gerenciado pela AWS?</portugues>
+
+<ok>
+DynamoDB
+<key>DynamoDB</key>
+
+Aurora
+<key>Aurora</key>
+
+MySql
+<key>MySql</key>
+
+Cassandra
+<key>Keyspaces</key>
+
+<p>
+<portugues>Selecione as opções verdadeiras que se referem ao AWS IAM?
+<br/>(Selecione 3)</portugues>
+
+<ok>
+A maioria das Policies são armazenadas em documentos JSON
+<key>IAM</key>
+
+<ok>
+Permissões determinam se a requisição é permitida ou negada
+<key>IAM</key>
+
+Policy é um documento que todos os usuários devem assinar digitalmente quando acessam a AWS pela primeira vez
+<key>Não Se Aplica</key>
+
+<ok>
+Policy é um objeto da AWS que quando associado a um usuário ou recurso define suas permissões
+<key>IAM</key>
+
+<p>
+<portugues>Quais são as regras para a criação de nome de Bucket do S3?
+<br/>(Selecione 3)</portugues>
+
+<ok>
+Devem consistir apenas em letras minúsculas, números, pontos (.) e hífens (-)
+<key>Bucket</key>
+
+<ok>
+Devem começar e terminar com uma letra ou um número
+<key>Bucket</key>
+
+Devem ser formatados como um endereço IP sempre que possível
+<key>Bucket</key>
+
+<ok>
+Devem possuir de 3 a 63 caracteres
+<key>Bucket</key>
+
+<p>
+<portugues>Você está dando consultoria para uma pequena empresa que deseja disponibilizar um site dinâmico em WordPress e com custo mínimo. Qual dos serviços abaixo oferece um servidor privado virtual simples (VPS) de baixo custo e que pode atender essa necessidade?</portugues>
+
+Amazon ECS
+<key>ECS</key>
+
+<ok>
+Amazon LightSail
+<key>LightSail</key>
+
+Amazon S3
+<key>S3</key>
+
+Amazon EC2
+<key>EC2</key>
+
+<p>
+<portugues>Sua empresa começou a utilizar o ECS e conteinerizou 2 microsserviços de uma aplicação que possuem cargas de trabalho diferentes ao longo dia. O primeiro tem mais acessos durante a manhã e o segundo tem mais acesso à tarde, invertendo o cenário no consumo de recursos. Qual solução você deve adotar para que esses serviços escalem de forma automática para otimizar o uso dos recursos da sua infraestrutura?</portugues>
+
+ECR
+<key>ECR</key>
+
+EC2
+<key>EC2</key>
+
+<ok>
+EKS
+<key>EKS</key>
+
+Lambda
+<key>Lambda</key>
+
+<p>
+<portugues>Qual é o serviço utilizado para executar containers sem servidores e diminuir a necessidade dos desenvolvedores se preocuparem com questões relacionadas ao gerenciamento de instâncias e infraestrutura?</portugues>
+
+ECS
+<key>ECS</key>
+
+<ok>
+Fargate
+<key>Fargate</key>
+
+Lambda
+<key>Lambda</key>
+
+EKS
+<key>EKS</key>
 
 <p>
 
@@ -240,7 +373,7 @@ Multinuvem
 <script type="text/javascript">
 	onLoadConfig();
 	
-	var quantidadeRegistrosP = '3'; // <p>
+	var quantidadeRegistrosP = '11'; // <p>
 	refreshTableResult(quantidadeRegistrosP);
 	function callback() {
 		setTimeout (function () {

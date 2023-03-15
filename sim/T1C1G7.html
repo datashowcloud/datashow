@@ -24,13 +24,13 @@
 </head>
 
 <body id="myBody" ZZZbackground="gallery/paper.jpeg">
-
+		
 			<div style="display:'none'; text-align:center; ">
 				<div id="divContinuar" style="display:none;">
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Está tudo pronto</div>
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">Já pode continuar</div>
 					<br/><label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=3&cat=1', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
+						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=1&cat=1', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
 					</label>
 				</div>
 				<div id="divLoading" style="display:'none';">
@@ -191,40 +191,167 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1
+<portugues>FASE 1.6</portugues>
 
 <p>
-Conjunto complementar de serviços de nuvem que permite criar e executar uma variedade de aplicativos e serviços em um ambiente hospedado altamente disponível.
-<english>Complementary set of cloud services that enable you to build and run a variety of applications and services in a highly available hosted environment.</english>
+<portugues>É um serviço de monitoramento para recursos em nuvem AWS e os aplicativos que você executa na AWS. <br/>Você pode usar para <b>coletar e rastrear métricas, coletar e monitorar arquivos de log</b>, e <b>definir alarmes de faturamento</b> para monitorar as cobranças estimadas da AWS.</portugues>
 
 <ok>
-OCI (Oracle Cloud Infrastructure)
+AWS CloudWatch
+<key>CloudWatch</key>
 
-Nuvem Privada
-<key></key>
+AWS CloudTrail
+<key>CloudTrail</key>
 
-Nuvem Híbrida
-<key></key>
+AWS CloudSearch
+<key>CloudSearch</key>
 
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+AWS ElasticSearch
+<key>ElasticSearch</key>
 
 <p>
-Solução de RH nativa em nuvem completa que conecta todos os processos de recursos humanos, desde a contratação até a aposentadoria.
-<english>Complete cloud-native HR solution that connects all human resources processes from hiring to retirement.</english>
+<portugues><b>Rastreia atividades dos usuários e uso de APIs</b>. <b>Monitora e registra a atividade da conta</b> por toda a infraestrutura da AWS, oferecendo controle sobre o armazenamento, análise e ações de remediação.</portugues>
 
 <ok>
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+AWS CloudTrail
+<key>CloudTrail</key>
 
-OCI (Oracle Cloud Infrastructure)
-<key></key>
+AWS CloudWatch
+<key>CloudWatch</key>
 
-Nuvem Híbrida
-<key></key>
+AWS CloudSearch
+<key>CloudSearch</key>
 
-Multinuvem
-<key></key>
+AWS ElasticSearch
+<key>ElasticSearch</key>
+
+<p>
+<portugues>É um serviço gerenciado na nuvem AWS com o qual é possível configurar, gerenciar e dimensionar uma <b>solução de pesquisa para o site ou aplicativo</b> de forma simples e econômica.</portugues>
+
+<ok>
+AWS CloudSearch
+<key>CloudSearch</key>
+
+AWS CloudTrail
+<key>CloudTrail</key>
+
+AWS CloudWatch
+<key>CloudWatch</key>
+
+AWS ElasticSearch
+<key>ElasticSearch</key>
+
+<p>
+<portugues>É um mecanismo distribuído de pesquisa e análise usado para casos de uso de <b>análises de log</b>.</portugues>
+
+<ok>
+AWS ElasticSearch
+<key>ElasticSearch</key>
+
+AWS CloudSearch
+<key>CloudSearch</key>
+
+AWS CloudTrail
+<key>CloudTrail</key>
+
+AWS CloudWatch
+<key>CloudWatch</key>
+
+<p>
+<portugues>É um <b>firewall de aplicações Web</b> que ajuda a proteger suas aplicações Web ou APIs <b>contra bots e exploits</b> comuns na Web que podem afetar a disponibilidade, comprometer a segurança ou consumir recursos em excesso. <br/>Oferece controle sobre como o tráfego atinge suas aplicações, permitindo que você crie regras de segurança que controlam o tráfego de bots e bloqueiam padrões de ataque comuns, como injeção de SQL ou cross-site scripting.</portugues>
+
+<ok>
+AWS WAF
+<key>WAF</key>
+
+AWS Shield
+<key>Shield</key>
+
+AWS Macie
+<key>Macie</key>
+
+GuardDuty
+<key>GuardDuty</key>
+
+<p>
+<portugues>É um serviço gerenciado de <b>proteção contra DDoS (Negação de serviço distribuída)</b> que protege os aplicativos executados na AWS. <br/>Oferece de detecção e mitigações em linha automáticas e sempre ativas que minimizam o tempo de inatividade e a latência dos aplicativos, fornecendo proteção contra DDoS sem necessidade de envolver o AWS Suporte. <br/>Tem dois níveis, Standard e Advanced.</portugues>
+
+<ok>
+AWS Shield
+<key>Shield</key>
+
+AWS Macie
+<key>Macie</key>
+
+GuardDuty
+<key>GuardDuty</key>
+
+Amazon Inspector
+<key>Inspector</key>
+
+<p>
+<portugues>É um serviço de segurança e privacidade de dados totalmente gerenciado que <b>usa machine learning</b> e correspondência de padrões para descobrir e <b>proteger seus dados confidenciais</b> na AWS.</portugues>
+
+<ok>
+AWS Macie
+<key>Macie</key>
+
+GuardDuty
+<key>GuardDuty</key>
+
+Amazon Inspector
+<key>Inspector</key>
+
+AWS Trusted Advisor
+<key>Trusted Advisor</key>
+
+<p>
+<portugues>É um serviço de <b>detecção de ameaças que monitora continuamente</b> suas contas e workloads da AWS para detectar atividade maliciosa e entrega resultados de segurança detalhados para visibilidade e correção.</portugues>
+
+<ok>
+GuardDuty
+<key>GuardDuty</key>
+
+Amazon Inspector
+<key>Inspector</key>
+
+AWS Trusted Advisor
+<key>Trusted Advisor</key>
+
+Amazon QuickSight
+<key>QuickSight</key>
+
+<p>
+<portugues>É um serviço automatizado de <b>gerenciamento de vulnerabilidade que verifica continuamente</b> as workloads da AWS em busca de vulnerabilidades de software e exposição não intencional à rede.</portugues>
+
+<ok>
+Amazon Inspector
+<key>Inspector</key>
+
+AWS Trusted Advisor
+<key>Trusted Advisor</key>
+
+GuardDuty
+<key>GuardDuty</key>
+
+AWS Macie
+<key>Macie</key>
+
+<p>
+<portugues><b>Avalia a sua conta por meio de verificações</b>, avisa se a MFA não está habilitada, sem interromper serviços. <br/>Também verifica permissões de bucket do S3 no Amazon S3 com permissões de acesso aberto. <br/>Essas verificações identificam formas de otimizar sua infraestrutura da AWS, aumentar a segurança e o desempenho, reduzir os custos gerais e monitorar as cotas do serviço.<br/>Benefícios: (<b>OPS...TC...</b>)<br/><b>O</b>timização de custos<br/><b>P</b>erformance<br/><b>S</b>egurança<br/><b>T</b>olerância a falhas<br/><b>C</b>otas de serviço.<br/>Os clientes do AWS Basic Suporte e AWS Developer Suporte podem acessar as principais verificações de segurança. AWS Business Suporte e do AWS Enterprise Suporte podem acessar todas as verificações.</portugues>
+
+<ok>
+AWS Trusted Advisor
+<key>Trusted Advisor</key>
+
+GuardDuty
+<key>GuardDuty</key>
+
+Amazon Inspector
+<key>Inspector</key>
+
+Security Group
+<key>Security Group</key>
 
 <p>
 
@@ -240,7 +367,7 @@ Multinuvem
 <script type="text/javascript">
 	onLoadConfig();
 	
-	var quantidadeRegistrosP = '3'; // <p>
+	var quantidadeRegistrosP = '11'; // <p>
 	refreshTableResult(quantidadeRegistrosP);
 	function callback() {
 		setTimeout (function () {

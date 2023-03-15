@@ -24,13 +24,13 @@
 </head>
 
 <body id="myBody" ZZZbackground="gallery/paper.jpeg">
-
+		
 			<div style="display:'none'; text-align:center; ">
 				<div id="divContinuar" style="display:none;">
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Está tudo pronto</div>
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">Já pode continuar</div>
 					<br/><label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=3&cat=1', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
+						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=1&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
 					</label>
 				</div>
 				<div id="divLoading" style="display:'none';">
@@ -191,40 +191,180 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1
+<portugues>FASE 2.0</portugues>
 
 <p>
-Conjunto complementar de serviços de nuvem que permite criar e executar uma variedade de aplicativos e serviços em um ambiente hospedado altamente disponível.
-<english>Complementary set of cloud services that enable you to build and run a variety of applications and services in a highly available hosted environment.</english>
+<portugues>Qual banco de dados foi projetado para oferecer disponibilidade superior a 99,99% replicando seis cópias dos seus dados em três zonas diferentes e fazendo o backup continuo de seus dados no Amazon S3?</portugues>
+
+MySql
+<key>MySql</key>
+
+DynamoDB
+<key>DynamoDB</key>
+
+MariaDB
+<key>MariaDB</key>
 
 <ok>
-OCI (Oracle Cloud Infrastructure)
-
-Nuvem Privada
-<key></key>
-
-Nuvem Híbrida
-<key></key>
-
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+Aurora
+<key>Aurora</key>
 
 <p>
-Solução de RH nativa em nuvem completa que conecta todos os processos de recursos humanos, desde a contratação até a aposentadoria.
-<english>Complete cloud-native HR solution that connects all human resources processes from hiring to retirement.</english>
+<portugues>Quais dos itens abaixo <u>não</u> fazem parte dos pilares do Well-Architected Framework?
+<br/>(Selecione 2)</portugues>
+
+Segurança
+<key>Well-Architected Framework</key>
 
 <ok>
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+Elasticidade
+<key>Well-Architected Framework</key>
 
-OCI (Oracle Cloud Infrastructure)
-<key></key>
+<ok>
+Desacoplamento
+<key>Well-Architected Framework</key>
 
-Nuvem Híbrida
-<key></key>
+Excelência Operacional
+<key>Well-Architected Framework</key>
 
-Multinuvem
-<key></key>
+<p>
+<portugues>Por que é necessário associar um EBS a uma instância EC2?</portugues>
+
+Para deixar o fluxo de transmissão de dados mais rápido
+<key>EBS</key>
+
+<ok>
+Para garantir a persistência dos dados quando a instância é desligada
+<key>EBS</key>
+
+Para que os dados sejam criptografados
+<key>EBS</key>
+
+Para permitir o armazenamento de uma quantidade maior de dados
+<key>EBS</key>
+
+<p>
+<portugues>Qual é o modelo de utilização de cloud onde não é necessário se preocupar com o gerenciamento dos recursos de infraestrutura de tecnologia, permitindo que o foco do cliente seja, principalmente, no desenvolvimento das aplicações que vão ser executados sobre os recursos?</portugues>
+
+IaaS
+<key>IAAS</key>
+
+BaaS
+<key>BAAS</key>
+
+<ok>
+PaaS
+<key>PAAS</key>
+
+SaaS
+<key>SAAS</key>
+
+<p>
+<portugues>Quais dos seguintes serviços ajudam a sua aplicação a escalar baseado em demanda?
+<br/>(Escolha 2)</portugues>
+
+CloudFormation
+<key>CloudFormation</key>
+
+<ok>
+ELB
+<key>ELB</key>
+
+<ok>
+Auto Scaling
+<key>Auto Scaling</key>
+
+Route53
+<key>Route53</key>
+
+CloudFront
+<key>CloudFront</key>
+
+<p>
+<portugues>Qual serviço que é totalmente gerenciado pela AWS e que faz parte da arquitetura da esteira de integração contínua que compila, testa e cria pacotes para a implantação?</portugues>
+
+AWS CodeCommit
+<key>CodeCommit</key>
+
+AWS CodeDeploy
+<key>CodeDeploy</key>
+
+AWS Pipeline
+<key>Não Se Aplica</key>
+
+<ok>
+AWS CodeBuild
+<key>CodeBuild</key>
+
+<p>
+<portugues>Como você pode proteger sua conta da AWS contra acessos não autorizados?</portugues>
+
+Configurando uma segunda senha
+<key>MFA</key>
+
+<ok>
+Habilitando a Autenticação Multifator - Multi-Facto Authentication (MFA)
+<key>MFA</key>
+
+Desabilitando o acesso pela AWS Console
+<key>Não Se Aplica</key>
+
+Implementando o serviço AWS Cognito
+<key>Cognito</key>
+
+<p>
+<portugues>A Amazon oferece várias classes de armazenamento no S3 específicas para cada tipo de uso. Qual das opções abaixo são classes existentes no serviço?
+<br/>(Selecione 3)</portugues>
+
+S3 Business
+<key>Suporte</key>
+
+S3 Enterprise
+<key>Suporte</key>
+
+<ok>
+S3 Intelligent-Tiering
+<key>Classes de armazenamento</key>
+
+<ok>
+S3 Standard
+<key>Classes de armazenamento</key>
+
+<ok>
+S3 Standard Infrequent Access
+<key>Classes de armazenamento</key>
+
+<p>
+<portugues>Sua empresa possui diversas áreas que devem construir suas aplicações dentro da AWS usando templates de infraestrutura pré-definidos pelo time de arquitetos. As soluções deverão ser implementadas como código IAC (Infra as Code). Qual serviço pode ser utilizado para essa finalidade?</portugues>
+
+Cloud Templates
+<key>Não Se Aplica</key>
+
+Cloud Stacks
+<key>Não Se Aplica</key>
+
+<ok>
+AWS CloudFormation
+<key>CloudFormation</key>
+
+AWS Config
+<key>Config</key>
+
+<p>
+<portugues>Você está implementando um microsserviço para realizar análise de crédito solicitada pelos seus clientes. A resposta desta análise deverá ser enviada para um sistema de vendas, um sistema de empréstimos, e também para, um serviço de log do próprio microsserviço. Qual serviço da AWS é o mais indicado para implementar essas e futuras integrações de uma forma rápida?</portugues>
+
+<ok>
+AWS SNS
+<key>SNS</key>
+
+AWS Docker
+<key>Docker</key>
+
+AWS Lambda
+<key>Lambda</key>
+
+AWS ECS
+<key>ECS</key>
 
 <p>
 
@@ -240,7 +380,7 @@ Multinuvem
 <script type="text/javascript">
 	onLoadConfig();
 	
-	var quantidadeRegistrosP = '3'; // <p>
+	var quantidadeRegistrosP = '11'; // <p>
 	refreshTableResult(quantidadeRegistrosP);
 	function callback() {
 		setTimeout (function () {

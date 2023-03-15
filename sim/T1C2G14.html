@@ -24,13 +24,13 @@
 </head>
 
 <body id="myBody" ZZZbackground="gallery/paper.jpeg">
-
+		
 			<div style="display:'none'; text-align:center; ">
 				<div id="divContinuar" style="display:none;">
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Está tudo pronto</div>
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">Já pode continuar</div>
 					<br/><label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=3&cat=1', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
+						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=1&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
 					</label>
 				</div>
 				<div id="divLoading" style="display:'none';">
@@ -191,40 +191,167 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1
+<portugues>FASE 2.3</portugues>
 
 <p>
-Conjunto complementar de serviços de nuvem que permite criar e executar uma variedade de aplicativos e serviços em um ambiente hospedado altamente disponível.
-<english>Complementary set of cloud services that enable you to build and run a variety of applications and services in a highly available hosted environment.</english>
+<portugues>No modelo de Responsabilidade Compartilhada, a AWS deve proteger todos os dados trafegados na sua infraestrutura global. Sobre a criptografia realizada neste processo, podemos afirmar que:</portugues>
+
+A AWS criptografa automaticamente os dados na camada lógica antes de sair de suas instalações protegidas
+<key>Responsabilidade Compartilhada</key>
 
 <ok>
-OCI (Oracle Cloud Infrastructure)
+A AWS criptografa automaticamente os dados na camada física antes de sair de suas instalações protegidas
+<key>Responsabilidade Compartilhada</key>
 
-Nuvem Privada
-<key></key>
+A AWS não criptografa os dados, entretanto fornece o KMS para o usuário fazê-la
+<key>Responsabilidade Compartilhada</key>
 
-Nuvem Híbrida
-<key></key>
-
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+A AWS não criptografa os dados, entretanto fornece o AWS Certificate Manager para o usuário fazê-la
+<key>Responsabilidade Compartilhada</key>
 
 <p>
-Solução de RH nativa em nuvem completa que conecta todos os processos de recursos humanos, desde a contratação até a aposentadoria.
-<english>Complete cloud-native HR solution that connects all human resources processes from hiring to retirement.</english>
+<portugues>Qual é o modelo de planos flexíveis que oferece preços mais baixos em comparação com os preços sob demanda, em troca de um compromisso de uso específico (medido em USD/hora) por um período de um ou três anos?</portugues>
+
+AWS Efficient Cost
+<key>Não Se Aplica</key>
+
+Low Cost
+<key>Não Se Aplica</key>
 
 <ok>
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+Savings Plans
+<key>Opções de Compra de Instância</key>
 
-OCI (Oracle Cloud Infrastructure)
-<key></key>
+AWS Billing
+<key>Billing</key>
 
-Nuvem Híbrida
-<key></key>
+<p>
+<portugues>Seu time de desenvolvimento está planejando modernizar um sistema e redesenhá-lo dentro da AWS. Um dos requisitos não funcionais é a redução de interdependência para minimizar falhas que acontecem e impactam outros componentes. Qual dos seguintes conceitos se refere a esse requisito?</portugues>
 
-Multinuvem
-<key></key>
+Segregação
+<key>Não Se Aplica</key>
+
+Integração
+<key>Não Se Aplica</key>
+
+Agregação
+<key>Não Se Aplica</key>
+
+<ok>
+Desacoplamento
+<key>SQS</key>
+
+<p>
+<portugues>Na implementação de uma estratégia de backups, qual é o número máximo de snapshots manuais de RDS permitidas por região?</portugues>
+
+256 por região
+<key>EBS Snapshots</key>
+
+<ok>
+100 por região
+<key>EBS Snapshots</key>
+
+o número de cópia é virtualmente ilimitado
+<key>Não Se Aplica</key>
+
+128 por região
+<key>EBS Snapshots</key>
+
+<p>
+<portugues>Qual é o formato de arquivo utilizado na maioria das configurações de serviços da AWS?</portugues>
+
+<ok>
+JSON
+<key>JSON</key>
+
+TXT
+<key>Não Se Aplica</key>
+
+XML
+<key>Não Se Aplica</key>
+
+Config
+<key>Não Se Aplica</key>
+
+<p>
+<portugues>Você trabalha numa multinacional que opera em todos os continentes e com clientes em quase todos os países. Qual é o maior benefício no uso da AWS para esse contexto?</portugues>
+
+Suporte em mais de 50 idiomas
+<key>Infraestrutura Global</key>
+
+Suporte ao usuário final
+<key>Suporte</key>
+
+Documentações bem traduzidas
+<key>Infraestrutura Global</key>
+
+<ok>
+Presença Global
+<key>Infraestrutura Global</key>
+
+<p>
+<portugues>Qual é o serviço da AWS que oferece diversos tipos de máquinas com capacidades computacionais para atender a diversas necessidades de cargas de trabalho (workloads)?</portugues>
+
+<ok>
+EC2
+<key>EC2</key>
+
+S3
+<key>S3</key>
+
+EBS
+<key>EBS</key>
+
+EFS
+<key>EFS</key>
+
+<p>
+<portugues>Você construiu uma aplicação no EC2 que se conecta aos dados no RDS. Qual serviço você deve utilizar para que as devidas configurações de acesso entre a aplicação e o banco de dados sejam realizadas?</portugues>
+
+<ok>
+IAM Roles
+<key>IAM Roles</key>
+
+IAM Grant
+<key>Não Se Aplica</key>
+
+IAM Users
+<key>IAM Users</key>
+
+IAM Groups
+<key>IAM Groups</key>
+
+<p>
+<portugues>Qual é a plataforma da AWS para Big Data em Cloud que permite integração com várias ferramentas de código livre como Apache Spark, Apache Hive, Apache HBase, Apache Flink, Apache Hudi?</portugues>
+
+<ok>
+Amazon EMR
+<key>EMR</key>
+
+Amazon Hadoop
+<key>Apache Handoop</key>
+
+Amazon Kinesis
+<key>Kinesis</key>
+
+Amazon RedShift
+<key>RedShift</key>
+
+<p>
+<portugues>Qual é o serviço, que através da infraestrutura global da AWS, pode ser utilizado quando as suas aplicações apresentarem problemas de tráfego devido ao congestionamento da Internet?</portugues>
+
+<ok>
+AWS Global Accelerator
+<key>Global Accelerator</key>
+
+AWS CloudFront
+<key>CloudFront</key>
+
+AWS DataSync
+<key>DataSync</key>
+
+AWS Snowball
+<key>Snowball</key>
 
 <p>
 
@@ -240,7 +367,7 @@ Multinuvem
 <script type="text/javascript">
 	onLoadConfig();
 	
-	var quantidadeRegistrosP = '3'; // <p>
+	var quantidadeRegistrosP = '11'; // <p>
 	refreshTableResult(quantidadeRegistrosP);
 	function callback() {
 		setTimeout (function () {

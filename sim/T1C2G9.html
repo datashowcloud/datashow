@@ -30,7 +30,7 @@
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Está tudo pronto</div>
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">Já pode continuar</div>
 					<br/><label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=3&cat=1', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
+						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=1&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
 					</label>
 				</div>
 				<div id="divLoading" style="display:'none';">
@@ -191,40 +191,133 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1
+<portugues>FASE 1.8</portugues>
 
 <p>
-Conjunto complementar de serviços de nuvem que permite criar e executar uma variedade de aplicativos e serviços em um ambiente hospedado altamente disponível.
-<english>Complementary set of cloud services that enable you to build and run a variety of applications and services in a highly available hosted environment.</english>
+<portugues>Seus clientes da Europa e da Austrália estão reclamando que o seu site está demorando muito para carregar as imagens, proporcionando a eles uma experiência muito ruim. Uma vez que você utiliza a sua infraestrutura na Região de São Paulo, o que você poderia fazer, imediatamente, para melhorar esse cenário?</portugues>
+
+Criar uma conta nessas regiões e duplicar a infraestrutura
+<key>Não Se Aplica</key>
 
 <ok>
-OCI (Oracle Cloud Infrastructure)
+Habililitar o CloudFront
+<key>CloudFront</key>
 
-Nuvem Privada
-<key></key>
+Deixar as imagens numa resolução bem baixa
+<key>Não Se Aplica</key>
 
-Nuvem Híbrida
-<key></key>
-
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+Habilitar o Intelligent-Tiering das classes do S3
+<key>Intelligent Tiering</key>
 
 <p>
-Solução de RH nativa em nuvem completa que conecta todos os processos de recursos humanos, desde a contratação até a aposentadoria.
-<english>Complete cloud-native HR solution that connects all human resources processes from hiring to retirement.</english>
+<portugues>Qual fator é considerado para calcular o Total Cost of Ownership (TCO) numa migração para a AWS?</portugues>
+
+O número de Certificado de Segurança
+<key>TCO</key>
+
+O número de usuários
+<key>TCO</key>
 
 <ok>
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+O número de servidores
+<key>TCO</key>
 
-OCI (Oracle Cloud Infrastructure)
-<key></key>
+O número de APIs
+<key>TCO</key>
 
-Nuvem Híbrida
-<key></key>
+<p>
+<portugues>Sua empresa começou a usar a AWS e precisa liberar os acessos para 100 pessoas. Uma vez que o time é composto por desenvolvedores, dbas e arquitetos, e que cada time precisa de um acesso exclusivo a determinados recursos, qual serviço você utilizará para otimizar essa gestão?</portugues>
 
-Multinuvem
-<key></key>
+<ok>
+IAM Grupos
+<key>IAM Groups</key>
+
+Organizations
+<key>Organizations</key>
+
+IAM Team
+<key>Não Se Aplica</key>
+
+Cognito
+<key>Cognito</key>
+
+<p>
+<portugues>Quais são as principais funções do AWS Glue?
+<br/>(Selecione 3)</portugues>
+
+<ok>
+Extrair dados
+<key>Glue</key>
+
+<ok>
+Carregar dados
+<key>Glue</key>
+
+Arquivar dados
+<key>S3</key>
+
+<ok>
+Transformar dados
+<key>Glue</key>
+
+Criptografar dados
+<key>KMS</key>
+
+<p>
+<portugues>O que pode ser feito com a AWS CLI (Command Line Interface) após baixá-la e configurá-la no seu computador?
+<br/>(Selecione 2)</portugues>
+
+Realizar o login utilizando o MFA
+<key>CLI</key>
+
+<ok>
+Automatizar serviços da AWS
+<key>CLI</key>
+
+Visualizar gráfico de Custo de serviços da AWS
+<key>CLI</key>
+
+<ok>
+Controlar múltiplos serviços da AWS
+<key>CLI</key>
+
+<p>
+<portugues>Quais padrões de segurança e certificações de conformidade a AWS oferece suporte?
+<br/>(Selecione 3)</portugues>
+
+<ok>
+PCI-DSS
+<key>Conformidade da AWS</key>
+
+<ok>
+HIPAA/HITECH
+<key>Conformidade da AWS</key>
+
+<ok>
+FedRAMP
+<key>Conformidade da AWS</key>
+
+NTFS-BB1
+<key>Não Se Aplica</key>
+
+<p>
+<portugues>Quais padrões de segurança e certificações de conformidade a AWS oferece suporte?
+<br/>(Selecione 3)</portugues>
+
+<ok>
+GDPR
+<key>Conformidade da AWS</key>
+
+<ok>
+FIPS 140-2
+<key>Conformidade da AWS</key>
+
+<ok>
+NIST 800-171
+<key>Conformidade da AWS</key>
+
+CFL01
+<key>Não Se Aplica</key>
 
 <p>
 
@@ -240,7 +333,7 @@ Multinuvem
 <script type="text/javascript">
 	onLoadConfig();
 	
-	var quantidadeRegistrosP = '3'; // <p>
+	var quantidadeRegistrosP = '8'; // <p>
 	refreshTableResult(quantidadeRegistrosP);
 	function callback() {
 		setTimeout (function () {
