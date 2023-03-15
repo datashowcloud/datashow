@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Configuração Sim</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/bootstrap.css" />
+    <link rel="stylesheet" href="style/font-awesome.min.css" />
+    <script src="scripts/jsstore.js"></script>
+    <script src="scripts/jsstore.worker.js"></script>
+    <script src="index.js"></script>
+	<style>
+#myBody {
+  border: 0px dashed blue;
+  padding: 25px;
+  background-attachment: fixed;
+  background-position: top; 
+  background-repeat: no-repeat;
+} 
+	</style>
+</head>
+
+<body id="myBody" ZZZbackground="gallery/paper.jpeg">
+		
+			<div style="display:'none'; text-align:center; ">
+				<!-- br/>Aguarde o resultado na janela da configuração -->
+				<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Está tudo pronto!</div>
+				<br/>
+				<div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">As perguntas estão instaladas.</div>
+				<br/><br/>
+				<button class="btn btn-info" onclick="window.open('index.html?tem=2&cat=1', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Vamos lá</button>
+				
+				<label id="bSearch" style="display:none;">
+					<input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:200px; height:34px;">
+				</label>
+			</div>
+
+		<table id="tblGrid" style="width:98%" class="table table-hover ">
+			<tbody>
+				<div id="divbotoes" style="display:none; text-align:center;">
+					<button id="btntreino" class="botao flutuante" onclick="changeCategory('2');" style="background-color:gray; display:none;">Treino</button>
+					&nbsp;&nbsp;</td>
+					<button id="btndesafio" class="botao flutuante" onclick="changeCategory('4');" style="background-color:black; display:none;">Desafio</button>
+				</div>
+			</tbody>
+		</table>
+
+		<!-- form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post" -->
+		<!-- /form -->
+		
+		<div class="form-group" id="divFormSim" style="display:none;">
+			<font size=4.9 style=text-align:justify>
+				<table border=0 align=center width="100%">
+					<tr><td>
+						<button id="btnBackward" class="btn btn-danger" style="display:none;"> <i class="fa fa-remove"></i> </button>
+						<button id="btnPrevious" class="btn btn-default" style="display:none;"> <i class="fa fa-chevron-left"></i></button>
+						<button id="btnNext" class="btn btn-success" style="display:none;">Próximo <i class="fa fa-chevron-right"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-signal"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-pause"></i></button>
+						<button class="btn btn-warning" style="display:none;"><i class="fa fa-check"></i> Fim</button>
+					</td></tr>
+					<tr><td id="mytextSim" style="display:none; text-align:justify;">
+					</td></tr>
+					<tr><td id="mycorrect1Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect1answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect2Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect2answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect3Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect3answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect4Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect4answer"></div>
+					</td></tr>
+
+					<tr><td id="myincorrect1Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect1answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect2Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect2answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect3Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect3answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect4Sim" style="display:none; text-align:justify;">
+						<div id="myincorrecta4answer"></div>
+					</td></tr>
+					<tr><td>
+						<br/><input type="text" id="mygroupSim" value="" Zhidden="">
+						<br/><input type="text" id="mycodeSim" value="" Zhidden="">
+						<br/><input type="text" id="myorderSim" value="" Zhidden="">
+						<br/><input type="text" id="myidSim" value="" Zhidden="">
+					</td></tr>
+				</table>
+				<table id="tableFormSimDashboard" border=0 align=center width="60%" style="display:'none';">
+					<tr><td nowrap id="txtCalculo"></td></tr>
+					<tr><td nowrap><input type="text" id="txtIncorretas" value="Incorretas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:red;" readonly /></td></tr>
+					<tr><td nowrap><input type="text" id="txtCorretas" value="Corretas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:green;" readonly /></td></tr>
+					<tr><td nowrap><input type="text" id="txtNaoRespondidas" value="Não Respondidas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:blue;" readonly /></td></tr>
+					<tr><td nowrap><br/><input type="text" id="txtTotal" value="Total" class="btn btn-default" style="padding:9px 15px 9px 15px; display:'none';" hidden=""></td></tr>
+				</table>
+				<table id="tableLinkhelp" border=0 align=center style="display:'none';">
+					<tr><td id="help" style="display:none; text-align:justify;">
+						<div id="divlinkhelp"></div>
+					</td></tr>
+				</table>
+			</font>
+		</div>
+
+		<div class="form-group" id="divFormAddUpdate" style="display:none;">
+			<table border=0 align=center width="98%" style="display:none;"><tr><td>
+				<b>Formulário Editor de Perguntas</b>
+				<p/><p/>
+				<select id="mygroup" name="mygroup" style="height:35px; display:none;">
+					<!-- option value="00">Configurações</option -->
+					<option value="10">Nível 1.0</option>
+					<option value="11">Nível 1.1</option>
+					<option value="12">Nível 1.2</option>
+					<option value="13">Nível 1.3</option>
+					<option value="14">Nível 1.4</option>
+					<option value="20">Nível 2.0</option>
+					<option value="21">Nível 2.1</option>
+					<option value="22">Nível 2.2</option>
+					<option value="23">Nível 2.3</option>
+					<option value="30">Nível 3.0</option>
+					<option value="31">Nível 3.1</option>
+					<option value="32">Nível 3.2</option>
+					<option value="33">Nível 3.3</option>
+					<option value="40">Nível 4.0</option>
+					<option value="41">Nível 4.1</option>
+					<option value="42">Nível 4.2</option>
+					<option value="43">Nível 4.3</option>
+					<option value="44">Nível 4.4</option>
+					<option value="45">Nível 4.5</option>
+					<option value="46">Nível 4.6</option>
+					<option value="50">Nível 5.0</option>
+
+				</select>
+				<select id="mycode" name="mycode" style="height:35px; display:none;"></select>
+				<select id="myorder" name="myorder" style="height:35px; display:none;"></select>
+				<p/>
+				<p/><textarea name="mytext" id="mytext" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui..."></textarea>
+				<p/><textarea name="mytext2" id="mytext2" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui em Inglês..."></textarea>
+				<p/><textarea name="mytext3" id="mytext3" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui em Espanhol..."></textarea>
+				<font style="color:green;">
+					Corretas:
+					<textarea name="myoption1" id="myoption1" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey1" id="myoptionkey1" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption2" id="myoption2" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey2" id="myoptionkey2" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption3" id="myoption3" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey3" id="myoptionkey3" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption4" id="myoption4" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey4" id="myoptionkey4" rows=1 placeholder="explicação..."></textarea>
+				</font>
+				
+				<font style="color:red; text-align:left;">
+					Incorretas:
+					<textarea name="myoption5" id="myoption5" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey5" id="myoptionkey5" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption6" id="myoption6" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey6" id="myoptionkey6" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption7" id="myoption7" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey7" id="myoptionkey7" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption8" id="myoption8" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey8" id="myoptionkey8" rows=1 placeholder="explicação..."></textarea>
+				</font>
+				<p/><p/>
+				<button id="btnSubmit" type="button" class="btn btn-primary" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-check"></i> Salvar</button>
+				<p/><p/>
+				<button id="btnCancel" type="button" class="btn btn-default" style="padding:9px 15px 9px 15px;margin-left:10px; width:110px;"> <i class="fa fa-times"></i> Não Salvar</button>
+			</td></tr></table>
+		</div>
+		
+		<div id="divcontent" style="display:none;">
+
+<!-- Configuração: 1 -->
+<br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
+<p>
+<portugues>FASE 2</portugues>
+<english>PHASE 2</english>
+<espanhol>FASE 2</espanhol>
+
+<p>
+<portugues>O que é a computação em nuvem?</portugues>
+<english>What is cloud computing?</english>
+<espanhol>¿Qué es la computación en la nube?</espanhol>
+
+<ok>
+<portugues>Entrega de serviços de computação pela Internet</portugues>
+<english>Delivery of computing services over the Internet</english>
+<espanhol>Prestación de servicios informáticos a través de Internet.</espanhol>
+<tip>Computação em nuvem <b>é o fornecimento de serviços de computação pela internet</b>, incluindo servidores, armazenamento, bancos de dados, rede, software, análise e inteligência, pela Internet (“a nuvem”) para oferecer inovações mais rápidas, recursos flexíveis e economias de escala. Você normalmente paga apenas pelos serviços de nuvem que usa, ajudando a reduzir os custos operacionais, a executar sua infraestrutura com mais eficiência e a escalonar conforme as necessidades da sua empresa mudam.
+<br/><a href="https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-cloud-computing" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Entrega de serviços de armazenamento pela Internet</portugues>
+<english>Delivery of storage services over the Internet</english>
+<espanhol>Prestación de servicios de almacenamiento a través de Internet</espanhol>
+<tip>Não se aplica nessa resposta.
+<br/><a href="https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-cloud-computing" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Disponibilização de sites acessíveis pela Internet</portugues>
+<english>Availability of websites accessible via the Internet</english>
+<espanhol>Disponibilidad de sitios web accesibles a través de Internet</espanhol>
+<tip>Não se aplica nessa resposta.
+<br/><a href="https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-cloud-computing" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Qual modelo de nuvem usa alguns datacenters focados em fornecer serviços de nuvem para quem quiser e alguns data centers que estão focados em um único cliente?</portugues>
+<english>Which cloud model uses some data centers that are focused on providing cloud services to whoever wants it and some data centers that are focused on a single customer?</english>
+<espanhol>¿Qué modelo de nube utiliza unos centros de datos que están enfocados en brindar servicios en la nube a quien lo desee y algunos centros de datos que están enfocados a un solo cliente?</espanhol>
+
+<ok>
+<portugues>Nuvem Híbrida</portugues>
+<english>Hybrid Cloud</english>
+<espanhol>Nube Híbrida</espanhol>
+<tip>Um ambiente de computação que combina um datacenter local (também chamado de nuvem privada) com uma nuvem pública, permitindo que dados e aplicativos sejam compartilhados entre eles.
+<br/><a href="https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-hybrid-cloud-computing/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Nuvem Pública</portugues>
+<english>Public Cloud</english>
+<espanhol>Nube Pública</espanhol>
+<tip>Definida como uma série de serviços de computação oferecidos por terceiros à Internet pública, os quais são disponibilizados a qualquer pessoa que queira utilizá-los ou comprá-los. Eles podem ser gratuitos ou vendidos sob demanda, permitindo que os clientes paguem apenas pelo seu consumo de ciclos de CPU, armazenamento ou largura de banda.
+<br/><a href="https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-a-public-cloud/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Nuvem Privada</portugues>
+<english>Private Cloud</english>
+<espanhol>Nube Privada</espanhol>
+<tip>Refere-se aos serviços de computação em nuvem oferecidos pela Internet ou por uma rede interna privada somente a usuários selecionados e não ao público geral.
+<br/><a href="https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-a-private-cloud/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Multi Nuvem</portugues>
+<english>Multi Cloud</english>
+<espanhol>Multi Nube</espanhol>
+<tip>Uma parte da sua empresa está no Microsoft Azure e outra parte está em outra nuvem, como: AWS, Google Cloud Platform, aplicativos SaaS baseados em nuvem e até ambientes de colocation.
+<br/><a href="https://azure.microsoft.com/pt-br/solutions/hybrid-cloud-app/#overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>De acordo com o modelo de Responsabilidade Compartilhada, qual tipo de serviço de nuvem coloca a maior responsabilidade sobre o cliente?</portugues>
+<english>Under the Shared Responsibility model, which type of cloud service places the most responsibility on the customer?</english>
+<espanhol>Según el modelo de responsabilidad compartida, ¿qué tipo de servicio en la nube impone la mayor responsabilidad al cliente?</espanhol>
+
+<ok>
+<portugues>IaaS (Infraestrutura como Serviço)</portugues>
+<english>IaaS (Infrastructure as a Service)</english>
+<espanhol>IaaS (Infraestructura como servicio)</espanhol>
+<tip>Um tipo de serviço de computação em nuvem que oferece recursos fundamentais de computação, armazenamento e rede sob demanda e pagos conforme o uso. <b>O cliente tem maior responsabilidade</b>.
+<br/><a href="https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-iaas" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>PaaS (Plataforma como Serviço)</portugues>
+<english>PaaS (Platform as a Service)</english>
+<espanhol>PaaS (Plataforma como Servicio)</espanhol>
+<tip>Um ambiente de desenvolvimento e implantação completo na nuvem, com recursos que permitem a você fornecer tudo, desde aplicativos simples baseados em nuvem até sofisticados aplicativos empresariais habilitados para a nuvem.
+<br/><a href="https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-paas/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>SaaS (Software como Serviço)</portugues>
+<english>SaaS (Software as a Service)</english>
+<espanhol>SaaS (Software como servicio)</espanhol>
+<tip>Permite aos usuários se conectar e usar aplicativos baseados em nuvem pela Internet. Exemplos comuns são email, calendário e ferramentas do Office (como Microsoft Office 365).
+<br/><a href="https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-saas/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Computação sem servidor</portugues>
+<english>serverless computing</english>
+<espanhol>informática sin servidor</espanhol>
+<tip>Permite que os desenvolvedores criem aplicativos de forma mais rápida. Com aplicativos sem servidor, o provedor de serviços de nuvem provisiona, dimensiona e gerencia automaticamente a infraestrutura necessária para executar o código.
+<br/><a href="https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-serverless-computing/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Que tipo de escalagem envolve adicionar ou remover recursos (como máquinas virtuais ou contentores) para satisfazer a procura?</portugues>
+<english>What type of scaling involves adding or removing resources (such as virtual machines or containers) to satisfy demand?</english>
+<espanhol>¿Qué tipo de escalamiento implica agregar o eliminar recursos (como máquinas virtuales o contenedores) para satisfacer la demanda?</espanhol>
+
+<ok>
+<portugues>Dimensionamento horizontal</portugues>
+<english>Horizontal scaling</english>
+<espanhol>Escala horizontal</espanhol>
+<tip>O dimensionamento horizontal (escalar horizontalmente) significa adicionar ou subtrair novas instâncias de um recurso, como VMs ou réplicas de banco de dados.
+<br/><a href="https://learn.microsoft.com/pt-br/azure/architecture/framework/scalability/design-scale" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Dimensionamento vertical</portugues>
+<english>Vertical scaling</english>
+<espanhol>Escalamiento vertical</espanhol>
+<tip>O dimensionamento vertical (escalar verticalmente) significa aumentar ou diminuir a capacidade de um recurso, por exemplo, usando um tamanho maior de VM.
+<br/><a href="https://learn.microsoft.com/pt-br/azure/architecture/framework/scalability/design-scale" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Escalação direta</portugues>
+<english>Direct escalation</english>
+<espanhol>Escalada directa</espanhol>
+<tip>Não se aplica nessa resposta.
+<br/><a href="https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-cloud-computing" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>O que se caracteriza como a capacidade de um sistema recuperar de falhas e continuar a funcionar?</portugues>
+<english>What characterizes as the ability of a system to recover from failures and continue to function?</english>
+<espanhol>¿Qué caracteriza a la capacidad de un sistema para recuperarse de fallas y continuar funcionando?</espanhol>
+
+<ok>
+<portugues>Fiabilidade</portugues>
+<english>Reliability</english>
+<espanhol>Fiabilidad</espanhol>
+<tip>A fiabilidade é a capacidade de um sistema recuperar de falhas e continuar a funcionar, e é um dos pilares do Quadro de Well-Architected microsoft.
+<br/><a href="https://learn.microsoft.com/pt-br/azure/architecture/framework/scalability/design-scale" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Previsibilidade</portugues>
+<english>Predictability</english>
+<espanhol>Previsibilidad</espanhol>
+<tip>A previsibilidade na nuvem permite que você avance com confiança. A previsibilidade pode se concentrar na previsibilidade de desempenho ou na previsibilidade de custo. Tanto a previsibilidade de desempenho quanto a de custo são bastante influenciadas pelo Microsoft Azure Well-Architected Framework.
+<br/><a href="https://learn.microsoft.com/pt-br/training/modules/describe-benefits-use-cloud-services/3-reliability-predictability-cloud" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Escalabilidade</portugues>
+<english>Scalability</english>
+<espanhol>Escalabilidad</espanhol>
+<tip>Escalabilidade <b>é a capacidade de um sistema de lidar com aumentos de carga</b>. Os serviços cobertos pelo Dimensionamento Automático do Azure podem ser escalados automaticamente para corresponder à demanda para acomodar a carga de trabalho.
+<br/><a href="https://learn.microsoft.com/pt-br/azure/architecture/framework/scalability/design-scale" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Qual o tipo de serviço em nuvem mais adequado para um elevador e transferir a migração de um datacenter no local para uma implantação em nuvem?</portugues>
+<english>What type of cloud service is best suited for a lift and offload migration from an on-premises data center to a cloud deployment?</english>
+<espanhol>¿Qué tipo de servicio en la nube es el más adecuado para una migración de elevación y descarga de un centro de datos local a una implementación en la nube?</espanhol>
+
+<ok>
+<portugues>IaaS (Infraestrutura como Serviço)</portugues>
+<english>IaaS (Infrastructure as a Service)</english>
+<espanhol>IaaS (Infraestructura como servicio)</espanhol>
+<tip>Um tipo de serviço de computação em nuvem que oferece recursos fundamentais de computação, armazenamento e rede sob demanda e pagos conforme o uso. <b>O cliente tem maior responsabilidade</b>.
+<br/><a href="https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-iaas" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>PaaS (Plataforma como Serviço)</portugues>
+<english>PaaS (Platform as a Service)</english>
+<espanhol>PaaS (Plataforma como Servicio)</espanhol>
+<tip>Um ambiente de desenvolvimento e implantação completo na nuvem, com recursos que permitem a você fornecer tudo, desde aplicativos simples baseados em nuvem até sofisticados aplicativos empresariais habilitados para a nuvem.
+<br/><a href="https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-paas/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>SaaS (Software como Serviço)</portugues>
+<english>SaaS (Software as a Service)</english>
+<espanhol>SaaS (Software como servicio)</espanhol>
+<tip>Permite aos usuários se conectar e usar aplicativos baseados em nuvem pela Internet. Exemplos comuns são email, calendário e ferramentas do Office (como Microsoft Office 365).
+<br/><a href="https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-saas/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Computação sem servidor</portugues>
+<english>serverless computing</english>
+<espanhol>informática sin servidor</espanhol>
+<tip>Permite que os desenvolvedores criem aplicativos de forma mais rápida. Com aplicativos sem servidor, o provedor de serviços de nuvem provisiona, dimensiona e gerencia automaticamente a infraestrutura necessária para executar o código.
+<br/><a href="https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-serverless-computing/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Que tipo de serviço em nuvem seria normalmente uma solução de rastreio de Finanças e Despesas?</portugues>
+<english>What kind of cloud service would typically be a Finance and Expense tracking solution?</english>
+<espanhol>¿Qué tipo de servicio en la nube sería normalmente una solución de seguimiento de gastos y finanzas?</espanhol>
+
+<ok>
+<portugues>SaaS (Software como Serviço)</portugues>
+<english>SaaS (Software as a Service)</english>
+<espanhol>SaaS (Software como servicio)</espanhol>
+<tip>Permite aos usuários se conectar e usar aplicativos baseados em nuvem pela Internet. Exemplos comuns são email, calendário e ferramentas do Office (como Microsoft Office 365).
+<br/><a href="https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-saas/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>IaaS (Infraestrutura como Serviço)</portugues>
+<english>IaaS (Infrastructure as a Service)</english>
+<espanhol>IaaS (Infraestructura como servicio)</espanhol>
+<tip>Um tipo de serviço de computação em nuvem que oferece recursos fundamentais de computação, armazenamento e rede sob demanda e pagos conforme o uso. <b>O cliente tem maior responsabilidade</b>.
+<br/><a href="https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-iaas" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>PaaS (Plataforma como Serviço)</portugues>
+<english>PaaS (Platform as a Service)</english>
+<espanhol>PaaS (Plataforma como Servicio)</espanhol>
+<tip>Um ambiente de desenvolvimento e implantação completo na nuvem, com recursos que permitem a você fornecer tudo, desde aplicativos simples baseados em nuvem até sofisticados aplicativos empresariais habilitados para a nuvem.
+<br/><a href="https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-paas/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Computação sem servidor</portugues>
+<english>serverless computing</english>
+<espanhol>informática sin servidor</espanhol>
+<tip>Permite que os desenvolvedores criem aplicativos de forma mais rápida. Com aplicativos sem servidor, o provedor de serviços de nuvem provisiona, dimensiona e gerencia automaticamente a infraestrutura necessária para executar o código.
+<br/><a href="https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-serverless-computing/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+
+</textarea>
+
+		</div>
+
+    <link href="style/main.css " rel="stylesheet " type="text/css " />
+</body>
+
+</html>
+
+<script type="text/javascript">
+	onLoadConfig();
+</script>
