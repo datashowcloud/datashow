@@ -557,9 +557,6 @@ function registerEvents() {
 	})
 	$('#imgLanguage').click(function () {
 		try {
-			
-			alert('imgLanguage 00:03');
-			
 			var lingua = getLanguageFile(document.getElementById('imgLanguage').src);
 			if (lingua == 'english') {
 				document.getElementById('imgLanguage').src = 'img/portugues.jpg';
@@ -575,8 +572,9 @@ function registerEvents() {
 			var mycategory = params.get('cat');
 			var myid = document.getElementById('myidSim').value;
 			var mygroup = document.getElementById('mygroupSim').value;
-			var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
-			refreshTableQuestion(mytema, mycategory, myid, mygroup, parseInt(mycode)-1);
+			var mycode = parseInt(document.getElementById('mycodeSim').value) + 0;
+			refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode);
+//loading();
 		} catch (ex) {
 			alert('imgLanguage ' + ex.message)
 		}
@@ -899,7 +897,6 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 				
 				var lingua = getLanguageFile(document.getElementById('imgLanguage').src);
 				document.getElementById('mytextSim').innerHTML = student.mycode + '/' + totalperguntas + '. ' + buscaValorTag(student.mytext, lingua);
-
 				var valorIndice = '';
 				var myorder = student.myorder;
 				//erro
@@ -1153,7 +1150,7 @@ async function refreshTableNivel(mytema, mycategory, mycode, myorder, mygroup, m
 
 		htmlString = htmlString + '</td>';
 		htmlString = htmlString + '</tr>';
-
+//alert('mytema='+mytema + ' mycategory='+mycategory + ' myid='+myid + ' mygroup=' + mygroup + ' mycode=' + mycode);
         $('#tblNivel tbody').html(htmlString);
 }
 
@@ -1207,10 +1204,14 @@ async function deletefase(mytema, mycategory, mygroup, mycode, myid) {
 //A língua é o nome do arquivo.
 function getLanguageFile(arquivo) {
 	var pasta = 'img/'; //valor completo: file:///C:/DataShow/sim/img/english.jpg
-	var extensao = '.'; //exemplo: .jpg
+	var extensao = '.jpg'; //exemplo: .jpg
 	var posini = arquivo.indexOf(pasta, 0); 
 	var posfim = arquivo.indexOf(extensao, 0);
 	lingua = arquivo.substring(posini + pasta.length, posfim).trim();
+
+//	if (lingua != 'portugues' && lingua != 'espanhol' && lingua != 'english') {
+//		lingua = 'portugues';
+//	}
 	if (lingua.length < 1) {
 		lingua = 'portugues';
 	}
