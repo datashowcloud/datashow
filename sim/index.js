@@ -556,23 +556,30 @@ function registerEvents() {
 		loadNextLevel('3');
 	})
 	$('#imgLanguage').click(function () {
-		var lingua = getLanguageFile(document.getElementById('imgLanguage').src);
-		if (lingua == 'english') {
-			document.getElementById('imgLanguage').src = 'img/portugues.jpg';
-		} else if (lingua == 'portugues') {
-			document.getElementById('imgLanguage').src = 'img/espanhol.jpg';
-		} else if (lingua == 'espanhol') {
-			document.getElementById('imgLanguage').src = 'img/english.jpg';
-		} else {
-			document.getElementById('imgLanguage').src = 'img/portugues.jpg';
+		try {
+			
+			alert('imgLanguage 23:48');
+			
+			var lingua = getLanguageFile(document.getElementById('imgLanguage').src);
+			if (lingua == 'english') {
+				document.getElementById('imgLanguage').src = 'img/portugues.jpg';
+			} else if (lingua == 'portugues') {
+				document.getElementById('imgLanguage').src = 'img/espanhol.jpg';
+			} else if (lingua == 'espanhol') {
+				document.getElementById('imgLanguage').src = 'img/english.jpg';
+			} else {
+				document.getElementById('imgLanguage').src = 'img/portugues.jpg';
+			}
+			var params = new URLSearchParams(window.location.search);
+			var mytema = params.get('tem');
+			var mycategory = params.get('cat');
+			var myid = document.getElementById('myidSim').value;
+			var mygroup = document.getElementById('mygroupSim').value;
+			var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
+			refreshTableQuestion(mytema, mycategory, myid, mygroup, parseInt(mycode)-1);
+		} catch (ex) {
+			alert('imgLanguage ' + ex.message)
 		}
-		var params = new URLSearchParams(window.location.search);
-		var mytema = params.get('tem');
-		var mycategory = params.get('cat');
-		var myid = document.getElementById('myidSim').value;
-		var mygroup = document.getElementById('mygroupSim').value;
-		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
-		refreshTableQuestion(mytema, mycategory, myid, mygroup, parseInt(mycode)-1);
 	})
 	$('#mytextSim').click(function () {
 		if (document.getElementById('mytextSim2') != null && document.getElementById('mytextSim2').innerText.length > 10) {
@@ -841,7 +848,7 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 
 //This function select table play
 async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
-//    try {
+    try {
 		var totalperguntas = await jsstoreCon.count({
 			from: 'Student'
 				, where: { mytema: mytema + ''
@@ -947,9 +954,9 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 				}
 			})
 		
-//    } catch (ex) {
-//        console.log(ex.message)
-//    }	
+    } catch (ex) {
+        alert('refreshTableQuestion ' + ex.message)
+    }	
 }
 
 //This function refreshes the table
@@ -2134,14 +2141,18 @@ async function searchSimples() {
 }
 
 function onLoadConfig() {
-	var params = new URLSearchParams(window.location.search);
-	var mytema = params.get('tem');
-	var mycategory = params.get('cat');
-	loadCombobox('mygroup', '0', '200', 'Teste');
-	loadCombobox('mycode', '0', '200', 'Número');
-	loadCombobox('myorder', '0', '200', 'Ordem');
-	confirmImport(mytema, mycategory, 'contents1', '0');
+    try {
+		var params = new URLSearchParams(window.location.search);
+		var mytema = params.get('tem');
+		var mycategory = params.get('cat');
+		loadCombobox('mygroup', '0', '200', 'Teste');
+		loadCombobox('mycode', '0', '200', 'Número');
+		loadCombobox('myorder', '0', '200', 'Ordem');
+		confirmImport(mytema, mycategory, 'contents1', '0');
 //	setTimeout(() => { document.getElementById('tblEstatisticas').style.display='none'; }, 1000); // Executa após 1 segundo para esperar o processo terminar
+    } catch (ex) {
+        alert('onLoadConfig ' + ex.message);
+    }
 }
 
 function buscaValorTag(valor, key) {	
