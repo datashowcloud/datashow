@@ -20,6 +20,9 @@ var CONST_TEMA_AZURE_AZ900 = 2;
 var CONST_TEMA_ORACLE_1ZO108522 = 3;
 var CONST_MYCATEGORY_1 = '1';
 var CONST_MYCATEGORY_2 = '2';
+var CONST_NIVEL_LIBERADO_SEM_USUARIO_CONECTADO = 0;
+var CONST_LICENCA_PADRAO = '202303010000';
+
 
 window.onload = function () {
     registerEvents();
@@ -491,7 +494,7 @@ function registerEvents() {
 		showFormApresentacao();
 		//exitQuestions();
     });
-	$('#btnTerminar').click(function () {
+	$('#btnFim').click(function () {
 		var params = new URLSearchParams(window.location.search);
 		var mytema = params.get('tem');
 		var mycategory = params.get('cat');
@@ -574,24 +577,6 @@ function registerEvents() {
 			alert('imgLanguage ' + ex.message)
 		}
 	})
-/*	$('#mytextSim').click(function () {
-		if (document.getElementById('mytextSim2') != null && document.getElementById('mytextSim2').innerText.length > 10) {
-			document.getElementById('mytextSim2').style.display='';
-			document.getElementById('mytextSim').style.display='none';
-		} else {
-			alert('Fase ainda sem tradução.');
-		}
-	})
-*/
-/*	$('#mytextSim2').click(function () {
-		if (document.getElementById('mytextSim') != null && document.getElementById('mytextSim').innerText.length > 10) {
-			document.getElementById('mytextSim').style.display='';
-			document.getElementById('mytextSim2').style.display='none';
-		} else {
-			alert('Ainda sem tradução nessa fase.');
-		}
-	})
-*/	
 	$('#chkMycorrect1answer').click(function () {
 		var index = '1';
 		setBackgroundColor(index, CONST_MEDIUM_SEA_GREEN);
@@ -652,7 +637,6 @@ function registerEvents() {
 		var id = document.getElementById('txtId').value;
 		var pass = document.getElementById('txtPass').value;
 		var key = localStorage.getItem('key');
-//alert('id='+id + ' pass='+pass + ' key='+key);
 		login(id, pass, key);
 		//alert('Clique em "Go back".');
 		//document.getElementById("formAdd").submit();
@@ -764,55 +748,17 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 	if (document.getElementById('mytextSim') != null) {
 		document.getElementById('mytextSim').style.color = textcolor;
 	}
-/*	if (document.getElementById('mytextSim2') != null) {
-		document.getElementById('mytextSim2').style.color = textcolor;
-	}
-*/
 	for (var index=1; index<9; index++) {
 		if (document.getElementById('mycorrect' + index + 'answer') != null) {
 			document.getElementById('mycorrect' + index + 'answer').style.color = textcolor;
 		}
 	}
-/*
-	if (document.getElementById('mycorrect1answer') != null) {
-		document.getElementById('mycorrect1answer').style.color = textcolor;
-	}
-	if (document.getElementById('mycorrect2answer') != null) {
-		document.getElementById('mycorrect2answer').style.color = textcolor;
-	}
-	if (document.getElementById('mycorrect3answer') != null) {
-		document.getElementById('mycorrect3answer').style.color = textcolor;
-	}
-	if (document.getElementById('mycorrect4answer') != null) {
-		document.getElementById('mycorrect4answer').style.color = textcolor;
-	}
-	if (document.getElementById('mycorrect4answer') != null) {
-		document.getElementById('mycorrect5answer').style.color = textcolor;
-	}
-	document.getElementById('mycorrect6answer').style.color = textcolor;
-	document.getElementById('mycorrect7answer').style.color = textcolor;
-	document.getElementById('mycorrect8answer').style.color = textcolor;
-*/
-/*	document.getElementById('mytip1').style.color = textcolor;
-	document.getElementById('mytip2').style.color = textcolor;
-	document.getElementById('mytip3').style.color = textcolor;
-	document.getElementById('mytip4').style.color = textcolor;
-	document.getElementById('mytip5').style.color = textcolor;
-	document.getElementById('mytip6').style.color = textcolor;
-	document.getElementById('mytip7').style.color = textcolor;
-	document.getElementById('mytip8').style.color = textcolor;
-*/
 	if (document.getElementById('myBody') != null) {
 		document.getElementById('myBody').style.background = background;
 	}
 	if (document.getElementById('menutopodireito') != null) {
 		document.getElementById('menutopodireito').style.color = 'white';
 	}
-/*
-	document.getElementById('txtCalculo').style.background = background;
-	document.getElementById('txtIncorretas').style.background = background;
-	document.getElementById('txtCorretas').style.background = background;
-*/
 	if(document.getElementById('FormularioEditorConfiguracoes') != null) {
 		document.getElementById('FormularioEditorConfiguracoes').style.color = textcolor;
 	}
@@ -863,8 +809,8 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 		});
 		//alert('mytema='+mytema + ' mycategory='+mycategory + ' myid='+myid + ' mygroup='+mygroup + ' mycode='+mycode);
 		if (students == '') {
-			document.getElementById('btnTerminar').style.display = '';
-			document.getElementById('btnTerminar').focus();
+			document.getElementById('btnFim').style.display = '';
+			document.getElementById('btnFim').focus();
 			return;
 		}
 			limpaInputbox(students);
@@ -985,7 +931,7 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 					if (student.mypoints <= 0) {
 						varRestart = '';
 						varCount = '<button class="btn btn-success" onclick="window.open(\'index.html?tem=' + student.mytema + '&cat=' + student.mycategory + '\', \'_self\');" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '; text-align:right;">fazer</button>';
-					} else if (student.mypoints < 70) {
+					} else if (student.mypoints < 80) {
 						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + ' text-align:right; \"><button class="btn btn-danger">refazer</button></a>';
 					} else if (student.mypoints < 100) {
 						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + ' text-align:right; \"><button class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + ';">refazer</button></a>';
@@ -1147,6 +1093,41 @@ async function deletefase(mytema, mycategory, mygroup, mycode, myid) {
     }
 }
 
+function validaLicenca(mycategory, nivelLiberadoSemUsuarioConectado) {
+	var licenca = CONST_LICENCA_PADRAO;
+	var id = localStorage.getItem('id');
+	var key = localStorage.getItem('key');
+	var valido = false;
+
+	if (parseInt(mycategory) > nivelLiberadoSemUsuarioConectado) {
+		if (id.toLowerCase() == 'a' && key == licenca) {
+			valido = true;
+		} else if (id.toLowerCase() == 'admin' && key == licenca) {
+			valido = true;
+		} else if (id.toLowerCase() == 'enio' && key == licenca) {
+			valido = true;
+		} else if (id.toLowerCase() == 'santiago' && key == licenca) {
+			valido = true;
+		} else if (id.toLowerCase() == 'eni' && key == licenca) {
+			valido = true;
+		} else if (id.toLowerCase() == 'gi' && key == licenca) {
+			valido = true;
+		} else if (id.toLowerCase() == 'rodrigo' && key == licenca) {
+			valido = true;
+		} else if (id.toLowerCase() == 'cicero' && key == licenca) {
+			valido = true;
+		}
+	} else {
+		valido = true;
+	}
+
+	if (valido == true) {
+		conectaUsuarioValido(id);
+	}
+	
+	return valido;
+}
+
 //A língua é o nome do arquivo.
 function getLanguageFile(arquivo) {
 	var pasta = 'img/'; //valor completo: file:///C:/DataShow/sim/img/english.jpg
@@ -1176,41 +1157,8 @@ function initForm() {
 		}
 		refreshTableNivel(mytema, mycategory, '0', '', '', '');
 		showFormApresentacao();
-		if (validaLicenca() == false) {
-			console.log('Lembre-se de conectar.')
-		}
 	}
-}
-
-function validaLicenca() {
-	var id = localStorage.getItem('id');
-	var key = localStorage.getItem('key');
-
-	var valido = false;
-	if (id != null && key != null) {
-//alert('validaLicenca: '+localStorage.getItem('id') + ' key='+localStorage.getItem('key'));
-		if (id.toLowerCase() == 'a' && key == '202303010000') {
-			valido = true;
-		} else if (id.toLowerCase() == 'admin' && key == '202303010000') {
-			valido = true;
-		} else if (id.toLowerCase() == 'enio' && key == '202303010000') {
-			valido = true;
-		} else if (id.toLowerCase() == 'santiago' && key == '202303010000') {
-			valido = true;
-		} else if (id.toLowerCase() == 'eni' && key == '202303010000') {
-			valido = true;
-		} else if (id.toLowerCase() == 'gi' && key == '202303010000') {
-			valido = true;
-		} else if (id.toLowerCase() == 'rodrigo' && key == '202303010000') {
-			valido = true;
-		} else if (id.toLowerCase() == 'cicero' && key == '202303010000') {
-			valido = true;
-		}
-	}
-	if (valido == true) {
-		conectaUsuarioValido(id);
-	}
-	return valido;
+	validaLicenca(mycategory, CONST_NIVEL_LIBERADO_SEM_USUARIO_CONECTADO);
 }
 
 function login(id, pass, key) {
@@ -1656,7 +1604,14 @@ async function changeFaseNivel(mytema, mycategory, myid, mygroup, mycode) {
 	var totalCorretas = getTotalCorretas(mytema, mycategory, mygroup, mycode, students);
 	var calculo = calculaPercentualAcerto(mytema, mycategory, mygroup, mycode, totalCorretas, totalperguntas);
 	
-	if (calculo >= 70) {
+	//valida usuário e licença para autorizar estudo acima do Nível liberado.
+	var valido = validaLicenca(mycategory, CONST_NIVEL_LIBERADO_SEM_USUARIO_CONECTADO);
+	if (valido == false) {
+		showFormUser();
+		return;
+	}
+
+	if (calculo >= 80) {
 		var myNextCategory = getProximaFaseNivel(myid, mygroup, mycode);
 		if (myNextCategory != 'false') {
 			var students = await jsstoreCon.select({
@@ -1761,10 +1716,10 @@ async function showPoints(mytema, mycategory, mygroup, mycode) {
 	var aprovacao = '';
 
 	var calculo = calculaPercentualAcerto(mytema, mycategory, mygroup, mycode, totalCorretas, totalperguntas);
-	if (calculo >= 70) {
-		aprovacao = '\n\n' + 'JÁ ESTÁ APROVADO \n' + calculo + '% de acerto é >= 70%';
+	if (calculo >= 80) {
+		aprovacao = '\n\n' + 'JÁ ESTÁ APROVADO \n' + calculo + '% de acerto é >= 80%';
 	} else {
-		aprovacao = '\n\n' + 'AINDA ESTÁ REPROVADO \n' + calculo + '% de acerto é < 70%';
+		aprovacao = '\n\n' + 'AINDA ESTÁ REPROVADO \n' + calculo + '% de acerto é < 80%';
 	}
 	resultado = resultado + aprovacao;
 	resultado = resultado + '\n\n' + 'Licença: v' + mygroup;
@@ -1808,10 +1763,10 @@ async function setDashboard(mytema, mycategory, myid, mygroup, mycode) {
 //		document.getElementById('txtIncorretas').value = 'Incorretas: ' + totalIncorretas;
 //		document.getElementById('txtCorretas').value = 'Corretas: ' + totalCorretas;
 //		document.getElementById('txtNaoRespondidas').value = 'Não Respondidas: ' + totalNaoRespondidas;
-/*		if (calculo >= 70) {
-			document.getElementById('txtCalculo').innerHTML = '<font style="color:gray;> <i class="fa fa-check"></i> JÁ ESTÁ APROVADO <br/>' + calculo + '% de acerto é >= 70%' + '</font>';
+/*		if (calculo >= 80) {
+			document.getElementById('txtCalculo').innerHTML = '<font style="color:gray;> <i class="fa fa-check"></i> JÁ ESTÁ APROVADO <br/>' + calculo + '% de acerto é >= 80%' + '</font>';
 		} else {
-			document.getElementById('txtCalculo').innerHTML = '<font style="color:gray;> <i class="fa fa-remove"></i> AINDA ESTÁ REPROVADO <br/>' + calculo + '% de acerto é < 70%' + '</font>';
+			document.getElementById('txtCalculo').innerHTML = '<font style="color:gray;> <i class="fa fa-remove"></i> AINDA ESTÁ REPROVADO <br/>' + calculo + '% de acerto é < 80%' + '</font>';
 		}
 */
 		
@@ -3531,8 +3486,8 @@ function showGridAndHideForms() {
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
     $('#divFormUser').hide();
-	if (document.getElementById('btnTerminar') != null) {
-		document.getElementById('btnTerminar').style.display='none';	
+	if (document.getElementById('btnFim') != null) {
+		document.getElementById('btnFim').style.display='none';	
 	}
 }
 
