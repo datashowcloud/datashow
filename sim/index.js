@@ -414,7 +414,7 @@ function registerEvents() {
         }
     });
     $('#tblEstatisticas tbody').on('click', '.deletefase', function () {
-		var result = confirm('Não faça nada durante a atualização. \n\nAguarde o botão azul aparecer na próxima página.');
+		var result = confirm('Não faça nada. Aguarde...');
 		if (result) {
 			var params = new URLSearchParams(window.location.search);
 			var mytema = params.get('tem');
@@ -810,6 +810,7 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 		//alert('mytema='+mytema + ' mycategory='+mycategory + ' myid='+myid + ' mygroup='+mygroup + ' mycode='+mycode);
 		if (students == '') {
 			document.getElementById('btnFim').style.display = '';
+			document.getElementById('fonFim').style.display = '';
 			document.getElementById('btnFim').focus();
 			return;
 		}
@@ -930,13 +931,13 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 				if (varCount == '') {
 					if (student.mypoints <= 0) {
 						varRestart = '';
-						varCount = '<button class="btn btn-success" onclick="window.open(\'index.html?tem=' + student.mytema + '&cat=' + student.mycategory + '\', \'_self\');" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '; text-align:right;">fazer</button>';
+						varCount = '<button class="btn btn-success" onclick="window.open(\'index.html?tem=' + student.mytema + '&cat=' + student.mycategory + '\', \'_self\');" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '; text-align:right;">selecionar</button>';
 					} else if (student.mypoints < 80) {
-						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + ' text-align:right; \"><button class="btn btn-danger">refazer</button></a>';
+						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + ' text-align:right; \"><button class="btn btn-danger">selecionar</button></a>';
 					} else if (student.mypoints < 100) {
-						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + ' text-align:right; \"><button class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + ';">refazer</button></a>';
+						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + ' text-align:right; \"><button class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + ';">selecionar</button></a>';
 					} else {
-						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + ' text-align:right; \"><button class="btn btn-light">refazer</button></a>';
+						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + ' text-align:right; \"><button class="btn btn-light">selecionar</button></a>';
 					}
 				} else {
 					varRestart = '';
@@ -971,7 +972,7 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 				//porcentagem
 				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + student.mypoints + '%</' + varTdTh + '>'
 				
-				//botão playsim ou link refazer
+				//botão playsim ou link selecionar
 				+ '<' + varTdTh + ' style="text-align:right;">' + ' ' + varRestart + varCount + '</a>' + "</" + varTdTh + ">"
 //				+ '<' + varTdTh + ' style="text-align:right;">' + varButtonLine + ' ' + varRestart + varCount + '</a>' + "</" + varTdTh + ">"
 
@@ -3387,6 +3388,13 @@ function showTip(valorindice) {
 	}
 }
 
+function escondeBotao() {
+	if (document.getElementById('btnFim') != null) {
+		document.getElementById('btnFim').style.display='none';	
+		document.getElementById('fonFim').style.display='none';	
+	}
+}
+
 function showFormUser() {
     $('#tblEstatisticas').hide();
     $('#divbotoes').hide();
@@ -3402,6 +3410,7 @@ function showFormUser() {
 	$('#divNivel').hide();
     $('#divFormUser').show();
 	$('#txtId').focus();
+	escondeBotao();
 }
 
 function showFormApresentacao() {
@@ -3418,6 +3427,7 @@ function showFormApresentacao() {
 	$('#tblCategory').hide();
 	$('#divNivel').show();
     $('#divFormUser').hide();
+	escondeBotao();
 }
 
 function showFormCategory() {
@@ -3447,15 +3457,15 @@ function showFormSim() {
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormSim').show();
-//	$('#myCarousel').show();	
+//	$('#myCarousel').show();
 	$('#divbuttons').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
     $('#divFormUser').hide();
-//	document.getElementById('navBottom').style.display='';
+	escondeBotao();
+	
 	if (document.getElementById('btnPrevious') != null) {document.getElementById('btnPrevious').disabled = false; }
 	if (document.getElementById('btnNext') != null) {document.getElementById('btnNext').disabled = false; }
-//	if (document.getElementById('btnPause') != null) {document.getElementById('btnPause').style.display = ''; }
 	if (document.getElementById('btnFormCategory') != null) {document.getElementById('btnFormCategory').style.display = 'none'; }
 }
 
@@ -3488,6 +3498,7 @@ function showGridAndHideForms() {
     $('#divFormUser').hide();
 	if (document.getElementById('btnFim') != null) {
 		document.getElementById('btnFim').style.display='none';	
+		document.getElementById('fonFim').style.display='none';	
 	}
 }
 
@@ -3950,6 +3961,6 @@ function getCookie(cname) {
 //port	número de porta de um URL
 //protocol	protocolo de um URL
 //search	consulta parte de um URL
-//https://jsstore.net/tutorial/get-started/
-//https://velhobit.com.br/design/fab-botao-flutuante-com-css3-e-html-sem-javascript.html
-//https://triangulo.dev/posts/atomo-como-criar-cubo-css/
+//https:// jsstore.net/tutorial/get-started/
+//https:// velhobit.com.br/design/fab-botao-flutuante-com-css3-e-html-sem-javascript.html
+//https:// triangulo.dev/posts/atomo-como-criar-cubo-css/

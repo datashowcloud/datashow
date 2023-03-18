@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!-- script src="scripts/jquery.js"></script -->
     <!-- link rel="stylesheet" type="text/css" href="style/bootstrap.css" / -->
+    <link rel="stylesheet" href="style/myproject.css" />
     <link rel="stylesheet" href="style/font-awesome.min.css" />
     <script src="scripts/jsstore.js"></script>
     <script src="scripts/jsstore.worker.js"></script>
@@ -16,194 +17,6 @@
     <!-- Custom styles for this template -->
     <!-- link href="style/carousel.css" rel="stylesheet" -->
 	<style>
-#myBody {
-  border: 0px dashed gray;
-  padding: 0px;
-  background-attachment: fixed;
-  background-position: top; 
-  background-color:black;
-  //background-repeat: repeat;
-  //background-image: url(img/fundonoite.jpg);
-}
-
-
-
-input[type="checkbox"] {
-	position: relative;
-	top: 0;
-	width: 30px;
-	height: 30px;
-	-webkit-appearance: none;
-	outline: none;
-	transition: 0.5s;
-}
-	input[type="checkbox"]::before {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 100%;
-	width: 100%;
-	border: 4px solid black;
-	box-sizing: border-box;
-	border-color: gray;
-	transition: .6s;
-}
-input:checked[type="checkbox"]::before{
-	border-left: none;
-	border-top: none;
-	width: 15px;
-	transform: rotate(45deg) translate(5px, -10px);
-	border-color: gray;
-	transition: 1.0s;
-}
-
-.botao {  
-  display: inline-block;  
-  padding: 0.8em 1.2em;    
-  //background-color:#333333;  
-  text-decoration: none;  
-  color: gray;
-  border-radius:50px;
-} 
-
-
-
-.flutuante {  
-  display: inline-block;  
-  -webkit-transition-duration: 0.4s;  
-  transition-duration: 0.4s;
-  -webkit-transition-property: -webkit-transform;  
-  transition-property: transform;  
-  -webkit-transform: translateZ(0);  
-  -ms-transform: translateZ(0);  
-  transform: translateZ(0);  
-  box-shadow: 0px 4px 2px 0px rgba(98, 98, 98, 0.69);
-}
-.flutuante:hover, .deletefase:hover, .playsim:hover {
-  -webkit-transform: translateY(-5px);  
-  -ms-transform: translateY(-5px);  
-  transform: translateY(-5px);
-  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.69);  
-}
-
-
-
-/* Next & previous and buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 90%;
-  margin-top: -30px;
-  padding: 1px;
-  color: #BBB;
-  background-color: transparent;
-  font-weight: bold;
-  font-size: 30px;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
-/* Position the "next button" to the right */
-.next {
-  position: fixed;
-  width: 40px;
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-/* Position the "next button" to the right */
-.prev {
-  position: fixed;
-  width: 40px;
-  border-radius: 3px 0 0 3px;
-}
-/* "finish button" */
-.end {
-  background-color: #2E8B57;
-}
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover, .end:hover{
-  background-color: #3CB371; //rgba(0,0,0,0.8);
-  color: white;
-}
-
-
-
-@keyframes float {
-  0% {
-    box-shadow: 0 5px 150px 0px rgba(0, 0, 0, 0.6);
-    transform: translatex(6px);
-  }
-  50% {
-    box-shadow: 0 25px 150px 0px rgba(0, 0, 0, 0.2);
-    transform: translatex(-6px);
-  }
-  100% {
-    box-shadow: 0 5px 150px 0px rgba(0, 0, 0, 0.6);
-    transform: translatex(6px);
-  }
-}
-.avatarflutuante {
-  box-sizing: border-box;
-  border: 0px white solid;
-  //border-radius: 50%;
-  overflow: hidden;
-  box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
-  transform: translatey(0px);
-  -webkit-animation: float 3s ease-in-out infinite;
-          animation: float 3s ease-in-out infinite;
-}
-.avatarflutuantevertical {
-  box-sizing: border-box;
-  border: 0px white solid;
-  //border-radius: 50%;
-  overflow: hidden;
-  box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
-  transform: translatey(0px);
-  -webkit-animation: float 3s ease-in-out infinite;
-          animation: float 3s ease-in-out infinite;
-}
-
-
-
-.flip-container {
-  width: 300px;
-  height: 200px;
-  perspective: 1000px;
-}
-
-.flipper{
-	position: relative;
-	width: 100%;
-	height: 100%;
-	transition: transform 0.8s;
-	transform-style: preserve-3d;
-}
-
-.ZZZflip-container:hover .flipper{
-	transform: rotateY(180deg);
-	/* se quiser uma animação na vertical,
-	troque por rotateX(180deg)
-	*/
-}
-
-.front, .back{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-}
-
-.back{
-	transform: rotateY(180deg);
-}
-
-#switch:checked ~ .flip-container .flipper {
-  transform: rotateY(180deg);
-}
-
-#switch{
-	display: 'none';
-}
 	</style>
 </head>
 
@@ -214,30 +27,75 @@ input:checked[type="checkbox"]::before{
 	<nav id="menutopodireito" class="navbar sticky-top navbar-dark bg-dark" style="display:none;">
 	  <div class="container-fluid">
 		<div>
-			<span class="btn btn-outline-primary navbar-toggler navbar-toggler-icon flutuante" style="border-radius:50%;" title="Menu" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"></span>
-			<!--button id="btnPaginaInicial" class="btn btn-outline-primary" title="Página Inicial" style="border-radius:50%; color:white; display:'none';"><i class="fa fa-home"></i> </button-->
-			<button id="btnNightDay" class="btn btn-outline-primary flutuante" title="Dia e noite" style="border-radius:50%; color:white; display:'none';" title="Dia e Noite"><i class="fa fa-adjust"></i> </button>
-			<button id="btnUser" class="btn btn-outline-primary flutuante" title="Você" style="border-radius:50%; color:white; display:'none';"><i class="fa fa-user"></i>
-				<input id="txtUser" type="text" value="" readonly style="border-radius:50%; font-size:10px; position:absolute; background-color:transparent; color:white; width:15px; border-width:0px; font-family:Helvetica; font-weight:bold; cursor:pointer;"></input>
-			</button>
-			<img id="imgLanguage" src="img/portugues.jpg" class="flutuante" width="38px" style="cursor:pointer; border-radius:50%; display:'none';" title="Translate/Traduzir/Traducir"></img>
-			<button id="btnFim" class="btn btn-outline-primary end flutuante" title="Terminar a fase" style="border-radius:50%; color:white; display:none;">Fim</button>
-			<!-- button id="btnLanguage" class="btn btn-outline-primary flutuante" title="Trocar língua: Inglês e Português" style="border-radius:50%; color:white;" ><i class="fa fa-globe"></i></button -->
+			<table>
+				<tr>
+					<td>
+						<span class="btn btn-outline-primary navbar-toggler navbar-toggler-icon" style="border-radius:50%;" title="Menu" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"></span>
+						<br/><font size=1> &nbsp;</font>
+					</td>
+					<td>&nbsp;</td>
+					<td>
+						<img id="imgLanguage" src="img/portugues.jpg" width="38px" style="cursor:pointer; border-radius:50%; display:'none';" title="Translate/Traduzir/Traducir"></img>
+						<br/><font size=1>Tradução</font>
+					</td>
+					<td>&nbsp;</td>
+					<td>
+						<button id="btnNightDay" class="btn btn-outline-primary" title="Dia e noite" style="border-radius:50%; color:white; display:'none';" title="Dia e Noite"><i class="fa fa-adjust"></i> </button>
+						<br/><font size=1>DiaNoite</font>
+					</td>
+					<td>&nbsp;</td>
+					<td>
+						<button id="btnUser" class="btn btn-outline-primary" title="Conexão com e-mail" style="border-radius:50%; color:white; display:'none';"><i class="fa fa-user"></i>
+							<input id="txtUser" type="text" value="" readonly style="border-radius:50%; font-size:10px; position:absolute; background-color:transparent; color:white; width:15px; border-width:0px; font-family:Helvetica; font-weight:bold; cursor:pointer;"></input>
+						</button>
+						<br/><font size=1>Você</font>
+					</td>
+					<td>&nbsp;</td>
+					<td>
+						<button id="btnFim" class="btn btn-outline-primary end" title="Terminar a fase" style="border-radius:50%; color:white; display:none;"><i class="fa fa-envelope"></i></button>
+						<br/><font id="fonFim" size=1 style="display:none;">Terminar</font>
+					</td>
+					<td>&nbsp;</td>
+				</tr>
+			</table>
 		</div>
-		<button id="btnPause" class="btn btn-outline-danger flutuante" onclick="showFormApresentacao();" style="border-radius:50%; color:white; display:'none';" title="Fechar"><i class="fa fa-remove"></i></button>
+
+			<table>
+				<tr>
+					<td>
+						<button id="btnPause" class="btn btn-outline-danger" onclick="showFormApresentacao();" style="border-radius:50%; color:white; display:'none';" title="Volta para primeira tela"><i class="fa fa-remove"></i></button>
+						<br/><font size=1 style="color:white;">Painel</font>
+					</td>
+				</tr>
+			</table>
+		
 		<div class="offcanvas offcanvas-top text-bg-dark bg-dark" style="height:250px;" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
 		  <div class="offcanvas-header">
 			<h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menu:</h5>
-			<button type="button" class="btn-close btn-close-white flutuante" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+			<button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 		  </div>
 		  <div class="offcanvas-body">
 			<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 			  <li class="nav-item">
 					<div align=center>
-						<button id="btnPaginaInicial" class="btn btn-outline-primary flutuante" title="Página Inicial" style="border-radius:50%; color:white; display:'none';"><i class="fa fa-home"></i> </button>
-						<button id="btnDropDb" class="btn btn-outline-primary flutuante" title="Restaurar padrão de fábrica" style="border-radius:50%;color:white; display:'none';"><i class="fa fa-trash"></i></font></button>
-						<button id="btntreino" class="botao flutuante" style="border-radius:30px; display:none;" onclick="changeCategory('2');"><i class="fa fa-book"></i> Treino</button>
-						<button id="btndesafio" class="botao flutuante" style="border-radius:30px; display:none;" onclick="changeCategory('4');"><i class="fa fa-road"></i> Desafio</button>
+						<table>
+							<tr>
+								<td>
+									<button id="btnPaginaInicial" class="btn btn-outline-primary" title="Página Inicial" style="border-radius:50%; color:white; display:'none';"><i class="fa fa-home"></i> </button>
+									<br/><font size=1>Início</font>
+								</td>
+								<td>
+									<button id="btnDropDb" class="btn btn-outline-primary" title="Restaurar padrão de fábrica" style="border-radius:50%;color:white; display:'none';"><i class="fa fa-trash"></i></font></button>
+									<br/><font size=1>Restaurar</font>
+								</td>
+								<td>
+									<button id="btntreino" class="botao" style="border-radius:30px; display:none;" onclick="changeCategory('2');"><i class="fa fa-book"></i> Treino</button>
+								</td>
+								<td>
+									<button id="btndesafio" class="botao" style="border-radius:30px; display:none;" onclick="changeCategory('4');"><i class="fa fa-road"></i> Desafio</button>
+								</td>
+							</tr>
+						</table>
 					</div>
 					<!-- datashowcloud2022@gmail.com -->
 					<div align=center>
@@ -245,7 +103,7 @@ input:checked[type="checkbox"]::before{
 					</div>
 					<div align=center>
 						<font size=2>
-							<i><p/><p/>contato@tamastigadu.com.br <br/>atualizado em 03/2023 versão 00.00.16</i>
+							<i><p/><p/>contato@tamastigadu.com.br <br/>atualizado em 03/2023 versão 00.00.00</i>
 						</font>
 					</div>
 			  </li>
@@ -490,13 +348,24 @@ input:checked[type="checkbox"]::before{
 		</table>
 	
 		<br/><br/><br/>
-		<label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-			<button id="btnListaPerguntas" class="btn btn-primary"><i class="fa fa-list" style="font-size:35px;" title="Lista de perguntas"></i></button>
-		</label>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-			<button id="btnEstatisticas" class="btn btn-primary"><i class="fa fa-signal" style="font-size:35px;" title="Estatísticas"></i></button>
-		</label>
+
+		<table>
+			<tr>
+				<td>
+					<label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
+						<button id="btnListaPerguntas" class="btn btn-primary"><i class="fa fa-list" style="font-size:35px;" title="Lista de fases e níveis"></i></button>
+					</label>
+					<br/><font size=1 style="color:white;">Lista de Fases</font>
+				</td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+				<td>
+					<label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
+						<button id="btnEstatisticas" class="btn btn-primary"><i class="fa fa-signal" style="font-size:35px;" title="Estatísticas"></i></button>
+					</label>
+					<br/><font size=1 style="color:white;">Estatísticas</font>
+				</td>
+			</tr>
+		</table>
 	</div>
 
 	<div id="divcontent" style="display:'none';">
@@ -506,8 +375,8 @@ input:checked[type="checkbox"]::before{
 		<font size=4.9 style="text-align:justify">
 
 			<a id="top"></a>
-			<label id="btnPrevious" class="prev flutuante" title="Exibe a pergunta anterior">&nbsp;<i class="fa fa-chevron-left"></i></label>
-			<label id="btnNext" class="next flutuante" title="Exibe a próxima pergunta">&nbsp;<i class="fa fa-chevron-right"></i></label>
+			<label id="btnPrevious" class="prev btn-primary flutuante" title="Exibe a pergunta anterior">&nbsp;<i class="fa fa-chevron-left"></i></label>
+			<label id="btnNext" class="next btn-primary flutuante" title="Exibe a próxima pergunta">&nbsp;<i class="fa fa-chevron-right"></i></label>
 			
 			<table border=0 width="95%" align=center style="border-color:gray; border-radius:30px; Zborder-style:solid; border-color:white; border-width:3px;">
 				<tr><td id="mytextSim" style="display:'none'; text-align:justify; width:1%;"></td></tr>
