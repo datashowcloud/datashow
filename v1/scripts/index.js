@@ -262,11 +262,20 @@ function registerEvents() {
 		$('#txtSearch').select();
 		document.getElementById('btnIndexConfigurar').style.display='none';
     })
+	
+    $('#btnFavorito').click(function () {
+		document.getElementById('selMycodeTextGroup').selectedIndex = 0;
+		document.getElementById('txtSearch').value = 'favoritos';
+		refreshTableData();
+		showGridAndHideForms();
+		$('#txtSearch').focus();
+		$('#txtSearch').select();
+    })
     $('#btnIndexConfigurar').click(function () {
 		window.close();
 		var DataShow_Config = window.open("config.html", "datashowconfig", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
 		var DataShow_ConfigResult = window.open("configresult.html", "datashowconfigresult");
-		datashowconfigresult.focus();
+		//datashowconfigresult.focus();
 	})
     $('#btnCertifications').click(function () {
 		window.close();
@@ -591,8 +600,8 @@ async function refreshTableResult() {
 		});
 		if (students == '0') {
 			var labelStudents = "<label class=\"btn btn-default\" style=\"width:200px; \"> Letras: " + students + "</label>";
-		} else if (students > '0' && students < '10830') {
-			var labelStudents = "<label class=\"btn btn-default\" style=\"width:200px; \"> Letras: " + students + " de ~10892 </label>";
+		} else if (students > '0' && students < '11529') {
+			var labelStudents = "<label class=\"btn btn-default\" style=\"width:200px; \"> Letras: " + students + " de ~11529 </label>";
 		} else {
 			var labelStudents = "<label class=\"btn btn-info\" style=\"width:200px; \"> Letras: " + students + " <i class=\"fa fa-check\"></i></label>";
 		}
@@ -1549,6 +1558,9 @@ function moveCursor(mycode, col, evento, index) {
 		if (col == COL_LOGOTIPO) { //coluna logotipo
 			showLogo();
 		} else {
+			localStorage.setItem('valueLogoBig', 'true');
+			showLogo();
+
 			freezeDataShow('false');
 			if (localStorage.getItem('valueAoVivo') == 'true') {
 				setColor(index, localStorage.getItem('valueAoVivo'));
