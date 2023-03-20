@@ -2071,19 +2071,26 @@ function onLoadConfig() {
 //This function refreshes the table
 async function refreshTableResult(total) {
     try {
+		var params = new URLSearchParams(window.location.search);
+		var mytema = params.get('tem');
+		var mycategory = params.get('cat');
 		var students = await jsstoreCon.count({
 			from: 'Student'
+				, where: { mytema: mytema + ''
+				, mycategory: mycategory + ''
+			  }
 		});
-//alert('students='+students + ' total='+total);
 		if (parseInt(students) >= parseInt(total)) {
 			document.getElementById('divContinuar').style.display='';
 			document.getElementById('divLoading').style.display='none';
+//alert('if students='+students + ' total='+total + ' mytema='+mytema + ' mycategory='+mycategory);
 		} else {
 			document.getElementById('divContinuar').style.display='none';
 			document.getElementById('divLoading').style.display='';
+//alert('else students='+students + ' total='+total + ' mytema='+mytema + ' mycategory='+mycategory);
 		}
 	} catch (ex) {
-        console.log(ex.message)
+        alert(ex.message + ' refreshTableResult(' + total + ')' + ' students='+students + ' mytema='+mytema + ' mycategory='+mycategory);
     }
 }
 
