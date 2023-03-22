@@ -870,7 +870,7 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 						$('form').attr('data-student-id', student.id); //alert($('form').attr('data-student-id'));
 
 						document.getElementById('mytip' + parseInt(index+1)).innerHTML = textlink + linkhref
-
+						//botão de resposta
 						document.getElementById('btnCorrectAnswer' + parseInt(index+1)).innerHTML = selectKeyMyoption(myoption);
 						
 
@@ -3450,6 +3450,17 @@ function escondeBotao() {
 		document.getElementById('btnFim').style.display='none';	
 		document.getElementById('fonFim').style.display='none';	
 	}
+	if (document.getElementById('imgLanguage') != null) {
+		document.getElementById('imgLanguage').style.display = 'none';
+		document.getElementById('fonLanguage').style.display = 'none';
+	}
+}
+
+function exibeBotao() {
+	if (document.getElementById('imgLanguage') != null) {
+		document.getElementById('imgLanguage').style.display = '';
+		document.getElementById('fonLanguage').style.display = '';
+	}
 }
 
 function showFormUser() {
@@ -3519,8 +3530,10 @@ function showFormSim() {
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
     $('#divFormUser').hide();
+
 	escondeBotao();
-	
+	exibeBotao();
+
 	if (document.getElementById('btnPrevious') != null) {document.getElementById('btnPrevious').disabled = false; }
 	if (document.getElementById('btnNext') != null) {document.getElementById('btnNext').disabled = false; }
 	if (document.getElementById('btnFormCategory') != null) {document.getElementById('btnFormCategory').style.display = 'none'; }
@@ -3553,6 +3566,10 @@ function showGridAndHideForms() {
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
     $('#divFormUser').hide();
+	if (document.getElementById('imgLanguage') != null) {
+		document.getElementById('imgLanguage').style.display = 'none';
+		document.getElementById('fonLanguage').style.display = 'none';
+	}
 	if (document.getElementById('btnFim') != null) {
 		document.getElementById('btnFim').style.display='none';	
 		document.getElementById('fonFim').style.display='none';	
