@@ -481,7 +481,8 @@ function registerEvents() {
 		}
     })
     $('#btnNext').click(function () {
-		var params = new URLSearchParams(window.location.search);
+		next();
+/*		var params = new URLSearchParams(window.location.search);
 		var mytema = params.get('tem');
 		var mycategory = params.get('cat');
 		var myid = document.getElementById('myidSim').value;
@@ -489,6 +490,7 @@ function registerEvents() {
 		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
 		refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode);
 		savePoints(mytema, mycategory, myid, mygroup, mycode);
+*/
     })
 	$('#btnPause').click(function () {
 		showFormApresentacao();
@@ -866,15 +868,15 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 						document.getElementById('chkMycorrect' + parseInt(index+1) + 'answer').value = varMyorder;
 						$('chkMycorrect' + parseInt(index+1) + 'answer').attr('data-myorder', varMyorder);
 						$('form').attr('data-student-id', student.id); //alert($('form').attr('data-student-id'));
-						
-						//document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = selectKeyMyoption(myoption) + ' <a href="#"><i class="fa fa-plus" style="color:' + CONST_MEDIUM_SEA_GREEN + ';" onclick="showTip(' + parseInt(index+1) + ');" > <font color=gray>(cola'+ varMyorder +')</i></a>';
-						document.getElementById('mycorrect' + parseInt(index+1) + 'answer').innerHTML = selectKeyMyoption(myoption) + ' <a href="#"><i class="fa fa-plus" style="color:' + CONST_MEDIUM_SEA_GREEN + ';" onclick="showTip(' + parseInt(index+1) + ');" > <font color=' + CONST_GRAY + '>(dica)</font)</i></a>';
+
 						document.getElementById('mytip' + parseInt(index+1)).innerHTML = textlink + linkhref
+
+						document.getElementById('btnCorrectAnswer' + parseInt(index+1)).innerHTML = selectKeyMyoption(myoption);
+						
 
 						//checa as respostas já selecionadas anteriormente
 						if (mycorrect == 'checked') {
 							for (var indexchk=1; indexchk<9; indexchk++) {
-								//alert('mycorrect='+mycorrect + ' varMyorder='+varMyorder + ' chkMycorrectanswer'+indexchk + '= '+document.getElementById('chkMycorrect'+ indexchk + 'answer').value);
 								if (document.getElementById('chkMycorrect'+ indexchk + 'answer').value == varMyorder) {
 									document.getElementById('chkMycorrect' + indexchk + 'answer').checked = true;
 									if (varMyorder < 5) {
@@ -1022,6 +1024,13 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 			//showIniciarConfiguracao();
 //			document.getElementById('btnPlay').style.display='none';
 		}
+		
+		var botaoFechar = '';
+		botaoFechar += '<table><tr><td>';
+		botaoFechar += '<button class="btn btn-danger" style="border-radius:50%; border-style:double; border-color:white; border-width:2px;" onclick="showFormApresentacao();"><i class="fa fa-remove"></i></button>';
+		botaoFechar += '</td></tr></table>';
+		htmlString = botaoFechar + htmlString;
+		
         $('#tblEstatisticas tbody').html(htmlString);
 //    } catch (ex) {
 //        console.log(ex.message)
@@ -1030,51 +1039,51 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 
 //This function refreshes the table
 async function refreshTableNivel(mytema, mycategory, mycode, myorder, mygroup, mytext, mytext2, mytext3) {
-		var students = await jsstoreCon.select({
-			from: 'Student'
-				, where: { mytema: mytema + ''
-				, mycategory: mycategory + ''
-			}
-			, order: [ {by: 'mygroup', type: 'asc'} ]
-		});
+	var students = await jsstoreCon.select({
+		from: 'Student'
+			, where: { mytema: mytema + ''
+			, mycategory: mycategory + ''
+		}
+		, order: [ {by: 'mygroup', type: 'asc'} ]
+	});
 
-		setConfigBotoes(); //atualiza o destaque de cor dos botões de modo de jogo
+	setConfigBotoes(); //atualiza o destaque de cor dos botões de modo de jogo
 
-		var htmlString = "";
-		var varNivel = '1';
-		var varFase = '1';
-		var myid = '1'; //não é usado
-		mycode = '1';
-		students.forEach(function (student) {
-			varNivel = student.mycategory;
-			varFase = student.mygroup;
-			mygroup = student.mygroup;
-		})
-		
-		htmlString = '';
-		htmlString = htmlString + '<tr>';
-		htmlString = htmlString + '<td>';
+	var htmlString = "";
+	var varNivel = '1';
+	var varFase = '1';
+	var myid = '1'; //não é usado
+	mycode = '1';
+	students.forEach(function (student) {
+		varNivel = student.mycategory;
+		varFase = student.mygroup;
+		mygroup = student.mygroup;
+	})
+	
+	htmlString = '';
+	htmlString = htmlString + '<tr>';
+	htmlString = htmlString + '<td>';
 
-		htmlString = htmlString + '</td>';
-		htmlString = htmlString + '</tr>';
+	htmlString = htmlString + '</td>';
+	htmlString = htmlString + '</tr>';
 
-		htmlString = htmlString + '<tr>';
-		htmlString = htmlString + '<td>';
+	htmlString = htmlString + '<tr>';
+	htmlString = htmlString + '<td>';
 
-		htmlString = htmlString + '<i class="fa fa-play avatarflutuante" style="color:#00FF7F; font-size:15px;"></i>';
-		htmlString = htmlString + '<label class="flutuante" style="border-radius:30px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">';
+	htmlString = htmlString + '<i class="fa fa-play avatarflutuante" style="color:#00FF7F; font-size:15px;"></i>';
+	htmlString = htmlString + '<label class="flutuante" style="border-radius:30px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">';
 
-		htmlString = htmlString + '<label style="border-radius:10px; font-size:20px; background-color:white; color:green; position:absolute; top:-18px; left:90px; width:70px; border-width:0px; font-family:Helvetica; cursor:default;">Nível ' + varNivel + '</label>';
+	htmlString = htmlString + '<label style="border-radius:10px; font-size:20px; background-color:white; color:green; position:absolute; top:-18px; left:90px; width:70px; border-width:0px; font-family:Helvetica; cursor:default;">Nível ' + varNivel + '</label>';
 
-		htmlString = htmlString + '<button id="btnNivel" class="btn btn-success" onclick="refreshTableQuestion(' + mytema + ', ' + mycategory + ', ' + myid + ', ' + mygroup + ', ' + mycode + '); showFormSim();" style="border-radius:30px; font-size:30px; font-family:Helvetica; font-weight:bold; border-width:0px; -webkit-text-stroke-width: 1px; ">';
-		htmlString = htmlString + '&nbsp;&nbsp;FASE ' + varFase + '&nbsp;&nbsp;';
-		htmlString = htmlString + '</button>';
-		htmlString = htmlString + '</label>';
+	htmlString = htmlString + '<button id="btnNivel" class="btn btn-success" onclick="refreshTableQuestion(' + mytema + ', ' + mycategory + ', ' + myid + ', ' + mygroup + ', ' + mycode + '); showFormSim();" style="border-radius:30px; font-size:30px; font-family:Helvetica; font-weight:bold; border-width:0px; -webkit-text-stroke-width: 1px; ">';
+	htmlString = htmlString + '&nbsp;&nbsp;FASE ' + varFase + '&nbsp;&nbsp;';
+	htmlString = htmlString + '</button>';
+	htmlString = htmlString + '</label>';
 
-		htmlString = htmlString + '</td>';
-		htmlString = htmlString + '</tr>';
+	htmlString = htmlString + '</td>';
+	htmlString = htmlString + '</tr>';
 //alert('mytema='+mytema + ' mycategory='+mycategory + ' myid='+myid + ' mygroup=' + mygroup + ' mycode=' + mycode);
-        $('#tblNivel tbody').html(htmlString);
+	$('#tblNivel tbody').html(htmlString);
 }
 
 async function deletefase(mytema, mycategory, mygroup, mycode, myid) {
@@ -1092,6 +1101,28 @@ async function deletefase(mytema, mycategory, mygroup, mycode, myid) {
     } catch (ex) {
         console.log(ex.message);
     }
+}
+
+function next(resposta) {
+	if (resposta <= 4) {
+		var params = new URLSearchParams(window.location.search);
+		var mytema = params.get('tem');
+		var mycategory = params.get('cat');
+		var myid = document.getElementById('myidSim').value;
+		var mygroup = document.getElementById('mygroupSim').value;
+		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
+		//alert(mytema + ' ' + mycategory + ' ' + myid + ' ' + mygroup + ' ' + mycode);
+		refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode);
+		savePoints(mytema, mycategory, myid, mygroup, mycode);
+	} else {
+		for (var index = 1; index <= 4; index++) {
+			if (document.getElementById('chkMycorrect' + index + 'answer').value <= 4) {
+				alert('Resposta incorreta. Tente novamente.');
+				showFormApresentacao();
+				break;
+			}
+		}
+	}
 }
 
 function validaLicenca(mycategory, nivelLiberadoSemUsuarioConectado) {
@@ -1121,10 +1152,6 @@ function validaLicenca(mycategory, nivelLiberadoSemUsuarioConectado) {
 	} else {
 		valido = true;
 	}
-
-	if (valido == true) {
-		conectaUsuarioValido(id);
-	}
 	
 	return valido;
 }
@@ -1146,7 +1173,7 @@ function getLanguageFile(arquivo) {
 	return lingua;
 }
 
-function initForm() {
+async function initForm() {
 	var params = new URLSearchParams(window.location.search);
 	var mytema = params.get('tem');
 	var mycategory = params.get('cat');
@@ -1159,10 +1186,26 @@ function initForm() {
 		refreshTableNivel(mytema, mycategory, '0', '', '', '');
 		showFormApresentacao();
 	}
-	validaLicenca(mycategory, CONST_NIVEL_LIBERADO_SEM_USUARIO_CONECTADO);
+	var valido = validaLicenca(mycategory, CONST_NIVEL_LIBERADO_SEM_USUARIO_CONECTADO);
+	if (valido == true) {
+		if (localStorage.getItem('id').length > 0 && localStorage.getItem('key').length > 0) {
+			var users = await jsstoreCon.select({
+				from: 'User'
+					, where: { id: localStorage.getItem('id') + ''
+					, key: localStorage.getItem('key') + ''
+				}
+			});
+			users.forEach(function (user) {
+//alert('localStorage.getItem(id)='+localStorage.getItem('id') + ' localStorage.getItem(key)='+localStorage.getItem('key') + ' user.id='+user.id + ' user.key='+user.key + ' user.pass='+user.pass);
+				login(user.id, user.key, user.pass);
+				conectaUsuarioValido(user.id);
+			})
+
+		}
+	}
 }
 
-function login(id, pass, key) {
+async function login(id, pass, key) {
 	if (validalogin(id, pass, key) == true) {
 		key = '202303010000';
 		localStorage.setItem('id', id);
@@ -1171,11 +1214,15 @@ function login(id, pass, key) {
 		gravaUsuario(id, pass, key);
 		showFormApresentacao();
 	} else {
-		document.getElementById('txtId').value='';
-		document.getElementById('txtId').placeholder='e-mail incorreto';
-		document.getElementById('txtPass').value='';
-		document.getElementById('txtPass').placeholder='senha incorreta';
-		document.getElementById('txtId').focus();
+		if (document.getElementById('txtPass') != null) {
+			document.getElementById('txtPass').value='';
+			document.getElementById('txtPass').placeholder='senha incorreta';
+		}
+		if (document.getElementById('txtId') != null) {
+			document.getElementById('txtId').value='';
+			document.getElementById('txtId').placeholder='e-mail incorreto';
+			document.getElementById('txtId').focus();
+		}
 	}
 }
 
@@ -1218,6 +1265,7 @@ async function gravaUsuario(id, pass, key) {
 }
 
 function validalogin(id, pass, key) {
+//alert('id='+id);
 	if (id.toLowerCase() == 'a' && pass == 'a') {
 		return true;
 	} else if (id.toLowerCase() == 'admin' && pass == 'admin') {
@@ -1906,6 +1954,7 @@ async function dropdb() {
 		if (result) {
 			var result = confirm('Ok. Vou apagar tudo.');
 			if (result) {
+				limpaLogin();
 				jsstoreCon.dropDb().then(function() {
 					console.log('Db deleted successfully');
 					var params = new URLSearchParams(window.location.search);
@@ -3388,6 +3437,7 @@ async function updateAnswers(mytema, mycategory, myid, mygroup, mycode, answer1,
 }
 
 function showTip(valorindice) {
+//	alert(document.getElementById('mytip' + valorindice).innerHTML);
 	if (document.getElementById('mytip' + valorindice).style.display == 'none') {
 		document.getElementById('mytip' + valorindice).style.display='';
 	} else {
