@@ -481,7 +481,6 @@ function registerEvents() {
 		}
     })
     $('#btnNext').click(function () {
-		next();
 /*		var params = new URLSearchParams(window.location.search);
 		var mytema = params.get('tem');
 		var mycategory = params.get('cat');
@@ -497,7 +496,7 @@ function registerEvents() {
 		//exitQuestions();
     });
 	$('#btnFim').click(function () {
-		var params = new URLSearchParams(window.location.search);
+/*		var params = new URLSearchParams(window.location.search);
 		var mytema = params.get('tem');
 		var mycategory = params.get('cat');
 		var myid = document.getElementById('myidSim').value;
@@ -505,6 +504,7 @@ function registerEvents() {
 		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
 		setTimeout(() => { savePoints(mytema, mycategory, myid, mygroup, mycode) }, 1000); // Executa após alguns segundos para esperar o término do processo
 		setTimeout(() => { changeFaseNivel(mytema, mycategory, myid, mygroup, mycode) }, 1000); // Executa após alguns segundos para esperar o término do processo
+*/
     });
 	$('#btnGear').click(function () {
 		if (document.getElementById('divGear').style.display == 'none') {
@@ -579,45 +579,61 @@ function registerEvents() {
 			alert('imgLanguage ' + ex.message)
 		}
 	})
-	$('#chkMycorrect1answer').click(function () {
-		var index = '1';
+	$('#chkMycorrect1').click(function () {
+/*		var index = '1';
 		setBackgroundColor(index, CONST_MEDIUM_SEA_GREEN);
 		showCorrect(index, '', '', '');
+*/
+		salvaResposta('1');
 	})
-	$('#chkMycorrect2answer').click(function () {
-		var index = '2';
+	$('#chkMycorrect2').click(function () {
+/*		var index = '2';
 		setBackgroundColor(index, CONST_MEDIUM_SEA_GREEN);
 		showCorrect(index, '', '', '');
+*/
+		salvaResposta('2');
 	})
-	$('#chkMycorrect3answer').click(function () {
-		var index = '3';
+	$('#chkMycorrect3').click(function () {
+/*		var index = '3';
 		setBackgroundColor(index, CONST_MEDIUM_SEA_GREEN);
 		showCorrect(index, '', '', '');
+*/
+		salvaResposta('3');
 	})
-	$('#chkMycorrect4answer').click(function () {
-		var index = '4';
+	$('#chkMycorrect4').click(function () {
+/*		var index = '4';
 		setBackgroundColor(index, CONST_MEDIUM_SEA_GREEN);
 		showCorrect(index, '', '', '');
+*/
+		salvaResposta('4');
 	})
-	$('#chkMycorrect5answer').click(function () {
-		var index = '5';
+	$('#chkMycorrect5').click(function () {
+/*		var index = '5';
 		setBackgroundColor(index, '#FF5555');
 		showCorrect(index, '', '', '');
+*/
+		salvaResposta('5');
 	})
-	$('#chkMycorrect6answer').click(function () {
-		var index = '6';
+	$('#chkMycorrect6').click(function () {
+/*		var index = '6';
 		setBackgroundColor(index, '#FF5555');
 		showCorrect(index, '', '', '');
+*/
+		salvaResposta('6');
 	})
-	$('#chkMycorrect7answer').click(function () {
-		var index = '7';
+	$('#chkMycorrect7').click(function () {
+/*		var index = '7';
 		setBackgroundColor(index, '#FF5555');
 		showCorrect(index, '', '', '');
+*/
+		salvaResposta('7');
 	})
-	$('#chkMycorrect8answer').click(function () {
-		var index = '8';
+	$('#chkMycorrect8').click(function () {
+/*		var index = '8';
 		setBackgroundColor(index, '#FF5555');
 		showCorrect(index, '', '', '');
+*/
+		salvaResposta('8');
 	})
 	$('#btnListaPerguntas').click(function () {
 		var params = new URLSearchParams(window.location.search);
@@ -629,11 +645,10 @@ function registerEvents() {
 	$('#btnEstatisticas').click(function () {
 	})
 	$('#btnUser').click(function () {
-		if (document.getElementById('divFormUser').style.display == 'none') {
-			showFormUser();
-		} else {
-			showFormApresentacao();
-		}
+		showFormUser();
+	})
+	$('#spanUser').click(function () {
+		showFormMenu();
 	})
 	$('#btnEntrar').click(function () {
 		var id = document.getElementById('txtId').value;
@@ -809,93 +824,92 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 				, mycode: mycode + ''
 			  }
 		});
-		//alert('mytema='+mytema + ' mycategory='+mycategory + ' myid='+myid + ' mygroup='+mygroup + ' mycode='+mycode);
 		if (students == '') {
-			document.getElementById('btnFim').style.display = '';
+			setTimeout(() => { changeFaseNivel(mytema, mycategory, myid, mygroup, mycode) }, 1000); // Executa após alguns segundos para esperar o término do processo
+/*			document.getElementById('btnFim').style.display = '';
 			document.getElementById('fonFim').style.display = '';
 			document.getElementById('btnFim').focus();
+*/
 			return;
 		}
-			limpaInputbox(students);
-			students.forEach(function (student) {
-				document.getElementById('myorderSim').style.display='none';
-				document.getElementById('myidSim').style.display='none';
-				document.getElementById('mygroupSim').style.display='none';
-				document.getElementById('mycodeSim').style.display='none';
-//				for (var index=1; index<9; index++) {
-//					document.getElementById('mycorrect' + parseInt(index) + 'Sim').style.display='none';
-//				}
-				$('#myidSim').val(student.id);
-				$('#mygroupSim').val(student.mygroup);
-				$('#mycodeSim').val(student.mycode);
-				$('#myorderSim').val(student.myorder);
-				
-				var lingua = getLanguageFile(document.getElementById('imgLanguage').src);
-				document.getElementById('mytextSim').innerHTML = student.mycode + '/' + totalperguntas + '. ' + buscaValorTag(student.mytext, lingua);
-				var valorIndice = '';
-				var myorder = student.myorder;
-				//erro
-				if (myorder == null) {
-					alert('Clique em "Atualizar fase". Nova versão disponível.');
-					showGridAndHideForms();
-				} else {
-					myorder = myorder.replaceAll('\,', '');
+		
+		limpaCkeckbox();
+		students.forEach(function (student) {
+			document.getElementById('myorderSim').style.display='none';
+			document.getElementById('myidSim').style.display='none';
+			document.getElementById('mygroupSim').style.display='none';
+			document.getElementById('mycodeSim').style.display='none';
+			$('#myidSim').val(student.id);
+			$('#mygroupSim').val(student.mygroup);
+			$('#mycodeSim').val(student.mycode);
+			$('#myorderSim').val(student.myorder);
+			
+			var lingua = getLanguageFile(document.getElementById('imgLanguage').src);
+			document.getElementById('mytextSim').innerHTML = student.mycode + '/' + totalperguntas + '. ' + buscaValorTag(student.mytext, lingua);
+			var valorIndice = '';
+			var myorder = student.myorder;
+			//erro
+			if (myorder == null) {
+				alert('Clique em "Atualizar fase". Nova versão disponível.');
+				showGridAndHideForms();
+			} else {
+				myorder = myorder.replaceAll('\,', '');
 
-					for (var index=0; index<8; index++) {
-						varMyorder = myorder.substring(index,index+1);
-						var textlink = '';
-						var linkhref = '';
-						var myoption = '';
-						var mycorrect = '';
-						
-							 if (varMyorder == '1') { textlink = student.myoptionkey1; myoption = selectKeyMyoption(buscaValorTag(student.myoption1, lingua)); mycorrect = student.mycorrect1answer; }
-						else if (varMyorder == '2') { textlink = student.myoptionkey2; myoption = selectKeyMyoption(buscaValorTag(student.myoption2, lingua)); mycorrect = student.mycorrect2answer; }
-						else if (varMyorder == '3') { textlink = student.myoptionkey3; myoption = selectKeyMyoption(buscaValorTag(student.myoption3, lingua)); mycorrect = student.mycorrect3answer; }
-						else if (varMyorder == '4') { textlink = student.myoptionkey4; myoption = selectKeyMyoption(buscaValorTag(student.myoption4, lingua)); mycorrect = student.mycorrect4answer; }
-						else if (varMyorder == '5') { textlink = student.myoptionkey5; myoption = selectKeyMyoption(buscaValorTag(student.myoption5, lingua)); mycorrect = student.mycorrect5answer; }
-						else if (varMyorder == '6') { textlink = student.myoptionkey6; myoption = selectKeyMyoption(buscaValorTag(student.myoption6, lingua)); mycorrect = student.mycorrect6answer; }
-						else if (varMyorder == '7') { textlink = student.myoptionkey7; myoption = selectKeyMyoption(buscaValorTag(student.myoption7, lingua)); mycorrect = student.mycorrect7answer; }
-						else if (varMyorder == '8') { textlink = student.myoptionkey8; myoption = selectKeyMyoption(buscaValorTag(student.myoption8, lingua)); mycorrect = student.mycorrect8answer; }
-						if (textlink.substring(0, 4) == 'tip:') {
-							textlink = textlink.substring(4);
-							linkhref = '';
-						} else {
-							if (document.getElementById(textlink) != null && textlink.length > 0) {
-								textlink = document.getElementById(textlink).innerHTML;
-								linkhref = '<br/><a href=' + document.getElementById('link_' + 'EC2').href + ' target="_blank" style="color:' + 'gray' + ';">veja mais na internet</a>';
-							}
+				for (var index=0; index<8; index++) {
+					varMyorder = myorder.substring(index,index+1);
+					var textlink = '';
+					var linkhref = '';
+					var myoption = '';
+					var mycorrect = '';
+					
+						 if (varMyorder == '1') { textlink = student.myoptionkey1; myoption = selectKeyMyoption(buscaValorTag(student.myoption1, lingua)); mycorrect = student.mycorrect1answer; }
+					else if (varMyorder == '2') { textlink = student.myoptionkey2; myoption = selectKeyMyoption(buscaValorTag(student.myoption2, lingua)); mycorrect = student.mycorrect2answer; }
+					else if (varMyorder == '3') { textlink = student.myoptionkey3; myoption = selectKeyMyoption(buscaValorTag(student.myoption3, lingua)); mycorrect = student.mycorrect3answer; }
+					else if (varMyorder == '4') { textlink = student.myoptionkey4; myoption = selectKeyMyoption(buscaValorTag(student.myoption4, lingua)); mycorrect = student.mycorrect4answer; }
+					else if (varMyorder == '5') { textlink = student.myoptionkey5; myoption = selectKeyMyoption(buscaValorTag(student.myoption5, lingua)); mycorrect = student.mycorrect5answer; }
+					else if (varMyorder == '6') { textlink = student.myoptionkey6; myoption = selectKeyMyoption(buscaValorTag(student.myoption6, lingua)); mycorrect = student.mycorrect6answer; }
+					else if (varMyorder == '7') { textlink = student.myoptionkey7; myoption = selectKeyMyoption(buscaValorTag(student.myoption7, lingua)); mycorrect = student.mycorrect7answer; }
+					else if (varMyorder == '8') { textlink = student.myoptionkey8; myoption = selectKeyMyoption(buscaValorTag(student.myoption8, lingua)); mycorrect = student.mycorrect8answer; }
+					if (textlink.substring(0, 4) == 'tip:') {
+						textlink = textlink.substring(4);
+						linkhref = '';
+					} else {
+						if (document.getElementById(textlink) != null && textlink.length > 0) {
+							textlink = document.getElementById(textlink).innerHTML;
+							linkhref = '<br/><a href=' + document.getElementById('link_' + 'EC2').href + ' target="_blank" style="color:' + 'gray' + ';">veja mais na internet</a>';
 						}
-						document.getElementById('chkMycorrect' + parseInt(index+1) + 'answer').value = varMyorder;
-						$('chkMycorrect' + parseInt(index+1) + 'answer').attr('data-myorder', varMyorder);
-						$('form').attr('data-student-id', student.id); //alert($('form').attr('data-student-id'));
+					}
+					document.getElementById('chkMycorrect' + parseInt(index+1)).value = varMyorder;
+					$('chkMycorrect' + parseInt(index+1)).attr('data-myorder', varMyorder);
+					$('form').attr('data-student-id', student.id); //alert($('form').attr('data-student-id'));
 
-						document.getElementById('mytip' + parseInt(index+1)).innerHTML = textlink + linkhref
-						//botão de resposta
-						document.getElementById('btnCorrectAnswer' + parseInt(index+1)).innerHTML = selectKeyMyoption(myoption);
-						
+					document.getElementById('mytip' + parseInt(index+1)).innerHTML = textlink + linkhref
+					//botão de resposta
+					document.getElementById('btnCorrectAnswer' + parseInt(index+1)).innerHTML = selectKeyMyoption(myoption);
+					
 
-						//checa as respostas já selecionadas anteriormente
-						if (mycorrect == 'checked') {
-							for (var indexchk=1; indexchk<9; indexchk++) {
-								if (document.getElementById('chkMycorrect'+ indexchk + 'answer').value == varMyorder) {
-									document.getElementById('chkMycorrect' + indexchk + 'answer').checked = true;
-									if (varMyorder < 5) {
-										setBackgroundColor(indexchk, CONST_MEDIUM_SEA_GREEN);
-									} else {
-										setBackgroundColor(indexchk, '#FF5555');
-									}
+					//checa as respostas já selecionadas anteriormente
+					if (mycorrect == 'checked') {
+						for (var indexchk=1; indexchk<9; indexchk++) {
+							if (document.getElementById('chkMycorrect'+ indexchk).value == varMyorder) {
+								document.getElementById('chkMycorrect' + indexchk).checked = true;
+								if (varMyorder < 5) {
+									setBackgroundColor(indexchk, CONST_MEDIUM_SEA_GREEN);
+								} else {
+									setBackgroundColor(indexchk, '#FF5555');
 								}
 							}
 						}
-						if (myoption.length > 0) {
-							//alert('myoption=['+myoption+']');
-							document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='';
-						} else {
-							document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='none';
-						}
+					}
+					if (myoption.length > 0) {
+						//alert('myoption=['+myoption+']');
+						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='';
+					} else {
+						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='none';
 					}
 				}
-			})
+			}
+		})
 		
     } catch (ex) {
         alert('refreshTableQuestion ' + ex.message)
@@ -1103,25 +1117,60 @@ async function deletefase(mytema, mycategory, mygroup, mycode, myid) {
     }
 }
 
-function next(resposta) {
-	if (resposta <= 4) {
+function next(index, resposta) {
+	if (resposta <= 4) { //resposta correta
 		var params = new URLSearchParams(window.location.search);
 		var mytema = params.get('tem');
 		var mycategory = params.get('cat');
 		var myid = document.getElementById('myidSim').value;
 		var mygroup = document.getElementById('mygroupSim').value;
 		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
-		//alert(mytema + ' ' + mycategory + ' ' + myid + ' ' + mygroup + ' ' + mycode);
+		salvaResposta(index);
 		refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode);
 		savePoints(mytema, mycategory, myid, mygroup, mycode);
-	} else {
-		for (var index = 1; index <= 4; index++) {
-			if (document.getElementById('chkMycorrect' + index + 'answer').value <= 4) {
-				alert('Resposta incorreta. Tente novamente.');
-				showFormApresentacao();
-				break;
+	} else { //resposta incorreta
+		limpaRespostasSalvas();
+		alert('Resposta incorreta.');
+		showFormApresentacao();
+	}
+	limpaCkeckbox();
+}
+
+function salvaResposta(index) {
+	document.getElementById('chkMycorrect' + index).checked = true;
+	setBackgroundColor(index, CONST_MEDIUM_SEA_GREEN);
+	showCorrect(index, '', '', '');
+}
+
+async function limpaRespostasSalvas() {
+	var params = new URLSearchParams(window.location.search);
+	var mytema = params.get('tem');
+	var mycategory = params.get('cat');
+	var mygroup = document.getElementById('mygroupSim').value;
+	if (mytema.length>0 && mycategory.length>0 && mygroup.length>0) {
+		var noOfDataUpdated = await jsstoreCon.update({
+			in: 'Student',
+			set: {
+				mycorrect1answer: '',
+				mycorrect2answer: '',
+				mycorrect3answer: '',
+				mycorrect4answer: '',
+				mycorrect5answer: '',
+				mycorrect6answer: '',
+				mycorrect7answer: '',
+				mycorrect8answer: ''
 			}
-		}
+		});
+	}
+}
+
+function limpaCkeckbox() {
+	for (var index = 1; index <= 8; index++) {
+		document.getElementById('chkMycorrect' + index).checked = false;
+		document.getElementById('chkMycorrect' + index).style.backgroundColor = 'transparent';
+		document.getElementById('chkMycorrect' + index).disabled = false;
+		document.getElementById('chkMycorrect' + index).value = '';
+		document.getElementById('mytip' + index).style.display='none';
 	}
 }
 
@@ -1255,7 +1304,7 @@ async function gravaUsuario(id, pass, key) {
 			into: 'User',
 			values: [user]
 		});
-		console.log('Sucesso \n\n Id='+id + '\n Pass='+pass + '\n key='+key);
+		//console.log('Sucesso \n\n Id='+id + '\n Pass='+pass + '\n key='+key);
 		if (noOfDataInserted === 1) {
 		}
     } catch (ex) {
@@ -1358,23 +1407,10 @@ function setConfigBotoes() {
 	}
 }
 
-function limpaInputbox(students) {
-	for (var index = 1; index < 9; index++) {
-		document.getElementById('chkMycorrect' + index + 'answer').checked = false;
-		document.getElementById('chkMycorrect' + index + 'answer').style.backgroundColor = 'transparent';
-		document.getElementById('chkMycorrect' + index + 'answer').disabled = false;
-		document.getElementById('chkMycorrect' + index + 'answer').value = '';
-		
-		document.getElementById('mytip' + index).style.display='none';
-	}
-}
-
 function setBackgroundColor(index, color) {
 	//se está checado então coloca a cor de fundo vermelho=incorreta ou verde=correta
-	if (document.getElementById('chkMycorrect' + index + 'answer') != null) {
-//		if (document.getElementById('chkMycorrect' + index + 'answer').checked == true) {
-			document.getElementById('chkMycorrect' + index + 'answer').style.backgroundColor = color;
-//		}
+	if (document.getElementById('chkMycorrect' + index) != null) {
+		document.getElementById('chkMycorrect' + index).style.backgroundColor = color;
 	}
 }
 
@@ -1652,11 +1688,13 @@ async function changeFaseNivel(mytema, mycategory, myid, mygroup, mycode) {
 	});
 	var totalCorretas = getTotalCorretas(mytema, mycategory, mygroup, mycode, students);
 	var calculo = calculaPercentualAcerto(mytema, mycategory, mygroup, mycode, totalCorretas, totalperguntas);
-	
+
 	//valida usuário e licença para autorizar estudo acima do Nível liberado.
 	var valido = validaLicenca(mycategory, CONST_NIVEL_LIBERADO_SEM_USUARIO_CONECTADO);
 	if (valido == false) {
-		showFormUser();
+		showFormApresentacao();
+		$('#btnUser').click();
+		document.getElementById('txtId').focus();
 		return;
 	}
 
@@ -1674,7 +1712,7 @@ async function changeFaseNivel(mytema, mycategory, myid, mygroup, mycode) {
 				var DataShow_Config = window.open("T"+mytema + "C"+mycategory+ "G"+myNextCategory + ".html?sim=" + myNextCategory + "&tem=" + mytema + "&cat=" + mycategory, "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
 			} else {
 				refreshTableData(mytema, mycategory, '0', '', '', '');
-				showGridAndHideForms();				
+				showFormApresentacao();				
 			}
 		}
 	}
@@ -3367,34 +3405,34 @@ async function initLinkHelp() {
 }
 
 async function showCorrect(index, myid, mygroup, mycode) {
-	if (document.getElementById('chkMycorrect' + index + 'answer').value < 5) { //1 a 4 = corretas. 5 a 8 = incorretas
-		document.getElementById('chkMycorrect'+index+'answer').style.backgroundColor=CONST_MEDIUM_SEA_GREEN;
+	if (document.getElementById('chkMycorrect' + index).value < 5) { //1 a 4 = corretas. 5 a 8 = incorretas
+		document.getElementById('chkMycorrect'+index).style.backgroundColor=CONST_MEDIUM_SEA_GREEN;
 	} else {
-		document.getElementById('chkMycorrect'+index+'answer').style.backgroundColor='#FF5555';
+		document.getElementById('chkMycorrect'+index).style.backgroundColor='#FF5555';
 	}
 	
-	if (document.getElementById('chkMycorrect'+index+'answer').checked == true) {
-		document.getElementById('chkMycorrect'+index+'answer').disabled = true;
+	if (document.getElementById('chkMycorrect'+index).checked == true) {
+		document.getElementById('chkMycorrect'+index).disabled = true;
 	}
 
 	var answer1 = ''; var answer2 = ''; var answer3 = ''; var answer4 = ''; var answer5 = ''; var answer6 = ''; var answer7 = ''; var answer8 = ''; var array = [];
 	for (var index=1; index<9; index++) {
-		if (document.getElementById('chkMycorrect' + index + 'answer').checked == true) {
-			if (document.getElementById('chkMycorrect' + index + 'answer').value == '1') {
+		if (document.getElementById('chkMycorrect' + index).checked == true) {
+			if (document.getElementById('chkMycorrect' + index).value == '1') {
 				answer1 = 'checked';
-			} else if (document.getElementById('chkMycorrect' + index + 'answer').value == '2') {
+			} else if (document.getElementById('chkMycorrect' + index).value == '2') {
 				answer2 = 'checked';
-			} else if (document.getElementById('chkMycorrect' + index + 'answer').value == '3') {
+			} else if (document.getElementById('chkMycorrect' + index).value == '3') {
 				answer3 = 'checked';
-			} else if (document.getElementById('chkMycorrect' + index + 'answer').value == '4') {
+			} else if (document.getElementById('chkMycorrect' + index).value == '4') {
 				answer4 = 'checked';
-			} else if (document.getElementById('chkMycorrect' + index + 'answer').value == '5') {
+			} else if (document.getElementById('chkMycorrect' + index).value == '5') {
 				answer5 = 'checked';
-			} else if (document.getElementById('chkMycorrect' + index + 'answer').value == '6') {
+			} else if (document.getElementById('chkMycorrect' + index).value == '6') {
 				answer6 = 'checked';
-			} else if (document.getElementById('chkMycorrect' + index + 'answer').value == '7') {
+			} else if (document.getElementById('chkMycorrect' + index).value == '7') {
 				answer7 = 'checked';
-			} else if (document.getElementById('chkMycorrect' + index + 'answer').value == '8') {
+			} else if (document.getElementById('chkMycorrect' + index).value == '8') {
 				answer8 = 'checked';
 			}
 		}
@@ -3464,21 +3502,14 @@ function exibeBotao() {
 }
 
 function showFormUser() {
-    $('#tblEstatisticas').hide();
-    $('#divbotoes').hide();
-    $('#divFormAddUpdate').hide();
-	$('#divGear').hide();
-	$('#divcontent').hide();
-	$('#formBible').hide();
-	$('#divconfig').hide();
-	$('#divGearAddNewLiryc').hide();
-	$('#divFormSim').hide();
-	$('#divbuttons').hide();
-	$('#tblCategory').hide();
-	$('#divNivel').hide();
+	$('#divFormMenu').hide();
     $('#divFormUser').show();
 	$('#txtId').focus();
-	escondeBotao();
+}
+
+function showFormMenu() {
+    $('#divFormUser').hide();
+    $('#divFormMenu').show();
 }
 
 function showFormApresentacao() {
@@ -3494,12 +3525,11 @@ function showFormApresentacao() {
 	$('#divbuttons').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').show();
-    $('#divFormUser').hide();
 	escondeBotao();
 }
 
 function showFormCategory() {
-    $('#tblEstatisticas').show();
+    $('#tblEstatisticas').hide();
     $('#divbotoes').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
@@ -3511,7 +3541,6 @@ function showFormCategory() {
 	$('#divbuttons').hide();
 	$('#tblCategory').show();
 	$('#divNivel').hide();
-    $('#divFormUser').hide();
 	document.getElementById('menutopodireito').style.display='none'; //não exibe menu topo
 }
 
@@ -3529,7 +3558,6 @@ function showFormSim() {
 	$('#divbuttons').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
-    $('#divFormUser').hide();
 
 	escondeBotao();
 	exibeBotao();
@@ -3551,7 +3579,6 @@ function showFormAddUpdate() {
 	$('#divFormSim').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
-    $('#divFormUser').hide();
 }
 
 function showGridAndHideForms() {
@@ -3565,7 +3592,7 @@ function showGridAndHideForms() {
 	$('#divFormSim').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
-    $('#divFormUser').hide();
+
 	if (document.getElementById('imgLanguage') != null) {
 		document.getElementById('imgLanguage').style.display = 'none';
 		document.getElementById('fonLanguage').style.display = 'none';
@@ -3588,7 +3615,6 @@ function showAddNewManual() {
 	$('#divFormSim').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
-    $('#divFormUser').hide();
 }
 
 function showFormGear() {
@@ -3602,7 +3628,6 @@ function showFormGear() {
 	$('#divFormSim').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
-    $('#divFormUser').hide();
 }
 
 function showFormImport() {
@@ -3617,7 +3642,6 @@ function showFormImport() {
 	$('#divFormSim').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
-    $('#divFormUser').hide();
 }
 
 function showBible() {
@@ -3632,7 +3656,6 @@ function showBible() {
 	$('#divFormSim').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
-    $('#divFormUser').hide();
 }
 
 function showIniciarConfiguracao() {
@@ -3647,7 +3670,7 @@ function showIniciarConfiguracao() {
 	$('#divFormSim').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
-    $('#divFormUser').hide();
+    //$('#divFormUser').hide();
 }
 
 function showForm1Form2() {

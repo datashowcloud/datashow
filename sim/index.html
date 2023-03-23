@@ -24,7 +24,7 @@
 
 	<a id="querocomecar"></a>
 
-	<nav id="menutopodireito" class="navbar sticky-top navbar-dark bg-dark" style="display:none;">
+	<nav id="menutopodireito" class="mobile-offcanvas navbar sticky-top navbar-dark bg-dark" style="display:none;">
 	  <div class="container-fluid">
 		<div>
 			<table>
@@ -35,7 +35,7 @@
 					</td -->
 					<td>&nbsp;</td>
 					<td>
-						<button id="btnUser" class="btn btn-outline-primary" title="Conexão com e-mail" style="border-radius:50%; color:white; display:'none';"><i class="fa fa-user"></i>
+						<button id="btnUser" class="btn btn-outline-primary" title="Conexão com e-mail" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" style="border-radius:50%; color:white; display:'none';"><i class="fa fa-user"></i>
 							<input id="txtUser" type="text" value="" readonly style="border-radius:50%; font-size:10px; position:absolute; background-color:transparent; color:white; width:15px; border-width:0px; font-family:Helvetica; font-weight:bold; cursor:pointer;"></input>
 						</button>
 						<br/><font size=1>Você</font>
@@ -48,61 +48,103 @@
 					<td>&nbsp;</td>
 					<td>
 						<button id="btnFim" class="btn btn-outline-primary end" style="border-radius:50%; color:white; display:none;" title="Terminar a fase"><i class="fa fa-envelope"></i></button>
-						<br/><font id="fonFim" size=1 style="display:none;">Terminar</font>
+						<br/><font id="fonFim" size=1 style="display:'none';">Terminar</font>
 					</td>
 					<td>&nbsp;</td>
 				</tr>
 			</table>
 		</div>
 
-			<table>
-				<tr>
-					<td>
-						<span class="btn btn-outline-primary navbar-toggler navbar-toggler-icon" style="border-radius:50%;" title="Menu" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"></span>
-						<br/><font size=1> Menu</font>
-						<!--button id="btnPause" class="btn btn-outline-danger" onclick="showFormApresentacao();" style="border-radius:50%; color:white; display:'none';" title="Volta para primeira tela"><i class="fa fa-remove"></i></button>
-						<br/><font size=1 style="color:white;">Fechar</font-->
-					</td>
-				</tr>
-			</table>
+		<table>
+			<tr>
+				<td>
+					<span id="spanUser" class="btn btn-outline-primary navbar-toggler navbar-toggler-icon" style="border-radius:50%;" title="Menu" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"></span>
+					<br/><font size=1> Menu</font>
+				</td>
+			</tr>
+		</table>
 		
-		<div class="offcanvas offcanvas-top text-bg-dark bg-dark" style="height:250px;" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+		<div class="offcanvas offcanvas-top text-bg-dark bg-dark" style="height:350px;" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
 		  <div class="offcanvas-header">
-			<h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menu:</h5>
+			<h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel"></h5>
 			<button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 		  </div>
 		  <div class="offcanvas-body">
 			<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 			  <li class="nav-item">
-					<div align=center>
-						<table>
-							<tr>
-								<td>
-									<button id="btnPaginaInicial" class="btn btn-outline-primary" title="Página Inicial" style="border-radius:50%; color:white; display:'none';"><i class="fa fa-home"></i> </button>
-									<br/><font size=1>Página Inicial</font>
-								</td>
-								<td>&nbsp;&nbsp;&nbsp;</td>
-								<td>
-									<button id="btnDropDb" class="btn btn-outline-primary" title="Restaurar padrão de fábrica" style="border-radius:50%;color:white; display:'none';"><i class="fa fa-trash"></i></font></button>
-									<br/><font size=1>Restaurar Padrão</font>
-								</td>
-								<td>
-									<button id="btntreino" class="botao" style="border-radius:30px; display:none;" onclick="changeCategory('2');"><i class="fa fa-book"></i> Treino</button>
-								</td>
-								<td>
-									<button id="btndesafio" class="botao" style="border-radius:30px; display:none;" onclick="changeCategory('4');"><i class="fa fa-road"></i> Desafio</button>
-								</td>
-							</tr>
-						</table>
+					
+					<div id="divFormMenu" align=center style="display:'none';">
+						<br/>
+						<div align=center style="width:290px; border-radius:10px; border-style:solid; border-color:gray; border-width:3px; color:#000000; background-color:transparent;">
+							<label style="border-radius:30px; position:relative; top:-25px; left:0px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+								<label id="btnFecharFormUser" class="btn btn-primary" style="border-radius:30px; font-size:20px; cursor:default;"><b>MENU</b></label>
+							</label>
+							<div align=center>
+								<table>
+									<tr>
+										<td>
+											<button id="btnPaginaInicial" class="btn btn-outline-primary" title="Página Inicial" style="border-radius:50%; color:white; display:'none';"><i class="fa fa-home"></i> </button>
+											<br/><font size=1 style="color:white;">Página Inicial</font>
+										</td>
+										<td>&nbsp;&nbsp;&nbsp;</td>
+										<td>
+											<button id="btnDropDb" class="btn btn-outline-primary" title="Restaurar padrão de fábrica" style="border-radius:50%;color:white; display:'none';"><i class="fa fa-trash"></i></button>
+											<br/><font size=1 style="color:white;">Restaurar Padrão</font>
+										</td>
+										<td>
+											<button id="btntreino" class="botao" style="border-radius:30px; display:none;" onclick="changeCategory('2');"><i class="fa fa-book"></i> Treino</button>
+										</td>
+										<td>
+											<button id="btndesafio" class="botao" style="border-radius:30px; display:none;" onclick="changeCategory('4');"><i class="fa fa-road"></i> Desafio</button>
+										</td>
+									</tr>
+								</table>
+							</div>
+							<!-- datashowcloud2022@gmail.com -->
+							<div align=center>
+								<input type="text" id="version" value="20230322" style="font-size:10px; width:45px; display:none;" />
+							</div>
+							<div align=center>
+								<font size=2 color=white style="font-family:Helvetica;">
+									<p/>
+									<p/>
+									tamastigadu@gmail.com <br/>atualizado em 03/2023
+									<br/>versão 00.00.07
+								</font>
+							</div>
+						</div>
 					</div>
-					<!-- datashowcloud2022@gmail.com -->
-					<div align=center>
-						<input type="text" id="version" value="20230322" style="font-size:10px; width:45px; display:none;"/>
-					</div>
-					<div align=center>
-						<font size=2>
-							<i><p/><p/>contato@tamastigadu.com.br <br/>atualizado em 03/2023 versão 00.00.06</i>
-						</font>
+					
+
+					<div id="divFormUser" align=center style="display:'none'; border-radius:2.18vw; margin-left:auto; margin-right:auto;">
+						<br/>
+						<label align=center style="width:290px; border-radius:10px; border-style:solid; border-color:gray; border-width:3px; color:#000000; background-color:transparent;">
+							<label style="border-radius:30px; position:relative; top:-25px; left:0px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+								<label id="btnFecharFormUser" class="btn btn-primary" style="border-radius:30px; font-size:20px; cursor:default;"><b>CONEXÃO</b></label>
+							</label>
+
+							<div id="divCamposEntrar" style="display:'none';">
+								<!-- form id="formAdd" action="https://formspree.io/forms/xdovzvlb/" method="post" -->
+									<label><input id="txtId" type="text" class="flutuante" value="" placeholder="e-mail" style="width:200px; border-radius:10px; text-align:center;"></input></label>
+									<br/>
+									<label><input id="txtPass" type="password" class="flutuante" value="" placeholder="Senha" style="width:200px; border-radius:10px; text-align:center;"></input></label>
+									<br/>
+									<p/>
+									<p/>
+									<label id="lblEntrar" class="flutuante" style="border-radius:30px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+										<button id="btnEntrar" class="btn btn-primary" style="width:200px; border-radius:30px;"> <i class="fa fa-user"></i> ENTRAR</button>
+									</label>
+								<!-- /form -->
+							</div>
+
+							<div id="divCamposSair" style="display:none;">
+								<label id="lblSair" class="flutuante" style="display:'none'; border-radius:30px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+									<button id="btnDesconectar" class="btn btn-danger" style="width:200px; border-radius:30px;">DESCONECTAR</button>
+								</label>
+							</div>
+							<br/>
+							<br/>
+						</label>
 					</div>
 			  </li>
 			</ul>
@@ -114,6 +156,8 @@
 		</div>
 	  </div>
 	</nav>
+
+
 
 	<div id="divconfig" style="display:none;">
 		<label id="lei13709" class="btn btn-default" style="cursor:default; width:300px; display:none;">
@@ -337,7 +381,7 @@
 
 	<div id="divNivel" align=center style="margin-left:auto; margin-right:auto; display:none;">
 		<br/>
-		<img id="imgNivelTema" style="width:150px; border-radius:50%;" title="Tema"></img>
+		<img id="imgNivelTema" style="width:100px; border-radius:50%;" title="Tema"></img>
 
 		<br/><br/><br/>
 		<table id="tblNivel" border=0 style="width:95%;" align=center>
@@ -373,10 +417,8 @@
 		<font size=4.9 style="text-align:justify">
 
 			<a id="top"></a>
-			<!--
-			<label id="btnPrevious" class="prev btn-primary flutuante" title="Exibe a pergunta anterior">&nbsp;<i class="fa fa-chevron-left"></i></label>
-			<label id="btnNext" class="next btn-primary flutuante" title="Exibe a próxima pergunta">&nbsp;<i class="fa fa-chevron-right"></i></label>
-			-->
+			<!-- label id="btnPrevious" class="prev btn-primary flutuante" title="Exibe a pergunta anterior">&nbsp;<i class="fa fa-chevron-left"></i></label -->
+			<!-- label id="btnNext" class="next btn-primary flutuante" title="Exibe a próxima pergunta">&nbsp;<i class="fa fa-chevron-right"></i></label -->
 			<table border=0 width="95%" align=center style="border-color:gray; border-radius:30px; Zborder-style:solid; border-color:white; border-width:3px;">
 				<tr><td id="mytextSim" style="display:'none'; text-align:justify; width:1%; font-size:18px; font-family:Helvetica;"></td></tr>
 				<!-- <tr><td id="mytextSim2" style="display:none; text-align:justify; width:1%;"></td></tr> -->
@@ -384,11 +426,11 @@
 
 			<table id="tableFormSimQuestions" border=0 align=center style="display:'none'; width:95%;" Zclass="table table-hover">
 				
-				<tr><td id="mycorrect1Sim" style="display:none; text-align:left;"><!--font color=gray>#1</font-->
+				<tr><td id="mycorrect1Sim" style="display:none; text-align:left;"><!-- <font color=gray>#1</font> -->
 					<table border=0 width="100%">
 						<tr>
-							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect1answer" value="" class="flutuante" style="border-radius:50%; color:white; display:none;"></input> </td>
-							<td> <button id="btnCorrectAnswer1" class="btn btn-outline-primary" onclick="next(document.getElementById('chkMycorrect1answer').value);" style="color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px; border-style:double; border-color:white; border-width:2px;"></button> </td>
+							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect1" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
+							<td> <button id="btnCorrectAnswer1" class="btn btn-outline-primary" onclick="next('1', document.getElementById('chkMycorrect1').value);" style="color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px; border-style:double; border-color:white; border-width:2px;"></button> </td>
 							<td width="1%"> <button id="btnCorrectTip1" class="btn btn-outline-primary" onclick="showTip('1');" style="color:white; border-radius:30px; border-style:double; border-color:white; border-width:2px;"><i class="fa fa-plus"></i></button> </td>
 						</tr>
 						<tr>
@@ -397,11 +439,11 @@
 					</table>
 				</td></tr>
 
-				<tr><td id="mycorrect2Sim" style="display:none; text-align:left;"><!--font color=gray>#2</font-->
+				<tr><td id="mycorrect2Sim" style="display:none; text-align:left;"><!-- <font color=gray>#2</font> -->
 					<table border=0 width="100%">
 						<tr>
-							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect2answer" value="" class="flutuante" style="border-radius:50%; color:white; display:none;"></input> </td>
-							<td> <button id="btnCorrectAnswer2" class="btn btn-outline-primary" onclick="next(document.getElementById('chkMycorrect2answer').value);" style="color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px; border-style:double; border-color:white; border-width:2px;"></button> </td>
+							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect2" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
+							<td> <button id="btnCorrectAnswer2" class="btn btn-outline-primary" onclick="next('2', document.getElementById('chkMycorrect2').value);" style="color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px; border-style:double; border-color:white; border-width:2px;"></button> </td>
 							<td width="1%"> <button id="btnCorrectTip2" class="btn btn-outline-primary" onclick="showTip('2');" style="color:white; border-radius:30px; border-style:double; border-color:white; border-width:2px;"><i class="fa fa-plus"></i></button> </td>
 						</tr>
 						<tr>
@@ -410,11 +452,11 @@
 					</table>
 				</td></tr>
 				
-				<tr><td id="mycorrect3Sim" style="display:none; text-align:left;"><!--font color=gray>#3</font-->
+				<tr><td id="mycorrect3Sim" style="display:none; text-align:left;"><!-- <font color=gray>#3</font> -->
 					<table border=0 width="100%">
 						<tr>
-							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect3answer" value="" class="flutuante" style="border-radius:50%; color:white; display:none;"></input> </td>
-							<td> <button id="btnCorrectAnswer3" class="btn btn-outline-primary" onclick="next(document.getElementById('chkMycorrect3answer').value);" style="color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px; border-style:double; border-color:white; border-width:2px;"></button> </td>
+							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect3" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
+							<td> <button id="btnCorrectAnswer3" class="btn btn-outline-primary" onclick="next('3', document.getElementById('chkMycorrect3').value);" style="color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px; border-style:double; border-color:white; border-width:2px;"></button> </td>
 							<td width="1%"> <button id="btnCorrectTip3" class="btn btn-outline-primary" onclick="showTip('3');" style="color:white; border-radius:30px; border-style:double; border-color:white; border-width:2px;"><i class="fa fa-plus"></i></button> </td>
 						</tr>
 						<tr>
@@ -423,11 +465,11 @@
 					</table>
 				</td></tr>
 				
-				<tr><td id="mycorrect4Sim" style="display:none; text-align:left;"><!--font color=gray>#4</font-->
+				<tr><td id="mycorrect4Sim" style="display:none; text-align:left;"><!-- <font color=gray>#4</font> -->
 					<table border=0 width="100%">
 						<tr>
-							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect4answer" value="" class="flutuante" style="border-radius:50%; color:white; display:none;"></input> </td>
-							<td> <button id="btnCorrectAnswer4" class="btn btn-outline-primary" onclick="next(document.getElementById('chkMycorrect4answer').value);" style="color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px; border-style:double; border-color:white; border-width:2px;"></button> </td>
+							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect4" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
+							<td> <button id="btnCorrectAnswer4" class="btn btn-outline-primary" onclick="next('4', document.getElementById('chkMycorrect4').value);" style="color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px; border-style:double; border-color:white; border-width:2px;"></button> </td>
 							<td width="1%"> <button id="btnCorrectTip4" class="btn btn-outline-primary" onclick="showTip('4');" style="color:white; border-radius:30px; border-style:double; border-color:white; border-width:2px;"><i class="fa fa-plus"></i></button> </td>
 						</tr>
 						<tr>
@@ -436,11 +478,11 @@
 					</table>
 				</td></tr>
 
-				<tr><td id="mycorrect5Sim" style="display:none; text-align:left;"><!--font color=gray>#5</font-->
+				<tr><td id="mycorrect5Sim" style="display:none; text-align:left;"><!-- <font color=gray>#5</font> -->
 					<table border=0 width="100%">
 						<tr>
-							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect5answer" value="" class="flutuante" style="border-radius:50%; color:white; display:none;"></input> </td>
-							<td> <button id="btnCorrectAnswer5" class="btn btn-outline-primary" onclick="next(document.getElementById('chkMycorrect5answer').value);" style="color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px; border-style:double; border-color:white; border-width:2px;"></button> </td>
+							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect5" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
+							<td> <button id="btnCorrectAnswer5" class="btn btn-outline-primary" onclick="next('5', document.getElementById('chkMycorrect5').value);" style="color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px; border-style:double; border-color:white; border-width:2px;"></button> </td>
 							<td width="1%"> <button id="btnCorrectTip5" class="btn btn-outline-primary" onclick="showTip('5');" style="color:white; border-radius:30px; border-style:double; border-color:white; border-width:2px;"><i class="fa fa-plus"></i></button> </td>
 						</tr>
 						<tr>
@@ -449,11 +491,11 @@
 					</table>
 				</td></tr>
 				
-				<tr><td id="mycorrect6Sim" style="display:none; text-align:left;"><!--font color=gray>#6</font-->
+				<tr><td id="mycorrect6Sim" style="display:none; text-align:left;"><!-- <font color=gray>#6</font> -->
 					<table border=0 width="100%">
 						<tr>
-							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect6answer" value="" class="flutuante" style="border-radius:50%; color:white; display:none;"></input> </td>
-							<td> <button id="btnCorrectAnswer6" class="btn btn-outline-primary" onclick="next(document.getElementById('chkMycorrect6answer').value);" style="color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px; border-style:double; border-color:white; border-width:2px;"></button> </td>
+							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect6" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
+							<td> <button id="btnCorrectAnswer6" class="btn btn-outline-primary" onclick="next('6', document.getElementById('chkMycorrect6').value);" style="color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px; border-style:double; border-color:white; border-width:2px;"></button> </td>
 							<td width="1%"> <button id="btnCorrectTip6" class="btn btn-outline-primary" onclick="showTip('6');" style="color:white; border-radius:30px; border-style:double; border-color:white; border-width:2px;"><i class="fa fa-plus"></i></button> </td>
 						</tr>
 						<tr>
@@ -462,11 +504,11 @@
 					</table>
 				</td></tr>
 				
-				<tr><td id="mycorrect7Sim" style="display:none; text-align:left;"><!--font color=gray>#7</font-->
+				<tr><td id="mycorrect7Sim" style="display:none; text-align:left;"><!-- <font color=gray>#7</font> -->
 					<table border=0 width="100%">
 						<tr>
-							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect7answer" value="" class="flutuante" style="border-radius:50%; color:white; display:none;"></input> </td>
-							<td> <button id="btnCorrectAnswer7" class="btn btn-outline-primary" onclick="next(document.getElementById('chkMycorrect7answer').value);" style="color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px; border-style:double; border-color:white; border-width:2px;"></button> </td>
+							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect7" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
+							<td> <button id="btnCorrectAnswer7" class="btn btn-outline-primary" onclick="next('7', document.getElementById('chkMycorrect7').value);" style="color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px; border-style:double; border-color:white; border-width:2px;"></button> </td>
 							<td width="1%"> <button id="btnCorrectTip7" class="btn btn-outline-primary" onclick="showTip('7');" style="color:white; border-radius:30px; border-style:double; border-color:white; border-width:2px;"><i class="fa fa-plus"></i></button> </td>
 						</tr>
 						<tr>
@@ -475,11 +517,11 @@
 					</table>
 				</td></tr>
 				
-				<tr><td id="mycorrect8Sim" style="display:none; text-align:left;"><!--font color=gray>#8</font-->
+				<tr><td id="mycorrect8Sim" style="display:none; text-align:left;"><!-- <font color=gray>#8</font> -->
 					<table border=0 width="100%">
 						<tr>
-							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect8answer" value="" class="flutuante" style="border-radius:50%; color:white; display:none;"></input> </td>
-							<td> <button id="btnCorrectAnswer8" class="btn btn-outline-primary" onclick="next(document.getElementById('chkMycorrect8answer').value);" style="color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px; border-style:double; border-color:white; border-width:2px;"></button> </td>
+							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect8" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
+							<td> <button id="btnCorrectAnswer8" class="btn btn-outline-primary" onclick="next('8', document.getElementById('chkMycorrect8').value);" style="color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px; border-style:double; border-color:white; border-width:2px;"></button> </td>
 							<td width="1%"> <button id="btnCorrectTip8" class="btn btn-outline-primary" onclick="showTip('8');" style="color:white; border-radius:30px; border-style:double; border-color:white; border-width:2px;"><i class="fa fa-plus"></i></button> </td>
 						</tr>
 						<tr>
@@ -524,40 +566,6 @@
 			</table>
 		</font>
 	</div>
-
-		<br/><br/>
-		<div id="divFormUser" align=center style="display:none; border-radius:2.18vw; margin-left:auto; margin-right:auto;">
-			<label align=center style="width:290px; border-radius:10px; border-style:solid; border-color:gray; border-width:3px; color:#000000; background-color:transparent;">
-				<label class="flutuante" style="border-radius:50%; position:relative; top:-20px; left:200px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
-					<button class="btn btn-danger" style="border-radius:50%;" onclick="showFormApresentacao();"><i class="fa fa-remove"></i></button>
-				</label>
-				<label style="border-radius:30px; position:relative; top:-25px; left:-25px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
-					<label id="btnFecharFormUser" class="btn btn-primary" style="border-radius:30px; font-size:20px; cursor:default;"><b>CONEXÃO</b></label>
-				</label>
-
-				<div id="divCamposEntrar" style="display:'none';">
-					<!-- form id="formAdd" action="https://formspree.io/forms/xdovzvlb/" method="post" -->
-						<label><input id="txtId" type="text" class="flutuante" value="" placeholder="e-mail" style="width:200px; border-radius:10px; text-align:center;"></input></label>
-						<br/>
-						<label><input id="txtPass" type="password" class="flutuante" value="" placeholder="Senha" style="width:200px; border-radius:10px; text-align:center;"></input></label>
-						<br/>
-						<p/>
-						<p/>
-						<label id="lblEntrar" class="flutuante" style="border-radius:30px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
-							<button id="btnEntrar" class="btn btn-primary" style="width:200px; border-radius:30px;"> <i class="fa fa-user"></i> ENTRAR</button>
-						</label>
-					<!-- /form -->
-				</div>
-
-				<div id="divCamposSair" style="display:none;">
-					<label id="lblSair" class="flutuante" style="display:'none'; border-radius:30px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
-						<button id="btnDesconectar" class="btn btn-danger" style="width:200px; border-radius:30px;">DESCONECTAR</button>
-					</label>
-				</div>
-				<br/>
-				<br/>
-			</label>
-		</div>
 
 	<table id="tblEstatisticas" border=0 style="width:98%; display:none;" align=center>
 		<tbody>
