@@ -24,15 +24,21 @@
 		
 			<div style="display:'none'; text-align:center; ">
 				<div id="divContinuar" style="display:none;">
-					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Está tudo pronto</div>
-					<br/><div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">Já pode continuar</div>
-					<br/><label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=2&cat=1', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
-					</label>
+					<div>
+						<img src="img/estrela.jpg" width="30px" style="border-radius:30px;">
+					</div>
+					<div><img src="img/medalha.jpg" width="200px" style="border-radius:30px;"></img></div>
+					<div><img src="img/trofeu.jpg" width="200px" style="border-radius:30px;"></img></div>
+					<br/>
+					<div style="padding:9px 15px 9px 15px; cursor:default; font-size:18px; font-family:Helvetica; color:white;">Tudo pronto para você conquistar!</div>
+					<br/>
+					<div class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
+						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=2&cat=1', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Começar</button>
+					</div>
 				</div>
 				<div id="divLoading" style="display:'none';">
-					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:white;">Aguarde...</div>
-					<br/><div style="padding:9px 15px 9px 15px; cursor:default; color:white;">Estamos preparando tudo para você</div>
+					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; font-family:Helvetica; color:white;">Aguarde...</div>
+					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:18px; font-family:Helvetica; color:white;">Estamos preparando tudo para você</div>
 					<video id="vdoLoaging" ZZZposter="img/fundonoite.jpg" width="320" height="240" autoplay muted loop>
 						<source src="video/loading.mp4" type="video/mp4">
 						<source src="video/loading.ogg" type="video/ogg">
