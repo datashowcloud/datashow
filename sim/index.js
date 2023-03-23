@@ -1261,7 +1261,7 @@ async function login(id, pass, key) {
 		localStorage.setItem('key', '202303010000');
 		conectaUsuarioValido(id);
 		gravaUsuario(id, pass, key);
-		showFormApresentacao();
+		//showFormApresentacao();
 	} else {
 		if (document.getElementById('txtPass') != null) {
 			document.getElementById('txtPass').value='';
