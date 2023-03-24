@@ -4061,3 +4061,4 @@ function getCookie(cname) {
 //https:// jsstore.net/tutorial/get-started/
 //https:// velhobit.com.br/design/fab-botao-flutuante-com-css3-e-html-sem-javascript.html
 //https:// triangulo.dev/posts/atomo-como-criar-cubo-css/
+//https:// stackoverflow.com/questions/17612405/import-html-document-using-html-link-rel (importar xml e tratar o conteúdo nós)
