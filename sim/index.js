@@ -773,9 +773,10 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 	if (document.getElementById('myBody') != null) {
 		document.getElementById('myBody').style.background = background;
 	}
-	if (document.getElementById('menutopodireito') != null) {
+/*	if (document.getElementById('menutopodireito') != null) {
 		document.getElementById('menutopodireito').style.color = 'white';
 	}
+*/
 	if(document.getElementById('FormularioEditorConfiguracoes') != null) {
 		document.getElementById('FormularioEditorConfiguracoes').style.color = textcolor;
 	}
@@ -1087,9 +1088,9 @@ async function refreshTableNivel(mytema, mycategory, mycode, myorder, mygroup, m
 	htmlString = htmlString + '<i class="fa fa-play avatarflutuante" style="color:#00FF7F; font-size:15px;"></i>';
 	htmlString = htmlString + '<label class="flutuante" style="border-radius:30px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">';
 
-	htmlString = htmlString + '<label style="border-radius:10px; font-size:20px; background-color:white; color:green; position:absolute; top:-18px; left:90px; width:70px; border-width:0px; font-family:Helvetica; cursor:default;">Nível ' + varNivel + '</label>';
+	htmlString = htmlString + '<label style="border-radius:10px; font-size:20px; background-color:white; color:#3CB371; position:absolute; top:-18px; left:90px; width:70px; border-width:0px; font-family:Helvetica; cursor:default;">Nível ' + varNivel + '</label>';
 
-	htmlString = htmlString + '<button id="btnNivel" class="btn btn-success" onclick="refreshTableQuestion(' + mytema + ', ' + mycategory + ', ' + myid + ', ' + mygroup + ', ' + mycode + '); showFormSim();" style="border-radius:30px; font-size:30px; font-family:Helvetica; font-weight:bold; border-width:0px; -webkit-text-stroke-width: 1px; ">';
+	htmlString = htmlString + '<button id="btnNivel" class="btn btn-primary" onclick="refreshTableQuestion(' + mytema + ', ' + mycategory + ', ' + myid + ', ' + mygroup + ', ' + mycode + '); showFormSim();" style="border-radius:30px; font-size:30px; font-family:Helvetica; font-weight:bold; border-width:0px; -webkit-text-stroke-width: 1px; ">';
 	htmlString = htmlString + '&nbsp;&nbsp;FASE ' + varFase + '&nbsp;&nbsp;';
 	htmlString = htmlString + '</button>';
 	htmlString = htmlString + '</label>';
@@ -1229,9 +1230,10 @@ async function initForm() {
 	if ((mytema == null || mycategory == null)) {
 		showFormCategory();
 	} else {
-		if (document.getElementById('menutopodireito') != null) {
+/*		if (document.getElementById('menutopodireito') != null) {
 			document.getElementById('menutopodireito').style.display=''; //exibe menu topo
 		}
+*/
 		refreshTableNivel(mytema, mycategory, '0', '', '', '');
 		showFormApresentacao();
 	}
@@ -1297,14 +1299,13 @@ async function gravaUsuario(id, pass, key) {
     try {
 		var user = {
 			id: id,
-			pass: pass,
+			pass: '[<(___pas1234567890@#$@SDFD¨Y%dfxX20230301gd&*!!!pas{AaEeIiOoUu}___)>]',
 			key: key
 		};
 		var noOfDataInserted = await jsstoreCon.insert({
 			into: 'User',
 			values: [user]
 		});
-		//console.log('Sucesso \n\n Id='+id + '\n Pass='+pass + '\n key='+key);
 		if (noOfDataInserted === 1) {
 		}
     } catch (ex) {
@@ -3502,8 +3503,20 @@ function exibeBotao() {
 }
 
 function showFormUser() {
-	$('#divFormMenu').hide();
-    $('#divFormUser').show();
+    $('#tblEstatisticas').hide();
+    $('#divbotoes').hide();
+    $('#divFormAddUpdate').hide();
+	$('#divGear').hide();
+	$('#divcontent').hide();
+	$('#formBible').hide();
+	$('#divconfig').hide();
+	$('#divGearAddNewLiryc').hide();
+	$('#divFormSim').hide();
+	$('#divbuttons').hide();
+	$('#tblCategory').hide();
+	$('#divNivel').hide();
+	$('#divFormUser').show();
+	escondeBotao();
 	$('#txtId').focus();
 }
 
@@ -3525,6 +3538,7 @@ function showFormApresentacao() {
 	$('#divbuttons').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').show();
+	$('#divFormUser').hide();
 	escondeBotao();
 }
 
@@ -3541,7 +3555,8 @@ function showFormCategory() {
 	$('#divbuttons').hide();
 	$('#tblCategory').show();
 	$('#divNivel').hide();
-	document.getElementById('menutopodireito').style.display='none'; //não exibe menu topo
+	$('#divFormUser').hide();
+//	document.getElementById('menutopodireito').style.display='none'; //não exibe menu topo
 }
 
 function showFormSim() {
@@ -3558,6 +3573,7 @@ function showFormSim() {
 	$('#divbuttons').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
+	$('#divFormUser').hide();
 
 	escondeBotao();
 	exibeBotao();
@@ -3579,6 +3595,7 @@ function showFormAddUpdate() {
 	$('#divFormSim').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
+	$('#divFormUser').hide();
 }
 
 function showGridAndHideForms() {
@@ -3592,6 +3609,7 @@ function showGridAndHideForms() {
 	$('#divFormSim').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
+	$('#divFormUser').hide();
 
 	if (document.getElementById('imgLanguage') != null) {
 		document.getElementById('imgLanguage').style.display = 'none';
@@ -3615,6 +3633,7 @@ function showAddNewManual() {
 	$('#divFormSim').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
+	$('#divFormUser').hide();
 }
 
 function showFormGear() {
@@ -3628,6 +3647,7 @@ function showFormGear() {
 	$('#divFormSim').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
+	$('#divFormUser').hide();
 }
 
 function showFormImport() {
@@ -3642,6 +3662,7 @@ function showFormImport() {
 	$('#divFormSim').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
+	$('#divFormUser').hide();
 }
 
 function showBible() {
@@ -3656,6 +3677,7 @@ function showBible() {
 	$('#divFormSim').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
+	$('#divFormUser').hide();
 }
 
 function showIniciarConfiguracao() {
@@ -3670,7 +3692,7 @@ function showIniciarConfiguracao() {
 	$('#divFormSim').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
-    //$('#divFormUser').hide();
+	$('#divFormUser').hide();
 }
 
 function showForm1Form2() {
@@ -4062,3 +4084,5 @@ function getCookie(cname) {
 //https:// velhobit.com.br/design/fab-botao-flutuante-com-css3-e-html-sem-javascript.html
 //https:// triangulo.dev/posts/atomo-como-criar-cubo-css/
 //https:// stackoverflow.com/questions/17612405/import-html-document-using-html-link-rel (importar xml e tratar o conteúdo nós)
+//servicenow, google: são uma das nuvens
+//https:// stfalcon.com/en/blog/post/animation-css
