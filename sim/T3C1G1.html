@@ -3,16 +3,19 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Configuração Sim</title>
+    <title>Sim</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <script src="scripts/jquery.js"></script>
-    <script src="scripts/bootstrap.js"></script>
+    <!-- script src="scripts/jquery.js"></script -->
+    <!-- link rel="stylesheet" type="text/css" href="style/bootstrap.css" / -->
     <link rel="stylesheet" href="style/myproject.css" />
-    <link rel="stylesheet" type="text/css" href="style/bootstrap.css" />
     <link rel="stylesheet" href="style/font-awesome.min.css" />
     <script src="scripts/jsstore.js"></script>
     <script src="scripts/jsstore.worker.js"></script>
     <script src="index.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <!-- link href="style/carousel.css" rel="stylesheet" -->
 	<style>
 	</style>
 </head>
@@ -21,18 +24,15 @@
 
 			<div style="display:'none'; text-align:center; ">
 				<div id="divContinuar" style="display:none;">
-					<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; font-family:Helvetica; color:white;">PARABÉNS!</div>
-					<div>
-						<img src="img/estrela.jpg" width="30px" style="border-radius:30px;">
-					</div>
 					<div><img src="img/trofeu.jpg" width="200px" style="border-radius:30px;"></img></div>
-					<br/><label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=3&cat=1', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
-					</label>
+					<div style="padding:9px 15px 9px 15px; cursor:default; font-size:18px; font-family:Helvetica; color:white;">Sua missão é conquistar a coroa dourada!</div>
+					<br/><div class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
+						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=3&cat=1', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Começar</button>
+					</div>
 				</div>
 				<div id="divLoading" style="display:'none';">
-					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Aguarde...</div>
-					<br/><div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">Estamos preparando tudo para você</div>
+					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; font-family:Helvetica; color:white;">Aguarde...</div>
+					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:18px; font-family:Helvetica; color:white;">Estamos preparando tudo para você</div>
 					<video id="vdoLoaging" ZZZposter="img/fundonoite.jpg" width="320" height="240" autoplay muted loop>
 						<source src="video/loading.mp4" type="video/mp4">
 						<source src="video/loading.ogg" type="video/ogg">
@@ -188,50 +188,105 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1
+<portugues>FASE 1</portugues>
+<english>PHASE 1</english>
+<espanhol>FASE 1</espanhol>
 
 <p>
-Conjunto complementar de serviços de nuvem que permite criar e executar uma variedade de aplicativos e serviços em um ambiente hospedado altamente disponível.
+<portugues>Conjunto complementar de serviços de nuvem que permite criar e executar uma variedade de aplicativos e serviços em um ambiente hospedado altamente disponível.</portugues>
 <english>Complementary set of cloud services that enable you to build and run a variety of applications and services in a highly available hosted environment.</english>
+<espanhol>Conjunto complementario de servicios en la nube que le permiten crear y ejecutar una variedad de aplicaciones y servicios en un entorno alojado de alta disponibilidad.</espanhol>
 
 <ok>
-OCI (Oracle Cloud Infrastructure)
+<portugues></portugues>
+<english>OCI (Oracle Cloud Infrastructure)</english>
+<espanhol></espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
-Nuvem Privada
-<key></key>
+<portugues></portugues>
+<english>Nuvem Privada</english>
+<espanhol></espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
-Nuvem Híbrida
-<key></key>
+<portugues></portugues>
+<english>Nuvem Híbrida</english>
+<espanhol></espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+<portugues></portugues>
+<english>HCM (Oracle Fusion Cloud Human Capital Management)</english>
+<espanhol></espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
 <p>
-Solução de RH nativa em nuvem completa que conecta todos os processos de recursos humanos, desde a contratação até a aposentadoria.
+<portugues>Solução de RH nativa em nuvem completa que conecta todos os processos de recursos humanos, desde a contratação até a aposentadoria.</portugues>
 <english>Complete cloud-native HR solution that connects all human resources processes from hiring to retirement.</english>
+<espanhol>Solución completa de recursos humanos nativa de la nube que conecta todos los procesos de recursos humanos desde la contratación hasta la jubilación.</espanhol>
 
 <ok>
-HCM (Oracle Fusion Cloud Human Capital Management)
-<key></key>
+<portugues></portugues>
+<english>HCM (Oracle Fusion Cloud Human Capital Management)</english>
+<espanhol></espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
-OCI (Oracle Cloud Infrastructure)
-<key></key>
+<portugues></portugues>
+<english>OCI (Oracle Cloud Infrastructure)</english>
+<espanhol></espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
-Nuvem Híbrida
-<key></key>
+<portugues></portugues>
+<english>Nuvem Híbrida</english>
+<espanhol></espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
-Multinuvem
-<key></key>
+<portugues></portugues>
+<english>Multinuvem</english>
+<espanhol></espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
 <p>
-<portugues>Parabéns! Você ganhou.
-<br/><button class="btn btn-outline-primary" onclick="loadNextLevel('');" style="color:white;">CONTINUAR <i class="fa fa-chevron-right"></i> </button>
+<portugues>VOCÊ GANHOU!
+	<div align=center>
+		<img src="img/estrela.jpg" width="200px" style="border-radius:30px;"></img>
+		<br/>
+		<label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
+			<button class="btn btn-primary" onclick="loadNextLevel('');" style="padding:9px 15px 9px 15px; width:150px;">CONTINUAR</button>
+		</label>
+	</div>
 </portugues>
 <english>Congratulations! You won.
-<br/><button class="btn btn-outline-primary" onclick="loadNextLevel('');" style="color:white;">CONTINUE <i class="fa fa-chevron-right"></i> </button>
+	<div align=center>
+		<img src="img/estrela.jpg" width="200px" style="border-radius:30px;"></img>
+		<br/>
+		<label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
+			<button class="btn btn-primary" onclick="loadNextLevel('');" style="padding:9px 15px 9px 15px; width:150px;">CONTINUE</button>
+		</label>
+	</div>
 </english>
 <espanhol>¡Felicidades! Ganaste.
-<br/><button class="btn btn-outline-primary" onclick="loadNextLevel('');" style="color:white;">CONTINUAR <i class="fa fa-chevron-right"></i> </button>
+	<div align=center>
+		<img src="img/estrela.jpg" width="200px" style="border-radius:30px;"></img>
+		<br/>
+		<label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
+			<button class="btn btn-primary" onclick="loadNextLevel('');" style="padding:9px 15px 9px 15px; width:150px;">CONTINUAR</button>
+		</label>
+	</div>
 </espanhol>
 
 <p>

@@ -3,16 +3,19 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Configuração Sim</title>
+    <title>Sim</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <script src="scripts/jquery.js"></script>
-    <script src="scripts/bootstrap.js"></script>
+    <!-- script src="scripts/jquery.js"></script -->
+    <!-- link rel="stylesheet" type="text/css" href="style/bootstrap.css" / -->
     <link rel="stylesheet" href="style/myproject.css" />
-    <link rel="stylesheet" type="text/css" href="style/bootstrap.css" />
     <link rel="stylesheet" href="style/font-awesome.min.css" />
     <script src="scripts/jsstore.js"></script>
     <script src="scripts/jsstore.worker.js"></script>
     <script src="index.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <!-- link href="style/carousel.css" rel="stylesheet" -->
 	<style>
 	</style>
 </head>
@@ -31,15 +34,14 @@
 					</label>
 				</div>
 				<div id="divLoading" style="display:'none';">
-					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Aguarde...</div>
-					<br/><div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">Estamos preparando tudo para você</div>
+					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:white;">Aguarde...</div>
+					<br/><div style="padding:9px 15px 9px 15px; cursor:default; color:white;">Estamos preparando tudo para você</div>
 					<video id="vdoLoaging" ZZZposter="img/fundonoite.jpg" width="320" height="240" autoplay muted loop>
 						<source src="video/loading.mp4" type="video/mp4">
 						<source src="video/loading.ogg" type="video/ogg">
 						Formato não suportado. Your browser does not support the video tag.
 					</video>
 				</div>
-				
 				<label id="bSearch" style="display:none;">
 					<input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:200px; height:34px;">
 				</label>
@@ -153,28 +155,30 @@
 				<p/><textarea name="mytext" id="mytext" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui..."></textarea>
 				<p/><textarea name="mytext2" id="mytext2" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui em Inglês..."></textarea>
 				<p/><textarea name="mytext3" id="mytext3" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui em Espanhol..."></textarea>
-				<font style="color:green;">
+				<font style="color:#3CB371;">
 					Corretas:
+					<br/>
 					<textarea name="myoption1" id="myoption1" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
-					<br/><textarea name="myoptionkey1" id="myoptionkey1" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoptionkey1" id="myoptionkey1" style="width:95%;" rows=1 placeholder="chave explicação 1..."></textarea>
 					<br/><textarea name="myoption2" id="myoption2" style="width:100%;" rows=1 placeholder="2..."></textarea>
-					<br/><textarea name="myoptionkey2" id="myoptionkey2" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoptionkey2" id="myoptionkey2" style="width:95%;" rows=1 placeholder="explicação 2..."></textarea>
 					<br/><textarea name="myoption3" id="myoption3" style="width:100%;" rows=1 placeholder="3..."></textarea>
-					<br/><textarea name="myoptionkey3" id="myoptionkey3" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoptionkey3" id="myoptionkey3" style="width:95%;" rows=1 placeholder="explicação 3..."></textarea>
 					<br/><textarea name="myoption4" id="myoption4" style="width:100%;" rows=1 placeholder="4..."></textarea>
-					<br/><textarea name="myoptionkey4" id="myoptionkey4" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoptionkey4" id="myoptionkey4" style="width:95%;" rows=1 placeholder="explicação 4..."></textarea>
 				</font>
 				
 				<font style="color:red; text-align:left;">
+					<br/>
 					Incorretas:
 					<textarea name="myoption5" id="myoption5" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
-					<br/><textarea name="myoptionkey5" id="myoptionkey5" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoptionkey5" id="myoptionkey5" style="width:95%;" rows=1 placeholder="explicação 5..."></textarea>
 					<br/><textarea name="myoption6" id="myoption6" style="width:100%;" rows=1 placeholder="2..."></textarea>
-					<br/><textarea name="myoptionkey6" id="myoptionkey6" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoptionkey6" id="myoptionkey6" style="width:95%;" rows=1 placeholder="explicação 6..."></textarea>
 					<br/><textarea name="myoption7" id="myoption7" style="width:100%;" rows=1 placeholder="3..."></textarea>
-					<br/><textarea name="myoptionkey7" id="myoptionkey7" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoptionkey7" id="myoptionkey7" style="width:95%;" rows=1 placeholder="explicação 7..."></textarea>
 					<br/><textarea name="myoption8" id="myoption8" style="width:100%;" rows=1 placeholder="4..."></textarea>
-					<br/><textarea name="myoptionkey8" id="myoptionkey8" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoptionkey8" id="myoptionkey8" style="width:95%;" rows=1 placeholder="explicação 8..."></textarea>
 				</font>
 				<p/><p/>
 				<button id="btnSubmit" type="button" class="btn btn-primary" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-check"></i> Salvar</button>
@@ -188,41 +192,77 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 1
+<portugues>FASE 2</portugues>
+<english>PHASE 2</english>
+<espanhol>FASE 2</espanhol>
 
 <p>
-Você tem um aplicativo da Web que recebe 5 vezes mais tráfego nos finais de semana do que nos dias de semana. Você precisa corresponder automaticamente a capacidade à demanda, manter o aplicativo sempre em funcionamento e economizar custos. <br/>Qual recurso de computação do Oracle Cloud Infrastructure (OCI) pode ser usado para atender a esses requisitos?
+<portugues>Você tem um aplicativo da Web que recebe 5 vezes mais tráfego nos finais de semana do que nos dias de semana. Você precisa corresponder automaticamente a capacidade à demanda, manter o aplicativo sempre em funcionamento e economizar custos. <br/>Qual recurso de computação do Oracle Cloud Infrastructure (OCI) pode ser usado para atender a esses requisitos?</portugues>
 <english>You have a web application that receives 5X more traffic on the weekends than weekdays. You need to automatically match capacity to demand, keep the application always up and running, and save cost. <br/>Which Oracle Cloud Infrastructure (OCI) compute feature can be used to meet these requirements?</english>
+<espanhol>Tiene una aplicación web que recibe 5 veces más tráfico los fines de semana que entre semana. Necesita hacer coincidir automáticamente la capacidad con la demanda, mantener la aplicación siempre en funcionamiento y ahorrar costos. <br/>¿Qué función informática de Oracle Cloud Infrastructure (OCI) se puede utilizar para cumplir con estos requisitos?</espanhol>
 
 <ok>
-Autoscaling. <i>(Escalonamento automático)</i>
-<key>Autoscaling</key>
+<portugues>Escalonamento automático</portugues>
+<english>Autoscaling</english>
+<espanhol></espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
-Vertical Scaling. <i>(Escala vertical)</i>
-<key>Vertical Scaling</key>
+<portugues>Escala vertical</portugues>
+<english>Vertical Scaling</english>
+<espanhol></espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
-Parallel Scaling. <i>(Escala paralela)</i>
-<key>Parallel Scaling</key>
+<portugues>Escala paralela</portugues>
+<english>Parallel Scaling</english>
+<espanhol></espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
-Manual Scaling. <i>(Escala manual)</i>
-<key>Manual Scaling</key>
+<portugues>Escala manual</portugues>
+<english>Manual Scaling</english>
+<espanhol></espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
 <p>
-Qual recurso do Oracle Cloud Infrastructure (OCI) permite que você configure alertas para notificá-lo se uma previsão de orçamento for excedida ou se o gasto ultrapassar um determinado valor?
+<portugues>Qual recurso do Oracle Cloud Infrastructure (OCI) permite que você configure alertas para notificá-lo se uma previsão de orçamento for excedida ou se o gasto ultrapassar um determinado valor?</portugues>
 <english>Which Oracle Cloud Infrastructure (OCI) capability allows you to set up alerts to notify you if a budget forecast is to be exceeded or spending surpasses a certain amount?</english>
+<espanhol>¿Qué capacidad de Oracle Cloud Infrastructure (OCI) le permite configurar alertas para notificarle si se va a superar una previsión de presupuesto o si el gasto supera una determinada cantidad?</espanhol>
 
 <ok>
-Budget. <i>(Orçamento)</i>
-<key>Budget</key>
+<portugues>Orçamento</portugues>
+<english>Budget</english>
+<espanhol></espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
-Monitoring. <i>(Monitoramento)</i>
-<key>Monitoring</key>
+<portugues>Monitoramento</portugues>
+<english>Monitoring</english>
+<espanhol></espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
-Events. <i>(Eventos)</i>
-<key>Events</key>
+<portugues>Eventos</portugues>
+<english>Events</english>
+<espanhol></espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
-Cost Analysis. <i>(Análise de Custo)</i>
-<key>Cost Analysis</key>
+<portugues>Análise de Custo</portugues>
+<english>Cost Analysis</english>
+<espanhol></espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
 <p>
 
