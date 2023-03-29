@@ -21,7 +21,7 @@
 </head>
 
 <body id="myBody" ZZZbackground="gallery/paper.jpeg">
-
+		
 			<div style="display:'none'; text-align:center; ">
 				<div id="divContinuar" style="display:none;">
 					<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; font-family:Helvetica; color:white;">PARABÉNS!</div>
@@ -271,6 +271,13 @@
 		</div>
 
     <link href="style/main.css " rel="stylesheet " type="text/css " />
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script>window.jQuery || document.write('<script src="scripts/jquery-3.6.3.js"><\/script>')</script>
+    <script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>
@@ -284,7 +291,7 @@
 		setTimeout (function () {
 			refreshTableResult(quantidadeRegistrosP);
 			callback();
-		}, 100);
+		}, 1000);
 	}
 	callback();
 </script>

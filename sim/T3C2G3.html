@@ -21,7 +21,7 @@
 </head>
 
 <body id="myBody" ZZZbackground="gallery/paper.jpeg">
-
+		
 			<div style="display:'none'; text-align:center; ">
 				<div id="divContinuar" style="display:none;">
 					<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; font-family:Helvetica; color:white;">MUITO BOM!</div>
@@ -32,7 +32,7 @@
 					</div>
 					<div><img src="img/medalha.jpg" width="200px" style="border-radius:30px;"></img></div>
 					<br/><label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=2&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
+						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
 					</label>
 				</div>
 				<div id="divLoading" style="display:'none';">
@@ -620,6 +620,13 @@ Which Oracle Cloud Infrastructure (OCI) service should be used for deployment of
 		</div>
 
     <link href="style/main.css " rel="stylesheet " type="text/css " />
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script>window.jQuery || document.write('<script src="scripts/jquery-3.6.3.js"><\/script>')</script>
+    <script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>
@@ -627,13 +634,13 @@ Which Oracle Cloud Infrastructure (OCI) service should be used for deployment of
 <script type="text/javascript">
 	onLoadConfig();
 	
-	var quantidadeRegistrosP = '11'; // <p>
+	var quantidadeRegistrosP = '13'; // <p>
 	refreshTableResult(quantidadeRegistrosP);
 	function callback() {
 		setTimeout (function () {
 			refreshTableResult(quantidadeRegistrosP);
 			callback();
-		}, 100);
+		}, 1000);
 	}
 	callback();
 </script>

@@ -1330,7 +1330,7 @@ function validalogin(id, pass, key) {
 		return true;
 	} else if (id.toLowerCase() == 'enio' && pass == 'enio') {
 		return true;
-	} else if (id.toLowerCase() == 'santiago' && pass == 'santiago') {
+	} else if (id.toLowerCase() == 'santiagorezende@gmail.com' && pass == 'santiago') {
 		return true;
 	} else if (id.toLowerCase() == 'eni' && pass == 'eni') {
 		return true;
@@ -2386,7 +2386,7 @@ async function confirmImport(mytema, mycategory, contents, group) {
 //			var mytext2 = '';//getLanguage('english', mytext.substring(posicao, nextp)); //espanhol
 //			var mytext3 = '';//getLanguage('espanish', mytext.substring(posicao, nextp)); //inglês
 
-//alert(': ' + '\n mytema='+mytema + '\n mycategory='+mycategory + '\n mygroup='+mygroup + '\n mycode='+mycode + '\n myorder='+myorder + '\n\n [' + valor + ']');
+//alert('confirmImport: ' + '\n mytema='+mytema + '\n mycategory='+mycategory + '\n mygroup='+mygroup + '\n mycode='+mycode + '\n myorder='+myorder + '\n\n [' + valor + ']');
 			salvarRegistro(mytema+'', mycategory+'', mygroup+'', mycode+'', myorder+'', valor, mytext1, '', '');
 			
 			posicao = nextp;
@@ -4082,7 +4082,8 @@ function getCookie(cname) {
 //port	número de porta de um URL
 //protocol	protocolo de um URL
 //search	consulta parte de um URL
-//https:// jsstore.net/tutorial/get-started/
-//https:// velhobit.com.br/design/fab-botao-flutuante-com-css3-e-html-sem-javascript.html
-//https:// triangulo.dev/posts/atomo-como-criar-cubo-css/
-//https:// stackoverflow.com/questions/17612405/import-html-document-using-html-link-rel (importar xml e tratar o conteúdo nós)
+//https:// jsstore.net /tutorial/get-started/
+//https:// velhobit.com.br /design/fab-botao-flutuante-com-css3-e-html-sem-javascript.html
+//https:// triangulo.dev /posts/atomo-como-criar-cubo-css/
+//https:// stackoverflow.com /questions/17612405/import-html-document-using-html-link-rel (importar xml e tratar o conteúdo nós)
+//http:// www.linhadecodigo.com.br /artigo/3603/css3-gradient-criando-planos-de-fundo-com-efeito-degrade.aspx
