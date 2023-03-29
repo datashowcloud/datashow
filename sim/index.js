@@ -20,7 +20,7 @@ var CONST_TEMA_AZURE_AZ900 = 2;
 var CONST_TEMA_ORACLE_1ZO108522 = 3;
 var CONST_MYCATEGORY_1 = '1';
 var CONST_MYCATEGORY_2 = '2';
-var CONST_NIVEL_LIBERADO_SEM_USUARIO_CONECTADO = 1;
+var CONST_NIVEL_LIBERADO_SEM_USUARIO_CONECTADO = 0;
 var CONST_LICENCA_PADRAO = '202303010000';
 
 window.onload = function () {
@@ -850,8 +850,12 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 			imgLanguage += '</a>';
 */
 			var lingua = getLanguageFile(document.getElementById('imgLanguage').src);
-			document.getElementById('mytextSim').innerHTML = '&nbsp;&nbsp;&nbsp;' + student.mycode + '/' + totalperguntas + '. ' + buscaValorTag(student.mytext, lingua);
+			var texto = '<table><tr><td style="border-width:10px; border-color:transparent; text-align:justify;">';
+			texto += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + student.mycode + '/' + totalperguntas + '. ' + buscaValorTag(student.mytext, lingua);
+			texto += '</td></tr></table>';
 			
+			document.getElementById('mytextSim').innerHTML = texto;
+
 			var valorIndice = '';
 			var myorder = student.myorder;
 			//erro
@@ -1135,7 +1139,7 @@ function next(index, resposta) {
 		savePoints(mytema, mycategory, myid, mygroup, mycode);
 	} else { //resposta incorreta
 		limpaRespostasSalvas();
-		alert('Resposta incorreta.');
+		alert('Resposta incorreta \nTente novamente');
 		showFormApresentacao();
 	}
 	limpaCkeckbox();
