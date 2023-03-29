@@ -17,129 +17,6 @@
     <!-- Custom styles for this template -->
     <!-- link href="style/carousel.css" rel="stylesheet" -->
 	<style>
-            .fab {
-              position: fixed;
-              width: 56px;
-              left: 92%;
-              bottom: 15px;
-              margin-left: -28px;
-            }
-            
-            .fab:hover .fab-buttons {
-              opacity: 1;
-              visibility: visible;
-            }
-            
-            .fab:hover .fab-buttons__link {
-              transform: scaleY(1) scaleX(1) translateY(-16px) translateX(0px);
-            }
-            
-            .fab-action-button:hover + .fab-buttons .fab-buttons__link:before {
-              visibility: visible;
-              opacity: 1;
-              transform: scale(1);
-              transform-origin: right center 0;
-              transition-delay: 0.3s;
-            }
-            
-            .fab-action-button {
-              position: absolute;
-              bottom: 0;
-              display: block;
-              width: 56px;
-              height: 56px;
-              background-color: transparent;
-              //border-radius: 50%;
-              box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-			  color:white;
-			  border-style:double;
-			  border-color:white;
-			  border-width:0px;
-			  font-size: 30px;
-            }
-            
-            .fab-buttons {
-              position: absolute;
-              left: 0;
-              right: 0;
-              bottom: 50px;
-              list-style: none;
-              margin: 0;
-              padding: 0;
-              opacity: 0;
-              visibility: hidden;
-              transition: 0.2s;
-            }
-            
-            .fab-action-button__icon {
-              display: inline-block;
-              width: 56px;
-              height: 56px;
-            }
-            
-            .fab-buttons__item {
-              display: block;
-              text-align: center;
-              margin: 12px 0;
-            }
-            
-            .fab-buttons__link {
-              display: inline-block;
-              width: 40px;
-              height: 40px;
-              text-decoration: none;
-              background-color: #ffffff;
-              border-radius: 50%;
-              box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-              transform: scaleY(0.5) scaleX(0.5) translateY(0px) translateX(0px);
-              -moz-transition: .3s;
-              -webkit-transition: .3s;
-              -o-transition: .3s;
-              transition: .3s;
-            }
-            
-            [data-tooltip]:before {
-              top: 50%;
-              margin-top: -11px;
-              font-weight: 600;
-              border-radius: 2px;
-              background: #585858;
-              color: #fff;
-              content: attr(data-tooltip);
-              font-size: 12px;
-              text-decoration: none;
-              visibility: hidden;
-              opacity: 0;
-              padding: 4px 7px;
-              margin-right: 12px;
-              position: absolute;
-              transform: scale(0);
-              right: 100%;
-              white-space: nowrap;
-              transform-origin: top right;
-              transition: all .3s cubic-bezier(.25, .8, .25, 1);
-            }
-            
-            [data-tooltip]:hover:before {
-              visibility: visible;
-              opacity: 1;
-              transform: scale(1);
-              transform-origin: right center 0;
-            }
-            
-            .icon-material {
-              display: inline-block;
-              width: 40px;
-              height: 40px;
-            }
-            
-            .icon-material_tw {
-              background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDUxMCA1MTAiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMCA1MTA7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8ZyBpZD0icG9zdC10d2l0dGVyIj4KCQk8cGF0aCBkPSJNNDU5LDBINTFDMjIuOTUsMCwwLDIyLjk1LDAsNTF2NDA4YzAsMjguMDUsMjIuOTUsNTEsNTEsNTFoNDA4YzI4LjA1LDAsNTEtMjIuOTUsNTEtNTFWNTFDNTEwLDIyLjk1LDQ4Ny4wNSwwLDQ1OSwweiAgICAgTTQwMC4zNSwxODYuMTVjLTIuNTUsMTE3LjMtNzYuNSwxOTguOS0xODguNywyMDRDMTY1Ljc1LDM5Mi43LDEzMi42LDM3Ny40LDEwMiwzNTkuNTVjMzMuMTUsNS4xMDEsNzYuNS03LjY0OSw5OS40NS0yOC4wNSAgICBjLTMzLjE1LTIuNTUtNTMuNTUtMjAuNC02My43NS00OC40NWMxMC4yLDIuNTUsMjAuNCwwLDI4LjA1LDBjLTMwLjYtMTAuMi01MS0yOC4wNS01My41NS02OC44NWM3LjY1LDUuMSwxNy44NSw3LjY1LDI4LjA1LDcuNjUgICAgYy0yMi45NS0xMi43NS0zOC4yNS02MS4yLTIwLjQtOTEuOGMzMy4xNSwzNS43LDczLjk1LDY2LjMsMTQwLjI1LDcxLjRjLTE3Ljg1LTcxLjQsNzkuMDUxLTEwOS42NSwxMTcuMzAxLTYxLjIgICAgYzE3Ljg1LTIuNTUsMzAuNi0xMC4yLDQzLjM1LTE1LjNjLTUuMSwxNy44NS0xNS4zLDI4LjA1LTI4LjA1LDM4LjI1YzEyLjc1LTIuNTUsMjUuNS01LjEsMzUuNy0xMC4yICAgIEM0MjUuODUsMTY1Ljc1LDQxMy4xLDE3NS45NSw0MDAuMzUsMTg2LjE1eiIgZmlsbD0iIzc1NzU3NSIvPgoJPC9nPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=") center no-repeat;
-            }
-            
-            .icon-material_li {
-              background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDUxMCA1MTAiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMCA1MTA7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8ZyBpZD0icG9zdC1saW5rZWRpbiI+CgkJPHBhdGggZD0iTTQ1OSwwSDUxQzIyLjk1LDAsMCwyMi45NSwwLDUxdjQwOGMwLDI4LjA1LDIyLjk1LDUxLDUxLDUxaDQwOGMyOC4wNSwwLDUxLTIyLjk1LDUxLTUxVjUxQzUxMCwyMi45NSw0ODcuMDUsMCw0NTksMHogICAgIE0xNTMsNDMzLjVINzYuNVYyMDRIMTUzVjQzMy41eiBNMTE0Ljc1LDE2MC42NWMtMjUuNSwwLTQ1LjktMjAuNC00NS45LTQ1LjlzMjAuNC00NS45LDQ1LjktNDUuOXM0NS45LDIwLjQsNDUuOSw0NS45ICAgIFMxNDAuMjUsMTYwLjY1LDExNC43NSwxNjAuNjV6IE00MzMuNSw0MzMuNUgzNTdWMjk4LjM1YzAtMjAuMzk5LTE3Ljg1LTM4LjI1LTM4LjI1LTM4LjI1cy0zOC4yNSwxNy44NTEtMzguMjUsMzguMjVWNDMzLjVIMjA0ICAgIFYyMDRoNzYuNXYzMC42YzEyLjc1LTIwLjQsNDAuOC0zNS43LDYzLjc1LTM1LjdjNDguNDUsMCw4OS4yNSw0MC44LDg5LjI1LDg5LjI1VjQzMy41eiIgZmlsbD0iIzc1NzU3NSIvPgoJPC9nPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=") center no-repeat;
-            }
 	</style>
 </head>
 
@@ -147,7 +24,7 @@
 
 	<a id="querocomecar"></a>
 
-	<nav id="menutopodireito" class="mobile-offcanvas navbar sticky-top navbar-dark bg-dark" style="display:'none';">
+	<nav id="menutopodireito" class="mobile-offcanvas navbar sticky-top navbar-dark bg-dark" style="display:none;">
 	  <div class="container-fluid">
 		<div>
 			<table>
@@ -156,17 +33,17 @@
 						<button id="btnNightDay" class="btn btn-outline-primary" title="Dia e noite" style="border-radius:50%; color:white; display:'none';" title="Dia e Noite"><i class="fa fa-adjust"></i> </button>
 						<br/><font size=1>DiaNoite</font>
 					</td -->
-					<!--td>&nbsp;</td-->
-					<!--td>
+					<td>&nbsp;</td>
+					<td>
 						<button id="btnUser" class="btn btn-outline-primary" title="Conexão com e-mail" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" style="border-radius:50%; color:white; display:'none';"><i class="fa fa-user"></i>
 							<input id="txtUser" type="text" value="" readonly style="border-radius:50%; font-size:10px; position:absolute; background-color:transparent; color:white; width:15px; border-width:0px; font-family:Helvetica; font-weight:bold; cursor:pointer;"></input>
 						</button>
 						<br/><font size=1>Você</font>
-					</td-->
+					</td>
 					<td>&nbsp;</td>
 					<td>
-						<img id="imgLanguage" src="img/portugues.jpg" width="38px" style="cursor:pointer; border-radius:50%; display:none;" title="Translate/Traduzir/Traducir"></img>
-						<br/><font id="fonLanguage" size=1 style="display:none;">Tradução</font>
+						<!--img id="imgLanguage" src="img/portugues.jpg" width="38px" style="cursor:pointer; border-radius:50%; display:none;" title="Translate/Traduzir/Traducir"></img -->
+						<!--br/><font id="fonLanguage" size=1 style="display:none;">Tradução</font-->
 					</td>
 					<td>&nbsp;</td>
 					<td>
@@ -181,8 +58,8 @@
 		<table>
 			<tr>
 				<td>
-					<!--span id="spanUser" class="btn btn-outline-primary navbar-toggler navbar-toggler-icon" style="border-radius:50%;" title="Menu" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"></span>
-					<br/><font size=1> Menu</font -->
+					<span id="spanUser" class="btn btn-outline-primary navbar-toggler navbar-toggler-icon" style="border-radius:50%;" title="Menu" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"></span>
+					<br/><font size=1> Menu</font>
 				</td>
 			</tr>
 		</table>
@@ -200,21 +77,20 @@
 						<br/>
 						<div align=center style="width:290px; border-radius:10px; border-style:solid; border-color:gray; border-width:3px; color:#000000; background-color:transparent;">
 							<label style="border-radius:30px; position:relative; top:-25px; left:0px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
-								<label id="ZZZbtnFecharFormUser" class="btn btn-primary" style="border-radius:30px; font-size:20px; cursor:default;"><b>MENU</b></label>
+								<label id="btnFecharFormUser" class="btn btn-primary" style="border-radius:30px; font-size:20px; cursor:default;"><b>MENU</b></label>
 							</label>
 							<div align=center>
 								<table>
 									<tr>
-										<!--td>
+										<td>
 											<button id="btnPaginaInicial" class="btn btn-outline-primary" title="Página Inicial" style="border-radius:50%; color:white; display:'none';"><i class="fa fa-home"></i> </button>
 											<br/><font size=1 style="color:white;">Página Inicial</font>
 										</td>
 										<td>&nbsp;&nbsp;&nbsp;</td>
-										-->
-										<!--td>
+										<td>
 											<button id="btnDropDb" class="btn btn-outline-primary" title="Restaurar padrão de fábrica" style="border-radius:50%;color:white; display:'none';"><i class="fa fa-trash"></i></button>
 											<br/><font size=1 style="color:white;">Restaurar Padrão</font>
-										</td-->
+										</td>
 										<td>
 											<button id="btntreino" class="botao" style="border-radius:30px; display:none;" onclick="changeCategory('2');"><i class="fa fa-book"></i> Treino</button>
 										</td>
@@ -233,13 +109,43 @@
 									<p/>
 									<p/>
 									tamastigadu@gmail.com <br/>atualizado em 03/2023
-									<br/>versão 00.00.16
+									<br/>versão 00.00.13
 								</font>
 							</div>
 						</div>
 					</div>
 					
 
+					<div id="divFormUser" align=center style="display:'none'; border-radius:2.18vw; margin-left:auto; margin-right:auto;">
+						<br/>
+						<label align=center style="width:290px; border-radius:10px; border-style:solid; border-color:gray; border-width:3px; color:#000000; background-color:transparent;">
+							<label style="border-radius:30px; position:relative; top:-25px; left:0px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+								<label id="btnFecharFormUser" class="btn btn-primary" style="border-radius:30px; font-size:20px; cursor:default;"><b>CONEXÃO</b></label>
+							</label>
+
+							<div id="divCamposEntrar" style="display:'none';">
+								<!-- form id="formAdd" action="https://formspree.io/forms/xdovzvlb/" method="post" -->
+									<label><input id="txtId" type="text" class="flutuante" value="" placeholder="e-mail" style="width:200px; border-radius:10px; text-align:center;"></input></label>
+									<br/>
+									<label><input id="txtPass" type="password" class="flutuante" value="" placeholder="Senha" style="width:200px; border-radius:10px; text-align:center;"></input></label>
+									<br/>
+									<p/>
+									<p/>
+									<label id="lblEntrar" class="flutuante" style="border-radius:30px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+										<button id="btnEntrar" class="btn btn-primary" style="width:200px; border-radius:30px;"> <i class="fa fa-user"></i> ENTRAR</button>
+									</label>
+								<!-- /form -->
+							</div>
+
+							<div id="divCamposSair" style="display:none;">
+								<label id="lblSair" class="flutuante" style="display:'none'; border-radius:30px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+									<button id="btnDesconectar" class="btn btn-danger" style="width:200px; border-radius:30px;">DESCONECTAR</button>
+								</label>
+							</div>
+							<br/>
+							<br/>
+						</label>
+					</div>
 			  </li>
 			</ul>
 			<!-- form class="d-flex mt-3" role="search">
@@ -250,6 +156,8 @@
 		</div>
 	  </div>
 	</nav>
+
+
 
 	<div id="divconfig" style="display:none;">
 		<label id="lei13709" class="btn btn-default" style="cursor:default; width:300px; display:none;">
@@ -473,69 +381,30 @@
 
 	<div id="divNivel" align=center style="margin-left:auto; margin-right:auto; display:none;">
 		<br/>
-		<img id="imgNivelTema" style="width:150px; border-radius:50%;" title="Tema"></img>
+		<img id="imgNivelTema" style="width:100px; border-radius:50%;" title="Tema"></img>
 
-		<br/><br/>
+		<br/><br/><br/>
 		<table id="tblNivel" border=0 style="width:95%;" align=center>
 			<tbody>
 			</tbody>
 		</table>
 	
-		<br/><br/><br/><br/><br/><br/>
+		<br/><br/><br/>
 
 		<table>
 			<tr>
-				<!--td>
-					<label class="flutuante" style="display:none; border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
+				<td>
+					<label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
 						<button id="btnListaPerguntas" class="btn btn-primary"><i class="fa fa-list" style="font-size:35px;" title="Lista de fases e níveis"></i></button>
 					</label>
-					<br/><font size=1 style="display:none; color:white;">Minhas conquistas</font>
+					<br/><font size=1 style="color:white;">Minhas conquistas</font>
 				</td>
-				<td>&nbsp;&nbsp;</td -->
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 				<td>
-					<label class="flutuante" style="display:none; border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
+					<label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
 						<button id="btnEstatisticas" class="btn btn-primary"><i class="fa fa-signal" style="font-size:35px;" title="Estatísticas"></i></button>
 					</label>
-					<br/><font size=1 style="display:none; color:white;">Estatísticas</font>
-				</td>
-				<td>&nbsp;&nbsp;</td>
-				<td>
-					<div class="fab">
-							<span class="fab-action-button btn btn-outline-primary" style="display:'none'; border-radius:50%;">
-								<i class="fa fa-list">
-									<font size=1 style="color:white;">Menu</font>
-								</i>
-							</span>
-					  <ul class="fab-buttons">
-						<li class="fab-buttons__item">
-							<button id="btnDropDb" class="btn btn-outline-primary fab-buttons__link" onclick="" data-tooltip="Restaurar" title="restaurar" style="display:'none'; border-radius:50%;">
-								<i class="fa fa-trash"></i>
-							</button>
-						</li>
-						<li class="fab-buttons__item">
-							<button class="btn btn-outline-primary fab-buttons__link" onclick="window.open('index.html', '_self');" data-tooltip="Início" title="início" style="border-radius:50%;">
-								<i class="fa fa-home"></i>
-							</button>
-						</li>
-						<li class="fab-buttons__item">
-							<button id="btnNightDay" class="btn btn-outline-primary fab-buttons__link" data-tooltip="Dia Noite" title="dia e noite" style="border-radius:50%;">
-								<i class="fa fa-adjust"></i>
-							</button>
-						</li>
-						<li class="fab-buttons__item">
-							<button id="btnListaPerguntas" class="btn btn-outline-primary fab-buttons__link" onclick="" data-tooltip="Conquistas" title="conquistas" style="border-radius:50%;">
-								<i class="fa fa-th"></i>
-							</button>
-						</li>
-						<li class="fab-buttons__item">
-											<!--button id="btnUser" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" style="display:none;"></button -->
-							<button id="btnUser" class="btn btn-outline-primary fab-buttons__link" data-tooltip="Você" title="conexão" style="border-radius:50%;">
-								<i class="fa fa-user"></i>
-								<input id="txtUser" type="text" value="" readonly style="display:'none'; border-radius:50%; font-size:10px; position:absolute; background-color:transparent; Xcolor:white; width:15px; border-width:0px; font-family:Helvetica; font-weight:bold; cursor:pointer;"></input>
-							</button>
-						</li>
-					  </ul>
-					</div>
+					<br/><font size=1 style="color:white;">Estatísticas</font>
 				</td>
 			</tr>
 		</table>
@@ -544,49 +413,17 @@
 	<div id="divcontent" style="display:'none';">
 	</div>
 
-					<div id="divFormUser" align=center style="display:none; border-radius:2.18vw; margin-left:auto; margin-right:auto;">
-						<br/>
-						<label align=center style="width:290px; border-radius:10px; border-style:solid; border-color:gray; border-width:3px; color:#000000; background-color:transparent;">
-							<label style="border-radius:30px; position:relative; top:-25px; left:30px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
-								<label class="btn btn-primary" style="border-radius:30px; font-size:20px; cursor:default;"><b>VOCÊ</b></label>
-							</label>
-							<label style="position:relative; top:-15px; left:95px; border-radius:50%; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
-								<button id="btnFecharFormUser" class="btn btn-danger" style="border-radius:30px;"><i class="fa fa-remove"></i></button>
-							</label>
-
-							<div id="divCamposEntrar" style="display:'none';">
-								<!-- form id="formAdd" action="https://formspree.io/forms/xdovzvlb/" method="post" -->
-									<label><input id="txtId" type="text" class="flutuante" value="" placeholder="e-mail" style="width:200px; border-radius:10px; text-align:center;"></input></label>
-									<br/>
-									<label><input id="txtPass" type="password" class="flutuante" value="" placeholder="Senha" style="width:200px; border-radius:10px; text-align:center;"></input></label>
-									<br/>
-									<p/>
-									<p/>
-									<label id="lblEntrar" class="flutuante" style="border-radius:30px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
-										<button id="btnEntrar" class="btn btn-primary" style="width:200px; border-radius:30px;"> <i class="fa fa-user"></i> ENTRAR</button>
-									</label>
-								<!-- /form -->
-							</div>
-
-							<div id="divCamposSair" style="display:none;">
-								<label id="lblSair" class="flutuante" style="display:'none'; border-radius:30px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
-									<button id="btnDesconectar" class="btn btn-default" style="width:200px; border-radius:30px;">DESCONECTAR</button>
-								</label>
-							</div>
-							<br/>
-							<br/>
-						</label>
-					</div>
-
-	<div id="divFormSim" class="form-group" style="display:none;">
+	<div id="divFormQuestions" class="form-group" style="display:none;">
 		<font size=4.9 style="text-align:justify">
 
 			<a id="top"></a>
 			<!-- label id="btnPrevious" class="prev btn-primary flutuante" title="Exibe a pergunta anterior">&nbsp;<i class="fa fa-chevron-left"></i></label -->
 			<!-- label id="btnNext" class="next btn-primary flutuante" title="Exibe a próxima pergunta">&nbsp;<i class="fa fa-chevron-right"></i></label -->
+			<img id="imgLanguage" src="img/portugues.jpg" width="38px" style="position:absolute; top:0px; left:10px; cursor:pointer; border-radius:50%; display:'none';" title="Translate/Traduzir/Traducir"></img>
 			<table border=0 width="95%" align=center style="border-color:gray; border-radius:30px; Zborder-style:solid; border-color:white; border-width:3px;">
-				<tr><td id="mytextSim" style="display:'none'; text-align:justify; width:1%; font-size:18px; font-family:Helvetica;"></td></tr>
-				<!-- <tr><td id="mytextSim2" style="display:none; text-align:justify; width:1%;"></td></tr> -->
+				<tr>
+					<td id="mytextSim" style="display:'none'; text-align:justify; width:1%; font-size:18px; font-family:Helvetica;"></td>
+				</tr>
 			</table>
 
 			<table id="tableFormSimQuestions" border=0 align=center style="display:'none'; width:95%;" Zclass="table table-hover">
@@ -596,8 +433,8 @@
 						<tr>
 							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect1" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
 							<td> 
-								<label class="flutuante" style="width:100%; border-radius:30px; border-style:double; border-color:white; background-color:white; border-width:2px;">
-									<button id="btnCorrectAnswer1" class="btn btn-primary" onclick="next('1', document.getElementById('chkMycorrect1').value);" style="width:100%; border-radius:30px; font-size:18px; font-family:Helvetica;"></button>
+								<label style="width:100%; border-radius:30px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
+									<button id="btnCorrectAnswer1" class="btn btn-primary" onclick="next('1', document.getElementById('chkMycorrect1').value);" style="color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
 								</label>
 							</td>
 							<td width="1%">
@@ -617,14 +454,17 @@
 						<tr>
 							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect2" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
 							<td>
-								<label class="flutuante" style="width:100%; border-radius:30px; border-style:double; border-color:white; background-color:white; border-width:2px;">
-									<button id="btnCorrectAnswer2" class="btn btn-primary" onclick="next('2', document.getElementById('chkMycorrect2').value);" style="width:100%; border-radius:30px; font-size:18px; font-family:Helvetica;"></button>
+								<label style="width:100%; border-radius:30px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
+									<button id="btnCorrectAnswer2" class="btn btn-primary" onclick="next('2', document.getElementById('chkMycorrect2').value);" style="color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
 								</label>
 							</td>
 							<td width="1%">
-								<label class="flutuante" style="width:100%; border-radius:30px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-									<button id="btnCorrectTip2" class="btn btn-outline-primary" onclick="showTip('2');" style="border-radius:30px; border-style:double; border-color:white; border-width:2px;"><i class="fa fa-plus"></i></button>
+								<label class="flutuante" style="position:relative; top:0px; left:-45px; border-radius:50%; border-style:double; border-color:gray; border-width:0px; color:#000000; background-color:#FFFFFF;" title="Dicas">
+									<button id="btnCorrectTip2" class="btn btn-primary" onclick="showTip('2');" style="border-radius:50%; font-size:20px; background-color:#FFFFFF; color:#0055FF"><i class="fa fa-plus"></i></button>
 								</label>
+								<!--label class="flutuante" style="width:100%; border-radius:30px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
+									<button id="btnCorrectTip2" class="btn btn-outline-primary" onclick="showTip('2');" style="border-radius:30px; border-style:double; border-color:white; border-width:2px;"><i class="fa fa-plus"></i></button>
+								</label-->
 							</td>
 						</tr>
 						<tr>
@@ -638,14 +478,17 @@
 						<tr>
 							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect3" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
 							<td>
-								<label class="flutuante" style="width:100%; border-radius:30px; border-style:double; border-color:white; background-color:white; border-width:2px;">
-									<button id="btnCorrectAnswer3" class="btn btn-primary" onclick="next('3', document.getElementById('chkMycorrect3').value);" style="width:100%; border-radius:30px; font-size:18px; font-family:Helvetica;"></button>
+								<label style="width:100%; border-radius:30px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
+									<button id="btnCorrectAnswer3" class="btn btn-primary" onclick="next('3', document.getElementById('chkMycorrect3').value);" style="color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
 								</label>
 							</td>
 							<td width="1%">
-								<label class="flutuante" style="width:100%; border-radius:30px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-									<button id="btnCorrectTip3" class="btn btn-outline-primary" onclick="showTip('3');" style="border-radius:30px; border-style:double; border-color:white; border-width:2px;"><i class="fa fa-plus"></i></button>
+								<label class="flutuante" style="position:relative; top:0px; left:-45px; border-radius:50%; border-style:double; border-color:gray; border-width:0px; color:#000000; background-color:#FFFFFF;" title="Dicas">
+									<button id="btnCorrectTip3" class="btn btn-primary" onclick="showTip('3');" style="border-radius:50%; font-size:20px; background-color:#FFFFFF; color:#0055FF"><i class="fa fa-plus"></i></button>
 								</label>
+								<!--label class="flutuante" style="width:100%; border-radius:30px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
+									<button id="btnCorrectTip3" class="btn btn-outline-primary" onclick="showTip('3');" style="border-radius:30px; border-style:double; border-color:white; border-width:2px;"><i class="fa fa-plus"></i></button>
+								</label-->
 							</td>
 						</tr>
 						<tr>
@@ -659,14 +502,17 @@
 						<tr>
 							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect4" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
 							<td>
-								<label class="flutuante" style="width:100%; border-radius:30px; border-style:double; border-color:white; background-color:white; border-width:2px;">
-									<button id="btnCorrectAnswer4" class="btn btn-primary" onclick="next('4', document.getElementById('chkMycorrect4').value);" style="width:100%; border-radius:30px; font-size:18px; font-family:Helvetica;"></button>
+								<label style="width:100%; border-radius:30px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
+									<button id="btnCorrectAnswer4" class="btn btn-primary" onclick="next('4', document.getElementById('chkMycorrect4').value);" style="color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
 								</label>
 							</td>
 							<td width="1%">
-								<label class="flutuante" style="width:100%; border-radius:30px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-									<button id="btnCorrectTip4" class="btn btn-outline-primary" onclick="showTip('4');" style="border-radius:30px; border-style:double; border-color:white; border-width:2px;"><i class="fa fa-plus"></i></button>
+								<label class="flutuante" style="position:relative; top:0px; left:-45px; border-radius:50%; border-style:double; border-color:gray; border-width:0px; color:#000000; background-color:#FFFFFF;" title="Dicas">
+									<button id="btnCorrectTip4" class="btn btn-primary" onclick="showTip('4');" style="border-radius:50%; font-size:20px; background-color:#FFFFFF; color:#0055FF"><i class="fa fa-plus"></i></button>
 								</label>
+								<!--label class="flutuante" style="width:100%; border-radius:30px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
+									<button id="btnCorrectTip4" class="btn btn-outline-primary" onclick="showTip('4');" style="border-radius:30px; border-style:double; border-color:white; border-width:2px;"><i class="fa fa-plus"></i></button>
+								</label-->
 							</td>
 						</tr>
 						<tr>
@@ -680,14 +526,17 @@
 						<tr>
 							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect5" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
 							<td>
-								<label class="flutuante" style="width:100%; border-radius:30px; border-style:double; border-color:white; background-color:white; border-width:2px;">
-									<button id="btnCorrectAnswer5" class="btn btn-primary" onclick="next('5', document.getElementById('chkMycorrect5').value);" style="width:100%; border-radius:30px; font-size:18px; font-family:Helvetica;"></button>
+								<label style="width:100%; border-radius:30px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
+									<button id="btnCorrectAnswer5" class="btn btn-primary" onclick="next('5', document.getElementById('chkMycorrect5').value);" style="color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
 								</label>
 							</td>
 							<td width="1%">
-								<label class="flutuante" style="width:100%; border-radius:30px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-									<button id="btnCorrectTip5" class="btn btn-outline-primary" onclick="showTip('5');" style="border-radius:30px; border-style:double; border-color:white; border-width:2px;"><i class="fa fa-plus"></i></button>
+								<label class="flutuante" style="position:relative; top:0px; left:-45px; border-radius:50%; border-style:double; border-color:gray; border-width:0px; color:#000000; background-color:#FFFFFF;" title="Dicas">
+									<button id="btnCorrectTip5" class="btn btn-primary" onclick="showTip('5');" style="border-radius:50%; font-size:20px; background-color:#FFFFFF; color:#0055FF"><i class="fa fa-plus"></i></button>
 								</label>
+								<!--label class="flutuante" style="width:100%; border-radius:30px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
+									<button id="btnCorrectTip5" class="btn btn-outline-primary" onclick="showTip('5');" style="border-radius:30px; border-style:double; border-color:white; border-width:2px;"><i class="fa fa-plus"></i></button>
+								</label-->
 							</td>
 						</tr>
 						<tr>
@@ -701,14 +550,17 @@
 						<tr>
 							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect6" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
 							<td>
-								<label class="flutuante" style="width:100%; border-radius:30px; border-style:double; border-color:white; background-color:white; border-width:2px;">
-									<button id="btnCorrectAnswer6" class="btn btn-primary" onclick="next('6', document.getElementById('chkMycorrect6').value);" style="width:100%; border-radius:30px; font-size:18px; font-family:Helvetica;"></button>
+								<label style="width:100%; border-radius:30px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
+									<button id="btnCorrectAnswer6" class="btn btn-primary" onclick="next('6', document.getElementById('chkMycorrect6').value);" style="color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
 								</label>
 							</td>
 							<td width="1%">
-								<label class="flutuante" style="width:100%; border-radius:30px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-									<button id="btnCorrectTip6" class="btn btn-outline-primary" onclick="showTip('6');" style="border-radius:30px; border-style:double; border-color:white; border-width:2px;"><i class="fa fa-plus"></i></button>
+								<label class="flutuante" style="position:relative; top:0px; left:-45px; border-radius:50%; border-style:double; border-color:gray; border-width:0px; color:#000000; background-color:#FFFFFF;" title="Dicas">
+									<button id="btnCorrectTip6" class="btn btn-primary" onclick="showTip('6');" style="border-radius:50%; font-size:20px; background-color:#FFFFFF; color:#0055FF"><i class="fa fa-plus"></i></button>
 								</label>
+								<!--label class="flutuante" style="width:100%; border-radius:30px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
+									<button id="btnCorrectTip6" class="btn btn-outline-primary" onclick="showTip('6');" style="border-radius:30px; border-style:double; border-color:white; border-width:2px;"><i class="fa fa-plus"></i></button>
+								</label-->
 							</td>
 						</tr>
 						<tr>
@@ -722,14 +574,17 @@
 						<tr>
 							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect7" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
 							<td>
-								<label class="flutuante" style="width:100%; border-radius:30px; border-style:double; border-color:white; background-color:white; border-width:2px;">
-									<button id="btnCorrectAnswer7" class="btn btn-primary" onclick="next('7', document.getElementById('chkMycorrect7').value);" style="width:100%; border-radius:30px; font-size:18px; font-family:Helvetica;"></button>
+								<label style="width:100%; border-radius:30px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
+									<button id="btnCorrectAnswer7" class="btn btn-primary" onclick="next('7', document.getElementById('chkMycorrect7').value);" style="color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
 								</label>
 							</td>
 							<td width="1%">
-								<label class="flutuante" style="width:100%; border-radius:30px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-									<button id="btnCorrectTip7" class="btn btn-outline-primary" onclick="showTip('7');" style="border-radius:30px; border-style:double; border-color:white; border-width:2px;"><i class="fa fa-plus"></i></button>
+								<label class="flutuante" style="position:relative; top:0px; left:-45px; border-radius:50%; border-style:double; border-color:gray; border-width:0px; color:#000000; background-color:#FFFFFF;" title="Dicas">
+									<button id="btnCorrectTip7" class="btn btn-primary" onclick="showTip('7');" style="border-radius:50%; font-size:20px; background-color:#FFFFFF; color:#0055FF"><i class="fa fa-plus"></i></button>
 								</label>
+								<!--label class="flutuante" style="width:100%; border-radius:30px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
+									<button id="btnCorrectTip7" class="btn btn-outline-primary" onclick="showTip('7');" style="border-radius:30px; border-style:double; border-color:white; border-width:2px;"><i class="fa fa-plus"></i></button>
+								</label-->
 							</td>
 						</tr>
 						<tr>
@@ -743,14 +598,17 @@
 						<tr>
 							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect8" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
 							<td>
-								<label class="flutuante" style="width:100%; border-radius:30px; border-style:double; border-color:white; background-color:white; border-width:2px;">
-									<button id="btnCorrectAnswer8" class="btn btn-primary" onclick="next('8', document.getElementById('chkMycorrect8').value);" style="width:100%; border-radius:30px; font-size:18px; font-family:Helvetica;"></button>
+								<label style="width:100%; border-radius:30px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
+									<button id="btnCorrectAnswer8" class="btn btn-primary" onclick="next('8', document.getElementById('chkMycorrect8').value);" style="color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
 								</label>
 							</td>
 							<td width="1%">
-								<label class="flutuante" style="width:100%; border-radius:30px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-									<button id="btnCorrectTip8" class="btn btn-outline-primary" onclick="showTip('8');" style="border-radius:30px; border-style:double; border-color:white; border-width:2px;"><i class="fa fa-plus"></i></button>
+								<label class="flutuante" style="position:relative; top:0px; left:-45px; border-radius:50%; border-style:double; border-color:gray; border-width:0px; color:#000000; background-color:#FFFFFF;" title="Dicas">
+									<button id="btnCorrectTip8" class="btn btn-primary" onclick="showTip('8');" style="border-radius:50%; font-size:20px; background-color:#FFFFFF; color:#0055FF"><i class="fa fa-plus"></i></button>
 								</label>
+								<!--label class="flutuante" style="width:100%; border-radius:30px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
+									<button id="btnCorrectTip8" class="btn btn-outline-primary" onclick="showTip('8');" style="border-radius:30px; border-style:double; border-color:white; border-width:2px;"><i class="fa fa-plus"></i></button>
+								</label-->
 							</td>
 						</tr>
 						<tr>

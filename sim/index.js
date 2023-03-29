@@ -23,7 +23,6 @@ var CONST_MYCATEGORY_2 = '2';
 var CONST_NIVEL_LIBERADO_SEM_USUARIO_CONECTADO = 1;
 var CONST_LICENCA_PADRAO = '202303010000';
 
-
 window.onload = function () {
     registerEvents();
     initDb();
@@ -579,6 +578,7 @@ function registerEvents() {
 			alert('imgLanguage ' + ex.message)
 		}
 	})
+
 	$('#chkMycorrect1').click(function () {
 /*		var index = '1';
 		setBackgroundColor(index, CONST_MEDIUM_SEA_GREEN);
@@ -773,10 +773,9 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 	if (document.getElementById('myBody') != null) {
 		document.getElementById('myBody').style.background = background;
 	}
-/*	if (document.getElementById('menutopodireito') != null) {
+	if (document.getElementById('menutopodireito') != null) {
 		document.getElementById('menutopodireito').style.color = 'white';
 	}
-*/
 	if(document.getElementById('FormularioEditorConfiguracoes') != null) {
 		document.getElementById('FormularioEditorConfiguracoes').style.color = textcolor;
 	}
@@ -844,9 +843,15 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 			$('#mygroupSim').val(student.mygroup);
 			$('#mycodeSim').val(student.mycode);
 			$('#myorderSim').val(student.myorder);
-			
+
+/*			var imgLanguage = '';
+			imgLanguage += '<a href=\"#\" class=\"language\" value="english">';
+			imgLanguage += '<img src="img/english.jpg" width="25px" style="cursor:pointer; border-radius:50%;" title="Translate/Traduzir/Traducir"></img>';
+			imgLanguage += '</a>';
+*/
 			var lingua = getLanguageFile(document.getElementById('imgLanguage').src);
-			document.getElementById('mytextSim').innerHTML = student.mycode + '/' + totalperguntas + '. ' + buscaValorTag(student.mytext, lingua);
+			document.getElementById('mytextSim').innerHTML = '&nbsp;&nbsp;&nbsp;' + student.mycode + '/' + totalperguntas + '. ' + buscaValorTag(student.mytext, lingua);
+			
 			var valorIndice = '';
 			var myorder = student.myorder;
 			//erro
@@ -939,7 +944,6 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 		var varNivelMax = '';
 		var varButtonLineStyle = 'color:gray; font-size:18px;';
 		var varRestart = '';
-		
 		var lingua = getLanguageFile(document.getElementById('imgLanguage').src);
 		
 		students.forEach(function (student) {
@@ -1088,9 +1092,9 @@ async function refreshTableNivel(mytema, mycategory, mycode, myorder, mygroup, m
 	htmlString = htmlString + '<i class="fa fa-play avatarflutuante" style="color:#00FF7F; font-size:15px;"></i>';
 	htmlString = htmlString + '<label class="flutuante" style="border-radius:30px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">';
 
-	htmlString = htmlString + '<label style="border-radius:10px; font-size:20px; background-color:white; color:#3CB371; position:absolute; top:-18px; left:90px; width:70px; border-width:0px; font-family:Helvetica; cursor:default;">Nível ' + varNivel + '</label>';
+	htmlString = htmlString + '<label style="border-radius:10px; font-size:20px; background-color:white; color:green; position:absolute; top:-18px; left:0px; width:70px; border-width:0px; font-family:Helvetica; cursor:default;">Nível ' + varNivel + '</label>';
 
-	htmlString = htmlString + '<button id="btnNivel" class="btn btn-primary" onclick="refreshTableQuestion(' + mytema + ', ' + mycategory + ', ' + myid + ', ' + mygroup + ', ' + mycode + '); showFormSim();" style="border-radius:30px; font-size:30px; font-family:Helvetica; font-weight:bold; border-width:0px; -webkit-text-stroke-width: 1px; ">';
+	htmlString = htmlString + '<button id="btnNivel" class="btn btn-success" onclick="refreshTableQuestion(' + mytema + ', ' + mycategory + ', ' + myid + ', ' + mygroup + ', ' + mycode + '); showFormSim();" style="border-radius:30px; font-size:30px; font-family:Helvetica; font-weight:bold; border-width:0px; -webkit-text-stroke-width: 1px; ">';
 	htmlString = htmlString + '&nbsp;&nbsp;FASE ' + varFase + '&nbsp;&nbsp;';
 	htmlString = htmlString + '</button>';
 	htmlString = htmlString + '</label>';
@@ -1230,10 +1234,9 @@ async function initForm() {
 	if ((mytema == null || mycategory == null)) {
 		showFormCategory();
 	} else {
-/*		if (document.getElementById('menutopodireito') != null) {
+		if (document.getElementById('menutopodireito') != null) {
 			document.getElementById('menutopodireito').style.display=''; //exibe menu topo
 		}
-*/
 		refreshTableNivel(mytema, mycategory, '0', '', '', '');
 		showFormApresentacao();
 	}
@@ -1306,6 +1309,7 @@ async function gravaUsuario(id, pass, key) {
 			into: 'User',
 			values: [user]
 		});
+		//console.log('Sucesso \n\n Id='+id + '\n Pass='+pass + '\n key='+key);
 		if (noOfDataInserted === 1) {
 		}
     } catch (ex) {
@@ -3476,7 +3480,7 @@ async function updateAnswers(mytema, mycategory, myid, mygroup, mycode, answer1,
 }
 
 function showTip(valorindice) {
-//	alert(document.getElementById('mytip' + valorindice).innerHTML);
+//alert('valorindice=' + valorindice);
 	if (document.getElementById('mytip' + valorindice).style.display == 'none') {
 		document.getElementById('mytip' + valorindice).style.display='';
 	} else {
@@ -3489,34 +3493,24 @@ function escondeBotao() {
 		document.getElementById('btnFim').style.display='none';	
 		document.getElementById('fonFim').style.display='none';	
 	}
-	if (document.getElementById('imgLanguage') != null) {
+/*	if (document.getElementById('imgLanguage') != null) {
 		document.getElementById('imgLanguage').style.display = 'none';
 		document.getElementById('fonLanguage').style.display = 'none';
 	}
+*/
 }
 
-function exibeBotao() {
+/* function exibeBotao() {
 	if (document.getElementById('imgLanguage') != null) {
 		document.getElementById('imgLanguage').style.display = '';
 		document.getElementById('fonLanguage').style.display = '';
 	}
 }
+*/
 
 function showFormUser() {
-    $('#tblEstatisticas').hide();
-    $('#divbotoes').hide();
-    $('#divFormAddUpdate').hide();
-	$('#divGear').hide();
-	$('#divcontent').hide();
-	$('#formBible').hide();
-	$('#divconfig').hide();
-	$('#divGearAddNewLiryc').hide();
-	$('#divFormSim').hide();
-	$('#divbuttons').hide();
-	$('#tblCategory').hide();
-	$('#divNivel').hide();
-	$('#divFormUser').show();
-	escondeBotao();
+	$('#divFormMenu').hide();
+    $('#divFormUser').show();
 	$('#txtId').focus();
 }
 
@@ -3526,6 +3520,7 @@ function showFormMenu() {
 }
 
 function showFormApresentacao() {
+	$('#menutopodireito').show();
     $('#tblEstatisticas').hide();
     $('#divbotoes').hide();
     $('#divFormAddUpdate').hide();
@@ -3534,15 +3529,15 @@ function showFormApresentacao() {
 	$('#formBible').hide();
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
-	$('#divFormSim').hide();
+	$('#divFormQuestions').hide();
 	$('#divbuttons').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').show();
-	$('#divFormUser').hide();
 	escondeBotao();
 }
 
 function showFormCategory() {
+	$('#menutopodireito').show();
     $('#tblEstatisticas').hide();
     $('#divbotoes').hide();
     $('#divFormAddUpdate').hide();
@@ -3551,15 +3546,15 @@ function showFormCategory() {
 	$('#formBible').hide();
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
-	$('#divFormSim').hide();
+	$('#divFormQuestions').hide();
 	$('#divbuttons').hide();
 	$('#tblCategory').show();
 	$('#divNivel').hide();
-	$('#divFormUser').hide();
-//	document.getElementById('menutopodireito').style.display='none'; //não exibe menu topo
+	document.getElementById('menutopodireito').style.display='none'; //não exibe menu topo
 }
 
 function showFormSim() {
+	$('#menutopodireito').hide();
     $('#tblEstatisticas').hide();
     $('#divbotoes').show();
     $('#divFormAddUpdate').hide();
@@ -3568,15 +3563,14 @@ function showFormSim() {
 	$('#formBible').hide();
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
-	$('#divFormSim').show();
+	$('#divFormQuestions').show();
 //	$('#myCarousel').show();
 	$('#divbuttons').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
-	$('#divFormUser').hide();
 
 	escondeBotao();
-	exibeBotao();
+//	exibeBotao();
 
 	if (document.getElementById('btnPrevious') != null) {document.getElementById('btnPrevious').disabled = false; }
 	if (document.getElementById('btnNext') != null) {document.getElementById('btnNext').disabled = false; }
@@ -3584,6 +3578,7 @@ function showFormSim() {
 }
 
 function showFormAddUpdate() {
+	$('#menutopodireito').show();
     $('#tblEstatisticas').hide();
     $('#divbotoes').show();
     $('#divFormAddUpdate').show();
@@ -3592,13 +3587,13 @@ function showFormAddUpdate() {
 	$('#formBible').hide();
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
-	$('#divFormSim').hide();
+	$('#divFormQuestions').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
-	$('#divFormUser').hide();
 }
 
 function showGridAndHideForms() {
+	$('#menutopodireito').show();
     $('#tblEstatisticas').show();
     $('#divbotoes').show();
     $('#divFormAddUpdate').hide();
@@ -3606,15 +3601,15 @@ function showGridAndHideForms() {
 	$('#divcontent').hide();
 	$('#formBible').hide();
 	$('#divGearAddNewLiryc').hide();
-	$('#divFormSim').hide();
+	$('#divFormQuestions').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
-	$('#divFormUser').hide();
 
-	if (document.getElementById('imgLanguage') != null) {
+/*	if (document.getElementById('imgLanguage') != null) {
 		document.getElementById('imgLanguage').style.display = 'none';
 		document.getElementById('fonLanguage').style.display = 'none';
 	}
+*/
 	if (document.getElementById('btnFim') != null) {
 		document.getElementById('btnFim').style.display='none';	
 		document.getElementById('fonFim').style.display='none';	
@@ -3622,6 +3617,7 @@ function showGridAndHideForms() {
 }
 
 function showAddNewManual() {
+	$('#menutopodireito').show();
 	$('#divGearAddNewLiryc').show();
     $('#divbotoes').show();
     $('#tblEstatisticas').hide();
@@ -3630,13 +3626,13 @@ function showAddNewManual() {
 	$('#divcontent').hide();
 	$('#formBible').hide();
 	$('#divconfig').hide();
-	$('#divFormSim').hide();
+	$('#divFormQuestions').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
-	$('#divFormUser').hide();
 }
 
 function showFormGear() {
+	$('#menutopodireito').show();
     $('#tblEstatisticas').hide();
     $('#divbotoes').show();
     $('#divFormAddUpdate').hide();
@@ -3644,13 +3640,13 @@ function showFormGear() {
 	$('#divcontent').hide();
 	$('#formBible').hide();
 	$('#divGearAddNewLiryc').hide();
-	$('#divFormSim').hide();
+	$('#divFormQuestions').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
-	$('#divFormUser').hide();
 }
 
 function showFormImport() {
+	$('#menutopodireito').show();
     $('#tblEstatisticas').hide();
     $('#divbotoes').show();
     $('#divFormAddUpdate').hide();
@@ -3659,13 +3655,13 @@ function showFormImport() {
 	$('#formBible').hide();
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
-	$('#divFormSim').hide();
+	$('#divFormQuestions').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
-	$('#divFormUser').hide();
 }
 
 function showBible() {
+	$('#menutopodireito').show();
     $('#tblEstatisticas').hide();
     $('#divbotoes').show();
     $('#divFormAddUpdate').hide();
@@ -3674,13 +3670,13 @@ function showBible() {
 	$('#formBible').show();
 	$('#divconfig').hide();
 	$('#divGearAddNewLiryc').hide();
-	$('#divFormSim').hide();
+	$('#divFormQuestions').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
-	$('#divFormUser').hide();
 }
 
 function showIniciarConfiguracao() {
+	$('#menutopodireito').show();
     $('#tblEstatisticas').hide();
     $('#divbotoes').show();
     $('#divFormAddUpdate').hide();
@@ -3689,10 +3685,10 @@ function showIniciarConfiguracao() {
 	$('#formBible').hide();
 	$('#divconfig').show();
 	$('#divGearAddNewLiryc').hide();
-	$('#divFormSim').hide();
+	$('#divFormQuestions').hide();
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
-	$('#divFormUser').hide();
+    //$('#divFormUser').hide();
 }
 
 function showForm1Form2() {
@@ -4084,5 +4080,3 @@ function getCookie(cname) {
 //https:// velhobit.com.br/design/fab-botao-flutuante-com-css3-e-html-sem-javascript.html
 //https:// triangulo.dev/posts/atomo-como-criar-cubo-css/
 //https:// stackoverflow.com/questions/17612405/import-html-document-using-html-link-rel (importar xml e tratar o conteúdo nós)
-//servicenow, google: são uma das nuvens
-//https:// stfalcon.com/en/blog/post/animation-css
