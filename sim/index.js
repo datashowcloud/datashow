@@ -850,7 +850,7 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 			imgLanguage += '</a>';
 */
 			var lingua = getLanguageFile(document.getElementById('imgLanguage').src);
-			var texto = '<table><tr><td style="border-width:15px; border-color:transparent; text-align:justify;">';
+			var texto = '<table><tr><td style="border-width:10px; border-color:transparent; text-align:justify;">';
 			texto += student.mycode + '/' + totalperguntas + '. ' + buscaValorTag(student.mytext, lingua);
 			texto += '</td></tr></table>';
 			
