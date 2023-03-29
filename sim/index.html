@@ -17,6 +17,30 @@
     <!-- Custom styles for this template -->
     <!-- link href="style/carousel.css" rel="stylesheet" -->
 	<style>
+        .degradeblack {
+            background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#444444));
+            background: -moz-linear-gradient(top, #000000, #444444);
+            filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#000000', EndColorStr='#444444');           
+        }
+        .degradeblue {
+            background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#0077FF));
+            background: -moz-linear-gradient(top, #000000, #0077FF);
+            filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#000000', EndColorStr='#0077FF');           
+        }
+        .degradegreen {
+            background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#00FF00));
+            background: -moz-linear-gradient(top, #000000, #00FF00);
+            filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#000000', EndColorStr='#00FF00');           
+        }
+        .degradered {
+            background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#FF0000));
+            background: -moz-linear-gradient(top, #000000, #FF0000);
+            filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#000000', EndColorStr='#FF0000');           
+        }
+        .degradeborder {
+			border-image: linear-gradient(45deg, #000000 , #0077FF);
+			border-image-slice: 1;
+        }
 	</style>
 </head>
 
@@ -115,7 +139,7 @@
 									<p/>
 									<p/>
 									tamastigadu@gmail.com <br/>atualizado em 03/2023
-									<br/>versão 00.00.16
+									<br/>versão 00.00.17
 								</font>
 							</div>
 						</div>
@@ -138,14 +162,14 @@
 									<p/>
 									<p/>
 									<label id="lblEntrar" class="flutuante" style="border-radius:30px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
-										<button id="btnEntrar" class="btn btn-primary" style="width:200px; border-radius:30px;"> <i class="fa fa-user"></i> ENTRAR</button>
+										<button id="btnEntrar" class="btn btn-primary degradeblue" style="width:200px; border-radius:30px;"> <i class="fa fa-user"></i> ENTRAR</button>
 									</label>
 								<!-- /form -->
 							</div>
 
 							<div id="divCamposSair" style="display:none;">
 								<label id="lblSair" class="flutuante" style="display:'none'; border-radius:30px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
-									<button id="btnDesconectar" class="btn btn-danger" style="width:200px; border-radius:30px;">DESCONECTAR</button>
+									<button id="btnDesconectar" class="btn btn-danger degradered" style="width:200px; border-radius:30px;">DESCONECTAR</button>
 								</label>
 							</div>
 							<br/>
@@ -401,14 +425,14 @@
 			<tr>
 				<td>
 					<label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-						<button id="btnListaPerguntas" class="btn btn-primary"><i class="fa fa-list" style="font-size:35px;" title="Lista de fases e níveis"></i></button>
+						<button id="btnListaPerguntas" class="btn btn-primary degradeblue"><i class="fa fa-list" style="font-size:35px;" title="Lista de fases e níveis"></i></button>
 					</label>
 					<br/><font size=1 style="color:white;">Minhas conquistas</font>
 				</td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 				<td>
 					<label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-						<button id="btnEstatisticas" class="btn btn-primary"><i class="fa fa-signal" style="font-size:35px;" title="Estatísticas"></i></button>
+						<button id="btnEstatisticas" class="btn btn-primary degradeblue"><i class="fa fa-signal" style="font-size:35px;" title="Estatísticas"></i></button>
 					</label>
 					<br/><font size=1 style="color:white;">Estatísticas</font>
 				</td>
@@ -427,9 +451,13 @@
 			<!-- label id="btnNext" class="next btn-primary flutuante" title="Exibe a próxima pergunta">&nbsp;<i class="fa fa-chevron-right"></i></label -->
 			<table border=0 width="94%" align=center>
 				<tr>
+					<td>
+						<img id="imgLanguage" src="img/portugues.jpg" width="30px" style="ZZZposition:absolute; top:10px; left:17px; cursor:pointer; border-radius:50%;" title="Translate/Traduzir/Traducir"></img>
+					</td>
+				</tr>
+				<tr>
 					<td style="text-align:justify; width:1%; font-size:18px; font-family:Helvetica;">
-						<img id="imgLanguage" src="img/portugues.jpg" width="30px" style="position:absolute; top:10px; left:17px; cursor:pointer; border-radius:50%;" title="Translate/Traduzir/Traducir"></img>
-						<div id="mytextSim" style="border-color:gray; border-radius:10px; border-style:solid; border-width:4px;"></div>
+						<div id="mytextSim" class="degradeblack" style="border-color:white; border-radius:20px; border-style:solid; border-width:4px;"></div>
 					</td>
 				</tr>
 			</table>
@@ -442,17 +470,17 @@
 							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect1" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
 							<td>
 								<!--label style="width:100%; border-radius:30px; border-style:double; border-color:white; border-width:2px; color:white; background-color:#0077FF;"-->
-									<button id="btnCorrectAnswer1" class="btn btn-primary" onclick="next('1', document.getElementById('chkMycorrect1').value);" style="border-style:double; border-color:white; border-width:2px; color:white; background-color:black; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
+									<button id="btnCorrectAnswer1" class="btn btn-primary degradeblue" onclick="next('1', document.getElementById('chkMycorrect1').value);" style="border-style:solid; border-color:white; border-width:2px; color:white; background-color:black; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
 								<!--/label-->
 							</td>
 							<td width="1%">
-								<label class="flutuante" style="ZZZposition:relative; top:0px; left:-40px; border-radius:50%; border-style:double; border-color:transparent; border-width:0px; color:transparent; background-color:transparent;" title="Dica">
-									<button id="btnCorrectTip1" class="btn btn-primary" onclick="showTip('1');" style="border-radius:50%; font-size:15px; border-color:white; background-color:#0077FF; color:white;"><i class="fa fa-plus"></i></button>
+								<label class="flutuante" style="ZZZposition:relative; top:0px; left:-40px; border-radius:50%; border-style:double; border-width:0px; " title="Dica">
+									<button id="btnCorrectTip1" class="btn btn-primary degradeblue" onclick="showTip('1');" style="border-radius:50%; font-size:15px; border-color:white; color:white;"><i class="fa fa-plus"></i></button>
 								</label>
 							</td>
 						</tr>
-						<tr>
-							<td colspan=99> <label id="mytip1" style="color:gray; backgroundColor:black; display:none; text-align:justify;"></label> </td>
+						<tr id="trtip1" style="display:none;">
+							<td colspan=99> <label id="mytip1" style="color:gray; backgroundColor:black; display:'none'; text-align:justify;"></label> </td>
 						</tr>
 					</table>
 				</td></tr>
@@ -463,17 +491,17 @@
 							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect2" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
 							<td>
 								<!--label style="width:100%; border-radius:30px; border-style:double; border-color:white; border-width:2px; color:white; background-color:#0077FF;"-->
-									<button id="btnCorrectAnswer2" class="btn btn-primary" onclick="next('2', document.getElementById('chkMycorrect2').value);" style="border-style:double; border-color:white; border-width:2px; color:white; background-color:black; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
+									<button id="btnCorrectAnswer2" class="btn btn-primary degradeblue" onclick="next('2', document.getElementById('chkMycorrect2').value);" style="border-style:solid; border-color:white; border-width:2px; color:white; background-color:black; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
 								<!--/label-->
 							</td>
 							<td width="1%">
 								<label class="flutuante" style="ZZZposition:relative; top:0px; left:-40px; border-radius:50%; border-style:double; border-color:transparent; border-width:0px; color:transparent; background-color:transparent;" title="Dica">
-									<button id="btnCorrectTip2" class="btn btn-primary" onclick="showTip('2');" style="border-radius:50%; font-size:15px; border-color:white; background-color:#0077FF; color:white;"><i class="fa fa-plus"></i></button>
+									<button id="btnCorrectTip2" class="btn btn-primary degradeblue" onclick="showTip('2');" style="border-radius:50%; font-size:15px; border-color:white; background-color:#0077FF; color:white;"><i class="fa fa-plus"></i></button>
 								</label>
 							</td>
 						</tr>
-						<tr>
-							<td colspan=99> <label id="mytip2" style="color:gray; backgroundColor:black; display:none; text-align:justify;"></label> </td>
+						<tr id="trtip2" style="display:none;">
+							<td colspan=99> <label id="mytip2" style="color:gray; backgroundColor:black; display:'none'; text-align:justify;"></label> </td>
 						</tr>
 					</table>
 				</td></tr>
@@ -484,17 +512,17 @@
 							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect3" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
 							<td>
 								<!--label style="width:100%; border-radius:30px; border-style:double; border-color:white; border-width:2px; color:white; background-color:#0077FF;"-->
-									<button id="btnCorrectAnswer3" class="btn btn-primary" onclick="next('3', document.getElementById('chkMycorrect3').value);" style="border-style:double; border-color:white; border-width:2px; color:white; background-color:black; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
+									<button id="btnCorrectAnswer3" class="btn btn-primary degradeblue" onclick="next('3', document.getElementById('chkMycorrect3').value);" style="border-style:solid; border-color:white; border-width:2px; color:white; background-color:black; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
 								<!--/label-->
 							</td>
 							<td width="1%">
 								<label class="flutuante" style="ZZZposition:relative; top:0px; left:-40px; border-radius:50%; border-style:double; border-color:transparent; border-width:0px; color:transparent; background-color:transparent;" title="Dica">
-									<button id="btnCorrectTip3" class="btn btn-primary" onclick="showTip('3');" style="border-radius:50%; font-size:15px; border-color:white; background-color:#0077FF; color:white;"><i class="fa fa-plus"></i></button>
+									<button id="btnCorrectTip3" class="btn btn-primary degradeblue" onclick="showTip('3');" style="border-radius:50%; font-size:15px; border-color:white; background-color:#0077FF; color:white;"><i class="fa fa-plus"></i></button>
 								</label>
 							</td>
 						</tr>
-						<tr>
-							<td colspan=99> <label id="mytip3" style="color:gray; backgroundColor:black; display:none; text-align:justify;"></label> </td>
+						<tr id="trtip3" style="display:none;">
+							<td colspan=99> <label id="mytip3" style="color:gray; backgroundColor:black; display:'none'; text-align:justify;"></label> </td>
 						</tr>
 					</table>
 				</td></tr>
@@ -505,17 +533,17 @@
 							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect4" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
 							<td>
 								<!--label style="width:100%; border-radius:30px; border-style:double; border-color:white; border-width:2px; color:white; background-color:#0077FF;"-->
-									<button id="btnCorrectAnswer4" class="btn btn-primary" onclick="next('4', document.getElementById('chkMycorrect4').value);" style="border-style:double; border-color:white; border-width:2px; color:white; background-color:black; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
+									<button id="btnCorrectAnswer4" class="btn btn-primary degradeblue" onclick="next('4', document.getElementById('chkMycorrect4').value);" style="border-style:solid; border-color:white; border-width:2px; color:white; background-color:black; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
 								<!--/label-->
 							</td>
 							<td width="1%">
 								<label class="flutuante" style="ZZZposition:relative; top:0px; left:-40px; border-radius:50%; border-style:double; border-color:transparent; border-width:0px; color:transparent; background-color:transparent;" title="Dica">
-									<button id="btnCorrectTip4" class="btn btn-primary" onclick="showTip('4');" style="border-radius:50%; font-size:15px; border-color:white; background-color:#0077FF; color:white;"><i class="fa fa-plus"></i></button>
+									<button id="btnCorrectTip4" class="btn btn-primary degradeblue" onclick="showTip('4');" style="border-radius:50%; font-size:15px; border-color:white; background-color:#0077FF; color:white;"><i class="fa fa-plus"></i></button>
 								</label>
 							</td>
 						</tr>
-						<tr>
-							<td colspan=99> <label id="mytip4" style="color:gray; backgroundColor:black; display:none; text-align:justify;"></label> </td>
+						<tr id="trtip4" style="display:none;">
+							<td colspan=99> <label id="mytip4" style="color:gray; backgroundColor:black; display:'none'; text-align:justify;"></label> </td>
 						</tr>
 					</table>
 				</td></tr>
@@ -526,17 +554,17 @@
 							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect5" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
 							<td>
 								<!--label style="width:100%; border-radius:30px; border-style:double; border-color:white; border-width:2px; color:white; background-color:#0077FF;"-->
-									<button id="btnCorrectAnswer5" class="btn btn-primary" onclick="next('5', document.getElementById('chkMycorrect5').value);" style="border-style:double; border-color:white; border-width:2px; color:white; background-color:black; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
+									<button id="btnCorrectAnswer5" class="btn btn-primary degradeblue" onclick="next('5', document.getElementById('chkMycorrect5').value);" style="border-style:solid; border-color:white; border-width:2px; color:white; background-color:black; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
 								<!--/label-->
 							</td>
 							<td width="1%">
 								<label class="flutuante" style="ZZZposition:relative; top:0px; left:-40px; border-radius:50%; border-style:double; border-color:transparent; border-width:0px; color:transparent; background-color:transparent;" title="Dica">
-									<button id="btnCorrectTip5" class="btn btn-primary" onclick="showTip('5');" style="border-radius:50%; font-size:15px; border-color:white; background-color:#0077FF; color:white;"><i class="fa fa-plus"></i></button>
+									<button id="btnCorrectTip5" class="btn btn-primary degradeblue" onclick="showTip('5');" style="border-radius:50%; font-size:15px; border-color:white; background-color:#0077FF; color:white;"><i class="fa fa-plus"></i></button>
 								</label>
 							</td>
 						</tr>
-						<tr>
-							<td colspan=99> <label id="mytip5" style="color:gray; backgroundColor:black; display:none; text-align:justify;"></label> </td>
+						<tr id="trtip5" style="display:none;">
+							<td colspan=99> <label id="mytip5" style="color:gray; backgroundColor:black; display:'none'; text-align:justify;"></label> </td>
 						</tr>
 					</table>
 				</td></tr>
@@ -547,17 +575,17 @@
 							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect6" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
 							<td>
 								<!--label style="width:100%; border-radius:30px; border-style:double; border-color:white; border-width:2px; color:white; background-color:#0077FF;"-->
-									<button id="btnCorrectAnswer6" class="btn btn-primary" onclick="next('6', document.getElementById('chkMycorrect6').value);" style="border-style:double; border-color:white; border-width:2px; color:white; background-color:black; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
+									<button id="btnCorrectAnswer6" class="btn btn-primary degradeblue" onclick="next('6', document.getElementById('chkMycorrect6').value);" style="border-style:solid; border-color:white; border-width:2px; color:white; background-color:black; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
 								<!--/label-->
 							</td>
 							<td width="1%">
 								<label class="flutuante" style="ZZZposition:relative; top:0px; left:-40px; border-radius:50%; border-style:double; border-color:transparent; border-width:0px; color:transparent; background-color:transparent;" title="Dica">
-									<button id="btnCorrectTip6" class="btn btn-primary" onclick="showTip('6');" style="border-radius:50%; font-size:15px; border-color:white; background-color:#0077FF; color:white;"><i class="fa fa-plus"></i></button>
+									<button id="btnCorrectTip6" class="btn btn-primary degradeblue" onclick="showTip('6');" style="border-radius:50%; font-size:15px; border-color:white; background-color:#0077FF; color:white;"><i class="fa fa-plus"></i></button>
 								</label>
 							</td>
 						</tr>
-						<tr>
-							<td colspan=99> <label id="mytip6" style="color:gray; backgroundColor:black; display:none; text-align:justify;"></label> </td>
+						<tr id="trtip6" style="display:none;">
+							<td colspan=99> <label id="mytip6" style="color:gray; backgroundColor:black; display:'none'; text-align:justify;"></label> </td>
 						</tr>
 					</table>
 				</td></tr>
@@ -568,17 +596,17 @@
 							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect7" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
 							<td>
 								<!--label style="width:100%; border-radius:30px; border-style:double; border-color:white; border-width:2px; color:white; background-color:#0077FF;"-->
-									<button id="btnCorrectAnswer7" class="btn btn-primary" onclick="next('7', document.getElementById('chkMycorrect7').value);" style="border-style:double; border-color:white; border-width:2px; color:white; background-color:black; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
+									<button id="btnCorrectAnswer7" class="btn btn-primary degradeblue" onclick="next('7', document.getElementById('chkMycorrect7').value);" style="border-style:solid; border-color:white; border-width:2px; color:white; background-color:black; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
 								<!--/label-->
 							</td>
 							<td width="1%">
 								<label class="flutuante" style="position:relative; top:0px; left:-40px; border-radius:50%; border-style:double; border-color:transparent; border-width:0px; color:transparent; background-color:transparent;" title="Dica">
-									<button id="btnCorrectTip7" class="btn btn-primary" onclick="showTip('7');" style="border-radius:50%; font-size:15px; border-color:white; background-color:#0077FF; color:white;"><i class="fa fa-plus"></i></button>
+									<button id="btnCorrectTip7" class="btn btn-primary degradeblue" onclick="showTip('7');" style="border-radius:50%; font-size:15px; border-color:white; background-color:#0077FF; color:white;"><i class="fa fa-plus"></i></button>
 								</label>
 							</td>
 						</tr>
-						<tr>
-							<td colspan=99> <label id="mytip7" style="color:gray; backgroundColor:black; display:none; text-align:justify;"></label> </td>
+						<tr id="trtip7" style="display:none;">
+							<td colspan=99> <label id="mytip7" style="color:gray; backgroundColor:black; display:'none'; text-align:justify;"></label> </td>
 						</tr>
 					</table>
 				</td></tr>
@@ -589,17 +617,17 @@
 							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect8" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
 							<td>
 								<!--label style="width:100%; border-radius:30px; border-style:double; border-color:white; border-width:2px; color:white; background-color:#0077FF;"-->
-									<button id="btnCorrectAnswer8" class="btn btn-primary" onclick="next('8', document.getElementById('chkMycorrect8').value);" style="border-style:double; border-color:white; border-width:2px; color:white; background-color:black; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
+									<button id="btnCorrectAnswer8" class="btn btn-primary degradeblue" onclick="next('8', document.getElementById('chkMycorrect8').value);" style="border-style:solid; border-color:white; border-width:2px; color:white; background-color:black; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
 								<!--/label-->
 							</td>
 							<td width="1%">
 								<label class="flutuante" style="ZZZposition:relative; top:0px; left:-40px; border-radius:50%; border-style:double; border-color:transparent; border-width:0px; color:transparent; background-color:transparent;" title="Dica">
-									<button id="btnCorrectTip8" class="btn btn-primary" onclick="showTip('8');" style="border-radius:50%; font-size:15px; border-color:white; background-color:#0077FF; color:white;"><i class="fa fa-plus"></i></button>
+									<button id="btnCorrectTip8" class="btn btn-primary degradeblue" onclick="showTip('8');" style="border-radius:50%; font-size:15px; border-color:white; background-color:#0077FF; color:white;"><i class="fa fa-plus"></i></button>
 								</label>
 							</td>
 						</tr>
-						<tr>
-							<td colspan=99> <label id="mytip8" style="color:gray; backgroundColor:black; display:none; text-align:justify;"></label> </td>
+						<tr id="trtip8" style="display:none;">
+							<td colspan=99> <label id="mytip8" style="color:gray; backgroundColor:black; display:'none'; text-align:justify;"></label> </td>
 						</tr>
 					</table>
 				</td></tr>

@@ -851,7 +851,7 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 */
 			var lingua = getLanguageFile(document.getElementById('imgLanguage').src);
 			var texto = '<table><tr><td style="border-width:15px; border-color:transparent; text-align:justify;">';
-			texto += '&nbsp;&nbsp;&nbsp;&nbsp;' + student.mycode + '/' + totalperguntas + '. ' + buscaValorTag(student.mytext, lingua);
+			texto += student.mycode + '/' + totalperguntas + '. ' + buscaValorTag(student.mytext, lingua);
 			texto += '</td></tr></table>';
 			
 			document.getElementById('mytextSim').innerHTML = texto;
@@ -1098,7 +1098,7 @@ async function refreshTableNivel(mytema, mycategory, mycode, myorder, mygroup, m
 
 	htmlString = htmlString + '<label style="border-radius:10px; font-size:20px; background-color:white; color:green; position:absolute; top:-18px; left:0px; width:70px; border-width:0px; font-family:Helvetica; cursor:default;">Nível ' + varNivel + '</label>';
 
-	htmlString = htmlString + '<button id="btnNivel" class="btn btn-success" onclick="refreshTableQuestion(' + mytema + ', ' + mycategory + ', ' + myid + ', ' + mygroup + ', ' + mycode + '); showFormSim();" style="border-radius:30px; font-size:30px; font-family:Helvetica; font-weight:bold; border-width:0px; -webkit-text-stroke-width: 1px; ">';
+	htmlString = htmlString + '<button id="btnNivel" class="btn btn-success degradegreen" onclick="refreshTableQuestion(' + mytema + ', ' + mycategory + ', ' + myid + ', ' + mygroup + ', ' + mycode + '); showFormSim();" style="border-radius:30px; font-size:30px; font-family:Helvetica; font-weight:bold; border-width:0px; -webkit-text-stroke-width: 1px; ">';
 	htmlString = htmlString + '&nbsp;&nbsp;FASE ' + varFase + '&nbsp;&nbsp;';
 	htmlString = htmlString + '</button>';
 	htmlString = htmlString + '</label>';
@@ -3486,8 +3486,10 @@ async function updateAnswers(mytema, mycategory, myid, mygroup, mycode, answer1,
 function showTip(valorindice) {
 //alert('valorindice=' + valorindice);
 	if (document.getElementById('mytip' + valorindice).style.display == 'none') {
+		document.getElementById('trtip' + valorindice).style.display='';
 		document.getElementById('mytip' + valorindice).style.display='';
 	} else {
+		document.getElementById('trtip' + valorindice).style.display='none';
 		document.getElementById('mytip' + valorindice).style.display='none';
 	}
 }
