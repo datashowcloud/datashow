@@ -1,0 +1,29 @@
+        .degradeblack {
+            background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#444444));
+            background: -moz-linear-gradient(top, #000000, #444444);
+            filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#000000', EndColorStr='#444444');           
+        }
+        .degradeblue {
+            background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#0077FF));
+            background: -moz-linear-gradient(top, #000000, #0077FF);
+            filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#000000', EndColorStr='#0077FF');           
+        }
+        .degradegreen {
+            background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#00FF00));
+            background: -moz-linear-gradient(top, #000000, #00FF00);
+            filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#000000', EndColorStr='#00FF00');           
+        }
+        .degradered {
+            background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#FF0000));
+            background: -moz-linear-gradient(top, #000000, #FF0000);
+            filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#000000', EndColorStr='#FF0000');           
+        }
+        .degradeorange {
+            background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#FFA500));
+            background: -moz-linear-gradient(top, #000000, #FFA500);
+            filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#000000', EndColorStr='#FFA500');           
+        }
+        .degradeborder {
+			border-image: linear-gradient(45deg, #000000 , #0077FF);
+			border-image-slice: 1;
+        }
