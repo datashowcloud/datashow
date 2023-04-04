@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Sim</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!-- script src="scripts/jquery.js"></script -->
+    <!-- link rel="stylesheet" type="text/css" href="style/bootstrap.css" / -->
+    <link rel="stylesheet" href="style/myproject.css" />
+    <link rel="stylesheet" href="style/font-awesome.min.css" />
+    <link rel="stylesheet" href="style/degrade.css" />
+    <script src="scripts/jsstore.js"></script>
+    <script src="scripts/jsstore.worker.js"></script>
+    <script src="index.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <!-- link href="style/carousel.css" rel="stylesheet" -->
+	<style>
+	</style>
+</head>
+
+<body id="myBody" ZZZbackground="gallery/paper.jpeg">
+		
+			<div style="display:'none'; text-align:center; ">
+				<div id="divContinuar" style="display:none;">
+					<div><img src="img/trofeu.jpg" width="200px" style="border-radius:30px;"></img></div>
+					<div style="padding:9px 15px 9px 15px; cursor:default; font-size:18px; font-family:Helvetica; color:white;">Sua missão é conquistar a coroa!</div>
+					<br/><div class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
+						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=2&cat=1', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Começar</button>
+					</div>
+				</div>
+				<div id="divLoading" style="display:'none';">
+					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; font-family:Helvetica; color:white;">Aguarde...</div>
+					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:18px; font-family:Helvetica; color:white;">Estamos preparando tudo para você</div>
+					<video id="vdoLoaging" ZZZposter="img/fundonoite.jpg" width="320" height="240" autoplay muted loop>
+						<source src="video/loading.mp4" type="video/mp4">
+						<source src="video/loading.ogg" type="video/ogg">
+						Formato não suportado. Your browser does not support the video tag.
+					</video>
+				</div>
+
+				<label id="bSearch" style="display:none;">
+					<input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:200px; height:34px;">
+				</label>
+			</div>
+
+		<table id="tblGrid" style="width:98%" class="table table-hover ">
+			<tbody>
+				<div id="divbotoes" style="display:none; text-align:center;">
+					<button id="btntreino" class="botao flutuante" onclick="changeCategory('2');" style="background-color:gray; display:none;">Treino</button>
+					&nbsp;&nbsp;</td>
+					<button id="btndesafio" class="botao flutuante" onclick="changeCategory('4');" style="background-color:black; display:none;">Desafio</button>
+				</div>
+			</tbody>
+		</table>
+
+		<!-- form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post" -->
+		<!-- /form -->
+		
+		<div class="form-group" id="divFormSim" style="display:none;">
+			<font size=4.9 style=text-align:justify>
+				<table border=0 align=center width="100%">
+					<tr><td>
+						<button id="btnBackward" class="btn btn-danger" style="display:none;"> <i class="fa fa-remove"></i> </button>
+						<button id="btnPrevious" class="btn btn-default" style="display:none;"> <i class="fa fa-chevron-left"></i></button>
+						<button id="btnNext" class="btn btn-success" style="display:none;">Próximo <i class="fa fa-chevron-right"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-signal"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-pause"></i></button>
+						<button class="btn btn-warning" style="display:none;"><i class="fa fa-check"></i> Fim</button>
+					</td></tr>
+					<tr><td id="mytextSim" style="display:none; text-align:justify;">
+					</td></tr>
+					<tr><td id="mycorrect1Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect1answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect2Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect2answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect3Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect3answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect4Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect4answer"></div>
+					</td></tr>
+
+					<tr><td id="myincorrect1Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect1answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect2Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect2answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect3Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect3answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect4Sim" style="display:none; text-align:justify;">
+						<div id="myincorrecta4answer"></div>
+					</td></tr>
+					<tr><td>
+						<br/><input type="text" id="mygroupSim" value="" Zhidden="">
+						<br/><input type="text" id="mycodeSim" value="" Zhidden="">
+						<br/><input type="text" id="myorderSim" value="" Zhidden="">
+						<br/><input type="text" id="myidSim" value="" Zhidden="">
+					</td></tr>
+				</table>
+				<table id="tableFormSimDashboard" border=0 align=center width="60%" style="display:'none';">
+					<tr><td nowrap id="txtCalculo"></td></tr>
+					<tr><td nowrap><input type="text" id="txtIncorretas" value="Incorretas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:red;" readonly /></td></tr>
+					<tr><td nowrap><input type="text" id="txtCorretas" value="Corretas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:green;" readonly /></td></tr>
+					<tr><td nowrap><input type="text" id="txtNaoRespondidas" value="Não Respondidas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:blue;" readonly /></td></tr>
+					<tr><td nowrap><br/><input type="text" id="txtTotal" value="Total" class="btn btn-default" style="padding:9px 15px 9px 15px; display:'none';" hidden=""></td></tr>
+				</table>
+				<table id="tableLinkhelp" border=0 align=center style="display:'none';">
+					<tr><td id="help" style="display:none; text-align:justify;">
+						<div id="divlinkhelp"></div>
+					</td></tr>
+				</table>
+			</font>
+		</div>
+
+		<div class="form-group" id="divFormAddUpdate" style="display:none;">
+			<table border=0 align=center width="98%" style="display:none;"><tr><td>
+				<b>Formulário Editor de Perguntas</b>
+				<p/><p/>
+				<select id="mygroup" name="mygroup" style="height:35px; display:none;">
+					<!-- option value="00">Configurações</option -->
+					<option value="01">Nível 1.0</option>
+					<option value="02">Nível 1.0</option>
+					<option value="03">Nível 1.0</option>
+					<option value="04">Nível 1.0</option>
+					<option value="05">Nível 1.0</option>
+					<option value="06">Nível 1.0</option>
+					<option value="07">Nível 1.0</option>
+					<option value="08">Nível 1.0</option>
+					<option value="09">Nível 1.0</option>
+					<option value="10">Nível 1.0</option>
+					<option value="11">Nível 1.1</option>
+					<option value="12">Nível 1.2</option>
+					<option value="13">Nível 1.3</option>
+					<option value="14">Nível 1.4</option>
+					<option value="20">Nível 2.0</option>
+					<option value="21">Nível 2.1</option>
+					<option value="22">Nível 2.2</option>
+					<option value="23">Nível 2.3</option>
+					<option value="30">Nível 3.0</option>
+					<option value="31">Nível 3.1</option>
+					<option value="32">Nível 3.2</option>
+					<option value="33">Nível 3.3</option>
+					<option value="40">Nível 4.0</option>
+					<option value="41">Nível 4.1</option>
+					<option value="42">Nível 4.2</option>
+					<option value="43">Nível 4.3</option>
+					<option value="44">Nível 4.4</option>
+					<option value="45">Nível 4.5</option>
+					<option value="46">Nível 4.6</option>
+					<option value="50">Nível 5.0</option>
+
+				</select>
+				<select id="mycode" name="mycode" style="height:35px; display:none;"></select>
+				<select id="myorder" name="myorder" style="height:35px; display:none;"></select>
+				<p/>
+				<p/><textarea name="mytext" id="mytext" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui..."></textarea>
+				<p/><textarea name="mytext2" id="mytext2" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui em Inglês..."></textarea>
+				<p/><textarea name="mytext3" id="mytext3" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui em Espanhol..."></textarea>
+				<font style="color:green;">
+					Corretas:
+					<textarea name="myoption1" id="myoption1" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey1" id="myoptionkey1" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption2" id="myoption2" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey2" id="myoptionkey2" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption3" id="myoption3" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey3" id="myoptionkey3" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption4" id="myoption4" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey4" id="myoptionkey4" rows=1 placeholder="explicação..."></textarea>
+				</font>
+				
+				<font style="color:red; text-align:left;">
+					Incorretas:
+					<textarea name="myoption5" id="myoption5" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey5" id="myoptionkey5" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption6" id="myoption6" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey6" id="myoptionkey6" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption7" id="myoption7" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey7" id="myoptionkey7" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption8" id="myoption8" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey8" id="myoptionkey8" rows=1 placeholder="explicação..."></textarea>
+				</font>
+				<p/><p/>
+				<button id="btnSubmit" type="button" class="btn btn-primary" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-check"></i> Salvar</button>
+				<p/><p/>
+				<button id="btnCancel" type="button" class="btn btn-default" style="padding:9px 15px 9px 15px;margin-left:10px; width:110px;"> <i class="fa fa-times"></i> Não Salvar</button>
+			</td></tr></table>
+		</div>
+		
+		<div id="divcontent" style="display:none;">
+
+<!-- Configuração: 1 -->
+<br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
+<p>
+<portugues>FASE 1</portugues>
+<english>PHASE 1</english>
+<espanhol>FASE 1</espanhol>
+
+<p>
+<portugues>Definida como uma série de serviços de computação oferecidos por terceiros à Internet pública, os quais são disponibilizados a qualquer pessoa que queira utilizá-los ou comprá-los. Eles podem ser gratuitos ou vendidos sob demanda, permitindo que os clientes paguem apenas pelo seu consumo de ciclos de CPU, armazenamento ou largura de banda.</portugues>
+<english>Defined as a series of computing services offered by third parties to the public Internet, which are made available to anyone who wants to use or purchase them. They can be free or sold on demand, allowing customers to pay only for their consumption of CPU cycles, storage or bandwidth.</english>
+<espanhol>Definidos como una serie de servicios informáticos ofrecidos por terceros al público de Internet, que se ponen a disposición de todo aquel que quiera utilizarlos o adquirirlos. Pueden ser gratuitos o venderse bajo demanda, lo que permite a los clientes pagar solo por su consumo de ciclos de CPU, almacenamiento o ancho de banda.</espanhol>
+
+<ok>
+<portugues>Nuvem Pública</portugues>
+<english>Public Cloud</english>
+<espanhol>Nube Pública</espanhol>
+<tip>Definida como uma série de serviços de computação oferecidos por terceiros à Internet pública, os quais são disponibilizados a qualquer pessoa que queira utilizá-los ou comprá-los. Eles podem ser gratuitos ou vendidos sob demanda, permitindo que os clientes paguem apenas pelo seu consumo de ciclos de CPU, armazenamento ou largura de banda.
+<br/><a href="https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-a-public-cloud/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Nuvem Privada</portugues>
+<english>Private Cloud</english>
+<espanhol>Nube Privada</espanhol>
+<tip>Refere-se aos serviços de computação em nuvem oferecidos pela Internet ou por uma rede interna privada somente a usuários selecionados e não ao público geral.
+<br/><a href="https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-a-private-cloud/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Nuvem Híbrida</portugues>
+<english>Hybrid Cloud</english>
+<espanhol>Nube Híbrida</espanhol>
+<tip>Um ambiente de computação que combina um datacenter local (também chamado de nuvem privada) com uma nuvem pública, permitindo que dados e aplicativos sejam compartilhados entre eles.
+<br/><a href="https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-hybrid-cloud-computing/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Multi Nuvem</portugues>
+<english>Multi Cloud</english>
+<espanhol>Multi Nube</espanhol>
+<tip>Uma parte da sua empresa está no Microsoft Azure e outra parte está em outra nuvem, como: AWS, Google Cloud Platform, aplicativos SaaS baseados em nuvem e até ambientes de colocation.
+<br/><a href="https://azure.microsoft.com/pt-br/solutions/hybrid-cloud-app/#overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Refere-se aos serviços de computação em nuvem oferecidos pela Internet ou por uma rede interna privada somente a usuários selecionados e não ao público geral. Também chamada de nuvem interna ou corporativa.</portugues>
+<english>Refers to cloud computing services offered over the Internet or a private internal network to selected users only and not to the general public. Also called an internal or enterprise cloud.</english>
+<espanhol>Se refiere a los servicios de computación en la nube que se ofrecen a través de Internet o una red interna privada solo para usuarios seleccionados y no para el público en general. También llamada nube interna o empresarial.</espanhol>
+
+<ok>
+<portugues>Nuvem Privada</portugues>
+<english>Private Cloud</english>
+<espanhol>Nube Privada</espanhol>
+<tip>Refere-se aos serviços de computação em nuvem oferecidos pela Internet ou por uma rede interna privada somente a usuários selecionados e não ao público geral.
+<br/><a href="https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-a-private-cloud/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Nuvem Híbrida</portugues>
+<english>Hybrid Cloud</english>
+<espanhol>Nube Híbrida</espanhol>
+<tip>Um ambiente de computação que combina um datacenter local (também chamado de nuvem privada) com uma nuvem pública, permitindo que dados e aplicativos sejam compartilhados entre eles.
+<br/><a href="https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-hybrid-cloud-computing/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Nuvem Pública</portugues>
+<english>Public Cloud</english>
+<espanhol>Nube Pública</espanhol>
+<tip>Definida como uma série de serviços de computação oferecidos por terceiros à Internet pública, os quais são disponibilizados a qualquer pessoa que queira utilizá-los ou comprá-los. Eles podem ser gratuitos ou vendidos sob demanda, permitindo que os clientes paguem apenas pelo seu consumo de ciclos de CPU, armazenamento ou largura de banda.
+<br/><a href="https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-a-public-cloud/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Multi Nuvem</portugues>
+<english>Multi Cloud</english>
+<espanhol>Multi Nube</espanhol>
+<tip>Uma parte da sua empresa está no Microsoft Azure e outra parte está em outra nuvem, como: AWS, Google Cloud Platform, aplicativos SaaS baseados em nuvem e até ambientes de colocation.
+<br/><a href="https://azure.microsoft.com/pt-br/solutions/hybrid-cloud-app/#overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Ambiente de computação que combina um datacenter local (também chamado de nuvem privada) com uma nuvem pública, permitindo que dados e aplicativos sejam compartilhados entre eles. Algumas pessoas definem para incluir configurações de “multinuvem” em que uma organização usa mais de uma nuvem pública, além do datacenter local.</portugues>
+<english>Computing environment that combines an on-premises data center (also called a private cloud) with a public cloud, allowing data and applications to be shared between them. Some people define it to include “multi-cloud” setups where an organization uses more than one public cloud in addition to the on-premises datacenter.</english>
+<espanhol>Entorno informático que combina un centro de datos local (también llamado nube privada) con una nube pública, lo que permite compartir datos y aplicaciones entre ellos. Algunas personas lo definen para incluir configuraciones de "múltiples nubes" donde una organización usa más de una nube pública además del centro de datos local.</espanhol>
+
+<ok>
+<portugues>Nuvem Híbrida</portugues>
+<english>Hybrid Cloud</english>
+<espanhol>Nube Híbrida</espanhol>
+<tip>Um ambiente de computação que combina um datacenter local (também chamado de nuvem privada) com uma nuvem pública, permitindo que dados e aplicativos sejam compartilhados entre eles.
+<br/><a href="https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-hybrid-cloud-computing/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Nuvem Privada</portugues>
+<english>Private Cloud</english>
+<espanhol>Nube Privada</espanhol>
+<tip>Refere-se aos serviços de computação em nuvem oferecidos pela Internet ou por uma rede interna privada somente a usuários selecionados e não ao público geral.
+<br/><a href="https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-a-private-cloud/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Nuvem Pública</portugues>
+<english>Public Cloud</english>
+<espanhol>Nube Pública</espanhol>
+<tip>Definida como uma série de serviços de computação oferecidos por terceiros à Internet pública, os quais são disponibilizados a qualquer pessoa que queira utilizá-los ou comprá-los. Eles podem ser gratuitos ou vendidos sob demanda, permitindo que os clientes paguem apenas pelo seu consumo de ciclos de CPU, armazenamento ou largura de banda.
+<br/><a href="https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-a-public-cloud/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Multi Nuvem</portugues>
+<english>Multi Cloud</english>
+<espanhol>Multi Nube</espanhol>
+<tip>Uma parte da sua empresa está no Microsoft Azure e outra parte está em outra nuvem, como: AWS, Google Cloud Platform, aplicativos SaaS baseados em nuvem e até ambientes de colocation.
+<br/><a href="https://azure.microsoft.com/pt-br/solutions/hybrid-cloud-app/#overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Uma parte da sua empresa está no Microsoft Azure e outra parte está em outra nuvem, como: AWS, Google Cloud Platform, aplicativos SaaS baseados em nuvem e até ambientes de colocation.</portugues>
+<english>One part of your business is in Microsoft Azure and another part is in another cloud such as: AWS, Google Cloud Platform, cloud-based SaaS applications and even colocation environments.</english>
+<espanhol>Una parte de su negocio está en Microsoft Azure y otra parte está en otra nube como: AWS, Google Cloud Platform, aplicaciones SaaS basadas en la nube e incluso entornos de colocación.</espanhol>
+
+<ok>
+<portugues>Multi Nuvem</portugues>
+<english>Multi Cloud</english>
+<espanhol>Multi Nube</espanhol>
+<tip>Uma parte da sua empresa está no Microsoft Azure e outra parte está em outra nuvem, como: AWS, Google Cloud Platform, aplicativos SaaS baseados em nuvem e até ambientes de colocation.
+<br/><a href="https://azure.microsoft.com/pt-br/solutions/hybrid-cloud-app/#overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Nuvem Híbrida</portugues>
+<english>Hybrid Cloud</english>
+<espanhol>Nube Híbrida</espanhol>
+<tip>Um ambiente de computação que combina um datacenter local (também chamado de nuvem privada) com uma nuvem pública, permitindo que dados e aplicativos sejam compartilhados entre eles.
+<br/><a href="https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-hybrid-cloud-computing/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Nuvem Privada</portugues>
+<english>Private Cloud</english>
+<espanhol>Nube Privada</espanhol>
+<tip>Refere-se aos serviços de computação em nuvem oferecidos pela Internet ou por uma rede interna privadagray somente a usuários selecionados e não ao público geral.
+<br/><a href="https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-a-private-cloud/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Nuvem Pública</portugues>
+<english>Public Cloud</english>
+<espanhol>Nube Pública</espanhol>
+<tip>Definida como uma série de serviços de computação oferecidos por terceiros à Internet pública, os quais são disponibilizados a qualquer pessoa que queira utilizá-los ou comprá-los. Eles podem ser gratuitos ou vendidos sob demanda, permitindo que os clientes paguem apenas pelo seu consumo de ciclos de CPU, armazenamento ou largura de banda.
+<br/><a href="https://azure.microsoft.com/pt-br/resources/cloud-computing-dictionary/what-is-a-public-cloud/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+
+</textarea>
+
+		</div>
+
+    <link href="style/main.css " rel="stylesheet " type="text/css " />
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script>window.jQuery || document.write('<script src="scripts/jquery-3.6.3.js"><\/script>')</script>
+    <script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+
+<script type="text/javascript">
+	onLoadConfig();
+	
+	var quantidadeRegistrosP = '5'; // <p>
+	refreshTableResult(quantidadeRegistrosP);
+	function callback() {
+		setTimeout (function () {
+			refreshTableResult(quantidadeRegistrosP);
+			callback();
+		}, 1000);
+	}
+	callback();
+</script>

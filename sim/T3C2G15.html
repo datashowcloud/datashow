@@ -9,6 +9,7 @@
     <!-- link rel="stylesheet" type="text/css" href="style/bootstrap.css" / -->
     <link rel="stylesheet" href="style/myproject.css" />
     <link rel="stylesheet" href="style/font-awesome.min.css" />
+    <link rel="stylesheet" href="style/degrade.css" />
     <script src="scripts/jsstore.js"></script>
     <script src="scripts/jsstore.worker.js"></script>
     <script src="index.js"></script>
@@ -24,19 +25,28 @@
 		
 			<div style="display:'none'; text-align:center; ">
 				<div id="divContinuar" style="display:none;">
-					<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; font-family:Helvetica; color:white;">EXCELENTE!</div>
-					<div>
-						<img src="img/estrela.jpg" width="30px" style="border-radius:30px;">
-						<img src="img/estrela.jpg" width="30px" style="border-radius:30px;">
-						<img src="img/estrela.jpg" width="30px" style="border-radius:30px;">
-						<img src="img/estrela.jpg" width="30px" style="border-radius:30px;">
-						<img src="img/estrela.jpg" width="30px" style="border-radius:30px;">
-						<img src="img/estrela.jpg" width="30px" style="border-radius:30px;">
+					<br/>
+					<div align=center style="border-radius:2.18vw; margin-left:auto; margin-right:auto;">
+						<br/>
+						<label align=center style="width:290px; border-radius:10px; border-style:solid; border-color:gray; border-width:3px; color:#000000; background-color:transparent;">
+							<label style="border-radius:30px; position:relative; top:-25px; left:0px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+								<label id="btnFecharFormUser" class="btn btn-primary degradeorange" style="border-radius:30px; font-size:20px; cursor:default;"><b>RECOMPENSA</b></label>
+							</label>
+							<br/><label style="color:white; background-color:transparent;">
+							Escolha 1
+							</label>
+							<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; font-family:Helvetica; color:white;">
+								<img src="img/estrela.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/escudo.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/medalhacadeado.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/medalhacifrao.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/medalha1.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/medalha2.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/medalha3.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/medalha4.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+							</div>
+						</label>
 					</div>
-					<div><img src="img/medalha.jpg" width="200px" style="border-radius:30px;"></img></div>
-					<br/><label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
-					</label>
 				</div>
 				<div id="divLoading" style="display:'none';">
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Aguarde...</div>
@@ -132,6 +142,15 @@
 				<p/><p/>
 				<select id="mygroup" name="mygroup" style="height:35px; display:none;">
 					<!-- option value="00">Configurações</option -->
+					<option value="01">Nível 1.0</option>
+					<option value="02">Nível 1.0</option>
+					<option value="03">Nível 1.0</option>
+					<option value="04">Nível 1.0</option>
+					<option value="05">Nível 1.0</option>
+					<option value="06">Nível 1.0</option>
+					<option value="07">Nível 1.0</option>
+					<option value="08">Nível 1.0</option>
+					<option value="09">Nível 1.0</option>
 					<option value="10">Nível 1.0</option>
 					<option value="11">Nível 1.1</option>
 					<option value="12">Nível 1.2</option>
@@ -196,97 +215,96 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 15
+FASE 13
 
 <p>
-Qual serviço NÃO é válido para o serviço de migração de dados OCI?
-<english>Which service is NOT valid for OCI data Migration Service?</english>
+Você deseja editar uma instância de computação em estado de execução para oferecer suporte a alterações na carga de trabalho do aplicativo.
+<br/>Qual parâmetro NÃO é modificável?
+<english>You want to edit a compute instance in a running state to support changes in your application workload.
+<br/>Which parameter is NOT modifiable?</english>
 
 <ok>
-NAT Gateway
+Primary Private IP address
 <key></key>
 
-Data Transfer Disk
+Amount of Memory
 <key></key>
 
-Data Transfer Appliance
+Number of OCPUs
 <key></key>
 
-Storage Gateway
-<key></key>
-
-<p>
-Um usuário deseja implantar recursos do Oracle Cloud Infrastructure (OCI) pela primeira vez em uma região diferente da região inicial.
-O que o usuário deve fazer para implantar os recursos em uma nova região?
-<english>A user wants to deploy Oracle Cloud Infrastructure (OCI) resources for first time into a different region other than home region.
-What should the user to do so as to deploy the resources to a new region?</english>
-
-<ok>
-Subscribe to the new region other than home region
-<key></key>
-
-Delete all resources from home region first
-<key></key>
-
-Contact Oracle Customer Support
-<key></key>
-
-Purshase a license for the new region
+Fault Domain
 <key></key>
 
 <p>
-Qual banco de dados OCI oferece maior desempenho para cargas de trabalho OLTP?
-<english>Which OCI database provides highest performance for OLTP workloads?</english>
+Qual NÃO é uma opção de forma de computação válida no serviço de computação Oracle Cloud Infrastructure (OCI)?
+<english>Which is NOT a valid compute shape option within the Oracle Cloud Infrastructure (OCI) compute service?</english>
 
 <ok>
-OCI Exadata DB
+Container Instance.
 <key></key>
 
-OCI Virtual Machine Instance
+Bare Metal.
 <key></key>
 
-Object Storage (Standard)
+Dedicated Virtual Machine Host.
 <key></key>
 
-OCI Autonomous Data Warehouse
+Virtual Machine.
 <key></key>
 
 <p>
-Qual serviço OCI move com segurança Petabytes de dados do local para OCI?
-<english>Which OCI service securely moves Petabytes of data from on-premises to OCI?</english>
+Qual é uma sintaxe válida para uma Política de Gerenciamento de Identidade e Acesso (IAM) da Oracle Cloud Infrastructure (OCI)?
+<english>Which is a valid syntax for an Oracle Cloud Infrastructure (OCI) Identity and Access Management (IAM) Policy?</english>
 
 <ok>
-Data Transfer Appliance
+Allow group <group_name> to <verb> <resource-type> in tenancy
 <key></key>
 
-Dynamic Routing Gateway
+Deny group <group_name> to <verb> <resource-type> in tenancy
 <key></key>
 
-NAT Gateway
+Deny user <user_name> to <verb> <resource-type> in tenancy
 <key></key>
 
-Data Guard
+Allow user <user_name> to <verb> <resource-type> in tenancy
 <key></key>
 
 <p>
-Quais são os três recursos padrão na ferramenta de análise de custos Oracle Cloud Infrastructure (OCI)?
-<br/>Selecione 3.
-<english>Which default three features in Oracle Cloud Infrastructure (OCI) cost analysis tool?
-<br/>Select 3.</english>
+Qual declaração descreve corretamente o Oracle Cloud Manageability SLA?
+<english>Which statement correctly describes Oracle Cloud Manageability SLA?</english>
 
 <ok>
-Filter Costs by Tags.
+Ability to manage, monitor, and modify OCI resources.
 <key></key>
+
+Access to the console is guaranteed.
+<key></key>
+
+Services are in operation with uptime and connectivity requirements.
+<key></key>
+
+100% availability to manage resources.
+<key></key>
+
+Services consistently perform as expected.
+<key></key>
+
+<p>
+Qual recurso permite que você pesquise, adquira e comece a usar software em sua locação Oracle Cloud Infrastructure (OCI)?
+<english>Which capability enables you to search, purchase, and start using software in your Oracle Cloud Infrastructure (OCI) tenancy?</english>
 
 <ok>
-Filter Costs by Compartments.
+Marketplace
 <key></key>
 
-<ok>
-Filter Costs by Data.
+Resource Manager
 <key></key>
 
-Filter Costs by Applications.
+Container Registry
+<key></key>
+
+OS Management
 <key></key>
 
 <p>

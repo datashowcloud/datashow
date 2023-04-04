@@ -29,7 +29,7 @@ window.onload = function () {
 	getConfigGeneral();	
 	initLinkHelp();
 	document.getElementById('myBody').style.background = GLOBAL_background;
-	loadCombobox('mygroup', '0', '100', 'Teste');
+	loadCombobox('mygroup', '00', '100', 'Teste');
 	loadCombobox('mycode', '0', '100', 'Número');
 	loadCombobox('myorder', '0', '100', 'Ordem');
 	initForm();
@@ -176,7 +176,7 @@ function registerEvents() {
 			var mycategory = params.get('cat');
 			var mycode = document.getElementById('mycode').value;
 			var myorder = document.getElementById('myorder').value;
-			var mygroup = document.getElementById('mygroup').value;
+			var mygroup = formatMygroup(document.getElementById('mygroup').value);
 			var mytext = document.getElementById('mytext').value.trim();
 			var mytext2 = document.getElementById('mytext2').value.trim();
 			var mytext3 = document.getElementById('mytext3').value.trim();
@@ -203,7 +203,7 @@ function registerEvents() {
 		var row = $(this).parents().eq(1);
         var child = row.children();
 		var myid = row.attr('itemid');
-		var mygroup = child.eq(0).text();
+		var mygroup = formatMygroup(child.eq(0).text());
 		var mycode = child.eq(1).text();
         restartFase(mytema, mycategory, myid, mygroup, mycode);
     });
@@ -223,7 +223,7 @@ function registerEvents() {
 		var params = new URLSearchParams(window.location.search);
 		var mytema = params.get('tem');
 		var mycategory = params.get('cat');
-		var mygroup = document.getElementById('mygroup').value;
+		var mygroup = formatMygroup(document.getElementById('mygroup').value);
 		var mycode = document.getElementById('mycode').value;
 		var myorder = document.getElementById('myorder').value;
 		var mytext = document.getElementById('mytext').value.trim();
@@ -243,7 +243,7 @@ function registerEvents() {
 		var params = new URLSearchParams(window.location.search);
 		var mytema = params.get('tem');
 		var mycategory = params.get('cat');
-		var mygroup = selectMygroup.value.trim();
+		var mygroup = formatMygroup(selectMygroup.value.trim());
 		var mycode = '';
 		var mytext = '';
 		var mytext2 = '';
@@ -286,7 +286,7 @@ function registerEvents() {
 				var mycategory = params.get('cat');
 				var mycode = document.getElementById('mycode').value;
 				var myorder = document.getElementById('myorder').value;
-				var mygroup = document.getElementById('mygroup').value;
+				var mygroup = formatMygroup(document.getElementById('mygroup').value);
 				var mytext = document.getElementById('mytext').value.trim();
 				var mytext2 = document.getElementById('mytext2').value.trim();
 				var mytext3 = document.getElementById('mytext3').value.trim();
@@ -361,7 +361,7 @@ function registerEvents() {
 		var mytema = params.get('tem');
 		var mycategory = params.get('cat');
 		var studentId = $('form').attr('data-student-id');
-		var mygroup = document.getElementById('mygroupSim').value;
+		var mygroup = formatMygroup(document.getElementById('mygroupSim').value);
 		var mycode = parseInt(document.getElementById('mycodeSim').value) - 1;
 		if (studentId) {
 			updateStudent(mytema, mycategory, studentId, mygroup, mycode);
@@ -381,7 +381,7 @@ function registerEvents() {
 		var row = $(this).parents().eq(1);
         var child = row.children();
 		var id = row.attr('itemid');
-		var mygroup = child.eq(0).text();
+		var mygroup = formatMygroup(child.eq(0).text());
 		var mycode = child.eq(1).text();
 		getFromTable(id, mygroup, mycode);
 		showFormAddUpdate();
@@ -393,14 +393,14 @@ function registerEvents() {
 		var row = $(this).parents().eq(1);
         var child = row.children();
 		var myid = row.attr('itemid');
-		var mygroup = child.eq(0).text();
+		var mygroup = formatMygroup(child.eq(0).text());
 		var mycode = child.eq(1).text();
 		var result = confirm('Vou limpar e organizar as respostas dessa fase, ok?');
 		if (result) {
 			restartFase(mytema, mycategory, myid, mygroup, mycode);
 			savePoints(mytema, mycategory, myid, mygroup, mycode);
 			var id = row.attr('itemid');
-			var mygroup = child.eq(0).text();
+			var mygroup = formatMygroup(child.eq(0).text());
 			refreshTableQuestion(mytema, mycategory, id, mygroup, '1');
 			showFormSim();
 		}
@@ -421,9 +421,9 @@ function registerEvents() {
 			var row = $(this).parents().eq(1);
 			var child = row.children();
 			var myid = row.attr('itemid');
-			var mygroup = child.eq(0).text();
+			var mygroup = formatMygroup(child.eq(0).text());
 			var mycode = child.eq(1).text();
-//alert('mytema='+mytema + ' mycategory='+mycategory + ' mygroup='+mygroup + ' mycode='+mycode + ' myid='+myid);
+console.log('tblEstatisticas tbody deletefase mytema='+mytema + ' mycategory='+mycategory + ' mygroup='+mygroup + ' mycode='+mycode + ' myid='+myid);
 			deletefase(mytema, mycategory, mygroup, mycode, myid);
 			setTimeout(() => { var DataShow_Config = window.open("T"+mytema + "C"+mycategory+ "G"+mygroup + ".html?sim=" + mygroup + "&tem=" + mytema + "&cat=" + mycategory, "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no"); }, 3000); // Executa após 1 segundo para esperar o processo
 		}
@@ -435,7 +435,7 @@ function registerEvents() {
 		var row = $(this).parents().eq(1);
 		var child = row.children();
 		var id = row.attr('itemid');
-		var mygroup = child.eq(0).text();
+		var mygroup = formatMygroup(child.eq(0).text());
 		var mycode = child.eq(1).text();
 		refreshTableQuestion(mytema, mycategory, id, mygroup, '1');
 		showFormSim();
@@ -473,7 +473,7 @@ function registerEvents() {
 		var mytema = params.get('tem');
 		var mycategory = params.get('cat');
 		var myid = document.getElementById('myidSim').value;
-		var mygroup = document.getElementById('mygroupSim').value;
+		var mygroup = formatMygroup(document.getElementById('mygroupSim').value);
 		var mycode = parseInt(document.getElementById('mycodeSim').value) - 1;
 		if (mycode > 0) {
 			refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode);
@@ -484,7 +484,7 @@ function registerEvents() {
 		var mytema = params.get('tem');
 		var mycategory = params.get('cat');
 		var myid = document.getElementById('myidSim').value;
-		var mygroup = document.getElementById('mygroupSim').value;
+		var mygroup = formatMygroup(document.getElementById('mygroupSim').value);
 		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
 		refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode);
 		savePoints(mytema, mycategory, myid, mygroup, mycode);
@@ -499,7 +499,7 @@ function registerEvents() {
 		var mytema = params.get('tem');
 		var mycategory = params.get('cat');
 		var myid = document.getElementById('myidSim').value;
-		var mygroup = document.getElementById('mygroupSim').value;
+		var mygroup = formatMygroup(document.getElementById('mygroupSim').value);
 		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
 		setTimeout(() => { savePoints(mytema, mycategory, myid, mygroup, mycode) }, 1000); // Executa após alguns segundos para esperar o término do processo
 		setTimeout(() => { changeFaseNivel(mytema, mycategory, myid, mygroup, mycode) }, 1000); // Executa após alguns segundos para esperar o término do processo
@@ -571,14 +571,13 @@ function registerEvents() {
 			var mytema = params.get('tem');
 			var mycategory = params.get('cat');
 			var myid = document.getElementById('myidSim').value;
-			var mygroup = document.getElementById('mygroupSim').value;
+			var mygroup = formatMygroup(document.getElementById('mygroupSim').value);
 			var mycode = parseInt(document.getElementById('mycodeSim').value) + 0;
 			refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode);
 		} catch (ex) {
 			alert('imgLanguage ' + ex.message)
 		}
 	})
-
 	$('#chkMycorrect1').click(function () {
 /*		var index = '1';
 		setBackgroundColor(index, CONST_MEDIUM_SEA_GREEN);
@@ -635,7 +634,7 @@ function registerEvents() {
 */
 		salvaResposta('8');
 	})
-	$('#btnListaPerguntas').click(function () {
+	$('#btnMinhasConquistas').click(function () {
 		var params = new URLSearchParams(window.location.search);
 		var mytema = params.get('tem');
 		var mycategory = params.get('cat');
@@ -651,10 +650,13 @@ function registerEvents() {
 		showFormMenu();
 	})
 	$('#btnEntrar').click(function () {
+		var params = new URLSearchParams(window.location.search);
+		var mytema = params.get('tem');
+		var mycategory = params.get('cat');
 		var id = document.getElementById('txtId').value;
 		var pass = document.getElementById('txtPass').value;
-		var key = localStorage.getItem('key');
-		login(id, pass, key);
+console.log('btnEntrar id='+id);
+		loginUser(id, pass, mycategory, CONST_NIVEL_LIBERADO_SEM_USUARIO_CONECTADO);
 		//alert('Clique em "Go back".');
 		//document.getElementById("formAdd").submit();
 	})
@@ -804,9 +806,18 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 */
 }
 
+function formatMygroup(mygroup) {
+	var varMygroup = '00' + mygroup;
+	varMygroup = varMygroup.substring(varMygroup.length-2, varMygroup.length);
+console.log('varMygroup='+varMygroup);
+	return varMygroup;
+}
+
 //This function select table play
 async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
     try {
+		mygroup = formatMygroup(mygroup);
+		
 		var totalperguntas = await jsstoreCon.count({
 			from: 'Student'
 				, where: { mytema: mytema + ''
@@ -851,7 +862,7 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 */
 			var lingua = getLanguageFile(document.getElementById('imgLanguage').src);
 			var texto = '<table><tr><td style="border-width:10px; border-color:transparent; text-align:justify;">';
-			texto += student.mycode + '/' + totalperguntas + '. ' + buscaValorTag(student.mytext, lingua);
+			texto += '<b>' + student.mycode + '/' + totalperguntas + '.</b> ' + buscaValorTag(student.mytext, lingua);
 			texto += '</td></tr></table>';
 			
 			document.getElementById('mytextSim').innerHTML = texto;
@@ -922,7 +933,7 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 		})
 		
     } catch (ex) {
-        alert('refreshTableQuestion ' + ex.message)
+        console.log('refreshTableQuestion ' + ex.message)
     }	
 }
 
@@ -1018,15 +1029,6 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 //			varNivelLinha = varNivelLinha + '<tr><td colspan=99><font color="gray" style="font-size:15px;"><i class=\"fa fa-lock\"></i> NÍVEL ' + item + '</font></td></tr>';
 //		}
 
-/*		var varMenuNivelFase = '';
-		varMenuNivelFase = varMenuNivelFase + '<table>';
-		varMenuNivelFase = varMenuNivelFase + '<tr>';
-		varMenuNivelFase = varMenuNivelFase + '<td nowrap colspan=3 align=right> <button class="botao flutuante" onclick="changeCategory(\'2\');"><i class="fa fa-book"></i> Treino</button></td>';
-		varMenuNivelFase = varMenuNivelFase + '<td nowrap colspan=2> <button class="botao flutuante" onclick="changeCategory(\'4\');"><i class="fa fa-road"></i> Desafio</button></td>';
-		varMenuNivelFase = varMenuNivelFase + '</tr>';
-		varMenuNivelFase = varMenuNivelFase + '</table>';
-		htmlString = varMenuNivelFase + varNivelLinha + htmlString;
-*/
 //		htmlString = varNivelLinha + htmlString;
 		
 		if (htmlString.length > 0) {
@@ -1049,8 +1051,10 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 		}
 		
 		var botaoFechar = '';
-		botaoFechar += '<table><tr><td>';
-		botaoFechar += '<button class="btn btn-danger" style="border-radius:50%; border-style:double; border-color:white; border-width:2px;" onclick="showFormApresentacao();"><i class="fa fa-remove"></i></button>';
+		botaoFechar += '<table><tr><td colspan=99>';
+		botaoFechar += '<img src="img/fechar.jpg" class="flutuante" onclick="showFormApresentacao();" width="35px" style="position:absolute; top:2px; left:90%; cursor:pointer; border-radius:50%;" title="Close/Fechar/Cerrar"></img>';
+		//botaoFechar += '<button class="btn btn-danger" style="border-radius:50%; border-style:double; border-color:white; border-width:2px; position:relative; left:45%;" onclick="showFormApresentacao();">';
+		botaoFechar += '<i class="fa fa-remove"></i></button>';
 		botaoFechar += '</td></tr></table>';
 		htmlString = botaoFechar + htmlString;
 		
@@ -1082,7 +1086,7 @@ async function refreshTableNivel(mytema, mycategory, mycode, myorder, mygroup, m
 		varFase = student.mygroup;
 		mygroup = student.mygroup;
 	})
-	
+
 	htmlString = '';
 	htmlString = htmlString + '<tr>';
 	htmlString = htmlString + '<td>';
@@ -1096,7 +1100,7 @@ async function refreshTableNivel(mytema, mycategory, mycode, myorder, mygroup, m
 	htmlString = htmlString + '<i class="fa fa-play avatarflutuante" style="color:#00FF7F; font-size:15px;"></i>';
 	htmlString = htmlString + '<label class="flutuante" style="border-radius:30px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">';
 
-	htmlString = htmlString + '<label style="border-radius:10px; font-size:20px; background-color:white; color:green; position:absolute; top:-18px; left:0px; width:70px; border-width:0px; font-family:Helvetica; cursor:default;">Nível ' + varNivel + '</label>';
+	htmlString = htmlString + '<label style="border-radius:10px; font-size:20px; background-color:white; color:green; position:absolute; top:-18px; left:30%; width:70px; border-width:0px; font-family:Helvetica; cursor:default;">Nível ' + varNivel + '</label>';
 
 	htmlString = htmlString + '<button id="btnNivel" class="btn btn-success degradegreen" onclick="refreshTableQuestion(' + mytema + ', ' + mycategory + ', ' + myid + ', ' + mygroup + ', ' + mycode + '); showFormSim();" style="border-radius:30px; font-size:30px; font-family:Helvetica; font-weight:bold; border-width:0px; -webkit-text-stroke-width: 1px; ">';
 	htmlString = htmlString + '&nbsp;&nbsp;FASE ' + varFase + '&nbsp;&nbsp;';
@@ -1132,7 +1136,7 @@ function next(index, resposta) {
 		var mytema = params.get('tem');
 		var mycategory = params.get('cat');
 		var myid = document.getElementById('myidSim').value;
-		var mygroup = document.getElementById('mygroupSim').value;
+		var mygroup = formatMygroup(document.getElementById('mygroupSim').value);
 		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
 		salvaResposta(index);
 		refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode);
@@ -1155,7 +1159,7 @@ async function limpaRespostasSalvas() {
 	var params = new URLSearchParams(window.location.search);
 	var mytema = params.get('tem');
 	var mycategory = params.get('cat');
-	var mygroup = document.getElementById('mygroupSim').value;
+	var mygroup = formatMygroup(document.getElementById('mygroupSim').value);
 	if (mytema.length>0 && mycategory.length>0 && mygroup.length>0) {
 		var noOfDataUpdated = await jsstoreCon.update({
 			in: 'Student',
@@ -1181,37 +1185,6 @@ function limpaCkeckbox() {
 		document.getElementById('chkMycorrect' + index).value = '';
 		document.getElementById('mytip' + index).style.display='none';
 	}
-}
-
-function validaLicenca(mycategory, nivelLiberadoSemUsuarioConectado) {
-	var licenca = CONST_LICENCA_PADRAO;
-	var id = localStorage.getItem('id');
-	var key = localStorage.getItem('key');
-	var valido = false;
-
-	if (parseInt(mycategory) > nivelLiberadoSemUsuarioConectado) {
-		if (id.toLowerCase() == 'a' && key == licenca) {
-			valido = true;
-		} else if (id.toLowerCase() == 'admin' && key == licenca) {
-			valido = true;
-		} else if (id.toLowerCase() == 'enio' && key == licenca) {
-			valido = true;
-		} else if (id.toLowerCase() == 'santiago' && key == licenca) {
-			valido = true;
-		} else if (id.toLowerCase() == 'eni' && key == licenca) {
-			valido = true;
-		} else if (id.toLowerCase() == 'gi' && key == licenca) {
-			valido = true;
-		} else if (id.toLowerCase() == 'rodrigo' && key == licenca) {
-			valido = true;
-		} else if (id.toLowerCase() == 'cicero' && key == licenca) {
-			valido = true;
-		}
-	} else {
-		valido = true;
-	}
-	
-	return valido;
 }
 
 //A língua é o nome do arquivo.
@@ -1244,33 +1217,48 @@ async function initForm() {
 		refreshTableNivel(mytema, mycategory, '0', '', '', '');
 		showFormApresentacao();
 	}
+	//valida usuário e licença para autorizar estudo acima do Nível liberado.
 	var valido = validaLicenca(mycategory, CONST_NIVEL_LIBERADO_SEM_USUARIO_CONECTADO);
+console.log('initForm validaLicenca '+valido);
 	if (valido == true) {
-		if (localStorage.getItem('id').length > 0 && localStorage.getItem('key').length > 0) {
+		if (localStorage.getItem('id').length > 0) {
+console.log('localStorage.getItem(id)='+localStorage.getItem('id'));
 			var users = await jsstoreCon.select({
 				from: 'User'
 					, where: { id: localStorage.getItem('id') + ''
-					, key: localStorage.getItem('key') + ''
 				}
 			});
 			users.forEach(function (user) {
-//alert('localStorage.getItem(id)='+localStorage.getItem('id') + ' localStorage.getItem(key)='+localStorage.getItem('key') + ' user.id='+user.id + ' user.key='+user.key + ' user.pass='+user.pass);
-				login(user.id, user.key, user.pass);
+console.log('forEach user.id='+user.id + ' user.pass='+user.pass);
 				conectaUsuarioValido(user.id);
+				//loginUser(user.id, user.pass, mycategory, CONST_NIVEL_LIBERADO_SEM_USUARIO_CONECTADO);
 			})
-
 		}
 	}
 }
 
-async function login(id, pass, key) {
-	if (validalogin(id, pass, key) == true) {
-		key = '202303010000';
-		localStorage.setItem('id', id);
-		localStorage.setItem('key', '202303010000');
+async function loginUser(id, pass, mycategory, nivelLiberado) {
+	var key = '';
+	var users = await jsstoreCon.select({
+		from: 'User'
+			, where: { id: id + ''
+		}
+	});
+	users.forEach(function (user) {
+		key = user.key;
+	})
+	if (key.length <= 0) {
+		key = CONST_LICENCA_PADRAO;
+	}
+
+	if (validalogin(id, pass, key, mycategory, nivelLiberado) == true) {
 		conectaUsuarioValido(id);
+console.log('gravaUsuario id=' + id + ' pass='+pass + ' key='+key);
 		gravaUsuario(id, pass, key);
-		//showFormApresentacao();
+		localStorage.setItem('id', id);
+		localStorage.setItem('key', key);
+console.log('loginUser id='+id + ' pass='+pass + ' key='+key + ' mycategory='+mycategory + ' nivelLiberado='+nivelLiberado);
+		return true;
 	} else {
 		if (document.getElementById('txtPass') != null) {
 			document.getElementById('txtPass').value='';
@@ -1281,7 +1269,74 @@ async function login(id, pass, key) {
 			document.getElementById('txtId').placeholder='e-mail incorreto';
 			document.getElementById('txtId').focus();
 		}
+		return false;
 	}
+}
+
+function validalogin(id, pass, key, mycategory, nivelLiberado) {
+    try {
+
+	/*	var key = '';
+		var users = await jsstoreCon.select({
+			from: 'User'
+				, where: { id: id + ''
+				, key: key + ''
+			}
+		});
+		users.forEach(function (user) {
+			key = user.key;
+		})
+		if (key.length <= 0) {
+			key = localStorage.getItem('key');
+		}
+	*/
+		if (id.toLowerCase() == 'a' && pass == 'a') {
+			return true;
+		} else if (id.toLowerCase() == 'santiagorezende@gmail.com' && pass == 'santiago') {
+			return true;
+		} else if (id.toLowerCase() == 'eni' && pass == 'eni') {
+			return true;
+		} else if (id.toLowerCase() == 'rodrigo' && pass == 'rodrigo') {
+			return true;
+		} else if (id.toLowerCase() == 'cicero' && pass == 'cicero') {
+			return true;
+		} else {
+			return false;
+		}
+    } catch (ex) {
+        console.log(ex.message + ' error Id='+id + '\n Pass='+pass + '\n key='+key);
+		return false;
+    }
+}
+
+function validaLicenca(id, pass, key, mycategory, nivelLiberado) {
+    try {
+		var id = localStorage.getItem('id');
+		var key = localStorage.getItem('key');
+		var valido = false;
+
+		if (parseInt(mycategory) > nivelLiberado) {
+			if (id.toLowerCase() == 'a' && key == CONST_LICENCA_PADRAO) {
+				valido = true;
+			} else if (id.toLowerCase() == 'santiagorezende@gmail.com' && key == CONST_LICENCA_PADRAO) {
+				valido = true;
+			} else if (id.toLowerCase() == 'eni' && key == CONST_LICENCA_PADRAO) {
+				valido = true;
+			} else if (id.toLowerCase() == 'rodrigo' && key == CONST_LICENCA_PADRAO) {
+				valido = true;
+			} else if (id.toLowerCase() == 'cicero' && key == CONST_LICENCA_PADRAO) {
+				valido = true;
+			}
+		} else {
+			valido = true;
+		}
+		
+		return valido;
+
+    } catch (ex) {
+        console.log(ex.message + ' error Id='+id + '\n Pass='+pass + '\n key='+key);
+		return valido;
+    }
 }
 
 function conectaUsuarioValido(id) {
@@ -1319,30 +1374,6 @@ async function gravaUsuario(id, pass, key) {
     } catch (ex) {
         console.log(ex.message + ' error Id='+id + '\n Pass='+pass + '\n key='+key);
     }
-
-}
-
-function validalogin(id, pass, key) {
-//alert('id='+id);
-	if (id.toLowerCase() == 'a' && pass == 'a') {
-		return true;
-	} else if (id.toLowerCase() == 'admin' && pass == 'admin') {
-		return true;
-	} else if (id.toLowerCase() == 'enio' && pass == 'enio') {
-		return true;
-	} else if (id.toLowerCase() == 'santiagorezende@gmail.com' && pass == 'santiago') {
-		return true;
-	} else if (id.toLowerCase() == 'eni' && pass == 'eni') {
-		return true;
-	} else if (id.toLowerCase() == 'gi' && pass == 'gi') {
-		return true;
-	} else if (id.toLowerCase() == 'rodrigo' && pass == 'rodrigo') {
-		return true;
-	} else if (id.toLowerCase() == 'cicero' && pass == 'cicero') {
-		return true;
-	} else {
-		return false;
-	}
 }
 
 function desconectar() {
@@ -1365,7 +1396,7 @@ function showTableQuestions() {
 	var row = $(this).parents().eq(1);
 	var child = row.children();
 	var id = row.attr('itemid');
-	var mygroup = child.eq(0).text();
+	var mygroup = formatMygroup(child.eq(0).text());
 	var mycode = child.eq(1).text();
 	refreshTableQuestion(mytema, mycategory, id, mygroup, '1');
 	showFormSim();
@@ -1428,7 +1459,7 @@ function exitQuestions() {
 	var mytema = params.get('tem');
 	var mycategory = params.get('cat');
 	var myid = document.getElementById('myidSim').value;
-	var mygroup = document.getElementById('mygroupSim').value;
+	var mygroup = formatMygroup(document.getElementById('mygroupSim').value);
 	var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
 	savePoints(mytema, mycategory, myid, mygroup, mycode);
 //	document.getElementById('navBottom').style.display='none';
@@ -1476,6 +1507,7 @@ async function loadNextLevel(temapaginaindex) {
 	var params = new URLSearchParams(window.location.search);
 	var mytema = params.get('tem');
 	var mycategory = params.get('cat');
+	var mygroup = '01';
 	
 	if (temapaginaindex.length>0) {
 		mytema = temapaginaindex;
@@ -1488,11 +1520,12 @@ async function loadNextLevel(temapaginaindex) {
 		from: 'Student'
 			, where: { mytema: mytema + ''
 			, mycategory: mycategory + ''
-			, mygroup: '1'
+			, mygroup: mygroup
 		  }
 	});
 	if (students == '') {
-		var DataShow_Config = window.open("T"+mytema + "C"+mycategory+ "G1" + ".html?sim=1" + "&tem=" + mytema + "&cat=" + mycategory, "_self");
+console.log('loadNextLevel mytema='+mytema + ' mycategory='+mycategory + ' mygroup='+mygroup);
+		var DataShow_Config = window.open("T"+mytema + "C"+mycategory+ "G" + mygroup + ".html?sim=1" + "&tem=" + mytema + "&cat=" + mycategory, "_self");
 	} else {
 		var DataShow_Config = window.open("index.html?tem=" + mytema + "&cat=" + mycategory, "_self");
 	}
@@ -1517,7 +1550,7 @@ function getStudentFromForm(mytema, mycategory, studentId, mygroup, mycode) {
 		mytema: $('#mytema').val(),
 		mycategory: $('#mycategory').val(),
         mycode: $('#mycode').val(),
-		mygroup: $('#mygroup').val(),
+		mygroup: formatMygroup($('#mygroup').val()),
         mytext: $('#mytext').val(),
         mytext2: $('#mytext2').val(),
         mytext3: $('#mytext3').val(),
@@ -1718,6 +1751,7 @@ async function changeFaseNivel(mytema, mycategory, myid, mygroup, mycode) {
 				}
 			});
 			if (students == '') {
+console.log('changeFaseNivel mytema='+mytema + ' mycategory='+mycategory + ' mygroup='+mygroup + ' myNextCategory='+myNextCategory);
 				var DataShow_Config = window.open("T"+mytema + "C"+mycategory+ "G"+myNextCategory + ".html?sim=" + myNextCategory + "&tem=" + mytema + "&cat=" + mycategory, "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
 			} else {
 				refreshTableData(mytema, mycategory, '0', '', '', '');
@@ -1736,6 +1770,7 @@ function getProximaFaseNivel(id, mygroup, mycode) {
 		mygroup = String(parseInt(mygroup) + 10); //próximo nível
 		mygroup = mygroup.substring(0, 1) + '0';
 	}
+	mygroup = formatMygroup(mygroup);
 	return mygroup;
 }
 
@@ -1911,7 +1946,7 @@ async function getFromTable(id, mygroup, mycode) {
 		$('form').attr('data-student-id', student.id);
 		$('#mytema').val(student.mytema);
 		$('#mycategory').val(student.mycategory);
-		$('#mygroup').val(student.mygroup);
+		$('#mygroup').val(formatMygroup(student.mygroup));
 		$('#mycode').val(student.mycode);
 		$('#myorder').val(student.myorder);
 		$('#mytext').val(student.mytext);
@@ -1981,7 +2016,7 @@ async function deleteTable() {
 			var mycategory = params.get('cat');
 			var mycode = document.getElementById('mycode').value;
 			var myorder = document.getElementById('myorder').value;
-			var mygroup = document.getElementById('mygroup').value;
+			var mygroup = formatMygroup(document.getElementById('mygroup').value);
 			var mytext = document.getElementById('mytext').value.trim();
 			var mytext2 = document.getElementById('mytext2').value.trim();
 			var mytext3 = document.getElementById('mytext3').value.trim();
@@ -2009,7 +2044,7 @@ async function dropdb() {
 					var mycategory = params.get('cat');
 					var mycode = document.getElementById('mycode').value;
 					var myorder = document.getElementById('myorder').value;
-					var mygroup = document.getElementById('mygroup').value;
+					var mygroup = formatMygroup(document.getElementById('mygroup').value);
 					var mytext = document.getElementById('mytext').value.trim();
 					var mytext2 = document.getElementById('mytext2').value.trim();
 					var mytext3 = document.getElementById('mytext3').value.trim();
@@ -2088,7 +2123,7 @@ async function searchComplete() {
 		var mycategory = params.get('cat');
 		var mycode = document.getElementById('mycode').value;
 		var myorder = document.getElementById('myorder').value;
-		var mygroup = document.getElementById('mygroup').value;
+		var mygroup = formatMygroup(document.getElementById('mygroup').value);
 		var mytext = document.getElementById('mytext').value.trim();
 		var mytext2 = document.getElementById('mytext2').value.trim();
 		var mytext3 = document.getElementById('mytext3').value.trim();
@@ -2140,7 +2175,7 @@ async function searchSimples() {
 		var mycategory = params.get('cat');
 		var mycode = document.getElementById('mycode').value;
 		var myorder = document.getElementById('myorder').value;
-		var mygroup = document.getElementById('mygroup').value;
+		var mygroup = formatMygroup(document.getElementById('mygroup').value);
 		var mytext = document.getElementById('mytext').value.trim();
 		var mytext2 = document.getElementById('mytext2').value.trim();
 		var mytext3 = document.getElementById('mytext3').value.trim();
@@ -2155,7 +2190,7 @@ function onLoadConfig() {
 		var params = new URLSearchParams(window.location.search);
 		var mytema = params.get('tem');
 		var mycategory = params.get('cat');
-		loadCombobox('mygroup', '0', '200', 'Teste');
+		loadCombobox('mygroup', '00', '200', 'Teste');
 		loadCombobox('mycode', '0', '200', 'Número');
 		loadCombobox('myorder', '0', '200', 'Ordem');
 		confirmImport(mytema, mycategory, 'contents1', '0');
@@ -2327,7 +2362,8 @@ function getLanguage(language, mytext) {
 function setStudentFromImport(mytema, mycategory, mygroup, mycode, myorder, mytext1, mytext2, mytext3, myoption1, myoptionkey1, myoption2, myoptionkey2, myoption3, myoptionkey3, myoption4, myoptionkey4, myoption5, myoptionkey5, myoption6, myoptionkey6, myoption7, myoptionkey7, myoption8, myoptionkey8) {
 //	document.getElementById('mytema').value = mytema;
 //	document.getElementById('mycategory').value = mycategory;
-	document.getElementById('mygroup').value = mygroup;
+	
+	document.getElementById('mygroup').value = formatMygroup(mygroup);
 	document.getElementById('mycode').value = mycode;
 	document.getElementById('myorder').value = myorder;
 	document.getElementById('mytext').value = mytext1;
@@ -2368,7 +2404,7 @@ async function salvarRegistro(mytema, mycategory, mygroup, mycode, myorder, valo
 async function confirmImport(mytema, mycategory, contents, group) {
 	try {
 		var params = new URLSearchParams(window.location.search);
-		var mygroup = params.get('sim');
+		var mygroup = formatMygroup(params.get('sim'));
 		var mytext = document.getElementById(contents).value;
 		var mycode = 0;
 		var myorder = 1;
@@ -2415,7 +2451,7 @@ async function confirmImportManual(mytema, mycategory, mycode, myorder, mygroup,
 		var mycategory = params.get('cat');
 		var mycode = document.getElementById('mycode').value;
 		var myorder = document.getElementById('myorder').value;
-		var mygroup = document.getElementById('mygroup').value;
+		var mygroup = formatMygroup(document.getElementById('mygroup').value);
 		var mytext = document.getElementById('mytext').value.trim();
 		var mytext2 = document.getElementById('mytext2').value.trim();
 		var mytext3 = document.getElementById('mytext3').value.trim();
@@ -2457,8 +2493,8 @@ async function selectCountAll() {
 }
 
 async function addStudentImportConfig(mytema, mycategory, studentId, mygroup, mycode) {
-    var student = getStudentFromForm(mytema, mycategory, studentId, mygroup, mycode);
-    try {
+	var student = getStudentFromForm(mytema, mycategory, studentId, mygroup, mycode);
+	try {
 		var noOfDataInserted = await jsstoreCon.insert({
 			into: 'Student',
 			values: [student]
@@ -2487,7 +2523,7 @@ async function addStudentImport(mytema, mycategory, studentId, mygroup, mycode) 
 			var mycategory = params.get('cat');
 			var mycode = document.getElementById('mycode').value;
 			var myorder = document.getElementById('myorder').value;
-			var mygroup = document.getElementById('mygroup').value;
+			var mygroup = formatMygroup(document.getElementById('mygroup').value);
 			var mytext = document.getElementById('mytext').value.trim();
 			var mytext2 = document.getElementById('mytext2').value.trim();
 			var mytext3 = document.getElementById('mytext3').value.trim();
@@ -2605,7 +2641,7 @@ async function updateStudent(mytema, mycategory, studentId, mygroup, mycode) {
 		setTimeout(() => { updateStudentPlayOrder(mytema, mycategory, mygroup) }, 1000); // Executa após 5 segundos para esperar o processo de update/insert terminar
 		showGridAndHideForms();
         $('form').attr('data-student-id', null);
-		var mygroup = document.getElementById('mygroup').value;
+		var mygroup = formatMygroup(document.getElementById('mygroup').value);
 		var mycode = '';
 		var mytext = '';
 		var mytext2 = '';
@@ -2632,7 +2668,7 @@ async function deleteStudent(id) {
 		var mycategory = params.get('cat');
 		var mycode = document.getElementById('mycode').value;
 		var myorder = document.getElementById('myorder').value;
-		var mygroup = document.getElementById('mygroup').value;
+		var mygroup = formatMygroup(document.getElementById('mygroup').value);
 		var mytext = document.getElementById('mytext').value.trim();
 		var mytext2 = document.getElementById('mytext2').value.trim();
 		var mytext3 = document.getElementById('mytext3').value.trim();
@@ -2678,16 +2714,15 @@ function getStudentFromForm(mytema, mycategory, studentId, mygroup, mycode) {
 	mycodeFormated = '000' + mycode;
 	mycodeFormated = mycodeFormated.substring(mycodeFormated.length-3, mycodeFormated.length);
 
-	var mygroup = document.getElementById('mygroupSim').value;
+//	var mygroup = formatMygroup(document.getElementById('mygroupSim').value);
 	
-	setTimeout(() => { updateStudentPlayOrder(mytema, mycategory, $('#mygroup').val()) }, 1000); // Executa após 5 segundos para esperar o processo de insert terminar
 	var student = {
         id: Number(studentId),
         mytema: mytema, //$('#mytema').val(),
         mycategory: mycategory, //$('#mycategory').val(),
         mycode: mycode,
 //		myorder: myorderFormated,
-		mygroup: $('#mygroup').val(),
+		mygroup: mygroup,
         mytext: $('#mytext').val(),
         mytext2: $('#mytext2').val(),
         mytext3: $('#mytext3').val(),
@@ -2721,7 +2756,10 @@ function getStudentFromForm(mytema, mycategory, studentId, mygroup, mycode) {
 		myincorretas: '0',
 		mycorretas: '0'
     };
-    return student;
+
+	setTimeout(() => { updateStudentPlayOrder(mytema, mycategory, $('#mygroup').val()) }, 1000); // Executa após 5 segundos para esperar o processo de insert terminar
+    
+	return student;
 }
 
 async function salvarLinkHelp(mytema, mycategory, mygroup, mycode, myorder, answerincorrect1, answerincorrect2, answerincorrect3, answerincorrect4, save, keylink, hreflink, boldlink, textlink, textlink2, textlink3) {
@@ -3450,7 +3488,7 @@ async function showCorrect(index, myid, mygroup, mycode) {
 	var mytema = params.get('tem');
 	var mycategory = params.get('cat');
 	var myid = $('form').attr('data-student-id');
-	var mygroup = document.getElementById('mygroupSim').value;
+	var mygroup = formatMygroup(document.getElementById('mygroupSim').value);
 	var mycode = parseInt(document.getElementById('mycodeSim').value);
 	updateAnswers(mytema, mycategory, myid, mygroup, mycode, answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8);
 }
@@ -3499,20 +3537,11 @@ function escondeBotao() {
 		document.getElementById('btnFim').style.display='none';	
 		document.getElementById('fonFim').style.display='none';	
 	}
-/*	if (document.getElementById('imgLanguage') != null) {
-		document.getElementById('imgLanguage').style.display = 'none';
-		document.getElementById('fonLanguage').style.display = 'none';
-	}
-*/
 }
 
-/* function exibeBotao() {
-	if (document.getElementById('imgLanguage') != null) {
-		document.getElementById('imgLanguage').style.display = '';
-		document.getElementById('fonLanguage').style.display = '';
-	}
+ function escondeMenu() {
+	$('#btnUser').click();
 }
-*/
 
 function showFormUser() {
 	$('#divFormMenu').hide();
@@ -3599,7 +3628,7 @@ function showFormAddUpdate() {
 }
 
 function showGridAndHideForms() {
-	$('#menutopodireito').show();
+	$('#menutopodireito').hide();
     $('#tblEstatisticas').show();
     $('#divbotoes').show();
     $('#divFormAddUpdate').hide();
@@ -3722,7 +3751,7 @@ function openImagemFundo(filename) {
 
 function refreshFormData(student) {
     $('form').attr('data-student-id', student.id);
-    $('#mygroup').val(student.mygroup);
+    $('#mygroup').val(formatMygroup(student.mygroup));
     $('#mycode').val(student.mycode);
     $('#myorder').val(student.myorder);
     $('#mytext').val(student.mytext);
@@ -3907,7 +3936,7 @@ function moveCursor(mycode, col, evento, index) {
 			var mycategory = params.get('cat');
 			var mycode = document.getElementById('mycode').value;
 			var myorder = document.getElementById('myorder').value;
-			var mygroup = document.getElementById('mygroup').value;
+			var mygroup = formatMygroup(document.getElementById('mygroup').value);
 			var mytext = document.getElementById('mytext').value.trim();
 			var mytext2 = document.getElementById('mytext2').value.trim();
 			var mytext3 = document.getElementById('mytext3').value.trim();
@@ -3962,7 +3991,7 @@ function datashow(index, col, code) {
 			var mycategory = params.get('cat');
 			var mycode = document.getElementById('mycode').value;
 			var myorder = document.getElementById('myorder').value;
-			var mygroup = document.getElementById('mygroup').value;
+			var mygroup = formatMygroup(document.getElementById('mygroup').value);
 			var mytext = document.getElementById('mytext').value.trim();
 			var mytext2 = document.getElementById('mytext2').value.trim();
 			var mytext3 = document.getElementById('mytext3').value.trim();
@@ -4020,7 +4049,7 @@ function chooseChapter(content) {
 		var mycategory = params.get('cat');
 		var mycode = document.getElementById('mycode').value;
 		var myorder = document.getElementById('myorder').value;
-		var mygroup = document.getElementById('mygroup').value;
+		var mygroup = formatMygroup(document.getElementById('mygroup').value);
 		var mytext = document.getElementById('mytext').value.trim();
 		var mytext2 = document.getElementById('mytext2').value.trim();
 		var mytext3 = document.getElementById('mytext3').value.trim();

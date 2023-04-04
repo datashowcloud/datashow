@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Sim</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!-- script src="scripts/jquery.js"></script -->
+    <!-- link rel="stylesheet" type="text/css" href="style/bootstrap.css" / -->
+    <link rel="stylesheet" href="style/myproject.css" />
+    <link rel="stylesheet" href="style/font-awesome.min.css" />
+    <link rel="stylesheet" href="style/degrade.css" />
+    <script src="scripts/jsstore.js"></script>
+    <script src="scripts/jsstore.worker.js"></script>
+    <script src="index.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <!-- link href="style/carousel.css" rel="stylesheet" -->
+	<style>
+	</style>
+</head>
+
+<body id="myBody" ZZZbackground="gallery/paper.jpeg">
+		
+			<div style="display:'none'; text-align:center; ">
+				<div id="divContinuar" style="display:none;">
+					<br/>
+					<label align=center style="width:290px; border-radius:10px; border-style:solid; border-color:gray; border-width:3px; color:#000000; background-color:transparent;">
+						<label style="border-radius:30px; position:relative; top:-25px; left:0px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+							<label id="btnFecharFormUser" class="btn btn-primary degradeorange" style="border-radius:30px; font-size:20px; cursor:default;"><b>RECOMPENSA</b></label>
+						</label>
+						<br/><label style="color:white; background-color:transparent;">
+						Escolha 1
+						</label>
+						<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; font-family:Helvetica; color:white;">
+							<img src="img/estrela.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=2&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+							<img src="img/escudo.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=2&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+							<img src="img/medalhacadeado.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=2&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+							<img src="img/medalhacifrao.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=2&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+							<img src="img/medalha1.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=2&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+							<img src="img/medalha2.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=2&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+							<img src="img/medalha3.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=2&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+							<img src="img/medalha4.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=2&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+						</div>
+				</div>
+				<div id="divLoading" style="display:'none';">
+					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Aguarde...</div>
+					<br/><div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">Estamos preparando tudo para você</div>
+					<video id="vdoLoaging" ZZZposter="img/fundonoite.jpg" width="320" height="240" autoplay muted loop>
+						<source src="video/loading.mp4" type="video/mp4">
+						<source src="video/loading.ogg" type="video/ogg">
+						Formato não suportado. Your browser does not support the video tag.
+					</video>
+				</div>
+				
+				<label id="bSearch" style="display:none;">
+					<input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:200px; height:34px;">
+				</label>
+			</div>
+
+		<table id="tblGrid" style="width:98%" class="table table-hover ">
+			<tbody>
+				<div id="divbotoes" style="display:none; text-align:center;">
+					<button id="btntreino" class="botao flutuante" onclick="changeCategory('2');" style="background-color:gray; display:none;">Treino</button>
+					&nbsp;&nbsp;</td>
+					<button id="btndesafio" class="botao flutuante" onclick="changeCategory('4');" style="background-color:black; display:none;">Desafio</button>
+				</div>
+			</tbody>
+		</table>
+
+		<!-- form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post" -->
+		<!-- /form -->
+		
+		<div class="form-group" id="divFormSim" style="display:none;">
+			<font size=4.9 style=text-align:justify>
+				<table border=0 align=center width="100%">
+					<tr><td>
+						<button id="btnBackward" class="btn btn-danger" style="display:none;"> <i class="fa fa-remove"></i> </button>
+						<button id="btnPrevious" class="btn btn-default" style="display:none;"> <i class="fa fa-chevron-left"></i></button>
+						<button id="btnNext" class="btn btn-success" style="display:none;">Próximo <i class="fa fa-chevron-right"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-signal"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-pause"></i></button>
+						<button class="btn btn-warning" style="display:none;"><i class="fa fa-check"></i> Fim</button>
+					</td></tr>
+					<tr><td id="mytextSim" style="display:none; text-align:justify;">
+					</td></tr>
+					<tr><td id="mycorrect1Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect1answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect2Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect2answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect3Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect3answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect4Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect4answer"></div>
+					</td></tr>
+
+					<tr><td id="myincorrect1Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect1answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect2Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect2answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect3Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect3answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect4Sim" style="display:none; text-align:justify;">
+						<div id="myincorrecta4answer"></div>
+					</td></tr>
+					<tr><td>
+						<br/><input type="text" id="mygroupSim" value="" Zhidden="">
+						<br/><input type="text" id="mycodeSim" value="" Zhidden="">
+						<br/><input type="text" id="myorderSim" value="" Zhidden="">
+						<br/><input type="text" id="myidSim" value="" Zhidden="">
+					</td></tr>
+				</table>
+				<table id="tableFormSimDashboard" border=0 align=center width="60%" style="display:'none';">
+					<tr><td nowrap id="txtCalculo"></td></tr>
+					<tr><td nowrap><input type="text" id="txtIncorretas" value="Incorretas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:red;" readonly /></td></tr>
+					<tr><td nowrap><input type="text" id="txtCorretas" value="Corretas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:green;" readonly /></td></tr>
+					<tr><td nowrap><input type="text" id="txtNaoRespondidas" value="Não Respondidas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:blue;" readonly /></td></tr>
+					<tr><td nowrap><br/><input type="text" id="txtTotal" value="Total" class="btn btn-default" style="padding:9px 15px 9px 15px; display:'none';" hidden=""></td></tr>
+				</table>
+				<table id="tableLinkhelp" border=0 align=center style="display:'none';">
+					<tr><td id="help" style="display:none; text-align:justify;">
+						<div id="divlinkhelp"></div>
+					</td></tr>
+				</table>
+			</font>
+		</div>
+
+		<div class="form-group" id="divFormAddUpdate" style="display:none;">
+			<table border=0 align=center width="98%" style="display:none;"><tr><td>
+				<b>Formulário Editor de Perguntas</b>
+				<p/><p/>
+				<select id="mygroup" name="mygroup" style="height:35px; display:none;">
+					<!-- option value="00">Configurações</option -->
+					<option value="01">Nível 1.0</option>
+					<option value="02">Nível 1.0</option>
+					<option value="03">Nível 1.0</option>
+					<option value="04">Nível 1.0</option>
+					<option value="05">Nível 1.0</option>
+					<option value="06">Nível 1.0</option>
+					<option value="07">Nível 1.0</option>
+					<option value="08">Nível 1.0</option>
+					<option value="09">Nível 1.0</option>
+					<option value="10">Nível 1.0</option>
+					<option value="11">Nível 1.1</option>
+					<option value="12">Nível 1.2</option>
+					<option value="13">Nível 1.3</option>
+					<option value="14">Nível 1.4</option>
+					<option value="20">Nível 2.0</option>
+					<option value="21">Nível 2.1</option>
+					<option value="22">Nível 2.2</option>
+					<option value="23">Nível 2.3</option>
+					<option value="30">Nível 3.0</option>
+					<option value="31">Nível 3.1</option>
+					<option value="32">Nível 3.2</option>
+					<option value="33">Nível 3.3</option>
+					<option value="40">Nível 4.0</option>
+					<option value="41">Nível 4.1</option>
+					<option value="42">Nível 4.2</option>
+					<option value="43">Nível 4.3</option>
+					<option value="44">Nível 4.4</option>
+					<option value="45">Nível 4.5</option>
+					<option value="46">Nível 4.6</option>
+					<option value="50">Nível 5.0</option>
+
+				</select>
+				<select id="mycode" name="mycode" style="height:35px; display:none;"></select>
+				<select id="myorder" name="myorder" style="height:35px; display:none;"></select>
+				<p/>
+				<p/><textarea name="mytext" id="mytext" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui..."></textarea>
+				<p/><textarea name="mytext2" id="mytext2" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui em Inglês..."></textarea>
+				<p/><textarea name="mytext3" id="mytext3" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui em Espanhol..."></textarea>
+				<font style="color:green;">
+					Corretas:
+					<textarea name="myoption1" id="myoption1" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey1" id="myoptionkey1" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption2" id="myoption2" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey2" id="myoptionkey2" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption3" id="myoption3" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey3" id="myoptionkey3" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption4" id="myoption4" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey4" id="myoptionkey4" rows=1 placeholder="explicação..."></textarea>
+				</font>
+				
+				<font style="color:red; text-align:left;">
+					Incorretas:
+					<textarea name="myoption5" id="myoption5" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey5" id="myoptionkey5" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption6" id="myoption6" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey6" id="myoptionkey6" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption7" id="myoption7" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey7" id="myoptionkey7" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption8" id="myoption8" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey8" id="myoptionkey8" rows=1 placeholder="explicação..."></textarea>
+				</font>
+				<p/><p/>
+				<button id="btnSubmit" type="button" class="btn btn-primary" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-check"></i> Salvar</button>
+				<p/><p/>
+				<button id="btnCancel" type="button" class="btn btn-default" style="padding:9px 15px 9px 15px;margin-left:10px; width:110px;"> <i class="fa fa-times"></i> Não Salvar</button>
+			</td></tr></table>
+		</div>
+		
+		<div id="divcontent" style="display:none;">
+
+<!-- Configuração: 1 -->
+<br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
+<p>
+<portugues>FASE 3</portugues>
+<english>PHASE 3</english>
+<espanhol>FASE 3</espanhol>
+
+<p>
+<portugues>Qual dos seguintes serviços se enquadra na categoria de computação sem servidor?</portugues>
+<english>Which of the following service falls under the category of serverless computing?</english>
+<espanhol>¿Cuál de los siguientes servicios entra en la categoría de informática sin servidor?</espanhol>
+
+<ok>
+<portugues>Funções do Azure.</portugues>
+<english>Azure Functions.</english>
+<espanhol>Funciones de Azure.</espanhol>
+<tip>Funções do Azure é computação sem servidor. A infraestrutura de computação é gerenciada pelo próprio serviço.
+<br/><a href="https://azure.microsoft.com/en-us/overview/serverless-computing/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Máquinas virtuais do Azure.</portugues>
+<english>Azure virtual machines.</english>
+<espanhol>Máquinas virtuales Azure.</espanhol>
+<tip>Máquinas virtuais do Azure é uma infraestrutura como serviço.
+<br/><a href="https://azure.microsoft.com/en-us/overview/serverless-computing/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Banco de dados SQL do Azure – pool elástico.</portugues>
+<english>Azure SQL database – Elastic pool.</english>
+<espanhol>Base de datos Azure SQL: grupo elástico.</espanhol>
+<tip>Banco de dados SQL do Azure – pool elástico é uma plataforma como serviço.
+<br/><a href="https://azure.microsoft.com/en-us/overview/serverless-computing/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Conjuntos de disponibilidade.</portugues>
+<english>Availability sets.</english>
+<espanhol>Conjuntos de disponibilidad.</espanhol>
+<tip>Conjuntos de disponibilidade é para gerenciar a disponibilidade de máquinas virtuais.
+<br/><a href="https://azure.microsoft.com/en-us/overview/serverless-computing/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Você deve especificar se a seguinte afirmação é VERDADEIRA ou FALSA. "O Regulamento Geral de Proteção de Dados (GDPR) aplica-se apenas a empresas que oferecem bens ou serviços a indivíduos na UE".</portugues>
+<english>You have to specify whether the following statement is TRUE or FALSE. "General Data Protection Regulation (GDPR) only applies to companies that offer goods or services to individuals in the EU".</english>
+<espanhol>Debe especificar si la siguiente afirmación es VERDADERA o FALSA. "El Reglamento General de Protección de Datos (GDPR) solo se aplica a las empresas que ofrecen bienes o servicios a personas en la UE".</espanhol>
+
+<ok>
+<portugues>Falso</portugues>
+<english>False</english>
+<espanhol>Falso</espanhol>
+<tip>Aplica a residentes da UE que podem não estar na UE. Aplica-se a países como os EUA que optaram por adotar o GDPR.
+<br/><a href="https://docs.microsoft.com/en-us/microsoft-365/compliance/gdpr?view=o365-worldwide" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Verdadeiro</portugues>
+<english>True</english>
+<espanhol>Verdadero</espanhol>
+<tip>Não se aplica nessa resposta.
+<br/><a href="https://docs.microsoft.com/en-us/microsoft-365/compliance/gdpr?view=o365-worldwide" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Qual das opções a seguir é usada para agrupar assinaturas?</portugues>
+<english>Which of the following is used to group subscriptions together?</english>
+<espanhol>¿Cuál de las siguientes opciones se utiliza para agrupar suscripciones?</espanhol>
+
+<ok>
+<portugues>Grupos de Gestão</portugues>
+<english>Management Groups</english>
+<espanhol>Grupos de Gestión</espanhol>
+<tip>Grupos de gerenciamento são para organizar assinaturas juntas. Podem gerenciar o acesso e a conformidade das assinaturas que fazem parte do grupo de gerenciamento.
+<br/><a href="https://docs.microsoft.com/en-us/azure/governance/management-groups/overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Grupos de recursos</portugues>
+<english>Resource groups</english>
+<espanhol>Grupos de recursos</espanhol>
+<tip>Grupos de recursos é para agrupamento de recursos lógicos.
+<br/><a href="https://docs.microsoft.com/en-us/azure/governance/management-groups/overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Pares de regiões</portugues>
+<english>Region pairs</english>
+<espanhol>pares de regiones</espanhol>
+<tip>Pares de regiões é para emparelhamento de regiões através do Azure.
+<br/><a href="https://docs.microsoft.com/en-us/azure/governance/management-groups/overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Conjuntos de disponibilidade</portugues>
+<english>Availability sets</english>
+<espanhol>Conjuntos de disponibilidad</espanhol>
+<tip>Conjuntos de disponibilidade é para gerenciamento da disponibilidade de máquinas virtuais.
+<br/><a href="https://docs.microsoft.com/en-us/azure/governance/management-groups/overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Sua empresa está planejando hospedar recursos usando os serviços do Azure. Você tem que decidir sobre o serviço certo para usar para o requisito desejado. Qual dos seguintes você usaria para o seguinte requisito? "Fornecer a capacidade de hospedar uma rede privada no Azure".</portugues>
+<english>Your company is planning on hosting resources using Azure services. You have to decide on the right service to use for the desired requirement. Which of the following would you use for the following requirement? "Provide the ability to host a private network in Azure".</english>
+<espanhol>Su empresa planea hospedar recursos mediante los servicios de Azure. Tienes que decidir sobre el servicio adecuado para utilizar para su requisito deseado. ¿Cuál de los siguientes usaría para el siguiente requisito? "Proporcionar la capacidad de alojar una red privada en Azure".</espanhol>
+
+<ok>
+<portugues>Rede Virtual do Azure</portugues>
+<english>Azure Virtual Network</english>
+<espanhol>Red virtual de Azure</espanhol>
+<tip>Rede Virtual do Azure oferece a capacidade de hospedar uma rede virtual no Azure. Aqui você pode hospedar máquinas virtuais na rede virtual.
+<br/><a href="https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Serviço de Aplicativo do Azure</portugues>
+<english>Azure App Service</english>
+<espanhol>Servicio de aplicaciones de Azure</espanhol>
+<tip>Serviço de Aplicativo do Azure é para hospedar aplicativos da web.
+<br/><a href="https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Azure Kubernetes</portugues>
+<english>Azure Kubernetes</english>
+<espanhol>Azure Kubernetes</espanhol>
+<tip>Azure Kubernetes é para orquestrar aplicativos baseados em contêiner.
+<br/><a href="https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Área de trabalho virtual do Windows</portugues>
+<english>Windows Virtual Desktop</english>
+<espanhol>Escritorio virtual de Windows</espanhol>
+<tip>Área de trabalho virtual do Windows é para virtualização de desktops e aplicativos.
+<br/><a href="https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Sua empresa está planejando hospedar recursos usando os serviços do Azure. Você tem que decidir sobre o serviço certo para usar para o requisito desejado. Qual dos seguintes você usaria para o seguinte requisito? "Fornecer a capacidade de implantar e orquestrar aplicativos baseados em contêiner".</portugues>
+<english>Your company is planning on hosting resources using Azure services. You have to decide on the right service to use for the desired requirement. Which of the following would you use for the following requirement? "Provide the ability to deploy and orchestrate container-based applications".</english>
+<espanhol>Su empresa planea hospedar recursos mediante los servicios de Azure. Tienes que decidir sobre el servicio adecuado para utilizar para su requisito deseado. ¿Cuál de los siguientes usaría para el siguiente requisito? "Proporcione la capacidad de implementar y orquestar aplicaciones basadas en contenedores".</espanhol>
+
+<ok>
+<portugues>Azure Kubernetes</portugues>
+<english>Azure Kubernetes</english>
+<espanhol>Azure Kubernetes</espanhol>
+<tip>Serviço Azure Kubernetes pode ser usado para hospedar e orquestrar aplicativos baseados em contêiner.
+<br/><a href="https://docs.microsoft.com/en-us/azure/aks/intro-kubernetes" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Serviço de Aplicativo do Azure</portugues>
+<english>Azure App Service</english>
+<espanhol>Servicio de aplicaciones de Azure</espanhol>
+<tip>Serviço de Aplicativo do Azure é para hospedar aplicativos da web.
+<br/><a href="https://docs.microsoft.com/en-us/azure/aks/intro-kubernetes" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Área de trabalho virtual do Windows</portugues>
+<english>Windows Virtual Desktop</english>
+<espanhol>Escritorio virtual de Windows</espanhol>
+<tip>Área de trabalho virtual do Windows é para virtualização de desktops e aplicativos.
+<br/><a href="https://docs.microsoft.com/en-us/azure/aks/intro-kubernetes" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Rede Virtual do Azure</portugues>
+<english>Azure Virtual Network</english>
+<espanhol>Red virtual de Azure</espanhol>
+<tip>Rede Virtual do Azure é para hospedar uma rede privada no Azure.
+<br/><a href="https://docs.microsoft.com/en-us/azure/aks/intro-kubernetes" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Sua empresa está planejando hospedar recursos usando os serviços do Azure. Você tem que decidir sobre o serviço certo para usar para o requisito desejado. Qual dos seguintes você usaria para o seguinte requisito? "Fornecer a capacidade de hospedar aplicativos baseados na web. A plataforma deve fornecer a capacidade de hospedar aplicativos baseados em diferentes estruturas de programação".</portugues>
+<english>Your company is planning on hosting resources using Azure services. You have to decide on the right service to use for the desired requirement. Which of the following would you use for the following requirement? "Provide the ability to host web-based applications. The platform should provide the ability to host applications based on different programming frameworks".</english>
+<espanhol>Su empresa planea hospedar recursos mediante los servicios de Azure. Tienes que decidir sobre el servicio adecuado para utilizar para su requisito deseado. ¿Cuál de los siguientes usaría para el siguiente requisito? "Proporcionar la capacidad de alojar aplicaciones basadas en la web. La plataforma debe proporcionar la capacidad de alojar aplicaciones basadas en diferentes marcos de programación".</espanhol>
+
+<ok>
+<portugues>Serviço de Aplicativo do Azure</portugues>
+<english>Azure App Service</english>
+<espanhol>Servicio de aplicaciones de Azure</espanhol>
+<tip>Serviço de Aplicativo do Azure ou Web Apps é para para hospedar aplicativos Web. Também pode hospedar aplicativos da Web com base em diferentes linguagens de programação.
+<br/><a href="https://docs.microsoft.com/en-us/azure/app-service/overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Azure Kubernetes</portugues>
+<english>Azure Kubernetes</english>
+<espanhol>Azure Kubernetes</espanhol>
+<tip>Azure Kubernetes é para orquestrar aplicativos baseados em contêiner.
+<br/><a href="https://docs.microsoft.com/en-us/azure/app-service/overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Área de trabalho virtual do Windows</portugues>
+<english>Windows Virtual Desktop</english>
+<espanhol>Escritorio virtual de Windows</espanhol>
+<tip>Área de trabalho virtual do Windows é para virtualização de desktops e aplicativos.
+<br/><a href="https://docs.microsoft.com/en-us/azure/app-service/overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Rede Virtual do Azure</portugues>
+<english>Azure Virtual Network</english>
+<espanhol>Red virtual de Azure</espanhol>
+<tip>Rede Virtual do Azure é para hospedar uma rede privada no Azure.
+<br/><a href="https://docs.microsoft.com/en-us/azure/app-service/overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Sua empresa está planejando hospedar recursos usando os serviços do Azure. Você tem que decidir sobre o serviço certo para usar para o requisito desejado. Qual dos seguintes você usaria para o seguinte requisito? "Fornecer um ambiente para virtualização de desktops e aplicativos".</portugues>
+<english>Your company is planning on hosting resources using Azure services. You have to decide on the right service to use for the desired requirement. Which of the following would you use for the following requirement? "Provide an environment for desktop and application virtualization".</english>
+<espanhol>Su empresa planea hospedar recursos mediante los servicios de Azure. Tienes que decidir sobre el servicio adecuado para utilizar para su requisito deseado. ¿Cuál de los siguientes usaría para el siguiente requisito? "Proporcionar un entorno para la virtualización de escritorios y aplicaciones".</espanhol>
+
+<ok>
+<portugues>Rede Virtual do Azure</portugues>
+<english>Azure Virtual Network</english>
+<espanhol>Red virtual de Azure</espanhol>
+<tip>Área de trabalho virtual do Windows é para fins de virtualização de área de trabalho e aplicativos.
+<br/><a href="https://docs.microsoft.com/en-us/azure/virtual-desktop/overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Serviço de Aplicativo do Azure</portugues>
+<english>Azure App Service</english>
+<espanhol>Servicio de aplicaciones de Azure</espanhol>
+<tip>Serviço de Aplicativo do Azure é para hospedar aplicativos da web.
+<br/><a href="https://docs.microsoft.com/en-us/azure/virtual-desktop/overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Azure Kubernetes</portugues>
+<english>Azure Kubernetes</english>
+<espanhol>Azure Kubernetes</espanhol>
+<tip>Azure Kubernetes é para orquestrar aplicativos baseados em contêiner.
+<br/><a href="https://docs.microsoft.com/en-us/azure/virtual-desktop/overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Área de trabalho virtual do Windows</portugues>
+<english>Windows Virtual Desktop</english>
+<espanhol>Escritorio virtual de Windows</espanhol>
+<tip>Área de trabalho virtual do Windows é para hospedar uma rede privada no Azure.
+<br/><a href="https://docs.microsoft.com/en-us/azure/virtual-desktop/overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Uma empresa está planejando usar o serviço de Conta de Armazenamento do Azure. Eles vão criar uma conta de armazenamento de uso geral V2. Eles vão usar o serviço Blob na conta de armazenamento. Eles podem definir os objetos para usar a camada de acesso de Arquivo no nível da conta de armazenamento?</portugues>
+<english>A company is planning on using the Azure Storage Account service. They are going to create a General Purpose V2 storage account. They are going to use the Blob service in the storage account. Can they set the objects to use the Archive access tier at the storage account level?</english>
+<espanhol>Una empresa planea usar el servicio de cuenta de almacenamiento de Azure. Crearán una cuenta de almacenamiento de propósito general V2. Usarán el servicio Blob en la cuenta de almacenamiento. ¿Pueden configurar los objetos para usar el nivel de acceso a archivos en el nivel de la cuenta de almacenamiento?</espanhol>
+
+<ok>
+<portugues>Não</portugues>
+<english>No</english>
+<espanhol>No</espanhol>
+<tip>A camada de acesso ao arquivo só pode ser definida no nível do objeto e não no nível da conta de armazenamento. Se você for para a seção de configuração de uma conta de armazenamento, poderá definir o nível de acesso Blob como quente ou frio.
+<br/><a href="https://docs.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview?tabs=azure-portal" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Sim</portugues>
+<english>Yes</english>
+<espanhol>Sí</espanhol>
+<tip>Não se aplica nessa resposta.
+<br/><a href="https://docs.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview?tabs=azure-portal" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Uma empresa está planejando usar o serviço de Conta de Armazenamento do Azure. Eles vão criar uma conta de armazenamento de uso geral V2. Eles vão usar o serviço Blob na conta de armazenamento. Eles podem acessar cada objeto blob por meio de um URL?</portugues>
+<english>A company is planning on using the Azure Storage Account service. They are going to create a General Purpose V2 storage account. They are going to use the Blob service in the storage account. Can they access each blob object via a URL?</english>
+<espanhol>Una empresa planea usar el servicio de cuenta de almacenamiento de Azure. Crearán una cuenta de almacenamiento de propósito general V2. Usarán el servicio Blob en la cuenta de almacenamiento. ¿Pueden acceder a cada objeto blob a través de una URL?</espanhol>
+
+<ok>
+<portugues>Sim</portugues>
+<english>Yes</english>
+<espanhol>Sí</espanhol>
+<tip>Cada objeto no serviço Blob pode ser acessado por meio de uma URL.
+<br/><a href="https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Não</portugues>
+<english>No</english>
+<espanhol>No</espanhol>
+<tip>Não se aplica nessa resposta.
+<br/><a href="https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Uma empresa está planejando usar o serviço de Conta de Armazenamento do Azure. Eles vão criar uma conta de armazenamento de uso geral V2. Eles vão usar o serviço Blob na conta de armazenamento. Eles podem definir os objetos para usar a camada de acesso Archive no próprio nível do objeto?</portugues>
+<english>A company is planning on using the Azure Storage Account service. They are going to create a General Purpose V2 storage account. They are going to use the Blob service in the storage account. Can they set the objects to use the Archive access tier at the object level itself?</english>
+<espanhol>Una empresa planea usar el servicio de cuenta de almacenamiento de Azure. Crearán una cuenta de almacenamiento de propósito general V2. Usarán el servicio Blob en la cuenta de almacenamiento. ¿Pueden configurar los objetos para que usen la capa de acceso al archivo en el nivel del objeto mismo?</espanhol>
+
+<ok>
+<portugues>Sim</portugues>
+<english>Yes</english>
+<espanhol>Sí</espanhol>
+<tip>Pode definir o objeto para usar a camada de acesso ao arquivo no nível do objeto. Pode clicar no nível Alterar e ir para um objeto. Em seguida, pode alterar a camada de acesso para usar a camada de acesso Archive.
+<br/><a href="https://docs.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview?tabs=azure-portal" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Não</portugues>
+<english>No</english>
+<espanhol>No</espanhol>
+<tip>Não se aplica nessa resposta.
+<br/><a href="https://docs.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview?tabs=azure-portal" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+
+</textarea>
+
+		</div>
+
+    <link href="style/main.css " rel="stylesheet " type="text/css " />
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script>window.jQuery || document.write('<script src="scripts/jquery-3.6.3.js"><\/script>')</script>
+    <script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+
+<script type="text/javascript">
+	onLoadConfig();
+	
+	var quantidadeRegistrosP = '11'; // <p>
+	refreshTableResult(quantidadeRegistrosP);
+	function callback() {
+		setTimeout (function () {
+			refreshTableResult(quantidadeRegistrosP);
+			callback();
+		}, 1000);
+	}
+	callback();
+</script>

@@ -9,6 +9,7 @@
     <!-- link rel="stylesheet" type="text/css" href="style/bootstrap.css" / -->
     <link rel="stylesheet" href="style/myproject.css" />
     <link rel="stylesheet" href="style/font-awesome.min.css" />
+    <link rel="stylesheet" href="style/degrade.css" />
     <script src="scripts/jsstore.js"></script>
     <script src="scripts/jsstore.worker.js"></script>
     <script src="index.js"></script>
@@ -24,19 +25,28 @@
 		
 			<div style="display:'none'; text-align:center; ">
 				<div id="divContinuar" style="display:none;">
-					<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; font-family:Helvetica; color:white;">EXCELENTE!</div>
-					<div>
-						<img src="img/estrela.jpg" width="30px" style="border-radius:30px;">
-						<img src="img/estrela.jpg" width="30px" style="border-radius:30px;">
-						<img src="img/estrela.jpg" width="30px" style="border-radius:30px;">
-						<img src="img/estrela.jpg" width="30px" style="border-radius:30px;">
-						<img src="img/estrela.jpg" width="30px" style="border-radius:30px;">
-						<img src="img/estrela.jpg" width="30px" style="border-radius:30px;">
+					<br/>
+					<div align=center style="border-radius:2.18vw; margin-left:auto; margin-right:auto;">
+						<br/>
+						<label align=center style="width:290px; border-radius:10px; border-style:solid; border-color:gray; border-width:3px; color:#000000; background-color:transparent;">
+							<label style="border-radius:30px; position:relative; top:-25px; left:0px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+								<label id="btnFecharFormUser" class="btn btn-primary degradeorange" style="border-radius:30px; font-size:20px; cursor:default;"><b>RECOMPENSA</b></label>
+							</label>
+							<br/><label style="color:white; background-color:transparent;">
+							Escolha 1
+							</label>
+							<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; font-family:Helvetica; color:white;">
+								<img src="img/estrela.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/escudo.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/medalhacadeado.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/medalhacifrao.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/medalha1.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/medalha2.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/medalha3.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/medalha4.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+							</div>
+						</label>
 					</div>
-					<div><img src="img/medalha.jpg" width="200px" style="border-radius:30px;"></img></div>
-					<br/><label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
-					</label>
 				</div>
 				<div id="divLoading" style="display:'none';">
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Aguarde...</div>
@@ -132,6 +142,15 @@
 				<p/><p/>
 				<select id="mygroup" name="mygroup" style="height:35px; display:none;">
 					<!-- option value="00">Configurações</option -->
+					<option value="01">Nível 1.0</option>
+					<option value="02">Nível 1.0</option>
+					<option value="03">Nível 1.0</option>
+					<option value="04">Nível 1.0</option>
+					<option value="05">Nível 1.0</option>
+					<option value="06">Nível 1.0</option>
+					<option value="07">Nível 1.0</option>
+					<option value="08">Nível 1.0</option>
+					<option value="09">Nível 1.0</option>
 					<option value="10">Nível 1.0</option>
 					<option value="11">Nível 1.1</option>
 					<option value="12">Nível 1.2</option>
@@ -199,112 +218,97 @@
 FASE 12
 
 <p>
-Você está configurando um sistema de banco de dados Oracle Real Application Cluster (RAC) de 2 nós para alta disponibilidade. Essas instâncias precisam de latência quase zero para comunicação entre instâncias.
-<br/>Qual é a configuração correta para este cenário?
-<english>You are configuring a 2-node Oracle Real Application Cluster (RAC) DB System for high availability. These instances need near zero latency for inter-instance communication.
-<br/>What is the correct configuration for this scenario?</english>
+Qual tráfego da camada OSI é suportado pelo Network Load Balancer da Oracle Cloud Infrastructure (OCI)?
+<english>Which OSI layer traffic is supported by the Oracle Cloud Infrastructure (OCI) Network Load Balancer?</english>
 
 <ok>
-Configure instances across multiple availability domains.
+Layer 4 (Transport)
 <key></key>
 
-Configure instances inside single VCN using multiple availability domains.
+Layer 5 (Session)
 <key></key>
 
-Configure instances across multiple fault domains.
+Layer 7 (Application)
 <key></key>
 
-Configure instances across multiple regions.
+Layer 2 (Data Link)
 <key></key>
 
 <p>
-Quais são as três afirmações corretas sobre os Compartimentos do Oracle Cloud Infrastructure?
-<br/>Selecione 3.
-<english>Which three statements are correct about Oracle Cloud Infrastructure Compartments?
-<br/>Select 3.</english>
-
-<ok>
-Compartments can have sub-compartments.
-<key></key>
-
-<ok>
-Compartments are logical entities.
-<key></key>
-
-<ok>
-Compartments can be nested.
-<key></key>
-
-Compartments can be used for authentication services.
-<key></key>
-
-Each compartment is local to a region.
-<key></key>
-
-Resources inside the compartments cannot be moved to another compartment.
-<key></key>
-
-<p>
-Quais DUAS declarações descrevem corretamente o Oracle Cloud Infrastructure Accelerated Data Science SDK?
+Quais são as duas declarações válidas em relação ao peering Oracle Cloud Infrastructure (OCI) Virtual Cloud Network (VCN)?
 <br/>Selecione 2.
-<english>Which TWO statements correctly describe the Oracle Cloud Infrastructure Accelerated Data Science SDK?
+<english>Which two statements are valid regarding Oracle Cloud Infrastructure (OCI) Virtual Cloud Network (VCN) peering?
 <br/>Select 2.</english>
 
 <ok>
-It is included as part of the Data Science service.
+Peered VCNs can have overlapping classless inter-domain routing (CIDR).
 <key></key>
 
 <ok>
-It is a Python library that makes common tasks faster, easier, and less error prone.
+Peered VCNs can exist in different OCI regions.
 <key></key>
 
-It is a JavaScript library that makes common tasks faster, easier, and less error prone.
+Peered VCNs can exist in the same OCI region.
 <key></key>
 
-It is an additional cost to the Data Science service.
+A VCN peering connection is a VPN-based connection.
 <key></key>
 
-It is a PHP library that makes common tasks faster, easier, and less error prone.
-<key></key>
-
-<p>
-Que tipo de transferência de dados incorre em custos no Oracle Cloud Infrastructure (OCI)?
-<english>Which type of data transfer incur costs within Oracle Cloud Infrastructure (OCI)?</english>
-
-<ok>
-Data egress to the Internet
-<key></key>
-
-Data transfer from one instance to another within the same Availability Domain
-<key></key>
-
-Data ingress from the Internet
-<key></key>
-
-Data transfer from one instance to another across different Availability Domains in a region
+Peered VCNs need to be part of same OCI tenancy.
 <key></key>
 
 <p>
-Quais são as duas afirmações corretas em relação aos Domínios de Falha do Oracle Cloud Infrastructure?
+Quais dois recursos de firewall do Oracle Cloud Infrastructure (OCI) Virtual Cloud Network (VCN) podem ser usados para controlar o tráfego?
 <br/>Selecione 2.
-<english>Which two statements are correct regarding Oracle Cloud Infrastructure Fault Domains?
+<english>Which two Oracle Cloud Infrastructure (OCI) Virtual Cloud Network (VCN) firewall features can be used to control traffic?
 <br/>Select 2.</english>
 
 <ok>
-Fault domains are used to mitigate hardware failures.
+Network Security Groups
 <key></key>
 
 <ok>
-Fault domains are logical data center within regions.
+Security Lists
 <key></key>
 
-Fault domains are physical data centers with availability domains.
+VCN Flow Logs
 <key></key>
 
-Fault domains are physical data centers within regions.
+VNIC Metrics
 <key></key>
 
-Fault domains are logical data centers with availability domains.
+<p>
+Qual NÃO é um tipo de log válido suportado pelo serviço Oracle Cloud Insfrastructure (OCI) Logging?
+<english>Which is NOT a valid log type supported by the Oracle Cloud Insfrastructure (OCI) Logging service?</english>
+
+<ok>
+Visual Logs
+<key></key>
+
+Service Logs
+<key></key>
+
+Custom Logs
+<key></key>
+
+Audit Logs
+<key></key>
+
+<p>
+Qual é o principal caso de uso para usar o Web Application Firewall no Oracle Cloud Infrastructure (OCI)?
+<english>What is the primary use case for using Web Application Firewall on Oracle Cloud Infrastructure (OCI)?</english>
+
+<ok>
+Filter malicious web traffic
+<key></key>
+
+Patch management
+<key></key>
+
+Hardware based key storage
+<key></key>
+
+Network security control
 <key></key>
 
 <p>

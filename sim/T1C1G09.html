@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Sim</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!-- script src="scripts/jquery.js"></script -->
+    <!-- link rel="stylesheet" type="text/css" href="style/bootstrap.css" / -->
+    <link rel="stylesheet" href="style/myproject.css" />
+    <link rel="stylesheet" href="style/font-awesome.min.css" />
+    <link rel="stylesheet" href="style/degrade.css" />
+    <script src="scripts/jsstore.js"></script>
+    <script src="scripts/jsstore.worker.js"></script>
+    <script src="index.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <!-- link href="style/carousel.css" rel="stylesheet" -->
+	<style>
+	</style>
+</head>
+
+<body id="myBody" ZZZbackground="gallery/paper.jpeg">
+		
+			<div style="display:'none'; text-align:center; ">
+				<div id="divContinuar" style="display:none;">
+					<br/>
+					<label align=center style="width:290px; border-radius:10px; border-style:solid; border-color:gray; border-width:3px; color:#000000; background-color:transparent;">
+						<label style="border-radius:30px; position:relative; top:-25px; left:0px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+							<label id="btnFecharFormUser" class="btn btn-primary degradeorange" style="border-radius:30px; font-size:20px; cursor:default;"><b>RECOMPENSA</b></label>
+						</label>
+						<br/><label style="color:white; background-color:transparent;">
+						Escolha 1
+						</label>
+						<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; font-family:Helvetica; color:white;">
+							<img src="img/estrela.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=1&cat=1', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+							<img src="img/escudo.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=1&cat=1', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+							<img src="img/medalhacadeado.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=1&cat=1', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+							<img src="img/medalhacifrao.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=1&cat=1', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+							<img src="img/medalha1.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=1&cat=1', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+							<img src="img/medalha2.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=1&cat=1', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+							<img src="img/medalha3.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=1&cat=1', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+							<img src="img/medalha4.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=1&cat=1', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+						</div>
+					</label>
+				</div>
+				<div id="divLoading" style="display:'none';">
+					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Aguarde...</div>
+					<br/><div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">Estamos preparando tudo para você</div>
+					<video id="vdoLoaging" ZZZposter="img/fundonoite.jpg" width="320" height="240" autoplay muted loop>
+						<source src="video/loading.mp4" type="video/mp4">
+						<source src="video/loading.ogg" type="video/ogg">
+						Formato não suportado. Your browser does not support the video tag.
+					</video>
+				</div>
+				
+				<label id="bSearch" style="display:none;">
+					<input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:200px; height:34px;">
+				</label>
+			</div>
+
+		<table id="tblGrid" style="width:98%" class="table table-hover ">
+			<tbody>
+				<div id="divbotoes" style="display:none; text-align:center;">
+					<button id="btntreino" class="botao flutuante" onclick="changeCategory('2');" style="background-color:gray; display:none;">Treino</button>
+					&nbsp;&nbsp;</td>
+					<button id="btndesafio" class="botao flutuante" onclick="changeCategory('4');" style="background-color:black; display:none;">Desafio</button>
+				</div>
+			</tbody>
+		</table>
+
+		<!-- form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post" -->
+		<!-- /form -->
+		
+		<div class="form-group" id="divFormSim" style="display:none;">
+			<font size=4.9 style=text-align:justify>
+				<table border=0 align=center width="100%">
+					<tr><td>
+						<button id="btnBackward" class="btn btn-danger" style="display:none;"> <i class="fa fa-remove"></i> </button>
+						<button id="btnPrevious" class="btn btn-default" style="display:none;"> <i class="fa fa-chevron-left"></i></button>
+						<button id="btnNext" class="btn btn-success" style="display:none;">Próximo <i class="fa fa-chevron-right"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-signal"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-pause"></i></button>
+						<button class="btn btn-warning" style="display:none;"><i class="fa fa-check"></i> Fim</button>
+					</td></tr>
+					<tr><td id="mytextSim" style="display:none; text-align:justify;">
+					</td></tr>
+					<tr><td id="mycorrect1Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect1answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect2Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect2answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect3Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect3answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect4Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect4answer"></div>
+					</td></tr>
+
+					<tr><td id="myincorrect1Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect1answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect2Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect2answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect3Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect3answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect4Sim" style="display:none; text-align:justify;">
+						<div id="myincorrecta4answer"></div>
+					</td></tr>
+					<tr><td>
+						<br/><input type="text" id="mygroupSim" value="" Zhidden="">
+						<br/><input type="text" id="mycodeSim" value="" Zhidden="">
+						<br/><input type="text" id="myorderSim" value="" Zhidden="">
+						<br/><input type="text" id="myidSim" value="" Zhidden="">
+					</td></tr>
+				</table>
+				<table id="tableFormSimDashboard" border=0 align=center width="60%" style="display:'none';">
+					<tr><td nowrap id="txtCalculo"></td></tr>
+					<tr><td nowrap><input type="text" id="txtIncorretas" value="Incorretas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:red;" readonly /></td></tr>
+					<tr><td nowrap><input type="text" id="txtCorretas" value="Corretas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:green;" readonly /></td></tr>
+					<tr><td nowrap><input type="text" id="txtNaoRespondidas" value="Não Respondidas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:blue;" readonly /></td></tr>
+					<tr><td nowrap><br/><input type="text" id="txtTotal" value="Total" class="btn btn-default" style="padding:9px 15px 9px 15px; display:'none';" hidden=""></td></tr>
+				</table>
+				<table id="tableLinkhelp" border=0 align=center style="display:'none';">
+					<tr><td id="help" style="display:none; text-align:justify;">
+						<div id="divlinkhelp"></div>
+					</td></tr>
+				</table>
+			</font>
+		</div>
+
+		<div class="form-group" id="divFormAddUpdate" style="display:none;">
+			<table border=0 align=center width="98%" style="display:none;"><tr><td>
+				<b>Formulário Editor de Perguntas</b>
+				<p/><p/>
+				<select id="mygroup" name="mygroup" style="height:35px; display:none;">
+					<!-- option value="00">Configurações</option -->
+					<option value="01">Nível 1.0</option>
+					<option value="02">Nível 1.0</option>
+					<option value="03">Nível 1.0</option>
+					<option value="04">Nível 1.0</option>
+					<option value="05">Nível 1.0</option>
+					<option value="06">Nível 1.0</option>
+					<option value="07">Nível 1.0</option>
+					<option value="08">Nível 1.0</option>
+					<option value="09">Nível 1.0</option>
+					<option value="10">Nível 1.0</option>
+					<option value="11">Nível 1.1</option>
+					<option value="12">Nível 1.2</option>
+					<option value="13">Nível 1.3</option>
+					<option value="14">Nível 1.4</option>
+					<option value="20">Nível 2.0</option>
+					<option value="21">Nível 2.1</option>
+					<option value="22">Nível 2.2</option>
+					<option value="23">Nível 2.3</option>
+					<option value="30">Nível 3.0</option>
+					<option value="31">Nível 3.1</option>
+					<option value="32">Nível 3.2</option>
+					<option value="33">Nível 3.3</option>
+					<option value="40">Nível 4.0</option>
+					<option value="41">Nível 4.1</option>
+					<option value="42">Nível 4.2</option>
+					<option value="43">Nível 4.3</option>
+					<option value="44">Nível 4.4</option>
+					<option value="45">Nível 4.5</option>
+					<option value="46">Nível 4.6</option>
+					<option value="50">Nível 5.0</option>
+
+				</select>
+				<select id="mycode" name="mycode" style="height:35px; display:none;"></select>
+				<select id="myorder" name="myorder" style="height:35px; display:none;"></select>
+				<p/>
+				<p/><textarea name="mytext" id="mytext" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui..."></textarea>
+				<p/><textarea name="mytext2" id="mytext2" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui em Inglês..."></textarea>
+				<p/><textarea name="mytext3" id="mytext3" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui em Espanhol..."></textarea>
+				<font style="color:green;">
+					Corretas:
+					<textarea name="myoption1" id="myoption1" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey1" id="myoptionkey1" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption2" id="myoption2" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey2" id="myoptionkey2" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption3" id="myoption3" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey3" id="myoptionkey3" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption4" id="myoption4" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey4" id="myoptionkey4" rows=1 placeholder="explicação..."></textarea>
+				</font>
+				
+				<font style="color:red; text-align:left;">
+					Incorretas:
+					<textarea name="myoption5" id="myoption5" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey5" id="myoptionkey5" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption6" id="myoption6" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey6" id="myoptionkey6" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption7" id="myoption7" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey7" id="myoptionkey7" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption8" id="myoption8" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey8" id="myoptionkey8" rows=1 placeholder="explicação..."></textarea>
+				</font>
+				<p/><p/>
+				<button id="btnSubmit" type="button" class="btn btn-primary" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-check"></i> Salvar</button>
+				<p/><p/>
+				<button id="btnCancel" type="button" class="btn btn-default" style="padding:9px 15px 9px 15px;margin-left:10px; width:110px;"> <i class="fa fa-times"></i> Não Salvar</button>
+			</td></tr></table>
+		</div>
+		
+		<div id="divcontent" style="display:none;">
+
+<!-- Configuração: 1 -->
+<br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
+<p>
+<portugues>FASE 1.8</portugues>
+
+<p>
+<portugues><b>É um local físico</b> em todo o mundo onde agrupamos datacenters. <br/>Chamamos cada grupo de datacenters lógicos de zona de disponibilidade. <br/>Consiste em várias AZs (Zonas de Disponibilidade) isoladas e separadas fisicamente em uma área geográfica.</portugues>
+
+<ok>
+Region
+<key>Region</key>
+
+Multi Regions
+<key>Multi Regions</key>
+
+Multi-AZ
+<key>Multi-AZ</key>
+
+Read Replicas (Cópias de Leitura do Amazon RDS)
+<key>Read Replicas</key>
+
+<p>
+<portugues>É para <b>estratégia de DR (Recuperação de Desastre)</b>. <br/>Os recursos de computação em nuvem da Amazon são hospedados em vários locais no mundo todo. <br/>Esses locais são compostos por regiões da AWS, zonas de disponibilidade e zonas locais. <br/>Cada região da AWS é uma área geográfica separada.</portugues>
+
+<ok>
+Multi Regions
+<key>Multi Regions</key>
+
+Multi-AZ
+<key>Multi-AZ</key>
+
+Read Replicas (Cópias de Leitura do Amazon RDS)
+<key>Read Replicas</key>
+
+Region
+<key>Region</key>
+
+<p>
+<portugues>É para <b>aumentar a disponibilidade</b>. <br/>Fornece implementações em uma região, ou seja, não é global. <br/>Em uma implantação, o Amazon RDS cria automaticamente uma instância de banco de dados (BD) primária e replica de forma síncrona os dados para uma instância em uma AZ diferente. <br/>Quando detecta uma falha, o Amazon RDS executa automaticamente o failover para uma instância secundária sem nenhuma intervenção manual.</portugues>
+
+<ok>
+Multi-AZ
+<key>Multi-AZ</key>
+
+Read Replicas (Cópias de Leitura do Amazon RDS)
+<key>Read Replicas</key>
+
+Region
+<key>Region</key>
+
+Multi Regions
+<key>Multi Regions</key>
+
+<p>
+<portugues>Facilitam a <b>escalabilidade de maneira elástica</b> além dos limites de capacidade de uma única instância de DB para cargas de trabalho de banco de dados com uso intenso de leitura. <br/>Complementam as implantações Multi-AZ. <br/>Embora ambos os recursos mantenham uma segunda cópia dos dados, há diferenças entre os dois.</portugues>
+
+<ok>
+Read Replicas
+<key>Read Replicas</key>
+
+ElasticSearch
+<key>Region</key>
+
+Multi Regions
+<key>Multi Regions</key>
+
+Multi-AZ
+<key>Multi-AZ</key>
+
+<p>
+<portugues>É uma tecnologia que pode ser usada com o Amazon ECS para <b>executar contêineres sem a necessidade de gerenciar servidores ou clusters de instâncias</b> do Amazon EC2. <br/><b>Não é mais necessário provisionar, configurar nem dimensionar os clusters de máquinas virtuais</b> para executar contêineres. <br/>Elimina a necessidade de escolher tipos de servidor, decidir quando dimensionar clusters ou otimizar o agrupamento de clusters.</portugues>
+
+<ok>
+Fargate
+<key>Fargate</key>
+
+Amazon EKS
+<key>EKS</key>
+
+EC2
+<key>EC2</key>
+
+Amazon ECR
+<key>ECR</key>
+
+<p>
+<portugues>É um <b>serviço de contêiner para Kubernetes</b> gerenciado para executar e escalar aplicações do Kubernetes na nuvem ou on-premises. <br/>Adiciona <b>orquestração ao Amazon ECS</b>.</portugues>
+
+<ok>
+Amazon EKS
+<key>EKS</key>
+
+Amazon ECS
+<key>ECS</key>
+
+Amazon ECR
+<key>ECR</key>
+
+Fargate
+<key>Fargate</key>
+
+<p>
+<portugues>É um <b>serviço de gerenciamento de contêineres</b> altamente rápido e escalável. <br/>Você pode usá-lo para executar, interromper e gerenciar contêineres em um cluster.</portugues>
+
+<ok>
+Amazon ECS
+<key>ECS</key>
+
+Fargate
+<key>Fargate</key>
+
+Amazon ECR
+<key>ECR</key>
+
+Amazon EKS
+<key>EKS</key>
+
+<p>
+<portugues>É um <b>registro de contêiner</b> totalmente gerenciado que oferece hospedagem de alta performance para que você possa implantar imagens e artefatos de aplicações de forma confiável em qualquer lugar.</portugues>
+
+<ok>
+Amazon ECR
+<key>ECR</key>
+
+Amazon ECS
+<key>ECS</key>
+
+Fargate
+<key>Fargate</key>
+
+Amazon EKS
+<key>EKS</key>
+
+<p>
+<portugues><b>Distribui ou redireciona automaticamente o tráfego de aplicações ou requisições de entrada</b> entre servidores, vários destinos e dispositivos virtuais em uma ou mais Zonas de disponibilidade (AZs).</portugues>
+
+<ok>
+ELB (Elastic Load Balancer)
+<key>ELB</key>
+
+AWS Batch
+<key>Batch</key>
+
+Step Functions
+<key>Step Functions</key>
+
+Security Group
+<key>Security Group</key>
+
+<p>
+<portugues>Planeja, programa e executa suas <b>cargas de trabalho de computação em lote</b> em toda a linha de recursos e produtos de computação da AWS, como AWS Fargate, Amazon EC2 e instâncias spot.</portugues>
+
+<ok>
+AWS Batch
+<key>Batch</key>
+
+ELB (Elastic Load Balancer)
+<key>ELB</key>
+
+Step Functions
+<key>Step Functions</key>
+
+Security Group
+<key>Security Group</key>
+
+<p>
+<portugues>É um serviço de <b>fluxo de trabalho visual com pouco código</b> utilizado por desenvolvedores para criar aplicações distribuídas, automatizar processos de TI e negócios e criar pipelines de dados e machine learning usando produtos da AWS. Baseado em computação sem servidor e <b>orquestra parte de: S3, API Gateway, Lambda, SQS e SNS</b>.</portugues>
+
+<ok>
+Step Functions
+<key>Step Functions</key>
+
+AWS Batch
+<key>Batch</key>
+
+Security Group
+<key>Security Group</key>
+
+ELB (Elastic Load Balancer)
+<key>ELB</key>
+
+<p>
+<portugues>É um <b>grupo de segurança</b> que atua como firewall virtual para as instâncias do EC2 visando <b>controlar o tráfego de entrada e de saída</b>.</portugues>
+
+<ok>
+Security Group
+<key>Security Group</key>
+
+Step Functions
+<key>Step Functions</key>
+
+ELB (Elastic Load Balancer)
+<key>ELB</key>
+
+AWS Batch
+<key>Batch</key>
+
+<p>
+
+</textarea>
+
+		</div>
+
+    <link href="style/main.css " rel="stylesheet " type="text/css " />
+</body>
+
+</html>
+
+<script type="text/javascript">
+	onLoadConfig();
+	
+	var quantidadeRegistrosP = '13'; // <p>
+	refreshTableResult(quantidadeRegistrosP);
+	function callback() {
+		setTimeout (function () {
+			refreshTableResult(quantidadeRegistrosP);
+			callback();
+		}, 100);
+	}
+	callback();
+</script>

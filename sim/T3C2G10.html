@@ -9,6 +9,7 @@
     <!-- link rel="stylesheet" type="text/css" href="style/bootstrap.css" / -->
     <link rel="stylesheet" href="style/myproject.css" />
     <link rel="stylesheet" href="style/font-awesome.min.css" />
+    <link rel="stylesheet" href="style/degrade.css" />
     <script src="scripts/jsstore.js"></script>
     <script src="scripts/jsstore.worker.js"></script>
     <script src="index.js"></script>
@@ -24,19 +25,28 @@
 		
 			<div style="display:'none'; text-align:center; ">
 				<div id="divContinuar" style="display:none;">
-					<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; font-family:Helvetica; color:white;">EXCELENTE!</div>
-					<div>
-						<img src="img/estrela.jpg" width="30px" style="border-radius:30px;">
-						<img src="img/estrela.jpg" width="30px" style="border-radius:30px;">
-						<img src="img/estrela.jpg" width="30px" style="border-radius:30px;">
-						<img src="img/estrela.jpg" width="30px" style="border-radius:30px;">
-						<img src="img/estrela.jpg" width="30px" style="border-radius:30px;">
-						<img src="img/estrela.jpg" width="30px" style="border-radius:30px;">
+					<br/>
+					<div align=center style="border-radius:2.18vw; margin-left:auto; margin-right:auto;">
+						<br/>
+						<label align=center style="width:290px; border-radius:10px; border-style:solid; border-color:gray; border-width:3px; color:#000000; background-color:transparent;">
+							<label style="border-radius:30px; position:relative; top:-25px; left:0px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+								<label id="btnFecharFormUser" class="btn btn-primary degradeorange" style="border-radius:30px; font-size:20px; cursor:default;"><b>RECOMPENSA</b></label>
+							</label>
+							<br/><label style="color:white; background-color:transparent;">
+							Escolha 1
+							</label>
+							<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; font-family:Helvetica; color:white;">
+								<img src="img/estrela.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/escudo.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/medalhacadeado.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/medalhacifrao.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/medalha1.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/medalha2.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/medalha3.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/medalha4.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+							</div>
+						</label>
 					</div>
-					<div><img src="img/medalha.jpg" width="200px" style="border-radius:30px;"></img></div>
-					<br/><label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
-					</label>
 				</div>
 				<div id="divLoading" style="display:'none';">
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Aguarde...</div>
@@ -132,6 +142,15 @@
 				<p/><p/>
 				<select id="mygroup" name="mygroup" style="height:35px; display:none;">
 					<!-- option value="00">Configurações</option -->
+					<option value="01">Nível 1.0</option>
+					<option value="02">Nível 1.0</option>
+					<option value="03">Nível 1.0</option>
+					<option value="04">Nível 1.0</option>
+					<option value="05">Nível 1.0</option>
+					<option value="06">Nível 1.0</option>
+					<option value="07">Nível 1.0</option>
+					<option value="08">Nível 1.0</option>
+					<option value="09">Nível 1.0</option>
 					<option value="10">Nível 1.0</option>
 					<option value="11">Nível 1.1</option>
 					<option value="12">Nível 1.2</option>
@@ -196,199 +215,214 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 10
+<portugues>FASE 10</portugues>
+<english>PHASE 10</english>
+<espanhol>FASE 10</espanhol>
 
 <p>
-Quais são os dois tipos de chaves de criptografia reconhecidas pelo serviço Oracle Cloud Infrastructure (OCI) Vault?
-<br/>Selecione 2.
-<english>What two types of encryption keys are recognized by the Oracle Cloud Infrastructure (OCI) Vault service?
-<br/>Select 2.</english>
+<portugues>Qual o tipo de chave de criptografia reconhecida pelo serviço Oracle Cloud Infrastructure (OCI) Vault?</portugues>
+<english>What type of encryption key does the Oracle Cloud Infrastructure (OCI) Vault service recognize?</english>
+<espanhol>¿Qué tipo de clave de cifrado reconoce el servicio Vault de Oracle Cloud Infrastructure (OCI)?</espanhol>
 
 <ok>
-Data Encryption keys
-<key></key>
+<portugues>Chaves de Criptografia de Dados</portugues>
+<english>Data Encryption keys</english>
+<espanhol>Claves de Cifrado de Datos</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
-<ok>
-Master Encryption keys
-<key></key>
+<portugues>Chaves de Alias</portugues>
+<english>Alias keys</english>
+<espanhol>Claves de Alias</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
-Alias keys
-<key></key>
+<portugues>Chaves do wrapper</portugues>
+<english>Wrapper keys</english>
+<espanhol>Claves de envoltorio</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
-Wrapper keys
-<key></key>
+<portugues>Tokens de Autenticação</portugues>
+<english>Auth Tokens</english>
+<espanhol>Fichas de Autenticación</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
-Auth Tokens
-<key></key>
 
 <p>
-Qual problema de segurança NÃO PODE ser identificado usando o serviço de verificação de vulnerabilidades Oracle Cloud Infrastructure (OCI)?
+<portugues>Qual o tipo de chave de criptografia reconhecida pelo serviço Oracle Cloud Infrastructure (OCI) Vault?</portugues>
+<english>What type of encryption key does the Oracle Cloud Infrastructure (OCI) Vault service recognize?</english>
+<espanhol>¿Qué tipo de clave de cifrado reconoce el servicio Vault de Oracle Cloud Infrastructure (OCI)?</espanhol>
+
+<ok>
+<portugues>Chaves de Criptografia Mestras</portugues>
+<english>Master Encryption keys</english>
+<espanhol>Claves Maestras de Cifrado</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Chaves de Alias</portugues>
+<english>Alias keys</english>
+<espanhol>Claves de Alias</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Chaves do wrapper</portugues>
+<english>Wrapper keys</english>
+<espanhol>Claves de envoltorio</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Tokens de Autenticação</portugues>
+<english>Auth Tokens</english>
+<espanhol>Fichas de Autenticación</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Qual problema de segurança NÃO PODE ser identificado usando o serviço de verificação de vulnerabilidades Oracle Cloud Infrastructure (OCI)?</portugues>
 <english>Which security issue CANNOT be identified using Oracle Cloud Infrastructure (OCI) Vulnerability scanning service?</english>
+<espanhol>¿Qué problema de seguridad NO PUEDE identificarse mediante el servicio de análisis de vulnerabilidades de Oracle Cloud Infrastructure (OCI)?</espanhol>
 
 <ok>
-OS packages that require updates and patches to address vulnerabilities
-<key></key>
+<portugues>Pacotes de sistema operacional que exigem atualizações e patches para lidar com vulnerabilidades</portugues>
+<english>OS packages that require updates and patches to address vulnerabilities</english>
+<espanhol>Paquetes de sistema operativo que requieren actualizaciones y parches para solucionar vulnerabilidades</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
-Cross-Site Scripting (XSS)
-<key></key>
+<portugues>Script entre sites (XSS)</portugues>
+<english>Cross-Site Scripting (XSS)</english>
+<espanhol>Secuencias de comandos entre sitios (XSS)</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
-OS configurations that hackers might exploit
-<key></key>
+<portugues>Configurações do sistema operacional que os hackers podem explorar</portugues>
+<english>OS configurations that hackers might exploit</english>
+<espanhol>Configuraciones del sistema operativo que los piratas informáticos podrían explotar</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
-Ports that are unintentionally left open
-<key></key>
+<portugues>Portas que são acidentalmente deixadas abertas</portugues>
+<english>Ports that are unintentionally left open</english>
+<espanhol>Puertos que se dejan abiertos sin querer</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
 <p>
-Você tem uma carga de trabalho de banco de dados de desempenho extremamente alto que requer pelo menos 105 IOPS/GB e 100.000 IOPS por volume.
-Qual nível de desempenho do Oracle Cloud Infrastructure (OCI) Block Volume pode ser usado para atender a esse requisito?
-<english>You have an extremely high performance database workload that requires atleast 105 IOPS/GB and 100,000 IOPS per volume.
-Which Oracle Cloud Infrastructure (OCI) Block Volume performance level can be used to meet this requirement?</english>
+<portugues>Você tem uma carga de trabalho de banco de dados de desempenho extremamente alto que requer pelo menos 105 IOPS/GB e 100.000 IOPS por volume. <br/>Qual nível de desempenho do Oracle Cloud Infrastructure (OCI) Block Volume pode ser usado para atender a esse requisito?</portugues>
+<english>You have an extremely high performance database workload that requires atleast 105 IOPS/GB and 100,000 IOPS per volume. <br/>Which Oracle Cloud Infrastructure (OCI) Block Volume performance level can be used to meet this requirement?</english>
+<espanhol>Tiene una carga de trabajo de base de datos de rendimiento extremadamente alto que requiere al menos 105 IOPS/GB y 100 000 IOPS por volumen. <br/>¿Qué nivel de rendimiento de Oracle Cloud Infrastructure (OCI) Block Volume se puede usar para cumplir con este requisito?</espanhol>
 
 <ok>
-Ultra-high performance
-<key></key>
+<portugues>Desempenho ultra-alto</portugues>
+<english>Ultra-high performance</english>
+<espanhol>Rendimiento ultraalto</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
-Balanced performance
-<key></key>
+<portugues>Desempenho equilibrado</portugues>
+<english>Balanced performance</english>
+<espanhol>Rendimiento equilibrado</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
-Lower cost performance
-<key></key>
+<portugues>Desempenho de custo mais baixo</portugues>
+<english>Lower cost performance</english>
+<espanhol>Rendimiento de menor costo</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
-Higher performance
-<key></key>
+<portugues>Maior desempenho</portugues>
+<english>Higher performance</english>
+<espanhol>Mayor rendimiento</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
 <p>
-Qual deles é definido como um qualificador usado para filtrar dados de métrica de grupo apresentados no serviço Oracle Cloud Infrastructure (OCI) Monitoring?
+<portugues>Qual deles é definido como um qualificador usado para filtrar dados de métrica de grupo apresentados no serviço Oracle Cloud Infrastructure (OCI) Monitoring?</portugues>
 <english>Which of these is defined as a qualifier used for filtering group metric data presented in the Oracle Cloud Infrastructure (OCI) Monitoring service?</english>
+<espanhol>¿Cuál se define como un calificador utilizado para filtrar datos de métricas de grupo presentados en el servicio de monitoreo de Oracle Cloud Infrastructure (OCI)?</espanhol>
 
 <ok>
-Indicators
-<key></key>
+<portugues>Indicadores</portugues>
+<english>Indicators</english>
+<espanhol>Indicadores</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
-Dimensions
-<key></key>
+<portugues>Dimensões</portugues>
+<english>Dimensions</english>
+<espanhol>Dimensiones</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
-Namespaces
-<key></key>
+<portugues>Namespaces</portugues>
+<english>Namespaces</english>
+<espanhol>Espacios de nombres</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
-Facts
-<key></key>
+<portugues>Fatos</portugues>
+<english>Facts</english>
+<espanhol>Hechos</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
 <p>
-Qual NÃO é uma declaração válida em relação aos Compartimentos da Oracle Cloud Infrastructure (OCI)?
+<portugues>Qual NÃO é uma declaração válida em relação aos Compartimentos da Oracle Cloud Infrastructure (OCI)?</portugues>
 <english>Which is NOT a valid statement regarding Oracle Cloud Infrastructure (OCI) Compartments?</english>
+<espanhol>¿Qué NO es una declaración válida con respecto a los compartimentos de Oracle Cloud Infrastructure (OCI)?</espanhol>
 
 <ok>
-Compartments are restricted to a single region.
-<key></key>
+<portugues>Os compartimentos são restritos a uma única região.</portugues>
+<english>Compartments are restricted to a single region.</english>
+<espanhol>Los compartimentos están restringidos a una sola región.</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
-Resources can interact with other resources in different compartments.
-<key></key>
+<portugues>Os recursos podem interagir com outros recursos em diferentes compartimentos.</portugues>
+<english>Resources can interact with other resources in different compartments.</english>
+<espanhol>Los recursos pueden interactuar con otros recursos en diferentes compartimentos.</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
-Each resource belongs to a single compartment.
-<key></key>
+<portugues>Cada recurso pertence a um único compartimento</portugues>
+<english>Each resource belongs to a single compartment</english>
+<espanhol>Cada recurso pertenece a un único compartimento</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
-You can give group of users access to compartments by writing policies.
-<key></key>
-
-<p>
-Qual é um sistema de código aberto para automatizar a implantação, dimensionamento e gerenciamento de aplicativos em contêineres?
-<english>Which is an open source system for automating deployment, scaling, and management of containerized applications?</english>
-
-<ok>
-Kubernetes
-<key></key>
-
-Terraform
-<key></key>
-
-Docker
-<key></key>
-
-Jenkins
-<key></key>
-
-Ansible
-<key></key>
-
-<p>
-Sua organização consome e analisa dados de uma ampla variedade de fontes. Muitos departamentos estão lutando para encontrar fontes de dados confiáveis.
-<br/>Qual serviço Oracle Cloud Infrastructure (OCI) você deve usar para coletar os metadados e fornecer um repositório central?
-<english>Your organization consumes and analyzes data from a wide Variety of sources. Many departments are struggling with finding trusted data sources.
-<br/>Which Oracle Cloud Infrastructure (OCI) service should you use to harvest the metadata and provide a central repositor?</english>
-
-<ok>
-Data Catalog
-<key></key>
-
-Data Flow
-<key></key>
-
-Object Storage
-<key></key>
-
-Data Integration
-<key></key>
-
-Autonomous Data Warehouse
-<key></key>
-
-<p>
-Qual NÃO é um método válido para autenticar um Principal no serviço Oracle Infrastructure (OCI) Identity and Access Management (IAM)?
-<english>Which is NOT a valid method for authenticating a Principal in the Oracle Infrastructure (OCI) Identity and Access Management (IAM) service?</english>
-
-<ok>
-Auth Tokens
-<key></key>
-
-Console User Name, Password
-<key></key>
-
-OCI Vault Master Encryption Keys
-<key></key>
-
-API Signing Key
-<key></key>
-
-<p>
-Quais são as duas declarações válidas em relação ao peering da Virtual Cloud Network (VCN) entre duas VCNs?
-<br/>Selecione 2.
-<english>Which two statements are valid regarding Virtual Cloud Network (VCN) peering between two VCNs?
-<br/>Select 2.</english>
-
-<ok>
-Peered VCNs can exist in the same OCI region.
-<key></key>
-
-<ok>
-Peered VCNs can exist in different OCI regions.
-<key></key>
-
-A VCN peering connection is a VPN-based connection.
-<key></key>
-
-Peered VCNs can have overlapping CIDRs.
-<key></key>
-
-Peered VCNs need to be part of same OCI tenancy.
-<key></key>
-
-<p>
-Qual declaração sobre o peering do Oracle Cloud Infrastructure (OCI) Virtual Cloud Network (VCN) é válida?
-<english>Which statement regarding Oracle Cloud Infrastructure (OCI) Virtual Cloud Network (VCN) peering is valid?</english>
-
-<ok>
-Peered VCNs can exist in different OCI regions.
-<key></key>
-
-A VCN peering connection is a phisical network link between two VCNs within a single OCI.
-<key></key>
-
-A VCN peering connection is required for OCI Object Storage.
-<key></key>
-
-A VCN peering connection is a VPN-based connection.
-<key></key>
+<portugues>Você pode conceder acesso a compartimentos a grupos de usuários escrevendo políticas</portugues>
+<english>You can give group of users access to compartments by writing policies</english>
+<espanhol>Puede dar acceso a un grupo de usuarios a los compartimentos escribiendo políticas</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
 
 <p>
 
@@ -411,7 +445,7 @@ A VCN peering connection is a VPN-based connection.
 <script type="text/javascript">
 	onLoadConfig();
 	
-	var quantidadeRegistrosP = '11'; // <p>
+	var quantidadeRegistrosP = '7'; // <p>
 	refreshTableResult(quantidadeRegistrosP);
 	function callback() {
 		setTimeout (function () {

@@ -9,6 +9,7 @@
     <!-- link rel="stylesheet" type="text/css" href="style/bootstrap.css" / -->
     <link rel="stylesheet" href="style/myproject.css" />
     <link rel="stylesheet" href="style/font-awesome.min.css" />
+    <link rel="stylesheet" href="style/degrade.css" />
     <script src="scripts/jsstore.js"></script>
     <script src="scripts/jsstore.worker.js"></script>
     <script src="index.js"></script>
@@ -24,14 +25,28 @@
 		
 			<div style="display:'none'; text-align:center; ">
 				<div id="divContinuar" style="display:none;">
-					<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; font-family:Helvetica; color:white;">PARABÉNS! <br/>VOCÊ VENCEU!</div>
-					<div>
-						<img src="img/estrela.jpg" width="30px" style="border-radius:30px;">
+					<br/>
+					<div align=center style="border-radius:2.18vw; margin-left:auto; margin-right:auto;">
+						<br/>
+						<label align=center style="width:290px; border-radius:10px; border-style:solid; border-color:gray; border-width:3px; color:#000000; background-color:transparent;">
+							<label style="border-radius:30px; position:relative; top:-25px; left:0px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+								<label id="btnFecharFormUser" class="btn btn-primary degradeorange" style="border-radius:30px; font-size:20px; cursor:default;"><b>RECOMPENSA</b></label>
+							</label>
+							<br/><label style="color:white; background-color:transparent;">
+							Escolha 1
+							</label>
+							<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; font-family:Helvetica; color:white;">
+								<img src="img/estrela.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/escudo.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/medalhacadeado.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/medalhacifrao.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/medalha1.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/medalha2.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/medalha3.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/medalha4.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+							</div>
+						</label>
 					</div>
-					<div><img src="img/trofeu.jpg" width="200px" style="border-radius:30px;"></img></div>
-					<br/><label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-						<button id="btnContinuar" class="btn btn-primary" onclick="window.open('index.html?tem=3&cat=3', '_self');" style="padding:9px 15px 9px 15px; width:150px;">Continuar</button>
-					</label>
 				</div>
 				<div id="divLoading" style="display:'none';">
 					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Aguarde...</div>
@@ -127,6 +142,15 @@
 				<p/><p/>
 				<select id="mygroup" name="mygroup" style="height:35px; display:none;">
 					<!-- option value="00">Configurações</option -->
+					<option value="01">Nível 1.0</option>
+					<option value="02">Nível 1.0</option>
+					<option value="03">Nível 1.0</option>
+					<option value="04">Nível 1.0</option>
+					<option value="05">Nível 1.0</option>
+					<option value="06">Nível 1.0</option>
+					<option value="07">Nível 1.0</option>
+					<option value="08">Nível 1.0</option>
+					<option value="09">Nível 1.0</option>
 					<option value="10">Nível 1.0</option>
 					<option value="11">Nível 1.1</option>
 					<option value="12">Nível 1.2</option>
@@ -191,143 +215,100 @@
 <!-- Configuração: 1 -->
 <br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
 <p>
-FASE 16
+FASE 14
 
 <p>
-Qual serviço Oracle Cloud Infrastructure você deve usar para gerenciar a governança de dados de suporte de metadados?
-<br/>Selecione 2.
-<english>Which Oracle Cloud Infrastructure service should you use to manage metadata support data governance?
-<br/>Select 2.</english>
+Quais são as três declarações que descrevem corretamente os atributos dos compartimentos do Oracle Cloud Infrastructure (OCI)?
+<english>Which three statements correctly describe attributes of Oracle Cloud Infrastructure (OCI) compartments?</english>
 
 <ok>
-Data Science
+Your tenancy by default comes with a root compartment.
 <key></key>
 
 <ok>
-Data Catalog
+Compartments can be used to logically separate OCI resources.
 <key></key>
-
-Data Integration
-<key></key>
-
-Data Flow
-<key></key>
-
-<p>
-Qual afirmação é verdadeira sobre uma Virtual Cloud Network (VCN)?
-<english>Which statement is true about a Virtual Cloud Network (VCN)?</english>
 
 <ok>
-A subnet for a VCN can only be availability domain specific.
+Compartments can have sub compartments.
 <key></key>
 
-Subnets can only be public.
+Resources within one compartment cannot interact with resources in other compartments.
 <key></key>
 
-Subnets can only be private.
+Compartments can be used to physically separate OCI resources.
 <key></key>
 
 <p>
-Qual afirmação sobre o modelo de segurança compartilhada Oracle Cloud Infrastructure (OCI) é verdadeira?
-<english>Which statement about Oracle Cloud Infrastructure (OCI) shared security model is true?</english>
+Qual recurso NÃO é um componente do serviço Oracle Cloud Infrastructure (OCI) Identity and Access Management?
+<english>Which feature is NOT a component of Oracle Cloud Infrastructure (OCI) Identity and Access Management service?</english>
 
 <ok>
-You are responsible for securing all data that you place in OCI
+Network Security Group
 <key></key>
 
-A subnet for a VCN can only be availability domain specific.
+Federation
 <key></key>
 
-Subnets can only be public.
+Policies
 <key></key>
 
-Subnets can only be private.
+User Credentials
 <key></key>
 
 <p>
-A que se referem os termos OpEx e CapEx?
-<br/>Selecione 2.
-<english>What do the terms OpEx and CapEx refer to?
-<br/>Select 2.</english>
+Qual serviço Oracle Cloud Infrastructure (OCI) utiliza o Terraform para configurar a infraestrutura como código?
+<english>Which Oracle Cloud Infrastructure (OCI) service leverages Terraform to configure infrastructure-as-code?</english>
 
 <ok>
-OpEx refers to Operation Expenditure
+Resource Manager
 <key></key>
 
-<ok>
-CapEx refers to Capitall Expenditure
+Oracle Container Engine for Kubernetes (OKE)
 <key></key>
 
-Subnets can only be public.
+Compute
 <key></key>
 
-Subnets can only be private.
+Events
+<key></key>
+
+Compartment Explorer
 <key></key>
 
 <p>
-Quais são os dois recursos de segurança oferecidos pelo Oracle Cloud Infrastructure?
-<br/>Selecione 2.
-<english>Which two security capabilities are offered by Oracle Cloud Infrastructure?
-<br/>Select 2.</english>
+Qual instrução é válida para o Oracle Cloud Infrastructure Container Registry (OCIR)?
+<english>Which statement is valid for Oracle Cloud Infrastructure Container Registry (OCIR)?</english>
 
 <ok>
-Always On Dara Encryption for data at rest
+A single registry can contain both private and public Docker repositories.
 <key></key>
 
-<ok>
-Key Management Service
+You can create only private Docker repositories in OCIR.
 <key></key>
 
-OpEx refers to Operation Expenditure
+You can create only public Docker repositories in OCIR.
 <key></key>
 
-CapEx refers to Capitall Expenditure
+A single registry can only contain either private or public Docker repositories.
 <key></key>
 
 <p>
-O que significa dimensionamento horizontal da instância de computação?
-<english>What does compute instance horizontal scaling means?</english>
+Qual oferta da Oracle permite que um cliente forneça serviços Oracle Cloud Infrastructure (OCI) em seus próprios datacenters em um modelo independente, obtendo a mesma arquitetura, faturamento e processos operacionais da nuvem pública OCI?
+<english>Which Oracle offering lets a customer provision Oracle Cloud Infrastructure (OCI) services into their own data centers in a self-contained model, achieving the same architecture, billing and operational processes of the OCI public cloud?</english>
 
 <ok>
-Adding additional compute instance
+OCI Dedicated Region
 <key></key>
 
-Key Management Service
+OCI Customer Region
 <key></key>
 
-OpEx refers to Operation Expenditure
+OCI Private Region
 <key></key>
 
-CapEx refers to Capitall Expenditure
+Oracle Cloud VMware Solution
 <key></key>
-
-<p>
-Qual afirmação é verdadeira sobre o Oracle Cloud Infrastructure Compute Service?
-<english>Which statement is true about the Oracle Cloud Infrastructure Compute Service?</english>
-
-<ok>
-You can launch either virtual machines or bare metal instances.
-<key></key>
-
-A subnet for a VCN can only be availability domain specific.
-<key></key>
-
-Subnets can only be public.
-<key></key>
-
-Subnets can only be private.
-<key></key>
-
-<p>
-<portugues>Parabéns! Você ganhou.
-<br/><button class="btn btn-outline-primary" onclick="showFirstPage();" style="color:white;">CONTINUAR <i class="fa fa-chevron-right"></i> </button>
-</portugues>
-<english>Congratulations! You won.
-<br/><button class="btn btn-outline-primary" onclick="showFirstPage();" style="color:white;">CONTINUE <i class="fa fa-chevron-right"></i> </button>
-</english>
-<espanhol>¡Felicidades! Ganaste.
-<br/><button class="btn btn-outline-primary" onclick="showFirstPage();" style="color:white;">CONTINUAR <i class="fa fa-chevron-right"></i> </button>
-</espanhol>
 
 <p>
 
@@ -350,13 +331,13 @@ Subnets can only be private.
 <script type="text/javascript">
 	onLoadConfig();
 	
-	var quantidadeRegistrosP = '9'; // <p>
+	var quantidadeRegistrosP = '6'; // <p>
 	refreshTableResult(quantidadeRegistrosP);
 	function callback() {
 		setTimeout (function () {
 			refreshTableResult(quantidadeRegistrosP);
 			callback();
-		}, 100);
+		}, 1000);
 	}
 	callback();
 </script>
