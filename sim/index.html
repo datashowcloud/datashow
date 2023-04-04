@@ -9,6 +9,7 @@
     <!-- link rel="stylesheet" type="text/css" href="style/bootstrap.css" / -->
     <link rel="stylesheet" href="style/myproject.css" />
     <link rel="stylesheet" href="style/font-awesome.min.css" />
+    <link rel="stylesheet" href="style/degrade.css" />
     <script src="scripts/jsstore.js"></script>
     <script src="scripts/jsstore.worker.js"></script>
     <script src="index.js"></script>
@@ -17,35 +18,6 @@
     <!-- Custom styles for this template -->
     <!-- link href="style/carousel.css" rel="stylesheet" -->
 	<style>
-        .degradeblack {
-            background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#444444));
-            background: -moz-linear-gradient(top, #000000, #444444);
-            filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#000000', EndColorStr='#444444');           
-        }
-        .degradeblue {
-            background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#0077FF));
-            background: -moz-linear-gradient(top, #000000, #0077FF);
-            filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#000000', EndColorStr='#0077FF');           
-        }
-        .degradegreen {
-            background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#00FF00));
-            background: -moz-linear-gradient(top, #000000, #00FF00);
-            filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#000000', EndColorStr='#00FF00');           
-        }
-        .degradered {
-            background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#FF0000));
-            background: -moz-linear-gradient(top, #000000, #FF0000);
-            filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#000000', EndColorStr='#FF0000');           
-        }
-        .degradeorange {
-            background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#FFA500));
-            background: -moz-linear-gradient(top, #000000, #FFA500);
-            filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#000000', EndColorStr='#FFA500');           
-        }
-        .degradeborder {
-			border-image: linear-gradient(45deg, #000000 , #0077FF);
-			border-image-slice: 1;
-        }
 	</style>
 </head>
 
@@ -105,9 +77,10 @@
 					<div id="divFormMenu" align=center style="display:'none';">
 						<br/>
 						<div align=center style="width:290px; border-radius:10px; border-style:solid; border-color:gray; border-width:3px; color:#000000; background-color:transparent;">
-							<label style="border-radius:30px; position:relative; top:-25px; left:0px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+							<label style="border-radius:30px; position:relative; top:-25px; left:20px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
 								<label id="btnFecharFormUser" class="btn btn-primary degradeorange" style="border-radius:30px; font-size:20px; cursor:default;"><b>MENU</b></label>
 							</label>
+							<img src="img/fechar.jpg" class="flutuante" onclick="escondeMenu();" width="35px" style="position:relative; top:-25px; left:92px; cursor:pointer; border-radius:50%;" title="Close/Fechar/Cerrar"></img>
 							<div align=center>
 								<table>
 									<tr>
@@ -144,7 +117,7 @@
 									<p/>
 									<p/>
 									tamastigadu@gmail.com <br/>atualizado em 03/2023
-									<br/>versão 00.00.26
+									<br/>versão 00.00.29
 								</font>
 							</div>
 						</div>
@@ -154,15 +127,16 @@
 					<div id="divFormUser" align=center style="display:'none'; border-radius:2.18vw; margin-left:auto; margin-right:auto;">
 						<br/>
 						<label align=center style="width:290px; border-radius:10px; border-style:solid; border-color:gray; border-width:3px; color:#000000; background-color:transparent;">
-							<label style="border-radius:30px; position:relative; top:-25px; left:0px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+							<label style="border-radius:30px; position:relative; top:-25px; left:15px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
 								<label id="btnFecharFormUser" class="btn btn-primary degradeorange" style="border-radius:30px; font-size:20px; cursor:default;"><b>CONEXÃO</b></label>
 							</label>
+							<img src="img/fechar.jpg" class="flutuante" onclick="escondeMenu();" width="35px" style="position:relative; top:-25px; left:75px; cursor:pointer; border-radius:50%;" title="Close/Fechar/Cerrar"></img>
 
 							<div id="divCamposEntrar" style="display:'none';">
 								<!-- form id="formAdd" action="https://formspree.io/forms/xdovzvlb/" method="post" -->
-									<label><input id="txtId" type="text" class="flutuante" value="" placeholder="e-mail" style="width:250px; border-radius:10px; text-align:center;"></input></label>
+									<label><input id="txtId" type="text" value="" placeholder="e-mail" style="width:250px; border-radius:10px; text-align:center;"></input></label>
 									<br/>
-									<label><input id="txtPass" type="password" class="flutuante" value="" placeholder="Senha" style="width:250px; border-radius:10px; text-align:center;"></input></label>
+									<label><input id="txtPass" type="password" value="" placeholder="Senha" style="width:250px; border-radius:10px; text-align:center;"></input></label>
 									<br/>
 									<p/>
 									<p/>
@@ -430,7 +404,7 @@
 			<tr>
 				<td>
 					<label class="flutuante" style="border-radius:10px; border-style:double; border-color:gray; border-width:5px; color:#000000; background-color:#FFFFFF;">
-						<button id="btnListaPerguntas" class="btn btn-primary degradeblue"><i class="fa fa-list" style="font-size:35px;" title="Lista de fases e níveis"></i></button>
+						<button id="btnMinhasConquistas" class="btn btn-primary degradeblue"><i class="fa fa-list" style="font-size:35px;" title="Lista de fases e níveis"></i></button>
 					</label>
 					<br/><font size=1 style="color:white;">Minhas conquistas</font>
 				</td>
@@ -700,7 +674,16 @@
 			<select id="mycategory" name="mycategory" style="height:35px; display:'none';"></select>
 			<p/><p/><select id="mygroup" name="mygroup" style="height:35px; display:'none';">
 				<!-- option value="00">Configurações</option -->
-				<option value="10" selected>Nível 1.0</option>
+				<option value="01">Nível 1.0</option>
+				<option value="02">Nível 1.0</option>
+				<option value="03">Nível 1.0</option>
+				<option value="04">Nível 1.0</option>
+				<option value="05">Nível 1.0</option>
+				<option value="06">Nível 1.0</option>
+				<option value="07">Nível 1.0</option>
+				<option value="08">Nível 1.0</option>
+				<option value="09">Nível 1.0</option>
+				<option value="10">Nível 1.0</option>
 				<option value="11">Nível 1.1</option>
 				<option value="12">Nível 1.2</option>
 				<option value="13">Nível 1.3</option>

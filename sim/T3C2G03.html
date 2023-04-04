@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Sim</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!-- script src="scripts/jquery.js"></script -->
+    <!-- link rel="stylesheet" type="text/css" href="style/bootstrap.css" / -->
+    <link rel="stylesheet" href="style/myproject.css" />
+    <link rel="stylesheet" href="style/font-awesome.min.css" />
+    <link rel="stylesheet" href="style/degrade.css" />
+    <script src="scripts/jsstore.js"></script>
+    <script src="scripts/jsstore.worker.js"></script>
+    <script src="index.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <!-- link href="style/carousel.css" rel="stylesheet" -->
+	<style>
+	</style>
+</head>
+
+<body id="myBody" ZZZbackground="gallery/paper.jpeg">
+		
+			<div style="display:'none'; text-align:center; ">
+				<div id="divContinuar" style="display:none;">
+					<br/>
+					<div align=center style="border-radius:2.18vw; margin-left:auto; margin-right:auto;">
+						<br/>
+						<label align=center style="width:290px; border-radius:10px; border-style:solid; border-color:gray; border-width:3px; color:#000000; background-color:transparent;">
+							<label style="border-radius:30px; position:relative; top:-25px; left:0px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+								<label id="btnFecharFormUser" class="btn btn-primary degradeorange" style="border-radius:30px; font-size:20px; cursor:default;"><b>RECOMPENSA</b></label>
+							</label>
+							<br/><label style="color:white; background-color:transparent;">
+							Escolha 1
+							</label>
+							<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; font-family:Helvetica; color:white;">
+								<img src="img/estrela.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/escudo.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/medalhacadeado.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/medalhacifrao.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/medalha1.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/medalha2.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/medalha3.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+								<img src="img/medalha4.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=3&cat=2', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+							</div>
+						</label>
+					</div>
+				</div>
+				<div id="divLoading" style="display:'none';">
+					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:white;">Aguarde...</div>
+					<br/><div style="padding:9px 15px 9px 15px; cursor:default; color:white;">Estamos preparando tudo para você</div>
+					<video id="vdoLoaging" ZZZposter="img/fundonoite.jpg" width="320" height="240" autoplay muted loop>
+						<source src="video/loading.mp4" type="video/mp4">
+						<source src="video/loading.ogg" type="video/ogg">
+						Formato não suportado. Your browser does not support the video tag.
+					</video>
+				</div>
+				
+				<label id="bSearch" style="display:none;">
+					<input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:200px; height:34px;">
+				</label>
+			</div>
+
+		<table id="tblGrid" style="width:98%" class="table table-hover ">
+			<tbody>
+				<div id="divbotoes" style="display:none; text-align:center;">
+					<button id="btntreino" class="botao flutuante" onclick="changeCategory('2');" style="background-color:gray; display:none;">Treino</button>
+					&nbsp;&nbsp;</td>
+					<button id="btndesafio" class="botao flutuante" onclick="changeCategory('4');" style="background-color:black; display:none;">Desafio</button>
+				</div>
+			</tbody>
+		</table>
+
+		<!-- form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post" -->
+		<!-- /form -->
+		
+		<div class="form-group" id="divFormSim" style="display:none;">
+			<font size=4.9 style=text-align:justify>
+				<table border=0 align=center width="100%">
+					<tr><td>
+						<button id="btnBackward" class="btn btn-danger" style="display:none;"> <i class="fa fa-remove"></i> </button>
+						<button id="btnPrevious" class="btn btn-default" style="display:none;"> <i class="fa fa-chevron-left"></i></button>
+						<button id="btnNext" class="btn btn-success" style="display:none;">Próximo <i class="fa fa-chevron-right"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-signal"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-pause"></i></button>
+						<button class="btn btn-warning" style="display:none;"><i class="fa fa-check"></i> Fim</button>
+					</td></tr>
+					<tr><td id="mytextSim" style="display:none; text-align:justify;">
+					</td></tr>
+					<tr><td id="mycorrect1Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect1answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect2Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect2answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect3Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect3answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect4Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect4answer"></div>
+					</td></tr>
+
+					<tr><td id="myincorrect1Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect1answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect2Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect2answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect3Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect3answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect4Sim" style="display:none; text-align:justify;">
+						<div id="myincorrecta4answer"></div>
+					</td></tr>
+					<tr><td>
+						<br/><input type="text" id="mygroupSim" value="" Zhidden="">
+						<br/><input type="text" id="mycodeSim" value="" Zhidden="">
+						<br/><input type="text" id="myorderSim" value="" Zhidden="">
+						<br/><input type="text" id="myidSim" value="" Zhidden="">
+					</td></tr>
+				</table>
+				<table id="tableFormSimDashboard" border=0 align=center width="60%" style="display:'none';">
+					<tr><td nowrap id="txtCalculo"></td></tr>
+					<tr><td nowrap><input type="text" id="txtIncorretas" value="Incorretas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:red;" readonly /></td></tr>
+					<tr><td nowrap><input type="text" id="txtCorretas" value="Corretas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:green;" readonly /></td></tr>
+					<tr><td nowrap><input type="text" id="txtNaoRespondidas" value="Não Respondidas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:blue;" readonly /></td></tr>
+					<tr><td nowrap><br/><input type="text" id="txtTotal" value="Total" class="btn btn-default" style="padding:9px 15px 9px 15px; display:'none';" hidden=""></td></tr>
+				</table>
+				<table id="tableLinkhelp" border=0 align=center style="display:'none';">
+					<tr><td id="help" style="display:none; text-align:justify;">
+						<div id="divlinkhelp"></div>
+					</td></tr>
+				</table>
+			</font>
+		</div>
+
+		<div class="form-group" id="divFormAddUpdate" style="display:none;">
+			<table border=0 align=center width="98%" style="display:none;"><tr><td>
+				<b>Formulário Editor de Perguntas</b>
+				<p/><p/>
+				<select id="mygroup" name="mygroup" style="height:35px; display:none;">
+					<!-- option value="00">Configurações</option -->
+					<option value="01">Nível 1.0</option>
+					<option value="02">Nível 1.0</option>
+					<option value="03">Nível 1.0</option>
+					<option value="04">Nível 1.0</option>
+					<option value="05">Nível 1.0</option>
+					<option value="06">Nível 1.0</option>
+					<option value="07">Nível 1.0</option>
+					<option value="08">Nível 1.0</option>
+					<option value="09">Nível 1.0</option>
+					<option value="10">Nível 1.0</option>
+					<option value="11">Nível 1.1</option>
+					<option value="12">Nível 1.2</option>
+					<option value="13">Nível 1.3</option>
+					<option value="14">Nível 1.4</option>
+					<option value="20">Nível 2.0</option>
+					<option value="21">Nível 2.1</option>
+					<option value="22">Nível 2.2</option>
+					<option value="23">Nível 2.3</option>
+					<option value="30">Nível 3.0</option>
+					<option value="31">Nível 3.1</option>
+					<option value="32">Nível 3.2</option>
+					<option value="33">Nível 3.3</option>
+					<option value="40">Nível 4.0</option>
+					<option value="41">Nível 4.1</option>
+					<option value="42">Nível 4.2</option>
+					<option value="43">Nível 4.3</option>
+					<option value="44">Nível 4.4</option>
+					<option value="45">Nível 4.5</option>
+					<option value="46">Nível 4.6</option>
+					<option value="50">Nível 5.0</option>
+
+				</select>
+				<select id="mycode" name="mycode" style="height:35px; display:none;"></select>
+				<select id="myorder" name="myorder" style="height:35px; display:none;"></select>
+				<p/>
+				<p/><textarea name="mytext" id="mytext" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui..."></textarea>
+				<p/><textarea name="mytext2" id="mytext2" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui em Inglês..."></textarea>
+				<p/><textarea name="mytext3" id="mytext3" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui em Espanhol..."></textarea>
+				<font style="color:green;">
+					Corretas:
+					<textarea name="myoption1" id="myoption1" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey1" id="myoptionkey1" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption2" id="myoption2" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey2" id="myoptionkey2" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption3" id="myoption3" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey3" id="myoptionkey3" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption4" id="myoption4" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey4" id="myoptionkey4" rows=1 placeholder="explicação..."></textarea>
+				</font>
+				
+				<font style="color:red; text-align:left;">
+					Incorretas:
+					<textarea name="myoption5" id="myoption5" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey5" id="myoptionkey5" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption6" id="myoption6" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey6" id="myoptionkey6" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption7" id="myoption7" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey7" id="myoptionkey7" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption8" id="myoption8" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey8" id="myoptionkey8" rows=1 placeholder="explicação..."></textarea>
+				</font>
+				<p/><p/>
+				<button id="btnSubmit" type="button" class="btn btn-primary" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-check"></i> Salvar</button>
+				<p/><p/>
+				<button id="btnCancel" type="button" class="btn btn-default" style="padding:9px 15px 9px 15px;margin-left:10px; width:110px;"> <i class="fa fa-times"></i> Não Salvar</button>
+			</td></tr></table>
+		</div>
+		
+		<div id="divcontent" style="display:none;">
+
+<!-- Configuração: 1 -->
+<br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
+<p>
+<portugues>FASE 03</portugues>
+<english>PHASE 03</english>
+<espanhol>FASE 03</espanhol>
+
+<p>
+<portugues>Qual serviço Oracle Cloud Infrastructure (OCI) NÃO está disponível como parte do Oracle Cloud Free Tier?</portugues>
+<english>Which Oracle Cloud Infrastructure (OCI) service is NOT available as part of Oracle Cloud Free Tier?</english>
+<espanhol>¿Qué servicio de Oracle Cloud Infrastructure (OCI) NO está disponible como parte de Oracle Cloud Free Tier?</espanhol>
+
+<ok>
+<portugues>Sistemas de banco de dados Exadata</portugues>
+<english>Exadata DB Systems</english>
+<espanhol>Sistemas de base de datos Exadata</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Monitoramento</portugues>
+<english>Monitoring</english>
+<espanhol>Supervisión</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Calcular</portugues>
+<english>Compute</english>
+<espanhol>Calcular</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Data Warehouse Autônomo</portugues>
+<english>Autonomous Data Warehouse</english>
+<espanhol>Almacén de datos autónomo</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Qual modelo de precificação NÃO é suportado pelo Oracle Cloud Infrastructure (OCI)?</portugues>
+<english>Which pricing model is NOT supported by Oracle Cloud Infrastructure (OCI)?</english>
+<espanhol>¿Qué modelo de precios NO es compatible con Oracle Cloud Infrastructure (OCI)?</espanhol>
+
+<ok>
+<portugues>Créditos universais semanais</portugues>
+<english>Weekly Universal Credits</english>
+<espanhol>Créditos universales semanales</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Créditos universais mensais</portugues>
+<english>Monthly Universal Credits</english>
+<espanhol>Créditos Universales Mensuales</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Traga sua própria licença (BYOL)</portugues>
+<english>Bring Your Own License (BYOL)</english>
+<espanhol>Traiga su propia licencia (BYOL)</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Pagamento conforme o uso (PAYG)</portugues>
+<english>Pay-As-You-Go (PAYG)</english>
+<espanhol>Pago por uso (PAYG)</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Créditos universais anuais</portugues>
+<english>Annual Universal Credits</english>
+<espanhol>Créditos Universales Anuales</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Qual recurso pode ser usado para gerenciar custos em uma locação do Oracle Cloud Infrastructure (OCI)?</portugues>
+<english>What feature can be used to manage costs on an Oracle Cloud Infrastructure (OCI) tenancy?</english>
+<espanhol>¿Qué función se puede usar para administrar los costos en un arrendamiento de Oracle Cloud Infrastructure (OCI)?</espanhol>
+
+<ok>
+<portugues>Cotas de Compartimento</portugues>
+<english>Compartment Quotas</english>
+<espanhol>Cuotas de compartimento</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Exames de saúde</portugues>
+<english>Health Checks</english>
+<espanhol>Comprobaciones de salud</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Controlador de conta</portugues>
+<english>Account Controller</english>
+<espanhol>Controlador de cuenta</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Registros de serviço</portugues>
+<english>Service Logs</english>
+<espanhol>Registros de servicio</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Qual recurso pode ser usado para gerenciar custos em uma locação do Oracle Cloud Infrastructure (OCI)?</portugues>
+<english>What feature can be used to manage costs on an Oracle Cloud Infrastructure (OCI) tenancy?</english>
+<espanhol>¿Qué función se puede usar para administrar los costos en un arrendamiento de Oracle Cloud Infrastructure (OCI)?</espanhol>
+
+<ok>
+<portugues>Orçamentos</portugues>
+<english>Budgets</english>
+<espanhol>Presupuestos</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Exames de saúde</portugues>
+<english>Health Checks</english>
+<espanhol>Comprobaciones de salud</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Controlador de conta</portugues>
+<english>Account Controller</english>
+<espanhol>Controlador de cuenta</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Registros de serviço</portugues>
+<english>Service Logs</english>
+<espanhol>Registros de servicio</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Qual alvo válido para definir os orçamentos do Oracle Cloud Infrastructure (OCI)?</portugues>
+<english>What is a valid target for setting Oracle Cloud Infrastructure (OCI) budgets?</english>
+<espanhol>¿Cuál es un objetivo válido para establecer presupuestos de Oracle Cloud Infrastructure (OCI)?</espanhol>
+
+<ok>
+<portugues>Tag de rastreamento de custos</portugues>
+<english>Cost-tracking tag</english>
+<espanhol>Etiqueta de seguimiento de costos</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Orçamento telhado</portugues>
+<english>Budget tag</english>
+<espanhol>Techo económico</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Arrendamento</portugues>
+<english>Tenancy</english>
+<espanhol>Tenencia</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Grupo IAM</portugues>
+<english>IAM group</english>
+<espanhol>Grupo IAM</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Qual alvo válido para definir os orçamentos do Oracle Cloud Infrastructure (OCI)?</portugues>
+<espanhol>¿Cuál es un objetivo válido para establecer presupuestos de Oracle Cloud Infrastructure (OCI)?</espanhol>
+<english>What is a valid target for setting Oracle Cloud Infrastructure (OCI) budgets?</english>
+
+<ok>
+<portugues>Compartimento</portugues>
+<english>Compartment</english>
+<espanhol>Compartimiento</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Orçamento telhado</portugues>
+<english>Budget tag</english>
+<espanhol>Techo económico</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Arrendamento</portugues>
+<english>Tenancy</english>
+<espanhol>Tenencia</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Grupo IAM</portugues>
+<english>IAM group</english>
+<espanhol>Grupo IAM</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Um cliente deseja usar o Oracle Cloud Infrastructure (OCI) para armazenar backups de aplicativos que podem ser armazenados por meses, mas recuperados imediatamente com base nas necessidades de negócios.
+<br/>Qual serviço de armazenamento OCI pode ser usado para atender a esse requisito?</portugues>
+<espanhol>Un cliente desea utilizar Oracle Cloud Infrastructure (OCI) para almacenar copias de seguridad de aplicaciones que pueden almacenarse durante meses, pero recuperarse de inmediato según las necesidades comerciales.
+<br/>¿Qué servicio de almacenamiento de OCI se puede utilizar para cumplir con este requisito?</espanhol>
+<english>A customer wants to use Oracle Cloud Infrastructure (OCI) for storing application backups which can be stored for months, but retrieved immediately based on business needs.
+<br/>Which OCI storage service can be used to meet this requirement?</english>
+
+<ok>
+<portugues>Bloco de Volume</portugues>
+<english>Block Volume</english>
+<espanhol>Volumen de bloque</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Armazenamento de arquivo</portugues>
+<english>Archive Storage</english>
+<espanhol>Almacenamiento de archivos</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Armazenamento de arquivo</portugues>
+<english>File Storage</english>
+<espanhol>Almacenamiento de archivos</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Armazenamento de objetos (padrão)</portugues>
+<english>Object Storage (standard)</english>
+<espanhol>Almacenamiento de objetos (estándar)</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Você tem dados de backup que precisam ser armazenados por pelo menos seis meses. Esses dados não devem ser acessados com frequência, mas precisam estar disponíveis imediatamente quando necessário. Você também deseja reduzir seus custos de armazenamento.
+<br/>Qual camada do Oracle Cloud Infrastructure (OCI) Object Storage pode ser usada para atender a esses requisitos?</portugues>
+<english>You have backup data that needs to be stored for at least six months. This data is not supposed to be accessed frequently, but needs to be available immediately when needed. You also want to reduce your storage costs.
+<br/>Which Oracle Cloud Infrastructure (OCI) Object Storage tier can be used to meet these requirements?</english>
+<espanhol>Tiene datos de copia de seguridad que deben almacenarse durante al menos seis meses. Se supone que no se debe acceder a estos datos con frecuencia, pero deben estar disponibles de inmediato cuando sea necesario. También desea reducir sus costos de almacenamiento.
+<br/>¿Qué nivel de almacenamiento de objetos de Oracle Cloud Infrastructure (OCI) se puede utilizar para cumplir con estos requisitos?</espanhol>
+
+<ok>
+<portugues>Camada de arquivo</portugues>
+<english>Archive tier</english>
+<espanhol>Nivel de archivo</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Tiering Automático</portugues>
+<english>Auto-Tiering</english>
+<espanhol>Nivelación automática</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>nível padrão</portugues>
+<english>Standard tier</english>
+<espanhol>Nivel estándar</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Nível de acesso pouco frequente</portugues>
+<english>Infrequent access tier</english>
+<espanhol>Nivel de acceso poco frecuente</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Qual afirmação NÃO é válida em relação a (verdadeira sobre) o serviço Oracle Cloud Infrastructure (OCI) Block Volume?</portugues>
+<english>Which statement is NOT valid regarding (true about) Oracle Cloud Infrastructure (OCI) Block Volume service?</english>
+<espanhol>¿Qué declaración NO es válida con respecto a (la verdad sobre) el servicio de volumen en bloque de Oracle Cloud Infrastructure (OCI)?</espanhol>
+
+<ok>
+<portugues>Você pode diminuir o tamanho de um volume de bloco</portugues>
+<english>You can decrease the size of a block volume</english>
+<espanhol>Puede disminuir el tamaño de un volumen de bloque</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Você pode aumentar o tamanho de um volume de bloco</portugues>
+<english>You can increase the size of a block volume</english>
+<espanhol>Puede aumentar el tamaño de un volumen de bloque</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Você pode expandir um volume de bloco existente no local com redimensionamento online</portugues>
+<english>You can expand an existing block volume in place with online resizing</english>
+<espanhol>Puede expandir un volumen de bloque existente en su lugar con el cambio de tamaño en línea</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Você pode clonar um volume de bloco existente para um novo volume maior</portugues>
+<english>You can clone an existing block volume to a new, larger volume</english>
+<espanhol>Puede clonar un volumen en bloque existente en un volumen nuevo más grande</espanhol>
+<tip>
+<br/><a href="https://" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+
+</textarea>
+
+		</div>
+
+    <link href="style/main.css " rel="stylesheet " type="text/css " />
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script>window.jQuery || document.write('<script src="scripts/jquery-3.6.3.js"><\/script>')</script>
+    <script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+
+<script type="text/javascript">
+	onLoadConfig();
+	
+	var quantidadeRegistrosP = '10'; // <p>
+	refreshTableResult(quantidadeRegistrosP);
+	function callback() {
+		setTimeout (function () {
+			refreshTableResult(quantidadeRegistrosP);
+			callback();
+		}, 1000);
+	}
+	callback();
+</script>
