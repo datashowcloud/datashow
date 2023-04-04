@@ -299,10 +299,10 @@ function registerEvents() {
 				var myoption7 = document.getElementById('myoption7').value.trim();
 				var myoption8 = document.getElementById('myoption8').value.trim();
 				
-				//console.log('mycode='+mycode + ' myorder='+myorder + ' mygroup='+mygroup + ' mytext='+mytext + ' myoption1='+myoption1 + ' myoption5='+myoption5);
+//console.log('mycode='+mycode + ' myorder='+myorder + ' mygroup='+mygroup + ' mytext='+mytext + ' myoption1='+myoption1 + ' myoption5='+myoption5);
 				
 				confirmImportManual(mytema, mycategory, mycode, myorder, mygroup, mytext, mytext2, mytext3, myoption1, myoption2, myoption3, myoption4, myoption5, myoption6, myoption7, myoption8);
-//				console.log('Clique em "Go back". \nClique em "Go back".');
+//				alert('Clique em "Go back". \nClique em "Go back".');
 //				document.getElementById("formAdd").submit();
 			} catch (ex) {
 				console.log(ex.message);
@@ -423,7 +423,7 @@ function registerEvents() {
 			var myid = row.attr('itemid');
 			var mygroup = formatMygroup(child.eq(0).text());
 			var mycode = child.eq(1).text();
-console.log('tblEstatisticas tbody deletefase mytema='+mytema + ' mycategory='+mycategory + ' mygroup='+mygroup + ' mycode='+mycode + ' myid='+myid);
+//console.log('tblEstatisticas tbody deletefase mytema='+mytema + ' mycategory='+mycategory + ' mygroup='+mygroup + ' mycode='+mycode + ' myid='+myid);
 			deletefase(mytema, mycategory, mygroup, mycode, myid);
 			setTimeout(() => { var DataShow_Config = window.open("T"+mytema + "C"+mycategory+ "G"+mygroup + ".html?sim=" + mygroup + "&tem=" + mytema + "&cat=" + mycategory, "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no"); }, 3000); // Executa após 1 segundo para esperar o processo
 		}
@@ -458,7 +458,7 @@ console.log('tblEstatisticas tbody deletefase mytema='+mytema + ' mycategory='+m
         var child = row.children();
 		var id = row.attr('itemid');
 		var mysim = child.eq(2).text();
-		console.log(mysim);
+//console.log(mysim);
     });
 	$('#btnSimulator').click(function () {
 		var array = [];
@@ -466,7 +466,7 @@ console.log('tblEstatisticas tbody deletefase mytema='+mytema + ' mycategory='+m
 		for (var i = 0; i < checkboxes.length; i++) {
 		  array.push(checkboxes[i].value);
 		}
-		console.log(array);
+//console.log(array);
     });
     $('#btnPrevious').click(function () {
 		var params = new URLSearchParams(window.location.search);
@@ -655,7 +655,7 @@ console.log('tblEstatisticas tbody deletefase mytema='+mytema + ' mycategory='+m
 		var mycategory = params.get('cat');
 		var id = document.getElementById('txtId').value;
 		var pass = document.getElementById('txtPass').value;
-console.log('btnEntrar id='+id);
+//console.log('btnEntrar id='+id);
 		loginUser(id, pass, mycategory, CONST_NIVEL_LIBERADO_SEM_USUARIO_CONECTADO);
 		//alert('Clique em "Go back".');
 		//document.getElementById("formAdd").submit();
@@ -809,7 +809,7 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 function formatMygroup(mygroup) {
 	var varMygroup = '00' + mygroup;
 	varMygroup = varMygroup.substring(varMygroup.length-2, varMygroup.length);
-console.log('varMygroup='+varMygroup);
+//console.log('varMygroup='+varMygroup);
 	return varMygroup;
 }
 
@@ -1219,17 +1219,17 @@ async function initForm() {
 	}
 	//valida usuário e licença para autorizar estudo acima do Nível liberado.
 	var valido = validaLicenca(mycategory, CONST_NIVEL_LIBERADO_SEM_USUARIO_CONECTADO);
-console.log('initForm validaLicenca '+valido);
+//console.log('initForm validaLicenca '+valido);
 	if (valido == true) {
 		if (localStorage.getItem('id').length > 0) {
-console.log('localStorage.getItem(id)='+localStorage.getItem('id'));
+//console.log('localStorage.getItem(id)='+localStorage.getItem('id'));
 			var users = await jsstoreCon.select({
 				from: 'User'
 					, where: { id: localStorage.getItem('id') + ''
 				}
 			});
 			users.forEach(function (user) {
-console.log('forEach user.id='+user.id + ' user.pass='+user.pass);
+//console.log('forEach user.id='+user.id + ' user.pass='+user.pass);
 				conectaUsuarioValido(user.id);
 				//loginUser(user.id, user.pass, mycategory, CONST_NIVEL_LIBERADO_SEM_USUARIO_CONECTADO);
 			})
@@ -1253,11 +1253,11 @@ async function loginUser(id, pass, mycategory, nivelLiberado) {
 
 	if (validalogin(id, pass, key, mycategory, nivelLiberado) == true) {
 		conectaUsuarioValido(id);
-console.log('gravaUsuario id=' + id + ' pass='+pass + ' key='+key);
+//console.log('gravaUsuario id=' + id + ' pass='+pass + ' key='+key);
 		gravaUsuario(id, pass, key);
 		localStorage.setItem('id', id);
 		localStorage.setItem('key', key);
-console.log('loginUser id='+id + ' pass='+pass + ' key='+key + ' mycategory='+mycategory + ' nivelLiberado='+nivelLiberado);
+//console.log('loginUser id='+id + ' pass='+pass + ' key='+key + ' mycategory='+mycategory + ' nivelLiberado='+nivelLiberado);
 		return true;
 	} else {
 		if (document.getElementById('txtPass') != null) {
@@ -1368,7 +1368,7 @@ async function gravaUsuario(id, pass, key) {
 			into: 'User',
 			values: [user]
 		});
-		//console.log('Sucesso \n\n Id='+id + '\n Pass='+pass + '\n key='+key);
+//console.log('Sucesso \n\n Id='+id + '\n Pass='+pass + '\n key='+key);
 		if (noOfDataInserted === 1) {
 		}
     } catch (ex) {
@@ -1523,8 +1523,10 @@ async function loadNextLevel(temapaginaindex) {
 			, mygroup: mygroup
 		  }
 	});
+
+//console.log('loadNextLevel ' + "T"+mytema + "C"+mycategory+ "G" + mygroup + ".html?sim=1" + "&tem=" + mytema + "&cat=" + mycategory);
+
 	if (students == '') {
-console.log('loadNextLevel mytema='+mytema + ' mycategory='+mycategory + ' mygroup='+mygroup);
 		var DataShow_Config = window.open("T"+mytema + "C"+mycategory+ "G" + mygroup + ".html?sim=1" + "&tem=" + mytema + "&cat=" + mycategory, "_self");
 	} else {
 		var DataShow_Config = window.open("index.html?tem=" + mytema + "&cat=" + mycategory, "_self");
@@ -1751,7 +1753,7 @@ async function changeFaseNivel(mytema, mycategory, myid, mygroup, mycode) {
 				}
 			});
 			if (students == '') {
-console.log('changeFaseNivel mytema='+mytema + ' mycategory='+mycategory + ' mygroup='+mygroup + ' myNextCategory='+myNextCategory);
+//console.log('changeFaseNivel mytema='+mytema + ' mycategory='+mycategory + ' mygroup='+mygroup + ' myNextCategory='+myNextCategory);
 				var DataShow_Config = window.open("T"+mytema + "C"+mycategory+ "G"+myNextCategory + ".html?sim=" + myNextCategory + "&tem=" + mytema + "&cat=" + mycategory, "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
 			} else {
 				refreshTableData(mytema, mycategory, '0', '', '', '');
@@ -2259,14 +2261,14 @@ function getArrayAnswers(valor) {
 	var index = 0;
 	var fim = '';
 	nextpos = valor.indexOf('\n\n', posicao);
-//	console.log(valor);
+//console.log(valor);
 	for (index=0; index<=4; index++) {
 		var valorkey = ''; var valortip = '';
 		var valorsemkey = '';
 		var valorlanguage2 = '';
 		
 		var ok = valor.substring(posicao, posicao+5).trim();
-//		console.log('ok=' + ok + ' posicao='+posicao + ' nextpos=' + nextpos + ' index=' + index + ' \n\n' + valor.substring(posicao, nextpos).trim());
+//console.log('ok=' + ok + ' posicao='+posicao + ' nextpos=' + nextpos + ' index=' + index + ' \n\n' + valor.substring(posicao, nextpos).trim());
 
 		//ok
 		if (ok == '<ok>' ) {
@@ -2311,17 +2313,17 @@ function getArrayAnswers(valor) {
 		posicao = nextpos+1;
 		nextpos = valor.indexOf('\n\n', posicao);		
 		if (fim == 'break') {
-//			console.log('fim=break');
+//console.log('fim=break');
 			break;
 		}
 		if (nextpos == -1) {
 			fim = 'break';
 			//força gravar última e sai
 			nextpos = valor.length;
-//			console.log('break: posicao='+posicao + ' nextpos=' + nextpos + ' index=' + index + ' \n' + valor.substring(posicao, nextpos).replaceAll('<ok>', ''));
+//console.log('break: posicao='+posicao + ' nextpos=' + nextpos + ' index=' + index + ' \n' + valor.substring(posicao, nextpos).replaceAll('<ok>', ''));
 		}
-//		console.log(' posicao='+posicao + ' nextpos=' + nextpos + ' index=' + index + ' \n\n' + valor.substring(posicao, nextpos).trim());
-//		console.log(valor.substring(posicao, posicao+5).trim());
+//console.log(' posicao='+posicao + ' nextpos=' + nextpos + ' index=' + index + ' \n\n' + valor.substring(posicao, nextpos).trim());
+//console.log(valor.substring(posicao, posicao+5).trim());
 
 		valorok = '';
 		valorKO = '';
@@ -2499,8 +2501,8 @@ async function addStudentImportConfig(mytema, mycategory, studentId, mygroup, my
 			into: 'Student',
 			values: [student]
 		});
-//		alert('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext + '\n '+student.myoption1 + ', '+student.myoptionkey1 + '\n '+student.myoption2 + ', '+student.myoptionkey2 + '\n '+student.myoption3 + ', '+student.myoptionkey3 + '\n '+student.myoption4 + ', '+student.myoptionkey4 + '\n '+student.myoption5 + ', '+student.myoptionkey5 + '\n '+student.myoption6 + ', '+student.myoptionkey6 + '\n '+student.myoption7 + ', '+student.myoptionkey7 + '\n '+student.myoption8 + ', '+student.myoptionkey8 + '\n '+student.myoption9 + ', '+student.myoptionkey9 + '\n '+student.myoption10 + ', '+student.myoptionkey10 + '\n '+student.myoption11 + ', '+student.myoptionkey11 + '\n '+student.myoption12 + ', '+student.myoptionkey12 + '\n '+student.myoption13 + ', '+student.myoptionkey13 + '\n '+student.myoption14 + ', '+student.myoptionkey14 + '\n '+student.myoption15 + ', '+student.myoptionkey15);
-//		console.log('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext);
+//alert('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext + '\n '+student.myoption1 + ', '+student.myoptionkey1 + '\n '+student.myoption2 + ', '+student.myoptionkey2 + '\n '+student.myoption3 + ', '+student.myoptionkey3 + '\n '+student.myoption4 + ', '+student.myoptionkey4 + '\n '+student.myoption5 + ', '+student.myoptionkey5 + '\n '+student.myoption6 + ', '+student.myoptionkey6 + '\n '+student.myoption7 + ', '+student.myoptionkey7 + '\n '+student.myoption8 + ', '+student.myoptionkey8 + '\n '+student.myoption9 + ', '+student.myoptionkey9 + '\n '+student.myoption10 + ', '+student.myoptionkey10 + '\n '+student.myoption11 + ', '+student.myoptionkey11 + '\n '+student.myoption12 + ', '+student.myoptionkey12 + '\n '+student.myoption13 + ', '+student.myoptionkey13 + '\n '+student.myoption14 + ', '+student.myoptionkey14 + '\n '+student.myoption15 + ', '+student.myoptionkey15);
+//console.log('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext);
 		if (noOfDataInserted === 1) {
 		}
     } catch (ex) {
@@ -2515,8 +2517,8 @@ async function addStudentImport(mytema, mycategory, studentId, mygroup, mycode) 
 			into: 'Student',
 			values: [student]
 		});
-//		console.log('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext + '\n '+student.myoption1 + '\n '+student.myoption2 + '\n '+student.myoption3 + '\n '+student.myoption4);
-//		console.log('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext);
+//console.log('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext + '\n '+student.myoption1 + '\n '+student.myoption2 + '\n '+student.myoption3 + '\n '+student.myoption4);
+//console.log('Sucesso \n\n Número='+student.mycode + '\n Ordem='+student.myorder + '\n Grupo='+student.mygroup + '\n Pergunta='+student.mytext);
 		if (noOfDataInserted === 1) {
 			var params = new URLSearchParams(window.location.search);
 			var mytema = params.get('tem');
@@ -2584,7 +2586,7 @@ async function updateOrder(id, min, max) {
 				id: id
 			}
 		});
-		//console.log('id='+id + ' myorder='+myorder);
+//console.log('id='+id + ' myorder='+myorder);
         console.log(`data updated order ${noOfDataUpdated}`);
     } catch (ex) {
         console.log(ex.message);
