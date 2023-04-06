@@ -205,7 +205,7 @@ function registerEvents() {
 		var myid = row.attr('itemid');
 		var mygroup = formatMygroup(child.eq(0).text());
 		var mycode = child.eq(1).text();
-        restartFase(mytema, mycategory, myid, mygroup, mycode);
+        restartFase(mytema, mycategory, mygroup);
     });
     $('#btnIndexConfigurar').click(function () {
 		var params = new URLSearchParams(window.location.search);
@@ -397,12 +397,12 @@ function registerEvents() {
 		var mycode = child.eq(1).text();
 		var result = confirm('Vou limpar e organizar as respostas dessa fase, ok?');
 		if (result) {
-			restartFase(mytema, mycategory, myid, mygroup, mycode);
+			restartFase(mytema, mycategory, mygroup);
 			savePoints(mytema, mycategory, myid, mygroup, mycode);
 			var id = row.attr('itemid');
 			var mygroup = formatMygroup(child.eq(0).text());
 			refreshTableQuestion(mytema, mycategory, id, mygroup, '1');
-			showFormSim();
+			showFormSim(mytema, mycategory, mygroup);
 		}
     });
     $('#tblEstatisticas tbody').on('click', '.delete', function () {
@@ -438,7 +438,7 @@ function registerEvents() {
 		var mygroup = formatMygroup(child.eq(0).text());
 		var mycode = child.eq(1).text();
 		refreshTableQuestion(mytema, mycategory, id, mygroup, '1');
-		showFormSim();
+		showFormSim(mytema, mycategory, mygroup);
     });	
     $('#tblEstatisticas tbody').on('click', '.freeze', function () {
 		freezeDataShow(localStorage.getItem('valueAoVivo'));
@@ -495,15 +495,6 @@ function registerEvents() {
 		//exitQuestions();
     });
 	$('#btnFim').click(function () {
-/*		var params = new URLSearchParams(window.location.search);
-		var mytema = params.get('tem');
-		var mycategory = params.get('cat');
-		var myid = document.getElementById('myidSim').value;
-		var mygroup = formatMygroup(document.getElementById('mygroupSim').value);
-		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
-		setTimeout(() => { savePoints(mytema, mycategory, myid, mygroup, mycode) }, 1000); // Executa após alguns segundos para esperar o término do processo
-		setTimeout(() => { changeFaseNivel(mytema, mycategory, myid, mygroup, mycode) }, 1000); // Executa após alguns segundos para esperar o término do processo
-*/
     });
 	$('#btnGear').click(function () {
 		if (document.getElementById('divGear').style.display == 'none') {
@@ -646,9 +637,12 @@ function registerEvents() {
 	$('#btnUser').click(function () {
 		showFormUser();
 	})
-	$('#spanUser').click(function () {
+	$('#spanMenu').click(function () {
 		showFormMenu();
 	})
+	$('#btnNaoDesista').click(function () {
+		showFormNaoDesista();
+	})	
 	$('#btnEntrar').click(function () {
 		var params = new URLSearchParams(window.location.search);
 		var mytema = params.get('tem');
@@ -663,9 +657,16 @@ function registerEvents() {
 	$('#btnDesconectar').click(function () {
 		desconectar();
 	})
-	$('#btnFecharFormUser').click(function () {
-		showFormApresentacao();
-	})
+	$('#btnContinuar').click(function () {
+		var params = new URLSearchParams(window.location.search);
+		var mytema = params.get('tem');
+		var mycategory = params.get('cat');
+		var mygroup = formatMygroup(document.getElementById('mygroupSim').value);
+		setTimeout(() => { changeFaseNivel(mytema, mycategory, mygroup, 'naodesistir') }, 1000); // Executa após alguns segundos para esperar o término do processo
+	});
+	$('#btnDesistir').click(function () {
+		showFirstPage();
+	});
 }
 
 async function initConfigGeneral() {
@@ -836,15 +837,12 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 			  }
 		});
 		if (students == '') {
-			setTimeout(() => { changeFaseNivel(mytema, mycategory, myid, mygroup, mycode) }, 1000); // Executa após alguns segundos para esperar o término do processo
-/*			document.getElementById('btnFim').style.display = '';
-			document.getElementById('fonFim').style.display = '';
-			document.getElementById('btnFim').focus();
-*/
+			setTimeout(() => { changeFaseNivel(mytema, mycategory, mygroup, '') }, 1000); // Executa após alguns segundos para esperar o término do processo
 			return;
 		}
 		
 		limpaCkeckbox();
+
 		students.forEach(function (student) {
 			document.getElementById('myorderSim').style.display='none';
 			document.getElementById('myidSim').style.display='none';
@@ -871,7 +869,7 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 			var myorder = student.myorder;
 			//erro
 			if (myorder == null) {
-				alert('Clique em "Atualizar fase". Nova versão disponível.');
+				alert('Nova versão disponível. Entre em "Minhas conquistas" e clique em "Atualizar fase".');
 				showGridAndHideForms();
 			} else {
 				myorder = myorder.replaceAll('\,', '');
@@ -1102,7 +1100,7 @@ async function refreshTableNivel(mytema, mycategory, mycode, myorder, mygroup, m
 
 	htmlString = htmlString + '<label style="border-radius:10px; font-size:20px; background-color:white; color:green; position:absolute; top:-18px; left:30%; width:70px; border-width:0px; font-family:Helvetica; cursor:default;">Nível ' + varNivel + '</label>';
 
-	htmlString = htmlString + '<button id="btnNivel" class="btn btn-success degradegreen" onclick="refreshTableQuestion(' + mytema + ', ' + mycategory + ', ' + myid + ', ' + mygroup + ', ' + mycode + '); showFormSim();" style="border-radius:30px; font-size:30px; font-family:Helvetica; font-weight:bold; border-width:0px; -webkit-text-stroke-width: 1px; ">';
+	htmlString = htmlString + '<button id="btnNivel" class="btn btn-success degradegreen" onclick="refreshTableQuestion(' + mytema + ', ' + mycategory + ', ' + myid + ', ' + mygroup + ', ' + mycode + '); showFormSim(' + mytema + ', ' + mycategory + ', ' + mygroup + ');" style="border-radius:30px; font-size:30px; font-family:Helvetica; font-weight:bold; border-width:0px; -webkit-text-stroke-width: 1px; ">';
 	htmlString = htmlString + '&nbsp;&nbsp;FASE ' + varFase + '&nbsp;&nbsp;';
 	htmlString = htmlString + '</button>';
 	htmlString = htmlString + '</label>';
@@ -1131,7 +1129,22 @@ async function deletefase(mytema, mycategory, mygroup, mycode, myid) {
 }
 
 function next(index, resposta) {
-	if (resposta <= 4) { //resposta correta
+	var params = new URLSearchParams(window.location.search);
+	var mytema = params.get('tem');
+	var mycategory = params.get('cat');
+	var myid = document.getElementById('myidSim').value;
+	var mygroup = formatMygroup(document.getElementById('mygroupSim').value);
+	var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
+	salvaResposta(index);
+	refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode);
+	savePoints(mytema, mycategory, myid, mygroup, mycode);
+	if (resposta <= 4) {
+		alert('ACERTOU!');
+	} else {
+		alert('RESPOSTA INCORRETA');
+	}
+
+/*	if (resposta <= 4) { //resposta correta
 		var params = new URLSearchParams(window.location.search);
 		var mytema = params.get('tem');
 		var mycategory = params.get('cat');
@@ -1141,12 +1154,14 @@ function next(index, resposta) {
 		salvaResposta(index);
 		refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode);
 		savePoints(mytema, mycategory, myid, mygroup, mycode);
+		alert('RESPOSTA CORRETA');
 	} else { //resposta incorreta
 		limpaRespostasSalvas();
-		alert('Resposta incorreta \nTente novamente');
-		showFormApresentacao();
+		alert('RESPOSTA INCORRETA');
+		//showFormApresentacao();
 	}
 	limpaCkeckbox();
+*/
 }
 
 function salvaResposta(index) {
@@ -1399,7 +1414,7 @@ function showTableQuestions() {
 	var mygroup = formatMygroup(child.eq(0).text());
 	var mycode = child.eq(1).text();
 	refreshTableQuestion(mytema, mycategory, id, mygroup, '1');
-	showFormSim();
+	showFormSim(mytema, mycategory, mygroup);
 }
 
 function getTemaCategoria(mytema, mycategory) {
@@ -1508,14 +1523,13 @@ async function loadNextLevel(temapaginaindex) {
 	var mytema = params.get('tem');
 	var mycategory = params.get('cat');
 	var mygroup = '01';
-	
+
 	if (temapaginaindex.length>0) {
 		mytema = temapaginaindex;
 		mycategory = '1';
 	} else {
 		mycategory = parseInt(mycategory) + 1;
 	}
-
 	var students = await jsstoreCon.select({
 		from: 'Student'
 			, where: { mytema: mytema + ''
@@ -1523,9 +1537,7 @@ async function loadNextLevel(temapaginaindex) {
 			, mygroup: mygroup
 		  }
 	});
-
-//console.log('loadNextLevel ' + "T"+mytema + "C"+mycategory+ "G" + mygroup + ".html?sim=1" + "&tem=" + mytema + "&cat=" + mycategory);
-
+//alert('depois loadNextLevel ' + 'mytema='+mytema + ' mycategory='+mycategory+ ' mygroup=' + mygroup + ' temapaginaindex='+temapaginaindex);
 	if (students == '') {
 		var DataShow_Config = window.open("T"+mytema + "C"+mycategory+ "G" + mygroup + ".html?sim=1" + "&tem=" + mytema + "&cat=" + mycategory, "_self");
 	} else {
@@ -1537,11 +1549,6 @@ function showFirstPage() {
 	var params = new URLSearchParams(window.location.search);
 	var mytema = params.get('tem');
 	var DataShow_Config = window.open("index.html?tem=" + mytema + '&cat=1', "_self");
-}
-
-function restartFase(mytema, mycategory, myid, mygroup, mycode) {
-	updateStudentPlayOrder(mytema, mycategory, mygroup);
-	updateStudentPlayClear(mytema, mycategory, mygroup);
 }
 
 function getStudentFromForm(mytema, mycategory, studentId, mygroup, mycode) {
@@ -1561,13 +1568,13 @@ function getStudentFromForm(mytema, mycategory, studentId, mygroup, mycode) {
     return student;
 }
 
-function calculaPercentualAcerto(mytema, mycategory, mygroup, mycode, totalCorretas, totalperguntas) {
+function calculaPercentualAcerto(totalCorretas, totalperguntas) {
 	var calculo = (totalCorretas*100) / (parseInt(totalperguntas));
 	calculo = calculo.toFixed(0); //remove decimais
 	return calculo;
 }
 
-function getTotalCorretas(mytema, mycategory, mygroup, mycode, students) {
+function getTotalCorretas(mytema, mycategory, mygroup, students) {
 	var totalCorretas = 0;
 	var totalIncorretas = 0;
 	var totalNaoRespondidas = 0;
@@ -1714,7 +1721,7 @@ function getTotalNaoRespondidas(mytema, mycategory, mygroup, mycode, students) {
 	return totalNaoRespondidas;
 }
 
-async function changeFaseNivel(mytema, mycategory, myid, mygroup, mycode) {
+async function changeFaseNivel(mytema, mycategory, mygroup, naodesistir) {
 	var totalperguntas = await jsstoreCon.count({
 		from: 'Student'
 		  , where: { mytema: mytema + ''
@@ -1730,8 +1737,8 @@ async function changeFaseNivel(mytema, mycategory, myid, mygroup, mycode) {
 			, mygroup: mygroup + ''
 		  }
 	});
-	var totalCorretas = getTotalCorretas(mytema, mycategory, mygroup, mycode, students);
-	var calculo = calculaPercentualAcerto(mytema, mycategory, mygroup, mycode, totalCorretas, totalperguntas);
+	var totalCorretas = getTotalCorretas(mytema, mycategory, mygroup, students);
+	var calculo = calculaPercentualAcerto(totalCorretas, totalperguntas);
 
 	//valida usuário e licença para autorizar estudo acima do Nível liberado.
 	var valido = validaLicenca(mycategory, CONST_NIVEL_LIBERADO_SEM_USUARIO_CONECTADO);
@@ -1742,8 +1749,9 @@ async function changeFaseNivel(mytema, mycategory, myid, mygroup, mycode) {
 		return;
 	}
 
-	if (calculo >= 80) {
-		var myNextCategory = getProximaFaseNivel(myid, mygroup, mycode);
+//alert('mytema='+mytema + ' mycategory='+mycategory + ' mygroup='+mygroup + ' totalCorretas='+totalCorretas + ' totalperguntas'+totalperguntas + ' calculo='+calculo);
+	if (calculo >= 80 || naodesistir == 'naodesistir') {
+		var myNextCategory = getProximaFaseNivel(mygroup);
 		if (myNextCategory != 'false') {
 			var students = await jsstoreCon.select({
 				from: 'Student'
@@ -1753,17 +1761,17 @@ async function changeFaseNivel(mytema, mycategory, myid, mygroup, mycode) {
 				}
 			});
 			if (students == '') {
-//console.log('changeFaseNivel mytema='+mytema + ' mycategory='+mycategory + ' mygroup='+mygroup + ' myNextCategory='+myNextCategory);
 				var DataShow_Config = window.open("T"+mytema + "C"+mycategory+ "G"+myNextCategory + ".html?sim=" + myNextCategory + "&tem=" + mytema + "&cat=" + mycategory, "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
-			} else {
-				refreshTableData(mytema, mycategory, '0', '', '', '');
-				showFormApresentacao();				
+				return;
 			}
 		}
 	}
+
+	showFormNaoDesista();
+	$('#btnNaoDesista').click();
 }
 
-function getProximaFaseNivel(id, mygroup, mycode) {
+function getProximaFaseNivel(mygroup) {
 	var unidade = parseInt(mygroup.substring(mygroup.length-1, mygroup.length));
 	var dezena = parseInt(mygroup.substring(0, mygroup.substring(mygroup.length-1, mygroup.length)));
 	if (unidade < CONST_FASE_MAX) {
@@ -1795,10 +1803,10 @@ async function savePoints(mytema, mycategory, myid, mygroup, mycode) {
 //		  , where: { mygroup: mygroup + '' 
 		  }
 	});
-	var totalCorretas = getTotalCorretas(mytema, mycategory, mygroup, mycode, students);
+	var totalCorretas = getTotalCorretas(mytema, mycategory, mygroup, students);
 	var totalIncorretas = getTotalIncorretas(mytema, mycategory, mygroup, mycode, students);
 	var totalNaoRespondidas = getTotalNaoRespondidas(mytema, mycategory, mygroup, mycode, students);
-	var calculo = calculaPercentualAcerto(mytema, mycategory, mygroup, mycode, totalCorretas, totalperguntas);
+	var calculo = calculaPercentualAcerto(totalCorretas, totalperguntas);
 //alert('totalCorretas='+totalCorretas + ' totalIncorretas='+totalIncorretas + ' totalNaoRespondidas='+totalNaoRespondidas + ' calculo='+calculo);
 	var noOfDataUpdated = await jsstoreCon.update({
 		in: 'Student',
@@ -1826,7 +1834,7 @@ async function showPoints(mytema, mycategory, mygroup, mycode) {
 //		  , where: { mygroup: mygroup + '' 
 		  }
 	});
-	var totalCorretas = getTotalCorretas(mytema, mycategory, mygroup, mycode, students);
+	var totalCorretas = getTotalCorretas(mytema, mycategory, mygroup, students);
 	var totalIncorretas = getTotalIncorretas(mytema, mycategory, mygroup, mycode, students);
 	var totalNaoRespondidas = getTotalNaoRespondidas(mytema, mycategory, mygroup, mycode, students);
 
@@ -1848,7 +1856,7 @@ async function showPoints(mytema, mycategory, mygroup, mycode) {
 //	resultado = resultado + '\n\nResponda: '  + responder;
 	var aprovacao = '';
 
-	var calculo = calculaPercentualAcerto(mytema, mycategory, mygroup, mycode, totalCorretas, totalperguntas);
+	var calculo = calculaPercentualAcerto(totalCorretas, totalperguntas);
 	if (calculo >= 80) {
 		aprovacao = '\n\n' + 'JÁ ESTÁ APROVADO \n' + calculo + '% de acerto é >= 80%';
 	} else {
@@ -1881,10 +1889,10 @@ async function setDashboard(mytema, mycategory, myid, mygroup, mycode) {
 //			  , where: { mygroup: mygroup + '' 
 			  }
 		});
-		var totalCorretas = getTotalCorretas(mytema, mycategory, mygroup, mycode, studentsDashboard);
+		var totalCorretas = getTotalCorretas(mytema, mycategory, mygroup, studentsDashboard);
 		var totalIncorretas = getTotalIncorretas(mytema, mycategory, mygroup, mycode, studentsDashboard);
 		var totalNaoRespondidas = getTotalNaoRespondidas(mytema, mycategory, mygroup, mycode, studentsDashboard);
-		var calculo = calculaPercentualAcerto(mytema, mycategory, mygroup, mycode, totalCorretas, totalperguntas);
+		var calculo = calculaPercentualAcerto(totalCorretas, totalperguntas);
 
 //	alert('totalperguntas='+totalperguntas + ' totalCorretas='+totalCorretas + ' totalIncorretas='+totalIncorretas);
 
@@ -2538,8 +2546,14 @@ async function addStudentImport(mytema, mycategory, studentId, mygroup, mycode) 
     }
 }
 
+function restartFase(mytema, mycategory, mygroup) {
+	updateStudentPlayOrder(mytema, mycategory, mygroup);
+	updateStudentPlayClear(mytema, mycategory, mygroup);
+}
+
 async function updateStudentPlayClear(mytema, mycategory, mygroup) {
 //	try {
+		mygroup = formatMygroup(mygroup);
 		var noOfDataUpdated = await jsstoreCon.update({
 			in: 'Student',
 			set: {
@@ -2561,6 +2575,27 @@ async function updateStudentPlayClear(mytema, mycategory, mygroup) {
 //    } catch (ex) {
 //        console.log(ex.message);
 //    }
+}
+
+async function updateStudentPlayOrder(mytema, mycategory, mygroup) {
+    try {
+		mygroup = formatMygroup(mygroup);
+		var students = await jsstoreCon.select({
+			from: 'Student'
+			  , where: { mytema: mytema + ''
+				, mycategory: mycategory + ''
+				, mygroup: mygroup + ''
+//			  , where: { mygroup: mygroup + ''
+			  }
+		});
+		students.forEach(function (student) {
+//			alert('mygroup='+mygroup + ' mycode='+mycode + ' student.id='+student.id);
+			var min = 1; var max = 8;
+			updateOrder(student.id, min, max);
+		})
+    } catch (ex) {
+        console.log(ex.message)
+    }	
 }
 
 function shuffle(o) {
@@ -2591,26 +2626,6 @@ async function updateOrder(id, min, max) {
     } catch (ex) {
         console.log(ex.message);
     }
-}
-
-async function updateStudentPlayOrder(mytema, mycategory, mygroup) {
-    try {
-		var students = await jsstoreCon.select({
-			from: 'Student'
-			  , where: { mytema: mytema + ''
-				, mycategory: mycategory + ''
-				, mygroup: mygroup + ''
-//			  , where: { mygroup: mygroup + ''
-			  }
-		});
-		students.forEach(function (student) {
-//			alert('mygroup='+mygroup + ' mycode='+mycode + ' student.id='+student.id);
-			var min = 1; var max = 8;
-			updateOrder(student.id, min, max);
-		})
-    } catch (ex) {
-        console.log(ex.message)
-    }	
 }
 
 async function updateStudent(mytema, mycategory, studentId, mygroup, mycode) {
@@ -3541,19 +3556,38 @@ function escondeBotao() {
 	}
 }
 
- function escondeMenu() {
-	$('#btnUser').click();
-}
-
 function showFormUser() {
-	$('#divFormMenu').hide();
     $('#divFormUser').show();
+	$('#divFormMenu').hide();
+    $('#divNaoDesista').hide();
 	$('#txtId').focus();
 }
 
 function showFormMenu() {
-    $('#divFormUser').hide();
     $('#divFormMenu').show();
+    $('#divFormUser').hide();
+    $('#divNaoDesista').hide();
+}
+
+function showFormNaoDesista() {
+    $('#menutopodireito').show();
+
+    $('#divNaoDesista').show();
+    $('#divFormMenu').hide();
+    $('#divFormUser').hide();
+}
+
+function escondeFormUserMenu() {
+	$('#btnUser').click();
+    $('#divFormUser').hide();
+    $('#divFormMenu').hide();
+    $('#divNaoDesista').hide();
+}
+function escondeFormUserMenuNaoDesista() {
+	$('#btnUser').click();
+    $('#divFormUser').hide();
+    $('#divFormMenu').hide();
+    $('#divNaoDesista').hide();
 }
 
 function showFormApresentacao() {
@@ -3590,7 +3624,7 @@ function showFormCategory() {
 	document.getElementById('menutopodireito').style.display='none'; //não exibe menu topo
 }
 
-function showFormSim() {
+function showFormSim(mytema, mycategory, mygroup) {
 	$('#menutopodireito').hide();
     $('#tblEstatisticas').hide();
     $('#divbotoes').show();
@@ -3607,11 +3641,11 @@ function showFormSim() {
 	$('#divNivel').hide();
 
 	escondeBotao();
-//	exibeBotao();
 
 	if (document.getElementById('btnPrevious') != null) {document.getElementById('btnPrevious').disabled = false; }
 	if (document.getElementById('btnNext') != null) {document.getElementById('btnNext').disabled = false; }
 	if (document.getElementById('btnFormCategory') != null) {document.getElementById('btnFormCategory').style.display = 'none'; }
+	restartFase(mytema, mycategory, mygroup);
 }
 
 function showFormAddUpdate() {

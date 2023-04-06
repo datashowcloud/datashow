@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Sim</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!-- script src="scripts/jquery.js"></script -->
+    <!-- link rel="stylesheet" type="text/css" href="style/bootstrap.css" / -->
+    <link rel="stylesheet" href="style/myproject.css" />
+    <link rel="stylesheet" href="style/font-awesome.min.css" />
+    <link rel="stylesheet" href="style/degrade.css" />
+    <script src="scripts/jsstore.js"></script>
+    <script src="scripts/jsstore.worker.js"></script>
+    <script src="index.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <!-- link href="style/carousel.css" rel="stylesheet" -->
+	<style>
+	</style>
+</head>
+
+<body id="myBody" ZZZbackground="gallery/paper.jpeg">
+		
+			<div style="display:'none'; text-align:center; ">
+				<div id="divContinuar" style="display:none;">
+					<br/>
+					<label align=center style="width:290px; border-radius:10px; border-style:solid; border-color:gray; border-width:3px; color:#000000; background-color:transparent;">
+						<label style="border-radius:30px; position:relative; top:-25px; left:0px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+							<label id="btnFecharFormUser" class="btn btn-primary degradeorange" style="border-radius:30px; font-size:20px; cursor:default;"><b>RECOMPENSA</b></label>
+						</label>
+						<br/><label style="color:white; background-color:transparent;">
+						Escolha 1
+						</label>
+						<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; font-family:Helvetica; color:white;">
+							<img src="img/estrela.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=2&cat=1', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+							<img src="img/escudo.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=2&cat=1', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+							<img src="img/medalhacadeado.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=2&cat=1', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+							<img src="img/medalhacifrao.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=2&cat=1', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+							<img src="img/medalha1.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=2&cat=1', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+							<img src="img/medalha2.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=2&cat=1', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+							<img src="img/medalha3.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=2&cat=1', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+							<img src="img/medalha4.jpg" class="btn btn-primary" width="100px" onclick="window.open('index.html?tem=2&cat=1', '_self');" style="border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;"></img>
+						</div>
+				</div>
+				<div id="divLoading" style="display:'none';">
+					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:white;">Aguarde...</div>
+					<br/><div style="padding:9px 15px 9px 15px; cursor:default; color:white;">Estamos preparando tudo para você</div>
+					<video id="vdoLoaging" ZZZposter="img/fundonoite.jpg" width="320" height="240" autoplay muted loop>
+						<source src="video/loading.mp4" type="video/mp4">
+						<source src="video/loading.ogg" type="video/ogg">
+						Formato não suportado. Your browser does not support the video tag.
+					</video>
+				</div>
+				
+				<label id="bSearch" style="display:none;">
+					<input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:200px; height:34px;">
+				</label>
+			</div>
+
+		<table id="tblGrid" style="width:98%" class="table table-hover ">
+			<tbody>
+				<div id="divbotoes" style="display:none; text-align:center;">
+					<button id="btntreino" class="botao flutuante" onclick="changeCategory('2');" style="background-color:gray; display:none;">Treino</button>
+					&nbsp;&nbsp;</td>
+					<button id="btndesafio" class="botao flutuante" onclick="changeCategory('4');" style="background-color:black; display:none;">Desafio</button>
+				</div>
+			</tbody>
+		</table>
+
+		<!-- form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post" -->
+		<!-- /form -->
+		
+		<div class="form-group" id="divFormSim" style="display:none;">
+			<font size=4.9 style=text-align:justify>
+				<table border=0 align=center width="100%">
+					<tr><td>
+						<button id="btnBackward" class="btn btn-danger" style="display:none;"> <i class="fa fa-remove"></i> </button>
+						<button id="btnPrevious" class="btn btn-default" style="display:none;"> <i class="fa fa-chevron-left"></i></button>
+						<button id="btnNext" class="btn btn-success" style="display:none;">Próximo <i class="fa fa-chevron-right"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-signal"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-pause"></i></button>
+						<button class="btn btn-warning" style="display:none;"><i class="fa fa-check"></i> Fim</button>
+					</td></tr>
+					<tr><td id="mytextSim" style="display:none; text-align:justify;">
+					</td></tr>
+					<tr><td id="mycorrect1Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect1answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect2Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect2answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect3Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect3answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect4Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect4answer"></div>
+					</td></tr>
+
+					<tr><td id="myincorrect1Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect1answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect2Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect2answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect3Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect3answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect4Sim" style="display:none; text-align:justify;">
+						<div id="myincorrecta4answer"></div>
+					</td></tr>
+					<tr><td>
+						<br/><input type="text" id="mygroupSim" value="" Zhidden="">
+						<br/><input type="text" id="mycodeSim" value="" Zhidden="">
+						<br/><input type="text" id="myorderSim" value="" Zhidden="">
+						<br/><input type="text" id="myidSim" value="" Zhidden="">
+					</td></tr>
+				</table>
+				<table id="tableFormSimDashboard" border=0 align=center width="60%" style="display:'none';">
+					<tr><td nowrap id="txtCalculo"></td></tr>
+					<tr><td nowrap><input type="text" id="txtIncorretas" value="Incorretas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:red;" readonly /></td></tr>
+					<tr><td nowrap><input type="text" id="txtCorretas" value="Corretas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:green;" readonly /></td></tr>
+					<tr><td nowrap><input type="text" id="txtNaoRespondidas" value="Não Respondidas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:blue;" readonly /></td></tr>
+					<tr><td nowrap><br/><input type="text" id="txtTotal" value="Total" class="btn btn-default" style="padding:9px 15px 9px 15px; display:'none';" hidden=""></td></tr>
+				</table>
+				<table id="tableLinkhelp" border=0 align=center style="display:'none';">
+					<tr><td id="help" style="display:none; text-align:justify;">
+						<div id="divlinkhelp"></div>
+					</td></tr>
+				</table>
+			</font>
+		</div>
+
+		<div class="form-group" id="divFormAddUpdate" style="display:none;">
+			<table border=0 align=center width="98%" style="display:none;"><tr><td>
+				<b>Formulário Editor de Perguntas</b>
+				<p/><p/>
+				<select id="mygroup" name="mygroup" style="height:35px; display:none;">
+					<!-- option value="00">Configurações</option -->
+					<option value="01">Nível 1.0</option>
+					<option value="02">Nível 1.0</option>
+					<option value="03">Nível 1.0</option>
+					<option value="04">Nível 1.0</option>
+					<option value="05">Nível 1.0</option>
+					<option value="06">Nível 1.0</option>
+					<option value="07">Nível 1.0</option>
+					<option value="08">Nível 1.0</option>
+					<option value="09">Nível 1.0</option>
+					<option value="10">Nível 1.0</option>
+					<option value="11">Nível 1.1</option>
+					<option value="12">Nível 1.2</option>
+					<option value="13">Nível 1.3</option>
+					<option value="14">Nível 1.4</option>
+					<option value="20">Nível 2.0</option>
+					<option value="21">Nível 2.1</option>
+					<option value="22">Nível 2.2</option>
+					<option value="23">Nível 2.3</option>
+					<option value="30">Nível 3.0</option>
+					<option value="31">Nível 3.1</option>
+					<option value="32">Nível 3.2</option>
+					<option value="33">Nível 3.3</option>
+					<option value="40">Nível 4.0</option>
+					<option value="41">Nível 4.1</option>
+					<option value="42">Nível 4.2</option>
+					<option value="43">Nível 4.3</option>
+					<option value="44">Nível 4.4</option>
+					<option value="45">Nível 4.5</option>
+					<option value="46">Nível 4.6</option>
+					<option value="50">Nível 5.0</option>
+
+				</select>
+				<select id="mycode" name="mycode" style="height:35px; display:none;"></select>
+				<select id="myorder" name="myorder" style="height:35px; display:none;"></select>
+				<p/>
+				<p/><textarea name="mytext" id="mytext" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui..."></textarea>
+				<p/><textarea name="mytext2" id="mytext2" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui em Inglês..."></textarea>
+				<p/><textarea name="mytext3" id="mytext3" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui em Espanhol..."></textarea>
+				<font style="color:green;">
+					Corretas:
+					<textarea name="myoption1" id="myoption1" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey1" id="myoptionkey1" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption2" id="myoption2" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey2" id="myoptionkey2" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption3" id="myoption3" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey3" id="myoptionkey3" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption4" id="myoption4" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey4" id="myoptionkey4" rows=1 placeholder="explicação..."></textarea>
+				</font>
+				
+				<font style="color:red; text-align:left;">
+					Incorretas:
+					<textarea name="myoption5" id="myoption5" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey5" id="myoptionkey5" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption6" id="myoption6" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey6" id="myoptionkey6" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption7" id="myoption7" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey7" id="myoptionkey7" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption8" id="myoption8" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey8" id="myoptionkey8" rows=1 placeholder="explicação..."></textarea>
+				</font>
+				<p/><p/>
+				<button id="btnSubmit" type="button" class="btn btn-primary" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-check"></i> Salvar</button>
+				<p/><p/>
+				<button id="btnCancel" type="button" class="btn btn-default" style="padding:9px 15px 9px 15px;margin-left:10px; width:110px;"> <i class="fa fa-times"></i> Não Salvar</button>
+			</td></tr></table>
+		</div>
+		
+		<div id="divcontent" style="display:none;">
+
+<!-- Configuração: 1 -->
+<br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
+<p>
+<portugues>FASE 4</portugues>
+<english>PHASE 4</english>
+<espanhol>FASE 4</espanhol>
+
+<p>
+<portugues>Sua empresa tem um conjunto de recursos definidos como parte de uma assinatura. Se eles excluírem um grupo de recursos, os recursos no grupo de recursos também serão excluídos?</portugues>
+<english>Your company has a set of resources defined as part of a subscription. If they delete a resource group, would the resources in the resource group also get deleted?</english>
+<espanhol>Su empresa tiene un conjunto de características definidas como parte de una suscripción. Si eliminan un grupo de recursos, ¿también se eliminan los recursos del grupo de recursos?</espanhol>
+
+<ok>
+<portugues>Sim</portugues>
+<english>Yes</english>
+<espanhol>Sí</espanhol>
+<tip>Ao excluir um grupo de recursos, todos os recursos subjacentes também serão excluídos.
+<br/><a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Não</portugues>
+<english>No</english>
+<espanhol>No</espanhol>
+<tip>Não se aplica nessa resposta.
+<br/><a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Uma empresa acaba de definir uma conta do Azure Free. É VERDADE que apenas as máquinas virtuais do Azure e as contas de armazenamento do Azure podem ser implantadas na Conta Gratuita do Azure?</portugues>
+<english>A company has just set an Azure Free account. Is it TRUE that only Azure virtual machines and Azure storage accounts can be deployed to the Azure Free Account?</english>
+<espanhol>Una empresa acaba de configurar una cuenta gratuita de Azure. ¿ES VERDADERO que solo Azure Virtual Machines y Azure Storage Accounts pueden implementarse en Azure Free Account?</espanhol>
+
+<ok>
+<portugues>Não</portugues>
+<english>No</english>
+<espanhol>No</espanhol>
+<tip>Com a Conta Gratuita do Azure, você também pode optar por usar outros serviços do Azure. Você não está limitado apenas à máquina virtual do Azure ou ao serviço de conta de armazenamento do Azure.
+<br/><a href="https://azure.microsoft.com/en-us/free/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Sim</portugues>
+<english>Yes</english>
+<espanhol>Sí</espanhol>
+<tip>Não se aplica nessa resposta.
+<br/><a href="https://azure.microsoft.com/en-us/free/" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Sua empresa possui um conjunto de recursos definidos como parte de uma assinatura. É VERDADE que os recursos do Azure só podem acessar outros recursos no mesmo grupo de recursos?</portugues>
+<english>Your company has a set of resources defined as part of a subscription. Is it TRUE that Azure resources can only access other resources in the same resource group?</english>
+<espanhol>Su empresa tiene un conjunto de características definidas como parte de una suscripción. ¿ES CIERTO que los recursos de Azure solo pueden acceder a otros recursos en el mismo grupo de recursos?</espanhol>
+
+<ok>
+<portugues>Não</portugues>
+<english>No</english>
+<espanhol>No</espanhol>
+<tip>Os recursos do Azure também podem acessar recursos que estão em outros grupos de recursos.
+<br/><a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Sim</portugues>
+<english>Yes</english>
+<espanhol>Sí</espanhol>
+<tip>Não se aplica nessa resposta.
+<br/><a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Uma empresa deseja criar uma máquina virtual do Azure como parte de sua assinatura. A máquina virtual do Azure pode fazer parte de vários grupos de recursos?</portugues>
+<english>A company wants to create an Azure virtual machine as part of their subscription. Can the Azure virtual machine be a part of multiple resource groups?</english>
+<espanhol>Una empresa quiere crear una máquina virtual de Azure como parte de su suscripción. ¿Puede la máquina virtual de Azure formar parte de varios grupos de recursos?</espanhol>
+
+<ok>
+<portugues>Não</portugues>
+<english>No</english>
+<espanhol>No</espanhol>
+<tip>Um recurso no Azure só pode fazer parte de um único grupo de recursos. Quando você define um recurso como uma máquina virtual do Azure, ele faz parte de um único grupo de recursos.
+<br/><a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Sim</portugues>
+<english>Yes</english>
+<espanhol>Sí</espanhol>
+<tip>Não se aplica nessa resposta.
+<br/><a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Sua empresa tem um conjunto de recursos e grupos de recursos definidos como parte de uma assinatura. Você pode aninhar grupos de recursos no Azure?</portugues>
+<english>Your company has a set of resources and resource groups defined as part of a subscription. Can you nest resource groups in Azure?</english>
+<espanhol>Su empresa tiene un conjunto de recursos y grupos de recursos definidos como parte de una suscripción. ¿Se pueden anidar grupos de recursos en Azure?</espanhol>
+
+<ok>
+<portugues>Não</portugues>
+<english>No</english>
+<espanhol>No</espanhol>
+<tip>Você não pode aninhar grupos de recursos juntos.
+<br/><a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Sim</portugues>
+<english>Yes</english>
+<espanhol>Sí</espanhol>
+<tip>Não se aplica nessa resposta.
+<br/><a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Você deve especificar se a seguinte afirmação é VERDADEIRA ou FALSA. "Regulamento Geral de Proteção de Dados (GDPR) define regras de proteção e privacidade de dados".</portugues>
+<english>You have to specify whether the following statement is TRUE or FALSE. "General Data Protection Regulation (GDPR) define data protection and privacy rules".</english>
+<espanhol>Debe especificar si la siguiente afirmación es VERDADERA o FALSA. "El Reglamento General de Protección de Datos (GDPR) define las reglas de privacidad y protección de datos".</espanhol>
+
+<ok>
+<portugues>Verdadeiro</portugues>
+<english>True</english>
+<espanhol>Verdadero</espanhol>
+<tip>Toda a ideia do Regulamento Geral de Proteção de Dados é definir a forma como os dados pessoais são recolhidos e geridos pelas organizações. As empresas são obrigadas a realizar Avaliações de Impacto de Proteção de Dados para garantir que estejam em conformidade com o regulamento.
+<br/><a href="https://docs.microsoft.com/en-us/microsoft-365/compliance/gdpr?view=o365-worldwide" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Falso</portugues>
+<english>False</english>
+<espanhol>Falso</espanhol>
+<tip>Não se aplica nessa resposta.
+<br/><a href="https://docs.microsoft.com/en-us/microsoft-365/compliance/gdpr?view=o365-worldwide" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Você tem dados armazenados na camada de acesso de arquivo de uma conta de armazenamento do Azure. Qual das opções a seguir deve ser feita antes que você possa acessar os dados na conta de armazenamento?</portugues>
+<english>You have data that is stored in the Archive access tier of an Azure Storage account. Which of the following must be done before you can access the data in the storage account?</english>
+<espanhol>Tiene datos almacenados en el nivel de acceso a archivos de una cuenta de Azure Storage. ¿Cuál de las siguientes acciones debe realizarse antes de poder acceder a los datos en la cuenta de almacenamiento?</espanhol>
+
+<ok>
+<portugues>Os dados precisam ser reidratados.</portugues>
+<english>The data needs to be rehydrated.</english>
+<espanhol>Los datos necesitan ser rehidratados.</espanhol>
+<tip>Os dados precisam ser reidratados. Quando você tem um objeto na camada de acesso ao arquivo, para acessar o objeto, ele precisa ser reidratado.
+<br/><a href="https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Os dados devem ser restaurados.</portugues>
+<english>The data must be restored.</english>
+<espanhol>Los datos deben ser restaurados.</espanhol>
+<tip>Os dados precisam ser reidratados. (Incorreta: The data must be restored).
+<br/><a href="https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Os dados devem ser copiados com o Backup do Azure.</portugues>
+<english>The data must be backed up with Azure Backup.</english>
+<espanhol>Se debe hacer una copia de seguridad de los datos con Azure Backup.</espanhol>
+<tip>Não é necessário fazer cópia de segurança dos dados. (Incorreta: Os dados devem ser copiados com o Backup do Azure).
+<br/><a href="https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Os dados precisam ser copiados usando a ferramenta azcopy.exe.</portugues>
+<english>The data needs to be copied by using the azcopy.exe tool.</english>
+<espanhol>Los datos deben copiarse mediante la herramienta azcopy.exe.</espanhol>
+<tip>Não é possível acessar objetos no nível de acesso de arquivo. (Incorreta: Os dados precisam ser copiados usando a ferramenta azcopy.exe).
+<br/><a href="https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Em qual dos seguintes serviços você ativaria o "acesso à VM just-in-time"?</portugues>
+<english>In which of the following services would you enable "just-in-time VM access"?</english>
+<espanhol>¿En cuál de los siguientes servicios habilitaría el "acceso a máquinas virtuales justo a tiempo"?</espanhol>
+
+<ok>
+<portugues>Central de Segurança do Azure.</portugues>
+<english>Azure Security Center.</english>
+<espanhol>Centro de seguridad de Azure.</espanhol>
+<tip>Centro de Segurança do Azure. É possível ativar o just-in-time das VMs do Microsoft Defender for Cloud e das Máquinas Virtuais do Azure usando o PowerShell e a API REST.
+<br/>Você pode ativar o acesso à VM JIT com suas opções personalizadas para uma ou mais VMs usando o Defender for Cloud ou programaticamente. Como alternativa, você pode habilitar o JIT com parâmetros predefinidos codificados nas máquinas virtuais do Azure.
+<br/><a href="https://docs.microsoft.com/en-us/azure/defender-for-cloud/just-in-time-access-usage?tabs=jit-config-asc%2Cjit-request-asc" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Bastião Azure.</portugues>
+<english>Azure Bastion.</english>
+<espanhol>Bastión Azure.</espanhol>
+<tip>"Bastião Azure" e acesso à VM Just-In-Time (JIT) não podem ser usados juntos. Em outras palavras, se você habilitar o Azure Bastion em sua rede virtual (VNET) com uma VM JIT existente habilitada, o Bastion Host não se conectará à máquina de destino.
+<br/><a href="https://docs.microsoft.com/en-us/azure/defender-for-cloud/just-in-time-access-usage?tabs=jit-config-asc%2Cjit-request-asc" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Firewall do Azure.</portugues>
+<english>Azure Firewall.</english>
+<espanhol>Cortafuegos Azure.</espanhol>
+<tip>Firewall do Azure. O Azure Lighthouse permite o gerenciamento multilocatário com escalabilidade, maior automação e governança aprimorada entre os recursos.
+<br/><a href="https://docs.microsoft.com/en-us/azure/defender-for-cloud/just-in-time-access-usage?tabs=jit-config-asc%2Cjit-request-asc" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Porta da frente do Azure.</portugues>
+<english>Azure Front Door.</english>
+<espanhol>Puerta principal Azure.</espanhol>
+<tip>Porta frontal do Azure é a rede de entrega de conteúdo (CDN) em nuvem moderna da Microsoft que fornece acesso rápido, confiável e seguro entre seus usuários e o conteúdo da Web estático e dinâmico de seus aplicativos em todo o mundo.
+<br/><a href="https://docs.microsoft.com/en-us/azure/defender-for-cloud/just-in-time-access-usage?tabs=jit-config-asc%2Cjit-request-asc" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Qual das seguintes opções é de responsabilidade do cliente?</portugues>
+<english>Which of the following is the responsibility of the customer?</english>
+<espanhol>¿Cuál de las siguientes es responsabilidad del cliente?</espanhol>
+
+<ok>
+<portugues>Segurança de dados hospedados em máquinas virtuais do Azure.</portugues>
+<english>Security of data hosted on Azure virtual machines.</english>
+<espanhol>Seguridad de los datos alojados en máquinas virtuales de Azure.</espanhol>
+<tip>Segurança de dados hospedados em máquinas virtuais do Azure. Todos os outros aspectos são de responsabilidade do Azure.
+<br/><a href="https://docs.microsoft.com/en-us/azure/security/fundamentals/shared-responsibility" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Manutenção dos servidores físicos subjacentes.</portugues>
+<english>Maintaining the underlying physical servers.</english>
+<espanhol>Mantenimiento de los servidores físicos subyacentes.</espanhol>
+<tip>Manutenção dos servidores físicos subjacentes. Não se aplica nessa resposta.
+<br/><a href="https://docs.microsoft.com/en-us/azure/security/fundamentals/shared-responsibility" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Tempo de atividade do serviço de máquina virtual.</portugues>
+<english>Uptime of the Virtual Machine service.</english>
+<espanhol>Uptime del servicio de Máquina Virtual.</espanhol>
+<tip>Tempo de atividade do serviço de Máquina Virtual. Não se aplica nessa resposta.
+<br/><a href="https://docs.microsoft.com/en-us/azure/security/fundamentals/shared-responsibility" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Arrefecimento no centro de dados.</portugues>
+<english>Cooling in the data center.</english>
+<espanhol>Refrigeración en el centro de datos.</espanhol>
+<tip>Resfriamento no data center. Não se aplica nessa resposta.
+<br/><a href="https://docs.microsoft.com/en-us/azure/security/fundamentals/shared-responsibility" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Uma empresa está planejando hospedar máquinas virtuais em várias zonas de disponibilidade. Qual das opções a seguir a empresa está tentando alcançar com essa implementação?</portugues>
+<english>A company is planning on hosting virtual machines across multiple Availability zones. Which of the following is the company trying to achieve with this implementation?</english>
+<espanhol>Una empresa tiene previsto alojar máquinas virtuales en varias zonas de disponibilidad. ¿Cuál de los siguientes está tratando de lograr la empresa con esta implementación?</espanhol>
+
+<ok>
+<portugues>Melhor Disponibilidade.</portugues>
+<english>Better Availability.</english>
+<espanhol>Mejor disponibilidad.</espanhol>
+<tip>Melhor disponibilidade. A empresa está tentando obter melhor disponibilidade hospedando sua infraestrutura em várias zonas de disponibilidade.
+<br/><a href="https://docs.microsoft.com/en-us/azure/availability-zones/az-overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Melhor elasticidade.</portugues>
+<english>Better elasticity.</english>
+<espanhol>Mejor elasticidad.</espanhol>
+<tip>Melhor elasticidade. A elasticidade pode ser usada como um conceito usado para a capacidade de expandir ou diminuir rapidamente os recursos de processamento, memória e armazenamento do computador para atender à demanda.
+<br/><a href="https://docs.microsoft.com/en-us/azure/availability-zones/az-overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Redução de custos.</portugues>
+<english>Reduction in costs.</english>
+<espanhol>Reducción de costes.</espanhol>
+<tip>Redução de custos. Haverá custos adicionais para mais máquinas virtuais e a comunicação de largura de banda entre as máquinas virtuais.
+<br/><a href="https://docs.microsoft.com/en-us/azure/availability-zones/az-overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<portugues>Recuperação de Desastres.</portugues>
+<english>Disaster Recovery.</english>
+<espanhol>Recuperación de desastres.</espanhol>
+<tip>Recuperação de desastres. Esse é um conceito usado para recuperar falhas em toda a região.
+<br/><a href="https://docs.microsoft.com/en-us/azure/availability-zones/az-overview" target="_blank" style="color:gray;">veja mais na internet</a>
+</tip>
+
+<p>
+
+</textarea>
+
+		</div>
+
+    <link href="style/main.css " rel="stylesheet " type="text/css " />
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script>window.jQuery || document.write('<script src="scripts/jquery-3.6.3.js"><\/script>')</script>
+    <script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+
+<script type="text/javascript">
+	onLoadConfig();
+	
+	var quantidadeRegistrosP = '11'; // <p>
+	refreshTableResult(quantidadeRegistrosP);
+	function callback() {
+		setTimeout (function () {
+			refreshTableResult(quantidadeRegistrosP);
+			callback();
+		}, 100);
+	}
+	callback();
+</script>
