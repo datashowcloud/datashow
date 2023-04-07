@@ -904,7 +904,9 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 
 					document.getElementById('mytip' + parseInt(index+1)).innerHTML = textlink + linkhref
 					//botão de resposta
-					document.getElementById('btnCorrectAnswer' + parseInt(index+1)).innerHTML = selectKeyMyoption(myoption);
+					var varImagemDica = '';
+					//varImagemDica = '<img src="img/dica.jpg" width="20px" style="border-radius:50%; position:relative; top:-70px;" onclick="alert(\'test\');"></img>';
+					document.getElementById('btnCorrectAnswer' + parseInt(index+1)).innerHTML = selectKeyMyoption(myoption) + varImagemDica;
 					
 
 					//checa as respostas já selecionadas anteriormente
