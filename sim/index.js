@@ -401,6 +401,7 @@ function registerEvents() {
 			savePoints(mytema, mycategory, myid, mygroup, mycode);
 			var id = row.attr('itemid');
 			var mygroup = formatMygroup(child.eq(0).text());
+			limpaCkeckbox();
 			refreshTableQuestion(mytema, mycategory, id, mygroup, '1');
 			showFormSim(mytema, mycategory, mygroup);
 		}
@@ -437,6 +438,7 @@ function registerEvents() {
 		var id = row.attr('itemid');
 		var mygroup = formatMygroup(child.eq(0).text());
 		var mycode = child.eq(1).text();
+		limpaCkeckbox();
 		refreshTableQuestion(mytema, mycategory, id, mygroup, '1');
 		showFormSim(mytema, mycategory, mygroup);
     });	
@@ -476,6 +478,7 @@ function registerEvents() {
 		var mygroup = formatMygroup(document.getElementById('mygroupSim').value);
 		var mycode = parseInt(document.getElementById('mycodeSim').value) - 1;
 		if (mycode > 0) {
+			limpaCkeckbox();
 			refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode);
 		}
     })
@@ -486,6 +489,7 @@ function registerEvents() {
 		var myid = document.getElementById('myidSim').value;
 		var mygroup = formatMygroup(document.getElementById('mygroupSim').value);
 		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
+		limpaCkeckbox();
 		refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode);
 		savePoints(mytema, mycategory, myid, mygroup, mycode);
 */
@@ -564,6 +568,7 @@ function registerEvents() {
 			var myid = document.getElementById('myidSim').value;
 			var mygroup = formatMygroup(document.getElementById('mygroupSim').value);
 			var mycode = parseInt(document.getElementById('mycodeSim').value) + 0;
+			limpaCkeckbox();
 			refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode);
 		} catch (ex) {
 			alert('imgLanguage ' + ex.message)
@@ -828,6 +833,7 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 		});
 		totalperguntas = parseInt(totalperguntas) - 1;
 		setDashboard(mytema, mycategory, myid, mygroup, mycode);
+
 		var students = await jsstoreCon.select({ //seleciona uma pergunta selecionada pelo mytema, mycategory, mygroup, mycode
 			from: 'Student'
 				, where: { mytema: mytema + ''
@@ -840,7 +846,6 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 			setTimeout(() => { changeFaseNivel(mytema, mycategory, mygroup, '') }, 1000); // Executa após alguns segundos para esperar o término do processo
 			return;
 		}
-		
 		limpaCkeckbox();
 
 		students.forEach(function (student) {
@@ -905,8 +910,7 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 					document.getElementById('mytip' + parseInt(index+1)).innerHTML = textlink + linkhref
 					//botão de resposta
 					var varImagemDica = '';
-					//varImagemDica = '<img src="img/dica.jpg" width="20px" style="border-radius:50%; position:relative; top:-70px;" onclick="alert(\'test\');"></img>';
-					document.getElementById('btnCorrectAnswer' + parseInt(index+1)).innerHTML = selectKeyMyoption(myoption) + varImagemDica;
+					document.getElementById('btnCorrectAnswer' + parseInt(index+1)).innerHTML = selectKeyMyoption(myoption);
 					
 
 					//checa as respostas já selecionadas anteriormente
@@ -915,18 +919,32 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 							if (document.getElementById('chkMycorrect'+ indexchk).value == varMyorder) {
 								document.getElementById('chkMycorrect' + indexchk).checked = true;
 								if (varMyorder < 5) {
+//alert('setBackgroundColor='+CONST_MEDIUM_SEA_GREEN);
 									setBackgroundColor(indexchk, CONST_MEDIUM_SEA_GREEN);
+									//cor fundo do botão
+									document.getElementById('btnCorrectAnswer' + indexchk).classList.remove('btn-primary');
+									document.getElementById('btnCorrectAnswer' + indexchk).classList.remove('degradeblue');
+									document.getElementById('btnCorrectAnswer' + indexchk).classList.add('btn-success');
+									document.getElementById('btnCorrectAnswer' + indexchk).classList.add('degradegreen');
 								} else {
+//alert('setBackgroundColor='+'#FF5555');
 									setBackgroundColor(indexchk, '#FF5555');
+									//cor fundo do botão
+									document.getElementById('btnCorrectAnswer' + indexchk).classList.remove('btn-primary');
+									document.getElementById('btnCorrectAnswer' + indexchk).classList.remove('degradeblue');
+									document.getElementById('btnCorrectAnswer' + indexchk).classList.add('btn-danger');
+									document.getElementById('btnCorrectAnswer' + indexchk).classList.add('degradered');
 								}
 							}
 						}
 					}
 					if (myoption.length > 0) {
 						//alert('myoption=['+myoption+']');
-						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='';
+//						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='';
+						document.getElementById('mycorrect' + parseInt(index+1)).style.display='';
 					} else {
-						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='none';
+//						document.getElementById('mycorrect' + parseInt(index+1) + 'Sim').style.display='none';
+						document.getElementById('mycorrect' + parseInt(index+1)).style.display='none';
 					}
 				}
 			}
@@ -1138,32 +1156,24 @@ function next(index, resposta) {
 	var mygroup = formatMygroup(document.getElementById('mygroupSim').value);
 	var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
 	salvaResposta(index);
-	refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode);
 	savePoints(mytema, mycategory, myid, mygroup, mycode);
+	
+//	setTimeout(() => { limpaCkeckbox(); }, 500); // Executa após 1 segundo para esperar o processo ser completamente executado
+	setTimeout(() => { refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode); }, 500); // Executa após 1 segundo para esperar o processo ser completamente executado
+	
 	if (resposta <= 4) {
-		alert('ACERTOU!');
+		document.getElementById('btnCorrectAnswer' + index).classList.remove('btn-primary');
+		document.getElementById('btnCorrectAnswer' + index).classList.remove('degradeblue');
+		document.getElementById('btnCorrectAnswer' + index).classList.add('btn-success');
+		document.getElementById('btnCorrectAnswer' + index).classList.add('degradegreen');
+//		alert('ACERTOU!');
 	} else {
-		alert('RESPOSTA INCORRETA');
+		document.getElementById('btnCorrectAnswer' + index).classList.remove('btn-primary');
+		document.getElementById('btnCorrectAnswer' + index).classList.remove('degradeblue');
+		document.getElementById('btnCorrectAnswer' + index).classList.add('btn-danger');
+		document.getElementById('btnCorrectAnswer' + index).classList.add('degradered');
+//		alert('RESPOSTA INCORRETA');
 	}
-
-/*	if (resposta <= 4) { //resposta correta
-		var params = new URLSearchParams(window.location.search);
-		var mytema = params.get('tem');
-		var mycategory = params.get('cat');
-		var myid = document.getElementById('myidSim').value;
-		var mygroup = formatMygroup(document.getElementById('mygroupSim').value);
-		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
-		salvaResposta(index);
-		refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode);
-		savePoints(mytema, mycategory, myid, mygroup, mycode);
-		alert('RESPOSTA CORRETA');
-	} else { //resposta incorreta
-		limpaRespostasSalvas();
-		alert('RESPOSTA INCORRETA');
-		//showFormApresentacao();
-	}
-	limpaCkeckbox();
-*/
 }
 
 function salvaResposta(index) {
@@ -1201,6 +1211,13 @@ function limpaCkeckbox() {
 		document.getElementById('chkMycorrect' + index).disabled = false;
 		document.getElementById('chkMycorrect' + index).value = '';
 		document.getElementById('mytip' + index).style.display='none';
+
+		document.getElementById('btnCorrectAnswer' + index).classList.remove('btn-success');
+		document.getElementById('btnCorrectAnswer' + index).classList.remove('degradegreen');
+		document.getElementById('btnCorrectAnswer' + index).classList.remove('btn-danger');
+		document.getElementById('btnCorrectAnswer' + index).classList.remove('degradered');
+		document.getElementById('btnCorrectAnswer' + index).classList.add('btn-primary');
+		document.getElementById('btnCorrectAnswer' + index).classList.add('degradeblue');
 	}
 }
 
@@ -1415,6 +1432,7 @@ function showTableQuestions() {
 	var id = row.attr('itemid');
 	var mygroup = formatMygroup(child.eq(0).text());
 	var mycode = child.eq(1).text();
+	limpaCkeckbox();
 	refreshTableQuestion(mytema, mycategory, id, mygroup, '1');
 	showFormSim(mytema, mycategory, mygroup);
 }

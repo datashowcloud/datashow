@@ -73,7 +73,7 @@
 			</table>
 		</div>
 
-		<div class="offcanvas offcanvas-top text-bg-dark bg-dark" style="height:500px;" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+		<div class="offcanvas offcanvas-top text-bg-dark bg-dark" style="height:550px;" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
 		  <div class="offcanvas-header">
 			<h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel"></h5>
 			<!--button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button--> <!-- esse era o botão X -->
@@ -499,37 +499,37 @@
 
 			<table id="tableFormSimQuestions" border=0 align=center style="display:'none'; width:95%;" Zclass="table table-hover">
 				
-				<tr><td id="mycorrect1Sim" style="display:none; text-align:left;"><!-- <font color=gray>#1</font> -->
+				<tr><td id="mycorrect1" style="display:none; text-align:left;"><!-- <font color=gray>#1</font> -->
 					<table border=0 width="100%">
 						<tr>
-							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect1" value="" style="border-radius:50%; color:white; display:'none';"></input> </td>
+							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect1" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
 							<td>
 								<!--label style="width:100%; border-radius:30px; border-style:double; border-color:white; border-width:2px; color:white; background-color:#0077FF;"-->
 									<button id="btnCorrectAnswer1" class="btn btn-primary degradeblue" onclick="next('1', document.getElementById('chkMycorrect1').value); $('#menutopodireito').hide();" style="border-style:solid; border-color:white; border-width:2px; color:white; background-color:black; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
 								<!--/label-->
 							</td>
 							<td width="1%">
-								<img src="img/dica.jpg" width="20px" onclick="showTip('1');" style="border-radius:50%; cursor:pointer; position:relative; right:10px; "></img>
+								<img src="img/dica.jpg" width="20px" onclick="showTip('1');" style="border-radius:50%; cursor:pointer; position:relative; right:5px;" title="Tip/Dica/Consejo"></img>
 									<!-- button id="btnCorrectTip1" class="btn btn-primary degradeblue" onclick="showTip('1');" style="border-radius:50%; font-size:15px; border-color:white; color:white;"><i class="fa fa-plus"></i></button -->
 							</td>
 						</tr>
 						<tr id="trtip1" style="display:none;">
-							<td colspan=99> <label id="mytip1" class="degradeblack" style="width:85%; border-color:gray; border-radius:10px; border-style:solid; border-width:3px; color:white; backgroundColor:black; display:'none'; text-align:justify;"></label> </td>
+							<td colspan=99> <label id="mytip1" class="degradeblack" style="display:none; width:85%; border-color:gray; border-radius:10px; border-style:solid; border-width:3px; color:white; backgroundColor:black; text-align:justify;"></label> </td>
 						</tr>
 					</table>
 				</td></tr>
 
-				<tr><td id="mycorrect2Sim" style="display:none; text-align:left;"><!-- <font color=gray>#2</font> -->
+				<tr><td id="mycorrect2" style="display:none; text-align:left;"><!-- <font color=gray>#2</font> -->
 					<table border=0 width="100%">
 						<tr>
-							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect2" value="" style="border-radius:50%; color:white; display:'none';"></input> </td>
+							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect2" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
 							<td>
 								<!--label style="width:100%; border-radius:30px; border-style:double; border-color:white; border-width:2px; color:white; background-color:#0077FF;"-->
 									<button id="btnCorrectAnswer2" class="btn btn-primary degradeblue" onclick="next('2', document.getElementById('chkMycorrect2').value); $('#menutopodireito').hide();" style="border-style:solid; border-color:white; border-width:2px; color:white; background-color:black; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
 								<!--/label-->
 							</td>
 							<td width="1%">
-								<img src="img/dica.jpg" width="20px" onclick="showTip('2');" style="border-radius:50%; cursor:pointer; position:relative; right:10px; "></img>
+								<img src="img/dica.jpg" width="20px" onclick="showTip('2');" style="border-radius:50%; cursor:pointer; position:relative; right:5px;" title="Tip/Dica/Consejo"></img>
 								<!--label style="ZZZposition:relative; top:0px; left:-40px; border-radius:50%; border-style:double; border-color:transparent; border-width:0px; color:transparent; background-color:transparent;" title="Tip/Dica/Consejo">
 									<button id="btnCorrectTip2" class="btn btn-primary degradeblue" onclick="showTip('2');" style="border-radius:50%; font-size:15px; border-color:white; background-color:#0077FF; color:white;"><i class="fa fa-plus"></i></button>
 								</label-->
@@ -541,17 +541,17 @@
 					</table>
 				</td></tr>
 				
-				<tr><td id="mycorrect3Sim" style="display:none; text-align:left;"><!-- <font color=gray>#3</font> -->
+				<tr><td id="mycorrect3" style="display:none; text-align:left;"><!-- <font color=gray>#3</font> -->
 					<table border=0 width="100%">
 						<tr>
-							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect3" value="" style="border-radius:50%; color:white; display:'none';"></input> </td>
+							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect3" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
 							<td>
 								<!--label style="width:100%; border-radius:30px; border-style:double; border-color:white; border-width:2px; color:white; background-color:#0077FF;"-->
 									<button id="btnCorrectAnswer3" class="btn btn-primary degradeblue" onclick="next('3', document.getElementById('chkMycorrect3').value); $('#menutopodireito').hide();" style="border-style:solid; border-color:white; border-width:2px; color:white; background-color:black; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
 								<!--/label-->
 							</td>
 							<td width="1%">
-								<img src="img/dica.jpg" width="20px" onclick="showTip('3');" style="border-radius:50%; cursor:pointer; position:relative; right:10px; "></img>
+								<img src="img/dica.jpg" width="20px" onclick="showTip('3');" style="border-radius:50%; cursor:pointer; position:relative; right:5px;" title="Tip/Dica/Consejo"></img>
 								<!--label style="ZZZposition:relative; top:0px; left:-40px; border-radius:50%; border-style:double; border-color:transparent; border-width:0px; color:transparent; background-color:transparent;" title="Tip/Dica/Consejo">
 									<button id="btnCorrectTip3" class="btn btn-primary degradeblue" onclick="showTip('3');" style="border-radius:50%; font-size:15px; border-color:white; background-color:#0077FF; color:white;"><i class="fa fa-plus"></i></button>
 								</label-->
@@ -563,17 +563,17 @@
 					</table>
 				</td></tr>
 				
-				<tr><td id="mycorrect4Sim" style="display:none; text-align:left;"><!-- <font color=gray>#4</font> -->
+				<tr><td id="mycorrect4" style="display:none; text-align:left;"><!-- <font color=gray>#4</font> -->
 					<table border=0 width="100%">
 						<tr>
-							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect4" value="" style="border-radius:50%; color:white; display:'none';"></input> </td>
+							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect4" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
 							<td>
 								<!--label style="width:100%; border-radius:30px; border-style:double; border-color:white; border-width:2px; color:white; background-color:#0077FF;"-->
 									<button id="btnCorrectAnswer4" class="btn btn-primary degradeblue" onclick="next('4', document.getElementById('chkMycorrect4').value); $('#menutopodireito').hide();" style="border-style:solid; border-color:white; border-width:2px; color:white; background-color:black; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
 								<!--/label-->
 							</td>
 							<td width="1%">
-								<img src="img/dica.jpg" width="20px" onclick="showTip('4');" style="border-radius:50%; cursor:pointer; position:relative; right:10px; "></img>
+								<img src="img/dica.jpg" width="20px" onclick="showTip('4');" style="border-radius:50%; cursor:pointer; position:relative; right:5px;" title="Tip/Dica/Consejo"></img>
 								<!--label style="ZZZposition:relative; top:0px; left:-40px; border-radius:50%; border-style:double; border-color:transparent; border-width:0px; color:transparent; background-color:transparent;" title="Tip/Dica/Consejo">
 									<button id="btnCorrectTip4" class="btn btn-primary degradeblue" onclick="showTip('4');" style="border-radius:50%; font-size:15px; border-color:white; background-color:#0077FF; color:white;"><i class="fa fa-plus"></i></button>
 								</label-->
@@ -585,17 +585,17 @@
 					</table>
 				</td></tr>
 
-				<tr><td id="mycorrect5Sim" style="display:none; text-align:left;"><!-- <font color=gray>#5</font> -->
+				<tr><td id="mycorrect5" style="display:none; text-align:left;"><!-- <font color=gray>#5</font> -->
 					<table border=0 width="100%">
 						<tr>
-							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect5" value="" style="border-radius:50%; color:white; display:'none';"></input> </td>
+							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect5" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
 							<td>
 								<!--label style="width:100%; border-radius:30px; border-style:double; border-color:white; border-width:2px; color:white; background-color:#0077FF;"-->
 									<button id="btnCorrectAnswer5" class="btn btn-primary degradeblue" onclick="next('5', document.getElementById('chkMycorrect5').value); $('#menutopodireito').hide();" style="border-style:solid; border-color:white; border-width:2px; color:white; background-color:black; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
 								<!--/label-->
 							</td>
 							<td width="1%">
-								<img src="img/dica.jpg" width="20px" onclick="showTip('5');" style="border-radius:50%; cursor:pointer; position:relative; right:10px; "></img>
+								<img src="img/dica.jpg" width="20px" onclick="showTip('5');" style="border-radius:50%; cursor:pointer; position:relative; right:5px;" title="Tip/Dica/Consejo"></img>
 								<!--label style="ZZZposition:relative; top:0px; left:-40px; border-radius:50%; border-style:double; border-color:transparent; border-width:0px; color:transparent; background-color:transparent;" title="Tip/Dica/Consejo">
 									<button id="btnCorrectTip5" class="btn btn-primary degradeblue" onclick="showTip('5');" style="border-radius:50%; font-size:15px; border-color:white; background-color:#0077FF; color:white;"><i class="fa fa-plus"></i></button>
 								</label-->
@@ -607,17 +607,17 @@
 					</table>
 				</td></tr>
 				
-				<tr><td id="mycorrect6Sim" style="display:none; text-align:left;"><!-- <font color=gray>#6</font> -->
+				<tr><td id="mycorrect6" style="display:none; text-align:left;"><!-- <font color=gray>#6</font> -->
 					<table border=0 width="100%">
 						<tr>
-							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect6" value="" style="border-radius:50%; color:white; display:'none';"></input> </td>
+							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect6" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
 							<td>
 								<!--label style="width:100%; border-radius:30px; border-style:double; border-color:white; border-width:2px; color:white; background-color:#0077FF;"-->
 									<button id="btnCorrectAnswer6" class="btn btn-primary degradeblue" onclick="next('6', document.getElementById('chkMycorrect6').value); $('#menutopodireito').hide();" style="border-style:solid; border-color:white; border-width:2px; color:white; background-color:black; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
 								<!--/label-->
 							</td>
 							<td width="1%">
-								<img src="img/dica.jpg" width="20px" onclick="showTip('6');" style="border-radius:50%; cursor:pointer; position:relative; right:10px; "></img>
+								<img src="img/dica.jpg" width="20px" onclick="showTip('6');" style="border-radius:50%; cursor:pointer; position:relative; right:5px;" title="Tip/Dica/Consejo"></img>
 								<!--label style="ZZZposition:relative; top:0px; left:-40px; border-radius:50%; border-style:double; border-color:transparent; border-width:0px; color:transparent; background-color:transparent;" title="Tip/Dica/Consejo">
 									<button id="btnCorrectTip6" class="btn btn-primary degradeblue" onclick="showTip('6');" style="border-radius:50%; font-size:15px; border-color:white; background-color:#0077FF; color:white;"><i class="fa fa-plus"></i></button>
 								</label-->
@@ -629,17 +629,17 @@
 					</table>
 				</td></tr>
 				
-				<tr><td id="mycorrect7Sim" style="display:none; text-align:left;"><!-- <font color=gray>#7</font> -->
+				<tr><td id="mycorrect7" style="display:none; text-align:left;"><!-- <font color=gray>#7</font> -->
 					<table border=0 width="100%">
 						<tr>
-							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect7" value="" style="border-radius:50%; color:white; display:'none';"></input> </td>
+							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect7" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
 							<td>
 								<!--label style="width:100%; border-radius:30px; border-style:double; border-color:white; border-width:2px; color:white; background-color:#0077FF;"-->
 									<button id="btnCorrectAnswer7" class="btn btn-primary degradeblue" onclick="next('7', document.getElementById('chkMycorrect7').value); $('#menutopodireito').hide();" style="border-style:solid; border-color:white; border-width:2px; color:white; background-color:black; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
 								<!--/label-->
 							</td>
 							<td width="1%">
-								<img src="img/dica.jpg" width="20px" onclick="showTip('7');" style="border-radius:50%; cursor:pointer; position:relative; right:10px; "></img>
+								<img src="img/dica.jpg" width="20px" onclick="showTip('7');" style="border-radius:50%; cursor:pointer; position:relative; right:5px;" title="Tip/Dica/Consejo"></img>
 								<!--label style="ZZZposition:relative; top:0px; left:-40px; border-radius:50%; border-style:double; border-color:transparent; border-width:0px; color:transparent; background-color:transparent;" title="Tip/Dica/Consejo">
 									<button id="btnCorrectTip7" class="btn btn-primary degradeblue" onclick="showTip('7');" style="border-radius:50%; font-size:15px; border-color:white; background-color:#0077FF; color:white;"><i class="fa fa-plus"></i></button>
 								</label-->
@@ -651,17 +651,17 @@
 					</table>
 				</td></tr>
 				
-				<tr><td id="mycorrect8Sim" style="display:none; text-align:left;"><!-- <font color=gray>#8</font> -->
+				<tr><td id="mycorrect8" style="display:none; text-align:left;"><!-- <font color=gray>#8</font> -->
 					<table border=0 width="100%">
 						<tr>
-							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect8" value="" style="border-radius:50%; color:white; display:'none';"></input> </td>
+							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect8" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
 							<td>
 								<!--label style="width:100%; border-radius:30px; border-style:double; border-color:white; border-width:2px; color:white; background-color:#0077FF;"-->
 									<button id="btnCorrectAnswer8" class="btn btn-primary degradeblue" onclick="next('8', document.getElementById('chkMycorrect8').value); $('#menutopodireito').hide();" style="border-style:solid; border-color:white; border-width:2px; color:white; background-color:black; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
 								<!--/label-->
 							</td>
 							<td width="1%">
-								<img src="img/dica.jpg" width="20px" onclick="showTip('8');" style="border-radius:50%; cursor:pointer; position:relative; right:10px; "></img>
+								<img src="img/dica.jpg" width="20px" onclick="showTip('8');" style="border-radius:50%; cursor:pointer; position:relative; right:5px;" title="Tip/Dica/Consejo"></img>
 								<!--label style="ZZZposition:relative; top:0px; left:-40px; border-radius:50%; border-style:double; border-color:transparent; border-width:0px; color:transparent; background-color:transparent;" title="Tip/Dica/Consejo">
 									<button id="btnCorrectTip8" class="btn btn-primary degradeblue" onclick="showTip('8');" style="border-radius:50%; font-size:15px; border-color:white; background-color:#0077FF; color:white;"><i class="fa fa-plus"></i></button>
 								</label-->
