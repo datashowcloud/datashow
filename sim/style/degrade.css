@@ -4,14 +4,14 @@
             filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#000000', EndColorStr='#444444');           
         }
         .degradeblue {
-            background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#0077FF));
+            background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#0055FF));
             background: -moz-linear-gradient(top, #000000, #0077FF);
-            filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#000000', EndColorStr='#0077FF');           
+            filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#000000', EndColorStr='#0077FF');
         }
         .degradegreen {
-            background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#00FF00));
+            background: -webkit-gradient(linear, left top, left bottom, from(#005500), to(#00FF00));
             background: -moz-linear-gradient(top, #000000, #00FF00);
-            filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#000000', EndColorStr='#00FF00');           
+            filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#000000', EndColorStr='#00FF00');
         }
         .degradered {
             background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#FF0000));
@@ -22,6 +22,11 @@
             background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#FFA500));
             background: -moz-linear-gradient(top, #000000, #FFA500);
             filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#000000', EndColorStr='#FFA500');           
+        }
+        .degradeyellow {
+            background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#FFFF00));
+            background: -moz-linear-gradient(top, #000000, #FFFF00);
+            filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#000000', EndColorStr='#FFFF00');           
         }
         .degradeborder {
 			border-image: linear-gradient(45deg, #000000 , #0077FF);

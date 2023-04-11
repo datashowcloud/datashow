@@ -1235,18 +1235,35 @@ function next(index, resposta) {
 		document.getElementById('btnCorrectAnswer' + index).classList.add('btn-success');
 		document.getElementById('btnCorrectAnswer' + index).classList.add('degradegreen');
 //		alert('ACERTOU!');
-		setTimeout(() => { document.getElementById('imgCorreta').style.display = 'none'; }, 2000);
+		setTimeout(() => { document.getElementById('imgCorreta').style.display = 'none'; }, 1500);
+		setTimeout(() => { refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode); }, 2500); // Executa após 1 segundo para esperar o processo ser completamente executado
 	} else {
+		//também mostra seleciona resposta correta
+		setTimeout(() => { setRespostaCorreta(); }, 500);
 		document.getElementById('imgIncorreta').style.display = '';
 		document.getElementById('btnCorrectAnswer' + index).classList.remove('btn-primary');
 		document.getElementById('btnCorrectAnswer' + index).classList.remove('degradeblue');
 		document.getElementById('btnCorrectAnswer' + index).classList.add('btn-danger');
 		document.getElementById('btnCorrectAnswer' + index).classList.add('degradered');
 //		alert('RESPOSTA INCORRETA');
-		setTimeout(() => { document.getElementById('imgIncorreta').style.display = 'none'; }, 2000);
+		setTimeout(() => { document.getElementById('imgIncorreta').style.display = 'none'; }, 1500);
+		setTimeout(() => { refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode); }, 4500); // Executa após 1 segundo para esperar o processo ser completamente executado
 	}
 
-	setTimeout(() => { refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode); }, 1000); // Executa após 1 segundo para esperar o processo ser completamente executado
+}
+
+function setRespostaCorreta() {
+	for (var index = 1; index <= 8; index++) {
+		if (document.getElementById('chkMycorrect'+index).value <= 4) {
+			document.getElementById('btnCorrectAnswer'+index).classList.remove('btn-primary');
+			document.getElementById('btnCorrectAnswer'+index).classList.remove('degradeblue');
+			document.getElementById('btnCorrectAnswer'+index).classList.add('btn-success');
+			document.getElementById('btnCorrectAnswer'+index).classList.add('degradegreen');
+			document.getElementById('trtip'+index).style.display = '';
+			document.getElementById('mytip'+index).style.display = '';
+			salvaResposta(index);
+		}
+	}
 }
 
 function salvaResposta(index) {
@@ -1289,8 +1306,6 @@ function limpaCkeckbox() {
 		document.getElementById('btnCorrectAnswer' + index).classList.remove('degradegreen');
 		document.getElementById('btnCorrectAnswer' + index).classList.remove('btn-danger');
 		document.getElementById('btnCorrectAnswer' + index).classList.remove('degradered');
-//		document.getElementById('btnCorrectAnswer' + index).classList.add('btn-primary');
-//		document.getElementById('btnCorrectAnswer' + index).classList.add('degradeblue');
 	}
 }
 

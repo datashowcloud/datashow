@@ -42,15 +42,15 @@
 					</td>
 					<td>&nbsp;&nbsp;&nbsp;</td>
 					<td>
-						<button id="btnUser" class="btn btn-outline-primary" title="Conexão com e-mail" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" style="border-radius:50%; color:white; display:'none';"><i class="fa fa-user"></i>
+						<button id="btnUser" class="btn btn-outline-primary" title="Conectar com e-mail" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" style="border-radius:50%; color:white; display:'none';"><i class="fa fa-user"></i>
 							<input id="txtUser" type="text" value="" readonly style="border-radius:50%; font-size:10px; position:absolute; background-color:transparent; color:white; width:15px; border-width:0px; font-family:Helvetica; font-weight:bold; cursor:pointer;"></input>
 						</button>
 						<br/><font size=1>Você</font>
 					</td>
 					<td>&nbsp;&nbsp;&nbsp;</td>
 					<td>
-						<button id="btnNightDay" class="btn btn-outline-primary" style="border-radius:50%; color:white; display:'none';" title="Dia e Noite"><i class="fa fa-adjust"></i> </button>
-						<br/><font size=1>Dia Noite</font>
+						<button id="btnNightDay" class="btn btn-outline-primary" style="border-radius:50%; color:white; display:none;" title="Dia e Noite"><i class="fa fa-adjust"></i> </button>
+						<br/><font size=1 style="display:none;">Dia Noite</font>
 					</td>
 					<td>&nbsp;&nbsp;&nbsp;</td>
 					<td>
@@ -189,7 +189,7 @@
 							<button id="btnTest" style="display:none;">está aqui para tirar o foco ao clicar no painel label</button>
 								
 							<label class="flutuante" style="border-radius:5px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
-								<button id="btnPerder" class="btn btn-danger degradered">PERDER</button>
+								<button id="btnPerder" class="btn btn-danger degradered">REFAZER</button>
 							</label>
 							<label class="flutuante" style="border-radius:5px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
 								<button id="btnGanhar" class="btn btn-success degradegreen">GANHAR
@@ -520,17 +520,17 @@
 						<img id="btnNext" src="img/proximo.jpg" width="35px" style="display:'none'; position:absolute; top:2px; left:15%; cursor:pointer; border-radius:50%;" title="Next/Próximo"></img>
 						<img id="imgLanguage" src="img/portugues.jpg" width="35px" style="position:absolute; top:2px; left:29%; cursor:pointer; border-radius:50%;" title="Translate/Traduzir/Traducir"></img>
 
-						<input type="text" id="txtCorretas" value="0%" title="Corrects/Corretas/Correctas" style="color:#00FF00; position:absolute; top:2px; left:43%; width:35px; font-size:15px; background-color:black; border-width:4px; border-color:white; text-align:center; font-weight:bold; border-radius:10px;" readonly /><!--i class="fa fa-check" style="color:#3CB371; position:absolute; top:2px; left:55%;"></i-->
-						<input type="text" id="txtIncorretas" value="0%" title="Incorrects/Incorretas/Incorrectas" style="color:#FF0000; position:absolute; top:2px; left:55%; width:35px; font-size:15px; background-color:black; border-width:4px; border-color:white; text-align:center; font-weight:bold; border-radius:10px;" readonly /><!--i class="fa fa-remove" style="color:red; position:absolute; top:2px; left:45%;"></i-->
-						<input type="text" id="txtCalculo" value="0%" title="Index/Índice" style="position:absolute; top:2px; left:67%; width:50px; font-size:15px; background-color:black; color:white; border-width:4px; border-color:white; text-align:center; border-radius:10px;" readonly />
+						<input type="text" id="txtCorretas" value="0%" title="Corrects/Corretas/Correctas" style="color:#00FF00; position:absolute; top:2px; left:43%; width:35px; font-size:15px; background-color:black; border-width:4px; border-color:white; text-align:center; font-weight:bold; cursor:default; border-radius:10px;" readonly /><!--i class="fa fa-check" style="color:#3CB371; position:absolute; top:2px; left:55%;"></i-->
+						<input type="text" id="txtIncorretas" value="0%" title="Incorrects/Incorretas/Incorrectas" style="color:#FF0000; position:absolute; top:2px; left:55%; width:35px; font-size:15px; background-color:black; border-width:4px; border-color:white; text-align:center; font-weight:bold; cursor:default; border-radius:10px;" readonly /><!--i class="fa fa-remove" style="color:red; position:absolute; top:2px; left:45%;"></i-->
+						<input type="text" id="txtCalculo" value="0%" title="Index/Índice" style="position:absolute; top:2px; left:67%; width:50px; font-size:15px; background-color:black; color:white; border-width:4px; border-color:white; text-align:center; cursor:default; border-radius:10px;" readonly />
 
 						<!--img id="btnTip" src="img/dica.jpg" width="35px" onclick="escondeFormNaoDesista(); $('#menutopodireito').hide();" style="position:absolute; top:2px; left:66%; cursor:pointer; border-radius:50%;" title="Tip/Dica/Consejo"></img-->
 						<img id="imgFechar" src="img/fechar.jpg" onclick="showFormApresentacao();" width="35px" style="position:absolute; top:2px; left:86%; cursor:pointer; border-radius:50%;" title="Close/Fechar/Cerrar"></img>
 						<!--pergunta-->
 						<div id="mytextSim" class="degradeblack" style="border-color:white; border-radius:20px; border-style:solid; border-width:4px;"></div>
 						<!--mensagem de erro ou acerto-->
-						<img id="imgIncorreta" src="img/respostaincorreta.jpg" style="display:none; width:50%; position:absolute; left:25%; top:7%; border-radius:10px;"></img>
-						<img id="imgCorreta" src="img/respostacorreta.jpg" style="display:none; width:50%; position:absolute; left:25%; top:7%; border-radius:10px;"></img>
+						<button id="imgCorreta" class="btn btn-success degradegreen" style="display:none; width:50%; position:absolute; left:25%; top:5%; font-weight:bold; border-radius:10px;"><p><p>ACERTOU!<p></button>
+						<button id="imgIncorreta" class="btn btn-danger degradered" style="display:none; width:50%; position:absolute; left:25%; top:5%; font-weight:bold; border-radius:10px;"><p><p>INCORRETA<p></button>
 					</td>
 				</tr>
 			</table>
