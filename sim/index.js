@@ -1228,23 +1228,25 @@ function next(index, resposta) {
 	var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
 	salvaResposta(index);
 	savePoints(mytema, mycategory, myid, mygroup, mycode);
-	
-//	setTimeout(() => { limpaCkeckbox(); }, 500); // Executa após 1 segundo para esperar o processo ser completamente executado
-	setTimeout(() => { refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode); }, 1000); // Executa após 1 segundo para esperar o processo ser completamente executado
-	
 	if (resposta <= 4) {
+		document.getElementById('imgCorreta').style.display = '';
 		document.getElementById('btnCorrectAnswer' + index).classList.remove('btn-primary');
 		document.getElementById('btnCorrectAnswer' + index).classList.remove('degradeblue');
 		document.getElementById('btnCorrectAnswer' + index).classList.add('btn-success');
 		document.getElementById('btnCorrectAnswer' + index).classList.add('degradegreen');
 //		alert('ACERTOU!');
+		setTimeout(() => { document.getElementById('imgCorreta').style.display = 'none'; }, 2000);
 	} else {
+		document.getElementById('imgIncorreta').style.display = '';
 		document.getElementById('btnCorrectAnswer' + index).classList.remove('btn-primary');
 		document.getElementById('btnCorrectAnswer' + index).classList.remove('degradeblue');
 		document.getElementById('btnCorrectAnswer' + index).classList.add('btn-danger');
 		document.getElementById('btnCorrectAnswer' + index).classList.add('degradered');
 //		alert('RESPOSTA INCORRETA');
+		setTimeout(() => { document.getElementById('imgIncorreta').style.display = 'none'; }, 2000);
 	}
+
+	setTimeout(() => { refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode); }, 1000); // Executa após 1 segundo para esperar o processo ser completamente executado
 }
 
 function salvaResposta(index) {
@@ -1507,27 +1509,6 @@ function showTableQuestions() {
 	refreshTableQuestion(mytema, mycategory, id, mygroup, '1');
 	showFormSim(mytema, mycategory, mygroup);
 }
-
-/*function getTemaCategoria(mytema, mycategory) {
-	if (mytema == CONST_TEMA_AWS_CLFC01) {
-		mytema = 'CLF-C01';
-	} else if (mytema == CONST_TEMA_AZURE_AZ900) {
-		mytema = 'AZ-900';
-	} else if (mytema == CONST_TEMA_ORACLE_1ZO108522) {
-		mytema = '1ZO-1085-22';
-	} else if (mytema == CONST_TEMA_BIBLE_IIRF) {
-		mytema = 'IIRF';
-	}
-
-//	if (mycategory == CONST_MYCATEGORY_1) {
-//		mycategory = 'Treino';
-//	} else if (mycategory == CONST_MYCATEGORY_2) {
-//		mycategory = 'Desafio';
-//	}
-
-	return mytema + ' <i class="fa fa-chevron-right"></i> Nível ' + mycategory;
-}
-*/
 
 function setConfigBotoes() {
 	//exibe a cor de ativado ou desativado dos botões
