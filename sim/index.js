@@ -1037,9 +1037,9 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 				varCount = '';
 		})
 */		
-		if (htmlString.length > 0) {
-			htmlString += "</tr>"
-		} else {
+//		if (htmlString.length > 0) {
+//			htmlString += "</tr>"
+//		} else {
 /*			htmlString += htmlStringButtons
 			const d = new Date();
 			htmlString += "<b>"
@@ -1049,15 +1049,15 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 			htmlString += d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ":" + d.getMilliseconds();
 			htmlString += "</b>"
 */
-		}
+//		}
 		
-		var botaoFechar = '';
+/*		var botaoFechar = '';
 		botaoFechar += '<table><tr><td colspan=99>';
 		botaoFechar += '<img src="img/fechar.jpg" class="flutuante" onclick="showFormApresentacao();" width="35px" style="position:absolute; top:5px; left:88%; cursor:pointer; border-radius:50%;" title="Close/Fechar/Cerrar"></img>';
 		botaoFechar += '<i class="fa fa-remove"></i></button>';
 		botaoFechar += '</td></tr></table>';
 		htmlString = botaoFechar + htmlString;
-
+*/
 
 
 
@@ -1098,10 +1098,11 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 						//porcentagem
 						htmlString += '<br/>' + student.mypoints + '%';
 						//botão refresh fase
-						htmlString += '<br/>';
-						htmlString += '<button class=\"deletefase flutuante\" style=\"border-radius:50%; border:1px solid gray; \" title=\"Atualizar fase\"> <i class=\"fa fa-refresh\"></i> </button>';
 					htmlString += '</a>';
+					htmlString += '<br/>';
 					htmlString += '&nbsp;&nbsp;';
+//alert('refreshTableData mytema='+mytema + ' mycategory='+mycategory + ' student.mygroup='+student.mygroup + ' mycode='+student.mycode + ' id='+student.id);
+					htmlString += '<button class="flutuante" onclick="refreshFase(' + mytema + ', ' + mycategory + ', ' + student.mygroup + ', ' + student.mycode + ', ' + student.id + ')" style="border-radius:50%; position:relative; top:-10px; border:1px solid gray;" title="Atualizar fase"> <i class="fa fa-refresh"></i> </button>';
 					htmlString += '<br/>';
 				htmlString += '</label>';
 			htmlString += '</label> &nbsp;&nbsp;';
@@ -1175,6 +1176,17 @@ async function refreshTableNivel(mytema, mycategory, mycode, myorder, mygroup, m
 	htmlString = htmlString + '</tr>';
 //alert('mytema='+mytema + ' mycategory='+mycategory + ' myid='+myid + ' mygroup=' + mygroup + ' mycode=' + mycode);
 	$('#tblNivel tbody').html(htmlString);
+}
+
+function refreshFase(mytema, mycategory, mygroup, mycode, myid) {
+	mygroup = formatMygroup(mygroup);
+	var result = confirm('Não faça nada. Aguarde...');
+	if (result) {
+//console.log('tblEstatisticas tbody deletefase mytema='+mytema + ' mycategory='+mycategory + ' mygroup='+mygroup + ' mycode='+mycode + ' myid='+myid);
+		deletefase(mytema, mycategory, mygroup, mycode, myid);
+		setTimeout(() => { var DataShow_Config = window.open("T"+mytema + "C"+mycategory+ "G"+mygroup + ".html?sim=" + mygroup + "&tem=" + mytema + "&cat=" + mycategory, "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no"); }, 3000); // Executa após 1 segundo para esperar o processo
+	}
+
 }
 
 async function deletefase(mytema, mycategory, mygroup, mycode, myid) {
