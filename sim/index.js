@@ -401,7 +401,7 @@ function registerEvents() {
 			savePoints(mytema, mycategory, myid, mygroup, mycode);
 			var id = row.attr('itemid');
 			var mygroup = formatMygroup(child.eq(0).text());
-			limpaCkeckbox();
+//			limpaCkeckbox();
 			refreshTableQuestion(mytema, mycategory, id, mygroup, '1');
 			showFormSim(mytema, mycategory, mygroup);
 		}
@@ -438,7 +438,6 @@ function registerEvents() {
 		var id = row.attr('itemid');
 		var mygroup = formatMygroup(child.eq(0).text());
 		var mycode = child.eq(1).text();
-		limpaCkeckbox();
 		refreshTableQuestion(mytema, mycategory, id, mygroup, '1');
 		showFormSim(mytema, mycategory, mygroup);
     });	
@@ -478,21 +477,20 @@ function registerEvents() {
 		var mygroup = formatMygroup(document.getElementById('mygroupSim').value);
 		var mycode = parseInt(document.getElementById('mycodeSim').value) - 1;
 		if (mycode > 0) {
-			limpaCkeckbox();
+//			limpaCkeckbox();
 			refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode);
 		}
     })
     $('#btnNext').click(function () {
-/*		var params = new URLSearchParams(window.location.search);
+		var params = new URLSearchParams(window.location.search);
 		var mytema = params.get('tem');
 		var mycategory = params.get('cat');
 		var myid = document.getElementById('myidSim').value;
 		var mygroup = formatMygroup(document.getElementById('mygroupSim').value);
 		var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
-		limpaCkeckbox();
+//		limpaCkeckbox();
 		refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode);
 		savePoints(mytema, mycategory, myid, mygroup, mycode);
-*/
     })
 	$('#btnPause').click(function () {
 		showFormApresentacao();
@@ -568,7 +566,7 @@ function registerEvents() {
 			var myid = document.getElementById('myidSim').value;
 			var mygroup = formatMygroup(document.getElementById('mygroupSim').value);
 			var mycode = parseInt(document.getElementById('mycodeSim').value) + 0;
-			limpaCkeckbox();
+//			limpaCkeckbox();
 			refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode);
 		} catch (ex) {
 			alert('imgLanguage ' + ex.message)
@@ -639,15 +637,21 @@ function registerEvents() {
 	})
 	$('#btnEstatisticas').click(function () {
 	})
+	$('#btnTipMenu').click(function () {
+		showFormTip();
+	})
+	$('#btnTip').click(function () {
+		showFormTip();
+	})
 	$('#btnUser').click(function () {
 		showFormUser();
 	})
 	$('#spanMenu').click(function () {
 		showFormMenu();
 	})
-	$('#btnNaoDesista').click(function () {
+	$('#btnNaoDesistaMenu').click(function () {
 		showFormNaoDesista();
-	})	
+	})
 	$('#btnEntrar').click(function () {
 		var params = new URLSearchParams(window.location.search);
 		var mytema = params.get('tem');
@@ -662,14 +666,14 @@ function registerEvents() {
 	$('#btnDesconectar').click(function () {
 		desconectar();
 	})
-	$('#btnContinuar').click(function () {
+	$('#btnGanhar').click(function () {
 		var params = new URLSearchParams(window.location.search);
 		var mytema = params.get('tem');
 		var mycategory = params.get('cat');
 		var mygroup = formatMygroup(document.getElementById('mygroupSim').value);
 		setTimeout(() => { changeFaseNivel(mytema, mycategory, mygroup, 'naodesistir') }, 1000); // Executa após alguns segundos para esperar o término do processo
 	});
-	$('#btnDesistir').click(function () {
+	$('#btnPerder').click(function () {
 		showFirstPage();
 	});
 }
@@ -979,7 +983,7 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 		var varRestart = '';
 		var lingua = getLanguageFile(document.getElementById('imgLanguage').src);
 		
-		students.forEach(function (student) {
+/*		students.forEach(function (student) {
 			if (student.mycode == '0') {
 				varTdTh = 'td';
 				if (varCount == '') {
@@ -1015,43 +1019,26 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 			htmlString += "<tr ItemId=" + student.id + ' style="border-bottom: 1px solid #ddd;">'
 				//identificação mygroup
 				+ "<td style=\"color:#000000; font-size:1px; \">" + student.mygroup + "</td>"
-				
 				//texto
 				+ "<" + varTdTh + " style=\"text-align:left;\" id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " ZZZonClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
 					+ '&nbsp; <a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + buscaValorTag(student.mytext, lingua) + '</a> ' + '</' + varTdTh + '>'
-				
 				//botão delete e refresh fase
 				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + '<button class=\"deletefase\" style=\"color:white; font-size:20px; border: 1px solid gray; background-color:gray; border-radius:50%; \" title=\"Atualizar fase\"> <i class=\"fa fa-refresh\"></i> </button>'
-				
 				//porcentagem
 				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + student.mypoints + '%</' + varTdTh + '>'
-				
 				//botão playsim ou link selecionar
 				+ '<' + varTdTh + ' style="text-align:right;">' + ' ' + varRestart + varCount + '</a>' + "</" + varTdTh + ">"
-//				+ '<' + varTdTh + ' style="text-align:right;">' + varButtonLine + ' ' + varRestart + varCount + '</a>' + "</" + varTdTh + ">"
-
-
 				+ "</" + varTdTh + ">"
 				+ '<td>&nbsp;&nbsp;</td>'
 				;
 				
 				varButtonLineStyle = 'color:gray;  font-size:18px;';
-//				varButtonLine = ''; //				varButtonLine = '<i class=\"fa fa-check\" style="color:' + CONST_DEEP_SKY_BLUE + '; font-size:20px;"></i>';
 				varButtonRestart = 'color:gray; font-size:20px;';
 				varCount = '';
 		})
-
-
-//		varNivelLinha = '';
-//		for (var item=CONST_NIVEL_MAX; item>=parseInt(varNivelMax)+1; item--) {
-//			varNivelLinha = varNivelLinha + '<tr><td colspan=99><font color="gray" style="font-size:15px;"><i class=\"fa fa-lock\"></i> NÍVEL ' + item + '</font></td></tr>';
-//		}
-
-//		htmlString = varNivelLinha + htmlString;
-		
+*/		
 		if (htmlString.length > 0) {
 			htmlString += "</tr>"
-//			showFormCategory();
 		} else {
 /*			htmlString += htmlStringButtons
 			const d = new Date();
@@ -1062,21 +1049,80 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 			htmlString += d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ":" + d.getMilliseconds();
 			htmlString += "</b>"
 */
-////			var DataShow_Config = window.open("config" + document.getElementById('selectMygroup').value + ".html?sim=" + document.getElementById('selectMygroup').value + "&tem=" + mytema + "&cat=" + mycategory, "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
-//			var DataShow_Config = window.open("T"+mytema + "C"+mycategory+ "G10" + ".html?sim=" + document.getElementById('selectMygroup').value + "&tem=" + mytema + "&cat=" + mycategory, "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
-			//showIniciarConfiguracao();
-//			document.getElementById('btnPlay').style.display='none';
 		}
 		
 		var botaoFechar = '';
 		botaoFechar += '<table><tr><td colspan=99>';
-		botaoFechar += '<img src="img/fechar.jpg" class="flutuante" onclick="showFormApresentacao();" width="35px" style="position:absolute; top:2px; left:90%; cursor:pointer; border-radius:50%;" title="Close/Fechar/Cerrar"></img>';
-		//botaoFechar += '<button class="btn btn-danger" style="border-radius:50%; border-style:double; border-color:white; border-width:2px; position:relative; left:45%;" onclick="showFormApresentacao();">';
+		botaoFechar += '<img src="img/fechar.jpg" class="flutuante" onclick="showFormApresentacao();" width="35px" style="position:absolute; top:5px; left:88%; cursor:pointer; border-radius:50%;" title="Close/Fechar/Cerrar"></img>';
 		botaoFechar += '<i class="fa fa-remove"></i></button>';
 		botaoFechar += '</td></tr></table>';
 		htmlString = botaoFechar + htmlString;
+
+
+
+
+
+
+
+		htmlString = '';
 		
-        $('#tblEstatisticas tbody').html(htmlString);
+		
+		
+		
+		
+		
+		htmlString += '<button id="btnTest" style="display:none;">está aqui para tirar o foco ao clicar no painel label</button>';
+		
+		var varClass = '';
+		students.forEach(function (student) {
+			htmlString += '<label align=center style="ZZZwidth:290px; border-radius:10px; border-style:solid; border-color:white; border-width:0px; color:#000000; background-color:transparent;">';
+				htmlString += "&nbsp;<label ItemId=" + student.id + '>';
+					if (student.mypoints <= 0) {
+						varClass = 'class="btn btn-success degradegreen"';
+					} else if (student.mypoints < 80) {
+						varClass = 'class="btn btn-danger degradered"';
+					} else if (student.mypoints < 100) {
+						varClass = 'class="btn btn-warning degradeorange"';
+					} else if (student.mypoints = 100) {
+						varClass = 'class="btn btn-default degradeblack"';
+					} else {
+						varClass = 'class="btn btn-default degradeblack"';
+					}
+					//cartão
+					htmlString += '</p>';
+					htmlString += '&nbsp;';
+					htmlString += '<a href=\"#\" ' + varClass + ' style="color:white;" onclick=\"refreshTableQuestion(' + mytema + ', ' + mycategory + ', ' + student.id + ', ' + student.mygroup + ', 1);';
+					htmlString += ' showFormSim(' + mytema + ', ' + mycategory + ', ' + student.mygroup + '); \" style=\"color:gray; font-size:18px;\">';
+						//texto
+						htmlString += '<b>' + buscaValorTag(student.mytext, lingua) + '</b>';
+						//porcentagem
+						htmlString += '<br/>' + student.mypoints + '%';
+						//botão refresh fase
+						htmlString += '<br/>';
+						htmlString += '<button class=\"deletefase flutuante\" style=\"border-radius:50%; border:1px solid gray; \" title=\"Atualizar fase\"> <i class=\"fa fa-refresh\"></i> </button>';
+					htmlString += '</a>';
+					htmlString += '&nbsp;&nbsp;';
+					htmlString += '<br/>';
+				htmlString += '</label>';
+			htmlString += '</label> &nbsp;&nbsp;';
+		})
+
+		var div = '';
+		div += '<br/>';
+		div += '<div align=center style="border-radius:2.18vw; margin-left:auto; margin-right:auto;">';
+		div += '<br/>';
+		div += '<img src="img/fechar.jpg" class="flutuante" onclick="showFormApresentacao();" width="35px" style="position:absolute; top:30px; left:88%; cursor:pointer; border-radius:50%;" title="Close/Fechar/Cerrar"></img>';
+		div += '<label align=center style="width:95%; border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;">';
+		div += '<label style="border-radius:30px; position:relative; top:-25px; left:0px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">';
+		div += '<label class="btn btn-primary degradeorange" style="border-radius:30px; font-size:20px; cursor:default;"><b>MINHAS CONQUISTAS</b></label>';
+		div += '</label>';
+		div += '<br/>';
+		div += htmlString;
+		div += '<br/><br/>';
+		div += '</label>';
+		div += '</div>';
+		
+        $('#tblEstatisticas tbody').html(div);
 //    } catch (ex) {
 //        console.log(ex.message)
 //    }
@@ -1159,7 +1205,7 @@ function next(index, resposta) {
 	savePoints(mytema, mycategory, myid, mygroup, mycode);
 	
 //	setTimeout(() => { limpaCkeckbox(); }, 500); // Executa após 1 segundo para esperar o processo ser completamente executado
-	setTimeout(() => { refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode); }, 500); // Executa após 1 segundo para esperar o processo ser completamente executado
+	setTimeout(() => { refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode); }, 1000); // Executa após 1 segundo para esperar o processo ser completamente executado
 	
 	if (resposta <= 4) {
 		document.getElementById('btnCorrectAnswer' + index).classList.remove('btn-primary');
@@ -1216,8 +1262,8 @@ function limpaCkeckbox() {
 		document.getElementById('btnCorrectAnswer' + index).classList.remove('degradegreen');
 		document.getElementById('btnCorrectAnswer' + index).classList.remove('btn-danger');
 		document.getElementById('btnCorrectAnswer' + index).classList.remove('degradered');
-		document.getElementById('btnCorrectAnswer' + index).classList.add('btn-primary');
-		document.getElementById('btnCorrectAnswer' + index).classList.add('degradeblue');
+//		document.getElementById('btnCorrectAnswer' + index).classList.add('btn-primary');
+//		document.getElementById('btnCorrectAnswer' + index).classList.add('degradeblue');
 	}
 }
 
@@ -1432,7 +1478,7 @@ function showTableQuestions() {
 	var id = row.attr('itemid');
 	var mygroup = formatMygroup(child.eq(0).text());
 	var mycode = child.eq(1).text();
-	limpaCkeckbox();
+//	limpaCkeckbox();
 	refreshTableQuestion(mytema, mycategory, id, mygroup, '1');
 	showFormSim(mytema, mycategory, mygroup);
 }
@@ -1783,12 +1829,14 @@ async function changeFaseNivel(mytema, mycategory, mygroup, naodesistir) {
 			if (students == '') {
 				var DataShow_Config = window.open("T"+mytema + "C"+mycategory+ "G"+myNextCategory + ".html?sim=" + myNextCategory + "&tem=" + mytema + "&cat=" + mycategory, "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no");
 				return;
+			} else {
+				showFirstPage();
 			}
 		}
 	}
 
 	showFormNaoDesista();
-	$('#btnNaoDesista').click();
+	$('#btnNaoDesistaMenu').click();
 }
 
 function getProximaFaseNivel(mygroup) {
@@ -3579,35 +3627,44 @@ function escondeBotao() {
 function showFormUser() {
     $('#divFormUser').show();
 	$('#divFormMenu').hide();
-    $('#divNaoDesista').hide();
+    $('#divFormNaoDesista').hide();
+    $('#divFormDica').hide();
 	$('#txtId').focus();
 }
 
 function showFormMenu() {
     $('#divFormMenu').show();
     $('#divFormUser').hide();
-    $('#divNaoDesista').hide();
+    $('#divFormNaoDesista').hide();
+    $('#divFormDica').hide();
 }
 
 function showFormNaoDesista() {
     $('#menutopodireito').show();
 
-    $('#divNaoDesista').show();
+    $('#divFormNaoDesista').show();
     $('#divFormMenu').hide();
     $('#divFormUser').hide();
+    $('#divFormDica').hide();
 }
 
-function escondeFormUserMenu() {
-	$('#btnUser').click();
+function showFormTip() {
+    $('#menutopodireito').show();
+
+    $('#divFormDica').show();
     $('#divFormUser').hide();
-    $('#divFormMenu').hide();
-    $('#divNaoDesista').hide();
+	$('#divFormMenu').hide();
+    $('#divFormNaoDesista').hide();
 }
-function escondeFormUserMenuNaoDesista() {
+
+function escondeFormMenu() {
+	$('#spanMenu').click();
+}
+function escondeFormUser() {
 	$('#btnUser').click();
-    $('#divFormUser').hide();
-    $('#divFormMenu').hide();
-    $('#divNaoDesista').hide();
+}
+function escondeFormNaoDesista() {
+	$('#btnNaoDesistaMenu').click();
 }
 
 function showFormApresentacao() {
@@ -3696,11 +3753,6 @@ function showGridAndHideForms() {
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
 
-/*	if (document.getElementById('imgLanguage') != null) {
-		document.getElementById('imgLanguage').style.display = 'none';
-		document.getElementById('fonLanguage').style.display = 'none';
-	}
-*/
 	if (document.getElementById('btnFim') != null) {
 		document.getElementById('btnFim').style.display='none';	
 		document.getElementById('fonFim').style.display='none';	
