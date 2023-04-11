@@ -77,7 +77,7 @@
 			</table>
 		</div>
 
-		<div class="offcanvas offcanvas-top text-bg-dark bg-dark" style="height:550px;" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+		<div class="offcanvas offcanvas-top text-bg-dark bg-dark" style="height:600px;" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
 		  <div class="offcanvas-header">
 			<h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel"></h5>
 			<!--button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button--> <!-- esse era o botão X -->
@@ -123,7 +123,7 @@
 									<p/>
 									<p/>
 									tamastigadu@gmail.com <br/>atualizado em 04/2023
-									<br/>versão 00.00.39
+									<br/>versão 00.00.41
 								</font>
 							</div>
 						</div>
@@ -509,7 +509,7 @@
 		<font size=4.9 style="text-align:justify">
 
 			<a id="top"></a>
-			<table border=1 width="94%" align=center>
+			<table border=0 width="94%" align=center>
 				<tr>
 					<td>
 					</td>
@@ -518,11 +518,17 @@
 					<td style="text-align:justify; width:1%; font-size:18px; font-family:Helvetica;">
 						<img id="btnPrevious" src="img/voltar.jpg" width="35px" style="display:'none'; position:absolute; top:2px; left:3%; cursor:pointer; border-radius:50%;" title="Previous/Anterior"></img>
 						<img id="btnNext" src="img/proximo.jpg" width="35px" style="display:'none'; position:absolute; top:2px; left:15%; cursor:pointer; border-radius:50%;" title="Next/Próximo"></img>
-						<img id="imgLanguage" src="img/portugues.jpg" width="35px" style="position:absolute; top:2px; left:50%; cursor:pointer; border-radius:50%;" title="Translate/Traduzir/Traducir"></img>
+						<img id="imgLanguage" src="img/portugues.jpg" width="35px" style="position:absolute; top:2px; left:29%; cursor:pointer; border-radius:50%;" title="Translate/Traduzir/Traducir"></img>
+
+						<input type="text" id="txtCorretas" value="0%" title="Corrects/Corretas/Correctas" style="color:#00FF00; position:absolute; top:2px; left:43%; width:35px; font-size:15px; background-color:black; border-width:4px; border-color:white; text-align:center; font-weight:bold; border-radius:10px;" readonly /><!--i class="fa fa-check" style="color:#3CB371; position:absolute; top:2px; left:55%;"></i-->
+						<input type="text" id="txtIncorretas" value="0%" title="Incorrects/Incorretas/Incorrectas" style="color:#FF0000; position:absolute; top:2px; left:55%; width:35px; font-size:15px; background-color:black; border-width:4px; border-color:white; text-align:center; font-weight:bold; border-radius:10px;" readonly /><!--i class="fa fa-remove" style="color:red; position:absolute; top:2px; left:45%;"></i-->
+						<input type="text" id="txtCalculo" value="0%" title="Index/Índice" style="position:absolute; top:2px; left:67%; width:50px; font-size:15px; background-color:black; color:white; border-width:4px; border-color:white; text-align:center; border-radius:10px;" readonly />
+
 						<!--img id="btnTip" src="img/dica.jpg" width="35px" onclick="escondeFormNaoDesista(); $('#menutopodireito').hide();" style="position:absolute; top:2px; left:66%; cursor:pointer; border-radius:50%;" title="Tip/Dica/Consejo"></img-->
 						<img id="imgFechar" src="img/fechar.jpg" onclick="showFormApresentacao();" width="35px" style="position:absolute; top:2px; left:86%; cursor:pointer; border-radius:50%;" title="Close/Fechar/Cerrar"></img>
+						<!--pergunta-->
 						<div id="mytextSim" class="degradeblack" style="border-color:white; border-radius:20px; border-style:solid; border-width:4px;"></div>
-
+						<!--mensagem de erro ou acerto-->
 						<img id="imgIncorreta" src="img/respostaincorreta.jpg" style="display:none; width:50%; position:absolute; left:25%; top:7%; border-radius:10px;"></img>
 						<img id="imgCorreta" src="img/respostacorreta.jpg" style="display:none; width:50%; position:absolute; left:25%; top:7%; border-radius:10px;"></img>
 					</td>
@@ -680,10 +686,10 @@
 			<table border=0 width="100%">
 				<tr>
 					<td>
-						<input type="text" id="txtCalculo" value="0" title="índice de acerto" style="width:33px; background-color:transparent; color:gray; text-align:right; border-width:0px;" readonly /><font title="índice de acerto" color=gray><b>%</b></font>
-						<input type="text" id="txtNaoRespondidas" value="0" title="perguntas não respondidas" style="width:50px; background-color:transparent; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-check-square-o" style="color:gray;" title="perguntas não respondidas"></i>
-						<input type="text" id="txtIncorretas" value="0" title="respostas incorretas" style="width:22px; background-color:transparent; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-remove" style="xcolor:red;" title="respostas incorretas"></i>
-						<input type="text" id="txtCorretas" value="0" title="respostas corretas" style="width:22px; background-color:transparent; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-check" style="xcolor:#3CB371;" title="respostas corretas"></i>
+						<!--input type="text" id="txtCalculo" value="0" title="índice de acerto" style="width:33px; background-color:transparent; color:gray; text-align:right; border-width:0px;" readonly /><font title="índice de acerto" color=gray><b>%</b></font-->
+						<input type="text" id="txtNaoRespondidas" value="0" title="perguntas não respondidas" style="display:none; width:50px; background-color:transparent; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-check-square-o" style="display:none; color:gray;" title="perguntas não respondidas"></i>
+						<!--input type="text" id="txtIncorretas" value="0" title="respostas incorretas" style="width:22px; background-color:transparent; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-remove" style="xcolor:red;" title="respostas incorretas"></i-->
+						<!--input type="text" id="txtCorretas" value="0" title="respostas corretas" style="width:22px; background-color:transparent; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-check" style="xcolor:#3CB371;" title="respostas corretas"></i-->
 						<!-- input type="text" id="txtTotal" value="0" title="total de perguntas" style="width:22px; background-color:transparent; color:gray; text-align:right; border-width:0px;" readonly / -->
 					</td>
 				</tr>

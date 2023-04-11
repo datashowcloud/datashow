@@ -851,7 +851,7 @@ async function refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode) {
 			  }
 		});
 		totalperguntas = parseInt(totalperguntas) - 1;
-		setDashboard(mytema, mycategory, myid, mygroup, mycode);
+		setCalculos(mytema, mycategory, myid, mygroup, mycode);
 
 		var students = await jsstoreCon.select({ //seleciona uma pergunta selecionada pelo mytema, mycategory, mygroup, mycode
 			from: 'Student'
@@ -1946,7 +1946,7 @@ async function showPoints(mytema, mycategory, mygroup, mycode) {
 	alert(resultado);
 }
 
-async function setDashboard(mytema, mycategory, myid, mygroup, mycode) {
+async function setCalculos(mytema, mycategory, myid, mygroup, mycode) {
 		var totalperguntas = await jsstoreCon.count({
 			from: 'Student'
 			  , where: { mytema: mytema + ''
@@ -1974,21 +1974,11 @@ async function setDashboard(mytema, mycategory, myid, mygroup, mycode) {
 //	alert('totalperguntas='+totalperguntas + ' totalCorretas='+totalCorretas + ' totalIncorretas='+totalIncorretas);
 
 //		document.getElementById('txtTotal').value = '' + totalperguntas;
-		document.getElementById('txtIncorretas').value = '' + totalIncorretas;
-		document.getElementById('txtCorretas').value = '' + totalCorretas;
 		document.getElementById('txtNaoRespondidas').value = '' + totalNaoRespondidas + '/' + totalperguntas;
-		document.getElementById('txtCalculo').value = '' + calculo;
-//		document.getElementById('txtIncorretas').value = 'Incorretas: ' + totalIncorretas;
-//		document.getElementById('txtCorretas').value = 'Corretas: ' + totalCorretas;
-//		document.getElementById('txtNaoRespondidas').value = 'Não Respondidas: ' + totalNaoRespondidas;
-/*		if (calculo >= 80) {
-			document.getElementById('txtCalculo').innerHTML = '<font style="color:gray;> <i class="fa fa-check"></i> JÁ ESTÁ APROVADO <br/>' + calculo + '% de acerto é >= 80%' + '</font>';
-		} else {
-			document.getElementById('txtCalculo').innerHTML = '<font style="color:gray;> <i class="fa fa-remove"></i> AINDA ESTÁ REPROVADO <br/>' + calculo + '% de acerto é < 80%' + '</font>';
-		}
-*/
-		
 
+		document.getElementById('txtCorretas').value = '' + totalCorretas;
+		document.getElementById('txtIncorretas').value = '' + totalIncorretas;
+		document.getElementById('txtCalculo').value = calculo + '%';
 }
 
 function selectKeyMyoption(myoption) {
