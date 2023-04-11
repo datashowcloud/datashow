@@ -18,6 +18,7 @@ var linkhelp = '';
 var CONST_TEMA_AWS_CLFC01 = 1;
 var CONST_TEMA_AZURE_AZ900 = 2;
 var CONST_TEMA_ORACLE_1ZO108522 = 3;
+var CONST_TEMA_BIBLE_IIRF = 4;
 var CONST_MYCATEGORY_1 = '1';
 var CONST_MYCATEGORY_2 = '2';
 var CONST_NIVEL_LIBERADO_SEM_USUARIO_CONECTADO = 0;
@@ -414,7 +415,7 @@ function registerEvents() {
         }
     });
     $('#tblEstatisticas tbody').on('click', '.deletefase', function () {
-		var result = confirm('Não faça nada. Aguarde...');
+		var result = confirm('Não faça nada. Aguarde alguns segundos...');
 		if (result) {
 			var params = new URLSearchParams(window.location.search);
 			var mytema = params.get('tem');
@@ -757,21 +758,23 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 	}
 	//apresentação tela inicial
 	if (document.getElementById('imgTema1Apresentacao') != null) {
-		document.getElementById('imgTema1Apresentacao').src = 'img/clf-c01' + b + '.png';
-		document.getElementById('imgTema2Apresentacao').src = 'img/az-900' + b + '.png';
-		document.getElementById('imgTema3Apresentacao').src = 'img/1z0-1085-22' + b + '.png';
+		document.getElementById('imgTema1Apresentacao').src = 'img/tema1' + '.jpg';
+		document.getElementById('imgTema2Apresentacao').src = 'img/tema2' + b + '.jpg';
+		document.getElementById('imgTema3Apresentacao').src = 'img/tema3' + b + '.jpg';
 	}
 	//menu lateral direito
 	if (document.getElementById('imgTema1MenuTopo') != null) {
-		document.getElementById('imgTema1MenuTopo').src = 'img/clf-c01' + b + '.png';
-		document.getElementById('imgTema2MenuTopo').src = 'img/az-900' + b + '.png';
-		document.getElementById('imgTema3MenuTopo').src = 'img/1z0-1085-22' + b + '.png';
+		document.getElementById('imgTema1MenuTopo').src = 'img/tema1' + b + '.jpg';
+		document.getElementById('imgTema2MenuTopo').src = 'img/tema2' + b + '.jpg';
+		document.getElementById('imgTema3MenuTopo').src = 'img/tema3' + b + '.jpg';
 	}
 
 	//imagem do tema na tela de nível
 	var params = new URLSearchParams(window.location.search);
 	var mytema = params.get('tem');
 	if (document.getElementById('imgNivelTema') != null) {
+		document.getElementById('imgNivelTema').src = 'img/tema' + mytema + '.jpg';
+/*		document.getElementById('imgNivelTema').src = 'img/tema' + mytema + b + '.jpg';
 		if (mytema == '1') {
 			document.getElementById('imgNivelTema').src = 'img/clf-c01' + b + '.png';
 		} else if (mytema == '2') {
@@ -780,7 +783,10 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 			document.getElementById('imgNivelTema').src = 'img/1z0-1085-22' + b + '.png';
 		} else if (mytema == '3') {
 			document.getElementById('imgNivelTema').src = 'img/clf-c01' + b + '.png';
+		} else if (mytema == '4') {
+			document.getElementById('imgNivelTema').src = 'img/tema4' + b + '.jpg';
 		}
+*/
 	}
 
 	if (document.getElementById('mytextSim') != null) {
@@ -1173,12 +1179,10 @@ async function refreshTableNivel(mytema, mycategory, mycode, myorder, mygroup, m
 
 	htmlString = htmlString + '<i class="fa fa-play avatarflutuante" style="color:#00FF7F; font-size:15px;"></i>';
 	htmlString = htmlString + '<label class="flutuante" style="border-radius:30px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">';
-
-	htmlString = htmlString + '<label style="border-radius:10px; font-size:20px; background-color:white; color:green; position:absolute; top:-18px; left:30%; width:70px; border-width:0px; font-family:Helvetica; cursor:default;">Nível ' + varNivel + '</label>';
-
-	htmlString = htmlString + '<button id="btnNivel" class="btn btn-success degradegreen" onclick="refreshTableQuestion(' + mytema + ', ' + mycategory + ', ' + myid + ', ' + mygroup + ', ' + mycode + '); showFormSim(' + mytema + ', ' + mycategory + ', ' + mygroup + ');" style="border-radius:30px; font-size:30px; font-family:Helvetica; font-weight:bold; border-width:0px; -webkit-text-stroke-width: 1px; ">';
-	htmlString = htmlString + '&nbsp;&nbsp;FASE ' + varFase + '&nbsp;&nbsp;';
-	htmlString = htmlString + '</button>';
+		htmlString = htmlString + '<label style="border-radius:10px; font-size:20px; background-color:white; color:green; position:absolute; top:-18px; left:30%; width:70px; border-width:0px; font-family:Helvetica; cursor:default;">Nível ' + varNivel + '</label>';
+		htmlString = htmlString + '<button id="btnNivel" class="btn btn-success degradegreen" onclick="refreshTableQuestion(' + mytema + ', ' + mycategory + ', ' + myid + ', ' + mygroup + ', ' + mycode + '); showFormSim(' + mytema + ', ' + mycategory + ', ' + mygroup + ');" style="border-radius:30px; font-size:30px; font-family:Helvetica; font-weight:bold; border-width:0px; -webkit-text-stroke-width: 1px; ">';
+		htmlString = htmlString + '&nbsp;&nbsp;FASE ' + varFase + '&nbsp;&nbsp;';
+		htmlString = htmlString + '</button>';
 	htmlString = htmlString + '</label>';
 
 	htmlString = htmlString + '</td>';
@@ -1189,7 +1193,7 @@ async function refreshTableNivel(mytema, mycategory, mycode, myorder, mygroup, m
 
 function refreshFase(mytema, mycategory, mygroup, mycode, myid) {
 	mygroup = formatMygroup(mygroup);
-	var result = confirm('Não faça nada. Aguarde...');
+	var result = confirm('Não faça nada. Aguarde alguns segundos...');
 	if (result) {
 //console.log('tblEstatisticas tbody deletefase mytema='+mytema + ' mycategory='+mycategory + ' mygroup='+mygroup + ' mycode='+mycode + ' myid='+myid);
 		deletefase(mytema, mycategory, mygroup, mycode, myid);
@@ -1504,23 +1508,26 @@ function showTableQuestions() {
 	showFormSim(mytema, mycategory, mygroup);
 }
 
-function getTemaCategoria(mytema, mycategory) {
+/*function getTemaCategoria(mytema, mycategory) {
 	if (mytema == CONST_TEMA_AWS_CLFC01) {
 		mytema = 'CLF-C01';
 	} else if (mytema == CONST_TEMA_AZURE_AZ900) {
 		mytema = 'AZ-900';
 	} else if (mytema == CONST_TEMA_ORACLE_1ZO108522) {
 		mytema = '1ZO-1085-22';
+	} else if (mytema == CONST_TEMA_BIBLE_IIRF) {
+		mytema = 'IIRF';
 	}
-/*
-	if (mycategory == CONST_MYCATEGORY_1) {
-		mycategory = 'Treino';
-	} else if (mycategory == CONST_MYCATEGORY_2) {
-		mycategory = 'Desafio';
-	}
-*/	
+
+//	if (mycategory == CONST_MYCATEGORY_1) {
+//		mycategory = 'Treino';
+//	} else if (mycategory == CONST_MYCATEGORY_2) {
+//		mycategory = 'Desafio';
+//	}
+
 	return mytema + ' <i class="fa fa-chevron-right"></i> Nível ' + mycategory;
 }
+*/
 
 function setConfigBotoes() {
 	//exibe a cor de ativado ou desativado dos botões
@@ -3379,12 +3386,12 @@ async function initLinkHelp() {
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'Fargate', 'https://docs.aws.amazon.com/pt_br/AmazonECS/latest/developerguide/AWS_Fargate.html', 'executar contêineres sem a necessidade de gerenciar servidores', 'Fargate --> É uma tecnologia que pode ser usada com o Amazon ECS para executar contêineres sem a necessidade de gerenciar servidores ou clusters de instâncias do Amazon EC2. <br/>Com o AWS Fargate, não é mais necessário provisionar, configurar nem dimensionar os clusters de máquinas virtuais para executar contêineres. <br/>Fargate elimina a necessidade de escolher tipos de servidor, decidir quando dimensionar clusters ou otimizar o agrupamento de clusters.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'EKS', 'https://aws.amazon.com/pt/eks/', 'executar e escalar aplicações do Kubernetes', 'Amazon EKS (Elastic Kubernetes Service) --> É um serviço de contêiner gerenciado para executar e escalar aplicações do Kubernetes na nuvem ou on-premises. Adiciona orquestração ao Amazon ECS.');
-	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'ECS', 'https://docs.aws.amazon.com/pt_br/AmazonECS/latest/developerguide/Welcome.html', 'serviço de gerenciamento de contêineres', 'Amazon ECS (Elastic Container Service) --> É um serviço de gerenciamento de contêineres altamente rápido e escalável. Você pode usá-lo para executar, interromper e gerenciar contêineres em um cluster.');
-	contadorMycode = String(parseInt(contadorMycode) + 1);
-	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'ECR', 'https://aws.amazon.com/pt/ecr/', 'registro de contêiner', 'Amazon ECR (Elastic Container Registry) --> É um registro de contêiner totalmente gerenciado que oferece hospedagem de alta performance para que você possa implantar imagens e artefatos de aplicações de forma confiável em qualquer lugar.');
-	contadorMycode = String(parseInt(contadorMycode) + 1);
+//	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'EKS', 'https://aws.amazon.com/pt/eks/', 'executar e escalar aplicações do Kubernetes', 'Amazon EKS (Elastic Kubernetes Service) --> É um serviço de contêiner gerenciado para executar e escalar aplicações do Kubernetes na nuvem ou on-premises. Adiciona orquestração ao Amazon ECS.');
+//	contadorMycode = String(parseInt(contadorMycode) + 1);
+//	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'ECS', 'https://docs.aws.amazon.com/pt_br/AmazonECS/latest/developerguide/Welcome.html', 'serviço de gerenciamento de contêineres', 'Amazon ECS (Elastic Container Service) --> É um serviço de gerenciamento de contêineres altamente rápido e escalável. Você pode usá-lo para executar, interromper e gerenciar contêineres em um cluster.');
+//	contadorMycode = String(parseInt(contadorMycode) + 1);
+//	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'ECR', 'https://aws.amazon.com/pt/ecr/', 'registro de contêiner', 'Amazon ECR (Elastic Container Registry) --> É um registro de contêiner totalmente gerenciado que oferece hospedagem de alta performance para que você possa implantar imagens e artefatos de aplicações de forma confiável em qualquer lugar.');
+//	contadorMycode = String(parseInt(contadorMycode) + 1);
 	linkhelp = linkhelp + getLinkHelp(mytema, mycategory, contadorMygroup, contadorMycode, contadorMycode, '', '', '', '', save, 'IAC', 'https://aws.amazon.com/marketplace/solutions/devops/infrastructure-as-code?aws-marketplace-cards.sort-by=item.additionalFields.headline&aws-marketplace-cards.sort-order=desc&awsf.aws-marketplace-devops-store-use-cases=*all', '', 'AWS IAC (Infraestrutura como Código) --> Não se aplica na AWS. Ajuda as organizações a atingir suas metas de automação e autoatendimento de DevOps, mantendo arquivos de declaração no controle de versão que definem seus ambientes de aplicativos.');
 	contadorMycode = String(parseInt(contadorMycode) + 1);
 
