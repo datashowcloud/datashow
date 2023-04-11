@@ -530,6 +530,9 @@ function registerEvents() {
 	$('#imgTema3Apresentacao').click(function () {
 		loadNextLevel('3');
 	})
+	$('#imgTema4Apresentacao').click(function () {
+		loadNextLevel('4');
+	})
 	$('#btnTema1Apresentacao').click(function () {
 		loadNextLevel('1');
 	})
@@ -539,6 +542,9 @@ function registerEvents() {
 	$('#btnTema3Apresentacao').click(function () {
 		loadNextLevel('3');
 	})
+	$('#btnTema4Apresentacao').click(function () {
+		loadNextLevel('4');
+	})
 	$('#imgTema1MenuTopo').click(function () {
 		loadNextLevel('1');
 	})
@@ -547,6 +553,9 @@ function registerEvents() {
 	})
 	$('#imgTema3MenuTopo').click(function () {
 		loadNextLevel('3');
+	})
+	$('#imgTema4MenuTopo').click(function () {
+		loadNextLevel('4');
 	})
 	$('#imgLanguage').click(function () {
 		try {
