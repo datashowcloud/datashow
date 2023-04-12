@@ -70,7 +70,7 @@
 					<td>&nbsp;&nbsp;&nbsp;</td>
 					<td>
 						<button id="btnFim" class="btn btn-outline-primary end" style="border-radius:50%; color:white; display:none;" title="Terminar a fase"><i class="fa fa-envelope"></i></button>
-						<br/><font id="fonFim" size=1 style="display:'none';">Terminar</font>
+						<br/><font id="fonFim" size=1 style="display:none;">Terminar</font>
 					</td>
 					<td>&nbsp;&nbsp;&nbsp;</td>
 				</tr>
@@ -501,6 +501,9 @@
 			</tr>
 		</table>
 	</div>
+	
+	<div id="tblMinhasConquistas" style="width:98%; display:'none';" align=center>
+	</div>
 
 	<div id="divcontent" style="display:'none';">
 	</div>
@@ -525,7 +528,7 @@
 						<input type="text" id="txtCalculo" value="0%" title="Index/Índice" style="position:absolute; top:2px; left:67%; width:50px; font-size:15px; background-color:black; color:white; border-width:4px; border-color:white; text-align:center; cursor:default; border-radius:10px;" readonly />
 
 						<!--img id="btnTip" src="img/dica.jpg" width="35px" onclick="escondeFormNaoDesista(); $('#menutopodireito').hide();" style="position:absolute; top:2px; left:66%; cursor:pointer; border-radius:50%;" title="Tip/Dica/Consejo"></img-->
-						<img id="imgFechar" src="img/fechar.jpg" onclick="showFormApresentacao();" width="35px" style="position:absolute; top:2px; left:86%; cursor:pointer; border-radius:50%;" title="Close/Fechar/Cerrar"></img>
+						<img id="imgFechar" src="img/fechar.jpg" onclick="showGridAndHideForms();" width="35px" style="position:absolute; top:2px; left:86%; cursor:pointer; border-radius:50%;" title="Close/Fechar/Cerrar"></img>
 						<!--pergunta-->
 						<div id="mytextSim" class="degradeblack" style="border-color:white; border-radius:20px; border-style:solid; border-width:4px;"></div>
 						<!--mensagem de erro ou acerto-->
@@ -710,16 +713,6 @@
 		</font>
 	</div>
 
-	<table id="tblEstatisticas" border=0 style="width:98%; display:none;" align=center>
-		<tbody>
-			<div id="divbotoes" style="display:none; text-align:center;">
-					<!--
-					<button id="btntreino" class="botao flutuante" onclick="changeCategory('2');"><i class="fa fa-book"></i> Treino</button>
-					<button id="btndesafio" class="botao flutuante" onclick="changeCategory('4');"><i class="fa fa-road"></i> Desafio</button>
-					-->
-			</div>
-		</tbody>
-	</table>
 
 	<div class="form-group" id="divFormAddUpdate" style="display:none;">
 		<table border=0 align=center width="98%"><tr><td>

@@ -378,7 +378,7 @@ function registerEvents() {
 			showGridAndHideForms();
 		}
     });	
-    $('#tblEstatisticas tbody').on('click', '.edit', function () {
+    $('#tblMinhasConquistas tbody').on('click', '.edit', function () {
 		var row = $(this).parents().eq(1);
         var child = row.children();
 		var id = row.attr('itemid');
@@ -387,7 +387,7 @@ function registerEvents() {
 		getFromTable(id, mygroup, mycode);
 		showFormAddUpdate();
     });
-    $('#tblEstatisticas tbody').on('click', '.restart', function () {
+    $('#tblMinhasConquistas tbody').on('click', '.restart', function () {
 		var params = new URLSearchParams(window.location.search);
 		var mytema = params.get('tem');
 		var mycategory = params.get('cat');
@@ -407,14 +407,14 @@ function registerEvents() {
 			showFormSim(mytema, mycategory, mygroup);
 		}
     });
-    $('#tblEstatisticas tbody').on('click', '.delete', function () {
+    $('#tblMinhasConquistas tbody').on('click', '.delete', function () {
         var result = confirm('Excluir, ok?');
         if (result) {
             var studentId = $(this).parents().eq(1).attr('itemid');
             deleteStudent(Number(studentId));
         }
     });
-    $('#tblEstatisticas tbody').on('click', '.deletefase', function () {
+    $('#tblMinhasConquistas tbody').on('click', '.deletefase', function () {
 		var result = confirm('Não faça nada. Aguarde alguns segundos...');
 		if (result) {
 			var params = new URLSearchParams(window.location.search);
@@ -425,12 +425,11 @@ function registerEvents() {
 			var myid = row.attr('itemid');
 			var mygroup = formatMygroup(child.eq(0).text());
 			var mycode = child.eq(1).text();
-//console.log('tblEstatisticas tbody deletefase mytema='+mytema + ' mycategory='+mycategory + ' mygroup='+mygroup + ' mycode='+mycode + ' myid='+myid);
 			deletefase(mytema, mycategory, mygroup, mycode, myid);
 			setTimeout(() => { var DataShow_Config = window.open("T"+mytema + "C"+mycategory+ "G"+mygroup + ".html?sim=" + mygroup + "&tem=" + mytema + "&cat=" + mycategory, "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no"); }, 3000); // Executa após 1 segundo para esperar o processo
 		}
     });
-    $('#tblEstatisticas tbody').on('click', '.playsim', function () {
+    $('#tblMinhasConquistas tbody').on('click', '.playsim', function () {
 		var params = new URLSearchParams(window.location.search);
 		var mytema = params.get('tem');
 		var mycategory = params.get('cat');
@@ -442,20 +441,20 @@ function registerEvents() {
 		refreshTableQuestion(mytema, mycategory, id, mygroup, '1');
 		showFormSim(mytema, mycategory, mygroup);
     });	
-    $('#tblEstatisticas tbody').on('click', '.freeze', function () {
+    $('#tblMinhasConquistas tbody').on('click', '.freeze', function () {
 		freezeDataShow(localStorage.getItem('valueAoVivo'));
     });
-    $('#tblEstatisticas tbody').on('click', '.logo', function () {
+    $('#tblMinhasConquistas tbody').on('click', '.logo', function () {
 		showLogo();
 //		freezeDataShow('false');
     });
-    $('#tblEstatisticas tbody').on('click', '.complete', function () {
+    $('#tblMinhasConquistas tbody').on('click', '.complete', function () {
 		searchComplete();
     });
-    $('#tblEstatisticas tbody').on('click', '.videoplaypause', function () {
+    $('#tblMinhasConquistas tbody').on('click', '.videoplaypause', function () {
 		videoPlayPause();
     });
-    $('#tblEstatisticas tbody').on('click', '.simulator', function () {
+    $('#tblMinhasConquistas tbody').on('click', '.simulator', function () {
 		var row = $(this).parents().eq(1);
         var child = row.children();
 		var id = row.attr('itemid');
@@ -772,21 +771,8 @@ async function setConfigGeneral(textcolor, background, buttoncolor) {
 	//imagem do tema na tela de nível
 	var params = new URLSearchParams(window.location.search);
 	var mytema = params.get('tem');
-	if (document.getElementById('imgNivelTema') != null) {
+	if (document.getElementById('imgNivelTema') != null && mytema != null) {
 		document.getElementById('imgNivelTema').src = 'img/tema' + mytema + '.jpg';
-/*		document.getElementById('imgNivelTema').src = 'img/tema' + mytema + b + '.jpg';
-		if (mytema == '1') {
-			document.getElementById('imgNivelTema').src = 'img/clf-c01' + b + '.png';
-		} else if (mytema == '2') {
-			document.getElementById('imgNivelTema').src = 'img/az-900' + b + '.png';
-		} else if (mytema == '3') {
-			document.getElementById('imgNivelTema').src = 'img/1z0-1085-22' + b + '.png';
-		} else if (mytema == '3') {
-			document.getElementById('imgNivelTema').src = 'img/clf-c01' + b + '.png';
-		} else if (mytema == '4') {
-			document.getElementById('imgNivelTema').src = 'img/tema4' + b + '.jpg';
-		}
-*/
 	}
 
 	if (document.getElementById('mytextSim') != null) {
@@ -996,65 +982,13 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 		var varNivelMax = '';
 		var varButtonLineStyle = 'color:gray; font-size:18px;';
 		var varRestart = '';
-		var lingua = getLanguageFile(document.getElementById('imgLanguage').src);
 		
-/*		students.forEach(function (student) {
-			if (student.mycode == '0') {
-				varTdTh = 'td';
-				if (varCount == '') {
-					if (student.mypoints <= 0) {
-						varRestart = '';
-						varCount = '<button class="btn btn-success" onclick="window.open(\'index.html?tem=' + student.mytema + '&cat=' + student.mycategory + '\', \'_self\');" style="background-color:' + CONST_MEDIUM_SEA_GREEN + '; text-align:right;">selecionar</button>';
-					} else if (student.mypoints < 80) {
-						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + ' text-align:right; \"><button class="btn btn-danger">selecionar</button></a>';
-					} else if (student.mypoints < 100) {
-						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + ' text-align:right; \"><button class="btn btn-success" style="background-color:' + CONST_MEDIUM_SEA_GREEN + ';">selecionar</button></a>';
-					} else {
-						varRestart = '<a href=\"#\" class=\"restart\" style=\"' + varButtonRestart + ' text-align:right; \"><button class="btn btn-light">selecionar</button></a>';
-					}
-				} else {
-					varRestart = '';
-				}
-			} else {
-				varTdTh = 'td';
-				varRestart = '<a href=\"#\" class=\"restart\"><i class=\"fa fa-refresh\" style=\"height:25px; ' + 'color:gray; font-size:20px;' + '\"></i></a>';
-			}
-			
-			if (varNivel != student.mycategory) {
-				varNivel = student.mycategory;
-				varNivelLinha = '<tr style="border-bottom: 1px solid #ddd; border-top: 1px solid #ddd;"><td></td><td nowrap style="text-align:left;" colspan=99><font color="gray"  style="font-size:20px;"> &nbsp; <b>' + getTemaCategoria(student.mytema, student.mycategory) + '</b></font></td></tr>';
-			} else {
-				varNivelLinha = '';
-			}
-			if (varNivelMax == '') {
-				varNivelMax = varNivel;
-			}
-
-			htmlString = htmlString + varNivelLinha;
-			htmlString += "<tr ItemId=" + student.id + ' style="border-bottom: 1px solid #ddd;">'
-				//identificação mygroup
-				+ "<td style=\"color:#000000; font-size:1px; \">" + student.mygroup + "</td>"
-				//texto
-				+ "<" + varTdTh + " style=\"text-align:left;\" id=datashow" + student.id+"3" + " tabIndex=" + student.id+"3" + " ZZZonClick=\"datashow('" + student.id+"3" + "', 3, '" + student.mycode + "');\" onkeyup=\"moveCursor('" + student.mycode + "', 3, event, " + "" + (student.id+"3") + ");\" data-show='" + student.id+"3" + "'>"
-					+ '&nbsp; <a href=\"#\" class=\"playsim\" style=\"' + varButtonLineStyle + '\">' + buscaValorTag(student.mytext, lingua) + '</a> ' + '</' + varTdTh + '>'
-				//botão delete e refresh fase
-				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + '<button class=\"deletefase\" style=\"color:white; font-size:20px; border: 1px solid gray; background-color:gray; border-radius:50%; \" title=\"Atualizar fase\"> <i class=\"fa fa-refresh\"></i> </button>'
-				//porcentagem
-				+ '<' + varTdTh + ' style=\"' + varButtonLineStyle + '\">' + student.mypoints + '%</' + varTdTh + '>'
-				//botão playsim ou link selecionar
-				+ '<' + varTdTh + ' style="text-align:right;">' + ' ' + varRestart + varCount + '</a>' + "</" + varTdTh + ">"
-				+ "</" + varTdTh + ">"
-				+ '<td>&nbsp;&nbsp;</td>'
-				;
-				
-				varButtonLineStyle = 'color:gray;  font-size:18px;';
-				varButtonRestart = 'color:gray; font-size:20px;';
-				varCount = '';
-		})
-*/		
-//		if (htmlString.length > 0) {
-//			htmlString += "</tr>"
-//		} else {
+		var lingua = 'portugues';
+		if (document.getElementById('imgLanguage') != null) {
+			lingua = getLanguageFile(document.getElementById('imgLanguage').src);
+		}
+		
+	
 /*			htmlString += htmlStringButtons
 			const d = new Date();
 			htmlString += "<b>"
@@ -1064,18 +998,6 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 			htmlString += d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ":" + d.getMilliseconds();
 			htmlString += "</b>"
 */
-//		}
-		
-/*		var botaoFechar = '';
-		botaoFechar += '<table><tr><td colspan=99>';
-		botaoFechar += '<img src="img/fechar.jpg" class="flutuante" onclick="showFormApresentacao();" width="35px" style="position:absolute; top:5px; left:88%; cursor:pointer; border-radius:50%;" title="Close/Fechar/Cerrar"></img>';
-		botaoFechar += '<i class="fa fa-remove"></i></button>';
-		botaoFechar += '</td></tr></table>';
-		htmlString = botaoFechar + htmlString;
-*/
-
-
-
 
 
 
@@ -1138,10 +1060,43 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 		div += '</label>';
 		div += '</div>';
 		
-        $('#tblEstatisticas tbody').html(div);
+        $('#tblMinhasConquistas').html(div);
 //    } catch (ex) {
 //        console.log(ex.message)
 //    }
+}
+
+async function initForm() {
+	var params = new URLSearchParams(window.location.search);
+	var mytema = params.get('tem');
+	var mycategory = params.get('cat');
+	if ((mytema == null || mycategory == null)) {
+		showFormCategory();
+		return;
+	} else {
+	}
+	//valida usuário e licença para autorizar estudo acima do Nível liberado.
+	var valido = validaLicenca(mycategory, CONST_NIVEL_LIBERADO_SEM_USUARIO_CONECTADO);
+	if (valido == true) {
+		if (localStorage.getItem('id').length > 0) {
+			var users = await jsstoreCon.select({
+				from: 'User'
+					, where: { id: localStorage.getItem('id') + ''
+				}
+			});
+			users.forEach(function (user) {
+				conectaUsuarioValido(user.id);
+			})
+		}
+	}
+	
+		if (document.getElementById('menutopodireito') != null) {
+			document.getElementById('menutopodireito').style.display=''; //exibe menu topo
+		}
+//		refreshTableNivel(mytema, mycategory, '0', '', '', '');
+//		showFormApresentacao();
+	refreshTableData(mytema, mycategory, '0', '', '', '');
+	showGridAndHideForms();
 }
 
 //This function refreshes the table
@@ -1154,7 +1109,7 @@ async function refreshTableNivel(mytema, mycategory, mycode, myorder, mygroup, m
 		, order: [ {by: 'mygroup', type: 'asc'} ]
 	});
 
-	setConfigBotoes(); //atualiza o destaque de cor dos botões de modo de jogo
+//	setConfigBotoes(); //atualiza o destaque de cor dos botões de modo de jogo
 
 	var htmlString = "";
 	var varNivel = '1';
@@ -1195,7 +1150,6 @@ function refreshFase(mytema, mycategory, mygroup, mycode, myid) {
 	mygroup = formatMygroup(mygroup);
 	var result = confirm('Não faça nada. Aguarde alguns segundos...');
 	if (result) {
-//console.log('tblEstatisticas tbody deletefase mytema='+mytema + ' mycategory='+mycategory + ' mygroup='+mygroup + ' mycode='+mycode + ' myid='+myid);
 		deletefase(mytema, mycategory, mygroup, mycode, myid);
 		setTimeout(() => { var DataShow_Config = window.open("T"+mytema + "C"+mycategory+ "G"+mygroup + ".html?sim=" + mygroup + "&tem=" + mytema + "&cat=" + mycategory, "_self", "top=0, width=400, height=200, left=500, location=no, menubar=no, resizable=no, scrollbars=no, status=no, titlebar=no, toolbar=no"); }, 3000); // Executa após 1 segundo para esperar o processo
 	}
@@ -1236,7 +1190,7 @@ function next(index, resposta) {
 		document.getElementById('btnCorrectAnswer' + index).classList.add('degradegreen');
 //		alert('ACERTOU!');
 		setTimeout(() => { document.getElementById('imgCorreta').style.display = 'none'; }, 1500);
-		setTimeout(() => { refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode); }, 2500); // Executa após 1 segundo para esperar o processo ser completamente executado
+		setTimeout(() => { refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode); }, 2000); // Executa após 1 segundo para esperar o processo ser completamente executado
 	} else {
 		//também mostra seleciona resposta correta
 		setTimeout(() => { setRespostaCorreta(); }, 500);
@@ -1247,7 +1201,7 @@ function next(index, resposta) {
 		document.getElementById('btnCorrectAnswer' + index).classList.add('degradered');
 //		alert('RESPOSTA INCORRETA');
 		setTimeout(() => { document.getElementById('imgIncorreta').style.display = 'none'; }, 1500);
-		setTimeout(() => { refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode); }, 4500); // Executa após 1 segundo para esperar o processo ser completamente executado
+		setTimeout(() => { refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode); }, 3500); // Executa após 1 segundo para esperar o processo ser completamente executado
 	}
 
 }
@@ -1324,39 +1278,6 @@ function getLanguageFile(arquivo) {
 		lingua = 'portugues';
 	}
 	return lingua;
-}
-
-async function initForm() {
-	var params = new URLSearchParams(window.location.search);
-	var mytema = params.get('tem');
-	var mycategory = params.get('cat');
-	if ((mytema == null || mycategory == null)) {
-		showFormCategory();
-	} else {
-		if (document.getElementById('menutopodireito') != null) {
-			document.getElementById('menutopodireito').style.display=''; //exibe menu topo
-		}
-		refreshTableNivel(mytema, mycategory, '0', '', '', '');
-		showFormApresentacao();
-	}
-	//valida usuário e licença para autorizar estudo acima do Nível liberado.
-	var valido = validaLicenca(mycategory, CONST_NIVEL_LIBERADO_SEM_USUARIO_CONECTADO);
-//console.log('initForm validaLicenca '+valido);
-	if (valido == true) {
-		if (localStorage.getItem('id').length > 0) {
-//console.log('localStorage.getItem(id)='+localStorage.getItem('id'));
-			var users = await jsstoreCon.select({
-				from: 'User'
-					, where: { id: localStorage.getItem('id') + ''
-				}
-			});
-			users.forEach(function (user) {
-//console.log('forEach user.id='+user.id + ' user.pass='+user.pass);
-				conectaUsuarioValido(user.id);
-				//loginUser(user.id, user.pass, mycategory, CONST_NIVEL_LIBERADO_SEM_USUARIO_CONECTADO);
-			})
-		}
-	}
 }
 
 async function loginUser(id, pass, mycategory, nivelLiberado) {
@@ -1638,7 +1559,12 @@ async function loadNextLevel(temapaginaindex) {
 function showFirstPage() {
 	var params = new URLSearchParams(window.location.search);
 	var mytema = params.get('tem');
-	var DataShow_Config = window.open("index.html?tem=" + mytema + '&cat=1', "_self");
+	var mycategory = params.get('cat');
+	var myid = document.getElementById('myidSim').value;
+	var mygroup = formatMygroup(document.getElementById('mygroupSim').value);
+	var mycode = parseInt(document.getElementById('mycodeSim').value) + 1;
+	setTimeout(() => { savePoints(mytema, mycategory, myid, mygroup, mycode); }, 1000); // Executa após 1 segundo para esperar o processo ser completamente executado
+	setTimeout(() => { var DataShow_Config = window.open("index.html?tem=" + mytema + '&cat=1', "_self"); }, 1000); // Executa após 1 segundo para esperar o processo ser completamente executado
 }
 
 function getStudentFromForm(mytema, mycategory, studentId, mygroup, mycode) {
@@ -2577,7 +2503,7 @@ async function selectCountAll() {
 			aux=aux+1;
 		})
 		htmlString += "<td colspan=99>" + aux + " itens</td>"
-        $('#tblEstatisticas tbody').html(htmlString);
+        $('#tblMinhasConquistas tbody').html(htmlString);
 		document.getElementById('txtSearch').value = aux + " itens";
     } catch (ex) {
         console.log(ex.message)
@@ -3683,7 +3609,8 @@ function escondeFormNaoDesista() {
 
 function showFormApresentacao() {
 	$('#menutopodireito').show();
-    $('#tblEstatisticas').hide();
+    $('#tblMinhasConquistas').hide();
+	$('#divNivel').show();
     $('#divbotoes').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
@@ -3694,13 +3621,13 @@ function showFormApresentacao() {
 	$('#divFormQuestions').hide();
 	$('#divbuttons').hide();
 	$('#tblCategory').hide();
-	$('#divNivel').show();
 	escondeBotao();
 }
 
 function showFormCategory() {
 	$('#menutopodireito').show();
-    $('#tblEstatisticas').hide();
+	$('#tblCategory').show();
+    $('#tblMinhasConquistas').hide();
     $('#divbotoes').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
@@ -3710,14 +3637,13 @@ function showFormCategory() {
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormQuestions').hide();
 	$('#divbuttons').hide();
-	$('#tblCategory').show();
 	$('#divNivel').hide();
 	document.getElementById('menutopodireito').style.display='none'; //não exibe menu topo
 }
 
 function showFormSim(mytema, mycategory, mygroup) {
 	$('#menutopodireito').hide();
-    $('#tblEstatisticas').hide();
+    $('#tblMinhasConquistas').hide();
     $('#divbotoes').show();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
@@ -3741,7 +3667,7 @@ function showFormSim(mytema, mycategory, mygroup) {
 
 function showFormAddUpdate() {
 	$('#menutopodireito').show();
-    $('#tblEstatisticas').hide();
+    $('#tblMinhasConquistas').hide();
     $('#divbotoes').show();
     $('#divFormAddUpdate').show();
 	$('#divGear').hide();
@@ -3755,8 +3681,8 @@ function showFormAddUpdate() {
 }
 
 function showGridAndHideForms() {
-	$('#menutopodireito').hide();
-    $('#tblEstatisticas').show();
+	$('#menutopodireito').show();
+    $('#tblMinhasConquistas').show();
     $('#divbotoes').show();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
@@ -3767,17 +3693,18 @@ function showGridAndHideForms() {
 	$('#tblCategory').hide();
 	$('#divNivel').hide();
 
-	if (document.getElementById('btnFim') != null) {
+/*	if (document.getElementById('btnFim') != null) {
 		document.getElementById('btnFim').style.display='none';	
 		document.getElementById('fonFim').style.display='none';	
 	}
+*/
 }
 
 function showAddNewManual() {
 	$('#menutopodireito').show();
 	$('#divGearAddNewLiryc').show();
     $('#divbotoes').show();
-    $('#tblEstatisticas').hide();
+    $('#tblMinhasConquistas').hide();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
 	$('#divcontent').hide();
@@ -3790,7 +3717,7 @@ function showAddNewManual() {
 
 function showFormGear() {
 	$('#menutopodireito').show();
-    $('#tblEstatisticas').hide();
+    $('#tblMinhasConquistas').hide();
     $('#divbotoes').show();
     $('#divFormAddUpdate').hide();
 	$('#divGear').show();
@@ -3804,7 +3731,7 @@ function showFormGear() {
 
 function showFormImport() {
 	$('#menutopodireito').show();
-    $('#tblEstatisticas').hide();
+    $('#tblMinhasConquistas').hide();
     $('#divbotoes').show();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
@@ -3819,7 +3746,7 @@ function showFormImport() {
 
 function showBible() {
 	$('#menutopodireito').show();
-    $('#tblEstatisticas').hide();
+    $('#tblMinhasConquistas').hide();
     $('#divbotoes').show();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
@@ -3834,7 +3761,7 @@ function showBible() {
 
 function showIniciarConfiguracao() {
 	$('#menutopodireito').show();
-    $('#tblEstatisticas').hide();
+    $('#tblMinhasConquistas').hide();
     $('#divbotoes').show();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
