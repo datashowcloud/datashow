@@ -21,7 +21,7 @@ var CONST_TEMA_ORACLE_1ZO108522 = 3;
 var CONST_TEMA_BIBLE_IIRF = 4;
 var CONST_MYCATEGORY_1 = '1';
 var CONST_MYCATEGORY_2 = '2';
-var CONST_NIVEL_LIBERADO_SEM_USUARIO_CONECTADO = 0;
+var CONST_NIVEL_LIBERADO_SEM_USUARIO_CONECTADO = 9;
 var CONST_LICENCA_PADRAO = '202303010000';
 
 window.onload = function () {
@@ -1028,8 +1028,10 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 					//cartão
 					htmlString += '</p>';
 					htmlString += '&nbsp;';
-					htmlString += '<a href=\"#\" ' + varClass + ' style="color:white;" onclick=\"refreshTableQuestion(' + mytema + ', ' + mycategory + ', ' + student.id + ', ' + student.mygroup + ', 1);';
-					htmlString += ' showFormSim(' + mytema + ', ' + mycategory + ', ' + student.mygroup + '); \" style=\"color:gray; font-size:18px;\">';
+					htmlString += '<a href=\"#\" ' + varClass + ' style="color:white; font-size:18px;" onclick=\"refreshTableQuestion(' + mytema + ', ' + mycategory + ', ' + student.id + ', ' + student.mygroup + ', 1);';
+					htmlString += ' showFormSim(' + mytema + ', ' + mycategory + ', ' + student.mygroup + '); \">';
+						htmlString += '<b>PLAY</b>';
+						htmlString += '<br/>';
 						//texto
 						htmlString += '<b>' + buscaValorTag(student.mytext, lingua) + '</b>';
 						//porcentagem
@@ -1038,29 +1040,59 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 					htmlString += '</a>';
 					htmlString += '<br/>';
 					htmlString += '&nbsp;&nbsp;';
-//alert('refreshTableData mytema='+mytema + ' mycategory='+mycategory + ' student.mygroup='+student.mygroup + ' mycode='+student.mycode + ' id='+student.id);
-					htmlString += '<button class="flutuante" onclick="refreshFase(' + mytema + ', ' + mycategory + ', ' + student.mygroup + ', ' + student.mycode + ', ' + student.id + ')" style="border-radius:50%; position:relative; top:-10px; border:1px solid gray;" title="Atualizar fase"> <i class="fa fa-refresh"></i> </button>';
+					//alert('refreshTableData mytema='+mytema + ' mycategory='+mycategory + ' student.mygroup='+student.mygroup + ' mycode='+student.mycode + ' id='+student.id);
+					htmlString += '<button class="flutuante" onclick="refreshFase(' + mytema + ', ' + mycategory + ', ' + student.mygroup + ', ' + student.mycode + ', ' + student.id + ')" style="border-radius:50%; position:relative; top:-5px; border:2px solid gray;" title="Atualizar fase"> <i class="fa fa-refresh"></i> </button>';
 					htmlString += '<br/>';
 				htmlString += '</label>';
 			htmlString += '</label> &nbsp;&nbsp;';
+
+			varMyid = student.id;
+			varMygroup = student.mygroup;
+			varMycode = student.mycode;
 		})
 
-		var div = '';
-		div += '<br/>';
-		div += '<div align=center style="border-radius:2.18vw; margin-left:auto; margin-right:auto;">';
-		div += '<br/>';
-		div += '<img src="img/fechar.jpg" class="flutuante" onclick="showFormApresentacao();" width="35px" style="position:absolute; top:30px; left:88%; cursor:pointer; border-radius:50%;" title="Close/Fechar/Cerrar"></img>';
-		div += '<label align=center style="width:95%; border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;">';
-		div += '<label style="border-radius:30px; position:relative; top:-25px; left:0px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">';
-		div += '<label class="btn btn-primary degradeorange" style="border-radius:30px; font-size:20px; cursor:default;"><b>MINHAS CONQUISTAS</b></label>';
-		div += '</label>';
-		div += '<br/>';
-		div += htmlString;
-		div += '<br/><br/>';
-		div += '</label>';
-		div += '</div>';
+
+		var htmlString2 = '';
+		var divModo1 = '';
+		divModo1 += '<br/>';
+		divModo1 += '<div align=center style="border-radius:2.18vw; margin-left:auto; margin-right:auto;">';
+		divModo1 += '<br/>';
+		divModo1 += '<img src="img/fechar.jpg" class="flutuante" onclick="showFormApresentacao();" width="35px" style="position:absolute; top:30px; left:88%; cursor:pointer; border-radius:50%;" title="Close/Fechar/Cerrar"></img>';
+		divModo1 += '<label align=center style="width:95%; border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;">';
+		divModo1 += '<label style="border-radius:30px; position:relative; top:-25px; left:0px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">';
+		divModo1 += '<label class="btn btn-primary degradeorange" style="border-radius:30px; font-size:20px; cursor:default;"><b>MODO DESAFIO</b></label>';
+		divModo1 += '</label>';
+		htmlString2 += '</p>';
+		htmlString2 += '&nbsp;';
+		htmlString2 += '<a href=\"#\" class="btn btn-default degradeblack" style="color:white; font-size:18px;">';
+			htmlString2 += '<b>LOCKED</b>';
+			htmlString2 += '<br/><b>FASE 1</b>';
+			htmlString2 += '<br/>0%';
+		htmlString2 += '</a>';
+		divModo1 += htmlString2;
+		divModo1 += '<br/><br/>';
+		divModo1 += '</label>';
+		divModo1 += '</div>';
+ 
+		var divModo2 = '';
+		divModo2 += '<br/>';
+		divModo2 += '<div align=center style="border-radius:2.18vw; margin-left:auto; margin-right:auto;">';
+		divModo2 += '<br/>';
+		divModo2 += '<img src="img/fechar.jpg" class="flutuante" onclick="showFormApresentacao();" width="35px" style="position:absolute; top:30px; left:88%; cursor:pointer; border-radius:50%;" title="Close/Fechar/Cerrar"></img>';
+		divModo2 += '<label align=center style="width:95%; border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;">';
+		divModo2 += '<label style="border-radius:30px; position:relative; top:-25px; left:0px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">';
+		divModo2 += '<label class="btn btn-primary degradeorange" style="border-radius:30px; font-size:20px; cursor:default;"><b>MODO TREINO</b></label>';
+		divModo2 += '</label>';
+		divModo2 += '<br/>';
+		divModo2 += htmlString;
+		divModo2 += '<br/><br/>';
+		divModo2 += '</label>';
+		divModo2 += '</div>';
+        $('#tblMinhasConquistas').html(divModo2 + divModo1);
 		
-        $('#tblMinhasConquistas').html(div);
+		
+		refreshTableNivel(mytema, mycategory, '0', '', '', '');
+		
 //    } catch (ex) {
 //        console.log(ex.message)
 //    }
@@ -1070,6 +1102,9 @@ async function initForm() {
 	var params = new URLSearchParams(window.location.search);
 	var mytema = params.get('tem');
 	var mycategory = params.get('cat');
+	
+//	alert(document.getElementById('txtVersion').value); //tableConfigGeneral
+	
 	if ((mytema == null || mycategory == null)) {
 		showFormCategory();
 		return;
@@ -1078,15 +1113,17 @@ async function initForm() {
 	//valida usuário e licença para autorizar estudo acima do Nível liberado.
 	var valido = validaLicenca(mycategory, CONST_NIVEL_LIBERADO_SEM_USUARIO_CONECTADO);
 	if (valido == true) {
-		if (localStorage.getItem('id').length > 0) {
-			var users = await jsstoreCon.select({
-				from: 'User'
-					, where: { id: localStorage.getItem('id') + ''
-				}
-			});
-			users.forEach(function (user) {
-				conectaUsuarioValido(user.id);
-			})
+		if (localStorage.getItem('id') != null) {
+			if (localStorage.getItem('id').length > 0) {
+				var users = await jsstoreCon.select({
+					from: 'User'
+						, where: { id: localStorage.getItem('id') + ''
+					}
+				});
+				users.forEach(function (user) {
+					conectaUsuarioValido(user.id);
+				})
+			}
 		}
 	}
 	
@@ -1123,20 +1160,21 @@ async function refreshTableNivel(mytema, mycategory, mycode, myorder, mygroup, m
 	})
 
 	htmlString = '';
-	htmlString = htmlString + '<tr>';
+/*	htmlString = htmlString + '<tr>';
 	htmlString = htmlString + '<td>';
 
 	htmlString = htmlString + '</td>';
 	htmlString = htmlString + '</tr>';
-
+*/
 	htmlString = htmlString + '<tr>';
 	htmlString = htmlString + '<td>';
 
-	htmlString = htmlString + '<i class="fa fa-play avatarflutuante" style="color:#00FF7F; font-size:15px;"></i>';
+	//htmlString = htmlString + '<i class="fa fa-play avatarflutuante" style="color:#00FF7F; font-size:15px;"></i>';
 	htmlString = htmlString + '<label class="flutuante" style="border-radius:30px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">';
-		htmlString = htmlString + '<label style="border-radius:10px; font-size:20px; background-color:white; color:green; position:absolute; top:-18px; left:30%; width:70px; border-width:0px; font-family:Helvetica; cursor:default;">Nível ' + varNivel + '</label>';
+//		htmlString = htmlString + '<label style="border-radius:10px; font-size:20px; background-color:white; color:green; position:absolute; top:-18px; left:30%; width:70px; border-width:0px; font-family:Helvetica; cursor:default;">Nível ' + varNivel + '</label>';
 		htmlString = htmlString + '<button id="btnNivel" class="btn btn-success degradegreen" onclick="refreshTableQuestion(' + mytema + ', ' + mycategory + ', ' + myid + ', ' + mygroup + ', ' + mycode + '); showFormSim(' + mytema + ', ' + mycategory + ', ' + mygroup + ');" style="border-radius:30px; font-size:30px; font-family:Helvetica; font-weight:bold; border-width:0px; -webkit-text-stroke-width: 1px; ">';
-		htmlString = htmlString + '&nbsp;&nbsp;FASE ' + varFase + '&nbsp;&nbsp;';
+//		htmlString = htmlString + '&nbsp;&nbsp;FASE ' + varFase + '&nbsp;&nbsp;';
+		htmlString = htmlString + '&nbsp;&nbsp; PLAY &nbsp;&nbsp;';
 		htmlString = htmlString + '</button>';
 	htmlString = htmlString + '</label>';
 
@@ -3609,7 +3647,7 @@ function escondeFormNaoDesista() {
 
 function showFormApresentacao() {
 	$('#menutopodireito').show();
-    $('#tblMinhasConquistas').hide();
+    $('#tblMinhasConquistas').show();
 	$('#divNivel').show();
     $('#divbotoes').hide();
     $('#divFormAddUpdate').hide();
@@ -3684,6 +3722,7 @@ function showGridAndHideForms() {
 	$('#menutopodireito').show();
     $('#tblMinhasConquistas').show();
     $('#divbotoes').show();
+	$('#divNivel').show();
     $('#divFormAddUpdate').hide();
 	$('#divGear').hide();
 	$('#divcontent').hide();
@@ -3691,7 +3730,6 @@ function showGridAndHideForms() {
 	$('#divGearAddNewLiryc').hide();
 	$('#divFormQuestions').hide();
 	$('#tblCategory').hide();
-	$('#divNivel').hide();
 
 /*	if (document.getElementById('btnFim') != null) {
 		document.getElementById('btnFim').style.display='none';	
@@ -4165,3 +4203,4 @@ function getCookie(cname) {
 //https:// triangulo.dev /posts/atomo-como-criar-cubo-css/
 //https:// stackoverflow.com /questions/17612405/import-html-document-using-html-link-rel (importar xml e tratar o conteúdo nós)
 //http:// www.linhadecodigo.com.br /artigo/3603/css3-gradient-criando-planos-de-fundo-com-efeito-degrade.aspx
+//https:// www.respostas.com.br/perguntas-biblicas-faceis/
