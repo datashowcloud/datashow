@@ -1229,7 +1229,7 @@ function next(index, resposta) {
 		document.getElementById('btnCorrectAnswer' + index).classList.add('degradegreen');
 //		alert('ACERTOU!');
 		setTimeout(() => { document.getElementById('imgCorreta').style.display = 'none'; }, 1500);
-		setTimeout(() => { refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode); }, 3000); // Executa após 1 segundo para esperar o processo ser completamente executado
+		setTimeout(() => { refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode); }, 2500); // Executa após 1 segundo para esperar o processo ser completamente executado
 	} else {
 		setTimeout(() => { setRespostaCorreta(); }, 500); //também mostra seleciona resposta correta
 		document.getElementById('imgIncorreta').style.display = '';
@@ -4203,4 +4203,5 @@ function getCookie(cname) {
 //https:// triangulo.dev /posts/atomo-como-criar-cubo-css/
 //https:// stackoverflow.com /questions/17612405/import-html-document-using-html-link-rel (importar xml e tratar o conteúdo nós)
 //http:// www.linhadecodigo.com.br /artigo/3603/css3-gradient-criando-planos-de-fundo-com-efeito-degrade.aspx
-//https:// www.respostas.com.br/perguntas-biblicas-faceis/
+//https:// www.respostas.com.br/perguntas-biblicas-faceis/ (a próxima é a questão 25)
+//https:// www.churchofjesuschrist.org/study/scriptures/ot/gen/7?lang=por (referÊncia de pesquisa para bíblia
