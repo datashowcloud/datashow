@@ -1221,6 +1221,7 @@ function next(index, resposta) {
 	salvaResposta(index);
 	savePoints(mytema, mycategory, myid, mygroup, mycode);
 	if (resposta <= 4) {
+		setTimeout(() => { setRespostaCorreta(); }, 500); //também mostra seleciona resposta correta
 		document.getElementById('imgCorreta').style.display = '';
 		document.getElementById('btnCorrectAnswer' + index).classList.remove('btn-primary');
 		document.getElementById('btnCorrectAnswer' + index).classList.remove('degradeblue');
@@ -1228,10 +1229,9 @@ function next(index, resposta) {
 		document.getElementById('btnCorrectAnswer' + index).classList.add('degradegreen');
 //		alert('ACERTOU!');
 		setTimeout(() => { document.getElementById('imgCorreta').style.display = 'none'; }, 1500);
-		setTimeout(() => { refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode); }, 2000); // Executa após 1 segundo para esperar o processo ser completamente executado
+		setTimeout(() => { refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode); }, 3000); // Executa após 1 segundo para esperar o processo ser completamente executado
 	} else {
-		//também mostra seleciona resposta correta
-		setTimeout(() => { setRespostaCorreta(); }, 500);
+		setTimeout(() => { setRespostaCorreta(); }, 500); //também mostra seleciona resposta correta
 		document.getElementById('imgIncorreta').style.display = '';
 		document.getElementById('btnCorrectAnswer' + index).classList.remove('btn-primary');
 		document.getElementById('btnCorrectAnswer' + index).classList.remove('degradeblue');
@@ -1239,7 +1239,7 @@ function next(index, resposta) {
 		document.getElementById('btnCorrectAnswer' + index).classList.add('degradered');
 //		alert('RESPOSTA INCORRETA');
 		setTimeout(() => { document.getElementById('imgIncorreta').style.display = 'none'; }, 1500);
-		setTimeout(() => { refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode); }, 3500); // Executa após 1 segundo para esperar o processo ser completamente executado
+		setTimeout(() => { refreshTableQuestion(mytema, mycategory, myid, mygroup, mycode); }, 4500); // Executa após 1 segundo para esperar o processo ser completamente executado
 	}
 
 }

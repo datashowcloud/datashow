@@ -123,7 +123,7 @@
 									<p/>
 									<p/>
 									tamastigadu@gmail.com <br/>atualizado em 04/2023
-									<br/>versão 00.00.43
+									<br/>versão 00.00.44
 								</font>
 							</div>
 						</div>
@@ -170,12 +170,13 @@
 						<label align=center style="width:290px; border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;">
 
 							<label style="border-radius:30px; position:relative; top:-25px; left:20px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
-								<label class="btn btn-primary degradeorange" style="border-radius:30px; font-size:20px; cursor:default;"><b>NÃO DESISTA</b></label>
+								<label class="btn btn-primary degradeorange" style="border-radius:30px; font-size:20px; cursor:default;"><b>RECOMPENSA</b></label>
 							</label>
 							<img src="img/fechar.jpg" class="flutuante" onclick="escondeFormNaoDesista(); $('#menutopodireito').hide();" width="35px" style="position:relative; top:-20px; left:60px; cursor:pointer; border-radius:50%;" title="Close/Fechar/Cerrar"></img>
 
 							<label style="border-radius:30px; font-size:20px; color:white;">
 								Nota inferior a 80%
+								<br/><br/>Nota alta tem recompensa maior
 							</label>
 							
 							<br/><br/>
@@ -192,9 +193,10 @@
 								<button id="btnPerder" class="btn btn-danger degradered">REFAZER</button>
 							</label>
 							<label class="flutuante" style="border-radius:5px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
-								<button id="btnGanhar" class="btn btn-success degradegreen">CONQUISTAR
-									<img src="img/coracao.jpg" width="30px" style="position:absolute; top:-10px; right:-15px; border-radius:50%; cursor:pointer;"></img>
+								<button id="btnGanhar" class="btn btn-success degradegreen">CONTINUAR
+									<!--img src="img/coracao.jpg" width="30px" style="position:absolute; top:-10px; right:-15px; border-radius:50%; cursor:pointer;"></img>
 									<input id="txtContinuar" type="text" value="1" readonly style="position:absolute; top:-5px; right:-25px; width:50px; border-radius:50%; font-size:13px; text-align:center; background-color:transparent; color:white; border-width:0px; border-color:white; font-family:Helvetica; font-weight:bold; cursor:pointer;"></input>
+									-->
 								</button>
 							</label>
 							
@@ -274,20 +276,20 @@
 			
 			<div>
 				<label>
-					Certificação Cloud<br/>
-					<!-- label>
-						<img src="img/tema1.jpg" id="imgTema1Apresentacao" class="btn btn-outline-secondary avatarflutuante" width="200px" style="cursor:pointer; display:'none'; border-radius:50%;" title="AWS CLF-C01"></img>
-						<br/>AWS <br/>CLF-C01
+					<label class="avatarflutuante">Certificações</label><br/>
+					<label>
+						<img src="img/tema1.jpg" id="imgTema1Apresentacao" class="btn btn-outline-secondary" width="150px" style="cursor:pointer; display:'none'; border-radius:50%;" title="Certificação em AWS CLF-C01"></img>
+						<br/>Cloud <br/>AWS CLF-C01
 						<br/>
 						<button id="btnTema1Apresentacao" class="btn btn-success" style="border-radius:5vw; font-size:30px; color:black; font-weight:bold; background-color:#00FF7F;">
 							QUERO ESSE
 						</button>
 						<br/><br/>
-					</label -->
+					</label>
 					<label>
 						<label>
-							<img src="img/tema2.jpg" id="imgTema2Apresentacao" class="btn btn-outline-secondary avatarflutuante" width="200px" style="cursor:pointer; display:'none'; border-radius:50%;" title="AZURE AZ-900"></img>
-							<br/>MICROSOFT <br/>AZURE AZ-900
+							<img src="img/tema2.jpg" id="imgTema2Apresentacao" class="btn btn-outline-secondary" width="150px" style="cursor:pointer; display:'none'; border-radius:50%;" title="Certificação em AZURE AZ-900"></img>
+							<br/>Cloud <br/>AZURE AZ-900
 							<br/>
 							<button id="btnTema2Apresentacao" class="btn btn-success" style="border-radius:5vw; font-size:30px; color:black; font-weight:bold; background-color:#00FF7F;">
 								QUERO ESSE
@@ -296,8 +298,8 @@
 						</label>
 						<label>
 							<label>
-								<img src="img/tema3.jpg" id="imgTema3Apresentacao" class="btn btn-outline-secondary avatarflutuante" width="200px" border=1 style="cursor:pointer; display:'none'; border-radius:50%;" title="ORACLE 1Z0-1085-22"></img>
-								<br/>ORACLE <br/>1Z0-1085-22
+								<img src="img/tema3.jpg" id="imgTema3Apresentacao" class="btn btn-outline-secondary" width="150px" border=1 style="cursor:pointer; display:'none'; border-radius:50%;" title="Certificação em ORACLE 1Z0-1085-22"></img>
+								<br/>Cloud <br/>1Z0-1085-22
 								<br/>
 								<button id="btnTema3Apresentacao" class="btn btn-success" style="border-radius:5vw; font-size:30px; color:black; font-weight:bold; background-color:#00FF7F;">
 									QUERO ESSE
@@ -307,8 +309,8 @@
 						</label>
 						<label>
 							<label>
-								<img src="img/tema4.jpg" id="imgTema4Apresentacao" class="btn btn-outline-secondary avatarflutuante" width="200px" border=1 style="cursor:pointer; display:'none'; border-radius:50%;" title="BIBLE I.I.R.F"></img>
-								<br/>BIBLE <br/>I.I.R.F.
+								<img src="img/tema4.jpg" id="imgTema4Apresentacao" class="btn btn-outline-secondary" width="150px" border=1 style="cursor:pointer; display:'none'; border-radius:50%;" title="Certificação em Teologia na Igreja Internacional Redentor Forte"></img>
+								<br/>Teologia <br/>I.I.R.F. OFICIAL
 								<br/>
 								<button id="btnTema4Apresentacao" class="btn btn-success" style="border-radius:5vw; font-size:30px; color:black; font-weight:bold; background-color:#00FF7F;">
 									QUERO ESSE
@@ -336,12 +338,12 @@
 				</div>
 				<div style="margin-left:auto; margin-right:auto;">
 					<label>
-						<label style="width:300px; text-align:left;">
+						<label style="width:250px; text-align:left;">
 							<label style="font-size:50px;"><i class="fa fa-italic"></i><i class="fa fa-font"></i></label>
 							<br/><b>1. Inteligência Artificial</b>
 							<br/><h6 style="text-align:justify;">TÁ MASTIGADU. Mais de <u>400 perguntas</u> criadas com inteligência artificial. A ferramenta também monta novos testes com os assuntos que você demonstrou maior dificuldade.</h6>
 						</label>
-						<label style="width:300px; text-align:left;">
+						<label style="width:250px; text-align:left;">
 							<label>
 								<label style="font-size:50px;"><i class="fa fa-plus"></i></label>
 								<br/><b>2. Dicas e Atalhos</b>
@@ -351,7 +353,7 @@
 					</label>
 				</div>
 				<br/>
-				<a href="#querocomecar" class="btn btn-success flutuante" style="border-radius:5vw; font-size:30px; color:black; font-weight:bold; background-color:#00FF7F;">
+				<a href="#querocomecar" class="btn btn-success flutuante" style="border-radius:5vw; font-size:28px; color:black; font-weight:bold; background-color:#00FF7F;">
 					INÍCIO GRATUITO
 				</a>
 				<br/>
@@ -369,13 +371,13 @@
 
 				<div style="margin-left:auto; margin-right:auto;">
 					<label>
-						<label style="width:300px; text-align:left;">
+						<label style="width:250px; text-align:left;">
 							<label style="font-size:50px;"><i class="fa fa-book"></i></label>
 							<br/><b>3. Categoria Treino</b>
 							<br/><h6 style="text-align:justify;">TÁ MASTIGADU. Aqui você estuda os assuntos em forma de testes ao invés de tentar decorar uma apostila. No final você irá decorar todas palavras chave para a certificação e ficará pronto para a categoria Desafio. É mais divertido.
 							<br/>É só apertar o botão. <i class="fa fa-book"></i></h6>
 						</label>
-						<label style="width:300px; text-align:left;">
+						<label style="width:250px; text-align:left;">
 							<label>
 								<label style="font-size:50px;"><i class="fa fa-road"></i></label>
 								<br/><b>4. Categoria Desafio</b>
@@ -386,7 +388,7 @@
 					</label>
 				</div>
 				<br/>
-				<a href="#querocomecar" class="btn btn-success flutuante" style="border-radius:5vw; font-size:30px; color:black; font-weight:bold; background-color:#00FF7F;">
+				<a href="#querocomecar" class="btn btn-success flutuante" style="border-radius:5vw; font-size:28px; color:black; font-weight:bold; background-color:#00FF7F;">
 					INÍCIO GRATUITO
 				</a>
 				<br/>
@@ -404,13 +406,13 @@
 
 				<div style="margin-left:auto; margin-right:auto;">
 					<label>
-						<label style="width:300px; text-align:left;">
+						<label style="width:250px; text-align:left;">
 							<label style="font-size:50px;"><i class="fa fa-globe"></i></label>
 							<br/><b>5. Tradutor Offline</b>
 							<br/><h6 style="text-align:justify;">TÁ MASTIGADU. Você pode estudar nas principais línguas: Inglês ou Português, conforme sua afinidade com a língua. Também pode estudar em outras línguas, como: Espanhol, Mandarim, Árabe e Indiano.
 							<br/>É só apertar o botão. <i class="fa fa-globe"></i></h6>
 						</label>
-						<label style="width:300px; text-align:left;">
+						<label style="width:250px; text-align:left;">
 							<label>
 								<label style="font-size:50px;"><i class="fa fa-check"></i></label>
 								<br/><b>6. Tomar Um Café</b>
@@ -421,7 +423,7 @@
 					</label>
 				</div>
 				<br/>
-				<a href="#querocomecar" class="btn btn-success flutuante" style="border-radius:5vw; font-size:30px; color:black; font-weight:bold; background-color:#00FF7F;">
+				<a href="#querocomecar" class="btn btn-success flutuante" style="border-radius:5vw; font-size:28px; color:black; font-weight:bold; background-color:#00FF7F;">
 					INÍCIO GRATUITO
 				</a>
 				<br/>
@@ -456,7 +458,7 @@
 					<h6 style="text-align:justify;">TÁ MASTIGADU. Perguntas atualizadas e disponibilizadas pela Inteligência Artificial. Você decide se quer receber as atualizações ou não.
 					<br/>É só apertar o botão. <i class="fa fa-refresh"></i></h6>
 					<br/>
-					<a href="#querocomecar" class="btn btn-success flutuante" style="border-radius:5vw; font-size:30px; color:black; font-weight:bold; background-color:#00FF7F;">
+					<a href="#querocomecar" class="btn btn-success flutuante" style="border-radius:5vw; font-size:28px; color:black; font-weight:bold; background-color:#00FF7F;">
 						INÍCIO GRATUITO
 					</a>
 					<br/>
