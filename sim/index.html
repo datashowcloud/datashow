@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Sim</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!-- script src="scripts/jquery.js"></script -->
+    <!-- link rel="stylesheet" type="text/css" href="style/bootstrap.css" / -->
+    <link rel="stylesheet" href="style/myproject.css" />
+    <link rel="stylesheet" href="style/font-awesome.min.css" />
+    <link rel="stylesheet" href="style/degrade.css" />
+    <script src="scripts/jsstore.js"></script>
+    <script src="scripts/jsstore.worker.js"></script>
+    <script src="index.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <!-- link href="style/carousel.css" rel="stylesheet" -->
+	<style>
+	</style>
+</head>
+
+<body id="myBody" ZZZbackground="img/fundonoite.jpg">
+
+	<a id="querocomecar"></a>
+
+	<nav id="menutopodireito" class="mobile-offcanvas navbar fixed-bottom navbar-dark bg-dark justify-content-center" style="display:none;"> <!--sticky-top -->
+	  <!--div class="container-fluid"-->
+		<div>
+			<table>
+				<tr>
+					<td>&nbsp;&nbsp;&nbsp;</td>
+					<td>
+						<!--button class="btn btn-outline-primary" title="Conexão com e-mail" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" style="border-radius:50%; color:white; display:'none';">
+							<span id="spanMenu" class="btn btn-outline-primary navbar-toggler navbar-toggler-icon" style="border-radius:50%;" title="Menu" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"></span>
+						</button-->
+						<button id="spanMenu" class="btn btn-outline-primary" title="Menu" data-bs-toggle="offcanvas" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" style="border-radius:50%; color:white; display:'none';">
+							<i class="fa fa-th"></i> 
+						</button>
+						<br/><font size=1>Menu</font>
+					</td>
+					<td>&nbsp;&nbsp;&nbsp;</td>
+					<td>
+						<button id="btnUser" class="btn btn-outline-primary" title="Conectar com e-mail" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" style="border-radius:50%; color:white; display:'none';"><i class="fa fa-user"></i>
+							<input id="txtUser" type="text" value="" readonly style="border-radius:50%; font-size:10px; position:absolute; background-color:transparent; color:white; width:15px; border-width:0px; font-family:Helvetica; font-weight:bold; cursor:pointer;"></input>
+						</button>
+						<br/><font size=1>Você</font>
+					</td>
+					<td>&nbsp;&nbsp;&nbsp;</td>
+					<td>
+						<button id="btnNightDay" class="btn btn-outline-primary" style="border-radius:50%; color:white; display:'none';" title="Dia e Noite"><i class="fa fa-adjust"></i> </button>
+						<br/><font size=1 style="display:'none';">Dia Noite</font>
+					</td>
+					<td>&nbsp;&nbsp;&nbsp;</td>
+					<td>
+						<button id="btnNaoDesistaMenu" class="btn btn-outline-primary" title="Não desista" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" style="display:none; border-radius:50%; color:white;"><i class="fa fa-flag"></i></button>
+						<br/><font size=1 style="display:none;">Não Desista</font>
+					</td>
+					<!--td>&nbsp;&nbsp;&nbsp;</td>
+					<td>
+						<button id="btnTipMenu" class="btn btn-outline-primary" title="Dica" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" style="display:none; border-radius:50%; color:white;">?</button>
+						<br/><font size=1 style="display:none;">Dica</font>
+					</td-->
+					<!--td>&nbsp;&nbsp;&nbsp;</td>
+					<td>
+						<img id="imgLanguage" src="img/portugues.jpg" width="38px" style="cursor:pointer; border-radius:50%; display:none;" title="Translate/Traduzir/Traducir"></img>
+						<br/><font id="fonLanguage" size=1 style="display:none;">Tradução</font>
+					</td-->
+					<!--td>&nbsp;&nbsp;&nbsp;</td>
+					<td>
+						<button id="btnFim" class="btn btn-outline-primary end" style="border-radius:50%; color:white; display:none;" title="Terminar a fase"><i class="fa fa-envelope"></i></button>
+						<br/><font id="fonFim" size=1 style="display:none;">Terminar</font>
+					</td-->
+				</tr>
+			</table>
+		</div>
+
+		<div class="offcanvas offcanvas-top text-bg-dark bg-dark" style="height:600px;" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+		  <div class="offcanvas-header">
+			<h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel"></h5>
+			<!--button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button--> <!-- esse era o botão X -->
+		  </div>
+		  <div class="offcanvas-body">
+			<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+			  <li class="nav-item">
+					
+					<div id="divFormMenu" align=center style="display:'none';">
+						<br/>
+						<div align=center style="width:290px; border-radius:10px; border-style:solid; border-color:gray; border-width:3px; color:#000000; background-color:transparent;">
+							<label style="border-radius:30px; position:relative; top:-25px; left:20px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+								<label class="btn btn-primary degradeorange" style="border-radius:30px; font-size:20px; cursor:default;"><b>MENU</b></label>
+							</label>
+							<img src="img/fechar.jpg" class="flutuante" onclick="escondeFormMenu();" width="35px" style="position:relative; top:-25px; left:92px; cursor:pointer; border-radius:50%;" title="Close/Fechar/Cerrar"></img>
+							<div align=center>
+								<table>
+									<tr>
+										<td>
+											<button id="btnPaginaInicial" class="btn btn-outline-primary" title="Página Inicial" style="border-radius:50%; color:white; display:'none';"><i class="fa fa-home"></i> </button>
+											<br/><font size=1 style="color:white;">Página Inicial</font>
+										</td>
+										<td>&nbsp;&nbsp;&nbsp;</td>
+										<td>
+											<button id="btnDropDb" class="btn btn-outline-primary" title="Restaurar padrão de fábrica" style="border-radius:50%;color:white; display:'none';"><i class="fa fa-trash"></i></button>
+											<br/><font size=1 style="color:white;">Restaurar Padrão</font>
+										</td>
+										<td>
+											<button id="btntreino" class="botao" style="border-radius:30px; display:none;" onclick="changeCategory('2');"><i class="fa fa-book"></i> Treino</button>
+										</td>
+										<td>
+											<button id="btndesafio" class="botao" style="border-radius:30px; display:none;" onclick="changeCategory('4');"><i class="fa fa-road"></i> Desafio</button>
+										</td>
+									</tr>
+								</table>
+							</div>
+							<!-- datashowcloud2022@gmail.com -->
+							<div align=center>
+								<input type="text" id="txtVersion" value="20230421" style="font-size:10px; width:45px; display:none;" />
+							</div>
+							<div align=center>
+								<font size=2 color=white style="font-family:Helvetica;">
+									<p/>
+									<p/>
+									tamastigadu@gmail.com <br/>atualizado em 04/2023
+									<br/>versão 00.00.12
+								</font>
+							</div>
+						</div>
+					</div>
+					
+
+					<div id="divFormUser" align=center style="display:'none'; border-radius:2.18vw; margin-left:auto; margin-right:auto;">
+						<br/>
+						<label align=center style="width:290px; border-radius:10px; border-style:solid; border-color:gray; border-width:3px; color:#000000; background-color:transparent;">
+							<label style="border-radius:30px; position:relative; top:-25px; left:15px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+								<label class="btn btn-primary degradeorange" style="border-radius:30px; font-size:20px; cursor:default;"><b>CONEXÃO</b></label>
+							</label>
+							<img src="img/fechar.jpg" class="flutuante" onclick="escondeFormUser();" width="35px" style="position:relative; top:-25px; left:75px; cursor:pointer; border-radius:50%;" title="Close/Fechar/Cerrar"></img>
+
+							<div id="divCamposEntrar" style="display:'none';">
+								<!-- form id="formAdd" action="https://formspree.io/forms/xdovzvlb/" method="post" -->
+									<label><input id="txtId" type="text" value="" placeholder="e-mail" style="width:250px; border-radius:10px; text-align:center;"></input></label>
+									<br/>
+									<label><input id="txtPass" type="password" value="" placeholder="Senha" style="width:250px; border-radius:10px; text-align:center;"></input></label>
+									<br/>
+									<p/>
+									<p/>
+									<label id="lblEntrar" class="flutuante" style="border-radius:30px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+										<button id="btnEntrar" class="btn btn-primary degradeblue" style="width:250px; border-radius:30px;"> <i class="fa fa-user"></i> ENTRAR</button>
+									</label>
+								<!-- /form -->
+							</div>
+
+							<div id="divCamposSair" style="display:none;">
+								<label id="lblSair" class="flutuante" style="display:'none'; border-radius:30px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+									<button id="btnDesconectar" class="btn btn-danger degradered" style="width:250px; border-radius:30px;">DESCONECTAR</button>
+								</label>
+							</div>
+							<br/>
+							<br/>
+						</label>
+					</div>
+					
+					
+					<div id="divFormNaoDesista" align=center style="display:'none'; border-radius:2.18vw; margin-left:auto; margin-right:auto;">
+						
+						<br/>
+						
+						<label align=center style="width:290px; border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;">
+
+							<label style="border-radius:30px; position:relative; top:-25px; left:20px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+								<label class="btn btn-primary degradeorange" style="border-radius:30px; font-size:20px; cursor:default;"><b>RECOMPENSA</b></label>
+							</label>
+							<img src="img/fechar.jpg" class="flutuante" onclick="escondeFormNaoDesista(); $('#menutopodireito').hide();" width="35px" style="position:relative; top:-20px; left:60px; cursor:pointer; border-radius:50%;" title="Close/Fechar/Cerrar"></img>
+
+							<label style="border-radius:30px; font-size:20px; color:white;">
+								Nota inferior a 80%
+								<br/><br/>Nota alta tem recompensa maior
+							</label>
+							
+							<br/><br/>
+							
+							<!--div align=center>
+								<img src="img/naodesista1.jpg" width="150px" style="border-radius:50%; cursor:pointer;"></img>
+							</div-->
+
+							<br/><br/>
+
+							<button id="btnTest" style="display:none;">está aqui para tirar o foco ao clicar no painel label</button>
+								
+							<label class="flutuante" style="border-radius:5px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+								<button id="btnPerder" class="btn btn-danger degradered">REFAZER</button>
+							</label>
+							<label class="flutuante" style="border-radius:5px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+								<button id="btnGanhar" class="btn btn-success degradegreen">CONTINUAR
+									<!--img src="img/coracao.jpg" width="30px" style="position:absolute; top:-10px; right:-15px; border-radius:50%; cursor:pointer;"></img>
+									<input id="txtContinuar" type="text" value="1" readonly style="position:absolute; top:-5px; right:-25px; width:50px; border-radius:50%; font-size:13px; text-align:center; background-color:transparent; color:white; border-width:0px; border-color:white; font-family:Helvetica; font-weight:bold; cursor:pointer;"></input>
+									-->
+								</button>
+							</label>
+							
+							<br/><br/>
+						</label>
+					</div>
+
+					<div id="divFormDica" align=center style="display:'none'; border-radius:2.18vw; margin-left:auto; margin-right:auto;">
+						<br/>
+						<label align=center style="width:290px; border-radius:10px; border-style:solid; border-color:white; border-width:3px; color:#000000; background-color:transparent;">
+
+							<label style="border-radius:30px; position:relative; top:-25px; left:0px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+								<label class="btn btn-primary degradeorange" style="border-radius:30px; font-size:20px; cursor:default;"><b>DICA</b></label>
+							</label>
+
+							<label style="border-radius:30px; font-size:20px; color:white;">
+								Esse é o botão ajuda que está disponível para cada resposta.
+							</label>
+							
+							<br/><br/>
+
+							<label class="flutuante" style="border-radius:5px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+								<button class="btn btn-info degradeblue"  onclick="escondeFormNaoDesista(); $('#menutopodireito').hide();" style="color:white;">ENTENDI</button>
+							</label>
+
+							<br/><br/>
+						</label>
+					</div>
+					
+					<div id="divFormRecompensa" style="display:none;">
+						<br/>
+						<div align=center style="border-radius:2.18vw; margin-left:auto; margin-right:auto;">
+							<br/>
+							<label align=center style="width:290px; border-radius:10px; border-style:solid; border-color:gray; border-width:3px; color:#000000; background-color:transparent;">
+								<label style="border-radius:30px; position:relative; top:-25px; left:0px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+									<label id="btnFecharFormUser" class="btn btn-primary degradeorange" style="border-radius:30px; font-size:20px; cursor:default;"><b>RECOMPENSA</b></label>
+								</label>
+								<br/>
+								<label style="color:white; background-color:transparent;">
+								Escolha:
+								</label>
+								<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; font-family:Helvetica; color:white;">
+									<button id="btnVida" style="border-radius:10px;">
+										<img src="img/coracao.jpg" style="width:50px; border-radius:10px;"></img>
+									</button>
+									<button id="btnDica" style="border-radius:10px;">
+										<img src="img/dica.jpg" style="width:50px; border-radius:10px;"></img>
+									</button>
+								</div>
+								<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; font-family:Helvetica; color:white;">
+									<button id="btnVoltar" style="border-radius:10px;">
+										<img src="img/voltar.jpg" style="width:50px; border-radius:10px;"></img>
+									</button>
+									<button id="btnProximo" style="border-radius:10px;">
+										<img src="img/proximo.jpg" style="width:50px; border-radius:10px;"></img>
+									</button>
+								</div>
+								<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; font-family:Helvetica; color:white;">
+									<button id="btnEnglish" style="border-radius:10px;">
+										<img src="img/english.jpg" style="width:50px; border-radius:10px;"></img>
+									</button>
+									<button id="btnEspanhol" style="border-radius:10px;">
+										<img src="img/espanhol.jpg" style="width:50px; border-radius:10px;"></img>
+									</button>
+								</div>
+								<button id="btnTest" style="display:none;">está aqui para tirar o foco ao clicar no painel label</button>
+								<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; font-family:Helvetica; color:white;">
+									<button id="btnOk" class="btn btn-success degradegreen" onclick="window.open('index.html?tem=4&cat=1', '_self');" style="border-style:solid; border-color:white; border-width:3px; color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;">OK</button>
+								</div>
+							</label>
+						</div>
+					</div>
+			  </li>
+			</ul>
+			<!-- form class="d-flex mt-3" role="search">
+			  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+			  <button class="btn btn-success" type="submit">Search</button>
+			</form -->
+		  </div>
+		</div>
+	  </div>
+	</nav>
+
+
+
+	<div id="divLGPD" style="display:none;">
+		<label id="lei13709" class="btn btn-default" style="cursor:default; width:300px; display:none;">
+			Em conformidade com a Lei 13.709/18
+			<br/>- Lei Geral de Proteção de Dados Pessoais,
+			<br/>concordo, autorizo, reconheço e declaro
+			<br/>que não farei cópia da ferramenta.
+		</label>
+		<br/>
+		<!-- input type="text" name="config_myowner" size="16" id="config_myowner" maxlength="6" style="width:300px;" value="" placeholder="digite sua chave ou licença... (opcional)" -->
+		<!-- br/><br/ -->
+		<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px;">Primeiro vamos configurar</div>
+		<br/><br/>
+		<button id="btnIndexConfigurar" class="btn btn-info" style="padding:9px 15px 9px 15px; width:150px;">Começar</button>
+		<br/><br/><br/>
+	</div>
+			
+	<div id="tblCategory" style="text-align:center; color:white; display:none; font-size:35px;">
+		
+		<br/>
+		<div style="font-weight:bold; background-color:#7B68EE; border-radius:2.18vw; width:90%; margin-left:auto; margin-right:auto;">
+			<br/>
+
+			<div>
+				<label style="border-radius:10px; font-size:25px; font-weight:bold; box-shadow:5px 4px 2px 5px rgba(98, 98, 98, 0.69);">
+					<img src="img/pacmanfundoroxo.png" style="width:41px;"/><label style="border-radius:10px; font-size:25px; font-family:'Imprint MT Shadow'; color:#FFFFFF; background-color:#00FF00; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: #000;">TÁ
+						<label style="border-radius:10px; font-size:25px; font-family:'Imprint MT Shadow'; color:#FFFFFF; background-color:#0080FF;">MASTIGADU!
+						</label>
+					</label>
+				</label>
+			</div>
+			
+			<br/>
+			<div style="width:90%; background-color:white; color:#7B68EE; margin-left:auto; margin-right:auto;">
+				<b>Quer conquistar tudo isso em 2023?</b>
+			</div>
+			
+			<div>
+				<label>
+					<label class="avatarflutuante">Certificações</label><br/>
+					<label>
+						<table border=1 style="border-width:2px; border-color:white;"><tr><td>
+							<img src="img/tema1.jpg" id="imgTema1Apresentacao" class="btn btn-outline-secondary" width="150px" style="cursor:pointer; display:'none'; border-radius:50%;" title="Certificação em AWS CLF-C01"></img>
+							<br/>Cloud
+							<br/>&nbsp;AWS CLF-C01&nbsp;
+							<br/>
+							<button id="btnTema1Apresentacao" class="btn btn-success" style="border-radius:5vw; font-size:30px; color:black; font-weight:bold; background-color:#00FF7F;">
+								QUERO ESSE
+							</button>
+						</td></tr></table>
+					</label>
+					<label>
+						<label>
+							<table border=1 style="border-width:2px; border-color:white;"><tr><td>
+								<img src="img/tema2.jpg" id="imgTema2Apresentacao" class="btn btn-outline-secondary" width="150px" style="cursor:pointer; display:'none'; border-radius:50%;" title="Certificação em AZURE AZ-900"></img>
+								<br/>Cloud
+								<br/>&nbsp;Azure AZ-900&nbsp;
+								<br/>
+								<button id="btnTema2Apresentacao" class="btn btn-success" style="border-radius:5vw; font-size:30px; color:black; font-weight:bold; background-color:#00FF7F;">
+									QUERO ESSE
+								</button>
+							</td></tr></table>
+						</label>
+
+						<label>
+							<label>
+								<table border=1 style="border-width:2px; border-color:white;"><tr><td>
+									<img src="img/tema3.jpg" id="imgTema3Apresentacao" class="btn btn-outline-secondary" width="150px" border=1 style="cursor:pointer; display:'none'; border-radius:50%;" title="Certificação em ORACLE 1Z0-1085-22"></img>
+									<br/>Cloud
+									<br/>&nbsp;1Z0-1085-22&nbsp;
+									<br/>
+									<button id="btnTema3Apresentacao" class="btn btn-success" style="border-radius:5vw; font-size:30px; color:black; font-weight:bold; background-color:#00FF7F;">
+										QUERO ESSE
+									</button>
+								</td></tr></table>
+							</label>
+						</label>
+						<label>
+							<label>
+								<table border=1 style="border-width:2px; border-color:white;"><tr><td>
+									<img src="img/tema4.jpg" id="imgTema4Apresentacao" class="btn btn-outline-secondary" width="150px" border=1 style="cursor:pointer; display:'none'; border-radius:50%;" title="Certificação em Teologia na Igreja Internacional Redentor Forte"></img>
+									<br/>Teologia
+									<br/>&nbsp;I.I.R.F. Oficial&nbsp;
+									<br/>
+									<button id="btnTema4Apresentacao" class="btn btn-success" style="border-radius:5vw; font-size:30px; color:black; font-weight:bold; background-color:#00FF7F;">
+										QUERO ESSE
+									</button>
+								</td></tr></table>
+							</label>
+						</label>
+					</label>
+				</label>
+			</div>
+			
+			<div style="width:90%; font-size:35px; background-color:white; color:#7B68EE; margin-left:auto; margin-right:auto;">
+				<b>Conquiste em poucas horas!</b>
+			</div>
+			<br/>
+		</div>
+		
+		<br/>
+		
+		<div style="font-weight:bold; background-color:#7B68EE; border-radius:2.18vw; width:90%; margin-left:auto; margin-right:auto;">
+			<div style="width:90%; font-size:35px; border-radius:2.18vw; margin-left:auto; margin-right:auto; color:#FFFFFF; background-color:#7B68EE;">
+				<br/>
+				<div style="background-color:white; color:#7B68EE;">
+					<b>Aprenda conceitos e fundamentos</b>
+				</div>
+				
+				<div style="margin-left:auto; margin-right:auto;">
+					<div style="text-align:left; font-size:50px;"><i class="fa fa-italic"></i><i class="fa fa-font"></i></div>
+					<div style="text-align:left;"><b>1. Inteligência Artificial</b></div>
+					<h6 style="text-align:justify;">TÁ MASTIGADU. Mais de <u>400 perguntas</u> criadas com inteligência artificial. A ferramenta também monta novos testes com os assuntos que você demonstrou maior dificuldade.</h6>
+					<p/>
+					<div style="text-align:left; font-size:50px;"><i class="fa fa-plus"></i></div>
+					<div style="text-align:left;"><b>2. Dicas e Atalhos</b></div>
+					<h6 style="text-align:justify;">TÁ MASTIGADU. Colar no estudo é bom para decorar. Cada resposta tem um atalho direto para a página oficial com mais detalhes. Você ganha tempo porque já pesquisamos para você.</h6>
+					<h6 style="text-align:justify;"><br/>É só apertar o botão. <i class="fa fa-plus"></i></h6>
+					<br/>
+					<a href="#querocomecar" class="btn btn-success flutuante" style="border-radius:5vw; font-size:28px; color:black; font-weight:bold; background-color:#00FF7F;">
+						INÍCIO GRATUITO
+					</a>
+					<br/>
+					<br/>
+				</div>
+			</div>
+		</div>
+		<br/>
+
+		<div style="font-weight:bold; background-color:#7B68EE; border-radius:2.18vw; width:90%; margin-left:auto; margin-right:auto;">
+			<div style="width:90%; font-size:35px; border-radius:2.18vw; margin-left:auto; margin-right:auto; color:#FFFFFF; background-color:#7B68EE;">
+				<br/>
+				<div style="background-color:white; color:#7B68EE;">
+					<b>Aprenda apenas fazendo testes</b>
+				</div>
+
+				<div style="margin-left:auto; margin-right:auto;">
+					<div style="text-align:left; font-size:50px;"><i class="fa fa-book"></i></div>
+					<div style="text-align:left;"><b>3. Categoria Treino</b></div>
+					<h6 style="text-align:justify;">TÁ MASTIGADU. Aqui você estuda os assuntos em forma de testes ao invés de tentar decorar uma apostila. No final você irá decorar todas palavras chave para a certificação e ficará pronto para a categoria Desafio. É mais divertido.</h6>
+					<p/>
+					<div style="text-align:left; font-size:50px;"><i class="fa fa-road"></i></div>
+					<div style="text-align:left;"><b>4. Categoria Desafio</b></div>
+					<h6 style="text-align:justify;">TÁ MASTIGADU. Algumas perguntas coletadas da internet estão reunidas aqui. A Inteligência Artificial consegue mostrar se você já está pronto para fazer o exame oficial através do índice de pontuação geral.</h6>
+					<br/>
+					<a href="#querocomecar" class="btn btn-success flutuante" style="border-radius:5vw; font-size:28px; color:black; font-weight:bold; background-color:#00FF7F;">
+						INÍCIO GRATUITO
+					</a>
+					<br/>
+					<br/>
+				</div>
+			</div>
+		</div>
+		<br/>
+
+		<div style="font-weight:bold; background-color:#7B68EE; border-radius:2.18vw; width:90%; margin-left:auto; margin-right:auto;">
+			<div style="width:90%; font-size:35px; border-radius:2.18vw; margin-left:auto; margin-right:auto; color:#FFFFFF; background-color:#7B68EE;">
+				<br/>
+				<div style="background-color:white; color:#7B68EE;">
+					<b>Aprenda de forma rápida e descomplicada</b>
+				</div>
+
+				<div style="margin-left:auto; margin-right:auto;">
+					<div style="text-align:left; font-size:50px;"><i class="fa fa-globe"></i></div>
+					<div style="text-align:left;"><b>5. Tradutor Offline</b></div>
+					<h6 style="text-align:justify;">TÁ MASTIGADU. Você pode estudar nas principais línguas: Inglês ou Português, conforme sua afinidade com a língua. Também pode estudar em outras línguas, como: Espanhol, Mandarim, Árabe e Indiano.</h6>
+					<h6 style="text-align:justify;"><br/>É só apertar o botão. <i class="fa fa-globe"></i></h6>
+					<p/>
+					<div style="text-align:left; font-size:50px;"><i class="fa fa-check"></i></div>
+					<div style="text-align:left;"><b>6. Tomar Um Café</b></div>
+					<h6 style="text-align:justify;">TÁ MASTIGADU. Você pode parar um teste para tomar um café, ir ao banheiro ou dar atenção à família. Os testes estão separados em pequenos blocos e podem ser respondidos em média de 10 minutos.</h6>
+					<br/>
+					<a href="#querocomecar" class="btn btn-success flutuante" style="border-radius:5vw; font-size:28px; color:black; font-weight:bold; background-color:#00FF7F;">
+						INÍCIO GRATUITO
+					</a>
+					<br/>
+					<br/>
+				</div>
+			</div>
+		</div>
+		<br/>
+
+		<div style="font-weight:bold; background-color:#7B68EE; border-radius:2.18vw; width:90%; margin-left:auto; margin-right:auto;">
+			<div style="width:90%; font-size:35px; border-radius:2.18vw; margin-left:auto; margin-right:auto; color:#FFFFFF; background-color:#7B68EE;">
+				<br/>
+				<div style="font-size:35px; background-color:white; color:#7B68EE;">
+					<b>Aprenda em qualquer lugar</b>
+				</div>
+				<p/>
+				<div style="margin-left:auto; margin-right:auto;">
+					<div style="text-align:left; font-size:50px;"><i class="fa fa-home"></i></div>
+					<div style="text-align:left;"><b>7. Em Casa e no Celular</b></div>
+					<h6 style="text-align:justify;">TÁ MASTIGADU. Funciona no seu celular e em diversos dispositivos facilitando o estudo em qualquer lugar.</h6>
+					<p/>
+					<div style="text-align:left; font-size:50px;"><i class="fa fa-remove"></i></div>
+					<div style="text-align:left;"><b>8. Funciona Sem Internet</b></div>
+					<h6 style="text-align:justify;">TÁ MASTIGADU. Funciona sem internet depois que você instala a fase. É bom quando você viaja para lugares sem internet ou com sinal muito fraco.</h6>
+					<br/>
+					<a href="#querocomecar" class="btn btn-success flutuante" style="border-radius:5vw; font-size:28px; color:black; font-weight:bold; background-color:#00FF7F;">
+						INÍCIO GRATUITO
+					</a>
+					<br/>
+					<br/>
+				</div>
+			</div>
+		</div>
+		<br/>
+
+		<div style="font-weight:bold; background-color:#7B68EE; border-radius:2.18vw; width:90%; margin-left:auto; margin-right:auto;">
+			<div style="width:90%; font-size:35px; border-radius:2.18vw; margin-left:auto; margin-right:auto; color:#FFFFFF; background-color:#7B68EE;">
+				<br/>
+				<div style="font-size:35px; background-color:white; color:#7B68EE;">
+					<b>Aprenda com conforto e segurança</b>
+				</div>
+				<p/>
+				<div style="margin-left:auto; margin-right:auto;">
+					<div style="text-align:left; font-size:50px;"><i class="fa fa-adjust"></i></div>
+					<div style="text-align:left;"><b>9. Função Dia e Noite</b></div>
+					<h6 style="text-align:justify;">TÁ MASTIGADU. A função dia e noite permite continuar estudando em momentos que exigem pouca luz: no avião, na cama. Ah! Também economiza a bateria do celular.
+					<h6 style="text-align:justify;"><br/>É só apertar o botão. <i class="fa fa-adjust"></i></h6>
+					<p/>
+					<div style="text-align:left; font-size:50px;"><i class="fa fa-refresh"></i></div>
+					<div style="text-align:left;"><b>10. Atualização Semanal</b></div>
+					<h6 style="text-align:justify;">TÁ MASTIGADU. Perguntas atualizadas e disponibilizadas pela Inteligência Artificial. Você decide se quer receber as atualizações ou não.
+					<h6 style="text-align:justify;"><br/>É só apertar o botão. <i class="fa fa-refresh"></i></h6>
+					<br/>
+					<a href="#querocomecar" class="btn btn-success flutuante" style="border-radius:5vw; font-size:28px; color:black; font-weight:bold; background-color:#00FF7F;">
+						INÍCIO GRATUITO
+					</a>
+					<br/>
+					<br/>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+	<div id="divNivel" align=center style="margin-left:auto; margin-right:auto; display:none;">
+		<!--img id="imgNivelTema" style="display:'none'; width:90px; border-radius:50%;" title="Tema"></img-->
+		<!--table id="tblNivel" border=0 style="width:95%;" align=center>
+			<tbody>
+			</tbody>
+		</table-->
+		<!--table border=0>
+			<tr>
+				<td>
+					<a href="#topMinhasConquistas">
+					<label class="flutuante" style="border-radius:5px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+						<button id="btnMinhasConquistas" class="btn btn-primary degradeblue"><i class="fa fa-list" style="font-size:35px;" title="Lista de fases e níveis"></i></button>
+					</label>
+					</a>
+					<br/><font size=1 style="color:white;">Minhas Conquistas</font>
+					<a id="topMinhasConquistas"></a>
+				</td>
+			</tr>
+		</table-->
+	</div>
+	
+	<div id="tblMinhasConquistas" style="width:98%;  margin-left:auto; margin-right:auto; display:'none';" align=center>
+	</div>
+
+	<div id="divcontent" style="display:'none';">
+	</div>
+
+	<div id="divFormQuestions" class="form-group" style="display:none;">
+		<font size=4.9 style="text-align:justify">
+
+			<a id="top"></a>
+			<table border=0 width="94%" align=center>
+				<tr>
+					<td>
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align:justify; width:1%; font-size:18px; font-family:Helvetica;">
+						<img id="btnPrevious" src="img/voltar.jpg" width="35px" style="display:'none'; position:absolute; top:2px; left:3%; cursor:pointer; border-radius:50%;" title="Previous/Anterior"></img>
+						<img id="btnNext" src="img/proximo.jpg" width="35px" style="display:'none'; position:absolute; top:2px; left:15%; cursor:pointer; border-radius:50%;" title="Next/Próximo"></img>
+						<img id="imgLanguage" src="img/portugues.jpg" width="35px" style="position:absolute; top:2px; left:29%; cursor:pointer; border-radius:50%;" title="Translate/Traduzir/Traducir"></img>
+
+						<input type="text" id="txtCorretas" value="0%" title="Corrects/Corretas/Correctas" style="color:#00FF00; position:absolute; top:2px; left:43%; width:35px; font-size:15px; background-color:black; border-width:4px; border-color:white; text-align:center; font-weight:bold; cursor:default; border-radius:10px;" readonly /><!--i class="fa fa-check" style="color:#3CB371; position:absolute; top:2px; left:55%;"></i-->
+						<input type="text" id="txtIncorretas" value="0%" title="Incorrects/Incorretas/Incorrectas" style="color:#FF0000; position:absolute; top:2px; left:55%; width:35px; font-size:15px; background-color:black; border-width:4px; border-color:white; text-align:center; font-weight:bold; cursor:default; border-radius:10px;" readonly /><!--i class="fa fa-remove" style="color:red; position:absolute; top:2px; left:45%;"></i-->
+						<input type="text" id="txtCalculo" value="0%" title="Index/Índice" style="position:absolute; top:2px; left:67%; width:50px; font-size:15px; background-color:black; color:white; border-width:4px; border-color:white; text-align:center; cursor:default; border-radius:10px;" readonly />
+
+						<!--img id="btnTip" src="img/dica.jpg" width="35px" onclick="escondeFormNaoDesista(); $('#menutopodireito').hide();" style="position:absolute; top:2px; left:66%; cursor:pointer; border-radius:50%;" title="Tip/Dica/Consejo"></img-->
+						<img id="imgFechar" src="img/fechar.jpg" onclick="showGridAndHideForms();" width="35px" style="position:absolute; top:2px; left:86%; cursor:pointer; border-radius:50%;" title="Close/Fechar/Cerrar"></img>
+						<!--pergunta-->
+						<div id="mytextSim" class="degradeblack" style="border-color:white; border-radius:20px; border-style:solid; border-width:4px;"></div>
+						<!--mensagem de erro ou acerto-->
+						<button id="imgCorreta" class="btn btn-success degradegreen" style="display:none; width:50%; position:absolute; left:25%; top:5%; font-weight:bold; border-radius:10px;"><p><p>ACERTOU!<p></button>
+						<button id="imgIncorreta" class="btn btn-danger degradered" style="display:none; width:50%; position:absolute; left:25%; top:5%; font-weight:bold; border-radius:10px;"><p><p>INCORRETA<p></button>
+					</td>
+				</tr>
+			</table>
+
+			<table id="tableFormSimQuestions" border=0 align=center style="display:'none'; width:95%;" Zclass="table table-hover">
+				
+				<tr><td id="mycorrect1" style="display:none; text-align:left;"><!--font color=gray>#1</font-->
+					<table border=0 width="100%">
+						<tr>
+							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect1" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
+							<td>
+								<button id="btnCorrectAnswer1" class="btn btn-primary degradeblack" onclick="next('1', document.getElementById('chkMycorrect1').value); $('#menutopodireito').hide();" style="border-style:solid; border-color:white; border-width:3px; color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
+							</td>
+							<td width="1%">
+								<img src="img/dica.jpg" width="20px" onclick="showTip('1');" style="border-radius:50%; cursor:pointer; position:relative;" title="Tip/Dica/Consejo"></img>
+							</td>
+						</tr>
+						<tr id="trtip1" style="display:none;">
+							<td colspan=99> <label id="mytip1" class="degradeblack" style="display:none; width:85%; border-color:gray; border-radius:10px; border-style:solid; border-width:3px; color:white; backgroundColor:black; text-align:justify;"></label> </td>
+						</tr>
+					</table>
+				</td></tr>
+
+				<tr><td id="mycorrect2" style="display:none; text-align:left;"><!--font color=gray>#2</font-->
+					<table border=0 width="100%">
+						<tr>
+							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect2" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
+							<td>
+								<button id="btnCorrectAnswer2" class="btn btn-primary degradeblack" onclick="next('2', document.getElementById('chkMycorrect2').value); $('#menutopodireito').hide();" style="border-style:solid; border-color:white; border-width:3px; color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
+							</td>
+							<td width="1%">
+								<img src="img/dica.jpg" width="20px" onclick="showTip('2');" style="border-radius:50%; cursor:pointer; position:relative;" title="Tip/Dica/Consejo"></img>
+							</td>
+						</tr>
+						<tr id="trtip2" style="display:none;">
+							<td colspan=99> <label id="mytip2" class="degradeblack" style="width:85%; border-color:gray; border-radius:10px; border-style:solid; border-width:3px; color:white; backgroundColor:black; display:'none'; text-align:justify;"></label> </td>
+						</tr>
+					</table>
+				</td></tr>
+				
+				<tr><td id="mycorrect3" style="display:none; text-align:left;"><!--font color=gray>#3</font-->
+					<table border=0 width="100%">
+						<tr>
+							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect3" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
+							<td>
+								<button id="btnCorrectAnswer3" class="btn btn-primary degradeblack" onclick="next('3', document.getElementById('chkMycorrect3').value); $('#menutopodireito').hide();" style="border-style:solid; border-color:white; border-width:3px; color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
+							</td>
+							<td width="1%">
+								<img src="img/dica.jpg" width="20px" onclick="showTip('3');" style="border-radius:50%; cursor:pointer; position:relative;" title="Tip/Dica/Consejo"></img>
+							</td>
+						</tr>
+						<tr id="trtip3" style="display:none;">
+							<td colspan=99> <label id="mytip3" class="degradeblack" style="width:85%; border-color:gray; border-radius:10px; border-style:solid; border-width:3px; color:white; backgroundColor:black; display:'none'; text-align:justify;"></label> </td>
+						</tr>
+					</table>
+				</td></tr>
+				
+				<tr><td id="mycorrect4" style="display:none; text-align:left;"><!--font color=gray>#4</font-->
+					<table border=0 width="100%">
+						<tr>
+							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect4" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
+							<td>
+								<button id="btnCorrectAnswer4" class="btn btn-primary degradeblack" onclick="next('4', document.getElementById('chkMycorrect4').value); $('#menutopodireito').hide();" style="border-style:solid; border-color:white; border-width:3px; color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
+							</td>
+							<td width="1%">
+								<img src="img/dica.jpg" width="20px" onclick="showTip('4');" style="border-radius:50%; cursor:pointer; position:relative;" title="Tip/Dica/Consejo"></img>
+							</td>
+						</tr>
+						<tr id="trtip4" style="display:none;">
+							<td colspan=99> <label id="mytip4" class="degradeblack" style="width:85%; border-color:gray; border-radius:10px; border-style:solid; border-width:3px; color:white; backgroundColor:black; display:'none'; text-align:justify;"></label> </td>
+						</tr>
+					</table>
+				</td></tr>
+
+				<tr><td id="mycorrect5" style="display:none; text-align:left;"><!-- font color=gray>#5</font-->
+					<table border=0 width="100%">
+						<tr>
+							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect5" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
+							<td>
+								<button id="btnCorrectAnswer5" class="btn btn-primary degradeblack" onclick="next('5', document.getElementById('chkMycorrect5').value); $('#menutopodireito').hide();" style="border-style:solid; border-color:white; border-width:3px; color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
+							</td>
+							<td width="1%">
+								<img src="img/dica.jpg" width="20px" onclick="showTip('5');" style="border-radius:50%; cursor:pointer; position:relative;" title="Tip/Dica/Consejo"></img>
+							</td>
+						</tr>
+						<tr id="trtip5" style="display:none;">
+							<td colspan=99> <label id="mytip5" class="degradeblack" style="width:85%; border-color:gray; border-radius:10px; border-style:solid; border-width:3px; color:white; backgroundColor:black; display:'none'; text-align:justify;"></label> </td>
+						</tr>
+					</table>
+				</td></tr>
+				
+				<tr><td id="mycorrect6" style="display:none; text-align:left;"><!--font color=gray>#6</font-->
+					<table border=0 width="100%">
+						<tr>
+							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect6" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
+							<td>
+								<button id="btnCorrectAnswer6" class="btn btn-primary degradeblack" onclick="next('6', document.getElementById('chkMycorrect6').value); $('#menutopodireito').hide();" style="border-style:solid; border-color:white; border-width:3px; color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
+							</td>
+							<td width="1%">
+								<img src="img/dica.jpg" width="20px" onclick="showTip('6');" style="border-radius:50%; cursor:pointer; position:relative;" title="Tip/Dica/Consejo"></img>
+							</td>
+						</tr>
+						<tr id="trtip6" style="display:none;">
+							<td colspan=99> <label id="mytip6" class="degradeblack" style="width:85%; border-color:gray; border-radius:10px; border-style:solid; border-width:3px; color:white; backgroundColor:black; display:'none'; text-align:justify;"></label> </td>
+						</tr>
+					</table>
+				</td></tr>
+				
+				<tr><td id="mycorrect7" style="display:none; text-align:left;"><!--font color=gray>#7</font-->
+					<table border=0 width="100%">
+						<tr>
+							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect7" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
+							<td>
+								<button id="btnCorrectAnswer7" class="btn btn-primary degradeblack" onclick="next('7', document.getElementById('chkMycorrect7').value); $('#menutopodireito').hide();" style="border-style:solid; border-color:white; border-width:3px; color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
+							</td>
+							<td width="1%">
+								<img src="img/dica.jpg" width="20px" onclick="showTip('7');" style="border-radius:50%; cursor:pointer; position:relative;" title="Tip/Dica/Consejo"></img>
+							</td>
+						</tr>
+						<tr id="trtip7" style="display:none;">
+							<td colspan=99> <label id="mytip7" class="degradeblack" style="width:85%; border-color:gray; border-radius:10px; border-style:solid; border-width:3px; color:white; backgroundColor:black; display:'none'; text-align:justify;"></label> </td>
+						</tr>
+					</table>
+				</td></tr>
+				
+				<tr><td id="mycorrect8" style="display:none; text-align:left;"><!--font color=gray>#8</font-->
+					<table border=0 width="100%">
+						<tr>
+							<td width="1%" valign=top> <input type=checkbox id="chkMycorrect8" value="" style="border-radius:50%; color:white; display:none;"></input> </td>
+							<td>
+								<button id="btnCorrectAnswer8" class="btn btn-primary degradeblack" onclick="next('8', document.getElementById('chkMycorrect8').value); $('#menutopodireito').hide();" style="border-style:solid; border-color:white; border-width:3px; color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;"></button>
+							</td>
+							<td width="1%">
+								<img src="img/dica.jpg" width="20px" onclick="showTip('8');" style="border-radius:50%; cursor:pointer; position:relative;" title="Tip/Dica/Consejo"></img>
+							</td>
+						</tr>
+						<tr id="trtip8" style="display:none;">
+							<td colspan=99> <label id="mytip8" class="degradeblack" style="width:85%; border-color:gray; border-radius:10px; border-style:solid; border-width:3px; color:white; backgroundColor:black; display:'none'; text-align:justify;"></label> </td>
+						</tr>
+					</table>
+				</td></tr>
+				
+				<tr>
+					<td>
+						<input type="text" id="mygroupSim" value="" style="display:none;">
+						<input type="text" id="mycodeSim" value="" style="display:none;">
+						<input type="text" id="myorderSim" value="" style="display:none;">
+						<input type="text" id="myidSim" value="" style="display:none;">
+					</td>
+				</tr>
+			</table>
+
+			<table border=0 width="100%">
+				<tr>
+					<td>
+						<!--input type="text" id="txtCalculo" value="0" title="índice de acerto" style="width:33px; background-color:transparent; color:gray; text-align:right; border-width:0px;" readonly /><font title="índice de acerto" color=gray><b>%</b></font-->
+						<input type="text" id="txtNaoRespondidas" value="0" title="perguntas não respondidas" style="display:none; width:50px; background-color:transparent; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-check-square-o" style="display:none; color:gray;" title="perguntas não respondidas"></i>
+						<!--input type="text" id="txtIncorretas" value="0" title="respostas incorretas" style="width:22px; background-color:transparent; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-remove" style="xcolor:red;" title="respostas incorretas"></i-->
+						<!--input type="text" id="txtCorretas" value="0" title="respostas corretas" style="width:22px; background-color:transparent; color:gray; text-align:right; border-width:0px;" readonly /><i class="fa fa-check" style="xcolor:#3CB371;" title="respostas corretas"></i-->
+						<!-- input type="text" id="txtTotal" value="0" title="total de perguntas" style="width:22px; background-color:transparent; color:gray; text-align:right; border-width:0px;" readonly / -->
+					</td>
+				</tr>
+			</table>
+
+			<!-- table id="tableFormSimButtons" border=0 align=center width="100%" style="display:'none';">
+				<tr><td>
+					<button id="btnBackward" class="btn btn-danger" style="display:'none';">xxxxxxxxxxxxxxxxxxx <i class="fa fa-refresh"></i> </button>
+				</td></tr>
+			</table -->
+			<table id="ZZZtableLinkhelp" border=0 align=center style="display:'none';">
+				<tr>
+					<td id="help" style="display:none; text-align:justify;">
+						<div id="divlinkhelp"></div>
+					</td>
+				</tr>
+			</table>
+		</font>
+	</div>
+
+
+	<div class="form-group" id="divFormAddUpdate" style="display:none;">
+		<table border=0 align=center width="98%"><tr><td>
+			&nbsp;
+			<b id="FormularioEditorPerguntas">Formulário Editor de Perguntas</b>
+			<button id="btnCancel" class="btn btn-danger" style="display:'none';"> <i class="fa fa-times"></i> </button>
+			&nbsp;
+			<p/><p/>
+			<!-- p/><p/><button id="btnCancel" type="button" class="btn btn-info" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-times"></i> Fechar</button -->
+			<p/><button id="btnSubmit" type="button" class="btn btn-success" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-check"></i> Salvar</button>
+			<select id="mytema" name="mytema" style="height:35px; display:'none';"></select>
+			<select id="mycategory" name="mycategory" style="height:35px; display:'none';"></select>
+			<p/><p/><select id="mygroup" name="mygroup" style="height:35px; display:'none';">
+				<!-- option value="00">Configurações</option -->
+				<option value="01">Nível 1.0</option>
+				<option value="02">Nível 1.0</option>
+				<option value="03">Nível 1.0</option>
+				<option value="04">Nível 1.0</option>
+				<option value="05">Nível 1.0</option>
+				<option value="06">Nível 1.0</option>
+				<option value="07">Nível 1.0</option>
+				<option value="08">Nível 1.0</option>
+				<option value="09">Nível 1.0</option>
+				<option value="10">Nível 1.0</option>
+				<option value="11">Nível 1.1</option>
+				<option value="12">Nível 1.2</option>
+				<option value="13">Nível 1.3</option>
+				<option value="14">Nível 1.4</option>
+				<option value="20">Nível 2.0</option>
+				<option value="21">Nível 2.1</option>
+				<option value="22">Nível 2.2</option>
+				<option value="23">Nível 2.3</option>
+				<option value="30">Nível 3.0</option>
+				<option value="31">Nível 3.1</option>
+				<option value="32">Nível 3.2</option>
+				<option value="33">Nível 3.3</option>
+				<option value="40">Nível 4.0</option>
+				<option value="41">Nível 4.1</option>
+				<option value="42">Nível 4.2</option>
+				<option value="43">Nível 4.3</option>
+				<option value="44">Nível 4.4</option>
+				<option value="45">Nível 4.5</option>
+				<option value="46">Nível 4.6</option>
+				<option value="50">Nível 5.0</option>
+				<option value="51">Nível 5.1</option>
+				<option value="52">Nível 5.2</option>
+			</select>
+			<select id="mycode" name="mycode" style="height:35px; display:'none';"></select>
+			<select id="myorder" name="myorder" style="height:35px; display:'none';"></select>
+			<p/>
+			<p/><textarea name="mytext" id="mytext" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui em Português..."></textarea>
+			<p/><textarea name="mytext2" id="mytext2" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui em Inglês..."></textarea>
+			<p/><textarea name="mytext3" id="mytext3" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui em Espanhol..."></textarea>
+			<font style="color:#3CB371;">
+				Corretas:
+				<br/>
+				<textarea name="myoption1" id="myoption1" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+				<br/><textarea name="myoptionkey1" id="myoptionkey1" style="width:95%;" rows=1 placeholder="chave explicação 1..."></textarea>
+				<br/><textarea name="myoption2" id="myoption2" style="width:100%;" rows=1 placeholder="2..."></textarea>
+				<br/><textarea name="myoptionkey2" id="myoptionkey2" style="width:95%;" rows=1 placeholder="explicação 2..."></textarea>
+				<br/><textarea name="myoption3" id="myoption3" style="width:100%;" rows=1 placeholder="3..."></textarea>
+				<br/><textarea name="myoptionkey3" id="myoptionkey3" style="width:95%;" rows=1 placeholder="explicação 3..."></textarea>
+				<br/><textarea name="myoption4" id="myoption4" style="width:100%;" rows=1 placeholder="4..."></textarea>
+				<br/><textarea name="myoptionkey4" id="myoptionkey4" style="width:95%;" rows=1 placeholder="explicação 4..."></textarea>
+			</font>
+			
+			<font style="color:red; text-align:left;">
+				<br/>
+				Incorretas:
+				<textarea name="myoption5" id="myoption5" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+				<br/><textarea name="myoptionkey5" id="myoptionkey5" style="width:95%;" rows=1 placeholder="explicação 5..."></textarea>
+				<br/><textarea name="myoption6" id="myoption6" style="width:100%;" rows=1 placeholder="2..."></textarea>
+				<br/><textarea name="myoptionkey6" id="myoptionkey6" style="width:95%;" rows=1 placeholder="explicação 6..."></textarea>
+				<br/><textarea name="myoption7" id="myoption7" style="width:100%;" rows=1 placeholder="3..."></textarea>
+				<br/><textarea name="myoptionkey7" id="myoptionkey7" style="width:95%;" rows=1 placeholder="explicação 7..."></textarea>
+				<br/><textarea name="myoption8" id="myoption8" style="width:100%;" rows=1 placeholder="4..."></textarea>
+				<br/><textarea name="myoptionkey8" id="myoptionkey8" style="width:95%;" rows=1 placeholder="explicação 8..."></textarea>
+			</font>
+		</td></tr></table>
+	</div>
+	
+	<div class="form-group" id="divGear" style="display:none;">
+		<table border=0 align=center style="display:'none';">
+			<tr>
+				<td>
+					<br/>
+					&nbsp;
+					<button id="btnCancelImport" class="btn btn-danger" style="display:'none';"> <i class="fa fa-times"></i> </button>
+				</td>
+			</tr>
+		</table>
+		<table border=1 align=center style="display:none;"><tr><td nowrap>
+			&nbsp;
+			<b id="FormularioEditorConfiguracoes">Formulário Editor de Configurações</b>
+			<button id="btnCancelImport" class="btn btn-danger" style="display:'none';"> <i class="fa fa-times"></i> </button>
+			&nbsp;
+			<p/><p/>
+		<!-- form id="formAdd" ZZZaction="https://formspree.io/f/xrgjojko" method="post" -->
+		<!-- /form -->
+			<p/><p/><button id="btnAddNewManual" class="btn btn-default" style="padding:9px 15px 9px 15px; width:250px; display:none;"><i class="fa fa-plus"></i> Adicionar Nova Pergunta</button>
+			<p/><p/><button id="btnShowHelp" class="btn btn-default" style="padding:9px 15px 9px 15px; width:250px; display:none;"> <i class="fa fa-book"></i> Tutorial</button>
+			<p/><p/><button id="btnSelectCountAll" class="btn btn-default" style="display:none; width:250px;"> <i class="fa fa-asterisk"></i> Count All</button>
+			<p/><p/><button id="btnDeleteLirics" class="btn btn-default" style="display:none; width:250px;"> <i class="fa fa-minus"></i> Clear Lirycs</button>
+		</td></tr></table>
+	</div>
+	
+	<!-- ícones, https://www.w3schools.com/bootstrap/bootstrap_ref_comp_glyphs.asp -->
+	<div style="display:none;"> <button id="btnTest" class="btn btn-default" > <i class="fa fa-envelope"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-star"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-user"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-film"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-check"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-check-square-o"></i> </button>
+		<br/>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-remove"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-signal"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-cog"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-trash"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-home"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-file"></i> </button>
+		<br/>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-road"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-download"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-inbox"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-play"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-repeat"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-refresh"></i> </button>
+		<br/>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-list"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-lock"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-unlock"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-flag"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-off"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-down"></i> </button>
+		<br/>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-volume-up"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-qrcode"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-barcode"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-tag"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-tags"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-book"></i> </button>
+		<br/>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-bookmark"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-print"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-camera"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-font"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-bold"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-italic"></i> </button>
+		<br/>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-text-height"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-text-width"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-left"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-center"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-right"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-align-justify"></i> </button>
+		<br/>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-list"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-dedent"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-outdent"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-indent"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-video-camera"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-photo"></i> </button>
+		<br/>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-pencil"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-map-marker"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-adjust"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-tint"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-edit"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-share-square-o"></i> </button>
+		<br/>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-arrows"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-step-backward"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-fast-backward"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-backward"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-play"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-th"></i> </button>
+		<br/>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-pause"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-pencil-square-o"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-forward"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-fast-forward"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-step-forward"></i> </button>
+		<br/>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-eject"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-chevron-left"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-chevron-right"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-stop"></i> </button>
+		<button id="btnTest" class="btn btn-default" > <i class="fa fa-headphones"></i> </button>
+	</div>
+
+	<footer>
+<!-- <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" style="display:'none';">
+			<div class="carousel-indicators">
+				<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" aria-label="AWS" class="active" aria-current="true"></button>
+				<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="AZURE"></button>
+				<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="ORACLE"></button>
+			</div>
+			<div class="carousel-inner">
+				<div class="carousel-item active" style="height:350px;">
+					<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#CCC"/></svg>
+					<div class="container">
+						<div class="carousel-caption text-start">
+							<img id="imgTema1White" src="img/tema1.jpg" class="btn btn-outline-secondary" width="222px" style="cursor:pointer; display:'none';" title="AWS CLF-C01" data-bs-target="#myCarousel" data-bs-slide-to="0" aria-label="AWS" class="active" aria-current="true">
+							<img id="imgTema1Black" src="img/tema1-b.jpg" class="btn btn-outline-secondary" width="140px" style="cursor:pointer; display:none;" title="CLF-C01">
+							<p>AWS</p>
+						</div>
+					</div>
+				</div>
+				<div class="carousel-item" style="height:350px;">
+					<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#CCC"/></svg>
+					<div class="container">
+						<div class="carousel-caption text-start">
+							<img id="imgTema2White" src="img/tema2.jpg" class="btn btn-outline-secondary" width="222px" style="cursor:pointer; display:'none';" title="AZURE AZ-900">
+							<img id="imgTema2Black" src="img/tema2-b.jpg" class="btn btn-outline-secondary" width="140px" style="cursor:pointer; display:none;" title="AZ-900">
+							<p>AZURE</p>
+						</div>
+					</div>
+				</div>
+				<div class="carousel-item" style="height:350px;">
+					<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#CCC"/></svg>
+					<div class="container">
+						<div class="carousel-caption text-start">
+							<img id="imgTema3White" src="img/tema3.jpg" class="btn btn-outline-secondary" width="222px" style="cursor:pointer; display:'none';" title="ORACLE 1Z0-1085-22">
+							<img id="imgTema3Black" src="img/tema3.jpg" class="btn btn-outline-secondary" width="140px" style="cursor:pointer; display:none;" title="ORACLE 1Z0-1085-22">
+							<p>ORACLE</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
+			</button>
+		</div>
+-->
+	</footer>
+
+	<form id="formBible" class="form-horizontal" role="form" style="margin-top:50px; display: none;">
+	</form>
+
+    <link href="style/main.css " rel="stylesheet " type="text/css " />
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script>window.jQuery || document.write('<script src="scripts/jquery-3.6.3.js"><\/script>')</script>
+    <script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
