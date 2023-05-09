@@ -1079,9 +1079,9 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 		divModoTreino += '<a id="topMinhasConquistas"></a>';
 		divModoTreino += '<div align=center style="border-radius:2.18vw; margin-left:auto; margin-right:auto;">';
 			divModoTreino += '<p></p>';
-			divModoTreino += '<label align=center class="degradeorange" style="width:95%; border-radius:10px; border-style:solid; border-color:yellow; border-width:3px; color:#000000; background-color:transparent;">';
+			divModoTreino += '<label align=center class="degradeblue" style="width:95%; border-radius:10px; border-style:solid; border-color:yellow; border-width:3px; color:#000000; background-color:transparent;">';
 				divModoTreino += '<label style="border-radius:30px; position:relative; top:-25px; left:0px; border-style:double; border-color:yellow; border-width:2px; color:#000000; background-color:#FFFFFF;">';
-					divModoTreino += '<label class="btn btn-primary degradeorange" style="border-radius:30px; font-size:20px; cursor:default;"><b>MODO TREINO</b></label>';
+					divModoTreino += '<label class="btn btn-primary degradeblue" style="border-radius:30px; font-size:20px; cursor:default;"><b>MODO TREINO</b></label>';
 				divModoTreino += '</label>';
 				divModoTreino += '<br/>';
 				divModoTreino += htmlString;
@@ -1092,9 +1092,9 @@ async function refreshTableData(mytema, mycategory, mycode, myorder, mygroup, my
 		divModoDesafio += '<br/>';
 		divModoDesafio += '<div align=center style="border-radius:2.18vw; margin-left:auto; margin-right:auto;">';
 			divModoDesafio += '<br/>';
-			divModoDesafio += '<label align=center class="degradeorange" style="width:95%; border-radius:10px; border-style:solid; border-color:yellow; border-width:3px; color:#000000; background-color:transparent;">';
+			divModoDesafio += '<label align=center class="degradeblue" style="width:95%; border-radius:10px; border-style:solid; border-color:yellow; border-width:3px; color:#000000; background-color:transparent;">';
 				divModoDesafio += '<label style="border-radius:30px; position:relative; top:-25px; left:0px; border-style:double; border-color:yellow; border-width:2px; color:#000000; background-color:#FFFFFF;">';
-					divModoDesafio += '<label class="btn btn-primary degradeorange" style="border-radius:30px; font-size:20px; cursor:default;"><b>MODO DESAFIO</b></label>';
+					divModoDesafio += '<label class="btn btn-primary degradeblue" style="border-radius:30px; font-size:20px; cursor:default;"><b>MODO DESAFIO</b></label>';
 				divModoDesafio += '</label>';
 				divModoDesafio += '<br/>&nbsp;';
 				divModoDesafio += '<a href=\"#\" class="btn btn-default degradeblack" style="color:white; font-size:18px; border-radius:10px;">';
@@ -1140,7 +1140,7 @@ async function refreshMenu(mytema, mycategory, mycode, myorder, mygroup, mytext,
 
 	htmlString += '<div align=center style="border-radius:2.18vw; margin-left:auto; margin-right:auto;">';
 		htmlString += '<p></p>';
-		htmlString += '<label align=center class="degradeorange" style="width:95%; border-radius:10px; border-style:solid; border-color:yellow; border-width:3px; color:#000000; background-color:transparent;">';
+		htmlString += '<label align=center class="degradeblue" style="width:95%; border-radius:10px; border-style:solid; border-color:yellow; border-width:3px; color:#000000; background-color:transparent;">';
 			
 			htmlString += '<br/><br/><br/><br/><br/>';
 

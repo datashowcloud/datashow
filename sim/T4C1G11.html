@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Sim</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!-- script src="scripts/jquery.js"></script -->
+    <!-- link rel="stylesheet" type="text/css" href="style/bootstrap.css" / -->
+    <link rel="stylesheet" href="style/myproject.css" />
+    <link rel="stylesheet" href="style/font-awesome.min.css" />
+    <link rel="stylesheet" href="style/degrade.css" />
+    <script src="scripts/jsstore.js"></script>
+    <script src="scripts/jsstore.worker.js"></script>
+    <script src="index.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <!-- link href="style/carousel.css" rel="stylesheet" -->
+	<style>
+	</style>
+</head>
+
+<body id="myBody" ZZZbackground="gallery/paper.jpeg">
+		
+			<div style="display:'none'; text-align:center; ">
+				<div id="divContinuar" style="display:none;">
+					<br/>
+					<div align=center style="border-radius:2.18vw; margin-left:auto; margin-right:auto;">
+						<br/>
+						<label align=center style="width:290px; border-radius:10px; border-style:solid; border-color:gray; border-width:3px; color:#000000; background-color:transparent;">
+							<label style="border-radius:30px; position:relative; top:-25px; left:0px; border-style:double; border-color:white; border-width:2px; color:#000000; background-color:#FFFFFF;">
+								<label id="btnFecharFormUser" class="btn btn-primary degradeorange" style="border-radius:30px; font-size:20px; cursor:default;"><b>RECOMPENSA</b></label>
+							</label>
+							<br/>
+							<label style="color:white; background-color:transparent;">
+							Escolha:
+							</label>
+							<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; font-family:Helvetica; color:white;">
+								<button id="btnVida" style="border-radius:10px;">
+									<img src="img/coracao.jpg" style="width:50px; border-radius:10px;"></img>
+								</button>
+								<button id="btnDica" style="border-radius:10px;">
+									<img src="img/dica.jpg" style="width:50px; border-radius:10px;"></img>
+								</button>
+							</div>
+							<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; font-family:Helvetica; color:white;">
+								<button id="btnVoltar" style="border-radius:10px;">
+									<img src="img/voltar.jpg" style="width:50px; border-radius:10px;"></img>
+								</button>
+								<button id="btnProximo" style="border-radius:10px;">
+									<img src="img/proximo.jpg" style="width:50px; border-radius:10px;"></img>
+								</button>
+							</div>
+							<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; font-family:Helvetica; color:white;">
+								<button id="btnEnglish" style="border-radius:10px;">
+									<img src="img/english.jpg" style="width:50px; border-radius:10px;"></img>
+								</button>
+								<button id="btnEspanhol" style="border-radius:10px;">
+									<img src="img/espanhol.jpg" style="width:50px; border-radius:10px;"></img>
+								</button>
+							</div>
+							<button id="btnTest" style="display:none;">está aqui para tirar o foco ao clicar no painel label</button>
+							<div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; font-family:Helvetica; color:white;">
+								<button id="btnOk" class="btn btn-success degradegreen" onclick="window.open('index.html?tem=4&cat=1', '_self');" style="border-style:solid; border-color:white; border-width:3px; color:white; font-size:18px; font-family:Helvetica; width:100%; border-radius:30px;">OK</button>
+							</div>
+						</label>
+					</div>
+				</div>
+				<div id="divLoading" style="display:'none';">
+					<br/><div style="padding:9px 15px 9px 15px; cursor:default; font-size:30px; color:gray;">Aguarde...</div>
+					<br/><div style="padding:9px 15px 9px 15px; cursor:default; color:gray;">Estamos preparando tudo para você</div>
+					<video id="vdoLoaging" ZZZposter="img/fundonoite.jpg" width="320" height="240" autoplay muted loop>
+						<source src="video/loading.mp4" type="video/mp4">
+						<source src="video/loading.ogg" type="video/ogg">
+						Formato não suportado. Your browser does not support the video tag.
+					</video>
+				</div>
+				
+				<label id="bSearch" style="display:none;">
+					<input type="text" id="txtSearch" value="" placeholder="Digita aqui na pesquisa" style="width:200px; height:34px;">
+				</label>
+			</div>
+
+		<table id="tblGrid" style="width:98%" class="table table-hover ">
+			<tbody>
+				<div id="divbotoes" style="display:none; text-align:center;">
+					<button id="btntreino" class="botao flutuante" onclick="changeCategory('2');" style="background-color:gray; display:none;">Treino</button>
+					&nbsp;&nbsp;</td>
+					<button id="btndesafio" class="botao flutuante" onclick="changeCategory('4');" style="background-color:black; display:none;">Desafio</button>
+				</div>
+			</tbody>
+		</table>
+
+		<!-- form id="formAdd" action="https://formspree.io/f/xrgjojko" method="post" -->
+		<!-- /form -->
+		
+		<div class="form-group" id="divFormSim" style="display:none;">
+			<font size=4.9 style=text-align:justify>
+				<table border=0 align=center width="100%">
+					<tr><td>
+						<button id="btnBackward" class="btn btn-danger" style="display:none;"> <i class="fa fa-remove"></i> </button>
+						<button id="btnPrevious" class="btn btn-default" style="display:none;"> <i class="fa fa-chevron-left"></i></button>
+						<button id="btnNext" class="btn btn-success" style="display:none;">Próximo <i class="fa fa-chevron-right"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-signal"></i></button>
+						<button class="btn btn-default" style="display:none;"><i class="fa fa-pause"></i></button>
+						<button class="btn btn-warning" style="display:none;"><i class="fa fa-check"></i> Fim</button>
+					</td></tr>
+					<tr><td id="mytextSim" style="display:none; text-align:justify;">
+					</td></tr>
+					<tr><td id="mycorrect1Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect1answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect2Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect2answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect3Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect3answer"></div>
+					</td></tr>
+					<tr><td id="mycorrect4Sim" style="display:none; text-align:justify;">
+						<div id="mycorrect4answer"></div>
+					</td></tr>
+
+					<tr><td id="myincorrect1Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect1answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect2Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect2answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect3Sim" style="display:none; text-align:justify;">
+						<div id="myincorrect3answer"></div>
+					</td></tr>
+					<tr><td id="myincorrect4Sim" style="display:none; text-align:justify;">
+						<div id="myincorrecta4answer"></div>
+					</td></tr>
+					<tr><td>
+						<br/><input type="text" id="mygroupSim" value="" Zhidden="">
+						<br/><input type="text" id="mycodeSim" value="" Zhidden="">
+						<br/><input type="text" id="myorderSim" value="" Zhidden="">
+						<br/><input type="text" id="myidSim" value="" Zhidden="">
+					</td></tr>
+				</table>
+				<table id="tableFormSimDashboard" border=0 align=center width="60%" style="display:'none';">
+					<tr><td nowrap id="txtCalculo"></td></tr>
+					<tr><td nowrap><input type="text" id="txtIncorretas" value="Incorretas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:red;" readonly /></td></tr>
+					<tr><td nowrap><input type="text" id="txtCorretas" value="Corretas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:green;" readonly /></td></tr>
+					<tr><td nowrap><input type="text" id="txtNaoRespondidas" value="Não Respondidas" class="btn btn-default" style="padding:9px 15px 9px 15px; color:blue;" readonly /></td></tr>
+					<tr><td nowrap><br/><input type="text" id="txtTotal" value="Total" class="btn btn-default" style="padding:9px 15px 9px 15px; display:'none';" hidden=""></td></tr>
+				</table>
+				<table id="tableLinkhelp" border=0 align=center style="display:'none';">
+					<tr><td id="help" style="display:none; text-align:justify;">
+						<div id="divlinkhelp"></div>
+					</td></tr>
+				</table>
+			</font>
+		</div>
+
+		<div class="form-group" id="divFormAddUpdate" style="display:none;">
+			<table border=0 align=center width="98%" style="display:none;"><tr><td>
+				<b>Formulário Editor de Perguntas</b>
+				<p/><p/>
+				<select id="mygroup" name="mygroup" style="height:35px; display:none;">
+					<!-- option value="00">Configurações</option -->
+					<option value="01">Nível 1.0</option>
+					<option value="02">Nível 1.0</option>
+					<option value="03">Nível 1.0</option>
+					<option value="04">Nível 1.0</option>
+					<option value="05">Nível 1.0</option>
+					<option value="06">Nível 1.0</option>
+					<option value="07">Nível 1.0</option>
+					<option value="08">Nível 1.0</option>
+					<option value="09">Nível 1.0</option>
+					<option value="10">Nível 1.0</option>
+					<option value="11">Nível 1.1</option>
+					<option value="12">Nível 1.2</option>
+					<option value="13">Nível 1.3</option>
+					<option value="14">Nível 1.4</option>
+					<option value="20">Nível 2.0</option>
+					<option value="21">Nível 2.1</option>
+					<option value="22">Nível 2.2</option>
+					<option value="23">Nível 2.3</option>
+					<option value="30">Nível 3.0</option>
+					<option value="31">Nível 3.1</option>
+					<option value="32">Nível 3.2</option>
+					<option value="33">Nível 3.3</option>
+					<option value="40">Nível 4.0</option>
+					<option value="41">Nível 4.1</option>
+					<option value="42">Nível 4.2</option>
+					<option value="43">Nível 4.3</option>
+					<option value="44">Nível 4.4</option>
+					<option value="45">Nível 4.5</option>
+					<option value="46">Nível 4.6</option>
+					<option value="50">Nível 5.0</option>
+
+				</select>
+				<select id="mycode" name="mycode" style="height:35px; display:none;"></select>
+				<select id="myorder" name="myorder" style="height:35px; display:none;"></select>
+				<p/>
+				<p/><textarea name="mytext" id="mytext" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui..."></textarea>
+				<p/><textarea name="mytext2" id="mytext2" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui em Inglês..."></textarea>
+				<p/><textarea name="mytext3" id="mytext3" style="width:100%; color:blue;" rows=4 placeholder="Digite a pergunta aqui em Espanhol..."></textarea>
+				<font style="color:green;">
+					Corretas:
+					<textarea name="myoption1" id="myoption1" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey1" id="myoptionkey1" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption2" id="myoption2" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey2" id="myoptionkey2" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption3" id="myoption3" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey3" id="myoptionkey3" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption4" id="myoption4" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey4" id="myoptionkey4" rows=1 placeholder="explicação..."></textarea>
+				</font>
+				
+				<font style="color:red; text-align:left;">
+					Incorretas:
+					<textarea name="myoption5" id="myoption5" style="width:100%;" rows=1 placeholder="1... (obrigatório)"></textarea>
+					<br/><textarea name="myoptionkey5" id="myoptionkey5" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption6" id="myoption6" style="width:100%;" rows=1 placeholder="2..."></textarea>
+					<br/><textarea name="myoptionkey6" id="myoptionkey6" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption7" id="myoption7" style="width:100%;" rows=1 placeholder="3..."></textarea>
+					<br/><textarea name="myoptionkey7" id="myoptionkey7" rows=1 placeholder="explicação..."></textarea>
+					<br/><textarea name="myoption8" id="myoption8" style="width:100%;" rows=1 placeholder="4..."></textarea>
+					<br/><textarea name="myoptionkey8" id="myoptionkey8" rows=1 placeholder="explicação..."></textarea>
+				</font>
+				<p/><p/>
+				<button id="btnSubmit" type="button" class="btn btn-primary" style="padding:9px 15px 9px 15px;margin-left:10px; width:220px;"> <i class="fa fa-check"></i> Salvar</button>
+				<p/><p/>
+				<button id="btnCancel" type="button" class="btn btn-default" style="padding:9px 15px 9px 15px;margin-left:10px; width:110px;"> <i class="fa fa-times"></i> Não Salvar</button>
+			</td></tr></table>
+		</div>
+		
+		<div id="divcontent" style="display:none;">
+
+<!-- Configuração: 1 -->
+<br/><textarea id="contents1" style="width:90%; display:none;" rows=20 placeholder="Use <p> para separar vários tópicos diferentes. Logo abaixo do <p> deve conter a identificação do tópico, exemplo: título e sub-título.">
+<p>
+<portugues>FASE 11</portugues>
+<english>PHASE 11</english>
+<espanhol>FASE 11<0/espanhol>
+
+<p>
+<portugues>Quem subiu aos céus em uma carruagem de fogo?</portugues>
+<english>Who ascended to heaven in a fiery chariot?</english>
+<espanhol>¿Quién ascendió al cielo en un carro de fuego?</espanhol>
+
+<ok>
+<portugues>Elias</portugues>
+<english>Elijah</english>
+<espanhol>Elías</espanhol>
+<tip>Elias. Referência bíblica: 2 Reis 2:11.
+<br/><a href="https://www.churchofjesuschrist.org/study/scriptures/ot/2-kgs/2?lang=por" target="_blank">veja mais na internet</a>
+</tip>
+
+<portugues>Enoque</portugues>
+<english>Enoch</english>
+<espanhol>Enoc</espanhol>
+<tip>Elias. Referência bíblica: 2 Reis 2:11.
+<br/><a href="https://www.churchofjesuschrist.org/study/scriptures/ot/2-kgs/2?lang=por" target="_blank">veja mais na internet</a>
+</tip>
+
+<portugues>Eliseu</portugues>
+<english>Elisha</english>
+<espanhol>Elíseo</espanhol>
+<tip>Elias. Referência bíblica: 2 Reis 2:11.
+<br/><a href="https://www.churchofjesuschrist.org/study/scriptures/ot/2-kgs/2?lang=por" target="_blank">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Quem cantava na prisão com Paulo antes do terremoto?</portugues>
+<english>Who sang in prison with Paul before the earthquake?</english>
+<espanhol>¿Quién cantó en la cárcel con Pablo antes del terremoto?</espanhol>
+
+<ok>
+<portugues>Silas</portugues>
+<english>Silas</english>
+<espanhol>Silas</espanhol>
+<tip>Silas. Referência bíblica: Atos 16:22-26.
+<br/><a href="https://www.churchofjesuschrist.org/study/scriptures/nt/acts/16?lang=por" target="_blank">veja mais na internet</a>
+</tip>
+
+<portugues>Pedro</portugues>
+<english>Pedro</english>
+<espanhol>Pedro</espanhol>
+<tip>Silas. Referência bíblica: Atos 16:22-26.
+<br/><a href="https://www.churchofjesuschrist.org/study/scriptures/nt/acts/16?lang=por" target="_blank">veja mais na internet</a>
+</tip>
+
+<portugues>João</portugues>
+<english>John</english>
+<espanhol>John</espanhol>
+<tip>Silas. Referência bíblica: Atos 16:22-26.
+<br/><a href="https://www.churchofjesuschrist.org/study/scriptures/nt/acts/16?lang=porr" 
+target="_blank">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Quem entrou na cidade dançando com a arca da aliança?</portugues>
+<english>Who entered the city dancing with the ark of the covenant?</english>
+<espanhol>¿Quién entró en la ciudad bailando con el arca del pacto?</espanhol>
+
+<ok>
+<portugues>Davi</portugues>
+<english>David</english>
+<espanhol>David</espanhol>
+<tip>Davi. Referência bíblica: 2 Samuel 6:14-15.
+<br/><a href="https://www.churchofjesuschrist.org/study/scriptures/ot/2-sam/6?lang=por" target="_blank">veja mais na internet</a>
+</tip>
+
+<portugues>Saul</portugues>
+<english>Saul</english>
+<espanhol>Saúl</espanhol>
+<tip>Davi. Referência bíblica: 2 Samuel 6:14-15.
+<br/><a href="https://www.churchofjesuschrist.org/study/scriptures/ot/2-sam/6?lang=por" target="_blank">veja mais na internet</a>
+</tip>
+
+<portugues> Salomão</portugues>
+<english>Solomon</english>
+<espanhol>Salomón</espanhol>
+<tip>Davi. Referência bíblica: 2 Samuel 6:14-15.
+<br/><a href="https://www.churchofjesuschrist.org/study/scriptures/ot/2-sam/6?lang=por" target="_blank">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Qual era o nome da montanha onde Moisés recebeu os 10 Mandamentos?</portugues>
+<english>What was the name of the mountain where Moses received the 10 Commandments?</english>
+<espanhol>¿Cuál era el nombre de la montaña donde Moisés recibió los 10 Mandamientos?</espanhol>
+
+<ok>
+<portugues>Monte Sinai</portugues>
+<english>Mount Sinai</english>
+<espanhol>Monte Sinai</espanhol>
+<tip> Monte Sinai. Referência bíblica: Êxodo 19:18.
+<br/><a href="https://www.churchofjesuschrist.org/study/scriptures/ot/ex/19?lang=por" target="_blank">veja mais na internet</a>
+</tip>
+
+<portugues> Monte Horebe</portugues>
+<english>Mount Horeb</english>
+<espanhol>Monte Horeb</espanhol>
+<tip> Monte Sinai. Referência bíblica: Êxodo 19:18.
+<br/><a href="https://www.churchofjesuschrist.org/study/scriptures/ot/ex/19?lang=por" target="_blank">veja mais na internet</a>
+</tip>
+
+<portugues>Monte das Oliveiras</portugues>
+<english>Mount of Olives</english>
+<espanhol>Monte de los Olivos</espanhol>
+<tip> Monte Sinai. Referência bíblica: Êxodo 19:18.
+<br/><a href="https://www.churchofjesuschrist.org/study/scriptures/ot/ex/19?lang=por" target="_blank">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Quem lutou com o anjo até ser abençoado?</portugues>
+<english>Who wrestled with the angel until he was blessed?</english>
+<espanhol>¿Quién luchó con el ángel hasta que fue bendecido?</espanhol>
+
+<ok>
+<portugues>Jacó</portugues>
+<english>Jacob</english>
+<espanhol>Jacob</espanhol>
+<tip>Jacó. Referência bíblica: Gênesis 32:22-32.
+<br/><a href="https://www.churchofjesuschrist.org/study/scriptures/ot/gen/32?lang=por" target="_blank">veja mais na internet</a>
+</tip>
+
+<portugues>Abraão</portugues>
+<english>Abraham</english>
+<espanhol>Abrahán</espanhol>
+<tip>Jacó. Referência bíblica: Gênesis 32:22-32.
+<br/><a href="https://www.churchofjesuschrist.org/study/scriptures/ot/gen/32?lang=por" target="_blank">veja mais na internet</a>
+</tip>
+
+<portugues>Caim</portugues>
+<english>Cain</english>
+<espanhol>Caín</espanhol>
+<tip>Jacó. Referência bíblica: Gênesis 32:22-32.
+<br/><a href="https://www.churchofjesuschrist.org/study/scriptures/ot/gen/32?lang=por" target="_blank">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Quem se tornou uma coluna de sal depois que olhou para trás?</portugues>
+<english>Who became a pillar of salt after looking back?</english>
+<espanhol>¿Quién se convirtió en estatua de sal después de mirar hacia atrás?</espanhol>
+
+<ok>
+<portugues>Mulher de Ló</portugues>
+<english>Woman of Lo</english>
+<espanhol>Mujer de lo</espanhol>
+<tip>Mulher de Ló. Referência bíblica: Gênesis 19:26.
+<br/><a href="https://www.churchofjesuschrist.org/study/scriptures/ot/gen/19?lang=por" target="_blank">veja mais na internet</a>
+</tip>
+
+<portugues>Maria Madalena</portugues>
+<english>Maria Madalena</english>
+<espanhol>María Magdalena</espanhol>
+<tip>Mulher de Ló. Referência bíblica: Gênesis 19:26.
+<br/><a href="https://www.churchofjesuschrist.org/study/scriptures/ot/gen/19?lang=por" target="_blank">veja mais na internet</a>
+</tip>
+
+<portugues>Nabucodonosor</portugues>
+<english>Nebuchadnezzar</english>
+<espanhol>Nabucodonosor</espanhol>
+<tip>Mulher de Ló. Referência bíblica: Gênesis 19:26.
+<br/><a href="https://www.churchofjesuschrist.org/study/scriptures/ot/gen/19?lang=por" target="_blank">veja mais na internet</a>
+</tip>
+
+<p>
+<portugues>Qual cidade teve a sua muralha derrubada?</portugues>
+<english>Which city had its wall torn down?</english>
+<espanhol>¿A qué ciudad se le derribó la muralla?</espanhol>
+
+<ok>
+<portugues>Jericó</portugues>
+<english>Jericho</english>
+<espanhol>Jerico</espanhol>
+<tip>Jericó. Referência bíblica: Josué 6:1-5.
+<br/><a href="https://www.churchofjesuschrist.org/study/scriptures/ot/josh/6?lang=por" target="_blank">veja mais na internet</a>
+</tip>
+
+<portugues>Corinto</portugues>
+<english>Corinth</english>
+<espanhol>Corinto</espanhol>
+<tip>Jericó. Referência bíblica: Josué 6:1-5.
+<br/><a href="https://www.churchofjesuschrist.org/study/scriptures/ot/josh/6?lang=por" target="_blank">veja mais na internet</a>
+</tip>
+
+<portugues>Creta</portugues>
+<english>Crete</english>
+<espanhol>Creta</espanhol>
+<tip>Jericó. Referência bíblica: Josué 6:1-5.
+<br/><a href="https://www.churchofjesuschrist.org/study/scriptures/ot/josh/6?lang=por" target="_blank">veja mais na internet</a>
+</tip>
+
+<p>
+
+</textarea>
+
+		</div>
+
+    <link href="style/main.css " rel="stylesheet " type="text/css " />
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script>window.jQuery || document.write('<script src="scripts/jquery-3.6.3.js"><\/script>')</script>
+    <script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+
+<script type="text/javascript">
+	onLoadConfig();
+	
+	var quantidadeRegistrosP = '14'; // <p>
+	refreshTableResult(quantidadeRegistrosP);
+	function callback() {
+		setTimeout (function () {
+			refreshTableResult(quantidadeRegistrosP);
+			callback();
+		}, 1000);
+	}
+	callback();
+</script>
